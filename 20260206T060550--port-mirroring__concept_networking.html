@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:37 -->
+<!-- 2026-07-20 Mon 15:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Port Mirroring</title>
@@ -886,10 +886,10 @@ the mirrored ports.
 </p>
 
 <p>
-Related: <a href="../org/20260213T071400--wireshark__cybersecurity_tool.html">Wireshark</a>
-         <a href="../org/20260213T105110--zeek__cybersecurity_networking_tool.html">Zeek</a>
-         <a href="../org/20260213T104035--network-traffic-analysis__concept_cybersecurity.html">Network Traffic Analysis</a>
-         <a href="../org/20260213T072318--intrusion-detection-system__concept_cybersecurity.html">Intrusion Detection System</a>
+Related: <a href="20260213T071400--wireshark__cybersecurity_tool.html">Wireshark</a>
+         <a href="20260213T105110--zeek__cybersecurity_networking_tool.html">Zeek</a>
+         <a href="20260213T104035--network-traffic-analysis__concept_cybersecurity.html">Network Traffic Analysis</a>
+         <a href="20260213T072318--intrusion-detection-system__concept_cybersecurity.html">Intrusion Detection System</a>
 </p>
 <div id="outline-container-orgc5452a9" class="outline-2">
 <h2 id="orgc5452a9">Terminology</h2>
@@ -1000,11 +1000,11 @@ are preferred — SPAN can drop packets when the switch is busy.
 <h2 id="org87469db">Cisco SPAN Configuration</h2>
 <div class="outline-text-2" id="text-org87469db">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d88790699b35406dbcb3cf8e65de7a86>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_081ec2f12cd44786878b8c1fad50ab28>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d88790699b35406dbcb3cf8e65de7a86=document.querySelector('button[name=btn_d88790699b35406dbcb3cf8e65de7a86]');
-copyBtnbtn_d88790699b35406dbcb3cf8e65de7a86.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`! Monitor port 1 and 2, send copies to port 24\nSwitch(config)# monitor session 1 source interface Gi0/1 - 2\nSwitch(config)# monitor session 1 destination interface Gi0/24\n\n! Monitor an entire VLAN\nSwitch(config)# monitor session 1 source vlan 10\nSwitch(config)# monitor session 1 destination interface Gi0/24\n\n! Verify\nSwitch# show monitor session 1\n`);copyBtnbtn_d88790699b35406dbcb3cf8e65de7a86.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d88790699b35406dbcb3cf8e65de7a86.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_081ec2f12cd44786878b8c1fad50ab28=document.querySelector('button[name=btn_081ec2f12cd44786878b8c1fad50ab28]');
+copyBtnbtn_081ec2f12cd44786878b8c1fad50ab28.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`! Monitor port 1 and 2, send copies to port 24\nSwitch(config)# monitor session 1 source interface Gi0/1 - 2\nSwitch(config)# monitor session 1 destination interface Gi0/24\n\n! Monitor an entire VLAN\nSwitch(config)# monitor session 1 source vlan 10\nSwitch(config)# monitor session 1 destination interface Gi0/24\n\n! Verify\nSwitch# show monitor session 1\n`);copyBtnbtn_081ec2f12cd44786878b8c1fad50ab28.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_081ec2f12cd44786878b8c1fad50ab28.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1043,11 +1043,11 @@ switch (VMware vSwitch, Open vSwitch) for analysis</li>
 <h2 id="org671e4a5">Virtual Switch Port Mirroring</h2>
 <div class="outline-text-2" id="text-org671e4a5">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_7ab6fe0dec3841b7a5355c354afde743>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b9ae0299c6fa451ebf5f8d447ca24a31>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7ab6fe0dec3841b7a5355c354afde743=document.querySelector('button[name=btn_7ab6fe0dec3841b7a5355c354afde743]');
-copyBtnbtn_7ab6fe0dec3841b7a5355c354afde743.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`VMware vSwitch:\n— vSphere → switch settings → Enable Promiscuous Mode on the\n  portgroup the monitoring VM is connected to\n\nOpen vSwitch (Linux lab):\novs-vsctl add-br br0\novs-vsctl -- set Bridge br0 mirrors=@m \\\n  -- --id=@src get Port eth0 \\\n  -- --id=@dst get Port eth1 \\\n  -- --id=@m create Mirror name=mirror0 \\\n     select-dst-port=@src output-port=@dst\n`);copyBtnbtn_7ab6fe0dec3841b7a5355c354afde743.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7ab6fe0dec3841b7a5355c354afde743.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b9ae0299c6fa451ebf5f8d447ca24a31=document.querySelector('button[name=btn_b9ae0299c6fa451ebf5f8d447ca24a31]');
+copyBtnbtn_b9ae0299c6fa451ebf5f8d447ca24a31.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`VMware vSwitch:\n— vSphere → switch settings → Enable Promiscuous Mode on the\n  portgroup the monitoring VM is connected to\n\nOpen vSwitch (Linux lab):\novs-vsctl add-br br0\novs-vsctl -- set Bridge br0 mirrors=@m \\\n  -- --id=@src get Port eth0 \\\n  -- --id=@dst get Port eth1 \\\n  -- --id=@m create Mirror name=mirror0 \\\n     select-dst-port=@src output-port=@dst\n`);copyBtnbtn_b9ae0299c6fa451ebf5f8d447ca24a31.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b9ae0299c6fa451ebf5f8d447ca24a31.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

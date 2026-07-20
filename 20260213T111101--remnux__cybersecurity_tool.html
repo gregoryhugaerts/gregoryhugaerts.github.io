@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:38 -->
+<!-- 2026-07-20 Mon 15:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>REMnux</title>
@@ -895,18 +895,18 @@ separate isolated Windows VM for actual dynamic detonation.
 <p>
 Related: <a href="Malware Analysis.html">Malware Analysis</a>
          <a href="Yara.html">YARA</a>
-	 <a href="../org/20260213T071400--wireshark__cybersecurity_tool.html">Wireshark</a>
-         <a href="../org/20260206T060659--incident-response__concept_cybersecurity.html">Incident Response</a>
+	 <a href="20260213T071400--wireshark__cybersecurity_tool.html">Wireshark</a>
+         <a href="20260206T060659--incident-response__concept_cybersecurity.html">Incident Response</a>
 </p>
 <div id="outline-container-org7f9d61e" class="outline-2">
 <h2 id="org7f9d61e">Setup</h2>
 <div class="outline-text-2" id="text-org7f9d61e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c071a30352b84ed99936e3bd86aeed81>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_44d8024539b94c95a1b637339a6880a4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c071a30352b84ed99936e3bd86aeed81=document.querySelector('button[name=btn_c071a30352b84ed99936e3bd86aeed81]');
-copyBtnbtn_c071a30352b84ed99936e3bd86aeed81.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Distributed as a VM image (OVA) or installable on existing Ubuntu\n# Download: https://docs.remnux.org/install-distro/get-virtual-appliance\n\n# Installer for existing Ubuntu/Debian system\nwget --no-cache -O - https://remnux.org/install.sh | sudo bash\n`);copyBtnbtn_c071a30352b84ed99936e3bd86aeed81.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c071a30352b84ed99936e3bd86aeed81.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_44d8024539b94c95a1b637339a6880a4=document.querySelector('button[name=btn_44d8024539b94c95a1b637339a6880a4]');
+copyBtnbtn_44d8024539b94c95a1b637339a6880a4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Distributed as a VM image (OVA) or installable on existing Ubuntu\n# Download: https://docs.remnux.org/install-distro/get-virtual-appliance\n\n# Installer for existing Ubuntu/Debian system\nwget --no-cache -O - https://remnux.org/install.sh | sudo bash\n`);copyBtnbtn_44d8024539b94c95a1b637339a6880a4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_44d8024539b94c95a1b637339a6880a4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -927,11 +927,11 @@ let res = copyTextToClipboard(`# Distributed as a VM image (OVA) or installable 
 <h3 id="org1e8ddb7">Static File Analysis</h3>
 <div class="outline-text-3" id="text-org1e8ddb7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9a6a1484bfd4486e839db0dcb022b73c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_028019a4aafe49c895ced51217cf011d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9a6a1484bfd4486e839db0dcb022b73c=document.querySelector('button[name=btn_9a6a1484bfd4486e839db0dcb022b73c]');
-copyBtnbtn_9a6a1484bfd4486e839db0dcb022b73c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# File identification\nfile sample.exe\n\n# PE analysis\npescanner sample.exe          # static PE analysis report\npeframe sample.exe            # alternative PE analyser with scoring\n\n# Strings — built-in REMnux floss handles obfuscated/stack strings\nfloss sample.exe              # extracts strings even from packed/obfuscated binaries\nstrings sample.exe | grep -i \"http\\|\\.dll\"\n`);copyBtnbtn_9a6a1484bfd4486e839db0dcb022b73c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9a6a1484bfd4486e839db0dcb022b73c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_028019a4aafe49c895ced51217cf011d=document.querySelector('button[name=btn_028019a4aafe49c895ced51217cf011d]');
+copyBtnbtn_028019a4aafe49c895ced51217cf011d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# File identification\nfile sample.exe\n\n# PE analysis\npescanner sample.exe          # static PE analysis report\npeframe sample.exe            # alternative PE analyser with scoring\n\n# Strings — built-in REMnux floss handles obfuscated/stack strings\nfloss sample.exe              # extracts strings even from packed/obfuscated binaries\nstrings sample.exe | grep -i \"http\\|\\.dll\"\n`);copyBtnbtn_028019a4aafe49c895ced51217cf011d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_028019a4aafe49c895ced51217cf011d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -953,11 +953,11 @@ let res = copyTextToClipboard(`# File identification\nfile sample.exe\n\n# PE an
 <h3 id="orga221131">Document / Office Malware</h3>
 <div class="outline-text-3" id="text-orga221131">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_59d14455991e49c69adc683bfde5ac1b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_95bd7f4f2bc749a580c7d265616f78e6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_59d14455991e49c69adc683bfde5ac1b=document.querySelector('button[name=btn_59d14455991e49c69adc683bfde5ac1b]');
-copyBtnbtn_59d14455991e49c69adc683bfde5ac1b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Office macro extraction\nolevba document.doc           # extracts and analyses VBA macros\noledump.py document.doc       # stream-level inspection of OLE files\n\n# PDF analysis\npdfid.py suspicious.pdf       # quick triage — flags JS, embedded files, actions\npdf-parser.py suspicious.pdf  # detailed object-level inspection\n`);copyBtnbtn_59d14455991e49c69adc683bfde5ac1b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_59d14455991e49c69adc683bfde5ac1b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_95bd7f4f2bc749a580c7d265616f78e6=document.querySelector('button[name=btn_95bd7f4f2bc749a580c7d265616f78e6]');
+copyBtnbtn_95bd7f4f2bc749a580c7d265616f78e6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Office macro extraction\nolevba document.doc           # extracts and analyses VBA macros\noledump.py document.doc       # stream-level inspection of OLE files\n\n# PDF analysis\npdfid.py suspicious.pdf       # quick triage — flags JS, embedded files, actions\npdf-parser.py suspicious.pdf  # detailed object-level inspection\n`);copyBtnbtn_95bd7f4f2bc749a580c7d265616f78e6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_95bd7f4f2bc749a580c7d265616f78e6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -976,11 +976,11 @@ let res = copyTextToClipboard(`# Office macro extraction\nolevba document.doc   
 <h3 id="org0eb968f">Deobfuscation</h3>
 <div class="outline-text-3" id="text-org0eb968f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b62182443e0f42ea9b42fdbba275a56f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bda8501192cd4034a978380d015380f4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b62182443e0f42ea9b42fdbba275a56f=document.querySelector('button[name=btn_b62182443e0f42ea9b42fdbba275a56f]');
-copyBtnbtn_b62182443e0f42ea9b42fdbba275a56f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Decode common encodings found in malicious scripts\nbase64 -d encoded.txt\npython3 -c \"import base64; print(base64.b64decode(open('encoded.txt').read()))\"\n\n# XOR brute force against a sample with unknown key\nxortool sample.bin\n\n# JavaScript deobfuscation (malicious email attachments, droppers)\nbox-js suspicious.js          # sandboxed JS execution, logs behaviour\n`);copyBtnbtn_b62182443e0f42ea9b42fdbba275a56f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b62182443e0f42ea9b42fdbba275a56f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bda8501192cd4034a978380d015380f4=document.querySelector('button[name=btn_bda8501192cd4034a978380d015380f4]');
+copyBtnbtn_bda8501192cd4034a978380d015380f4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Decode common encodings found in malicious scripts\nbase64 -d encoded.txt\npython3 -c \"import base64; print(base64.b64decode(open('encoded.txt').read()))\"\n\n# XOR brute force against a sample with unknown key\nxortool sample.bin\n\n# JavaScript deobfuscation (malicious email attachments, droppers)\nbox-js suspicious.js          # sandboxed JS execution, logs behaviour\n`);copyBtnbtn_bda8501192cd4034a978380d015380f4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bda8501192cd4034a978380d015380f4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1007,11 +1007,11 @@ without real C2 contact.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_af4d03313bdb42b6b0ec2f351b535671>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b5441d76dfae4b00955d7aac88c3c004>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_af4d03313bdb42b6b0ec2f351b535671=document.querySelector('button[name=btn_af4d03313bdb42b6b0ec2f351b535671]');
-copyBtnbtn_af4d03313bdb42b6b0ec2f351b535671.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# INetSim — simulates common services (HTTP, DNS, FTP, SMTP)\nsudo inetsim\n\n# FakeDNS — resolves all queries to a chosen IP (e.g. REMnux itself)\nsudo fakedns -i 0.0.0.0\n\n# Capture traffic during detonation\nsudo tcpdump -i any -w capture.pcap\n# or use Wireshark directly — see [[file:Wireshark.org][Wireshark]]\n`);copyBtnbtn_af4d03313bdb42b6b0ec2f351b535671.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_af4d03313bdb42b6b0ec2f351b535671.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b5441d76dfae4b00955d7aac88c3c004=document.querySelector('button[name=btn_b5441d76dfae4b00955d7aac88c3c004]');
+copyBtnbtn_b5441d76dfae4b00955d7aac88c3c004.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# INetSim — simulates common services (HTTP, DNS, FTP, SMTP)\nsudo inetsim\n\n# FakeDNS — resolves all queries to a chosen IP (e.g. REMnux itself)\nsudo fakedns -i 0.0.0.0\n\n# Capture traffic during detonation\nsudo tcpdump -i any -w capture.pcap\n# or use Wireshark directly — see [[file:Wireshark.org][Wireshark]]\n`);copyBtnbtn_b5441d76dfae4b00955d7aac88c3c004.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b5441d76dfae4b00955d7aac88c3c004.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1032,11 +1032,11 @@ let res = copyTextToClipboard(`# INetSim — simulates common services (HTTP, DN
 <h3 id="org65a2aae">YARA</h3>
 <div class="outline-text-3" id="text-org65a2aae">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d656266b87944e8494cb1e4098c454ba>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5b44bb0ffa424032be42131ba16e29ce>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d656266b87944e8494cb1e4098c454ba=document.querySelector('button[name=btn_d656266b87944e8494cb1e4098c454ba]');
-copyBtnbtn_d656266b87944e8494cb1e4098c454ba.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Scan a sample or directory against rules\nyara rule.yar sample.exe\nyara -r rule.yar /path/to/samples/\n\n# YARA rules included with REMnux for common malware families\nls /opt/yara-rules/\n`);copyBtnbtn_d656266b87944e8494cb1e4098c454ba.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d656266b87944e8494cb1e4098c454ba.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5b44bb0ffa424032be42131ba16e29ce=document.querySelector('button[name=btn_5b44bb0ffa424032be42131ba16e29ce]');
+copyBtnbtn_5b44bb0ffa424032be42131ba16e29ce.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Scan a sample or directory against rules\nyara rule.yar sample.exe\nyara -r rule.yar /path/to/samples/\n\n# YARA rules included with REMnux for common malware families\nls /opt/yara-rules/\n`);copyBtnbtn_5b44bb0ffa424032be42131ba16e29ce.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5b44bb0ffa424032be42131ba16e29ce.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1055,11 +1055,11 @@ yara -r rule.yar /path/to/samples/
 <h2 id="org2970208">Typical Workflow</h2>
 <div class="outline-text-2" id="text-org2970208">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_006ae766b2be43298936f2a8fe34b49e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_068db4c8a264417dba4ba7e89ab4b6ed>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_006ae766b2be43298936f2a8fe34b49e=document.querySelector('button[name=btn_006ae766b2be43298936f2a8fe34b49e]');
-copyBtnbtn_006ae766b2be43298936f2a8fe34b49e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Transfer sample to REMnux (isolated network, no direct internet)\n2. file + hash the sample\n3. Static triage — pescanner/peframe for PE, oledump/olevba for\n   Office docs, pdfid/pdf-parser for PDFs\n4. Extract strings with floss (handles obfuscation better than\n   plain strings)\n5. If scripts/macros present — deobfuscate (box-js, manual decode)\n6. Start INetSim/FakeDNS to capture intended network behaviour\n7. Detonate in a separate isolated Windows VM with network routed\n   through REMnux\n8. Capture traffic with tcpdump/Wireshark during detonation\n9. Write YARA rule from confirmed indicators\n`);copyBtnbtn_006ae766b2be43298936f2a8fe34b49e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_006ae766b2be43298936f2a8fe34b49e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_068db4c8a264417dba4ba7e89ab4b6ed=document.querySelector('button[name=btn_068db4c8a264417dba4ba7e89ab4b6ed]');
+copyBtnbtn_068db4c8a264417dba4ba7e89ab4b6ed.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Transfer sample to REMnux (isolated network, no direct internet)\n2. file + hash the sample\n3. Static triage — pescanner/peframe for PE, oledump/olevba for\n   Office docs, pdfid/pdf-parser for PDFs\n4. Extract strings with floss (handles obfuscation better than\n   plain strings)\n5. If scripts/macros present — deobfuscate (box-js, manual decode)\n6. Start INetSim/FakeDNS to capture intended network behaviour\n7. Detonate in a separate isolated Windows VM with network routed\n   through REMnux\n8. Capture traffic with tcpdump/Wireshark during detonation\n9. Write YARA rule from confirmed indicators\n`);copyBtnbtn_068db4c8a264417dba4ba7e89ab4b6ed.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_068db4c8a264417dba4ba7e89ab4b6ed.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

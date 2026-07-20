@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:37 -->
+<!-- 2026-07-20 Mon 15:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CSS Selectors</title>
@@ -886,10 +886,10 @@ of the rule — higher specificity wins when rules conflict.
 </p>
 
 <p>
-Related: <a href="../org/20260206T060522--css-core-concepts__concept_css_programming.html">CSS Core Concepts</a>
-         <a href="../org/20260206T060521--css-box-model__concept_css_programming.html">CSS Box Model</a>
-         <a href="../org/20260206T060523--css-layout__concept_css_programming.html">CSS Layout</a>
-	 <a href="../org/20260314T005629==css--cascading-style-sheets__language_programming.html">css  Cascading Style Sheets</a>
+Related: <a href="20260206T060522--css-core-concepts__concept_css_programming.html">CSS Core Concepts</a>
+         <a href="20260206T060521--css-box-model__concept_css_programming.html">CSS Box Model</a>
+         <a href="20260206T060523--css-layout__concept_css_programming.html">CSS Layout</a>
+	 <a href="20260314T005629==css--cascading-style-sheets__language_programming.html">css  Cascading Style Sheets</a>
 </p>
 <div id="outline-container-orge3536ef" class="outline-2">
 <h2 id="orge3536ef">Basic Selectors</h2>
@@ -977,11 +977,11 @@ a[href$=".pdf"] { color: red; }       <i>* href ends with .pdf *</i>
 <h2 id="org5a0b72f">Combinators</h2>
 <div class="outline-text-2" id="text-org5a0b72f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_31babc5da75d4a8fbc40481ec0428c2a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_d786db32b4bf445a830706e3033e96c5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_31babc5da75d4a8fbc40481ec0428c2a=document.querySelector('button[name=btn_31babc5da75d4a8fbc40481ec0428c2a]');
-copyBtnbtn_31babc5da75d4a8fbc40481ec0428c2a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`/* Descendant — any level deep */\ndiv p { margin: 0; }\n\n/* Child — direct children only */\nul > li { list-style: square; }\n\n/* Adjacent sibling — immediately following */\nh2 + p { text-indent: 20px; }\n\n/* General sibling — any following sibling */\nh2 ~ p { border-top: 1px dashed; }\n`);copyBtnbtn_31babc5da75d4a8fbc40481ec0428c2a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_31babc5da75d4a8fbc40481ec0428c2a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d786db32b4bf445a830706e3033e96c5=document.querySelector('button[name=btn_d786db32b4bf445a830706e3033e96c5]');
+copyBtnbtn_d786db32b4bf445a830706e3033e96c5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`/* Descendant — any level deep */\ndiv p { margin: 0; }\n\n/* Child — direct children only */\nul > li { list-style: square; }\n\n/* Adjacent sibling — immediately following */\nh2 + p { text-indent: 20px; }\n\n/* General sibling — any following sibling */\nh2 ~ p { border-top: 1px dashed; }\n`);copyBtnbtn_d786db32b4bf445a830706e3033e96c5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d786db32b4bf445a830706e3033e96c5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1008,11 +1008,11 @@ State-based selectors — no extra HTML required:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_b876c79e5b8944c2a0984ff6db91a953>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_ba0f566438d243c98d92c0fd035add46>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b876c79e5b8944c2a0984ff6db91a953=document.querySelector('button[name=btn_b876c79e5b8944c2a0984ff6db91a953]');
-copyBtnbtn_b876c79e5b8944c2a0984ff6db91a953.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`/* User interaction */\na:hover  { text-decoration: underline; }\na:visited { color: purple; }\nbutton:focus { outline: 2px solid blue; }\nbutton:active { transform: scale(0.98); }\n\n/* Form state */\ninput:disabled { opacity: 0.5; }\ninput:checked + label { font-weight: bold; }\n\n/* Structural */\nli:first-child { font-weight: bold; }\nli:last-child  { border-bottom: none; }\nli:nth-child(odd) { background: #f5f5f5; }\nli:nth-child(3n)  { color: red; }          /* every 3rd */\np:empty { display: none; }\n:root { --primary: #3498db; }              /* CSS custom properties */\n\n/* Negation */\nbutton:not(.disabled) { cursor: pointer; }\nli:not(:last-child) { border-bottom: 1px solid; }\n`);copyBtnbtn_b876c79e5b8944c2a0984ff6db91a953.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b876c79e5b8944c2a0984ff6db91a953.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ba0f566438d243c98d92c0fd035add46=document.querySelector('button[name=btn_ba0f566438d243c98d92c0fd035add46]');
+copyBtnbtn_ba0f566438d243c98d92c0fd035add46.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`/* User interaction */\na:hover  { text-decoration: underline; }\na:visited { color: purple; }\nbutton:focus { outline: 2px solid blue; }\nbutton:active { transform: scale(0.98); }\n\n/* Form state */\ninput:disabled { opacity: 0.5; }\ninput:checked + label { font-weight: bold; }\n\n/* Structural */\nli:first-child { font-weight: bold; }\nli:last-child  { border-bottom: none; }\nli:nth-child(odd) { background: #f5f5f5; }\nli:nth-child(3n)  { color: red; }          /* every 3rd */\np:empty { display: none; }\n:root { --primary: #3498db; }              /* CSS custom properties */\n\n/* Negation */\nbutton:not(.disabled) { cursor: pointer; }\nli:not(:last-child) { border-bottom: 1px solid; }\n`);copyBtnbtn_ba0f566438d243c98d92c0fd035add46.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ba0f566438d243c98d92c0fd035add46.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1049,11 +1049,11 @@ Style a part of an element — always double colon (<code>::</code>):
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_6beeb29b83004c4f9dab3885026087df>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_399a8026c5b04677a926a245fe0c96c2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6beeb29b83004c4f9dab3885026087df=document.querySelector('button[name=btn_6beeb29b83004c4f9dab3885026087df]');
-copyBtnbtn_6beeb29b83004c4f9dab3885026087df.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`/* Insert content */\n.required::after {\n    content: \" *\";\n    color: red;\n}\n\n.quote::before {\n    content: \"\\201C\";   /* \" */\n}\n\n/* Text selection highlight */\n::selection {\n    background: #3498db;\n    color: white;\n}\n\n/* Placeholder text */\ninput::placeholder { color: #aaa; }\n\n/* First line / first letter */\np::first-line   { font-variant: small-caps; }\np::first-letter { font-size: 2em; float: left; }\n`);copyBtnbtn_6beeb29b83004c4f9dab3885026087df.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6beeb29b83004c4f9dab3885026087df.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_399a8026c5b04677a926a245fe0c96c2=document.querySelector('button[name=btn_399a8026c5b04677a926a245fe0c96c2]');
+copyBtnbtn_399a8026c5b04677a926a245fe0c96c2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`/* Insert content */\n.required::after {\n    content: \" *\";\n    color: red;\n}\n\n.quote::before {\n    content: \"\\201C\";   /* \" */\n}\n\n/* Text selection highlight */\n::selection {\n    background: #3498db;\n    color: white;\n}\n\n/* Placeholder text */\ninput::placeholder { color: #aaa; }\n\n/* First line / first letter */\np::first-line   { font-variant: small-caps; }\np::first-letter { font-size: 2em; float: left; }\n`);copyBtnbtn_399a8026c5b04677a926a245fe0c96c2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_399a8026c5b04677a926a245fe0c96c2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1087,11 +1087,11 @@ let res = copyTextToClipboard(`/* Insert content */\n.required::after {\n    con
 <h2 id="org16c0cbb">Grouping</h2>
 <div class="outline-text-2" id="text-org16c0cbb">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_b88951726b9f495c8de8b8ec51c4cf54>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_4769d2174f3a43b28d957477f7173794>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b88951726b9f495c8de8b8ec51c4cf54=document.querySelector('button[name=btn_b88951726b9f495c8de8b8ec51c4cf54]');
-copyBtnbtn_b88951726b9f495c8de8b8ec51c4cf54.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`/* Same styles for multiple selectors */\nh1, h2, h3, h4 { font-family: sans-serif; }\n\n.card, .panel, .modal { border-radius: 8px; }\n`);copyBtnbtn_b88951726b9f495c8de8b8ec51c4cf54.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b88951726b9f495c8de8b8ec51c4cf54.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4769d2174f3a43b28d957477f7173794=document.querySelector('button[name=btn_4769d2174f3a43b28d957477f7173794]');
+copyBtnbtn_4769d2174f3a43b28d957477f7173794.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`/* Same styles for multiple selectors */\nh1, h2, h3, h4 { font-family: sans-serif; }\n\n.card, .panel, .modal { border-radius: 8px; }\n`);copyBtnbtn_4769d2174f3a43b28d957477f7173794.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4769d2174f3a43b28d957477f7173794.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1112,11 +1112,11 @@ Calculated as <code>(ID, class/attr/pseudo-class, element/pseudo-element)</code>
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_8c6d0cb327864ce3aefba3bb3480d3f9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_fadc969889ed495eaff9393f015eb564>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8c6d0cb327864ce3aefba3bb3480d3f9=document.querySelector('button[name=btn_8c6d0cb327864ce3aefba3bb3480d3f9]');
-copyBtnbtn_8c6d0cb327864ce3aefba3bb3480d3f9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`p              /* (0,0,1) */\n.card          /* (0,1,0) */\n#nav           /* (1,0,0) */\n#nav .item p   /* (1,1,1) */\n`);copyBtnbtn_8c6d0cb327864ce3aefba3bb3480d3f9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8c6d0cb327864ce3aefba3bb3480d3f9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_fadc969889ed495eaff9393f015eb564=document.querySelector('button[name=btn_fadc969889ed495eaff9393f015eb564]');
+copyBtnbtn_fadc969889ed495eaff9393f015eb564.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`p              /* (0,0,1) */\n.card          /* (0,1,0) */\n#nav           /* (1,0,0) */\n#nav .item p   /* (1,1,1) */\n`);copyBtnbtn_fadc969889ed495eaff9393f015eb564.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fadc969889ed495eaff9393f015eb564.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

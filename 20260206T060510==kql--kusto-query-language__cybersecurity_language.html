@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:37 -->
+<!-- 2026-07-20 Mon 15:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Kusto Query Language</title>
@@ -898,8 +898,8 @@ the dataset before passing it to the next.
 </p>
 
 <p>
-Related: <a href="../org/20260206T060716--microsoft-sentinel__cybersecurity_tool.html">Microsoft Sentinel</a>
-         <a href="../org/20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a>
+Related: <a href="20260206T060716--microsoft-sentinel__cybersecurity_tool.html">Microsoft Sentinel</a>
+         <a href="20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a>
 </p>
 <div id="outline-container-org35c1c18" class="outline-2">
 <h2 id="org35c1c18">Core Operators</h2>
@@ -1013,11 +1013,11 @@ Related: <a href="../org/20260206T060716--microsoft-sentinel__cybersecurity_tool
 <h2 id="org1983cca">Time Functions</h2>
 <div class="outline-text-2" id="text-org1983cca">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_dc274a649e614b6ba8b6a38c12dc9922>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_d7da980899e546a79def2b913a6b8428>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_dc274a649e614b6ba8b6a38c12dc9922=document.querySelector('button[name=btn_dc274a649e614b6ba8b6a38c12dc9922]');
-copyBtnbtn_dc274a649e614b6ba8b6a38c12dc9922.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Relative time\n| where TimeGenerated > ago(1h)\n| where TimeGenerated > ago(24h)\n| where TimeGenerated between (ago(7d) .. now())\n\n// Bin into intervals (for time charts)\n| summarize count() by bin(TimeGenerated, 1h)\n| summarize count() by bin(TimeGenerated, 15m)\n`);copyBtnbtn_dc274a649e614b6ba8b6a38c12dc9922.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dc274a649e614b6ba8b6a38c12dc9922.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d7da980899e546a79def2b913a6b8428=document.querySelector('button[name=btn_d7da980899e546a79def2b913a6b8428]');
+copyBtnbtn_d7da980899e546a79def2b913a6b8428.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Relative time\n| where TimeGenerated > ago(1h)\n| where TimeGenerated > ago(24h)\n| where TimeGenerated between (ago(7d) .. now())\n\n// Bin into intervals (for time charts)\n| summarize count() by bin(TimeGenerated, 1h)\n| summarize count() by bin(TimeGenerated, 15m)\n`);copyBtnbtn_d7da980899e546a79def2b913a6b8428.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d7da980899e546a79def2b913a6b8428.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1037,11 +1037,11 @@ let res = copyTextToClipboard(`// Relative time\n| where TimeGenerated > ago(1h)
 <h2 id="org68ef5a4">String Operators</h2>
 <div class="outline-text-2" id="text-org68ef5a4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_8652380ff126424aa60556395d6b9ab1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_a1ed3b331d9e448ebef96bf69426eb29>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8652380ff126424aa60556395d6b9ab1=document.querySelector('button[name=btn_8652380ff126424aa60556395d6b9ab1]');
-copyBtnbtn_8652380ff126424aa60556395d6b9ab1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Case-insensitive contains (most common)\n| where AccountName contains \"admin\"\n\n// Case-sensitive\n| where AccountName contains_cs \"Admin\"\n\n// Starts with / ends with\n| where IpAddress startswith \"192.168\"\n\n// Regex\n| where AccountName matches regex @\"^svc_\"\n\n// In list\n| where EventID in (4624, 4625, 4648, 4672)\n\n// Not in list\n| where EventID !in (4624, 4634)\n\n// Has (token-based — faster than contains for words)\n| where Message has \"failed\"\n| where Message has_all (\"failed\", \"login\")\n| where Message has_any (\"admin\", \"administrator\")\n`);copyBtnbtn_8652380ff126424aa60556395d6b9ab1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8652380ff126424aa60556395d6b9ab1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a1ed3b331d9e448ebef96bf69426eb29=document.querySelector('button[name=btn_a1ed3b331d9e448ebef96bf69426eb29]');
+copyBtnbtn_a1ed3b331d9e448ebef96bf69426eb29.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Case-insensitive contains (most common)\n| where AccountName contains \"admin\"\n\n// Case-sensitive\n| where AccountName contains_cs \"Admin\"\n\n// Starts with / ends with\n| where IpAddress startswith \"192.168\"\n\n// Regex\n| where AccountName matches regex @\"^svc_\"\n\n// In list\n| where EventID in (4624, 4625, 4648, 4672)\n\n// Not in list\n| where EventID !in (4624, 4634)\n\n// Has (token-based — faster than contains for words)\n| where Message has \"failed\"\n| where Message has_all (\"failed\", \"login\")\n| where Message has_any (\"admin\", \"administrator\")\n`);copyBtnbtn_a1ed3b331d9e448ebef96bf69426eb29.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a1ed3b331d9e448ebef96bf69426eb29.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1079,11 +1079,11 @@ Define variables and sub-queries for reuse:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_15e6af9866064c7e943e1d9b9e35ce3c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_c3fc584da6b44eeb8f13402ef1654170>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_15e6af9866064c7e943e1d9b9e35ce3c=document.querySelector('button[name=btn_15e6af9866064c7e943e1d9b9e35ce3c]');
-copyBtnbtn_15e6af9866064c7e943e1d9b9e35ce3c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Variable\nlet threshold = 10;\nlet lookback = 24h;\nSecurityEvent\n| where TimeGenerated > ago(lookback)\n| where EventID == 4625\n| summarize FailedAttempts = count() by AccountName\n| where FailedAttempts > threshold\n\n// Reusable sub-query\nlet FailedLogins = SecurityEvent\n    | where EventID == 4625\n    | summarize FailedCount = count() by AccountName;\nFailedLogins\n| where FailedCount > 10\n| order by FailedCount desc\n`);copyBtnbtn_15e6af9866064c7e943e1d9b9e35ce3c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_15e6af9866064c7e943e1d9b9e35ce3c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c3fc584da6b44eeb8f13402ef1654170=document.querySelector('button[name=btn_c3fc584da6b44eeb8f13402ef1654170]');
+copyBtnbtn_c3fc584da6b44eeb8f13402ef1654170.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Variable\nlet threshold = 10;\nlet lookback = 24h;\nSecurityEvent\n| where TimeGenerated > ago(lookback)\n| where EventID == 4625\n| summarize FailedAttempts = count() by AccountName\n| where FailedAttempts > threshold\n\n// Reusable sub-query\nlet FailedLogins = SecurityEvent\n    | where EventID == 4625\n    | summarize FailedCount = count() by AccountName;\nFailedLogins\n| where FailedCount > 10\n| order by FailedCount desc\n`);copyBtnbtn_c3fc584da6b44eeb8f13402ef1654170.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c3fc584da6b44eeb8f13402ef1654170.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1115,11 +1115,11 @@ FailedLogins
 <h3 id="org196749b">Failed logon enumeration</h3>
 <div class="outline-text-3" id="text-org196749b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_6d623ba388744ed1a6c0b9268915f095>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_d4dddc68580b4adebdc682d4bd022264>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6d623ba388744ed1a6c0b9268915f095=document.querySelector('button[name=btn_6d623ba388744ed1a6c0b9268915f095]');
-copyBtnbtn_6d623ba388744ed1a6c0b9268915f095.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 4625\n| summarize FailedAttempts = count() by AccountName, IpAddress\n| where FailedAttempts > 5\n| order by FailedAttempts desc\n`);copyBtnbtn_6d623ba388744ed1a6c0b9268915f095.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6d623ba388744ed1a6c0b9268915f095.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d4dddc68580b4adebdc682d4bd022264=document.querySelector('button[name=btn_d4dddc68580b4adebdc682d4bd022264]');
+copyBtnbtn_d4dddc68580b4adebdc682d4bd022264.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 4625\n| summarize FailedAttempts = count() by AccountName, IpAddress\n| where FailedAttempts > 5\n| order by FailedAttempts desc\n`);copyBtnbtn_d4dddc68580b4adebdc682d4bd022264.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d4dddc68580b4adebdc682d4bd022264.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1137,11 +1137,11 @@ let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(1h)\n|
 <h3 id="org50f5ad9">Successful logon after repeated failures (brute force success)</h3>
 <div class="outline-text-3" id="text-org50f5ad9">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_c73bc304a63a4831ac948aca8737744e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_ac8e5d31103f42179fcca753c73d2671>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c73bc304a63a4831ac948aca8737744e=document.querySelector('button[name=btn_c73bc304a63a4831ac948aca8737744e]');
-copyBtnbtn_c73bc304a63a4831ac948aca8737744e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let FailedAccounts =\n    SecurityEvent\n    | where TimeGenerated > ago(1h)\n    | where EventID == 4625\n    | summarize FailedAttempts = count() by AccountName\n    | where FailedAttempts > 10;\nSecurityEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 4624\n| join kind=inner FailedAccounts on AccountName\n| project TimeGenerated, AccountName, IpAddress, FailedAttempts\n`);copyBtnbtn_c73bc304a63a4831ac948aca8737744e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c73bc304a63a4831ac948aca8737744e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ac8e5d31103f42179fcca753c73d2671=document.querySelector('button[name=btn_ac8e5d31103f42179fcca753c73d2671]');
+copyBtnbtn_ac8e5d31103f42179fcca753c73d2671.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let FailedAccounts =\n    SecurityEvent\n    | where TimeGenerated > ago(1h)\n    | where EventID == 4625\n    | summarize FailedAttempts = count() by AccountName\n    | where FailedAttempts > 10;\nSecurityEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 4624\n| join kind=inner FailedAccounts on AccountName\n| project TimeGenerated, AccountName, IpAddress, FailedAttempts\n`);copyBtnbtn_ac8e5d31103f42179fcca753c73d2671.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ac8e5d31103f42179fcca753c73d2671.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1164,11 +1164,11 @@ SecurityEvent
 <h3 id="orga791e40">Privilege escalation — special privileges assigned</h3>
 <div class="outline-text-3" id="text-orga791e40">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_866e1c81367c4048845a59e4e4a2480b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_d5192faf9f904accaa9effd06a09411b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_866e1c81367c4048845a59e4e4a2480b=document.querySelector('button[name=btn_866e1c81367c4048845a59e4e4a2480b]');
-copyBtnbtn_866e1c81367c4048845a59e4e4a2480b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4672          // Special privileges assigned to logon\n| where AccountName !endswith \"$\" // Exclude machine accounts\n| project TimeGenerated, AccountName, PrivilegeList\n| order by TimeGenerated desc\n`);copyBtnbtn_866e1c81367c4048845a59e4e4a2480b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_866e1c81367c4048845a59e4e4a2480b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d5192faf9f904accaa9effd06a09411b=document.querySelector('button[name=btn_d5192faf9f904accaa9effd06a09411b]');
+copyBtnbtn_d5192faf9f904accaa9effd06a09411b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4672          // Special privileges assigned to logon\n| where AccountName !endswith \"$\" // Exclude machine accounts\n| project TimeGenerated, AccountName, PrivilegeList\n| order by TimeGenerated desc\n`);copyBtnbtn_d5192faf9f904accaa9effd06a09411b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d5192faf9f904accaa9effd06a09411b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1186,11 +1186,11 @@ let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n
 <h3 id="org111d967">New local admin account created</h3>
 <div class="outline-text-3" id="text-org111d967">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_9aea1723e5684b6883cd3bd169bb417c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_44499b88b8834021a4958381d26c875e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9aea1723e5684b6883cd3bd169bb417c=document.querySelector('button[name=btn_9aea1723e5684b6883cd3bd169bb417c]');
-copyBtnbtn_9aea1723e5684b6883cd3bd169bb417c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4732          // Member added to security-enabled local group\n| where TargetUserName == \"Administrators\"\n| project TimeGenerated, AccountName, MemberName\n`);copyBtnbtn_9aea1723e5684b6883cd3bd169bb417c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9aea1723e5684b6883cd3bd169bb417c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_44499b88b8834021a4958381d26c875e=document.querySelector('button[name=btn_44499b88b8834021a4958381d26c875e]');
+copyBtnbtn_44499b88b8834021a4958381d26c875e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4732          // Member added to security-enabled local group\n| where TargetUserName == \"Administrators\"\n| project TimeGenerated, AccountName, MemberName\n`);copyBtnbtn_44499b88b8834021a4958381d26c875e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_44499b88b8834021a4958381d26c875e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1207,11 +1207,11 @@ let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n
 <h3 id="org39829e5">Scheduled task creation</h3>
 <div class="outline-text-3" id="text-org39829e5">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_7f75108e8b974ea5b2884d0d5ca7a2d4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_2b0e6f09ac8a46959844f769c2882f30>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7f75108e8b974ea5b2884d0d5ca7a2d4=document.querySelector('button[name=btn_7f75108e8b974ea5b2884d0d5ca7a2d4]');
-copyBtnbtn_7f75108e8b974ea5b2884d0d5ca7a2d4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4698          // Scheduled task created\n| project TimeGenerated, AccountName, TaskName, TaskContent\n`);copyBtnbtn_7f75108e8b974ea5b2884d0d5ca7a2d4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7f75108e8b974ea5b2884d0d5ca7a2d4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2b0e6f09ac8a46959844f769c2882f30=document.querySelector('button[name=btn_2b0e6f09ac8a46959844f769c2882f30]');
+copyBtnbtn_2b0e6f09ac8a46959844f769c2882f30.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4698          // Scheduled task created\n| project TimeGenerated, AccountName, TaskName, TaskContent\n`);copyBtnbtn_2b0e6f09ac8a46959844f769c2882f30.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2b0e6f09ac8a46959844f769c2882f30.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1227,11 +1227,11 @@ let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n
 <h3 id="orgc34dddf">Outbound connections from unusual processes (requires Sysmon)</h3>
 <div class="outline-text-3" id="text-orgc34dddf">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_7a2bebe6eb5f448b9f52d9c175903ae5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_2aaca73a67e14878b9a63c85e76368e3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7a2bebe6eb5f448b9f52d9c175903ae5=document.querySelector('button[name=btn_7a2bebe6eb5f448b9f52d9c175903ae5]');
-copyBtnbtn_7a2bebe6eb5f448b9f52d9c175903ae5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SysmonEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 3             // Network connection\n| where InitiatingProcessName !in (\"chrome.exe\",\"msedge.exe\",\"svchost.exe\")\n| project TimeGenerated, InitiatingProcessName, DestinationIp, DestinationPort\n| order by TimeGenerated desc\n`);copyBtnbtn_7a2bebe6eb5f448b9f52d9c175903ae5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7a2bebe6eb5f448b9f52d9c175903ae5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2aaca73a67e14878b9a63c85e76368e3=document.querySelector('button[name=btn_2aaca73a67e14878b9a63c85e76368e3]');
+copyBtnbtn_2aaca73a67e14878b9a63c85e76368e3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SysmonEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 3             // Network connection\n| where InitiatingProcessName !in (\"chrome.exe\",\"msedge.exe\",\"svchost.exe\")\n| project TimeGenerated, InitiatingProcessName, DestinationIp, DestinationPort\n| order by TimeGenerated desc\n`);copyBtnbtn_2aaca73a67e14878b9a63c85e76368e3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2aaca73a67e14878b9a63c85e76368e3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1249,11 +1249,11 @@ let res = copyTextToClipboard(`SysmonEvent\n| where TimeGenerated > ago(1h)\n| w
 <h3 id="orgb130d12">Lateral movement — network logons</h3>
 <div class="outline-text-3" id="text-orgb130d12">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_3826983c1a034137b2afc5718d197c39>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_0a8fca2be71343d8a9cdd59ae80ac66a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3826983c1a034137b2afc5718d197c39=document.querySelector('button[name=btn_3826983c1a034137b2afc5718d197c39]');
-copyBtnbtn_3826983c1a034137b2afc5718d197c39.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4624\n| where LogonType == 3           // Network logon\n| where AccountName !endswith \"$\"\n| summarize count() by AccountName, IpAddress, Computer\n| order by count_ desc\n`);copyBtnbtn_3826983c1a034137b2afc5718d197c39.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3826983c1a034137b2afc5718d197c39.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0a8fca2be71343d8a9cdd59ae80ac66a=document.querySelector('button[name=btn_0a8fca2be71343d8a9cdd59ae80ac66a]');
+copyBtnbtn_0a8fca2be71343d8a9cdd59ae80ac66a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4624\n| where LogonType == 3           // Network logon\n| where AccountName !endswith \"$\"\n| summarize count() by AccountName, IpAddress, Computer\n| order by count_ desc\n`);copyBtnbtn_0a8fca2be71343d8a9cdd59ae80ac66a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0a8fca2be71343d8a9cdd59ae80ac66a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1272,11 +1272,11 @@ let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n
 <h3 id="org863b979">Cross-table correlation — join security events with sign-in logs</h3>
 <div class="outline-text-3" id="text-org863b979">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_9706ad73e4e844bbbeeb537e76040850>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_a61384b714344b238b9dcbc493c23ba3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9706ad73e4e844bbbeeb537e76040850=document.querySelector('button[name=btn_9706ad73e4e844bbbeeb537e76040850]');
-copyBtnbtn_9706ad73e4e844bbbeeb537e76040850.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 4776          // Credential validation\n| project TimeGenerated, AccountName, IpAddress\n| join kind=inner (\n    SigninLogs\n    | where TimeGenerated > ago(1h)\n    | where ResultType == 50126  // Possible MFA bypass\n    | project SigninTime = TimeGenerated, UserPrincipalName\n) on $left.AccountName == $right.UserPrincipalName\n| extend TimeDiff = abs(TimeGenerated - SigninTime)\n| where TimeDiff < 1m\n`);copyBtnbtn_9706ad73e4e844bbbeeb537e76040850.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9706ad73e4e844bbbeeb537e76040850.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a61384b714344b238b9dcbc493c23ba3=document.querySelector('button[name=btn_a61384b714344b238b9dcbc493c23ba3]');
+copyBtnbtn_a61384b714344b238b9dcbc493c23ba3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 4776          // Credential validation\n| project TimeGenerated, AccountName, IpAddress\n| join kind=inner (\n    SigninLogs\n    | where TimeGenerated > ago(1h)\n    | where ResultType == 50126  // Possible MFA bypass\n    | project SigninTime = TimeGenerated, UserPrincipalName\n) on $left.AccountName == $right.UserPrincipalName\n| extend TimeDiff = abs(TimeGenerated - SigninTime)\n| where TimeDiff < 1m\n`);copyBtnbtn_a61384b714344b238b9dcbc493c23ba3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a61384b714344b238b9dcbc493c23ba3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1300,11 +1300,11 @@ let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(1h)\n|
 <h3 id="org8cdf200">Traffic spike detection (time chart)</h3>
 <div class="outline-text-3" id="text-org8cdf200">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_611dad44d08847f88250257b1b7232b0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_34b7a67e6ae74ad6a6e47605657aea3c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_611dad44d08847f88250257b1b7232b0=document.querySelector('button[name=btn_611dad44d08847f88250257b1b7232b0]');
-copyBtnbtn_611dad44d08847f88250257b1b7232b0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`AzureDiagnostics\n| where ResourceProvider == \"MICROSOFT.NETWORK\"\n| where Category == \"AzureFirewallApplicationRule\"\n| summarize TotalRequests = count() by bin(TimeGenerated, 1h)\n| render timechart\n`);copyBtnbtn_611dad44d08847f88250257b1b7232b0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_611dad44d08847f88250257b1b7232b0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_34b7a67e6ae74ad6a6e47605657aea3c=document.querySelector('button[name=btn_34b7a67e6ae74ad6a6e47605657aea3c]');
+copyBtnbtn_34b7a67e6ae74ad6a6e47605657aea3c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`AzureDiagnostics\n| where ResourceProvider == \"MICROSOFT.NETWORK\"\n| where Category == \"AzureFirewallApplicationRule\"\n| summarize TotalRequests = count() by bin(TimeGenerated, 1h)\n| render timechart\n`);copyBtnbtn_34b7a67e6ae74ad6a6e47605657aea3c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_34b7a67e6ae74ad6a6e47605657aea3c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

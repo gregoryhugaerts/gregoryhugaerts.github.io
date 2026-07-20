@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:36 -->
+<!-- 2026-07-20 Mon 15:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Core Windows Processes</title>
@@ -897,11 +897,11 @@ the primary indicators of process-based compromise.
 </p>
 
 <p>
-Related: <a href="../org/20260616T220417--windows-client-dfir__concept_cybersecurity.html">windows client DFIR</a>
-         <a href="../org/20260314T005731--mimikatz__cybersecurity_tool.html">Mimikatz</a>
-         <a href="../org/20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a>
-         <a href="../org/20260213T111009--sysinternals-suite__cybersecurity_tool.html">Sysinternals Suite</a>
-         <a href="../org/20260314T005752--suricata__cybersecurity_tool.html">Sysmon</a>
+Related: <a href="20260616T220417--windows-client-dfir__concept_cybersecurity.html">windows client DFIR</a>
+         <a href="20260314T005731--mimikatz__cybersecurity_tool.html">Mimikatz</a>
+         <a href="20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a>
+         <a href="20260213T111009--sysinternals-suite__cybersecurity_tool.html">Sysinternals Suite</a>
+         <a href="20260314T005752--suricata__cybersecurity_tool.html">Sysmon</a>
 </p>
 <div id="outline-container-orga821e09" class="outline-2">
 <h2 id="orga821e09">Process Reference</h2>
@@ -1303,11 +1303,11 @@ Most common masquerade target — malware names itself
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_f5bacc39691b4f7197d0f4023b6f77f8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_42ace5224aa94e82b37525f098059624>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f5bacc39691b4f7197d0f4023b6f77f8=document.querySelector('button[name=btn_f5bacc39691b4f7197d0f4023b6f77f8]');
-copyBtnbtn_f5bacc39691b4f7197d0f4023b6f77f8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Inspect services hosted by each svchost instance\nGet-WmiObject Win32_Service | Where-Object {$_.ProcessId -eq <PID>}\n\n# Or with tasklist\ntasklist /svc | findstr svchost\n\n# Check path — all legitimate instances run from System32\nGet-Process svchost | Select-Object Id, Path\n`);copyBtnbtn_f5bacc39691b4f7197d0f4023b6f77f8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f5bacc39691b4f7197d0f4023b6f77f8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_42ace5224aa94e82b37525f098059624=document.querySelector('button[name=btn_42ace5224aa94e82b37525f098059624]');
+copyBtnbtn_42ace5224aa94e82b37525f098059624.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Inspect services hosted by each svchost instance\nGet-WmiObject Win32_Service | Where-Object {$_.ProcessId -eq <PID>}\n\n# Or with tasklist\ntasklist /svc | findstr svchost\n\n# Check path — all legitimate instances run from System32\nGet-Process svchost | Select-Object Id, Path\n`);copyBtnbtn_42ace5224aa94e82b37525f098059624.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_42ace5224aa94e82b37525f098059624.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1379,11 +1379,11 @@ user-level privileges.
 <h2 id="org35a5a27">Key Detection Signals</h2>
 <div class="outline-text-2" id="text-org35a5a27">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_7f423dbe90564bbf81b665e19b904655>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_4fda86e6974747febd7b0b97aa6923c3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7f423dbe90564bbf81b665e19b904655=document.querySelector('button[name=btn_7f423dbe90564bbf81b665e19b904655]');
-copyBtnbtn_7f423dbe90564bbf81b665e19b904655.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Wrong path       — any core process running outside System32\nWrong parent     — check against the table above\nMultiple instances where only one is expected\nNetwork connections from processes that shouldn't make them\n  (lsass.exe, smss.exe, wininit.exe)\nUnexpected child processes\nRunning under a user account instead of SYSTEM/LOCAL SERVICE\n`);copyBtnbtn_7f423dbe90564bbf81b665e19b904655.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7f423dbe90564bbf81b665e19b904655.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4fda86e6974747febd7b0b97aa6923c3=document.querySelector('button[name=btn_4fda86e6974747febd7b0b97aa6923c3]');
+copyBtnbtn_4fda86e6974747febd7b0b97aa6923c3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Wrong path       — any core process running outside System32\nWrong parent     — check against the table above\nMultiple instances where only one is expected\nNetwork connections from processes that shouldn't make them\n  (lsass.exe, smss.exe, wininit.exe)\nUnexpected child processes\nRunning under a user account instead of SYSTEM/LOCAL SERVICE\n`);copyBtnbtn_4fda86e6974747febd7b0b97aa6923c3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4fda86e6974747febd7b0b97aa6923c3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1402,11 +1402,11 @@ Running under a user account instead of SYSTEM/LOCAL SERVICE
 <h2 id="orgc7611d4">Investigation Commands</h2>
 <div class="outline-text-2" id="text-orgc7611d4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_001894662964453f80e3533e32c2ac2d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_b6d2bc189fa24c268cba8e982e432b41>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_001894662964453f80e3533e32c2ac2d=document.querySelector('button[name=btn_001894662964453f80e3533e32c2ac2d]');
-copyBtnbtn_001894662964453f80e3533e32c2ac2d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List all processes with parent IDs\nGet-WmiObject Win32_Process | Select-Object Name, ProcessId, ParentProcessId, ExecutablePath\n\n# Find processes not in System32\nGet-WmiObject Win32_Process |\n  Where-Object {$_.ExecutablePath -and $_.ExecutablePath -notlike \"*System32*\"} |\n  Select-Object Name, ProcessId, ExecutablePath\n\n# Check svchost instances and their services\ntasklist /svc | findstr svchost\n\n# Network connections with owning process\nGet-NetTCPConnection | Where-Object {$_.State -eq \"Established\"} |\n  Select-Object LocalPort, RemoteAddress, RemotePort, OwningProcess\n`);copyBtnbtn_001894662964453f80e3533e32c2ac2d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_001894662964453f80e3533e32c2ac2d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b6d2bc189fa24c268cba8e982e432b41=document.querySelector('button[name=btn_b6d2bc189fa24c268cba8e982e432b41]');
+copyBtnbtn_b6d2bc189fa24c268cba8e982e432b41.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List all processes with parent IDs\nGet-WmiObject Win32_Process | Select-Object Name, ProcessId, ParentProcessId, ExecutablePath\n\n# Find processes not in System32\nGet-WmiObject Win32_Process |\n  Where-Object {$_.ExecutablePath -and $_.ExecutablePath -notlike \"*System32*\"} |\n  Select-Object Name, ProcessId, ExecutablePath\n\n# Check svchost instances and their services\ntasklist /svc | findstr svchost\n\n# Network connections with owning process\nGet-NetTCPConnection | Where-Object {$_.State -eq \"Established\"} |\n  Select-Object LocalPort, RemoteAddress, RemotePort, OwningProcess\n`);copyBtnbtn_b6d2bc189fa24c268cba8e982e432b41.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b6d2bc189fa24c268cba8e982e432b41.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:38 -->
+<!-- 2026-07-20 Mon 15:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Federated Services</title>
@@ -904,12 +904,12 @@ user database.
 </p>
 
 <p>
-Related: <a href="../org/20260206T060658--identity-provider__concept_cybersecurity.html">Identity Provider</a>
-         <a href="../org/20260212T064752==iam--identity-and-access-management__concept_cybersecurity.html">IAM</a>
-         <a href="../org/20260212T064723==mfa--multi-factor-authentication__concept_cybersecurity.html">MFA</a>
-         <a href="../org/20260611T065227--oauth-20__concept_cybersecurity.html">OAuth 2.0</a>
-         <a href="../org/20260408T060128==jwt--json-web-tokens__concept_cybersecurity.html">JSON Web Tokens</a>
-         <a href="../org/20260314T005712--kerberos__concept_cybersecurity.html">Kerberos</a>
+Related: <a href="20260206T060658--identity-provider__concept_cybersecurity.html">Identity Provider</a>
+         <a href="20260212T064752==iam--identity-and-access-management__concept_cybersecurity.html">IAM</a>
+         <a href="20260212T064723==mfa--multi-factor-authentication__concept_cybersecurity.html">MFA</a>
+         <a href="20260611T065227--oauth-20__concept_cybersecurity.html">OAuth 2.0</a>
+         <a href="20260408T060128==jwt--json-web-tokens__concept_cybersecurity.html">JSON Web Tokens</a>
+         <a href="20260314T005712--kerberos__concept_cybersecurity.html">Kerberos</a>
 </p>
 <div id="outline-container-orgf16e797" class="outline-2">
 <h2 id="orgf16e797">Key Concepts</h2>
@@ -971,11 +971,11 @@ assertion; the browser relays it to the SP.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_1903a12c0c6847e5aebed9bbdf75f3ef>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_bbbf2e02b1d540a892cbf89801f81e90>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1903a12c0c6847e5aebed9bbdf75f3ef=document.querySelector('button[name=btn_1903a12c0c6847e5aebed9bbdf75f3ef]');
-copyBtnbtn_1903a12c0c6847e5aebed9bbdf75f3ef.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Flow (SP-initiated):\n1. User visits SP (e.g. Salesforce)\n2. SP redirects to IdP with a SAML AuthnRequest\n3. User authenticates at the IdP\n4. IdP issues SAML Response (signed XML assertion)\n5. Browser POSTs the assertion to the SP's Assertion Consumer Service\n6. SP validates signature → grants access\n\nCommon IdPs for SAML: Okta, Azure AD/Entra ID, ADFS, Ping Identity\n`);copyBtnbtn_1903a12c0c6847e5aebed9bbdf75f3ef.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1903a12c0c6847e5aebed9bbdf75f3ef.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bbbf2e02b1d540a892cbf89801f81e90=document.querySelector('button[name=btn_bbbf2e02b1d540a892cbf89801f81e90]');
+copyBtnbtn_bbbf2e02b1d540a892cbf89801f81e90.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Flow (SP-initiated):\n1. User visits SP (e.g. Salesforce)\n2. SP redirects to IdP with a SAML AuthnRequest\n3. User authenticates at the IdP\n4. IdP issues SAML Response (signed XML assertion)\n5. Browser POSTs the assertion to the SP's Assertion Consumer Service\n6. SP validates signature → grants access\n\nCommon IdPs for SAML: Okta, Azure AD/Entra ID, ADFS, Ping Identity\n`);copyBtnbtn_bbbf2e02b1d540a892cbf89801f81e90.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bbbf2e02b1d540a892cbf89801f81e90.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -998,15 +998,15 @@ Common IdPs for SAML: Okta, Azure AD/Entra ID, ADFS, Ping Identity
 <p>
 Authorisation framework — not authentication. Allows a third
 party to access resources on behalf of a user without exposing
-credentials. See <a href="../org/20260611T065227--oauth-20__concept_cybersecurity.html">OAuth 2.0</a> for full detail.
+credentials. See <a href="20260611T065227--oauth-20__concept_cybersecurity.html">OAuth 2.0</a> for full detail.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c3912f8bbda542c294ed37cd3b1fde0c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_6d2dc129dbdf48418364c24f1f660b19>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c3912f8bbda542c294ed37cd3b1fde0c=document.querySelector('button[name=btn_c3912f8bbda542c294ed37cd3b1fde0c]');
-copyBtnbtn_c3912f8bbda542c294ed37cd3b1fde0c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Core grant types:\n— Authorization Code: web apps — most secure\n— PKCE: mobile/SPA — Authorization Code without client secret\n— Client Credentials: machine-to-machine, no user involved\n— Implicit: deprecated — avoid\n`);copyBtnbtn_c3912f8bbda542c294ed37cd3b1fde0c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c3912f8bbda542c294ed37cd3b1fde0c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6d2dc129dbdf48418364c24f1f660b19=document.querySelector('button[name=btn_6d2dc129dbdf48418364c24f1f660b19]');
+copyBtnbtn_6d2dc129dbdf48418364c24f1f660b19.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Core grant types:\n— Authorization Code: web apps — most secure\n— PKCE: mobile/SPA — Authorization Code without client secret\n— Client Credentials: machine-to-machine, no user involved\n— Implicit: deprecated — avoid\n`);copyBtnbtn_6d2dc129dbdf48418364c24f1f660b19.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6d2dc129dbdf48418364c24f1f660b19.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1030,11 +1030,11 @@ tells you who the user is.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_639c115758524ac3a90905839bc534cf>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c423ca10b1ee4b9a82d5941e3b8d5323>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_639c115758524ac3a90905839bc534cf=document.querySelector('button[name=btn_639c115758524ac3a90905839bc534cf]');
-copyBtnbtn_639c115758524ac3a90905839bc534cf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Flow:\n1. Client sends authorization request with scope=openid\n2. User authenticates at the IdP\n3. IdP returns Authorization Code\n4. Client exchanges code for: Access Token + ID Token (JWT)\n5. Client reads ID Token for user identity (sub, email, name)\n6. Client uses Access Token to call APIs\n`);copyBtnbtn_639c115758524ac3a90905839bc534cf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_639c115758524ac3a90905839bc534cf.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c423ca10b1ee4b9a82d5941e3b8d5323=document.querySelector('button[name=btn_c423ca10b1ee4b9a82d5941e3b8d5323]');
+copyBtnbtn_c423ca10b1ee4b9a82d5941e3b8d5323.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Flow:\n1. Client sends authorization request with scope=openid\n2. User authenticates at the IdP\n3. IdP returns Authorization Code\n4. Client exchanges code for: Access Token + ID Token (JWT)\n5. Client reads ID Token for user identity (sub, email, name)\n6. Client uses Access Token to call APIs\n`);copyBtnbtn_c423ca10b1ee4b9a82d5941e3b8d5323.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c423ca10b1ee4b9a82d5941e3b8d5323.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1056,15 +1056,15 @@ let res = copyTextToClipboard(`Flow:\n1. Client sends authorization request with
 Network authentication protocol used in Active Directory
 environments. Ticket-based — the KDC (Key Distribution Centre)
 issues tickets rather than sharing passwords across the network.
-See <a href="../org/20260314T005712--kerberos__concept_cybersecurity.html">Kerberos</a> for full detail.
+See <a href="20260314T005712--kerberos__concept_cybersecurity.html">Kerberos</a> for full detail.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_25314f5e059247338e0abb0532674044>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_87f83c88f571407ca523c71dd96de263>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_25314f5e059247338e0abb0532674044=document.querySelector('button[name=btn_25314f5e059247338e0abb0532674044]');
-copyBtnbtn_25314f5e059247338e0abb0532674044.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Flow:\n1. Client authenticates to KDC → receives Ticket Granting Ticket (TGT)\n2. Client presents TGT → receives Service Ticket for specific resource\n3. Client presents Service Ticket to resource → access granted\nPasswords never travel the network — only encrypted tickets\n`);copyBtnbtn_25314f5e059247338e0abb0532674044.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_25314f5e059247338e0abb0532674044.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_87f83c88f571407ca523c71dd96de263=document.querySelector('button[name=btn_87f83c88f571407ca523c71dd96de263]');
+copyBtnbtn_87f83c88f571407ca523c71dd96de263.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Flow:\n1. Client authenticates to KDC → receives Ticket Granting Ticket (TGT)\n2. Client presents TGT → receives Service Ticket for specific resource\n3. Client presents Service Ticket to resource → access granted\nPasswords never travel the network — only encrypted tickets\n`);copyBtnbtn_87f83c88f571407ca523c71dd96de263.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_87f83c88f571407ca523c71dd96de263.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1092,11 +1092,11 @@ ADFS for SAML federation.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d59600fd9c57413f9128d282eb5d30d1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b0cebee57ba943d789ba4126d6e0bc46>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d59600fd9c57413f9128d282eb5d30d1=document.querySelector('button[name=btn_d59600fd9c57413f9128d282eb5d30d1]');
-copyBtnbtn_d59600fd9c57413f9128d282eb5d30d1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`On-premises only:     Active Directory → Kerberos/NTLM\nHybrid:               AD + Entra ID → AD Connect syncs identities\nCloud only:           Entra ID → OIDC/OAuth 2.0/SAML\nExternal federation:  Entra ID ↔ third-party IdP via SAML/OIDC\n`);copyBtnbtn_d59600fd9c57413f9128d282eb5d30d1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d59600fd9c57413f9128d282eb5d30d1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b0cebee57ba943d789ba4126d6e0bc46=document.querySelector('button[name=btn_b0cebee57ba943d789ba4126d6e0bc46]');
+copyBtnbtn_b0cebee57ba943d789ba4126d6e0bc46.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`On-premises only:     Active Directory → Kerberos/NTLM\nHybrid:               AD + Entra ID → AD Connect syncs identities\nCloud only:           Entra ID → OIDC/OAuth 2.0/SAML\nExternal federation:  Entra ID ↔ third-party IdP via SAML/OIDC\n`);copyBtnbtn_b0cebee57ba943d789ba4126d6e0bc46.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b0cebee57ba943d789ba4126d6e0bc46.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1138,11 +1138,11 @@ identity compromise.
 <h3 id="org71d6e78">SAML vulnerabilities</h3>
 <div class="outline-text-3" id="text-org71d6e78">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_17075322628d40c6b01b94d72b24a216>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d02156c1b1754c958714e0089dafeb4f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_17075322628d40c6b01b94d72b24a216=document.querySelector('button[name=btn_17075322628d40c6b01b94d72b24a216]');
-copyBtnbtn_17075322628d40c6b01b94d72b24a216.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Common SAML attack patterns:\n— XML signature wrapping: move the signed element to bypass validation\n  without invalidating the signature\n— Replay attacks: reuse a captured SAML assertion within its validity window\n— Unsigned assertions: SP fails to verify the signature on the assertion\n— XML injection in assertion attributes\n`);copyBtnbtn_17075322628d40c6b01b94d72b24a216.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_17075322628d40c6b01b94d72b24a216.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d02156c1b1754c958714e0089dafeb4f=document.querySelector('button[name=btn_d02156c1b1754c958714e0089dafeb4f]');
+copyBtnbtn_d02156c1b1754c958714e0089dafeb4f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Common SAML attack patterns:\n— XML signature wrapping: move the signed element to bypass validation\n  without invalidating the signature\n— Replay attacks: reuse a captured SAML assertion within its validity window\n— Unsigned assertions: SP fails to verify the signature on the assertion\n— XML injection in assertion attributes\n`);copyBtnbtn_d02156c1b1754c958714e0089dafeb4f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d02156c1b1754c958714e0089dafeb4f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1160,11 +1160,11 @@ let res = copyTextToClipboard(`Common SAML attack patterns:\n— XML signature w
 <h3 id="orga1ab401">OAuth / OIDC misconfigurations</h3>
 <div class="outline-text-3" id="text-orga1ab401">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2bc1c95663884857b00eedb8a1f2509b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_1322be51691c45349f7de05b8b1fdec3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2bc1c95663884857b00eedb8a1f2509b=document.querySelector('button[name=btn_2bc1c95663884857b00eedb8a1f2509b]');
-copyBtnbtn_2bc1c95663884857b00eedb8a1f2509b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Common issues:\n— Redirect URI not strictly validated → open redirect → token theft\n— State parameter absent → CSRF against the auth flow\n— Implicit flow in use → tokens exposed in URL/browser history\n— Client secret leaked in frontend code (SPAs, mobile)\n— Overly broad scope grants\n`);copyBtnbtn_2bc1c95663884857b00eedb8a1f2509b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2bc1c95663884857b00eedb8a1f2509b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1322be51691c45349f7de05b8b1fdec3=document.querySelector('button[name=btn_1322be51691c45349f7de05b8b1fdec3]');
+copyBtnbtn_1322be51691c45349f7de05b8b1fdec3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Common issues:\n— Redirect URI not strictly validated → open redirect → token theft\n— State parameter absent → CSRF against the auth flow\n— Implicit flow in use → tokens exposed in URL/browser history\n— Client secret leaked in frontend code (SPAs, mobile)\n— Overly broad scope grants\n`);copyBtnbtn_1322be51691c45349f7de05b8b1fdec3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1322be51691c45349f7de05b8b1fdec3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1178,7 +1178,7 @@ let res = copyTextToClipboard(`Common issues:\n— Redirect URI not strictly val
 </div></div>
 
 <p>
-See <a href="../org/20260613T215303--insecure-authentication-mechanism__cybersecurity_pentesting_technique.html">Insecure Authentication Mechanism</a> for exam classification.
+See <a href="20260613T215303--insecure-authentication-mechanism__cybersecurity_pentesting_technique.html">Insecure Authentication Mechanism</a> for exam classification.
 </p>
 </div>
 </div>

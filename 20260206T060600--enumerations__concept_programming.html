@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:37 -->
+<!-- 2026-07-20 Mon 15:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Enumerations</title>
@@ -885,18 +885,18 @@ associated data.
 </p>
 
 <p>
-Related: <a href="../org/20260206T060601--enums-in-python__concept_programming_python.html">Enums in Python</a>
-         <a href="../org/20260206T060602--enums-in-rust__concept_programming_rust.html">Enums in Rust</a>
+Related: <a href="20260206T060601--enums-in-python__concept_programming_python.html">Enums in Python</a>
+         <a href="20260206T060602--enums-in-rust__concept_programming_rust.html">Enums in Rust</a>
 </p>
 <div id="outline-container-org4caad04" class="outline-2">
 <h2 id="org4caad04">Python</h2>
 <div class="outline-text-2" id="text-org4caad04">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_7daaf85e05b544f398245d76377bcabe>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_007d8b63810e4aa9b8b4a8f4367116d2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7daaf85e05b544f398245d76377bcabe=document.querySelector('button[name=btn_7daaf85e05b544f398245d76377bcabe]');
-copyBtnbtn_7daaf85e05b544f398245d76377bcabe.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`from enum import Enum, auto\n\nclass Direction(Enum):\n    NORTH = \"north\"\n    SOUTH = \"south\"\n    EAST  = \"east\"\n    WEST  = \"west\"\n\nclass Status(Enum):\n    PENDING  = auto()   # auto-assigns integer values\n    ACTIVE   = auto()\n    INACTIVE = auto()\n\n# Access\nd = Direction.NORTH\nd.name    # \"NORTH\"\nd.value   # \"north\"\n\n# Comparison\nd == Direction.NORTH   # True\nd is Direction.NORTH   # True\n\n# Iteration\nfor direction in Direction:\n    print(direction.name, direction.value)\n\n# Type hint\ndef move(direction: Direction) -> None: ...\n`);copyBtnbtn_7daaf85e05b544f398245d76377bcabe.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7daaf85e05b544f398245d76377bcabe.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_007d8b63810e4aa9b8b4a8f4367116d2=document.querySelector('button[name=btn_007d8b63810e4aa9b8b4a8f4367116d2]');
+copyBtnbtn_007d8b63810e4aa9b8b4a8f4367116d2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`from enum import Enum, auto\n\nclass Direction(Enum):\n    NORTH = \"north\"\n    SOUTH = \"south\"\n    EAST  = \"east\"\n    WEST  = \"west\"\n\nclass Status(Enum):\n    PENDING  = auto()   # auto-assigns integer values\n    ACTIVE   = auto()\n    INACTIVE = auto()\n\n# Access\nd = Direction.NORTH\nd.name    # \"NORTH\"\nd.value   # \"north\"\n\n# Comparison\nd == Direction.NORTH   # True\nd is Direction.NORTH   # True\n\n# Iteration\nfor direction in Direction:\n    print(direction.name, direction.value)\n\n# Type hint\ndef move(direction: Direction) -> None: ...\n`);copyBtnbtn_007d8b63810e4aa9b8b4a8f4367116d2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_007d8b63810e4aa9b8b4a8f4367116d2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -932,7 +932,7 @@ d.name    <span style="color: var(--clr-comment-delimiter); background-color: va
 </div></div>
 
 <p>
-See <a href="../org/20260206T060601--enums-in-python__concept_programming_python.html">Enums in Python</a> for full detail.
+See <a href="20260206T060601--enums-in-python__concept_programming_python.html">Enums in Python</a> for full detail.
 </p>
 </div>
 </div>
@@ -946,11 +946,11 @@ at compile time.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_572f0bb9ade34af8acc117d07c4d73ac>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_7f2e7810eacb4ef1a4b50f2bceb5c74c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_572f0bb9ade34af8acc117d07c4d73ac=document.querySelector('button[name=btn_572f0bb9ade34af8acc117d07c4d73ac]');
-copyBtnbtn_572f0bb9ade34af8acc117d07c4d73ac.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Simple enum\nenum Direction { North, South, East, West }\n\n// Enum with associated data (sum type / ADT)\nenum Message {\n    Quit,                       // no data\n    Move { x: i32, y: i32 },   // named fields\n    Write(String),              // tuple variant\n    ChangeColor(u8, u8, u8),    // multiple values\n}\n\n// Exhaustive match — compiler error if a variant is missing\nfn handle(msg: Message) {\n    match msg {\n        Message::Quit              => println!(\"Quit\"),\n        Message::Move { x, y }    => println!(\"Move to {x},{y}\"),\n        Message::Write(text)       => println!(\"Write: {text}\"),\n        Message::ChangeColor(r,g,b)=> println!(\"Color: {r},{g},{b}\"),\n    }\n}\n`);copyBtnbtn_572f0bb9ade34af8acc117d07c4d73ac.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_572f0bb9ade34af8acc117d07c4d73ac.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7f2e7810eacb4ef1a4b50f2bceb5c74c=document.querySelector('button[name=btn_7f2e7810eacb4ef1a4b50f2bceb5c74c]');
+copyBtnbtn_7f2e7810eacb4ef1a4b50f2bceb5c74c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Simple enum\nenum Direction { North, South, East, West }\n\n// Enum with associated data (sum type / ADT)\nenum Message {\n    Quit,                       // no data\n    Move { x: i32, y: i32 },   // named fields\n    Write(String),              // tuple variant\n    ChangeColor(u8, u8, u8),    // multiple values\n}\n\n// Exhaustive match — compiler error if a variant is missing\nfn handle(msg: Message) {\n    match msg {\n        Message::Quit              => println!(\"Quit\"),\n        Message::Move { x, y }    => println!(\"Move to {x},{y}\"),\n        Message::Write(text)       => println!(\"Write: {text}\"),\n        Message::ChangeColor(r,g,b)=> println!(\"Color: {r},{g},{b}\"),\n    }\n}\n`);copyBtnbtn_7f2e7810eacb4ef1a4b50f2bceb5c74c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7f2e7810eacb4ef1a4b50f2bceb5c74c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -982,11 +982,11 @@ The two most important Rust enums are built into the language:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_323d21ff78a54d23b98fabed45ba376c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_22951aa6db464e2f9e045be00e9a853c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_323d21ff78a54d23b98fabed45ba376c=document.querySelector('button[name=btn_323d21ff78a54d23b98fabed45ba376c]');
-copyBtnbtn_323d21ff78a54d23b98fabed45ba376c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Option<T> — replaces null\nenum Option<T> { Some(T), None }\n\nlet name: Option<String> = Some(\"Alice\".to_string());\nlet missing: Option<String> = None;\n\n// Result<T, E> — error handling without exceptions\nenum Result<T, E> { Ok(T), Err(E) }\n\nfn parse_int(s: &str) -> Result<i32, std::num::ParseIntError> {\n    s.parse::<i32>()\n}\n`);copyBtnbtn_323d21ff78a54d23b98fabed45ba376c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_323d21ff78a54d23b98fabed45ba376c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_22951aa6db464e2f9e045be00e9a853c=document.querySelector('button[name=btn_22951aa6db464e2f9e045be00e9a853c]');
+copyBtnbtn_22951aa6db464e2f9e045be00e9a853c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Option<T> — replaces null\nenum Option<T> { Some(T), None }\n\nlet name: Option<String> = Some(\"Alice\".to_string());\nlet missing: Option<String> = None;\n\n// Result<T, E> — error handling without exceptions\nenum Result<T, E> { Ok(T), Err(E) }\n\nfn parse_int(s: &str) -> Result<i32, std::num::ParseIntError> {\n    s.parse::<i32>()\n}\n`);copyBtnbtn_22951aa6db464e2f9e045be00e9a853c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_22951aa6db464e2f9e045be00e9a853c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1006,7 +1006,7 @@ fn parse_int(s: &amp;str) -&gt; Result&lt;i32, std::num::ParseIntError&gt; {
 </div></div>
 
 <p>
-See <a href="../org/20260206T060602--enums-in-rust__concept_programming_rust.html">Enums in Rust</a> for full detail.
+See <a href="20260206T060602--enums-in-rust__concept_programming_rust.html">Enums in Rust</a> for full detail.
 </p>
 </div>
 </div>
@@ -1014,11 +1014,11 @@ See <a href="../org/20260206T060602--enums-in-rust__concept_programming_rust.htm
 <h2 id="org19699bd">Why Enums Over Constants</h2>
 <div class="outline-text-2" id="text-org19699bd">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_49985d8b66974625a0d76946ffc3bf27>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_b8d3ca6d56004aa9802b25369cb9ce7a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_49985d8b66974625a0d76946ffc3bf27=document.querySelector('button[name=btn_49985d8b66974625a0d76946ffc3bf27]');
-copyBtnbtn_49985d8b66974625a0d76946ffc3bf27.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Magic numbers — fragile, opaque\nstatus = 1\nif status == 1:\n    activate()\n\n# String constants — typo-prone, no autocomplete\nstatus = \"active\"\nif status == \"actve\":   # silent bug\n    activate()\n\n# Enum — type-safe, self-documenting\nstatus = Status.ACTIVE\nif status == Status.ACTIVE:\n    activate()\n`);copyBtnbtn_49985d8b66974625a0d76946ffc3bf27.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_49985d8b66974625a0d76946ffc3bf27.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b8d3ca6d56004aa9802b25369cb9ce7a=document.querySelector('button[name=btn_b8d3ca6d56004aa9802b25369cb9ce7a]');
+copyBtnbtn_b8d3ca6d56004aa9802b25369cb9ce7a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Magic numbers — fragile, opaque\nstatus = 1\nif status == 1:\n    activate()\n\n# String constants — typo-prone, no autocomplete\nstatus = \"active\"\nif status == \"actve\":   # silent bug\n    activate()\n\n# Enum — type-safe, self-documenting\nstatus = Status.ACTIVE\nif status == Status.ACTIVE:\n    activate()\n`);copyBtnbtn_b8d3ca6d56004aa9802b25369cb9ce7a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b8d3ca6d56004aa9802b25369cb9ce7a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:40 -->
+<!-- 2026-07-20 Mon 15:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Web Attack Forensics Web Attack Forensics</title>
@@ -898,11 +898,11 @@ pre {
 </div>
 </div>
 <p>
-Related: <a href="../org/20260616T220417--windows-client-dfir__concept_cybersecurity.html">windows client DFIR</a>
-         <a href="../org/20260212T065120==dfir--digital-forensics-and-incidence-response__concept_cybersecurity.html">DFIR</a>
-         <a href="../org/20260314T005725--webshell__concept_cybersecurity.html">Webshell</a>
-         <a href="../org/20260614T002010--pt1-vulnerability-classification-cheat-sheet__comparison_cybersecurity_pentesting_reference.html">PT1 Vulnerability Classification Cheat Sheet</a>
-         <a href="../org/20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a>
+Related: <a href="20260616T220417--windows-client-dfir__concept_cybersecurity.html">windows client DFIR</a>
+         <a href="20260212T065120==dfir--digital-forensics-and-incidence-response__concept_cybersecurity.html">DFIR</a>
+         <a href="20260314T005725--webshell__concept_cybersecurity.html">Webshell</a>
+         <a href="20260614T002010--pt1-vulnerability-classification-cheat-sheet__comparison_cybersecurity_pentesting_reference.html">PT1 Vulnerability Classification Cheat Sheet</a>
+         <a href="20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a>
 </p>
 <div id="outline-container-org78de551" class="outline-2">
 <h2 id="org78de551">1. Evidence Sources</h2>
@@ -930,7 +930,7 @@ server process, file system changes, user logins</li>
 <div id="outline-container-org5187349" class="outline-3">
 <h3 id="org5187349">Apache / Nginx — Combined Log Format</h3>
 <div class="outline-text-3" id="text-org5187349">
-<pre class="example" id="org424a28f">
+<pre class="example" id="org986f5be">
 &lt;IP&gt; - &lt;user&gt; [&lt;timestamp&gt;] "&lt;method&gt; &lt;uri&gt; &lt;protocol&gt;" &lt;status&gt; &lt;bytes&gt; "&lt;referer&gt;" "&lt;user-agent&gt;"
 
 192.168.1.5 - - [15/Dec/2025:10:30:45 +0000] "GET /index.php HTTP/1.1" 200 1234 "-" "Mozilla/5.0"
@@ -940,7 +940,7 @@ server process, file system changes, user logins</li>
 <div id="outline-container-org862bc0c" class="outline-3">
 <h3 id="org862bc0c">IIS — W3C Extended Log Format</h3>
 <div class="outline-text-3" id="text-org862bc0c">
-<pre class="example" id="orga6ed559">
+<pre class="example" id="orgb145873">
 # Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version sc-status sc-bytes
 2025-12-15 10:30:45 10.0.0.1 GET /index.aspx - 443 - 192.168.1.5 HTTP/1.1 200 1234
 </pre>
@@ -958,7 +958,7 @@ IIS log location: <code>C:\inetpub\logs\LogFiles\W3SVC1\</code>
 <div id="outline-container-org4cb7414" class="outline-3">
 <h3 id="org4cb7414">SQL Injection</h3>
 <div class="outline-text-3" id="text-org4cb7414">
-<pre class="example" id="org98e8806">
+<pre class="example" id="org74cbea9">
 # URL-encoded payloads in GET parameters
 GET /search?q=%27+OR+1%3D1--  HTTP/1.1        ← ' OR 1=1--
 GET /page?id=1+UNION+SELECT+NULL,NULL--  HTTP/1.1
@@ -978,7 +978,7 @@ The key pattern: a POST to an upload endpoint followed within
 seconds by a GET to the newly created file with a command parameter.
 </p>
 
-<pre class="example" id="org7075b12">
+<pre class="example" id="org675dc04">
 # Upload
 192.168.1.5 - - [15/Dec/2025:10:30:45 +0000] "POST /upload.php HTTP/1.1" 200 15
 # Execution — 5 seconds later
@@ -998,7 +998,7 @@ account (<code>IUSR</code>, <code>IIS APPPOOL\DefaultAppPool</code>, <code>www-d
 <div id="outline-container-org34a5965" class="outline-3">
 <h3 id="org34a5965">Directory Traversal and LFI</h3>
 <div class="outline-text-3" id="text-org34a5965">
-<pre class="example" id="org78e73c8">
+<pre class="example" id="org7b02458">
 GET /page?file=../../../../windows/system32/drivers/etc/hosts HTTP/1.1
 GET /page?file=..%2F..%2F..%2Fetc%2Fpasswd HTTP/1.1
 GET /page?template=%2e%2e%2f%2e%2e%2fwindows%2fwin.ini HTTP/1.1
@@ -1008,7 +1008,7 @@ GET /page?template=%2e%2e%2f%2e%2e%2fwindows%2fwin.ini HTTP/1.1
 <div id="outline-container-orgc38d58b" class="outline-3">
 <h3 id="orgc38d58b">IDOR / BOLA — Sequential Enumeration</h3>
 <div class="outline-text-3" id="text-orgc38d58b">
-<pre class="example" id="org66528bb">
+<pre class="example" id="org622eb72">
 # Authenticated user cycling through IDs they should not access
 GET /api/users/1001 HTTP/1.1  200
 GET /api/users/1002 HTTP/1.1  200
@@ -1023,7 +1023,7 @@ GET /api/users/1004 HTTP/1.1  200
 <div id="outline-container-org3d099ea" class="outline-3">
 <h3 id="org3d099ea">Scanning and Reconnaissance</h3>
 <div class="outline-text-3" id="text-org3d099ea">
-<pre class="example" id="orgb402918">
+<pre class="example" id="org9106d16">
 # High volume of 404s from same IP in short time window
 # Directory brute-forcing pattern
 192.168.1.5 - - [15/Dec/2025:10:00:01] "GET /admin HTTP/1.1" 404
@@ -1041,7 +1041,7 @@ GET /api/users/1004 HTTP/1.1  200
 <div id="outline-container-orgd9da9fb" class="outline-3">
 <h3 id="orgd9da9fb">Brute Force / Credential Stuffing</h3>
 <div class="outline-text-3" id="text-orgd9da9fb">
-<pre class="example" id="org7089093">
+<pre class="example" id="org42364ff">
 # Many POST requests to login endpoint, same IP, 401 responses
 192.168.1.5 - - [15/Dec/2025:10:00:01] "POST /login HTTP/1.1" 401
 192.168.1.5 - - [15/Dec/2025:10:00:02] "POST /login HTTP/1.1" 401
@@ -1067,7 +1067,7 @@ evidence of what happened next.
 <div id="outline-container-org7b22a2d" class="outline-3">
 <h3 id="org7b22a2d">IIS / Windows Server</h3>
 <div class="outline-text-3" id="text-org7b22a2d">
-<pre class="example" id="org4edd376">
+<pre class="example" id="org8159a45">
 # IIS worker process (w3wp.exe) spawning cmd.exe or PowerShell
 # Check Windows Security log and Sysmon if deployed
 
@@ -1089,11 +1089,11 @@ time of the incident:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_19c9ccb8027e48508e9c693ee5fcbe24>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a47bbf233e144b088e4efa8000c3dcf1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_19c9ccb8027e48508e9c693ee5fcbe24=document.querySelector('button[name=btn_19c9ccb8027e48508e9c693ee5fcbe24]');
-copyBtnbtn_19c9ccb8027e48508e9c693ee5fcbe24.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Windows — files created in last N days in web root\nforfiles /p C:\\inetpub\\wwwroot /s /d -1 /c \"cmd /c echo @path @fdate @ftime\"\n\n# Hash all files in web root and compare to baseline\nGet-ChildItem -Recurse C:\\inetpub\\wwwroot | Get-FileHash | Export-Csv hashes.csv\n# Compare against known-good baseline hashes\n`);copyBtnbtn_19c9ccb8027e48508e9c693ee5fcbe24.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_19c9ccb8027e48508e9c693ee5fcbe24.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a47bbf233e144b088e4efa8000c3dcf1=document.querySelector('button[name=btn_a47bbf233e144b088e4efa8000c3dcf1]');
+copyBtnbtn_a47bbf233e144b088e4efa8000c3dcf1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Windows — files created in last N days in web root\nforfiles /p C:\\inetpub\\wwwroot /s /d -1 /c \"cmd /c echo @path @fdate @ftime\"\n\n# Hash all files in web root and compare to baseline\nGet-ChildItem -Recurse C:\\inetpub\\wwwroot | Get-FileHash | Export-Csv hashes.csv\n# Compare against known-good baseline hashes\n`);copyBtnbtn_a47bbf233e144b088e4efa8000c3dcf1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a47bbf233e144b088e4efa8000c3dcf1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1112,11 +1112,11 @@ let res = copyTextToClipboard(`# Windows — files created in last N days in web
 <h2 id="org55fc34f">5. Log Analysis Workflow</h2>
 <div class="outline-text-2" id="text-org55fc34f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3af0602d343542a6a78740b66bad4f21>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bf5b4ff455cb4d4ab6f1d316c58bffa0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3af0602d343542a6a78740b66bad4f21=document.querySelector('button[name=btn_3af0602d343542a6a78740b66bad4f21]');
-copyBtnbtn_3af0602d343542a6a78740b66bad4f21.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Extract all requests from a specific IP\ngrep \"192.168.1.5\" access.log\n\n# Find all POST requests (uploads, form submissions)\ngrep \"POST\" access.log | grep \" 200 \"\n\n# Find requests to newly discovered webshell\ngrep \"shell.php\\|shell.aspx\" access.log\n\n# Find scanning — IPs with high 404 count\nawk '{print $1, $9}' access.log | grep 404 | sort | uniq -c | sort -rn | head -20\n\n# Find all unique IPs that POSTed successfully\nawk '$6 == \"\\\"POST\" && $9 == \"200\"' access.log | awk '{print $1}' | sort -u\n\n# Extract requests in time window\nawk -F'[' '$2 >= \"15/Dec/2025:10:00:00\" && $2 <= \"15/Dec/2025:11:00:00\"' access.log\n\n# IIS log — find all non-200 responses\nSelect-String -Path \"*.log\" -Pattern \" [45][0-9][0-9] \"\n\n# PowerShell — parse IIS logs for POST requests\nGet-Content u_ex251215.log | Where-Object { $_ -match \"POST\" -and $_ -match \" 200 \" }\n`);copyBtnbtn_3af0602d343542a6a78740b66bad4f21.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3af0602d343542a6a78740b66bad4f21.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bf5b4ff455cb4d4ab6f1d316c58bffa0=document.querySelector('button[name=btn_bf5b4ff455cb4d4ab6f1d316c58bffa0]');
+copyBtnbtn_bf5b4ff455cb4d4ab6f1d316c58bffa0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Extract all requests from a specific IP\ngrep \"192.168.1.5\" access.log\n\n# Find all POST requests (uploads, form submissions)\ngrep \"POST\" access.log | grep \" 200 \"\n\n# Find requests to newly discovered webshell\ngrep \"shell.php\\|shell.aspx\" access.log\n\n# Find scanning — IPs with high 404 count\nawk '{print $1, $9}' access.log | grep 404 | sort | uniq -c | sort -rn | head -20\n\n# Find all unique IPs that POSTed successfully\nawk '$6 == \"\\\"POST\" && $9 == \"200\"' access.log | awk '{print $1}' | sort -u\n\n# Extract requests in time window\nawk -F'[' '$2 >= \"15/Dec/2025:10:00:00\" && $2 <= \"15/Dec/2025:11:00:00\"' access.log\n\n# IIS log — find all non-200 responses\nSelect-String -Path \"*.log\" -Pattern \" [45][0-9][0-9] \"\n\n# PowerShell — parse IIS logs for POST requests\nGet-Content u_ex251215.log | Where-Object { $_ -match \"POST\" -and $_ -match \" 200 \" }\n`);copyBtnbtn_bf5b4ff455cb4d4ab6f1d316c58bffa0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bf5b4ff455cb4d4ab6f1d316c58bffa0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

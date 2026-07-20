@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:40 -->
+<!-- 2026-07-20 Mon 15:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Iterators</title>
@@ -892,9 +892,9 @@ or a network stream.
 </p>
 
 <p>
-Related: <a href="../org/20260206T060606--functional-programming__concept_programming.html">Functional Programming</a>
-         <a href="../org/20260206T060627--python-functions__concept_programming_python.html">Python Functions</a>
-         <a href="../org/20260206T060640--software-design-patterns__concept_programming.html">Software Design Patterns</a>
+Related: <a href="20260206T060606--functional-programming__concept_programming.html">Functional Programming</a>
+         <a href="20260206T060627--python-functions__concept_programming_python.html">Python Functions</a>
+         <a href="20260206T060640--software-design-patterns__concept_programming.html">Software Design Patterns</a>
 </p>
 <div id="outline-container-org3cf4db2" class="outline-2">
 <h2 id="org3cf4db2">The Iterator Protocol</h2>
@@ -944,11 +944,11 @@ consumed once — it moves forward only.
 <h3 id="org8783a66">Built-in protocol</h3>
 <div class="outline-text-3" id="text-org8783a66">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_a9748c20a6cc4c8cab4c4923d912e5e4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_41572685448d443d96b3dab0a4e021cd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a9748c20a6cc4c8cab4c4923d912e5e4=document.querySelector('button[name=btn_a9748c20a6cc4c8cab4c4923d912e5e4]');
-copyBtnbtn_a9748c20a6cc4c8cab4c4923d912e5e4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# iter() creates an iterator from an iterable\n# next() advances it\n\nmy_list = [10, 20, 30]\nit = iter(my_list)\n\nnext(it)   # 10\nnext(it)   # 20\nnext(it)   # 30\nnext(it)   # raises StopIteration\n\n# for loops do this automatically\nfor x in my_list:\n    print(x)\n# equivalent to:\nit = iter(my_list)\nwhile True:\n    try:\n        x = next(it)\n        print(x)\n    except StopIteration:\n        break\n`);copyBtnbtn_a9748c20a6cc4c8cab4c4923d912e5e4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a9748c20a6cc4c8cab4c4923d912e5e4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_41572685448d443d96b3dab0a4e021cd=document.querySelector('button[name=btn_41572685448d443d96b3dab0a4e021cd]');
+copyBtnbtn_41572685448d443d96b3dab0a4e021cd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# iter() creates an iterator from an iterable\n# next() advances it\n\nmy_list = [10, 20, 30]\nit = iter(my_list)\n\nnext(it)   # 10\nnext(it)   # 20\nnext(it)   # 30\nnext(it)   # raises StopIteration\n\n# for loops do this automatically\nfor x in my_list:\n    print(x)\n# equivalent to:\nit = iter(my_list)\nwhile True:\n    try:\n        x = next(it)\n        print(x)\n    except StopIteration:\n        break\n`);copyBtnbtn_41572685448d443d96b3dab0a4e021cd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_41572685448d443d96b3dab0a4e021cd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -982,11 +982,11 @@ let res = copyTextToClipboard(`# iter() creates an iterator from an iterable\n# 
 <h3 id="org3020ff0">Implementing a custom iterator</h3>
 <div class="outline-text-3" id="text-org3020ff0">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_abaa6ed00ce5404d9bbc49b84542fca5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_309b2c9cb7224d7483c117aa3aec48a8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_abaa6ed00ce5404d9bbc49b84542fca5=document.querySelector('button[name=btn_abaa6ed00ce5404d9bbc49b84542fca5]');
-copyBtnbtn_abaa6ed00ce5404d9bbc49b84542fca5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`class Countdown:\n    def __init__(self, start):\n        self.current = start\n\n    def __iter__(self):\n        return self           # the object is its own iterator\n\n    def __next__(self):\n        if self.current <= 0:\n            raise StopIteration\n        self.current -= 1\n        return self.current + 1\n\nfor n in Countdown(3):\n    print(n)   # 3, 2, 1\n`);copyBtnbtn_abaa6ed00ce5404d9bbc49b84542fca5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_abaa6ed00ce5404d9bbc49b84542fca5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_309b2c9cb7224d7483c117aa3aec48a8=document.querySelector('button[name=btn_309b2c9cb7224d7483c117aa3aec48a8]');
+copyBtnbtn_309b2c9cb7224d7483c117aa3aec48a8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`class Countdown:\n    def __init__(self, start):\n        self.current = start\n\n    def __iter__(self):\n        return self           # the object is its own iterator\n\n    def __next__(self):\n        if self.current <= 0:\n            raise StopIteration\n        self.current -= 1\n        return self.current + 1\n\nfor n in Countdown(3):\n    print(n)   # 3, 2, 1\n`);copyBtnbtn_309b2c9cb7224d7483c117aa3aec48a8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_309b2c9cb7224d7483c117aa3aec48a8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1018,11 +1018,11 @@ State is preserved between calls. No class boilerplate needed.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_8e67d1ee9aea465c87408edd253cf1cf>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_522b0f379bd74104833945ac8da0840b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8e67d1ee9aea465c87408edd253cf1cf=document.querySelector('button[name=btn_8e67d1ee9aea465c87408edd253cf1cf]');
-copyBtnbtn_8e67d1ee9aea465c87408edd253cf1cf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`def countdown(start):\n    while start > 0:\n        yield start\n        start -= 1\n\nfor n in countdown(3):\n    print(n)   # 3, 2, 1\n\n# Generator expressions (lazy list comprehension)\nsquares = (x**2 for x in range(10))   # nothing computed yet\nnext(squares)   # 0 — computed on demand\n`);copyBtnbtn_8e67d1ee9aea465c87408edd253cf1cf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8e67d1ee9aea465c87408edd253cf1cf.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_522b0f379bd74104833945ac8da0840b=document.querySelector('button[name=btn_522b0f379bd74104833945ac8da0840b]');
+copyBtnbtn_522b0f379bd74104833945ac8da0840b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`def countdown(start):\n    while start > 0:\n        yield start\n        start -= 1\n\nfor n in countdown(3):\n    print(n)   # 3, 2, 1\n\n# Generator expressions (lazy list comprehension)\nsquares = (x**2 for x in range(10))   # nothing computed yet\nnext(squares)   # 0 — computed on demand\n`);copyBtnbtn_522b0f379bd74104833945ac8da0840b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_522b0f379bd74104833945ac8da0840b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1045,11 +1045,11 @@ let res = copyTextToClipboard(`def countdown(start):\n    while start > 0:\n    
 <h3 id="org5332115">Memory efficiency — infinite sequences</h3>
 <div class="outline-text-3" id="text-org5332115">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_60a17f377c514a55b56d49dbbeb7e207>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_5815c5fed2fb4eef89b1253853cd539d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_60a17f377c514a55b56d49dbbeb7e207=document.querySelector('button[name=btn_60a17f377c514a55b56d49dbbeb7e207]');
-copyBtnbtn_60a17f377c514a55b56d49dbbeb7e207.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`def integers_from(n):\n    while True:\n        yield n\n        n += 1\n\n# Generate as many as you need without storing them all\ngen = integers_from(0)\n[next(gen) for _ in range(5)]   # [0, 1, 2, 3, 4]\n\n# itertools for common patterns\nimport itertools\n\nitertools.count(0)             # 0, 1, 2, 3... (infinite)\nitertools.cycle([1, 2, 3])     # 1, 2, 3, 1, 2, 3... (infinite)\nitertools.islice(gen, 5)       # take first 5 from any iterator\nitertools.chain(a, b)          # concatenate two iterables lazily\n`);copyBtnbtn_60a17f377c514a55b56d49dbbeb7e207.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_60a17f377c514a55b56d49dbbeb7e207.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5815c5fed2fb4eef89b1253853cd539d=document.querySelector('button[name=btn_5815c5fed2fb4eef89b1253853cd539d]');
+copyBtnbtn_5815c5fed2fb4eef89b1253853cd539d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`def integers_from(n):\n    while True:\n        yield n\n        n += 1\n\n# Generate as many as you need without storing them all\ngen = integers_from(0)\n[next(gen) for _ in range(5)]   # [0, 1, 2, 3, 4]\n\n# itertools for common patterns\nimport itertools\n\nitertools.count(0)             # 0, 1, 2, 3... (infinite)\nitertools.cycle([1, 2, 3])     # 1, 2, 3, 1, 2, 3... (infinite)\nitertools.islice(gen, 5)       # take first 5 from any iterator\nitertools.chain(a, b)          # concatenate two iterables lazily\n`);copyBtnbtn_5815c5fed2fb4eef89b1253853cd539d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5815c5fed2fb4eef89b1253853cd539d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1077,11 +1077,11 @@ itertools.count(0)             <span style="color: var(--clr-comment-delimiter);
 <h3 id="orge0d10ab">Common iterator patterns</h3>
 <div class="outline-text-3" id="text-orge0d10ab">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_c23923b1959b45ac8bb79bbf42b5fc79>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_0fe57327205742faab0c8e5aae2edca4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c23923b1959b45ac8bb79bbf42b5fc79=document.querySelector('button[name=btn_c23923b1959b45ac8bb79bbf42b5fc79]');
-copyBtnbtn_c23923b1959b45ac8bb79bbf42b5fc79.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# enumerate — index + value\nfor i, item in enumerate([\"a\", \"b\", \"c\"]):\n    print(i, item)   # 0 a, 1 b, 2 c\n\n# zip — parallel iteration\nfor a, b in zip([1, 2, 3], [\"x\", \"y\", \"z\"]):\n    print(a, b)   # 1 x, 2 y, 3 z\n\n# map/filter — lazy transformation\ndoubled = map(lambda x: x * 2, range(5))   # lazy\nevens   = filter(lambda x: x % 2 == 0, range(10))\n\n# Materialise when needed\nlist(doubled)   # [0, 2, 4, 6, 8]\n`);copyBtnbtn_c23923b1959b45ac8bb79bbf42b5fc79.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c23923b1959b45ac8bb79bbf42b5fc79.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0fe57327205742faab0c8e5aae2edca4=document.querySelector('button[name=btn_0fe57327205742faab0c8e5aae2edca4]');
+copyBtnbtn_0fe57327205742faab0c8e5aae2edca4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# enumerate — index + value\nfor i, item in enumerate([\"a\", \"b\", \"c\"]):\n    print(i, item)   # 0 a, 1 b, 2 c\n\n# zip — parallel iteration\nfor a, b in zip([1, 2, 3], [\"x\", \"y\", \"z\"]):\n    print(a, b)   # 1 x, 2 y, 3 z\n\n# map/filter — lazy transformation\ndoubled = map(lambda x: x * 2, range(5))   # lazy\nevens   = filter(lambda x: x % 2 == 0, range(10))\n\n# Materialise when needed\nlist(doubled)   # [0, 2, 4, 6, 8]\n`);copyBtnbtn_0fe57327205742faab0c8e5aae2edca4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0fe57327205742faab0c8e5aae2edca4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1108,11 +1108,11 @@ let res = copyTextToClipboard(`# enumerate — index + value\nfor i, item in enu
 <h2 id="orgf5012c4">JavaScript</h2>
 <div class="outline-text-2" id="text-orgf5012c4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_7b1ee7410b794f1b9865650ea46dbe7d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_46da73aaffe14cd5bd8bac8a4e30db58>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7b1ee7410b794f1b9865650ea46dbe7d=document.querySelector('button[name=btn_7b1ee7410b794f1b9865650ea46dbe7d]');
-copyBtnbtn_7b1ee7410b794f1b9865650ea46dbe7d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// for...of uses the iterator protocol automatically\nconst arr = [\"apple\", \"banana\", \"cherry\"];\nfor (const item of arr) {\n    console.log(item);\n}\n\n// Manual use of the iterator protocol\nconst it = arr[Symbol.iterator]();\nit.next();   // {value: \"apple\", done: false}\nit.next();   // {value: \"banana\", done: false}\nit.next();   // {value: \"cherry\", done: false}\nit.next();   // {value: undefined, done: true}\n\n// Custom iterator\nfunction range(start, end) {\n    return {\n        [Symbol.iterator]() {\n            let current = start;\n            return {\n                next() {\n                    return current < end\n                        ? { value: current++, done: false }\n                        : { value: undefined, done: true };\n                }\n            };\n        }\n    };\n}\n\nfor (const n of range(1, 4)) console.log(n);   // 1, 2, 3\n\n// Generators in JS\nfunction* countdown(n) {\n    while (n > 0) yield n--;\n}\n\n[...countdown(3)]   // [3, 2, 1]\n`);copyBtnbtn_7b1ee7410b794f1b9865650ea46dbe7d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7b1ee7410b794f1b9865650ea46dbe7d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_46da73aaffe14cd5bd8bac8a4e30db58=document.querySelector('button[name=btn_46da73aaffe14cd5bd8bac8a4e30db58]');
+copyBtnbtn_46da73aaffe14cd5bd8bac8a4e30db58.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// for...of uses the iterator protocol automatically\nconst arr = [\"apple\", \"banana\", \"cherry\"];\nfor (const item of arr) {\n    console.log(item);\n}\n\n// Manual use of the iterator protocol\nconst it = arr[Symbol.iterator]();\nit.next();   // {value: \"apple\", done: false}\nit.next();   // {value: \"banana\", done: false}\nit.next();   // {value: \"cherry\", done: false}\nit.next();   // {value: undefined, done: true}\n\n// Custom iterator\nfunction range(start, end) {\n    return {\n        [Symbol.iterator]() {\n            let current = start;\n            return {\n                next() {\n                    return current < end\n                        ? { value: current++, done: false }\n                        : { value: undefined, done: true };\n                }\n            };\n        }\n    };\n}\n\nfor (const n of range(1, 4)) console.log(n);   // 1, 2, 3\n\n// Generators in JS\nfunction* countdown(n) {\n    while (n > 0) yield n--;\n}\n\n[...countdown(3)]   // [3, 2, 1]\n`);copyBtnbtn_46da73aaffe14cd5bd8bac8a4e30db58.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_46da73aaffe14cd5bd8bac8a4e30db58.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:38 -->
+<!-- 2026-07-20 Mon 15:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Brim</title>
@@ -877,10 +877,10 @@ pre {
 </div>
 </div>
 <p>
-Desktop application for exploring <a href="../org/20260213T105110--zeek__cybersecurity_networking_tool.html">Zeek</a> logs and PCAP files.
+Desktop application for exploring <a href="20260213T105110--zeek__cybersecurity_networking_tool.html">Zeek</a> logs and PCAP files.
 Provides a GUI query interface over the Zed data language —
 faster for large datasets than raw log searching, and easier
-than reading PCAP directly in <a href="../org/20260213T071400--wireshark__cybersecurity_tool.html">Wireshark</a>. Useful when you have
+than reading PCAP directly in <a href="20260213T071400--wireshark__cybersecurity_tool.html">Wireshark</a>. Useful when you have
 Zeek-processed network captures and want to query across
 connection logs, DNS, HTTP, and SSL logs simultaneously.
 </p>
@@ -891,20 +891,20 @@ referred to as Brim.
 </p>
 
 <p>
-Related: <a href="../org/20260213T105110--zeek__cybersecurity_networking_tool.html">Zeek</a>
-         <a href="../org/20260213T071400--wireshark__cybersecurity_tool.html">Wireshark</a>
-         <a href="../org/20260206T060720--pcap__concept_cybersecurity.html">PCAP</a>
-         <a href="../org/20260213T104035--network-traffic-analysis__concept_cybersecurity.html">Network Traffic Analysis</a>
+Related: <a href="20260213T105110--zeek__cybersecurity_networking_tool.html">Zeek</a>
+         <a href="20260213T071400--wireshark__cybersecurity_tool.html">Wireshark</a>
+         <a href="20260206T060720--pcap__concept_cybersecurity.html">PCAP</a>
+         <a href="20260213T104035--network-traffic-analysis__concept_cybersecurity.html">Network Traffic Analysis</a>
 </p>
 <div id="outline-container-org6ceeae1" class="outline-2">
 <h2 id="org6ceeae1">Workflow</h2>
 <div class="outline-text-2" id="text-org6ceeae1">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_53ee2626548c48368434ef1d21d94313>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_688a3ef6891f40a3b17f68130d9a29c5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_53ee2626548c48368434ef1d21d94313=document.querySelector('button[name=btn_53ee2626548c48368434ef1d21d94313]');
-copyBtnbtn_53ee2626548c48368434ef1d21d94313.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Open Brim / Zui\n2. Load data source:\n   — Drag and drop a .pcap file (Brim auto-runs Zeek on it)\n   — Or load pre-existing Zeek logs directly\n3. Select a pool (dataset) from the left panel\n4. Query using the Zed language in the search bar\n5. Click into events to expand detail and correlate\n`);copyBtnbtn_53ee2626548c48368434ef1d21d94313.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_53ee2626548c48368434ef1d21d94313.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_688a3ef6891f40a3b17f68130d9a29c5=document.querySelector('button[name=btn_688a3ef6891f40a3b17f68130d9a29c5]');
+copyBtnbtn_688a3ef6891f40a3b17f68130d9a29c5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Open Brim / Zui\n2. Load data source:\n   — Drag and drop a .pcap file (Brim auto-runs Zeek on it)\n   — Or load pre-existing Zeek logs directly\n3. Select a pool (dataset) from the left panel\n4. Query using the Zed language in the search bar\n5. Click into events to expand detail and correlate\n`);copyBtnbtn_688a3ef6891f40a3b17f68130d9a29c5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_688a3ef6891f40a3b17f68130d9a29c5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -927,11 +927,11 @@ Brim uses Zed — a pipeline language similar to KQL or SPL.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b5cd7eeed1b94918be7cfe7ac784c19b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_49927fd2f759446aac2e027d99281810>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b5cd7eeed1b94918be7cfe7ac784c19b=document.querySelector('button[name=btn_b5cd7eeed1b94918be7cfe7ac784c19b]');
-copyBtnbtn_b5cd7eeed1b94918be7cfe7ac784c19b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Filter by field value\n_path == \"conn\"\n_path == \"dns\"\n_path == \"http\"\n\n# Filter by time range\nts > 2025-01-01T00:00:00Z and ts < 2025-01-02T00:00:00Z\n\n# Grep for a string across all logs\ngrep(\"malware.com\")\n\n# Aggregate — count connections per destination\n_path == \"conn\" | count() by id.resp_h\n\n# Top talkers by bytes\n_path == \"conn\" | sum(orig_bytes) by id.orig_h | sort -r sum\n\n# Find all DNS queries for a domain\n_path == \"dns\" | grep(\"*.evil.com\")\n\n# HTTP requests with suspicious user agents\n_path == \"http\" | user_agent == \"python-requests/2.28\"\n\n# Filter by protocol\n_path == \"conn\" | proto == \"tcp\" | id.resp_p == 4444\n`);copyBtnbtn_b5cd7eeed1b94918be7cfe7ac784c19b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b5cd7eeed1b94918be7cfe7ac784c19b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_49927fd2f759446aac2e027d99281810=document.querySelector('button[name=btn_49927fd2f759446aac2e027d99281810]');
+copyBtnbtn_49927fd2f759446aac2e027d99281810.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Filter by field value\n_path == \"conn\"\n_path == \"dns\"\n_path == \"http\"\n\n# Filter by time range\nts > 2025-01-01T00:00:00Z and ts < 2025-01-02T00:00:00Z\n\n# Grep for a string across all logs\ngrep(\"malware.com\")\n\n# Aggregate — count connections per destination\n_path == \"conn\" | count() by id.resp_h\n\n# Top talkers by bytes\n_path == \"conn\" | sum(orig_bytes) by id.orig_h | sort -r sum\n\n# Find all DNS queries for a domain\n_path == \"dns\" | grep(\"*.evil.com\")\n\n# HTTP requests with suspicious user agents\n_path == \"http\" | user_agent == \"python-requests/2.28\"\n\n# Filter by protocol\n_path == \"conn\" | proto == \"tcp\" | id.resp_p == 4444\n`);copyBtnbtn_49927fd2f759446aac2e027d99281810.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_49927fd2f759446aac2e027d99281810.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1024,11 +1024,11 @@ _path == "conn" | proto == "tcp" | id.resp_p == 4444
 <h2 id="orgb4d957d">Security Investigation Queries</h2>
 <div class="outline-text-2" id="text-orgb4d957d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c2cd1b80a4004043bd88c41bf48a5be3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_37a238c1cddc4a169d4159a3e1728c0e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c2cd1b80a4004043bd88c41bf48a5be3=document.querySelector('button[name=btn_c2cd1b80a4004043bd88c41bf48a5be3]');
-copyBtnbtn_c2cd1b80a4004043bd88c41bf48a5be3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Long-duration connections (beaconing)\n_path == \"conn\" | duration > 1h | count() by id.resp_h | sort -r count\n\n# Large outbound transfers (exfiltration)\n_path == \"conn\" | orig_bytes > 10000000 | sort -r orig_bytes\n\n# Connections to rare external IPs\n_path == \"conn\" | not grep(\"192.168.*\") | count() by id.resp_h | sort count\n\n# DNS queries to unusual domains (DGA-like)\n_path == \"dns\" | len(query) > 50\n\n# HTTP to non-standard ports\n_path == \"http\" | id.resp_p != 80 and id.resp_p != 8080\n\n# Suspicious user agents\n_path == \"http\" | grep(\"curl|python|wget|powershell\")\n`);copyBtnbtn_c2cd1b80a4004043bd88c41bf48a5be3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c2cd1b80a4004043bd88c41bf48a5be3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_37a238c1cddc4a169d4159a3e1728c0e=document.querySelector('button[name=btn_37a238c1cddc4a169d4159a3e1728c0e]');
+copyBtnbtn_37a238c1cddc4a169d4159a3e1728c0e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Long-duration connections (beaconing)\n_path == \"conn\" | duration > 1h | count() by id.resp_h | sort -r count\n\n# Large outbound transfers (exfiltration)\n_path == \"conn\" | orig_bytes > 10000000 | sort -r orig_bytes\n\n# Connections to rare external IPs\n_path == \"conn\" | not grep(\"192.168.*\") | count() by id.resp_h | sort count\n\n# DNS queries to unusual domains (DGA-like)\n_path == \"dns\" | len(query) > 50\n\n# HTTP to non-standard ports\n_path == \"http\" | id.resp_p != 80 and id.resp_p != 8080\n\n# Suspicious user agents\n_path == \"http\" | grep(\"curl|python|wget|powershell\")\n`);copyBtnbtn_37a238c1cddc4a169d4159a3e1728c0e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_37a238c1cddc4a169d4159a3e1728c0e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

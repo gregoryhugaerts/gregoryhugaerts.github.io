@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:37 -->
+<!-- 2026-07-20 Mon 15:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Encryption</title>
@@ -893,16 +893,16 @@ pre {
 <p>
 Transforms plaintext into ciphertext using an algorithm and
 key, making the data unreadable to anyone without the correct
-key. Distinct from <a href="../org/20260206T060656--hashing__concept_cybersecurity_programming.html">Hashing</a> (which is one-way) — encryption
+key. Distinct from <a href="20260206T060656--hashing__concept_cybersecurity_programming.html">Hashing</a> (which is one-way) — encryption
 is reversible by the intended recipient.
 </p>
 
 <p>
-Related: <a href="../org/20260206T060446--cryptography__concept_cybersecurity_math.html">Cryptography</a>
-         <a href="../org/20260206T060656--hashing__concept_cybersecurity_programming.html">Hashing</a>
-         <a href="../org/20260314T005743--public-key-infrastructure__concept_cybersecurity.html">PKI</a>
-         <a href="../org/20260210T195356--secure-sockets-layer__concept_cybersecurity_networking.html">TLS / SSL</a>
-         <a href="../org/20260206T060506--elliptical-curves__math.html">Elliptic Curves</a>
+Related: <a href="20260206T060446--cryptography__concept_cybersecurity_math.html">Cryptography</a>
+         <a href="20260206T060656--hashing__concept_cybersecurity_programming.html">Hashing</a>
+         <a href="20260314T005743--public-key-infrastructure__concept_cybersecurity.html">PKI</a>
+         <a href="20260210T195356--secure-sockets-layer__concept_cybersecurity_networking.html">TLS / SSL</a>
+         <a href="20260206T060506--elliptical-curves__math.html">Elliptic Curves</a>
 </p>
 <div id="outline-container-orgcba1ab7" class="outline-2">
 <h2 id="orgcba1ab7">Symmetric Encryption</h2>
@@ -1023,11 +1023,11 @@ integrity in one operation — the standard for new systems.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_331a7d3df46e4255bc5f56f7344a7fee>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_8796aeb6aa3d4bba8ba6e7b0d32f936c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_331a7d3df46e4255bc5f56f7344a7fee=document.querySelector('button[name=btn_331a7d3df46e4255bc5f56f7344a7fee]');
-copyBtnbtn_331a7d3df46e4255bc5f56f7344a7fee.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`from cryptography.hazmat.primitives.ciphers.aead import AESGCM\nimport os\n\nkey = AESGCM.generate_key(bit_length=256)\naesgcm = AESGCM(key)\nnonce = os.urandom(12)   # 96-bit nonce for GCM\n\nciphertext = aesgcm.encrypt(nonce, b\"plaintext data\", None)\nplaintext  = aesgcm.decrypt(nonce, ciphertext, None)\n`);copyBtnbtn_331a7d3df46e4255bc5f56f7344a7fee.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_331a7d3df46e4255bc5f56f7344a7fee.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8796aeb6aa3d4bba8ba6e7b0d32f936c=document.querySelector('button[name=btn_8796aeb6aa3d4bba8ba6e7b0d32f936c]');
+copyBtnbtn_8796aeb6aa3d4bba8ba6e7b0d32f936c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`from cryptography.hazmat.primitives.ciphers.aead import AESGCM\nimport os\n\nkey = AESGCM.generate_key(bit_length=256)\naesgcm = AESGCM(key)\nnonce = os.urandom(12)   # 96-bit nonce for GCM\n\nciphertext = aesgcm.encrypt(nonce, b\"plaintext data\", None)\nplaintext  = aesgcm.decrypt(nonce, ciphertext, None)\n`);copyBtnbtn_8796aeb6aa3d4bba8ba6e7b0d32f936c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8796aeb6aa3d4bba8ba6e7b0d32f936c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1107,7 +1107,7 @@ encryption). This is how TLS works.
 </table>
 
 <p>
-See <a href="../org/20260206T060506--elliptical-curves__math.html">Elliptic Curves</a> for the mathematical foundation.
+See <a href="20260206T060506--elliptical-curves__math.html">Elliptic Curves</a> for the mathematical foundation.
 </p>
 </div>
 <div id="outline-container-org050ec40" class="outline-3">
@@ -1120,11 +1120,11 @@ non-repudiation.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2546e6c58b2f4980b7b83b9663e468c7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_19687819856e4419bf6732097f2364fd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2546e6c58b2f4980b7b83b9663e468c7=document.querySelector('button[name=btn_2546e6c58b2f4980b7b83b9663e468c7]');
-copyBtnbtn_2546e6c58b2f4980b7b83b9663e468c7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Signing:      hash(data) → encrypt with private key → signature\nVerification: decrypt signature with public key → compare to hash(data)\n`);copyBtnbtn_2546e6c58b2f4980b7b83b9663e468c7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2546e6c58b2f4980b7b83b9663e468c7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_19687819856e4419bf6732097f2364fd=document.querySelector('button[name=btn_19687819856e4419bf6732097f2364fd]');
+copyBtnbtn_19687819856e4419bf6732097f2364fd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Signing:      hash(data) → encrypt with private key → signature\nVerification: decrypt signature with public key → compare to hash(data)\n`);copyBtnbtn_19687819856e4419bf6732097f2364fd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_19687819856e4419bf6732097f2364fd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1143,11 +1143,11 @@ The standard in practice — TLS, PGP, SSH all use this pattern:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_bc363f37f5be4add85ef9bcf921da988>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_7918fe75c7e34f22b12f733bd1e2ea0b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bc363f37f5be4add85ef9bcf921da988=document.querySelector('button[name=btn_bc363f37f5be4add85ef9bcf921da988]');
-copyBtnbtn_bc363f37f5be4add85ef9bcf921da988.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Generate a random symmetric session key\n2. Encrypt the session key with the recipient's public key\n3. Encrypt all data with the session key (AES-GCM)\n4. Send: encrypted session key + encrypted data\n5. Recipient decrypts session key with private key\n6. Recipient decrypts data with session key\n`);copyBtnbtn_bc363f37f5be4add85ef9bcf921da988.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bc363f37f5be4add85ef9bcf921da988.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7918fe75c7e34f22b12f733bd1e2ea0b=document.querySelector('button[name=btn_7918fe75c7e34f22b12f733bd1e2ea0b]');
+copyBtnbtn_7918fe75c7e34f22b12f733bd1e2ea0b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Generate a random symmetric session key\n2. Encrypt the session key with the recipient's public key\n3. Encrypt all data with the session key (AES-GCM)\n4. Send: encrypted session key + encrypted data\n5. Recipient decrypts session key with private key\n6. Recipient decrypts data with session key\n`);copyBtnbtn_7918fe75c7e34f22b12f733bd1e2ea0b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7918fe75c7e34f22b12f733bd1e2ea0b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1211,11 +1211,11 @@ let res = copyTextToClipboard(`1. Generate a random symmetric session key\n2. En
 <h3 id="org35410a2">Common weaknesses</h3>
 <div class="outline-text-3" id="text-org35410a2">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_11042f006d42408b982bca315385474c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_307b85d5674b4aef84b91856c5d3de32>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_11042f006d42408b982bca315385474c=document.querySelector('button[name=btn_11042f006d42408b982bca315385474c]');
-copyBtnbtn_11042f006d42408b982bca315385474c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— Using weak algorithms (DES, RC4, MD5 for key derivation)\n— ECB mode — leaks block patterns\n— Short key lengths (RSA < 2048-bit)\n— Hardcoded keys in source code\n— Poor key management — keys stored alongside encrypted data\n— Not validating certificates — allows MITM despite encryption\n— Encrypting without integrity (non-AEAD modes) — malleable ciphertext\n`);copyBtnbtn_11042f006d42408b982bca315385474c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_11042f006d42408b982bca315385474c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_307b85d5674b4aef84b91856c5d3de32=document.querySelector('button[name=btn_307b85d5674b4aef84b91856c5d3de32]');
+copyBtnbtn_307b85d5674b4aef84b91856c5d3de32.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— Using weak algorithms (DES, RC4, MD5 for key derivation)\n— ECB mode — leaks block patterns\n— Short key lengths (RSA < 2048-bit)\n— Hardcoded keys in source code\n— Poor key management — keys stored alongside encrypted data\n— Not validating certificates — allows MITM despite encryption\n— Encrypting without integrity (non-AEAD modes) — malleable ciphertext\n`);copyBtnbtn_307b85d5674b4aef84b91856c5d3de32.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_307b85d5674b4aef84b91856c5d3de32.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1234,11 +1234,11 @@ let res = copyTextToClipboard(`— Using weak algorithms (DES, RC4, MD5 for key 
 <h3 id="org4630fe0">Identifying encryption in use</h3>
 <div class="outline-text-3" id="text-org4630fe0">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_384a94f743e7411ea293ddf2d96052c5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c58768069053426eb4c24406de4c30e0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_384a94f743e7411ea293ddf2d96052c5=document.querySelector('button[name=btn_384a94f743e7411ea293ddf2d96052c5]');
-copyBtnbtn_384a94f743e7411ea293ddf2d96052c5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Check TLS cipher suite offered by a server\nnmap --script ssl-enum-ciphers -p 443 $TARGET\nsslscan $TARGET:443\ntestssl.sh https://$TARGET\n\n# Check certificate\nopenssl s_client -connect $TARGET:443 | openssl x509 -text | grep -E \"Subject:|Issuer:|Not After:|Public Key\"\n\n# Find hardcoded keys or base64 blobs\ngrep -r \"AES\\|BEGIN.*KEY\\|ENCRYPTED\\|password.*=\" /var/www/ 2>/dev/null\nstrings binary_file | grep -E \"[A-Za-z0-9+/]{32,}={0,2}\"\n`);copyBtnbtn_384a94f743e7411ea293ddf2d96052c5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_384a94f743e7411ea293ddf2d96052c5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c58768069053426eb4c24406de4c30e0=document.querySelector('button[name=btn_c58768069053426eb4c24406de4c30e0]');
+copyBtnbtn_c58768069053426eb4c24406de4c30e0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Check TLS cipher suite offered by a server\nnmap --script ssl-enum-ciphers -p 443 $TARGET\nsslscan $TARGET:443\ntestssl.sh https://$TARGET\n\n# Check certificate\nopenssl s_client -connect $TARGET:443 | openssl x509 -text | grep -E \"Subject:|Issuer:|Not After:|Public Key\"\n\n# Find hardcoded keys or base64 blobs\ngrep -r \"AES\\|BEGIN.*KEY\\|ENCRYPTED\\|password.*=\" /var/www/ 2>/dev/null\nstrings binary_file | grep -E \"[A-Za-z0-9+/]{32,}={0,2}\"\n`);copyBtnbtn_c58768069053426eb4c24406de4c30e0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c58768069053426eb4c24406de4c30e0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

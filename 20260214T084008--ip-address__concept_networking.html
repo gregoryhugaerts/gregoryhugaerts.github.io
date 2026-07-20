@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:39 -->
+<!-- 2026-07-20 Mon 15:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>IP Address</title>
@@ -897,10 +897,10 @@ exhaustion problem.
 </p>
 
 <p>
-Related: <a href="../org/20260213T095239==cidr--classless-inter-domain-routing__concept_networking.html">CIDR</a>
-         <a href="../org/20260214T084016--subnet-mask__concept_networking.html">Subnet Mask</a>
-         <a href="../org/20260206T060554--static-ip-adress__concept_networking.html">Static IP</a>
-         <a href="../org/20260206T060540--dynamic-ip-address__concept_networking.html">Dynamic IP</a>
+Related: <a href="20260213T095239==cidr--classless-inter-domain-routing__concept_networking.html">CIDR</a>
+         <a href="20260214T084016--subnet-mask__concept_networking.html">Subnet Mask</a>
+         <a href="20260206T060554--static-ip-adress__concept_networking.html">Static IP</a>
+         <a href="20260206T060540--dynamic-ip-address__concept_networking.html">Dynamic IP</a>
 </p>
 <div id="outline-container-org8091a15" class="outline-2">
 <h2 id="org8091a15">IPv4</h2>
@@ -1081,11 +1081,11 @@ network and broadcast = usable hosts.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_3861063c69004c1998af4dd2e043cb6e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_ae627286ec5f451bb028a5c78e247212>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3861063c69004c1998af4dd2e043cb6e=document.querySelector('button[name=btn_3861063c69004c1998af4dd2e043cb6e]');
-copyBtnbtn_3861063c69004c1998af4dd2e043cb6e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import ipaddress\n\nnet = ipaddress.ip_network(\"192.168.1.0/24\", strict=False)\nprint(net.network_address)   # 192.168.1.0\nprint(net.broadcast_address) # 192.168.1.255\nprint(net.num_addresses)     # 256\nprint(list(net.hosts())[:3]) # first 3 usable hosts\n`);copyBtnbtn_3861063c69004c1998af4dd2e043cb6e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3861063c69004c1998af4dd2e043cb6e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ae627286ec5f451bb028a5c78e247212=document.querySelector('button[name=btn_ae627286ec5f451bb028a5c78e247212]');
+copyBtnbtn_ae627286ec5f451bb028a5c78e247212.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import ipaddress\n\nnet = ipaddress.ip_network(\"192.168.1.0/24\", strict=False)\nprint(net.network_address)   # 192.168.1.0\nprint(net.broadcast_address) # 192.168.1.255\nprint(net.num_addresses)     # 256\nprint(list(net.hosts())[:3]) # first 3 usable hosts\n`);copyBtnbtn_ae627286ec5f451bb028a5c78e247212.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ae627286ec5f451bb028a5c78e247212.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1255,11 +1255,11 @@ appears in older documentation:
 <h2 id="org63f263c">Security Relevance</h2>
 <div class="outline-text-2" id="text-org63f263c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a8666fb6e9e14d9783d851bf4a4a4fe1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7aedc30ff76d446dad8e25c14d6de2e5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a8666fb6e9e14d9783d851bf4a4a4fe1=document.querySelector('button[name=btn_a8666fb6e9e14d9783d851bf4a4a4fe1]');
-copyBtnbtn_a8666fb6e9e14d9783d851bf4a4a4fe1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Identify your IP and subnet\nip a\nipconfig /all   # Windows\n\n# Check whether an IP is private or public\npython3 -c \"import ipaddress; print(ipaddress.ip_address('10.0.0.1').is_private)\"\n\n# Subnet sweep (ping)\nnmap -sn 192.168.1.0/24\n\n# Quick subnet info\npython3 -c \"\nimport ipaddress\nn = ipaddress.ip_network('10.10.10.0/24', strict=False)\nprint(f'Network: {n.network_address}')\nprint(f'Broadcast: {n.broadcast_address}')\nprint(f'Hosts: {n.num_addresses - 2}')\n\"\n`);copyBtnbtn_a8666fb6e9e14d9783d851bf4a4a4fe1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a8666fb6e9e14d9783d851bf4a4a4fe1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7aedc30ff76d446dad8e25c14d6de2e5=document.querySelector('button[name=btn_7aedc30ff76d446dad8e25c14d6de2e5]');
+copyBtnbtn_7aedc30ff76d446dad8e25c14d6de2e5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Identify your IP and subnet\nip a\nipconfig /all   # Windows\n\n# Check whether an IP is private or public\npython3 -c \"import ipaddress; print(ipaddress.ip_address('10.0.0.1').is_private)\"\n\n# Subnet sweep (ping)\nnmap -sn 192.168.1.0/24\n\n# Quick subnet info\npython3 -c \"\nimport ipaddress\nn = ipaddress.ip_network('10.10.10.0/24', strict=False)\nprint(f'Network: {n.network_address}')\nprint(f'Broadcast: {n.broadcast_address}')\nprint(f'Hosts: {n.num_addresses - 2}')\n\"\n`);copyBtnbtn_7aedc30ff76d446dad8e25c14d6de2e5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7aedc30ff76d446dad8e25c14d6de2e5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1291,7 +1291,7 @@ network or looking at internal routing</li>
 <li>APIPA addresses (<code>169.254.x.x</code>) indicate a host that failed
 to obtain a DHCP lease — worth noting during network triage</li>
 <li><code>169.254.169.254</code> is specifically the AWS/Azure/GCP metadata
-endpoint — critical SSRF target; see <a href="../org/20260207T065427==ssrf--server-side-request-forgery__cybersecurity_technique.html">SSRF</a></li>
+endpoint — critical SSRF target; see <a href="20260207T065427==ssrf--server-side-request-forgery__cybersecurity_technique.html">SSRF</a></li>
 </ul>
 </div>
 </div>

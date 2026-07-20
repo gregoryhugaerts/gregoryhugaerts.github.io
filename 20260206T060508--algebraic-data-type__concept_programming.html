@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:37 -->
+<!-- 2026-07-20 Mon 15:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Algebraic Data Type</title>
@@ -892,10 +892,10 @@ that every possible state is handled.
 </p>
 
 <p>
-Related: <a href="../org/20260206T060606--functional-programming__concept_programming.html">Functional Programming</a>
-         <a href="../org/20260206T060623--pattern-matching__concept_programming.html">Pattern Matching</a>
-         <a href="../org/20260206T060602--enums-in-rust__concept_programming_rust.html">Enums in Rust</a>
-         <a href="../org/20260206T060645--type-system__concept_programming.html">Type System</a>
+Related: <a href="20260206T060606--functional-programming__concept_programming.html">Functional Programming</a>
+         <a href="20260206T060623--pattern-matching__concept_programming.html">Pattern Matching</a>
+         <a href="20260206T060602--enums-in-rust__concept_programming_rust.html">Enums in Rust</a>
+         <a href="20260206T060645--type-system__concept_programming.html">Type System</a>
 </p>
 <div id="outline-container-orgc75518a" class="outline-2">
 <h2 id="orgc75518a">Product Types</h2>
@@ -906,11 +906,11 @@ possible values is the <b>product</b> of each field's possible values.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_98ceb3a182ff43ddab09b4e048914fb8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_7e3efea9d4a548fe8738a4e04079587f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_98ceb3a182ff43ddab09b4e048914fb8=document.querySelector('button[name=btn_98ceb3a182ff43ddab09b4e048914fb8]');
-copyBtnbtn_98ceb3a182ff43ddab09b4e048914fb8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Rust struct — product type\nstruct Point { x: f64, y: f64 }\n// Possible values = f64 × f64\n\nstruct User { name: String, age: u32, active: bool }\n// Possible values = String × u32 × bool\n`);copyBtnbtn_98ceb3a182ff43ddab09b4e048914fb8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_98ceb3a182ff43ddab09b4e048914fb8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7e3efea9d4a548fe8738a4e04079587f=document.querySelector('button[name=btn_7e3efea9d4a548fe8738a4e04079587f]');
+copyBtnbtn_7e3efea9d4a548fe8738a4e04079587f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Rust struct — product type\nstruct Point { x: f64, y: f64 }\n// Possible values = f64 × f64\n\nstruct User { name: String, age: u32, active: bool }\n// Possible values = String × u32 × bool\n`);copyBtnbtn_7e3efea9d4a548fe8738a4e04079587f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7e3efea9d4a548fe8738a4e04079587f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -924,11 +924,11 @@ struct User { name: String, age: u32, active: bool }
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_c5012e8ae1dc461284bf35f1258bd5e4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_9a7db658efb843c4b9cc10e7bcfeec25>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c5012e8ae1dc461284bf35f1258bd5e4=document.querySelector('button[name=btn_c5012e8ae1dc461284bf35f1258bd5e4]');
-copyBtnbtn_c5012e8ae1dc461284bf35f1258bd5e4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Python dataclass — equivalent\nfrom dataclasses import dataclass\n\n@dataclass\nclass Point:\n    x: float\n    y: float\n`);copyBtnbtn_c5012e8ae1dc461284bf35f1258bd5e4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c5012e8ae1dc461284bf35f1258bd5e4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9a7db658efb843c4b9cc10e7bcfeec25=document.querySelector('button[name=btn_9a7db658efb843c4b9cc10e7bcfeec25]');
+copyBtnbtn_9a7db658efb843c4b9cc10e7bcfeec25.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Python dataclass — equivalent\nfrom dataclasses import dataclass\n\n@dataclass\nclass Point:\n    x: float\n    y: float\n`);copyBtnbtn_9a7db658efb843c4b9cc10e7bcfeec25.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9a7db658efb843c4b9cc10e7bcfeec25.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -957,11 +957,11 @@ possible values is the <b>sum</b> of each variant's possible values.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_8cf5c5f8445e4b6eae454b0af1140c7b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_db4ec6ca98c747898a5b25ac667fa2f8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8cf5c5f8445e4b6eae454b0af1140c7b=document.querySelector('button[name=btn_8cf5c5f8445e4b6eae454b0af1140c7b]');
-copyBtnbtn_8cf5c5f8445e4b6eae454b0af1140c7b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Rust enum — sum type\nenum Shape {\n    Circle(f64),              // contains one f64\n    Rectangle(f64, f64),      // contains two f64s\n    Triangle { base: f64, height: f64 },  // named fields\n}\n// A Shape is Circle OR Rectangle OR Triangle — never more than one\n`);copyBtnbtn_8cf5c5f8445e4b6eae454b0af1140c7b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8cf5c5f8445e4b6eae454b0af1140c7b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_db4ec6ca98c747898a5b25ac667fa2f8=document.querySelector('button[name=btn_db4ec6ca98c747898a5b25ac667fa2f8]');
+copyBtnbtn_db4ec6ca98c747898a5b25ac667fa2f8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Rust enum — sum type\nenum Shape {\n    Circle(f64),              // contains one f64\n    Rectangle(f64, f64),      // contains two f64s\n    Triangle { base: f64, height: f64 },  // named fields\n}\n// A Shape is Circle OR Rectangle OR Triangle — never more than one\n`);copyBtnbtn_db4ec6ca98c747898a5b25ac667fa2f8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_db4ec6ca98c747898a5b25ac667fa2f8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -976,11 +976,11 @@ enum Shape {
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HASKELL</span><button class='copyBtn' name=btn_b901c72318314b53b8dff5b9b6f24db8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HASKELL</span><button class='copyBtn' name=btn_eba0381b446d4fd0822551257326cc81>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b901c72318314b53b8dff5b9b6f24db8=document.querySelector('button[name=btn_b901c72318314b53b8dff5b9b6f24db8]');
-copyBtnbtn_b901c72318314b53b8dff5b9b6f24db8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`-- Haskell — algebraic data types\ndata Shape = Circle Double\n           | Rectangle Double Double\n           | Triangle Double Double\n`);copyBtnbtn_b901c72318314b53b8dff5b9b6f24db8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b901c72318314b53b8dff5b9b6f24db8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_eba0381b446d4fd0822551257326cc81=document.querySelector('button[name=btn_eba0381b446d4fd0822551257326cc81]');
+copyBtnbtn_eba0381b446d4fd0822551257326cc81.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`-- Haskell — algebraic data types\ndata Shape = Circle Double\n           | Rectangle Double Double\n           | Triangle Double Double\n`);copyBtnbtn_eba0381b446d4fd0822551257326cc81.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_eba0381b446d4fd0822551257326cc81.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1006,11 +1006,11 @@ the absent case.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_93f04a2262e04df4bc20dd05fb5fa422>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_d2184ce807c44cafa068f30f0f828634>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_93f04a2262e04df4bc20dd05fb5fa422=document.querySelector('button[name=btn_93f04a2262e04df4bc20dd05fb5fa422]');
-copyBtnbtn_93f04a2262e04df4bc20dd05fb5fa422.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`enum Option<T> { Some(T), None }\n\nlet name: Option<String> = Some(\"Alice\".to_string());\n\n// Compiler forces you to handle both cases\nmatch name {\n    Some(n) => println!(\"Hello, {n}\"),\n    None    => println!(\"No name\"),\n}\n\n// Convenience methods\nname.unwrap_or(\"unknown\".to_string())\nname.map(|n| n.to_uppercase())\n`);copyBtnbtn_93f04a2262e04df4bc20dd05fb5fa422.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_93f04a2262e04df4bc20dd05fb5fa422.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d2184ce807c44cafa068f30f0f828634=document.querySelector('button[name=btn_d2184ce807c44cafa068f30f0f828634]');
+copyBtnbtn_d2184ce807c44cafa068f30f0f828634.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`enum Option<T> { Some(T), None }\n\nlet name: Option<String> = Some(\"Alice\".to_string());\n\n// Compiler forces you to handle both cases\nmatch name {\n    Some(n) => println!(\"Hello, {n}\"),\n    None    => println!(\"No name\"),\n}\n\n// Convenience methods\nname.unwrap_or(\"unknown\".to_string())\nname.map(|n| n.to_uppercase())\n`);copyBtnbtn_d2184ce807c44cafa068f30f0f828634.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d2184ce807c44cafa068f30f0f828634.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1040,11 +1040,11 @@ are values that must be handled.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_29a32f0a78224a3a9214f8fa602aec99>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_7d2744477a3c4345962f6664e322d369>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_29a32f0a78224a3a9214f8fa602aec99=document.querySelector('button[name=btn_29a32f0a78224a3a9214f8fa602aec99]');
-copyBtnbtn_29a32f0a78224a3a9214f8fa602aec99.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`enum Result<T, E> { Ok(T), Err(E) }\n\nfn parse_age(s: &str) -> Result<u32, String> {\n    s.parse::<u32>().map_err(|e| e.to_string())\n}\n\nmatch parse_age(\"42\") {\n    Ok(age) => println!(\"Age: {age}\"),\n    Err(e)  => println!(\"Error: {e}\"),\n}\n\n// Propagate errors with ?\nfn process(input: &str) -> Result<String, String> {\n    let age = parse_age(input)?;   // returns Err early if parse fails\n    Ok(format!(\"Valid age: {age}\"))\n}\n`);copyBtnbtn_29a32f0a78224a3a9214f8fa602aec99.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_29a32f0a78224a3a9214f8fa602aec99.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7d2744477a3c4345962f6664e322d369=document.querySelector('button[name=btn_7d2744477a3c4345962f6664e322d369]');
+copyBtnbtn_7d2744477a3c4345962f6664e322d369.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`enum Result<T, E> { Ok(T), Err(E) }\n\nfn parse_age(s: &str) -> Result<u32, String> {\n    s.parse::<u32>().map_err(|e| e.to_string())\n}\n\nmatch parse_age(\"42\") {\n    Ok(age) => println!(\"Age: {age}\"),\n    Err(e)  => println!(\"Error: {e}\"),\n}\n\n// Propagate errors with ?\nfn process(input: &str) -> Result<String, String> {\n    let age = parse_age(input)?;   // returns Err early if parse fails\n    Ok(format!(\"Valid age: {age}\"))\n}\n`);copyBtnbtn_7d2744477a3c4345962f6664e322d369.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7d2744477a3c4345962f6664e322d369.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1079,11 +1079,11 @@ every match that doesn't cover it:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_a664b9f3441041dfbfae8591358e1b9c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_9fe1cf5fa70a4baeb95458f6157fb87a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a664b9f3441041dfbfae8591358e1b9c=document.querySelector('button[name=btn_a664b9f3441041dfbfae8591358e1b9c]');
-copyBtnbtn_a664b9f3441041dfbfae8591358e1b9c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`fn area(shape: Shape) -> f64 {\n    match shape {\n        Shape::Circle(r)            => std::f64::consts::PI * r * r,\n        Shape::Rectangle(w, h)     => w * h,\n        Shape::Triangle { base, height } => 0.5 * base * height,\n        // Forgetting a variant = compile error\n    }\n}\n`);copyBtnbtn_a664b9f3441041dfbfae8591358e1b9c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a664b9f3441041dfbfae8591358e1b9c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9fe1cf5fa70a4baeb95458f6157fb87a=document.querySelector('button[name=btn_9fe1cf5fa70a4baeb95458f6157fb87a]');
+copyBtnbtn_9fe1cf5fa70a4baeb95458f6157fb87a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`fn area(shape: Shape) -> f64 {\n    match shape {\n        Shape::Circle(r)            => std::f64::consts::PI * r * r,\n        Shape::Rectangle(w, h)     => w * h,\n        Shape::Triangle { base, height } => 0.5 * base * height,\n        // Forgetting a variant = compile error\n    }\n}\n`);copyBtnbtn_9fe1cf5fa70a4baeb95458f6157fb87a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9fe1cf5fa70a4baeb95458f6157fb87a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1099,7 +1099,7 @@ let res = copyTextToClipboard(`fn area(shape: Shape) -> f64 {\n    match shape {
 </div></div>
 
 <p>
-See <a href="../org/20260206T060623--pattern-matching__concept_programming.html">Pattern Matching</a> for full detail.
+See <a href="20260206T060623--pattern-matching__concept_programming.html">Pattern Matching</a> for full detail.
 </p>
 </div>
 </div>
@@ -1112,11 +1112,11 @@ trees, and other recursive structures:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_50ecf225b6c7405fbafe9b3d4095697e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_c9f3daf0c06d462198320e2a1f532c85>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_50ecf225b6c7405fbafe9b3d4095697e=document.querySelector('button[name=btn_50ecf225b6c7405fbafe9b3d4095697e]');
-copyBtnbtn_50ecf225b6c7405fbafe9b3d4095697e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Linked list\nenum List<T> {\n    Cons(T, Box<List<T>>),   // Box needed — size must be known\n    Nil,\n}\n\n// Binary tree\nenum Tree<T> {\n    Leaf,\n    Node { value: T, left: Box<Tree<T>>, right: Box<Tree<T>> },\n}\n`);copyBtnbtn_50ecf225b6c7405fbafe9b3d4095697e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_50ecf225b6c7405fbafe9b3d4095697e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c9f3daf0c06d462198320e2a1f532c85=document.querySelector('button[name=btn_c9f3daf0c06d462198320e2a1f532c85]');
+copyBtnbtn_c9f3daf0c06d462198320e2a1f532c85.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Linked list\nenum List<T> {\n    Cons(T, Box<List<T>>),   // Box needed — size must be known\n    Nil,\n}\n\n// Binary tree\nenum Tree<T> {\n    Leaf,\n    Node { value: T, left: Box<Tree<T>>, right: Box<Tree<T>> },\n}\n`);copyBtnbtn_c9f3daf0c06d462198320e2a1f532c85.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c9f3daf0c06d462198320e2a1f532c85.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

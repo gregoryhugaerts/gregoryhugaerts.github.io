@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:37 -->
+<!-- 2026-07-20 Mon 15:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Docker</title>
@@ -893,17 +893,17 @@ Platform for building, shipping, and running applications in
 containers. A container packages an application and all its
 dependencies into an isolated, portable unit that runs
 consistently across environments. Docker handles the image build
-and run lifecycle; <a href="../org/20260206T060535--docker-compose__tool.html">Docker Compose</a> handles multi-container
+and run lifecycle; <a href="20260206T060535--docker-compose__tool.html">Docker Compose</a> handles multi-container
 applications; Kubernetes handles large-scale orchestration.
 </p>
 
 <p>
-Related: <a href="../org/20260206T060535--docker-compose__tool.html">Docker Compose</a>
-         <a href="../org/20260206T060527--containerization__concept_programming.html">Containerization</a>
-         <a href="../org/20260206T060615--linux-containers__concept.html">Linux Containers</a>
-         <a href="../org/20260206T060617--microservices__concept_programming.html">Microservices</a>
-         <a href="../org/20260314T005651--podman__tool.html">Podman</a>
-         <a href="../org/20260314T005620--container-escape__concept_cybersecurity_technique.html">Container Escape</a>
+Related: <a href="20260206T060535--docker-compose__tool.html">Docker Compose</a>
+         <a href="20260206T060527--containerization__concept_programming.html">Containerization</a>
+         <a href="20260206T060615--linux-containers__concept.html">Linux Containers</a>
+         <a href="20260206T060617--microservices__concept_programming.html">Microservices</a>
+         <a href="20260314T005651--podman__tool.html">Podman</a>
+         <a href="20260314T005620--container-escape__concept_cybersecurity_technique.html">Container Escape</a>
 </p>
 <div id="outline-container-org27d0de5" class="outline-2">
 <h2 id="org27d0de5">Core Concepts</h2>
@@ -964,11 +964,11 @@ Related: <a href="../org/20260206T060535--docker-compose__tool.html">Docker Comp
 <h3 id="org7a46444">Images</h3>
 <div class="outline-text-3" id="text-org7a46444">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0745371d0d334001b3fb7da9c066de4f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_aac54ceb89e545d6808593283ac9f76d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0745371d0d334001b3fb7da9c066de4f=document.querySelector('button[name=btn_0745371d0d334001b3fb7da9c066de4f]');
-copyBtnbtn_0745371d0d334001b3fb7da9c066de4f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`docker pull ubuntu:22.04          # pull image from registry\ndocker images                     # list local images\ndocker build -t myapp:1.0 .       # build image from Dockerfile in current dir\ndocker rmi myapp:1.0              # remove image\ndocker tag myapp:1.0 repo/myapp:1.0  # tag for pushing\ndocker push repo/myapp:1.0        # push to registry\n`);copyBtnbtn_0745371d0d334001b3fb7da9c066de4f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0745371d0d334001b3fb7da9c066de4f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_aac54ceb89e545d6808593283ac9f76d=document.querySelector('button[name=btn_aac54ceb89e545d6808593283ac9f76d]');
+copyBtnbtn_aac54ceb89e545d6808593283ac9f76d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`docker pull ubuntu:22.04          # pull image from registry\ndocker images                     # list local images\ndocker build -t myapp:1.0 .       # build image from Dockerfile in current dir\ndocker rmi myapp:1.0              # remove image\ndocker tag myapp:1.0 repo/myapp:1.0  # tag for pushing\ndocker push repo/myapp:1.0        # push to registry\n`);copyBtnbtn_aac54ceb89e545d6808593283ac9f76d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aac54ceb89e545d6808593283ac9f76d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -986,11 +986,11 @@ let res = copyTextToClipboard(`docker pull ubuntu:22.04          # pull image fr
 <h3 id="org279751e">Containers</h3>
 <div class="outline-text-3" id="text-org279751e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a3b63de8a8234a31b9f04a8d93bf55a0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_79518d339df7486397d8294c6cd72979>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a3b63de8a8234a31b9f04a8d93bf55a0=document.querySelector('button[name=btn_a3b63de8a8234a31b9f04a8d93bf55a0]');
-copyBtnbtn_a3b63de8a8234a31b9f04a8d93bf55a0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`docker run ubuntu:22.04           # create and start container\ndocker run -it ubuntu:22.04 bash  # interactive shell\ndocker run -d nginx               # run detached (background)\ndocker run -d -p 8080:80 nginx    # map host port 8080 to container port 80\ndocker run -v /host/path:/container/path nginx  # mount volume\ndocker run --name mycontainer nginx  # named container\n\ndocker ps                         # list running containers\ndocker ps -a                      # all containers including stopped\ndocker stop mycontainer           # graceful stop\ndocker kill mycontainer           # immediate stop\ndocker rm mycontainer             # remove stopped container\ndocker rm -f mycontainer          # force remove running container\n`);copyBtnbtn_a3b63de8a8234a31b9f04a8d93bf55a0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a3b63de8a8234a31b9f04a8d93bf55a0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_79518d339df7486397d8294c6cd72979=document.querySelector('button[name=btn_79518d339df7486397d8294c6cd72979]');
+copyBtnbtn_79518d339df7486397d8294c6cd72979.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`docker run ubuntu:22.04           # create and start container\ndocker run -it ubuntu:22.04 bash  # interactive shell\ndocker run -d nginx               # run detached (background)\ndocker run -d -p 8080:80 nginx    # map host port 8080 to container port 80\ndocker run -v /host/path:/container/path nginx  # mount volume\ndocker run --name mycontainer nginx  # named container\n\ndocker ps                         # list running containers\ndocker ps -a                      # all containers including stopped\ndocker stop mycontainer           # graceful stop\ndocker kill mycontainer           # immediate stop\ndocker rm mycontainer             # remove stopped container\ndocker rm -f mycontainer          # force remove running container\n`);copyBtnbtn_79518d339df7486397d8294c6cd72979.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_79518d339df7486397d8294c6cd72979.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1015,11 +1015,11 @@ docker ps                         <span style="color: var(--clr-comment-delimite
 <h3 id="orgffd2985">Interacting with Running Containers</h3>
 <div class="outline-text-3" id="text-orgffd2985">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_60db4676e5c84edc9427bbbb284ddede>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2088aabd57e44f4a8f27e497bc93480f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_60db4676e5c84edc9427bbbb284ddede=document.querySelector('button[name=btn_60db4676e5c84edc9427bbbb284ddede]');
-copyBtnbtn_60db4676e5c84edc9427bbbb284ddede.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`docker exec -it mycontainer bash  # shell into running container\ndocker logs mycontainer           # view stdout/stderr\ndocker logs -f mycontainer        # follow logs\ndocker cp file.txt mycontainer:/tmp/  # copy file into container\ndocker inspect mycontainer        # full JSON config and state\n`);copyBtnbtn_60db4676e5c84edc9427bbbb284ddede.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_60db4676e5c84edc9427bbbb284ddede.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2088aabd57e44f4a8f27e497bc93480f=document.querySelector('button[name=btn_2088aabd57e44f4a8f27e497bc93480f]');
+copyBtnbtn_2088aabd57e44f4a8f27e497bc93480f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`docker exec -it mycontainer bash  # shell into running container\ndocker logs mycontainer           # view stdout/stderr\ndocker logs -f mycontainer        # follow logs\ndocker cp file.txt mycontainer:/tmp/  # copy file into container\ndocker inspect mycontainer        # full JSON config and state\n`);copyBtnbtn_2088aabd57e44f4a8f27e497bc93480f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2088aabd57e44f4a8f27e497bc93480f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1036,11 +1036,11 @@ let res = copyTextToClipboard(`docker exec -it mycontainer bash  # shell into ru
 <h3 id="orgc538f7a">Volumes</h3>
 <div class="outline-text-3" id="text-orgc538f7a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_981f9f6eefda427ea4bbc0ea3fe39704>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0c2ad051240548b4878bd31fb654d817>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_981f9f6eefda427ea4bbc0ea3fe39704=document.querySelector('button[name=btn_981f9f6eefda427ea4bbc0ea3fe39704]');
-copyBtnbtn_981f9f6eefda427ea4bbc0ea3fe39704.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`docker volume create mydata\ndocker volume ls\ndocker volume rm mydata\ndocker run -v mydata:/app/data myapp  # mount named volume\n`);copyBtnbtn_981f9f6eefda427ea4bbc0ea3fe39704.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_981f9f6eefda427ea4bbc0ea3fe39704.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0c2ad051240548b4878bd31fb654d817=document.querySelector('button[name=btn_0c2ad051240548b4878bd31fb654d817]');
+copyBtnbtn_0c2ad051240548b4878bd31fb654d817.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`docker volume create mydata\ndocker volume ls\ndocker volume rm mydata\ndocker run -v mydata:/app/data myapp  # mount named volume\n`);copyBtnbtn_0c2ad051240548b4878bd31fb654d817.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0c2ad051240548b4878bd31fb654d817.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1056,11 +1056,11 @@ docker run -v mydata:/app/data myapp  <span style="color: var(--clr-comment-deli
 <h3 id="org29d2afe">Cleanup</h3>
 <div class="outline-text-3" id="text-org29d2afe">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9b44510771114ca6995f7be1c1510e85>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e88fb9a8c2b34aa5b5f545d079ef86f3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9b44510771114ca6995f7be1c1510e85=document.querySelector('button[name=btn_9b44510771114ca6995f7be1c1510e85]');
-copyBtnbtn_9b44510771114ca6995f7be1c1510e85.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`docker system prune               # remove stopped containers, unused images, networks\ndocker system prune -a            # also remove unused images with no containers\ndocker volume prune               # remove unused volumes\n`);copyBtnbtn_9b44510771114ca6995f7be1c1510e85.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9b44510771114ca6995f7be1c1510e85.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e88fb9a8c2b34aa5b5f545d079ef86f3=document.querySelector('button[name=btn_e88fb9a8c2b34aa5b5f545d079ef86f3]');
+copyBtnbtn_e88fb9a8c2b34aa5b5f545d079ef86f3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`docker system prune               # remove stopped containers, unused images, networks\ndocker system prune -a            # also remove unused images with no containers\ndocker volume prune               # remove unused volumes\n`);copyBtnbtn_e88fb9a8c2b34aa5b5f545d079ef86f3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e88fb9a8c2b34aa5b5f545d079ef86f3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1076,11 +1076,11 @@ let res = copyTextToClipboard(`docker system prune               # remove stoppe
 <h2 id="orgdd94d11">Dockerfile Reference</h2>
 <div class="outline-text-2" id="text-orgdd94d11">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>DOCKERFILE</span><button class='copyBtn' name=btn_5066a9fd3a584ecf976070680dc3ec40>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>DOCKERFILE</span><button class='copyBtn' name=btn_30cd9acf6bd44f19b6fb60d6d95fd843>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5066a9fd3a584ecf976070680dc3ec40=document.querySelector('button[name=btn_5066a9fd3a584ecf976070680dc3ec40]');
-copyBtnbtn_5066a9fd3a584ecf976070680dc3ec40.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`FROM ubuntu:22.04                 # base image\n\nWORKDIR /app                      # set working directory\n\nCOPY requirements.txt .           # copy files from host\nRUN pip install -r requirements.txt  # run during build\n\nCOPY . .                          # copy application code\n\nENV PORT=8080                     # set environment variable\n\nEXPOSE 8080                       # document the port (does not publish)\n\nCMD [\"python3\", \"app.py\"]         # default command when container starts\n`);copyBtnbtn_5066a9fd3a584ecf976070680dc3ec40.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5066a9fd3a584ecf976070680dc3ec40.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_30cd9acf6bd44f19b6fb60d6d95fd843=document.querySelector('button[name=btn_30cd9acf6bd44f19b6fb60d6d95fd843]');
+copyBtnbtn_30cd9acf6bd44f19b6fb60d6d95fd843.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`FROM ubuntu:22.04                 # base image\n\nWORKDIR /app                      # set working directory\n\nCOPY requirements.txt .           # copy files from host\nRUN pip install -r requirements.txt  # run during build\n\nCOPY . .                          # copy application code\n\nENV PORT=8080                     # set environment variable\n\nEXPOSE 8080                       # document the port (does not publish)\n\nCMD [\"python3\", \"app.py\"]         # default command when container starts\n`);copyBtnbtn_30cd9acf6bd44f19b6fb60d6d95fd843.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_30cd9acf6bd44f19b6fb60d6d95fd843.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1117,16 +1117,16 @@ reuse.
 <h2 id="orgc6f8f87">Security Context</h2>
 <div class="outline-text-2" id="text-orgc6f8f87">
 <p>
-See <a href="../org/20260314T005620--container-escape__concept_cybersecurity_technique.html">Container Escape</a> for breakout techniques. Key security
+See <a href="20260314T005620--container-escape__concept_cybersecurity_technique.html">Container Escape</a> for breakout techniques. Key security
 considerations:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_27891fe174524ffcb333ebec8f386083>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c4e76359eac541f28b3cb686bdee45c9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_27891fe174524ffcb333ebec8f386083=document.querySelector('button[name=btn_27891fe174524ffcb333ebec8f386083]');
-copyBtnbtn_27891fe174524ffcb333ebec8f386083.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Never run containers as root if avoidable\ndocker run --user 1000:1000 myapp\n\n# Read-only filesystem — prevents writes outside volumes\ndocker run --read-only myapp\n\n# Drop capabilities\ndocker run --cap-drop ALL --cap-add NET_BIND_SERVICE myapp\n\n# Check what user a running container is using\ndocker exec mycontainer whoami\ndocker inspect mycontainer | grep -i user\n`);copyBtnbtn_27891fe174524ffcb333ebec8f386083.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_27891fe174524ffcb333ebec8f386083.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c4e76359eac541f28b3cb686bdee45c9=document.querySelector('button[name=btn_c4e76359eac541f28b3cb686bdee45c9]');
+copyBtnbtn_c4e76359eac541f28b3cb686bdee45c9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Never run containers as root if avoidable\ndocker run --user 1000:1000 myapp\n\n# Read-only filesystem — prevents writes outside volumes\ndocker run --read-only myapp\n\n# Drop capabilities\ndocker run --cap-drop ALL --cap-add NET_BIND_SERVICE myapp\n\n# Check what user a running container is using\ndocker exec mycontainer whoami\ndocker inspect mycontainer | grep -i user\n`);copyBtnbtn_c4e76359eac541f28b3cb686bdee45c9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c4e76359eac541f28b3cb686bdee45c9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

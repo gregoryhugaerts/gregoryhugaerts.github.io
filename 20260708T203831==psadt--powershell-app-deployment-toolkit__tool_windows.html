@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:41 -->
+<!-- 2026-07-20 Mon 15:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Powershell App Deployment Toolkit</title>
@@ -868,13 +868,13 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5e0e3ab">Installation</a></li>
+<li><a href="#orgd542cf6">Installation</a></li>
 <li><a href="#orgc6c0bdb">Folder Structure</a></li>
 <li><a href="#org60b5ce7">Deployment Phases</a></li>
 <li><a href="#org365e215">Deploy-Application.ps1 Structure</a></li>
 <li><a href="#org8a463b8">Key Functions</a>
 <ul>
-<li><a href="#orgd542cf6">Installation</a></li>
+<li><a href="#orgd94d05b">Installation</a></li>
 <li><a href="#orgaed1896">User interaction</a></li>
 <li><a href="#org74bb1c7">File and registry operations</a></li>
 <li><a href="#orgb57c6f5">Detection and conditions</a></li>
@@ -903,18 +903,18 @@ GitHub: <a href="https://github.com/PSAppDeployToolkit/PSAppDeployToolkit">https
 </p>
 
 <p>
-Related: <a href="../org/20260314T005652--powershell__tool.html">PowerShell</a>
+Related: <a href="20260314T005652--powershell__tool.html">PowerShell</a>
          <a href="Microsoft Intune.html">Microsoft Intune</a>
 </p>
-<div id="outline-container-org5e0e3ab" class="outline-2">
-<h2 id="org5e0e3ab">Installation</h2>
-<div class="outline-text-2" id="text-org5e0e3ab">
+<div id="outline-container-orgd542cf6" class="outline-2">
+<h2 id="orgd542cf6">Installation</h2>
+<div class="outline-text-2" id="text-orgd542cf6">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_c7776d20bb064bd79b222c425eb6fab6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_36bd9810f3084133905eba4e72460c78>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c7776d20bb064bd79b222c425eb6fab6=document.querySelector('button[name=btn_c7776d20bb064bd79b222c425eb6fab6]');
-copyBtnbtn_c7776d20bb064bd79b222c425eb6fab6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# From PowerShell Gallery (recommended)\nInstall-Module -Name PSAppDeployToolkit -Scope CurrentUser\n\n# Or download the zip from GitHub releases and extract\n# https://github.com/PSAppDeployToolkit/PSAppDeployToolkit/releases\n`);copyBtnbtn_c7776d20bb064bd79b222c425eb6fab6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c7776d20bb064bd79b222c425eb6fab6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_36bd9810f3084133905eba4e72460c78=document.querySelector('button[name=btn_36bd9810f3084133905eba4e72460c78]');
+copyBtnbtn_36bd9810f3084133905eba4e72460c78.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# From PowerShell Gallery (recommended)\nInstall-Module -Name PSAppDeployToolkit -Scope CurrentUser\n\n# Or download the zip from GitHub releases and extract\n# https://github.com/PSAppDeployToolkit/PSAppDeployToolkit/releases\n`);copyBtnbtn_36bd9810f3084133905eba4e72460c78.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_36bd9810f3084133905eba4e72460c78.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -931,11 +931,11 @@ let res = copyTextToClipboard(`# From PowerShell Gallery (recommended)\nInstall-
 <h2 id="orgc6c0bdb">Folder Structure</h2>
 <div class="outline-text-2" id="text-orgc6c0bdb">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_87d357f3f093482f945f5f2d4215c13b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_96e4c19089944f4dbd4bd18105d9c97c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_87d357f3f093482f945f5f2d4215c13b=document.querySelector('button[name=btn_87d357f3f093482f945f5f2d4215c13b]');
-copyBtnbtn_87d357f3f093482f945f5f2d4215c13b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`MyApp-1.0\\\n├── Deploy-Application.ps1      ← your deployment script\n├── Deploy-Application.exe      ← launcher (runs as SYSTEM)\n├── AppDeployToolkit\\           ← toolkit files (don't edit)\n│   ├── PSAppDeployToolkit\\     ← PowerShell module\n│   └── AppDeployToolkitConfig.psd1\n└── Files\\                      ← your installer files go here\n    ├── setup.msi\n    └── setup.exe\n`);copyBtnbtn_87d357f3f093482f945f5f2d4215c13b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_87d357f3f093482f945f5f2d4215c13b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_96e4c19089944f4dbd4bd18105d9c97c=document.querySelector('button[name=btn_96e4c19089944f4dbd4bd18105d9c97c]');
+copyBtnbtn_96e4c19089944f4dbd4bd18105d9c97c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`MyApp-1.0\\\n├── Deploy-Application.ps1      ← your deployment script\n├── Deploy-Application.exe      ← launcher (runs as SYSTEM)\n├── AppDeployToolkit\\           ← toolkit files (don't edit)\n│   ├── PSAppDeployToolkit\\     ← PowerShell module\n│   └── AppDeployToolkitConfig.psd1\n└── Files\\                      ← your installer files go here\n    ├── setup.msi\n    └── setup.exe\n`);copyBtnbtn_96e4c19089944f4dbd4bd18105d9c97c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_96e4c19089944f4dbd4bd18105d9c97c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1006,11 +1006,11 @@ Same three phases apply to Uninstallation and Repair.
 <h2 id="org365e215">Deploy-Application.ps1 Structure</h2>
 <div class="outline-text-2" id="text-org365e215">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_f0549a8b997e42b79574750fe9c4c44d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_afeba3200c18414a9296463ad5c67d50>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f0549a8b997e42b79574750fe9c4c44d=document.querySelector('button[name=btn_f0549a8b997e42b79574750fe9c4c44d]');
-copyBtnbtn_f0549a8b997e42b79574750fe9c4c44d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`$adtSession = @{\n    AppName    = 'Mozilla Firefox'\n    AppVersion = '126.0'\n    AppVendor  = 'Mozilla'\n    DeploymentType = 'Install'   # Install | Uninstall | Repair\n}\n\n# Open the session\nOpen-ADTSession -SessionState $ExecutionContext.SessionState @adtSession\n\n##*===============================================\n##* PRE-INSTALLATION\n##*===============================================\n\n# Prompt user to close Firefox before installing\nShow-ADTInstallationWelcome -CloseProcesses 'firefox' -AllowDefer -DeferTimes 3\n\n##*===============================================\n##* INSTALLATION\n##*===============================================\n\n# Install MSI\nStart-ADTMsiProcess -Action 'Install' -FilePath 'Firefox Setup 126.0.msi' \`\n    -AdditionalArguments '/QB-'\n\n# Or install EXE\nStart-Process -FilePath 'Files\\setup.exe' -ArgumentList '/S' -Wait\n\n##*===============================================\n##* POST-INSTALLATION\n##*===============================================\n\n# Set a registry key\nSet-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp' -Name 'Installed' -Value '1'\n\n# Close the session\nClose-ADTSession\n`);copyBtnbtn_f0549a8b997e42b79574750fe9c4c44d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f0549a8b997e42b79574750fe9c4c44d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_afeba3200c18414a9296463ad5c67d50=document.querySelector('button[name=btn_afeba3200c18414a9296463ad5c67d50]');
+copyBtnbtn_afeba3200c18414a9296463ad5c67d50.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`$adtSession = @{\n    AppName    = 'Mozilla Firefox'\n    AppVersion = '126.0'\n    AppVendor  = 'Mozilla'\n    DeploymentType = 'Install'   # Install | Uninstall | Repair\n}\n\n# Open the session\nOpen-ADTSession -SessionState $ExecutionContext.SessionState @adtSession\n\n##*===============================================\n##* PRE-INSTALLATION\n##*===============================================\n\n# Prompt user to close Firefox before installing\nShow-ADTInstallationWelcome -CloseProcesses 'firefox' -AllowDefer -DeferTimes 3\n\n##*===============================================\n##* INSTALLATION\n##*===============================================\n\n# Install MSI\nStart-ADTMsiProcess -Action 'Install' -FilePath 'Firefox Setup 126.0.msi' \`\n    -AdditionalArguments '/QB-'\n\n# Or install EXE\nStart-Process -FilePath 'Files\\setup.exe' -ArgumentList '/S' -Wait\n\n##*===============================================\n##* POST-INSTALLATION\n##*===============================================\n\n# Set a registry key\nSet-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp' -Name 'Installed' -Value '1'\n\n# Close the session\nClose-ADTSession\n`);copyBtnbtn_afeba3200c18414a9296463ad5c67d50.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_afeba3200c18414a9296463ad5c67d50.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1059,15 +1059,15 @@ let res = copyTextToClipboard(`$adtSession = @{\n    AppName    = 'Mozilla Firef
 <h2 id="org8a463b8">Key Functions</h2>
 <div class="outline-text-2" id="text-org8a463b8">
 </div>
-<div id="outline-container-orgd542cf6" class="outline-3">
-<h3 id="orgd542cf6">Installation</h3>
-<div class="outline-text-3" id="text-orgd542cf6">
+<div id="outline-container-orgd94d05b" class="outline-3">
+<h3 id="orgd94d05b">Installation</h3>
+<div class="outline-text-3" id="text-orgd94d05b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_d90160d5a9bc4e6d90ade8f20ad2bfb9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_4ab785e14fd4409a936cb856161e6207>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d90160d5a9bc4e6d90ade8f20ad2bfb9=document.querySelector('button[name=btn_d90160d5a9bc4e6d90ade8f20ad2bfb9]');
-copyBtnbtn_d90160d5a9bc4e6d90ade8f20ad2bfb9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# MSI install / uninstall\nStart-ADTMsiProcess -Action 'Install' -FilePath 'app.msi'\nStart-ADTMsiProcess -Action 'Uninstall' -FilePath 'app.msi'\nStart-ADTMsiProcess -Action 'Uninstall' -ProductCode '{GUID}'\n\n# Run any executable\nStart-Process -FilePath 'Files\\setup.exe' -ArgumentList '/silent' -Wait\n`);copyBtnbtn_d90160d5a9bc4e6d90ade8f20ad2bfb9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d90160d5a9bc4e6d90ade8f20ad2bfb9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4ab785e14fd4409a936cb856161e6207=document.querySelector('button[name=btn_4ab785e14fd4409a936cb856161e6207]');
+copyBtnbtn_4ab785e14fd4409a936cb856161e6207.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# MSI install / uninstall\nStart-ADTMsiProcess -Action 'Install' -FilePath 'app.msi'\nStart-ADTMsiProcess -Action 'Uninstall' -FilePath 'app.msi'\nStart-ADTMsiProcess -Action 'Uninstall' -ProductCode '{GUID}'\n\n# Run any executable\nStart-Process -FilePath 'Files\\setup.exe' -ArgumentList '/silent' -Wait\n`);copyBtnbtn_4ab785e14fd4409a936cb856161e6207.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4ab785e14fd4409a936cb856161e6207.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1086,11 +1086,11 @@ let res = copyTextToClipboard(`# MSI install / uninstall\nStart-ADTMsiProcess -A
 <h3 id="orgaed1896">User interaction</h3>
 <div class="outline-text-3" id="text-orgaed1896">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_442e46937bfc4429bd76aa36f321a900>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_b9be27d047bb4a6b97da7108a4208368>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_442e46937bfc4429bd76aa36f321a900=document.querySelector('button[name=btn_442e46937bfc4429bd76aa36f321a900]');
-copyBtnbtn_442e46937bfc4429bd76aa36f321a900.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Prompt user to close apps (with optional deferral)\nShow-ADTInstallationWelcome -CloseProcesses 'word','excel' -AllowDefer -DeferTimes 3\n\n# Show progress bar\nShow-ADTInstallationProgress -StatusMessage 'Installing Firefox...'\n\n# Show completion\nShow-ADTInstallationPrompt -Message 'Installation complete.' -ButtonRightText 'OK'\n\n# Prompt restart\nShow-ADTInstallationRestartPrompt -CountdownSeconds 120\n`);copyBtnbtn_442e46937bfc4429bd76aa36f321a900.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_442e46937bfc4429bd76aa36f321a900.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b9be27d047bb4a6b97da7108a4208368=document.querySelector('button[name=btn_b9be27d047bb4a6b97da7108a4208368]');
+copyBtnbtn_b9be27d047bb4a6b97da7108a4208368.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Prompt user to close apps (with optional deferral)\nShow-ADTInstallationWelcome -CloseProcesses 'word','excel' -AllowDefer -DeferTimes 3\n\n# Show progress bar\nShow-ADTInstallationProgress -StatusMessage 'Installing Firefox...'\n\n# Show completion\nShow-ADTInstallationPrompt -Message 'Installation complete.' -ButtonRightText 'OK'\n\n# Prompt restart\nShow-ADTInstallationRestartPrompt -CountdownSeconds 120\n`);copyBtnbtn_b9be27d047bb4a6b97da7108a4208368.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b9be27d047bb4a6b97da7108a4208368.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1113,11 +1113,11 @@ let res = copyTextToClipboard(`# Prompt user to close apps (with optional deferr
 <h3 id="org74bb1c7">File and registry operations</h3>
 <div class="outline-text-3" id="text-org74bb1c7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_ae02231ee0454a56b98654471cf2ca0d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_ab826009956f46d5944efb10582cc132>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ae02231ee0454a56b98654471cf2ca0d=document.querySelector('button[name=btn_ae02231ee0454a56b98654471cf2ca0d]');
-copyBtnbtn_ae02231ee0454a56b98654471cf2ca0d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Copy files\nCopy-ADTFile -Path 'Files\\config.ini' -Destination \"$env:ProgramFiles\\MyApp\\\"\n\n# Registry\nSet-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp' -Name 'Setting' -Value 'Value'\nRemove-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp'\nGet-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp' -Value 'Setting'\n`);copyBtnbtn_ae02231ee0454a56b98654471cf2ca0d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ae02231ee0454a56b98654471cf2ca0d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ab826009956f46d5944efb10582cc132=document.querySelector('button[name=btn_ab826009956f46d5944efb10582cc132]');
+copyBtnbtn_ab826009956f46d5944efb10582cc132.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Copy files\nCopy-ADTFile -Path 'Files\\config.ini' -Destination \"$env:ProgramFiles\\MyApp\\\"\n\n# Registry\nSet-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp' -Name 'Setting' -Value 'Value'\nRemove-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp'\nGet-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp' -Value 'Setting'\n`);copyBtnbtn_ab826009956f46d5944efb10582cc132.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ab826009956f46d5944efb10582cc132.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1136,11 +1136,11 @@ let res = copyTextToClipboard(`# Copy files\nCopy-ADTFile -Path 'Files\\config.i
 <h3 id="orgb57c6f5">Detection and conditions</h3>
 <div class="outline-text-3" id="text-orgb57c6f5">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_da93d89943774aa38365a614aa4a8e87>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_ec71867a76984899877affcb05d15c5e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_da93d89943774aa38365a614aa4a8e87=document.querySelector('button[name=btn_da93d89943774aa38365a614aa4a8e87]');
-copyBtnbtn_da93d89943774aa38365a614aa4a8e87.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Check if application is already installed\n$installed = Get-ADTApplication -Name 'Firefox'\nif ($installed) { Close-ADTSession -ExitCode 0 }   # already installed, exit cleanly\n\n# Get free disk space\n$freeDisk = Get-ADTFreeDiskSpace -Drive 'C:'\n`);copyBtnbtn_da93d89943774aa38365a614aa4a8e87.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_da93d89943774aa38365a614aa4a8e87.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ec71867a76984899877affcb05d15c5e=document.querySelector('button[name=btn_ec71867a76984899877affcb05d15c5e]');
+copyBtnbtn_ec71867a76984899877affcb05d15c5e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Check if application is already installed\n$installed = Get-ADTApplication -Name 'Firefox'\nif ($installed) { Close-ADTSession -ExitCode 0 }   # already installed, exit cleanly\n\n# Get free disk space\n$freeDisk = Get-ADTFreeDiskSpace -Drive 'C:'\n`);copyBtnbtn_ec71867a76984899877affcb05d15c5e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ec71867a76984899877affcb05d15c5e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1203,11 +1203,11 @@ let res = copyTextToClipboard(`# Check if application is already installed\n$ins
 </table>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_6abc75e9204149e3a493b5f6d2f59d6a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_132826bad42047cc908ea8d56e31b16f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6abc75e9204149e3a493b5f6d2f59d6a=document.querySelector('button[name=btn_6abc75e9204149e3a493b5f6d2f59d6a]');
-copyBtnbtn_6abc75e9204149e3a493b5f6d2f59d6a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Override mode at runtime\nDeploy-Application.exe -DeploymentType Install -DeployMode Silent\n`);copyBtnbtn_6abc75e9204149e3a493b5f6d2f59d6a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6abc75e9204149e3a493b5f6d2f59d6a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_132826bad42047cc908ea8d56e31b16f=document.querySelector('button[name=btn_132826bad42047cc908ea8d56e31b16f]');
+copyBtnbtn_132826bad42047cc908ea8d56e31b16f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Override mode at runtime\nDeploy-Application.exe -DeploymentType Install -DeployMode Silent\n`);copyBtnbtn_132826bad42047cc908ea8d56e31b16f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_132826bad42047cc908ea8d56e31b16f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1225,11 +1225,11 @@ No longer requires ServiceUI to display UI from SYSTEM context — v4 uses a cli
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9064ca37b41d44ac95020b92acaee361>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9dfa3b6f185b41ed8d1a0ea19976c4e1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9064ca37b41d44ac95020b92acaee361=document.querySelector('button[name=btn_9064ca37b41d44ac95020b92acaee361]');
-copyBtnbtn_9064ca37b41d44ac95020b92acaee361.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Intune Win32 app settings:\nInstall command:   Deploy-Application.exe -DeploymentType Install\nUninstall command: Deploy-Application.exe -DeploymentType Uninstall\nDetection rule:    Registry key or file set during Post-installation\n`);copyBtnbtn_9064ca37b41d44ac95020b92acaee361.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9064ca37b41d44ac95020b92acaee361.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9dfa3b6f185b41ed8d1a0ea19976c4e1=document.querySelector('button[name=btn_9dfa3b6f185b41ed8d1a0ea19976c4e1]');
+copyBtnbtn_9dfa3b6f185b41ed8d1a0ea19976c4e1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Intune Win32 app settings:\nInstall command:   Deploy-Application.exe -DeploymentType Install\nUninstall command: Deploy-Application.exe -DeploymentType Uninstall\nDetection rule:    Registry key or file set during Post-installation\n`);copyBtnbtn_9dfa3b6f185b41ed8d1a0ea19976c4e1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9dfa3b6f185b41ed8d1a0ea19976c4e1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1253,11 +1253,11 @@ PSADT provides extensive logging of both toolkit functions and MSI installation/
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_46b66b9dd3904742be67880f723bd8de>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_135addc02c8b45bd92b2af85417eda03>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_46b66b9dd3904742be67880f723bd8de=document.querySelector('button[name=btn_46b66b9dd3904742be67880f723bd8de]');
-copyBtnbtn_46b66b9dd3904742be67880f723bd8de.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Default log location: C:\\Windows\\Logs\\Software\\\nLog filename:         AppName_DeploymentType_DateTime.log\n\nLogs capture:\n— Every function called\n— MSI verbose output\n— Exit codes\n— User interaction choices (deferred, accepted, etc.)\n`);copyBtnbtn_46b66b9dd3904742be67880f723bd8de.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_46b66b9dd3904742be67880f723bd8de.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_135addc02c8b45bd92b2af85417eda03=document.querySelector('button[name=btn_135addc02c8b45bd92b2af85417eda03]');
+copyBtnbtn_135addc02c8b45bd92b2af85417eda03.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Default log location: C:\\Windows\\Logs\\Software\\\nLog filename:         AppName_DeploymentType_DateTime.log\n\nLogs capture:\n— Every function called\n— MSI verbose output\n— Exit codes\n— User interaction choices (deferred, accepted, etc.)\n`);copyBtnbtn_135addc02c8b45bd92b2af85417eda03.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_135addc02c8b45bd92b2af85417eda03.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

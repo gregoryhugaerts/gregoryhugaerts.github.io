@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:39 -->
+<!-- 2026-07-20 Mon 15:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Insecure Direct Object References</title>
@@ -915,11 +915,11 @@ Sheet for the full disambiguation.
 </p>
 
 <p>
-Related: <a href="../org/20260621T180112==bola--broken-object-level-authorisation__cybersecurity_pentesting_technique.html">Broken Object Level Authorisation</a>
-         <a href="../org/20260206T060721--path-traversal__cybersecurity_technique.html">Path Traversal</a>
-         <a href="../org/20260207T072049--owasp-top-10__concept_cybersecurity.html">OWASP Top 10</a>
-         <a href="../org/20260614T002010--pt1-vulnerability-classification-cheat-sheet__comparison_cybersecurity_pentesting_reference.html">PT1 Vulnerability Classification Cheat Sheet</a>
-         <a href="../org/20260611T064753--web-application-testing-methodology__cybersecurity_pentesting_technique.html">Web Application Testing Methodology</a>
+Related: <a href="20260621T180112==bola--broken-object-level-authorisation__cybersecurity_pentesting_technique.html">Broken Object Level Authorisation</a>
+         <a href="20260206T060721--path-traversal__cybersecurity_technique.html">Path Traversal</a>
+         <a href="20260207T072049--owasp-top-10__concept_cybersecurity.html">OWASP Top 10</a>
+         <a href="20260614T002010--pt1-vulnerability-classification-cheat-sheet__comparison_cybersecurity_pentesting_reference.html">PT1 Vulnerability Classification Cheat Sheet</a>
+         <a href="20260611T064753--web-application-testing-methodology__cybersecurity_pentesting_technique.html">Web Application Testing Methodology</a>
 </p>
 <div id="outline-container-orgf2da952" class="outline-2">
 <h2 id="orgf2da952">Common Techniques</h2>
@@ -955,11 +955,11 @@ modify the object IDs within the body to target other resources.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_8959946582544bf6899e94baf39c8477>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_4740d56591d94aae996ec0d9fd2a6f1a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8959946582544bf6899e94baf39c8477=document.querySelector('button[name=btn_8959946582544bf6899e94baf39c8477]');
-copyBtnbtn_8959946582544bf6899e94baf39c8477.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Original\n{\"account_number\": \"USER_ABC_001\", \"action\": \"update_details\"}\n\n# Tampered — targeting another user's account\n{\"account_number\": \"USER_XYZ_002\", \"action\": \"update_details\"}\n`);copyBtnbtn_8959946582544bf6899e94baf39c8477.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8959946582544bf6899e94baf39c8477.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4740d56591d94aae996ec0d9fd2a6f1a=document.querySelector('button[name=btn_4740d56591d94aae996ec0d9fd2a6f1a]');
+copyBtnbtn_4740d56591d94aae996ec0d9fd2a6f1a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Original\n{\"account_number\": \"USER_ABC_001\", \"action\": \"update_details\"}\n\n# Tampered — targeting another user's account\n{\"account_number\": \"USER_XYZ_002\", \"action\": \"update_details\"}\n`);copyBtnbtn_4740d56591d94aae996ec0d9fd2a6f1a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4740d56591d94aae996ec0d9fd2a6f1a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1001,7 +1001,7 @@ the <code>Referer</code> header might bypass some checks.
 <p>
 Though often categorised as a separate vulnerability, when an
 IDOR deals with file names or paths, it can overlap with
-<a href="../org/20260206T060721--path-traversal__cybersecurity_technique.html">Path Traversal</a>. If an application
+<a href="20260206T060721--path-traversal__cybersecurity_technique.html">Path Traversal</a>. If an application
 serves files based on a user-supplied filename (e.g.,
 <code>/download?file=report.pdf</code>), an attacker might try
 <code>file</code>../confidential/passwords.txt= to access files outside their
@@ -1095,7 +1095,7 @@ data belonging to other users by altering the parameter value.
 <p>
 <b>Evidence:</b>
 </p>
-<pre class="example" id="org4e1f3d7">
+<pre class="example" id="orgc614a91">
 [Raw request/response pair showing access to another user's data
 using a manipulated ID, ideally captured with two distinct test
 accounts]
