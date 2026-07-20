@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:10 -->
+<!-- 2026-07-20 Mon 15:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ffuf</title>
@@ -1038,11 +1038,11 @@ identify the noise pattern, then re-run with filters applied.
 <h3 id="orga60c9d8">Directory fuzzing</h3>
 <div class="outline-text-3" id="text-orga60c9d8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c432f0eea0e64fc1a21ffe098cbc64bb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1ba4a1ba11ef480096d1b9d4b0b00ae4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c432f0eea0e64fc1a21ffe098cbc64bb=document.querySelector('button[name=btn_c432f0eea0e64fc1a21ffe098cbc64bb]');
-copyBtnbtn_c432f0eea0e64fc1a21ffe098cbc64bb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ffuf -u http://$IP/FUZZ \\\n     -w /usr/share/seclists/Discovery/Web-Content/common.txt \\\n     -fc 404 -fs 1234\n`);copyBtnbtn_c432f0eea0e64fc1a21ffe098cbc64bb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c432f0eea0e64fc1a21ffe098cbc64bb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1ba4a1ba11ef480096d1b9d4b0b00ae4=document.querySelector('button[name=btn_1ba4a1ba11ef480096d1b9d4b0b00ae4]');
+copyBtnbtn_1ba4a1ba11ef480096d1b9d4b0b00ae4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ffuf -u http://$IP/FUZZ \\\n     -w /usr/share/seclists/Discovery/Web-Content/common.txt \\\n     -fc 404 -fs 1234\n`);copyBtnbtn_1ba4a1ba11ef480096d1b9d4b0b00ae4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1ba4a1ba11ef480096d1b9d4b0b00ae4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1056,11 +1056,11 @@ let res = copyTextToClipboard(`ffuf -u http://$IP/FUZZ \\\n     -w /usr/share/se
 With extension appending:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8774d971ca1b43759cc430a6418f8487>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8d1e118733144d89ab25d6cbfb099c74>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8774d971ca1b43759cc430a6418f8487=document.querySelector('button[name=btn_8774d971ca1b43759cc430a6418f8487]');
-copyBtnbtn_8774d971ca1b43759cc430a6418f8487.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ffuf -u http://$IP/FUZZ \\\n     -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt \\\n     -e .php,.html,.txt -fc 404\n`);copyBtnbtn_8774d971ca1b43759cc430a6418f8487.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8774d971ca1b43759cc430a6418f8487.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8d1e118733144d89ab25d6cbfb099c74=document.querySelector('button[name=btn_8d1e118733144d89ab25d6cbfb099c74]');
+copyBtnbtn_8d1e118733144d89ab25d6cbfb099c74.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ffuf -u http://$IP/FUZZ \\\n     -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt \\\n     -e .php,.html,.txt -fc 404\n`);copyBtnbtn_8d1e118733144d89ab25d6cbfb099c74.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8d1e118733144d89ab25d6cbfb099c74.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1080,11 +1080,11 @@ size first, then filter it out with <code>-fs</code>.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a96fac0c6ed3429a900366553b65afdb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f8a9f35aaefe4006866394d26a9365dc>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a96fac0c6ed3429a900366553b65afdb=document.querySelector('button[name=btn_a96fac0c6ed3429a900366553b65afdb]');
-copyBtnbtn_a96fac0c6ed3429a900366553b65afdb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Establish baseline size\nffuf -u http://$IP -H \"Host: test.example.com\" \\\n     -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt\n\n# Re-run filtering baseline\nffuf -u http://$IP -H \"Host: FUZZ.example.com\" \\\n     -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \\\n     -fs <baseline_size>\n`);copyBtnbtn_a96fac0c6ed3429a900366553b65afdb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a96fac0c6ed3429a900366553b65afdb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f8a9f35aaefe4006866394d26a9365dc=document.querySelector('button[name=btn_f8a9f35aaefe4006866394d26a9365dc]');
+copyBtnbtn_f8a9f35aaefe4006866394d26a9365dc.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Establish baseline size\nffuf -u http://$IP -H \"Host: test.example.com\" \\\n     -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt\n\n# Re-run filtering baseline\nffuf -u http://$IP -H \"Host: FUZZ.example.com\" \\\n     -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \\\n     -fs <baseline_size>\n`);copyBtnbtn_f8a9f35aaefe4006866394d26a9365dc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f8a9f35aaefe4006866394d26a9365dc.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1104,11 +1104,11 @@ let res = copyTextToClipboard(`# Establish baseline size\nffuf -u http://$IP -H 
 <h3 id="org0bce560">GET parameter name discovery</h3>
 <div class="outline-text-3" id="text-org0bce560">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ae6cb0e06b3447dfa44bf921d3743c9f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c1c7a736125247bb9fd1630010a4873d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ae6cb0e06b3447dfa44bf921d3743c9f=document.querySelector('button[name=btn_ae6cb0e06b3447dfa44bf921d3743c9f]');
-copyBtnbtn_ae6cb0e06b3447dfa44bf921d3743c9f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ffuf -u \"http://$IP/page?FUZZ=test\" \\\n     -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt \\\n     -fs 1234\n`);copyBtnbtn_ae6cb0e06b3447dfa44bf921d3743c9f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ae6cb0e06b3447dfa44bf921d3743c9f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c1c7a736125247bb9fd1630010a4873d=document.querySelector('button[name=btn_c1c7a736125247bb9fd1630010a4873d]');
+copyBtnbtn_c1c7a736125247bb9fd1630010a4873d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ffuf -u \"http://$IP/page?FUZZ=test\" \\\n     -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt \\\n     -fs 1234\n`);copyBtnbtn_c1c7a736125247bb9fd1630010a4873d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c1c7a736125247bb9fd1630010a4873d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1123,11 +1123,11 @@ let res = copyTextToClipboard(`ffuf -u \"http://$IP/page?FUZZ=test\" \\\n     -w
 <h3 id="org63a16bf">GET parameter value fuzzing</h3>
 <div class="outline-text-3" id="text-org63a16bf">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c4513ae5ef1147acaec7fe45a0f11f22>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_223ec007d5564270baa2b52fca4dfd34>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c4513ae5ef1147acaec7fe45a0f11f22=document.querySelector('button[name=btn_c4513ae5ef1147acaec7fe45a0f11f22]');
-copyBtnbtn_c4513ae5ef1147acaec7fe45a0f11f22.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ffuf -u \"http://$IP/page?id=FUZZ\" \\\n     -w /usr/share/seclists/Fuzzing/integers.txt \\\n     -mc 200\n`);copyBtnbtn_c4513ae5ef1147acaec7fe45a0f11f22.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c4513ae5ef1147acaec7fe45a0f11f22.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_223ec007d5564270baa2b52fca4dfd34=document.querySelector('button[name=btn_223ec007d5564270baa2b52fca4dfd34]');
+copyBtnbtn_223ec007d5564270baa2b52fca4dfd34.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ffuf -u \"http://$IP/page?id=FUZZ\" \\\n     -w /usr/share/seclists/Fuzzing/integers.txt \\\n     -mc 200\n`);copyBtnbtn_223ec007d5564270baa2b52fca4dfd34.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_223ec007d5564270baa2b52fca4dfd34.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1142,11 +1142,11 @@ let res = copyTextToClipboard(`ffuf -u \"http://$IP/page?id=FUZZ\" \\\n     -w /
 <h3 id="org3e0f0b9">POST body fuzzing</h3>
 <div class="outline-text-3" id="text-org3e0f0b9">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7993dccf0e3d4993879001db44f46bc0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9b79cc27352744f28e5960376faf79d0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7993dccf0e3d4993879001db44f46bc0=document.querySelector('button[name=btn_7993dccf0e3d4993879001db44f46bc0]');
-copyBtnbtn_7993dccf0e3d4993879001db44f46bc0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Form encoded\nffuf -u http://$IP/login -X POST \\\n     -d \"username=admin&password=FUZZ\" \\\n     -H \"Content-Type: application/x-www-form-urlencoded\" \\\n     -w /usr/share/seclists/Passwords/Common-Credentials/10k-most-common.txt \\\n     -fc 401\n\n# JSON body\nffuf -u http://$IP/api/login -X POST \\\n     -d '{\"username\":\"admin\",\"password\":\"FUZZ\"}' \\\n     -H \"Content-Type: application/json\" \\\n     -w /usr/share/seclists/Passwords/Common-Credentials/10k-most-common.txt \\\n     -fc 401\n`);copyBtnbtn_7993dccf0e3d4993879001db44f46bc0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7993dccf0e3d4993879001db44f46bc0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9b79cc27352744f28e5960376faf79d0=document.querySelector('button[name=btn_9b79cc27352744f28e5960376faf79d0]');
+copyBtnbtn_9b79cc27352744f28e5960376faf79d0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Form encoded\nffuf -u http://$IP/login -X POST \\\n     -d \"username=admin&password=FUZZ\" \\\n     -H \"Content-Type: application/x-www-form-urlencoded\" \\\n     -w /usr/share/seclists/Passwords/Common-Credentials/10k-most-common.txt \\\n     -fc 401\n\n# JSON body\nffuf -u http://$IP/api/login -X POST \\\n     -d '{\"username\":\"admin\",\"password\":\"FUZZ\"}' \\\n     -H \"Content-Type: application/json\" \\\n     -w /usr/share/seclists/Passwords/Common-Credentials/10k-most-common.txt \\\n     -fc 401\n`);copyBtnbtn_9b79cc27352744f28e5960376faf79d0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9b79cc27352744f28e5960376faf79d0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

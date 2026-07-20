@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:08 -->
+<!-- 2026-07-20 Mon 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Message Authentication Codes</title>
@@ -974,11 +974,11 @@ frequent choice for signing session tokens/cookies directly.
 <h2 id="orgc61c77e">Computing an HMAC</h2>
 <div class="outline-text-2" id="text-orgc61c77e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7b36cfc4f6de4f2cb853b15767354bff>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_da10a7718ed44ed2ae55ebefd62bb550>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7b36cfc4f6de4f2cb853b15767354bff=document.querySelector('button[name=btn_7b36cfc4f6de4f2cb853b15767354bff]');
-copyBtnbtn_7b36cfc4f6de4f2cb853b15767354bff.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# HMAC-SHA256 of a message with a known key, via openssl\necho -n \"user=admin&role=user\" | openssl dgst -sha256 -hmac \"supersecretkey\"\n`);copyBtnbtn_7b36cfc4f6de4f2cb853b15767354bff.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7b36cfc4f6de4f2cb853b15767354bff.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_da10a7718ed44ed2ae55ebefd62bb550=document.querySelector('button[name=btn_da10a7718ed44ed2ae55ebefd62bb550]');
+copyBtnbtn_da10a7718ed44ed2ae55ebefd62bb550.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# HMAC-SHA256 of a message with a known key, via openssl\necho -n \"user=admin&role=user\" | openssl dgst -sha256 -hmac \"supersecretkey\"\n`);copyBtnbtn_da10a7718ed44ed2ae55ebefd62bb550.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_da10a7718ed44ed2ae55ebefd62bb550.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -988,11 +988,11 @@ let res = copyTextToClipboard(`# HMAC-SHA256 of a message with a known key, via 
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_6a21c14d11a949c3a9bd5711f8164c03>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_0afb64b550b2485896150eeb23b5d613>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6a21c14d11a949c3a9bd5711f8164c03=document.querySelector('button[name=btn_6a21c14d11a949c3a9bd5711f8164c03]');
-copyBtnbtn_6a21c14d11a949c3a9bd5711f8164c03.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import hmac\nimport hashlib\n\nmessage = b\"user=admin&role=user\"\nkey = b\"supersecretkey\"\n\ntag = hmac.new(key, message, hashlib.sha256).hexdigest()\nprint(tag)\n`);copyBtnbtn_6a21c14d11a949c3a9bd5711f8164c03.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6a21c14d11a949c3a9bd5711f8164c03.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0afb64b550b2485896150eeb23b5d613=document.querySelector('button[name=btn_0afb64b550b2485896150eeb23b5d613]');
+copyBtnbtn_0afb64b550b2485896150eeb23b5d613.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import hmac\nimport hashlib\n\nmessage = b\"user=admin&role=user\"\nkey = b\"supersecretkey\"\n\ntag = hmac.new(key, message, hashlib.sha256).hexdigest()\nprint(tag)\n`);copyBtnbtn_0afb64b550b2485896150eeb23b5d613.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0afb64b550b2485896150eeb23b5d613.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1029,11 +1029,11 @@ session cookies with valid signatures.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_00cf640281b54ab1a8d5136d85c07d74>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_dadfb3a689eb440e85f33f3b8bdb71f2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_00cf640281b54ab1a8d5136d85c07d74=document.querySelector('button[name=btn_00cf640281b54ab1a8d5136d85c07d74]');
-copyBtnbtn_00cf640281b54ab1a8d5136d85c07d74.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import hmac, hashlib\n\n# Once the key is known (leaked, hardcoded, or cracked):\nforged_message = b\"user=admin&role=admin\"\nkey = b\"leaked_secret_key\"\nforged_tag = hmac.new(key, forged_message, hashlib.sha256).hexdigest()\n\n# Send forged_message + forged_tag as the cookie/token — the server\n# will recompute the same tag and accept it as valid\n`);copyBtnbtn_00cf640281b54ab1a8d5136d85c07d74.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_00cf640281b54ab1a8d5136d85c07d74.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_dadfb3a689eb440e85f33f3b8bdb71f2=document.querySelector('button[name=btn_dadfb3a689eb440e85f33f3b8bdb71f2]');
+copyBtnbtn_dadfb3a689eb440e85f33f3b8bdb71f2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import hmac, hashlib\n\n# Once the key is known (leaked, hardcoded, or cracked):\nforged_message = b\"user=admin&role=admin\"\nkey = b\"leaked_secret_key\"\nforged_tag = hmac.new(key, forged_message, hashlib.sha256).hexdigest()\n\n# Send forged_message + forged_tag as the cookie/token — the server\n# will recompute the same tag and accept it as valid\n`);copyBtnbtn_dadfb3a689eb440e85f33f3b8bdb71f2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dadfb3a689eb440e85f33f3b8bdb71f2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1061,11 +1061,11 @@ cracking:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0fec876a77f34a13a0f51a673661b4bd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5550995d0ed944bf88fc6d75d5195975>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0fec876a77f34a13a0f51a673661b4bd=document.querySelector('button[name=btn_0fec876a77f34a13a0f51a673661b4bd]');
-copyBtnbtn_0fec876a77f34a13a0f51a673661b4bd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Mode 16500 covers JWT (HS256) specifically\nhashcat -m 16500 -a 0 token.txt /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_0fec876a77f34a13a0f51a673661b4bd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0fec876a77f34a13a0f51a673661b4bd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5550995d0ed944bf88fc6d75d5195975=document.querySelector('button[name=btn_5550995d0ed944bf88fc6d75d5195975]');
+copyBtnbtn_5550995d0ed944bf88fc6d75d5195975.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Mode 16500 covers JWT (HS256) specifically\nhashcat -m 16500 -a 0 token.txt /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_5550995d0ed944bf88fc6d75d5195975.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5550995d0ed944bf88fc6d75d5195975.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

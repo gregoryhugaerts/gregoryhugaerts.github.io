@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:08 -->
+<!-- 2026-07-20 Mon 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Proxmox</title>
@@ -902,11 +902,11 @@ Related: <a href="../org/20260206T060615--linux-containers__concept.html">Linux 
 <h2 id="org581fac8">Installation</h2>
 <div class="outline-text-2" id="text-org581fac8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ab414ee6859a45a98910e619c653a841>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_56a86413f1c34f53a3523ee15c6e1489>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ab414ee6859a45a98910e619c653a841=document.querySelector('button[name=btn_ab414ee6859a45a98910e619c653a841]');
-copyBtnbtn_ab414ee6859a45a98910e619c653a841.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Download ISO from https://www.proxmox.com/en/downloads\n# Flash to USB and boot — installer handles partitioning\n\n# Post-install: disable enterprise repo (requires subscription)\n# Edit /etc/apt/sources.list.d/pve-enterprise.list\n# Comment out the enterprise line, add community repo:\necho \"deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription\" \\\n  >> /etc/apt/sources.list\n\napt update && apt full-upgrade -y\n`);copyBtnbtn_ab414ee6859a45a98910e619c653a841.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ab414ee6859a45a98910e619c653a841.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_56a86413f1c34f53a3523ee15c6e1489=document.querySelector('button[name=btn_56a86413f1c34f53a3523ee15c6e1489]');
+copyBtnbtn_56a86413f1c34f53a3523ee15c6e1489.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Download ISO from https://www.proxmox.com/en/downloads\n# Flash to USB and boot — installer handles partitioning\n\n# Post-install: disable enterprise repo (requires subscription)\n# Edit /etc/apt/sources.list.d/pve-enterprise.list\n# Comment out the enterprise line, add community repo:\necho \"deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription\" \\\n  >> /etc/apt/sources.list\n\napt update && apt full-upgrade -y\n`);copyBtnbtn_56a86413f1c34f53a3523ee15c6e1489.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_56a86413f1c34f53a3523ee15c6e1489.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -928,11 +928,11 @@ apt update &amp;&amp; apt full-upgrade -y
 <h2 id="org9bc4ff8">VM Management</h2>
 <div class="outline-text-2" id="text-org9bc4ff8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c99b65635867479aacd7b6c83d92bfe5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d0772a7d623d46c98b4f9098e63e4bfe>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c99b65635867479aacd7b6c83d92bfe5=document.querySelector('button[name=btn_c99b65635867479aacd7b6c83d92bfe5]');
-copyBtnbtn_c99b65635867479aacd7b6c83d92bfe5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List all VMs\nqm list\n\n# Start / stop / reset\nqm start <vmid>\nqm stop <vmid>\nqm reset <vmid>\nqm shutdown <vmid>     # graceful\n\n# Create VM (basic — easier via web UI)\nqm create 100 --name \"kali\" --memory 4096 --cores 2 \\\n  --net0 virtio,bridge=vmbr0 --cdrom local:iso/kali.iso\n\n# Clone a VM (for spinning up multiple targets)\nqm clone 100 101 --name \"target-1\" --full\n\n# Snapshots\nqm snapshot <vmid> <snapname>\nqm rollback <vmid> <snapname>\nqm delsnapshot <vmid> <snapname>\n\n# Delete VM\nqm destroy <vmid>\n`);copyBtnbtn_c99b65635867479aacd7b6c83d92bfe5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c99b65635867479aacd7b6c83d92bfe5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d0772a7d623d46c98b4f9098e63e4bfe=document.querySelector('button[name=btn_d0772a7d623d46c98b4f9098e63e4bfe]');
+copyBtnbtn_d0772a7d623d46c98b4f9098e63e4bfe.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List all VMs\nqm list\n\n# Start / stop / reset\nqm start <vmid>\nqm stop <vmid>\nqm reset <vmid>\nqm shutdown <vmid>     # graceful\n\n# Create VM (basic — easier via web UI)\nqm create 100 --name \"kali\" --memory 4096 --cores 2 \\\n  --net0 virtio,bridge=vmbr0 --cdrom local:iso/kali.iso\n\n# Clone a VM (for spinning up multiple targets)\nqm clone 100 101 --name \"target-1\" --full\n\n# Snapshots\nqm snapshot <vmid> <snapname>\nqm rollback <vmid> <snapname>\nqm delsnapshot <vmid> <snapname>\n\n# Delete VM\nqm destroy <vmid>\n`);copyBtnbtn_d0772a7d623d46c98b4f9098e63e4bfe.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d0772a7d623d46c98b4f9098e63e4bfe.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -967,11 +967,11 @@ qm delsnapshot &lt;vmid&gt; &lt;snapname&gt;
 <h2 id="orgb544455">Container (LXC) Management</h2>
 <div class="outline-text-2" id="text-orgb544455">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ca9446fd2fbc48f390844025b43da9b8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_daf3a08c81e940aea6bc11bd9594fb0f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ca9446fd2fbc48f390844025b43da9b8=document.querySelector('button[name=btn_ca9446fd2fbc48f390844025b43da9b8]');
-copyBtnbtn_ca9446fd2fbc48f390844025b43da9b8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List containers\npct list\n\n# Start / stop\npct start <ctid>\npct stop <ctid>\n\n# Shell into container\npct enter <ctid>\n\n# Create container from template\npct create 200 local:vztmpl/debian-12-standard_12.0-1_amd64.tar.zst \\\n  --hostname wazuh --memory 2048 --cores 2 \\\n  --net0 name=eth0,bridge=vmbr0,ip=dhcp\n\n# Download a container template\npveam update\npveam available | grep debian\npveam download local debian-12-standard_12.0-1_amd64.tar.zst\n`);copyBtnbtn_ca9446fd2fbc48f390844025b43da9b8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ca9446fd2fbc48f390844025b43da9b8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_daf3a08c81e940aea6bc11bd9594fb0f=document.querySelector('button[name=btn_daf3a08c81e940aea6bc11bd9594fb0f]');
+copyBtnbtn_daf3a08c81e940aea6bc11bd9594fb0f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List containers\npct list\n\n# Start / stop\npct start <ctid>\npct stop <ctid>\n\n# Shell into container\npct enter <ctid>\n\n# Create container from template\npct create 200 local:vztmpl/debian-12-standard_12.0-1_amd64.tar.zst \\\n  --hostname wazuh --memory 2048 --cores 2 \\\n  --net0 name=eth0,bridge=vmbr0,ip=dhcp\n\n# Download a container template\npveam update\npveam available | grep debian\npveam download local debian-12-standard_12.0-1_amd64.tar.zst\n`);copyBtnbtn_daf3a08c81e940aea6bc11bd9594fb0f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_daf3a08c81e940aea6bc11bd9594fb0f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1002,11 +1002,11 @@ pveam download local debian-12-standard_12.0-1_amd64.tar.zst
 <h2 id="org00708cf">Storage</h2>
 <div class="outline-text-2" id="text-org00708cf">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f2d13c0329084e5da238cd99f4123c51>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5646572284724ee29d7482e0d78ddb7a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f2d13c0329084e5da238cd99f4123c51=document.querySelector('button[name=btn_f2d13c0329084e5da238cd99f4123c51]');
-copyBtnbtn_f2d13c0329084e5da238cd99f4123c51.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List storage\npvesm status\n\n# List contents of a storage pool\npvesm list local\n\n# Common storage types:\n# local      → /var/lib/vz (ISO images, templates, backups)\n# local-lvm  → LVM thin pool (VM disks, container volumes)\n# NFS/CIFS   → network storage (shared across nodes)\n# ZFS pool   → advanced storage with snapshots and RAID\n`);copyBtnbtn_f2d13c0329084e5da238cd99f4123c51.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f2d13c0329084e5da238cd99f4123c51.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5646572284724ee29d7482e0d78ddb7a=document.querySelector('button[name=btn_5646572284724ee29d7482e0d78ddb7a]');
+copyBtnbtn_5646572284724ee29d7482e0d78ddb7a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List storage\npvesm status\n\n# List contents of a storage pool\npvesm list local\n\n# Common storage types:\n# local      → /var/lib/vz (ISO images, templates, backups)\n# local-lvm  → LVM thin pool (VM disks, container volumes)\n# NFS/CIFS   → network storage (shared across nodes)\n# ZFS pool   → advanced storage with snapshots and RAID\n`);copyBtnbtn_5646572284724ee29d7482e0d78ddb7a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5646572284724ee29d7482e0d78ddb7a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1034,11 +1034,11 @@ by default, bridged to the physical NIC.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_743ca7c886d6444cbae817f2e9a1a2bc>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f716af717c7b4066a4008ad3aca0a02c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_743ca7c886d6444cbae817f2e9a1a2bc=document.querySelector('button[name=btn_743ca7c886d6444cbae817f2e9a1a2bc]');
-copyBtnbtn_743ca7c886d6444cbae817f2e9a1a2bc.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# View current network config\ncat /etc/network/interfaces\n\n# Add a VLAN-aware bridge (for lab network isolation)\n# Edit /etc/network/interfaces:\n# iface vmbr0 inet static\n#   bridge-vlan-aware yes\n#   bridge-vids 2-4094\n`);copyBtnbtn_743ca7c886d6444cbae817f2e9a1a2bc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_743ca7c886d6444cbae817f2e9a1a2bc.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f716af717c7b4066a4008ad3aca0a02c=document.querySelector('button[name=btn_f716af717c7b4066a4008ad3aca0a02c]');
+copyBtnbtn_f716af717c7b4066a4008ad3aca0a02c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# View current network config\ncat /etc/network/interfaces\n\n# Add a VLAN-aware bridge (for lab network isolation)\n# Edit /etc/network/interfaces:\n# iface vmbr0 inet static\n#   bridge-vlan-aware yes\n#   bridge-vids 2-4094\n`);copyBtnbtn_f716af717c7b4066a4008ad3aca0a02c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f716af717c7b4066a4008ad3aca0a02c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1061,11 +1061,11 @@ running vulnerable machines safely.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c57bc520548249f8b49b548b967d0cbd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_47691442de9b41cea955e4e8717c5dbf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c57bc520548249f8b49b548b967d0cbd=document.querySelector('button[name=btn_c57bc520548249f8b49b548b967d0cbd]');
-copyBtnbtn_c57bc520548249f8b49b548b967d0cbd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# /etc/network/interfaces — isolated lab bridge\nauto vmbr1\niface vmbr1 inet static\n    address 10.10.10.1/24\n    bridge-ports none\n    bridge-stp off\n    bridge-fd 0\n`);copyBtnbtn_c57bc520548249f8b49b548b967d0cbd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c57bc520548249f8b49b548b967d0cbd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_47691442de9b41cea955e4e8717c5dbf=document.querySelector('button[name=btn_47691442de9b41cea955e4e8717c5dbf]');
+copyBtnbtn_47691442de9b41cea955e4e8717c5dbf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# /etc/network/interfaces — isolated lab bridge\nauto vmbr1\niface vmbr1 inet static\n    address 10.10.10.1/24\n    bridge-ports none\n    bridge-stp off\n    bridge-fd 0\n`);copyBtnbtn_47691442de9b41cea955e4e8717c5dbf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_47691442de9b41cea955e4e8717c5dbf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1084,11 +1084,11 @@ iface vmbr1 inet static
 <h2 id="org72b0bf3">Backups</h2>
 <div class="outline-text-2" id="text-org72b0bf3">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_acf37e2a17254c10a0cde57c84dbf047>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3d2c90cedfd1473d850851344e23bcab>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_acf37e2a17254c10a0cde57c84dbf047=document.querySelector('button[name=btn_acf37e2a17254c10a0cde57c84dbf047]');
-copyBtnbtn_acf37e2a17254c10a0cde57c84dbf047.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Manual backup via CLI\nvzdump <vmid> --storage local --mode snapshot --compress zstd\n\n# Restore\nqmrestore /var/lib/vz/dump/vzdump-qemu-<vmid>-*.tar.zst <new-vmid>\npct restore <new-ctid> /var/lib/vz/dump/vzdump-lxc-*.tar.zst\n`);copyBtnbtn_acf37e2a17254c10a0cde57c84dbf047.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_acf37e2a17254c10a0cde57c84dbf047.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3d2c90cedfd1473d850851344e23bcab=document.querySelector('button[name=btn_3d2c90cedfd1473d850851344e23bcab]');
+copyBtnbtn_3d2c90cedfd1473d850851344e23bcab.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Manual backup via CLI\nvzdump <vmid> --storage local --mode snapshot --compress zstd\n\n# Restore\nqmrestore /var/lib/vz/dump/vzdump-qemu-<vmid>-*.tar.zst <new-vmid>\npct restore <new-ctid> /var/lib/vz/dump/vzdump-lxc-*.tar.zst\n`);copyBtnbtn_3d2c90cedfd1473d850851344e23bcab.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3d2c90cedfd1473d850851344e23bcab.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1111,11 +1111,11 @@ schedule, and retention from the web UI.
 <h2 id="org4af04e4">API</h2>
 <div class="outline-text-2" id="text-org4af04e4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_a3f385ed251c4b35bd6330140c6e56cf>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_f2626e65c56840e1b059e73e8a5a5ddb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a3f385ed251c4b35bd6330140c6e56cf=document.querySelector('button[name=btn_a3f385ed251c4b35bd6330140c6e56cf]');
-copyBtnbtn_a3f385ed251c4b35bd6330140c6e56cf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import requests\n\n# Authenticate\nsession = requests.Session()\nresp = session.post(\"https://<host>:8006/api2/json/access/ticket\",\n    data={\"username\": \"root@pam\", \"password\": \"yourpassword\"},\n    verify=False)\nticket = resp.json()[\"data\"][\"ticket\"]\ncsrf = resp.json()[\"data\"][\"CSRFPreventionToken\"]\n\nheaders = {\"CSRFPreventionToken\": csrf}\ncookies = {\"PVEAuthCookie\": ticket}\n\n# List nodes\nnodes = session.get(\"https://<host>:8006/api2/json/nodes\",\n    headers=headers, cookies=cookies, verify=False)\nprint(nodes.json())\n`);copyBtnbtn_a3f385ed251c4b35bd6330140c6e56cf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a3f385ed251c4b35bd6330140c6e56cf.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f2626e65c56840e1b059e73e8a5a5ddb=document.querySelector('button[name=btn_f2626e65c56840e1b059e73e8a5a5ddb]');
+copyBtnbtn_f2626e65c56840e1b059e73e8a5a5ddb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import requests\n\n# Authenticate\nsession = requests.Session()\nresp = session.post(\"https://<host>:8006/api2/json/access/ticket\",\n    data={\"username\": \"root@pam\", \"password\": \"yourpassword\"},\n    verify=False)\nticket = resp.json()[\"data\"][\"ticket\"]\ncsrf = resp.json()[\"data\"][\"CSRFPreventionToken\"]\n\nheaders = {\"CSRFPreventionToken\": csrf}\ncookies = {\"PVEAuthCookie\": ticket}\n\n# List nodes\nnodes = session.get(\"https://<host>:8006/api2/json/nodes\",\n    headers=headers, cookies=cookies, verify=False)\nprint(nodes.json())\n`);copyBtnbtn_f2626e65c56840e1b059e73e8a5a5ddb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f2626e65c56840e1b059e73e8a5a5ddb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

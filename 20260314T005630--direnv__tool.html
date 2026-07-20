@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:10 -->
+<!-- 2026-07-20 Mon 15:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Direnv</title>
@@ -901,11 +901,11 @@ Related: <a href="../org/20260206T060637--shell__concept.html">Shell</a>
 <h2 id="org3feade4">Installation</h2>
 <div class="outline-text-2" id="text-org3feade4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a2cae11d7de34cd1a1074bb7ce1c7f81>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_fcf32154e42748aba46364a4cc176d13>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a2cae11d7de34cd1a1074bb7ce1c7f81=document.querySelector('button[name=btn_a2cae11d7de34cd1a1074bb7ce1c7f81]');
-copyBtnbtn_a2cae11d7de34cd1a1074bb7ce1c7f81.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Nix (recommended)\nnix-env -i direnv\n\n# macOS\nbrew install direnv\n\n# Ubuntu / Debian\nsudo apt install direnv\n\n# Hook into shell — add to the END of shell rc file\n# Bash (~/.bashrc)\neval \"$(direnv hook bash)\"\n\n# Zsh (~/.zshrc)\neval \"$(direnv hook zsh)\"\n\n# Fish (~/.config/fish/config.fish)\ndirenv hook fish | source\n`);copyBtnbtn_a2cae11d7de34cd1a1074bb7ce1c7f81.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a2cae11d7de34cd1a1074bb7ce1c7f81.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_fcf32154e42748aba46364a4cc176d13=document.querySelector('button[name=btn_fcf32154e42748aba46364a4cc176d13]');
+copyBtnbtn_fcf32154e42748aba46364a4cc176d13.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Nix (recommended)\nnix-env -i direnv\n\n# macOS\nbrew install direnv\n\n# Ubuntu / Debian\nsudo apt install direnv\n\n# Hook into shell — add to the END of shell rc file\n# Bash (~/.bashrc)\neval \"$(direnv hook bash)\"\n\n# Zsh (~/.zshrc)\neval \"$(direnv hook zsh)\"\n\n# Fish (~/.config/fish/config.fish)\ndirenv hook fish | source\n`);copyBtnbtn_fcf32154e42748aba46364a4cc176d13.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fcf32154e42748aba46364a4cc176d13.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -935,11 +935,11 @@ let res = copyTextToClipboard(`# Nix (recommended)\nnix-env -i direnv\n\n# macOS
 <h2 id="orgdf2125b">Core Workflow</h2>
 <div class="outline-text-2" id="text-orgdf2125b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_fcd93e5a3e4a4fa7bb2c44601fa81957>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c891015a9feb45239fe066de05653aba>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fcd93e5a3e4a4fa7bb2c44601fa81957=document.querySelector('button[name=btn_fcd93e5a3e4a4fa7bb2c44601fa81957]');
-copyBtnbtn_fcd93e5a3e4a4fa7bb2c44601fa81957.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Create an .envrc in your project\necho 'export FOO=bar' > .envrc\n\n# First time — must explicitly allow the file (security model)\ndirenv allow\n\n# Now entering the directory loads the vars automatically\ncd /path/to/project     # → direnv: loading .envrc\ncd ..                   # → direnv: unloading\n\n# Allow again after any edit to .envrc\ndirenv allow\n\n# Block a previously allowed directory\ndirenv deny\n\n# Show current env diff\ndirenv status\n`);copyBtnbtn_fcd93e5a3e4a4fa7bb2c44601fa81957.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fcd93e5a3e4a4fa7bb2c44601fa81957.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c891015a9feb45239fe066de05653aba=document.querySelector('button[name=btn_c891015a9feb45239fe066de05653aba]');
+copyBtnbtn_c891015a9feb45239fe066de05653aba.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Create an .envrc in your project\necho 'export FOO=bar' > .envrc\n\n# First time — must explicitly allow the file (security model)\ndirenv allow\n\n# Now entering the directory loads the vars automatically\ncd /path/to/project     # → direnv: loading .envrc\ncd ..                   # → direnv: unloading\n\n# Allow again after any edit to .envrc\ndirenv allow\n\n# Block a previously allowed directory\ndirenv deny\n\n# Show current env diff\ndirenv status\n`);copyBtnbtn_c891015a9feb45239fe066de05653aba.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c891015a9feb45239fe066de05653aba.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -976,11 +976,11 @@ Standard shell script — any valid shell command works.
 <h3 id="org0fb504f">Environment Variables</h3>
 <div class="outline-text-3" id="text-org0fb504f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2547b5b9ed2e484fa9db3698972c4fe9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3d8bf260b41143eb918e9f084b3e91da>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2547b5b9ed2e484fa9db3698972c4fe9=document.querySelector('button[name=btn_2547b5b9ed2e484fa9db3698972c4fe9]');
-copyBtnbtn_2547b5b9ed2e484fa9db3698972c4fe9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`export DATABASE_URL=\"postgres://localhost:5432/mydb\"\nexport API_KEY=\"dev-key-not-for-production\"\nexport DEBUG=true\n`);copyBtnbtn_2547b5b9ed2e484fa9db3698972c4fe9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2547b5b9ed2e484fa9db3698972c4fe9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3d8bf260b41143eb918e9f084b3e91da=document.querySelector('button[name=btn_3d8bf260b41143eb918e9f084b3e91da]');
+copyBtnbtn_3d8bf260b41143eb918e9f084b3e91da.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`export DATABASE_URL=\"postgres://localhost:5432/mydb\"\nexport API_KEY=\"dev-key-not-for-production\"\nexport DEBUG=true\n`);copyBtnbtn_3d8bf260b41143eb918e9f084b3e91da.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3d8bf260b41143eb918e9f084b3e91da.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -999,11 +999,11 @@ Direnv ships with helper functions that are safer than raw exports:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a5005b8b58204d50ae86f4513b4b02a4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_298f0787c8a54698a9a469c9853ae2da>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a5005b8b58204d50ae86f4513b4b02a4=document.querySelector('button[name=btn_a5005b8b58204d50ae86f4513b4b02a4]');
-copyBtnbtn_a5005b8b58204d50ae86f4513b4b02a4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Add a directory to PATH (prepend)\nPATH_add bin\nPATH_add .venv/bin\n\n# Load a .env file (key=value format, no export needed)\ndotenv .env\ndotenv_if_exists .env.local    # only loads if file exists\n\n# Source another .envrc file\nsource_env ../shared/.envrc\n\n# Load parent .envrc files up the directory tree\nsource_up\n\n# Set a variable only if not already set\nexport PORT=\"${PORT:-8080}\"\n`);copyBtnbtn_a5005b8b58204d50ae86f4513b4b02a4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a5005b8b58204d50ae86f4513b4b02a4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_298f0787c8a54698a9a469c9853ae2da=document.querySelector('button[name=btn_298f0787c8a54698a9a469c9853ae2da]');
+copyBtnbtn_298f0787c8a54698a9a469c9853ae2da.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Add a directory to PATH (prepend)\nPATH_add bin\nPATH_add .venv/bin\n\n# Load a .env file (key=value format, no export needed)\ndotenv .env\ndotenv_if_exists .env.local    # only loads if file exists\n\n# Source another .envrc file\nsource_env ../shared/.envrc\n\n# Load parent .envrc files up the directory tree\nsource_up\n\n# Set a variable only if not already set\nexport PORT=\"${PORT:-8080}\"\n`);copyBtnbtn_298f0787c8a54698a9a469c9853ae2da.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_298f0787c8a54698a9a469c9853ae2da.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1031,11 +1031,11 @@ dotenv_if_exists .env.local    <span style="color: var(--clr-comment-delimiter);
 <h3 id="orgf791434">Python Virtual Environments</h3>
 <div class="outline-text-3" id="text-orgf791434">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2e1794b83104469dbfc6f88c33775436>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4b9018153443433784884b40f89f2eed>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2e1794b83104469dbfc6f88c33775436=document.querySelector('button[name=btn_2e1794b83104469dbfc6f88c33775436]');
-copyBtnbtn_2e1794b83104469dbfc6f88c33775436.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Auto-activate venv on cd\nlayout python3\n\n# Or point to an existing venv\nsource .venv/bin/activate\n`);copyBtnbtn_2e1794b83104469dbfc6f88c33775436.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2e1794b83104469dbfc6f88c33775436.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4b9018153443433784884b40f89f2eed=document.querySelector('button[name=btn_4b9018153443433784884b40f89f2eed]');
+copyBtnbtn_4b9018153443433784884b40f89f2eed.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Auto-activate venv on cd\nlayout python3\n\n# Or point to an existing venv\nsource .venv/bin/activate\n`);copyBtnbtn_4b9018153443433784884b40f89f2eed.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4b9018153443433784884b40f89f2eed.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1052,11 +1052,11 @@ let res = copyTextToClipboard(`# Auto-activate venv on cd\nlayout python3\n\n# O
 <h3 id="org4d667ab">Node.js</h3>
 <div class="outline-text-3" id="text-org4d667ab">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_89b5ba8410b243749db2f9af95fa47e6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6b530e1d55ff4f01ab65d73fd6e51592>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_89b5ba8410b243749db2f9af95fa47e6=document.querySelector('button[name=btn_89b5ba8410b243749db2f9af95fa47e6]');
-copyBtnbtn_89b5ba8410b243749db2f9af95fa47e6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Add local node_modules/.bin to PATH\nPATH_add node_modules/.bin\n\n# Use a specific Node version (with nvm)\nuse node 20\n`);copyBtnbtn_89b5ba8410b243749db2f9af95fa47e6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_89b5ba8410b243749db2f9af95fa47e6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6b530e1d55ff4f01ab65d73fd6e51592=document.querySelector('button[name=btn_6b530e1d55ff4f01ab65d73fd6e51592]');
+copyBtnbtn_6b530e1d55ff4f01ab65d73fd6e51592.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Add local node_modules/.bin to PATH\nPATH_add node_modules/.bin\n\n# Use a specific Node version (with nvm)\nuse node 20\n`);copyBtnbtn_6b530e1d55ff4f01ab65d73fd6e51592.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6b530e1d55ff4f01ab65d73fd6e51592.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1074,11 +1074,11 @@ let res = copyTextToClipboard(`# Add local node_modules/.bin to PATH\nPATH_add n
 <h2 id="orgca86534">Inheritance</h2>
 <div class="outline-text-2" id="text-orgca86534">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_92960b8faf1147038775a9ff9c0ff6ee>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ea2499d5b97548a99ae66cf1383a371c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_92960b8faf1147038775a9ff9c0ff6ee=document.querySelector('button[name=btn_92960b8faf1147038775a9ff9c0ff6ee]');
-copyBtnbtn_92960b8faf1147038775a9ff9c0ff6ee.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`monorepo/\n  .envrc          ← shared config (DB URLs, shared secrets)\n  service-a/\n    .envrc        ← source_up + service-specific vars\n  service-b/\n    .envrc        ← source_up + service-specific vars\n`);copyBtnbtn_92960b8faf1147038775a9ff9c0ff6ee.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_92960b8faf1147038775a9ff9c0ff6ee.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ea2499d5b97548a99ae66cf1383a371c=document.querySelector('button[name=btn_ea2499d5b97548a99ae66cf1383a371c]');
+copyBtnbtn_ea2499d5b97548a99ae66cf1383a371c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`monorepo/\n  .envrc          ← shared config (DB URLs, shared secrets)\n  service-a/\n    .envrc        ← source_up + service-specific vars\n  service-b/\n    .envrc        ← source_up + service-specific vars\n`);copyBtnbtn_ea2499d5b97548a99ae66cf1383a371c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ea2499d5b97548a99ae66cf1383a371c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1092,11 +1092,11 @@ let res = copyTextToClipboard(`monorepo/\n  .envrc          ← shared config (D
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_62e935cebe214c93a1d7bd7af986431a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_674a6625e6ea461a96cadafa785fd309>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_62e935cebe214c93a1d7bd7af986431a=document.querySelector('button[name=btn_62e935cebe214c93a1d7bd7af986431a]');
-copyBtnbtn_62e935cebe214c93a1d7bd7af986431a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# In service-a/.envrc\nsource_up               # loads monorepo/.envrc first\nexport SERVICE=service-a\n`);copyBtnbtn_62e935cebe214c93a1d7bd7af986431a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_62e935cebe214c93a1d7bd7af986431a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_674a6625e6ea461a96cadafa785fd309=document.querySelector('button[name=btn_674a6625e6ea461a96cadafa785fd309]');
+copyBtnbtn_674a6625e6ea461a96cadafa785fd309.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# In service-a/.envrc\nsource_up               # loads monorepo/.envrc first\nexport SERVICE=service-a\n`);copyBtnbtn_674a6625e6ea461a96cadafa785fd309.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_674a6625e6ea461a96cadafa785fd309.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1117,11 +1117,11 @@ Do not commit secrets directly in <code>.envrc</code> — add <code>.envrc</code
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a3939b195d33466c80aa3791781ddc8a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_779d90cf297443e8b48d8252b84a2a08>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a3939b195d33466c80aa3791781ddc8a=document.querySelector('button[name=btn_a3939b195d33466c80aa3791781ddc8a]');
-copyBtnbtn_a3939b195d33466c80aa3791781ddc8a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# .envrc — gitignored, contains real secrets\nexport API_KEY=\"real-secret\"\n\n# .envrc.example — committed, documents required vars\nexport API_KEY=\"your-api-key-here\"\n`);copyBtnbtn_a3939b195d33466c80aa3791781ddc8a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a3939b195d33466c80aa3791781ddc8a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_779d90cf297443e8b48d8252b84a2a08=document.querySelector('button[name=btn_779d90cf297443e8b48d8252b84a2a08]');
+copyBtnbtn_779d90cf297443e8b48d8252b84a2a08.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# .envrc — gitignored, contains real secrets\nexport API_KEY=\"real-secret\"\n\n# .envrc.example — committed, documents required vars\nexport API_KEY=\"your-api-key-here\"\n`);copyBtnbtn_779d90cf297443e8b48d8252b84a2a08.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_779d90cf297443e8b48d8252b84a2a08.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1138,11 +1138,11 @@ For team environments, integrate with a secrets manager:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_cc29f530aa434bad929da611a799ec32>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_300722804d7e4f11a0f8217a6345fd15>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_cc29f530aa434bad929da611a799ec32=document.querySelector('button[name=btn_cc29f530aa434bad929da611a799ec32]');
-copyBtnbtn_cc29f530aa434bad929da611a799ec32.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# 1Password CLI\nexport SECRET=$(op read \"op://vault/item/field\")\n\n# Doppler\neval \"$(doppler secrets download --no-file --format docker)\"\n`);copyBtnbtn_cc29f530aa434bad929da611a799ec32.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cc29f530aa434bad929da611a799ec32.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_300722804d7e4f11a0f8217a6345fd15=document.querySelector('button[name=btn_300722804d7e4f11a0f8217a6345fd15]');
+copyBtnbtn_300722804d7e4f11a0f8217a6345fd15.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# 1Password CLI\nexport SECRET=$(op read \"op://vault/item/field\")\n\n# Doppler\neval \"$(doppler secrets download --no-file --format docker)\"\n`);copyBtnbtn_300722804d7e4f11a0f8217a6345fd15.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_300722804d7e4f11a0f8217a6345fd15.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

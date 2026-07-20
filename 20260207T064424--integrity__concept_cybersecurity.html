@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:09 -->
+<!-- 2026-07-20 Mon 15:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Integrity</title>
@@ -916,11 +916,11 @@ digest — the fundamental integrity verification mechanism.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_99d558dc29634b2f813eab981e7ef344>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6fcfff5029244d93a4576a3718365b09>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_99d558dc29634b2f813eab981e7ef344=document.querySelector('button[name=btn_99d558dc29634b2f813eab981e7ef344]');
-copyBtnbtn_99d558dc29634b2f813eab981e7ef344.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Generate and verify a file hash\nsha256sum file.iso > file.iso.sha256\nsha256sum -c file.iso.sha256\n\n# Python\nimport hashlib\ndigest = hashlib.sha256(b\"data\").hexdigest()\n`);copyBtnbtn_99d558dc29634b2f813eab981e7ef344.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_99d558dc29634b2f813eab981e7ef344.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6fcfff5029244d93a4576a3718365b09=document.querySelector('button[name=btn_6fcfff5029244d93a4576a3718365b09]');
+copyBtnbtn_6fcfff5029244d93a4576a3718365b09.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Generate and verify a file hash\nsha256sum file.iso > file.iso.sha256\nsha256sum -c file.iso.sha256\n\n# Python\nimport hashlib\ndigest = hashlib.sha256(b\"data\").hexdigest()\n`);copyBtnbtn_6fcfff5029244d93a4576a3718365b09.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6fcfff5029244d93a4576a3718365b09.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -949,11 +949,11 @@ by someone with the key and has not been altered in transit.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_e628b4c19ff04037bf8937c0006aad78>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_f9eef60b07ba4f8e826c9171725b9040>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e628b4c19ff04037bf8937c0006aad78=document.querySelector('button[name=btn_e628b4c19ff04037bf8937c0006aad78]');
-copyBtnbtn_e628b4c19ff04037bf8937c0006aad78.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import hmac, hashlib\n\nkey  = b\"shared-secret\"\ndata = b\"message to sign\"\n\nmac = hmac.new(key, data, hashlib.sha256).hexdigest()\n\n# Verify — use compare_digest to prevent timing attacks\nis_valid = hmac.compare_digest(\n    hmac.new(key, received_data, hashlib.sha256).hexdigest(),\n    received_mac\n)\n`);copyBtnbtn_e628b4c19ff04037bf8937c0006aad78.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e628b4c19ff04037bf8937c0006aad78.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f9eef60b07ba4f8e826c9171725b9040=document.querySelector('button[name=btn_f9eef60b07ba4f8e826c9171725b9040]');
+copyBtnbtn_f9eef60b07ba4f8e826c9171725b9040.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import hmac, hashlib\n\nkey  = b\"shared-secret\"\ndata = b\"message to sign\"\n\nmac = hmac.new(key, data, hashlib.sha256).hexdigest()\n\n# Verify — use compare_digest to prevent timing attacks\nis_valid = hmac.compare_digest(\n    hmac.new(key, received_data, hashlib.sha256).hexdigest(),\n    received_mac\n)\n`);copyBtnbtn_f9eef60b07ba4f8e826c9171725b9040.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f9eef60b07ba4f8e826c9171725b9040.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -983,11 +983,11 @@ Provides non-repudiation: the signer cannot later deny signing.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e5a3eef30c2a4a0da3b8e7598e19c34e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_81f726e293ea4841860aaa03305b60af>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e5a3eef30c2a4a0da3b8e7598e19c34e=document.querySelector('button[name=btn_e5a3eef30c2a4a0da3b8e7598e19c34e]');
-copyBtnbtn_e5a3eef30c2a4a0da3b8e7598e19c34e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Signing:      hash(data) → encrypt with private key → signature\nVerifying:    decrypt signature with public key → compare hash\n`);copyBtnbtn_e5a3eef30c2a4a0da3b8e7598e19c34e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e5a3eef30c2a4a0da3b8e7598e19c34e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_81f726e293ea4841860aaa03305b60af=document.querySelector('button[name=btn_81f726e293ea4841860aaa03305b60af]');
+copyBtnbtn_81f726e293ea4841860aaa03305b60af.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Signing:      hash(data) → encrypt with private key → signature\nVerifying:    decrypt signature with public key → compare hash\n`);copyBtnbtn_81f726e293ea4841860aaa03305b60af.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_81f726e293ea4841860aaa03305b60af.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1007,11 +1007,11 @@ and binary tampering on endpoints.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_5ad143cc66614bc6a0fdb47902b17356>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c32be56f924449fea67d229becd7bb2f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5ad143cc66614bc6a0fdb47902b17356=document.querySelector('button[name=btn_5ad143cc66614bc6a0fdb47902b17356]');
-copyBtnbtn_5ad143cc66614bc6a0fdb47902b17356.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Files typically monitored:\n/etc/passwd, /etc/shadow, /etc/sudoers\n/usr/bin/, /usr/sbin/\nWeb root (detect webshell drops)\n`);copyBtnbtn_5ad143cc66614bc6a0fdb47902b17356.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5ad143cc66614bc6a0fdb47902b17356.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c32be56f924449fea67d229becd7bb2f=document.querySelector('button[name=btn_c32be56f924449fea67d229becd7bb2f]');
+copyBtnbtn_c32be56f924449fea67d229becd7bb2f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Files typically monitored:\n/etc/passwd, /etc/shadow, /etc/sudoers\n/usr/bin/, /usr/sbin/\nWeb root (detect webshell drops)\n`);copyBtnbtn_c32be56f924449fea67d229becd7bb2f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c32be56f924449fea67d229becd7bb2f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

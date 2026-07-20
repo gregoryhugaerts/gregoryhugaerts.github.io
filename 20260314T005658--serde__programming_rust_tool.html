@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:11 -->
+<!-- 2026-07-20 Mon 15:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Serde</title>
@@ -899,11 +899,11 @@ Related: <a href="../org/20260206T060643--structs-in-rust__concept_programming_r
 <h2 id="org279bc7a">Setup</h2>
 <div class="outline-text-2" id="text-org279bc7a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TOML</span><button class='copyBtn' name=btn_d62a703bc6044bbbad2da23675d04348>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TOML</span><button class='copyBtn' name=btn_63efcb3d5114446b9e538158cbed164b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d62a703bc6044bbbad2da23675d04348=document.querySelector('button[name=btn_d62a703bc6044bbbad2da23675d04348]');
-copyBtnbtn_d62a703bc6044bbbad2da23675d04348.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Cargo.toml\n[dependencies]\nserde      = { version = \"1.0\", features = [\"derive\"] }\nserde_json = \"1.0\"\nserde_yaml = \"0.9\"   # if needed\nbincode    = \"1.3\"   # if needed\n`);copyBtnbtn_d62a703bc6044bbbad2da23675d04348.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d62a703bc6044bbbad2da23675d04348.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_63efcb3d5114446b9e538158cbed164b=document.querySelector('button[name=btn_63efcb3d5114446b9e538158cbed164b]');
+copyBtnbtn_63efcb3d5114446b9e538158cbed164b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Cargo.toml\n[dependencies]\nserde      = { version = \"1.0\", features = [\"derive\"] }\nserde_json = \"1.0\"\nserde_yaml = \"0.9\"   # if needed\nbincode    = \"1.3\"   # if needed\n`);copyBtnbtn_63efcb3d5114446b9e538158cbed164b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_63efcb3d5114446b9e538158cbed164b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -921,11 +921,11 @@ let res = copyTextToClipboard(`# Cargo.toml\n[dependencies]\nserde      = { vers
 <h2 id="org5ed88e4">Basic Usage</h2>
 <div class="outline-text-2" id="text-org5ed88e4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_30f2acd4aaf0430cb3adef4d4de3f86e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_ecdac5c0afb34907bf85cd64cd5ed3e6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_30f2acd4aaf0430cb3adef4d4de3f86e=document.querySelector('button[name=btn_30f2acd4aaf0430cb3adef4d4de3f86e]');
-copyBtnbtn_30f2acd4aaf0430cb3adef4d4de3f86e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use serde::{Deserialize, Serialize};\n\n#[derive(Serialize, Deserialize, Debug)]\nstruct User {\n    id:        u32,\n    username:  String,\n    is_active: bool,\n}\n\nfn main() {\n    let user = User { id: 1, username: \"alice\".to_string(), is_active: true };\n\n    // Serialize to JSON string\n    let json = serde_json::to_string_pretty(&user).unwrap();\n    println!(\"{}\", json);\n\n    // Deserialize from JSON string\n    let parsed: User = serde_json::from_str(&json).unwrap();\n    println!(\"{:?}\", parsed);\n\n    // Serialize/deserialize via file\n    let file = std::fs::File::create(\"user.json\").unwrap();\n    serde_json::to_writer_pretty(file, &user).unwrap();\n\n    let file = std::fs::File::open(\"user.json\").unwrap();\n    let from_file: User = serde_json::from_reader(file).unwrap();\n}\n`);copyBtnbtn_30f2acd4aaf0430cb3adef4d4de3f86e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_30f2acd4aaf0430cb3adef4d4de3f86e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ecdac5c0afb34907bf85cd64cd5ed3e6=document.querySelector('button[name=btn_ecdac5c0afb34907bf85cd64cd5ed3e6]');
+copyBtnbtn_ecdac5c0afb34907bf85cd64cd5ed3e6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use serde::{Deserialize, Serialize};\n\n#[derive(Serialize, Deserialize, Debug)]\nstruct User {\n    id:        u32,\n    username:  String,\n    is_active: bool,\n}\n\nfn main() {\n    let user = User { id: 1, username: \"alice\".to_string(), is_active: true };\n\n    // Serialize to JSON string\n    let json = serde_json::to_string_pretty(&user).unwrap();\n    println!(\"{}\", json);\n\n    // Deserialize from JSON string\n    let parsed: User = serde_json::from_str(&json).unwrap();\n    println!(\"{:?}\", parsed);\n\n    // Serialize/deserialize via file\n    let file = std::fs::File::create(\"user.json\").unwrap();\n    serde_json::to_writer_pretty(file, &user).unwrap();\n\n    let file = std::fs::File::open(\"user.json\").unwrap();\n    let from_file: User = serde_json::from_reader(file).unwrap();\n}\n`);copyBtnbtn_ecdac5c0afb34907bf85cd64cd5ed3e6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ecdac5c0afb34907bf85cd64cd5ed3e6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -969,11 +969,11 @@ serialised/deserialised without changing the Rust type itself.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_a4244fb00e4f4ab59426a660f7bb2c68>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_c1e9311cd41e49a6955a8bc8d40f0fe0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a4244fb00e4f4ab59426a660f7bb2c68=document.querySelector('button[name=btn_a4244fb00e4f4ab59426a660f7bb2c68]');
-copyBtnbtn_a4244fb00e4f4ab59426a660f7bb2c68.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`#[derive(Serialize, Deserialize, Debug)]\nstruct Config {\n    // Rename the field in the serialised output\n    #[serde(rename = \"user_name\")]\n    username: String,\n\n    // Skip this field entirely during serialisation\n    #[serde(skip)]\n    internal_state: String,\n\n    // Skip if the value is the type's default (e.g. false, 0, \"\")\n    #[serde(skip_serializing_if = \"Option::is_none\")]\n    optional_field: Option<String>,\n\n    // Provide a default value if the field is absent during deserialisation\n    #[serde(default)]\n    enabled: bool,\n\n    // Use a custom default function\n    #[serde(default = \"default_port\")]\n    port: u16,\n}\n\nfn default_port() -> u16 { 8080 }\n`);copyBtnbtn_a4244fb00e4f4ab59426a660f7bb2c68.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a4244fb00e4f4ab59426a660f7bb2c68.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c1e9311cd41e49a6955a8bc8d40f0fe0=document.querySelector('button[name=btn_c1e9311cd41e49a6955a8bc8d40f0fe0]');
+copyBtnbtn_c1e9311cd41e49a6955a8bc8d40f0fe0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`#[derive(Serialize, Deserialize, Debug)]\nstruct Config {\n    // Rename the field in the serialised output\n    #[serde(rename = \"user_name\")]\n    username: String,\n\n    // Skip this field entirely during serialisation\n    #[serde(skip)]\n    internal_state: String,\n\n    // Skip if the value is the type's default (e.g. false, 0, \"\")\n    #[serde(skip_serializing_if = \"Option::is_none\")]\n    optional_field: Option<String>,\n\n    // Provide a default value if the field is absent during deserialisation\n    #[serde(default)]\n    enabled: bool,\n\n    // Use a custom default function\n    #[serde(default = \"default_port\")]\n    port: u16,\n}\n\nfn default_port() -> u16 { 8080 }\n`);copyBtnbtn_c1e9311cd41e49a6955a8bc8d40f0fe0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c1e9311cd41e49a6955a8bc8d40f0fe0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1008,11 +1008,11 @@ fn default_port() -&gt; u16 { 8080 }
 <h3 id="org8453cc8">Container-level attributes</h3>
 <div class="outline-text-3" id="text-org8453cc8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_fe5f3bd5cf9d4aeb8b1a02969b6afd83>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_77632d75a0644bbbbce0e6d20b16d9c6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fe5f3bd5cf9d4aeb8b1a02969b6afd83=document.querySelector('button[name=btn_fe5f3bd5cf9d4aeb8b1a02969b6afd83]');
-copyBtnbtn_fe5f3bd5cf9d4aeb8b1a02969b6afd83.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Rename all fields to camelCase (common for JSON APIs)\n#[derive(Serialize, Deserialize)]\n#[serde(rename_all = \"camelCase\")]\nstruct ApiResponse {\n    user_id:    u32,    // serialised as \"userId\"\n    first_name: String, // serialised as \"firstName\"\n}\n\n// Deny unknown fields during deserialisation\n#[derive(Deserialize)]\n#[serde(deny_unknown_fields)]\nstruct StrictConfig {\n    host: String,\n    port: u16,\n}\n\n// Flatten a nested struct into the parent\n#[derive(Serialize, Deserialize)]\nstruct Response {\n    status: u16,\n    #[serde(flatten)]\n    data: UserData,\n}\n`);copyBtnbtn_fe5f3bd5cf9d4aeb8b1a02969b6afd83.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fe5f3bd5cf9d4aeb8b1a02969b6afd83.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_77632d75a0644bbbbce0e6d20b16d9c6=document.querySelector('button[name=btn_77632d75a0644bbbbce0e6d20b16d9c6]');
+copyBtnbtn_77632d75a0644bbbbce0e6d20b16d9c6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Rename all fields to camelCase (common for JSON APIs)\n#[derive(Serialize, Deserialize)]\n#[serde(rename_all = \"camelCase\")]\nstruct ApiResponse {\n    user_id:    u32,    // serialised as \"userId\"\n    first_name: String, // serialised as \"firstName\"\n}\n\n// Deny unknown fields during deserialisation\n#[derive(Deserialize)]\n#[serde(deny_unknown_fields)]\nstruct StrictConfig {\n    host: String,\n    port: u16,\n}\n\n// Flatten a nested struct into the parent\n#[derive(Serialize, Deserialize)]\nstruct Response {\n    status: u16,\n    #[serde(flatten)]\n    data: UserData,\n}\n`);copyBtnbtn_77632d75a0644bbbbce0e6d20b16d9c6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_77632d75a0644bbbbce0e6d20b16d9c6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1053,11 +1053,11 @@ Serde has four representations for enums — the default
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_a6856e4888e04388b69f646170121ec3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_4616797fdabb42e3a44554cb40cdc07f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a6856e4888e04388b69f646170121ec3=document.querySelector('button[name=btn_a6856e4888e04388b69f646170121ec3]');
-copyBtnbtn_a6856e4888e04388b69f646170121ec3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`#[derive(Serialize, Deserialize, Debug)]\n#[serde(tag = \"type\", content = \"data\")]  // adjacently tagged\nenum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n}\n\n// Adjacently tagged output:\n// {\"type\": \"Move\", \"data\": {\"x\": 10, \"y\": 20}}\n// vs externally tagged (default):\n// {\"Move\": {\"x\": 10, \"y\": 20}}\n// vs internally tagged:\n// {\"type\": \"Move\", \"x\": 10, \"y\": 20}\n// vs untagged:\n// {\"x\": 10, \"y\": 20}\n`);copyBtnbtn_a6856e4888e04388b69f646170121ec3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a6856e4888e04388b69f646170121ec3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4616797fdabb42e3a44554cb40cdc07f=document.querySelector('button[name=btn_4616797fdabb42e3a44554cb40cdc07f]');
+copyBtnbtn_4616797fdabb42e3a44554cb40cdc07f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`#[derive(Serialize, Deserialize, Debug)]\n#[serde(tag = \"type\", content = \"data\")]  // adjacently tagged\nenum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n}\n\n// Adjacently tagged output:\n// {\"type\": \"Move\", \"data\": {\"x\": 10, \"y\": 20}}\n// vs externally tagged (default):\n// {\"Move\": {\"x\": 10, \"y\": 20}}\n// vs internally tagged:\n// {\"type\": \"Move\", \"x\": 10, \"y\": 20}\n// vs untagged:\n// {\"x\": 10, \"y\": 20}\n`);copyBtnbtn_4616797fdabb42e3a44554cb40cdc07f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4616797fdabb42e3a44554cb40cdc07f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

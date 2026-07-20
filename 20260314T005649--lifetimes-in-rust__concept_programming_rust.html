@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:11 -->
+<!-- 2026-07-20 Mon 15:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lifetimes in Rust</title>
@@ -935,11 +935,11 @@ When a function takes multiple references as input and returns one of them, or a
 <li><a id="orgf326c42"></a><b>Example:</b><br />
 <div class="outline-text-5" id="text-orgf326c42">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_da25e3af889f4476a4ad93d0386ec982>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_a70d861cbe0741d3b324c6cbe6c386e5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_da25e3af889f4476a4ad93d0386ec982=document.querySelector('button[name=btn_da25e3af889f4476a4ad93d0386ec982]');
-copyBtnbtn_da25e3af889f4476a4ad93d0386ec982.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// This function takes two string slices and returns the longest one.\n// The returned slice's data must be valid for at least as long\n// as the shortest of the two input slices.\nfn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() > y.len() {\n        x\n    } else {\n        y\n    }\n}\n`);copyBtnbtn_da25e3af889f4476a4ad93d0386ec982.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_da25e3af889f4476a4ad93d0386ec982.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a70d861cbe0741d3b324c6cbe6c386e5=document.querySelector('button[name=btn_a70d861cbe0741d3b324c6cbe6c386e5]');
+copyBtnbtn_a70d861cbe0741d3b324c6cbe6c386e5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// This function takes two string slices and returns the longest one.\n// The returned slice's data must be valid for at least as long\n// as the shortest of the two input slices.\nfn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() > y.len() {\n        x\n    } else {\n        y\n    }\n}\n`);copyBtnbtn_a70d861cbe0741d3b324c6cbe6c386e5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a70d861cbe0741d3b324c6cbe6c386e5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -971,14 +971,14 @@ If a struct contains a reference, it means the struct does not own the data it p
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org407bee1"></a>Example<br />
-<div class="outline-text-5" id="text-org407bee1">
+<li><a id="org22f2497"></a>Example<br />
+<div class="outline-text-5" id="text-org22f2497">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_af31ff3994d44e18bc3580c1b1aa0c6f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_3a081cfc2bfd47d9b0e56ea1c346db98>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_af31ff3994d44e18bc3580c1b1aa0c6f=document.querySelector('button[name=btn_af31ff3994d44e18bc3580c1b1aa0c6f]');
-copyBtnbtn_af31ff3994d44e18bc3580c1b1aa0c6f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`struct ImportantExcerpt<'a> {\n    part: &'a str,\n}\n\nfn main() {\n    let novel = String::from(\"Call me Ishmael. Some years ago...\");\n    let first_sentence = novel.split('.').next().expect(\"Could not find a '.'\");\n    let i = ImportantExcerpt {\n        part: first_sentence,\n    };\n    // The 'a lifetime here ensures that 'novel' lives at least as long as 'i'.\n    // If 'novel' went out of scope before 'i', it would be a compile-time error.\n}\n`);copyBtnbtn_af31ff3994d44e18bc3580c1b1aa0c6f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_af31ff3994d44e18bc3580c1b1aa0c6f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3a081cfc2bfd47d9b0e56ea1c346db98=document.querySelector('button[name=btn_3a081cfc2bfd47d9b0e56ea1c346db98]');
+copyBtnbtn_3a081cfc2bfd47d9b0e56ea1c346db98.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`struct ImportantExcerpt<'a> {\n    part: &'a str,\n}\n\nfn main() {\n    let novel = String::from(\"Call me Ishmael. Some years ago...\");\n    let first_sentence = novel.split('.').next().expect(\"Could not find a '.'\");\n    let i = ImportantExcerpt {\n        part: first_sentence,\n    };\n    // The 'a lifetime here ensures that 'novel' lives at least as long as 'i'.\n    // If 'novel' went out of scope before 'i', it would be a compile-time error.\n}\n`);copyBtnbtn_3a081cfc2bfd47d9b0e56ea1c346db98.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3a081cfc2bfd47d9b0e56ea1c346db98.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1014,14 +1014,14 @@ The lifetime annotation 'a on <code>ImportantExcerpt</code> means that any insta
 </ul>
 </div>
 <ul class="org-ul">
-<li><a id="org22f2497"></a>Example<br />
-<div class="outline-text-5" id="text-org22f2497">
+<li><a id="orga96c332"></a>Example<br />
+<div class="outline-text-5" id="text-orga96c332">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_42ddc09470f646939f0f1bec0dadd5e8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_918babf9901d4adeb0cb3875d39ee8ce>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_42ddc09470f646939f0f1bec0dadd5e8=document.querySelector('button[name=btn_42ddc09470f646939f0f1bec0dadd5e8]');
-copyBtnbtn_42ddc09470f646939f0f1bec0dadd5e8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let s: &'static str = \"I am a string literal with a static lifetime.\";\n`);copyBtnbtn_42ddc09470f646939f0f1bec0dadd5e8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_42ddc09470f646939f0f1bec0dadd5e8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_918babf9901d4adeb0cb3875d39ee8ce=document.querySelector('button[name=btn_918babf9901d4adeb0cb3875d39ee8ce]');
+copyBtnbtn_918babf9901d4adeb0cb3875d39ee8ce.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let s: &'static str = \"I am a string literal with a static lifetime.\";\n`);copyBtnbtn_918babf9901d4adeb0cb3875d39ee8ce.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_918babf9901d4adeb0cb3875d39ee8ce.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

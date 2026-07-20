@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:09 -->
+<!-- 2026-07-20 Mon 15:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Wazuh</title>
@@ -923,11 +923,11 @@ Related: <a href="../org/20260314T005749==siem--security-information-and-event-m
 <h3 id="orge6cab3d">Docker (recommended for lab)</h3>
 <div class="outline-text-3" id="text-orge6cab3d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_96be7f3dcbb844c5b131b12578747edb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_211a7fbf652947f99a1e05a790f007d1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_96be7f3dcbb844c5b131b12578747edb=document.querySelector('button[name=btn_96be7f3dcbb844c5b131b12578747edb]');
-copyBtnbtn_96be7f3dcbb844c5b131b12578747edb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Clone the docker deployment repo\ngit clone https://github.com/wazuh/wazuh-docker.git -b v4.9.0\ncd wazuh-docker/single-node\n\n# Generate certificates\ndocker compose -f generate-indexer-certs.yml run --rm generator\n\n# Start the stack\ndocker compose up -d\n\n# Access dashboard\n# https://localhost (default: admin / SecretPassword)\n`);copyBtnbtn_96be7f3dcbb844c5b131b12578747edb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_96be7f3dcbb844c5b131b12578747edb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_211a7fbf652947f99a1e05a790f007d1=document.querySelector('button[name=btn_211a7fbf652947f99a1e05a790f007d1]');
+copyBtnbtn_211a7fbf652947f99a1e05a790f007d1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Clone the docker deployment repo\ngit clone https://github.com/wazuh/wazuh-docker.git -b v4.9.0\ncd wazuh-docker/single-node\n\n# Generate certificates\ndocker compose -f generate-indexer-certs.yml run --rm generator\n\n# Start the stack\ndocker compose up -d\n\n# Access dashboard\n# https://localhost (default: admin / SecretPassword)\n`);copyBtnbtn_211a7fbf652947f99a1e05a790f007d1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_211a7fbf652947f99a1e05a790f007d1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -951,11 +951,11 @@ let res = copyTextToClipboard(`# Clone the docker deployment repo\ngit clone htt
 <h3 id="orgd8e2cd7">Raspberry Pi / Linux (native)</h3>
 <div class="outline-text-3" id="text-orgd8e2cd7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5831a7f5a72449cb80cdf1fbb5a2f360>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_da8115e0d7894a4bb8cd68e1adc24086>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5831a7f5a72449cb80cdf1fbb5a2f360=document.querySelector('button[name=btn_5831a7f5a72449cb80cdf1fbb5a2f360]');
-copyBtnbtn_5831a7f5a72449cb80cdf1fbb5a2f360.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Add Wazuh repository\ncurl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | gpg --no-default-keyring \\\n  --keyring gnupg-ring:/usr/share/keyrings/wazuh.gpg --import\n\necho \"deb [signed-by=/usr/share/keyrings/wazuh.gpg] \\\n  https://packages.wazuh.com/4.x/apt/ stable main\" \\\n  | tee /etc/apt/sources.list.d/wazuh.list\n\napt update\n\n# Install manager (on the Wazuh server)\napt install wazuh-manager\n\n# Install indexer and dashboard separately\n# Full docs: https://documentation.wazuh.com/current/installation-guide/\n`);copyBtnbtn_5831a7f5a72449cb80cdf1fbb5a2f360.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5831a7f5a72449cb80cdf1fbb5a2f360.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_da8115e0d7894a4bb8cd68e1adc24086=document.querySelector('button[name=btn_da8115e0d7894a4bb8cd68e1adc24086]');
+copyBtnbtn_da8115e0d7894a4bb8cd68e1adc24086.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Add Wazuh repository\ncurl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | gpg --no-default-keyring \\\n  --keyring gnupg-ring:/usr/share/keyrings/wazuh.gpg --import\n\necho \"deb [signed-by=/usr/share/keyrings/wazuh.gpg] \\\n  https://packages.wazuh.com/4.x/apt/ stable main\" \\\n  | tee /etc/apt/sources.list.d/wazuh.list\n\napt update\n\n# Install manager (on the Wazuh server)\napt install wazuh-manager\n\n# Install indexer and dashboard separately\n# Full docs: https://documentation.wazuh.com/current/installation-guide/\n`);copyBtnbtn_da8115e0d7894a4bb8cd68e1adc24086.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_da8115e0d7894a4bb8cd68e1adc24086.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -991,11 +991,11 @@ manager on port 1514/UDP or 1514/TCP.
 <h3 id="org79c75eb">Linux agent</h3>
 <div class="outline-text-3" id="text-org79c75eb">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9503fde5046041a7ba1ed103997ad5e0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d14f3b4db4284266afdf202d68b4fc92>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9503fde5046041a7ba1ed103997ad5e0=document.querySelector('button[name=btn_9503fde5046041a7ba1ed103997ad5e0]');
-copyBtnbtn_9503fde5046041a7ba1ed103997ad5e0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Install\napt install wazuh-agent\n\n# Configure manager address\nsed -i \"s|MANAGER_IP|$MANAGER_IP|g\" /var/ossec/etc/ossec.conf\n\n# Start\nsystemctl daemon-reload\nsystemctl enable wazuh-agent\nsystemctl start wazuh-agent\n`);copyBtnbtn_9503fde5046041a7ba1ed103997ad5e0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9503fde5046041a7ba1ed103997ad5e0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d14f3b4db4284266afdf202d68b4fc92=document.querySelector('button[name=btn_d14f3b4db4284266afdf202d68b4fc92]');
+copyBtnbtn_d14f3b4db4284266afdf202d68b4fc92.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Install\napt install wazuh-agent\n\n# Configure manager address\nsed -i \"s|MANAGER_IP|$MANAGER_IP|g\" /var/ossec/etc/ossec.conf\n\n# Start\nsystemctl daemon-reload\nsystemctl enable wazuh-agent\nsystemctl start wazuh-agent\n`);copyBtnbtn_d14f3b4db4284266afdf202d68b4fc92.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d14f3b4db4284266afdf202d68b4fc92.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1017,11 +1017,11 @@ systemctl start wazuh-agent
 <h3 id="orgdf15518">Windows agent</h3>
 <div class="outline-text-3" id="text-orgdf15518">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_b9891304e0024dad9ed530f403b989f1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_73fa867030b24d2d90288c5b7290ea4c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b9891304e0024dad9ed530f403b989f1=document.querySelector('button[name=btn_b9891304e0024dad9ed530f403b989f1]');
-copyBtnbtn_b9891304e0024dad9ed530f403b989f1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# PowerShell — download and install silently\nInvoke-WebRequest -Uri \"https://packages.wazuh.com/4.x/windows/wazuh-agent-4.9.0-1.msi\" \`\n  -OutFile wazuh-agent.msi\nmsiexec /i wazuh-agent.msi WAZUH_MANAGER=$MANAGER_IP /quiet\n\n# Start service\nNET START WazuhSvc\n`);copyBtnbtn_b9891304e0024dad9ed530f403b989f1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b9891304e0024dad9ed530f403b989f1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_73fa867030b24d2d90288c5b7290ea4c=document.querySelector('button[name=btn_73fa867030b24d2d90288c5b7290ea4c]');
+copyBtnbtn_73fa867030b24d2d90288c5b7290ea4c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# PowerShell — download and install silently\nInvoke-WebRequest -Uri \"https://packages.wazuh.com/4.x/windows/wazuh-agent-4.9.0-1.msi\" \`\n  -OutFile wazuh-agent.msi\nmsiexec /i wazuh-agent.msi WAZUH_MANAGER=$MANAGER_IP /quiet\n\n# Start service\nNET START WazuhSvc\n`);copyBtnbtn_73fa867030b24d2d90288c5b7290ea4c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_73fa867030b24d2d90288c5b7290ea4c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1040,11 +1040,11 @@ msiexec /i <span style="color: var(--function-clr-name); background-color: var(-
 <h3 id="org6d34de7">Verify agent connection (on manager)</h3>
 <div class="outline-text-3" id="text-org6d34de7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d131ac2972a74c8daeeb0bcf5dca6e53>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9d573adeb6004eaeb6a9f034effbb6f6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d131ac2972a74c8daeeb0bcf5dca6e53=document.querySelector('button[name=btn_d131ac2972a74c8daeeb0bcf5dca6e53]');
-copyBtnbtn_d131ac2972a74c8daeeb0bcf5dca6e53.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List connected agents\n/var/ossec/bin/agent_control -l\n\n# Check agent status\n/var/ossec/bin/agent_control -i 001\n`);copyBtnbtn_d131ac2972a74c8daeeb0bcf5dca6e53.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d131ac2972a74c8daeeb0bcf5dca6e53.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9d573adeb6004eaeb6a9f034effbb6f6=document.querySelector('button[name=btn_9d573adeb6004eaeb6a9f034effbb6f6]');
+copyBtnbtn_9d573adeb6004eaeb6a9f034effbb6f6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List connected agents\n/var/ossec/bin/agent_control -l\n\n# Check agent status\n/var/ossec/bin/agent_control -i 001\n`);copyBtnbtn_9d573adeb6004eaeb6a9f034effbb6f6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9d573adeb6004eaeb6a9f034effbb6f6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1112,11 +1112,11 @@ Main config file: <code>/var/ossec/etc/ossec.conf</code>
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>XML</span><button class='copyBtn' name=btn_1513acb550344e7fb5757b3b39b6494f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>XML</span><button class='copyBtn' name=btn_5ece8bc1d67f4e1bb667ebc14f614449>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1513acb550344e7fb5757b3b39b6494f=document.querySelector('button[name=btn_1513acb550344e7fb5757b3b39b6494f]');
-copyBtnbtn_1513acb550344e7fb5757b3b39b6494f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<!-- File integrity monitoring — add directories to watch -->\n<syscheck>\n  <frequency>43200</frequency>\n  <directories check_all=\"yes\">/etc,/usr/bin,/usr/sbin</directories>\n  <directories check_all=\"yes\" report_changes=\"yes\">/var/www/html</directories>\n</syscheck>\n\n<!-- Log collection — add sources -->\n<localfile>\n  <log_format>syslog</log_format>\n  <location>/var/log/auth.log</location>\n</localfile>\n\n<!-- Windows event log collection (in Windows agent config) -->\n<localfile>\n  <log_format>eventchannel</log_format>\n  <location>Security</location>\n</localfile>\n<localfile>\n  <log_format>eventchannel</log_format>\n  <location>Microsoft-Windows-Sysmon/Operational</location>\n</localfile>\n`);copyBtnbtn_1513acb550344e7fb5757b3b39b6494f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1513acb550344e7fb5757b3b39b6494f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5ece8bc1d67f4e1bb667ebc14f614449=document.querySelector('button[name=btn_5ece8bc1d67f4e1bb667ebc14f614449]');
+copyBtnbtn_5ece8bc1d67f4e1bb667ebc14f614449.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<!-- File integrity monitoring — add directories to watch -->\n<syscheck>\n  <frequency>43200</frequency>\n  <directories check_all=\"yes\">/etc,/usr/bin,/usr/sbin</directories>\n  <directories check_all=\"yes\" report_changes=\"yes\">/var/www/html</directories>\n</syscheck>\n\n<!-- Log collection — add sources -->\n<localfile>\n  <log_format>syslog</log_format>\n  <location>/var/log/auth.log</location>\n</localfile>\n\n<!-- Windows event log collection (in Windows agent config) -->\n<localfile>\n  <log_format>eventchannel</log_format>\n  <location>Security</location>\n</localfile>\n<localfile>\n  <log_format>eventchannel</log_format>\n  <location>Microsoft-Windows-Sysmon/Operational</location>\n</localfile>\n`);copyBtnbtn_5ece8bc1d67f4e1bb667ebc14f614449.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5ece8bc1d67f4e1bb667ebc14f614449.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1204,11 +1204,11 @@ Rules live in <code>/var/ossec/etc/rules/local_rules.xml</code>:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>XML</span><button class='copyBtn' name=btn_e0fefe3e7f314ed9ba1383f073d2a65e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>XML</span><button class='copyBtn' name=btn_66e40148a26248188f034eee5d6b5a89>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e0fefe3e7f314ed9ba1383f073d2a65e=document.querySelector('button[name=btn_e0fefe3e7f314ed9ba1383f073d2a65e]');
-copyBtnbtn_e0fefe3e7f314ed9ba1383f073d2a65e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<!-- Alert on any new user created -->\n<rule id=\"100001\" level=\"10\">\n  <if_sid>5901</if_sid>\n  <description>New user account created</description>\n</rule>\n\n<!-- Alert on SSH login from an unusual country (requires GeoIP) -->\n<rule id=\"100002\" level=\"10\">\n  <if_sid>5715</if_sid>\n  <geoip not_field=\"GeoIP.country_code2\">GB</geoip>\n  <description>SSH login from outside expected country</description>\n</rule>\n`);copyBtnbtn_e0fefe3e7f314ed9ba1383f073d2a65e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e0fefe3e7f314ed9ba1383f073d2a65e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_66e40148a26248188f034eee5d6b5a89=document.querySelector('button[name=btn_66e40148a26248188f034eee5d6b5a89]');
+copyBtnbtn_66e40148a26248188f034eee5d6b5a89.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<!-- Alert on any new user created -->\n<rule id=\"100001\" level=\"10\">\n  <if_sid>5901</if_sid>\n  <description>New user account created</description>\n</rule>\n\n<!-- Alert on SSH login from an unusual country (requires GeoIP) -->\n<rule id=\"100002\" level=\"10\">\n  <if_sid>5715</if_sid>\n  <geoip not_field=\"GeoIP.country_code2\">GB</geoip>\n  <description>SSH login from outside expected country</description>\n</rule>\n`);copyBtnbtn_66e40148a26248188f034eee5d6b5a89.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_66e40148a26248188f034eee5d6b5a89.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1228,11 +1228,11 @@ let res = copyTextToClipboard(`<!-- Alert on any new user created -->\n<rule id=
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3c36b75b21ea4eaba4b942c0b3e06ebd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d4d6ad31c4fc45b5a021e1c776d4461b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3c36b75b21ea4eaba4b942c0b3e06ebd=document.querySelector('button[name=btn_3c36b75b21ea4eaba4b942c0b3e06ebd]');
-copyBtnbtn_3c36b75b21ea4eaba4b942c0b3e06ebd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Reload rules without restart\n/var/ossec/bin/ossec-control reload\n\n# Test rules against a log entry\n/var/ossec/bin/ossec-logtest\n`);copyBtnbtn_3c36b75b21ea4eaba4b942c0b3e06ebd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3c36b75b21ea4eaba4b942c0b3e06ebd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d4d6ad31c4fc45b5a021e1c776d4461b=document.querySelector('button[name=btn_d4d6ad31c4fc45b5a021e1c776d4461b]');
+copyBtnbtn_d4d6ad31c4fc45b5a021e1c776d4461b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Reload rules without restart\n/var/ossec/bin/ossec-control reload\n\n# Test rules against a log entry\n/var/ossec/bin/ossec-logtest\n`);copyBtnbtn_d4d6ad31c4fc45b5a021e1c776d4461b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d4d6ad31c4fc45b5a021e1c776d4461b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1249,11 +1249,11 @@ let res = copyTextToClipboard(`# Reload rules without restart\n/var/ossec/bin/os
 <h2 id="org51cca3d">Useful CLI Commands</h2>
 <div class="outline-text-2" id="text-org51cca3d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b2dbed55c329484aa9f3974a1ba25f77>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ef72a9a992fd45b39041ed933f1ef0b5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b2dbed55c329484aa9f3974a1ba25f77=document.querySelector('button[name=btn_b2dbed55c329484aa9f3974a1ba25f77]');
-copyBtnbtn_b2dbed55c329484aa9f3974a1ba25f77.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Service management\nsystemctl status wazuh-manager\nsystemctl restart wazuh-manager\n\n# Real-time alert stream\ntail -f /var/ossec/logs/alerts/alerts.log\n\n# JSON alerts (better for parsing)\ntail -f /var/ossec/logs/alerts/alerts.json\n\n# Check manager status\n/var/ossec/bin/ossec-control status\n\n# Run vulnerability scan on all agents\n/var/ossec/bin/agent_groups -l\n\n# Manually trigger FIM scan\n/var/ossec/bin/agent_control -r -a\n`);copyBtnbtn_b2dbed55c329484aa9f3974a1ba25f77.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b2dbed55c329484aa9f3974a1ba25f77.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ef72a9a992fd45b39041ed933f1ef0b5=document.querySelector('button[name=btn_ef72a9a992fd45b39041ed933f1ef0b5]');
+copyBtnbtn_ef72a9a992fd45b39041ed933f1ef0b5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Service management\nsystemctl status wazuh-manager\nsystemctl restart wazuh-manager\n\n# Real-time alert stream\ntail -f /var/ossec/logs/alerts/alerts.log\n\n# JSON alerts (better for parsing)\ntail -f /var/ossec/logs/alerts/alerts.json\n\n# Check manager status\n/var/ossec/bin/ossec-control status\n\n# Run vulnerability scan on all agents\n/var/ossec/bin/agent_groups -l\n\n# Manually trigger FIM scan\n/var/ossec/bin/agent_control -r -a\n`);copyBtnbtn_ef72a9a992fd45b39041ed933f1ef0b5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ef72a9a992fd45b39041ed933f1ef0b5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:08 -->
+<!-- 2026-07-20 Mon 15:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GraphQL</title>
@@ -964,11 +964,11 @@ Related: <a href="../org/20260206T060634==rest--representational-state-transfer_
 <h3 id="org913743a">Query</h3>
 <div class="outline-text-3" id="text-org913743a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_54600591f7874314a675262dac0551f7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_7b1ffd209aca416885232cbdb3d7011c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_54600591f7874314a675262dac0551f7=document.querySelector('button[name=btn_54600591f7874314a675262dac0551f7]');
-copyBtnbtn_54600591f7874314a675262dac0551f7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Basic query — fetch specific fields\nquery {\n  users {\n    id\n    name\n    email\n  }\n}\n\n# Query with arguments\nquery {\n  user(id: 5) {\n    name\n    email\n    role\n  }\n}\n\n# Named query with variables\nquery GetUser($userId: ID!) {\n  user(id: $userId) {\n    name\n    email\n  }\n}\n`);copyBtnbtn_54600591f7874314a675262dac0551f7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_54600591f7874314a675262dac0551f7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7b1ffd209aca416885232cbdb3d7011c=document.querySelector('button[name=btn_7b1ffd209aca416885232cbdb3d7011c]');
+copyBtnbtn_7b1ffd209aca416885232cbdb3d7011c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Basic query — fetch specific fields\nquery {\n  users {\n    id\n    name\n    email\n  }\n}\n\n# Query with arguments\nquery {\n  user(id: 5) {\n    name\n    email\n    role\n  }\n}\n\n# Named query with variables\nquery GetUser($userId: ID!) {\n  user(id: $userId) {\n    name\n    email\n  }\n}\n`);copyBtnbtn_7b1ffd209aca416885232cbdb3d7011c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7b1ffd209aca416885232cbdb3d7011c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1004,11 +1004,11 @@ query GetUser($userId: ID!) {
 Variables passed separately as JSON:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JSON</span><button class='copyBtn' name=btn_47339878e0d34623af2f3895955c328e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JSON</span><button class='copyBtn' name=btn_2abe285b185d40198d34fa7a81baa423>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_47339878e0d34623af2f3895955c328e=document.querySelector('button[name=btn_47339878e0d34623af2f3895955c328e]');
-copyBtnbtn_47339878e0d34623af2f3895955c328e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`{ \"userId\": \"5\" }\n`);copyBtnbtn_47339878e0d34623af2f3895955c328e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_47339878e0d34623af2f3895955c328e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2abe285b185d40198d34fa7a81baa423=document.querySelector('button[name=btn_2abe285b185d40198d34fa7a81baa423]');
+copyBtnbtn_2abe285b185d40198d34fa7a81baa423.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`{ \"userId\": \"5\" }\n`);copyBtnbtn_2abe285b185d40198d34fa7a81baa423.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2abe285b185d40198d34fa7a81baa423.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1021,11 +1021,11 @@ let res = copyTextToClipboard(`{ \"userId\": \"5\" }\n`);copyBtnbtn_47339878e0d3
 <h3 id="orgc5ce4ed">Mutation</h3>
 <div class="outline-text-3" id="text-orgc5ce4ed">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_b74aa8d7300d4a07bcbafbacbd843c33>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_d93f76b82f0e47ad8722a235323f38a6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b74aa8d7300d4a07bcbafbacbd843c33=document.querySelector('button[name=btn_b74aa8d7300d4a07bcbafbacbd843c33]');
-copyBtnbtn_b74aa8d7300d4a07bcbafbacbd843c33.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Create\nmutation {\n  createUser(input: { name: \"Alice\", email: \"alice@example.com\" }) {\n    id\n    name\n  }\n}\n\n# Update\nmutation {\n  updateUser(id: 5, input: { role: \"admin\" }) {\n    id\n    role\n  }\n}\n`);copyBtnbtn_b74aa8d7300d4a07bcbafbacbd843c33.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b74aa8d7300d4a07bcbafbacbd843c33.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d93f76b82f0e47ad8722a235323f38a6=document.querySelector('button[name=btn_d93f76b82f0e47ad8722a235323f38a6]');
+copyBtnbtn_d93f76b82f0e47ad8722a235323f38a6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Create\nmutation {\n  createUser(input: { name: \"Alice\", email: \"alice@example.com\" }) {\n    id\n    name\n  }\n}\n\n# Update\nmutation {\n  updateUser(id: 5, input: { role: \"admin\" }) {\n    id\n    role\n  }\n}\n`);copyBtnbtn_d93f76b82f0e47ad8722a235323f38a6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d93f76b82f0e47ad8722a235323f38a6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1052,11 +1052,11 @@ mutation {
 <h3 id="org6a049c2">Fragments — reusable field sets</h3>
 <div class="outline-text-3" id="text-org6a049c2">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_53b727fe3c3e453ab6668ba2a717feaf>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_309a726c91ba49799dd696ce0d7120cc>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_53b727fe3c3e453ab6668ba2a717feaf=document.querySelector('button[name=btn_53b727fe3c3e453ab6668ba2a717feaf]');
-copyBtnbtn_53b727fe3c3e453ab6668ba2a717feaf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`fragment UserFields on User {\n  id\n  name\n  email\n  role\n}\n\nquery {\n  users {\n    ...UserFields\n  }\n}\n`);copyBtnbtn_53b727fe3c3e453ab6668ba2a717feaf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_53b727fe3c3e453ab6668ba2a717feaf.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_309a726c91ba49799dd696ce0d7120cc=document.querySelector('button[name=btn_309a726c91ba49799dd696ce0d7120cc]');
+copyBtnbtn_309a726c91ba49799dd696ce0d7120cc.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`fragment UserFields on User {\n  id\n  name\n  email\n  role\n}\n\nquery {\n  users {\n    ...UserFields\n  }\n}\n`);copyBtnbtn_309a726c91ba49799dd696ce0d7120cc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_309a726c91ba49799dd696ce0d7120cc.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1085,11 +1085,11 @@ GraphQL typically runs over POST to a single endpoint:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8fd9f0dc7f1f4a0d83e83c273fdc3024>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9434d19282ea4a5c9e8139f0aa9b1f37>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8fd9f0dc7f1f4a0d83e83c273fdc3024=document.querySelector('button[name=btn_8fd9f0dc7f1f4a0d83e83c273fdc3024]');
-copyBtnbtn_8fd9f0dc7f1f4a0d83e83c273fdc3024.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Standard POST query\ncurl -X POST https://target.com/graphql \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -d '{\"query\": \"{ users { id name email } }\"}'\n\n# With variables\ncurl -X POST https://target.com/graphql \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"query\": \"query GetUser($id: ID!) { user(id: $id) { name email } }\",\n    \"variables\": {\"id\": \"5\"}\n  }'\n\n# Some APIs also accept GET\ncurl \"https://target.com/graphql?query={users{id,name,email}}\"\n`);copyBtnbtn_8fd9f0dc7f1f4a0d83e83c273fdc3024.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8fd9f0dc7f1f4a0d83e83c273fdc3024.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9434d19282ea4a5c9e8139f0aa9b1f37=document.querySelector('button[name=btn_9434d19282ea4a5c9e8139f0aa9b1f37]');
+copyBtnbtn_9434d19282ea4a5c9e8139f0aa9b1f37.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Standard POST query\ncurl -X POST https://target.com/graphql \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -d '{\"query\": \"{ users { id name email } }\"}'\n\n# With variables\ncurl -X POST https://target.com/graphql \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"query\": \"query GetUser($id: ID!) { user(id: $id) { name email } }\",\n    \"variables\": {\"id\": \"5\"}\n  }'\n\n# Some APIs also accept GET\ncurl \"https://target.com/graphql?query={users{id,name,email}}\"\n`);copyBtnbtn_9434d19282ea4a5c9e8139f0aa9b1f37.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9434d19282ea4a5c9e8139f0aa9b1f37.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1133,11 +1133,11 @@ provides the complete attack surface map.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_3f801b16447c44bca97856050fc68ad7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_ac8d991011a74ee5af45c6bf6294a93a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3f801b16447c44bca97856050fc68ad7=document.querySelector('button[name=btn_3f801b16447c44bca97856050fc68ad7]');
-copyBtnbtn_3f801b16447c44bca97856050fc68ad7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Full introspection query — reveals entire schema\n{\n  __schema {\n    types {\n      name\n      fields {\n        name\n        type {\n          name\n          kind\n        }\n      }\n    }\n  }\n}\n\n# List all available queries and mutations\n{\n  __schema {\n    queryType { fields { name description } }\n    mutationType { fields { name description } }\n  }\n}\n`);copyBtnbtn_3f801b16447c44bca97856050fc68ad7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3f801b16447c44bca97856050fc68ad7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ac8d991011a74ee5af45c6bf6294a93a=document.querySelector('button[name=btn_ac8d991011a74ee5af45c6bf6294a93a]');
+copyBtnbtn_ac8d991011a74ee5af45c6bf6294a93a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Full introspection query — reveals entire schema\n{\n  __schema {\n    types {\n      name\n      fields {\n        name\n        type {\n          name\n          kind\n        }\n      }\n    }\n  }\n}\n\n# List all available queries and mutations\n{\n  __schema {\n    queryType { fields { name description } }\n    mutationType { fields { name description } }\n  }\n}\n`);copyBtnbtn_ac8d991011a74ee5af45c6bf6294a93a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ac8d991011a74ee5af45c6bf6294a93a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1168,11 +1168,11 @@ let res = copyTextToClipboard(`# Full introspection query — reveals entire sch
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_adea73bfb5af4e1c89cc03385e2d5f74>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_cfd26d87374b467a8689b7a09f859fd8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_adea73bfb5af4e1c89cc03385e2d5f74=document.querySelector('button[name=btn_adea73bfb5af4e1c89cc03385e2d5f74]');
-copyBtnbtn_adea73bfb5af4e1c89cc03385e2d5f74.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Via curl\ncurl -X POST https://target.com/graphql \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"query\": \"{ __schema { types { name } } }\"}'\n\n# InQL (Burp extension) automates introspection and generates\n# a browsable schema map\n`);copyBtnbtn_adea73bfb5af4e1c89cc03385e2d5f74.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_adea73bfb5af4e1c89cc03385e2d5f74.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cfd26d87374b467a8689b7a09f859fd8=document.querySelector('button[name=btn_cfd26d87374b467a8689b7a09f859fd8]');
+copyBtnbtn_cfd26d87374b467a8689b7a09f859fd8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Via curl\ncurl -X POST https://target.com/graphql \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"query\": \"{ __schema { types { name } } }\"}'\n\n# InQL (Burp extension) automates introspection and generates\n# a browsable schema map\n`);copyBtnbtn_cfd26d87374b467a8689b7a09f859fd8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cfd26d87374b467a8689b7a09f859fd8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1196,11 +1196,11 @@ and is frequently missed. Test by substituting IDs:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_352fc38b929b4a20a6cac90b13fb1bbc>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_9b4fdb9a7f83457bbb3df84c9566b157>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_352fc38b929b4a20a6cac90b13fb1bbc=document.querySelector('button[name=btn_352fc38b929b4a20a6cac90b13fb1bbc]');
-copyBtnbtn_352fc38b929b4a20a6cac90b13fb1bbc.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Request another user's data while authenticated as a different user\nquery {\n  user(id: 2) {\n    email\n    creditCards {\n      number\n    }\n  }\n}\n`);copyBtnbtn_352fc38b929b4a20a6cac90b13fb1bbc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_352fc38b929b4a20a6cac90b13fb1bbc.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9b4fdb9a7f83457bbb3df84c9566b157=document.querySelector('button[name=btn_9b4fdb9a7f83457bbb3df84c9566b157]');
+copyBtnbtn_9b4fdb9a7f83457bbb3df84c9566b157.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Request another user's data while authenticated as a different user\nquery {\n  user(id: 2) {\n    email\n    creditCards {\n      number\n    }\n  }\n}\n`);copyBtnbtn_9b4fdb9a7f83457bbb3df84c9566b157.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9b4fdb9a7f83457bbb3df84c9566b157.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1231,11 +1231,11 @@ OTP validation or login:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JSON</span><button class='copyBtn' name=btn_63f9b9d1407643b1afd3e608ee0c3673>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JSON</span><button class='copyBtn' name=btn_f09ad263a13e4ccab70c45d2034e4c2c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_63f9b9d1407643b1afd3e608ee0c3673=document.querySelector('button[name=btn_63f9b9d1407643b1afd3e608ee0c3673]');
-copyBtnbtn_63f9b9d1407643b1afd3e608ee0c3673.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`[\n  {\"query\": \"mutation { login(username: \\\"admin\\\", password: \\\"pass1\\\") { token } }\"},\n  {\"query\": \"mutation { login(username: \\\"admin\\\", password: \\\"pass2\\\") { token } }\"},\n  {\"query\": \"mutation { login(username: \\\"admin\\\", password: \\\"pass3\\\") { token } }\"}\n]\n`);copyBtnbtn_63f9b9d1407643b1afd3e608ee0c3673.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_63f9b9d1407643b1afd3e608ee0c3673.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f09ad263a13e4ccab70c45d2034e4c2c=document.querySelector('button[name=btn_f09ad263a13e4ccab70c45d2034e4c2c]');
+copyBtnbtn_f09ad263a13e4ccab70c45d2034e4c2c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`[\n  {\"query\": \"mutation { login(username: \\\"admin\\\", password: \\\"pass1\\\") { token } }\"},\n  {\"query\": \"mutation { login(username: \\\"admin\\\", password: \\\"pass2\\\") { token } }\"},\n  {\"query\": \"mutation { login(username: \\\"admin\\\", password: \\\"pass3\\\") { token } }\"}\n]\n`);copyBtnbtn_f09ad263a13e4ccab70c45d2034e4c2c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f09ad263a13e4ccab70c45d2034e4c2c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1263,11 +1263,11 @@ information:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_35495b8b78254b1d9a43ec016eed2032>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_8af726e3c60543f79c2d0ef6a8f59d21>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_35495b8b78254b1d9a43ec016eed2032=document.querySelector('button[name=btn_35495b8b78254b1d9a43ec016eed2032]');
-copyBtnbtn_35495b8b78254b1d9a43ec016eed2032.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Deliberately mistype a field name\nquery { usr { id } }\n# Response may include: \"Did you mean 'user'?\"\n\nquery { user { passward } }\n# Response may include: \"Did you mean 'password'?\"\n`);copyBtnbtn_35495b8b78254b1d9a43ec016eed2032.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_35495b8b78254b1d9a43ec016eed2032.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8af726e3c60543f79c2d0ef6a8f59d21=document.querySelector('button[name=btn_8af726e3c60543f79c2d0ef6a8f59d21]');
+copyBtnbtn_8af726e3c60543f79c2d0ef6a8f59d21.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Deliberately mistype a field name\nquery { usr { id } }\n# Response may include: \"Did you mean 'user'?\"\n\nquery { user { passward } }\n# Response may include: \"Did you mean 'password'?\"\n`);copyBtnbtn_8af726e3c60543f79c2d0ef6a8f59d21.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8af726e3c60543f79c2d0ef6a8f59d21.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1290,11 +1290,11 @@ resources:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_2aeadb5a013d41e18d03e91c61f6b398>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_5350fb85bb564e588a179d861660cb84>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2aeadb5a013d41e18d03e91c61f6b398=document.querySelector('button[name=btn_2aeadb5a013d41e18d03e91c61f6b398]');
-copyBtnbtn_2aeadb5a013d41e18d03e91c61f6b398.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`query {\n  user {\n    friends {\n      friends {\n        friends {\n          friends {\n            name\n          }\n        }\n      }\n    }\n  }\n}\n`);copyBtnbtn_2aeadb5a013d41e18d03e91c61f6b398.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2aeadb5a013d41e18d03e91c61f6b398.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5350fb85bb564e588a179d861660cb84=document.querySelector('button[name=btn_5350fb85bb564e588a179d861660cb84]');
+copyBtnbtn_5350fb85bb564e588a179d861660cb84.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`query {\n  user {\n    friends {\n      friends {\n        friends {\n          friends {\n            name\n          }\n        }\n      }\n    }\n  }\n}\n`);copyBtnbtn_5350fb85bb564e588a179d861660cb84.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5350fb85bb564e588a179d861660cb84.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1329,11 +1329,11 @@ SQL or other queries unsafely:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_821b3b3caca84b0b944ebf1c0d0e73b3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_299398ee17484df694f9faf95ed8a5e9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_821b3b3caca84b0b944ebf1c0d0e73b3=document.querySelector('button[name=btn_821b3b3caca84b0b944ebf1c0d0e73b3]');
-copyBtnbtn_821b3b3caca84b0b944ebf1c0d0e73b3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# SQL injection via argument\nquery {\n  user(id: \"1 OR 1=1\") {\n    name\n  }\n}\n\n# NoSQL injection\nquery {\n  users(filter: \"{\\\"$where\\\": \\\"this.role == 'admin'\\\"}\") {\n    name\n    email\n  }\n}\n`);copyBtnbtn_821b3b3caca84b0b944ebf1c0d0e73b3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_821b3b3caca84b0b944ebf1c0d0e73b3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_299398ee17484df694f9faf95ed8a5e9=document.querySelector('button[name=btn_299398ee17484df694f9faf95ed8a5e9]');
+copyBtnbtn_299398ee17484df694f9faf95ed8a5e9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# SQL injection via argument\nquery {\n  user(id: \"1 OR 1=1\") {\n    name\n  }\n}\n\n# NoSQL injection\nquery {\n  users(filter: \"{\\\"$where\\\": \\\"this.role == 'admin'\\\"}\") {\n    name\n    email\n  }\n}\n`);copyBtnbtn_299398ee17484df694f9faf95ed8a5e9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_299398ee17484df694f9faf95ed8a5e9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

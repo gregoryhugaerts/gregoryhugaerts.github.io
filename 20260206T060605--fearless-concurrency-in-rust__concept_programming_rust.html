@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:08 -->
+<!-- 2026-07-20 Mon 15:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Fearless concurrency in rust</title>
@@ -967,11 +967,11 @@ To pass data to a new thread, you must transfer ownership. The <code>move</code>
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_4ce16fb92ecf4ff193555bd86ad9475b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_ff4cd8672bfe4da08b505c04f74093f0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4ce16fb92ecf4ff193555bd86ad9475b=document.querySelector('button[name=btn_4ce16fb92ecf4ff193555bd86ad9475b]');
-copyBtnbtn_4ce16fb92ecf4ff193555bd86ad9475b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use std::thread;\n\nfn main() {\n    let data = vec![1, 2, 3];\n\n    // 'thread::spawn' starts a new thread.\n    // The 'move' keyword transfers ownership of 'data' to the new thread.\n    let handle = thread::spawn(move || {\n        println!(\"Here's the data from the new thread: {:?}\", data);\n    });\n\n    // This line would cause a compile-time error because 'data' has been moved\n    // and the main thread no longer owns it.\n    // println!(\"Can't access data from main thread: {:?}\", data);\n\n    // Wait for the spawned thread to finish.\n    handle.join().unwrap();\n}\n`);copyBtnbtn_4ce16fb92ecf4ff193555bd86ad9475b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4ce16fb92ecf4ff193555bd86ad9475b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ff4cd8672bfe4da08b505c04f74093f0=document.querySelector('button[name=btn_ff4cd8672bfe4da08b505c04f74093f0]');
+copyBtnbtn_ff4cd8672bfe4da08b505c04f74093f0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use std::thread;\n\nfn main() {\n    let data = vec![1, 2, 3];\n\n    // 'thread::spawn' starts a new thread.\n    // The 'move' keyword transfers ownership of 'data' to the new thread.\n    let handle = thread::spawn(move || {\n        println!(\"Here's the data from the new thread: {:?}\", data);\n    });\n\n    // This line would cause a compile-time error because 'data' has been moved\n    // and the main thread no longer owns it.\n    // println!(\"Can't access data from main thread: {:?}\", data);\n\n    // Wait for the spawned thread to finish.\n    handle.join().unwrap();\n}\n`);copyBtnbtn_ff4cd8672bfe4da08b505c04f74093f0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ff4cd8672bfe4da08b505c04f74093f0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1009,11 +1009,11 @@ If you need multiple threads to <i>read</i> the same data without transferring o
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_d73670c025d949e6b51a7f40f97b197c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_29d52e1997864fadb0b83057c0fc61e4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d73670c025d949e6b51a7f40f97b197c=document.querySelector('button[name=btn_d73670c025d949e6b51a7f40f97b197c]');
-copyBtnbtn_d73670c025d949e6b51a7f40f97b197c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use std::sync::Arc;\nuse std::thread;\n\nfn main() {\n    // Wrap the data in an Arc to enable shared ownership.\n    let shared_data = Arc::new(vec![10, 20, 30]);\n    let mut handles = vec![];\n\n    for i in 0..3 {\n        // Create a new reference-counted pointer for the new thread.\n        // This is cheap as it only bumps a counter, not a deep copy.\n        let data_clone = Arc::clone(&shared_data);\n        \n        let handle = thread::spawn(move || {\n            println!(\"Thread {} sees data: {:?}\", i, data_clone);\n        });\n        handles.push(handle);\n    }\n\n    for handle in handles {\n        handle.join().unwrap();\n    }\n}\n`);copyBtnbtn_d73670c025d949e6b51a7f40f97b197c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d73670c025d949e6b51a7f40f97b197c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_29d52e1997864fadb0b83057c0fc61e4=document.querySelector('button[name=btn_29d52e1997864fadb0b83057c0fc61e4]');
+copyBtnbtn_29d52e1997864fadb0b83057c0fc61e4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use std::sync::Arc;\nuse std::thread;\n\nfn main() {\n    // Wrap the data in an Arc to enable shared ownership.\n    let shared_data = Arc::new(vec![10, 20, 30]);\n    let mut handles = vec![];\n\n    for i in 0..3 {\n        // Create a new reference-counted pointer for the new thread.\n        // This is cheap as it only bumps a counter, not a deep copy.\n        let data_clone = Arc::clone(&shared_data);\n        \n        let handle = thread::spawn(move || {\n            println!(\"Thread {} sees data: {:?}\", i, data_clone);\n        });\n        handles.push(handle);\n    }\n\n    for handle in handles {\n        handle.join().unwrap();\n    }\n}\n`);copyBtnbtn_29d52e1997864fadb0b83057c0fc61e4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_29d52e1997864fadb0b83057c0fc61e4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1056,11 +1056,11 @@ To allow multiple threads to <i>modify</i> shared data, you must combine <code>A
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_7e4218f6142341a19b578f8dca627396>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_194c78fad9194774a1f97bc97e585f14>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7e4218f6142341a19b578f8dca627396=document.querySelector('button[name=btn_7e4218f6142341a19b578f8dca627396]');
-copyBtnbtn_7e4218f6142341a19b578f8dca627396.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use std::sync::{Arc, Mutex};\nuse std::thread;\n\nfn main() {\n    // Wrap a counter in a Mutex, then wrap the Mutex in an Arc.\n    let counter = Arc::new(Mutex::new(0));\n    let mut handles = vec![];\n\n    for _ in 0..10 {\n        let counter_clone = Arc::clone(&counter);\n        let handle = thread::spawn(move || {\n            // 'lock()' acquires the mutex, blocking until it's available.\n            // It returns a 'MutexGuard', a smart pointer.\n            let mut num = counter_clone.lock().unwrap();\n            \n            // The MutexGuard dereferences to the inner data.\n            *num += 1;\n\n            // The lock is automatically released when 'num' (the MutexGuard)\n            // goes out of scope at the end of this closure.\n        });\n        handles.push(handle);\n    }\n\n    for handle in handles {\n        handle.join().unwrap();\n    }\n\n    // Lock the mutex in the main thread to print the final result.\n    println!(\"Result: {}\", *counter.lock().unwrap()); // Prints \"Result: 10\"\n}\n`);copyBtnbtn_7e4218f6142341a19b578f8dca627396.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7e4218f6142341a19b578f8dca627396.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_194c78fad9194774a1f97bc97e585f14=document.querySelector('button[name=btn_194c78fad9194774a1f97bc97e585f14]');
+copyBtnbtn_194c78fad9194774a1f97bc97e585f14.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use std::sync::{Arc, Mutex};\nuse std::thread;\n\nfn main() {\n    // Wrap a counter in a Mutex, then wrap the Mutex in an Arc.\n    let counter = Arc::new(Mutex::new(0));\n    let mut handles = vec![];\n\n    for _ in 0..10 {\n        let counter_clone = Arc::clone(&counter);\n        let handle = thread::spawn(move || {\n            // 'lock()' acquires the mutex, blocking until it's available.\n            // It returns a 'MutexGuard', a smart pointer.\n            let mut num = counter_clone.lock().unwrap();\n            \n            // The MutexGuard dereferences to the inner data.\n            *num += 1;\n\n            // The lock is automatically released when 'num' (the MutexGuard)\n            // goes out of scope at the end of this closure.\n        });\n        handles.push(handle);\n    }\n\n    for handle in handles {\n        handle.join().unwrap();\n    }\n\n    // Lock the mutex in the main thread to print the final result.\n    println!(\"Result: {}\", *counter.lock().unwrap()); // Prints \"Result: 10\"\n}\n`);copyBtnbtn_194c78fad9194774a1f97bc97e585f14.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_194c78fad9194774a1f97bc97e585f14.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

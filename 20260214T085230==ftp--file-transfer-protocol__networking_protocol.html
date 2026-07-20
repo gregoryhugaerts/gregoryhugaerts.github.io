@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:09 -->
+<!-- 2026-07-20 Mon 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>File Transfer Protocol</title>
@@ -901,11 +901,11 @@ for file sharing and distribution.
 <h2 id="orga6468e5">Diagram</h2>
 <div class="outline-text-2" id="text-orga6468e5">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PLANTUML</span><button class='copyBtn' name=btn_8c9b5b9b434b4d7b95c3088b667593ce>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PLANTUML</span><button class='copyBtn' name=btn_2e4ad975872c40a883cac3e6b5c64bbe>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8c9b5b9b434b4d7b95c3088b667593ce=document.querySelector('button[name=btn_8c9b5b9b434b4d7b95c3088b667593ce]');
-copyBtnbtn_8c9b5b9b434b4d7b95c3088b667593ce.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`@startuml\ntitle FTP Protocol\n\nparticipant Client\nparticipant Server\n\nactivate Client\n\nClient -> Server: Connect to Server (Port 21)\nactivate Server\n\nServer --> Client: Welcome Message, Server Information\nClient -> Server: User <username>\nServer --> Client: 331 User name okay, need password\nClient -> Server: Pass <password>\nServer --> Client: 230 User <username> logged in\n\nClient -> Server: List\nServer --> Client: 125 Data connection already open; transfer starting\nClient -> Server: Receive file listing\n\nClient -> Server: Retrieve <filename>\nServer --> Client: 150 File status okay; about to open data connection.\nServer --> Client: Open Data Connection (Port 20)\nClient -> Server: Receive file <filename>\n\nClient -> Server: Store <filename>\nClient -> Server: 150 File status okay; about to open data connection.\nClient -> Server: Open Data Connection (Port 20)\nClient -> Server: Send file <filename>\n\ndeactivate Server\ndeactivate Client\n\n@enduml\n`);copyBtnbtn_8c9b5b9b434b4d7b95c3088b667593ce.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8c9b5b9b434b4d7b95c3088b667593ce.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2e4ad975872c40a883cac3e6b5c64bbe=document.querySelector('button[name=btn_2e4ad975872c40a883cac3e6b5c64bbe]');
+copyBtnbtn_2e4ad975872c40a883cac3e6b5c64bbe.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`@startuml\ntitle FTP Protocol\n\nparticipant Client\nparticipant Server\n\nactivate Client\n\nClient -> Server: Connect to Server (Port 21)\nactivate Server\n\nServer --> Client: Welcome Message, Server Information\nClient -> Server: User <username>\nServer --> Client: 331 User name okay, need password\nClient -> Server: Pass <password>\nServer --> Client: 230 User <username> logged in\n\nClient -> Server: List\nServer --> Client: 125 Data connection already open; transfer starting\nClient -> Server: Receive file listing\n\nClient -> Server: Retrieve <filename>\nServer --> Client: 150 File status okay; about to open data connection.\nServer --> Client: Open Data Connection (Port 20)\nClient -> Server: Receive file <filename>\n\nClient -> Server: Store <filename>\nClient -> Server: 150 File status okay; about to open data connection.\nClient -> Server: Open Data Connection (Port 20)\nClient -> Server: Send file <filename>\n\ndeactivate Server\ndeactivate Client\n\n@enduml\n`);copyBtnbtn_2e4ad975872c40a883cac3e6b5c64bbe.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2e4ad975872c40a883cac3e6b5c64bbe.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

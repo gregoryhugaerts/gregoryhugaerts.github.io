@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 14:10 -->
+<!-- 2026-07-20 Mon 15:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>C#</title>
@@ -905,11 +905,11 @@ Related: <a href="../org/20260206T060620--object-oriented-programming__concept_p
 <h2 id="orgaa176a6">Syntax Quick Reference</h2>
 <div class="outline-text-2" id="text-orgaa176a6">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_2191690def734c458e74f82ed89fb57a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_83309e9809bd46ef87a6c3aa59815ed1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2191690def734c458e74f82ed89fb57a=document.querySelector('button[name=btn_2191690def734c458e74f82ed89fb57a]');
-copyBtnbtn_2191690def734c458e74f82ed89fb57a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Variables and types\nint count = 10;\nstring name = \"Alice\";\nbool active = true;\nvar inferred = 42;           // type inferred at compile time\nint? nullable = null;        // nullable value type\n\n// String interpolation\nConsole.WriteLine($\"Hello, {name}! Count: {count}\");\n\n// Collections\nvar list = new List<string> { \"a\", \"b\", \"c\" };\nvar dict = new Dictionary<string, int> { [\"one\"] = 1, [\"two\"] = 2 };\n\n// Control flow\nif (count > 5)\n    Console.WriteLine(\"big\");\nelse\n    Console.WriteLine(\"small\");\n\nfor (int i = 0; i < 10; i++) { }\nforeach (var item in list) { }\nwhile (count > 0) { count--; }\n\n// Switch expression (modern)\nstring result = count switch\n{\n    > 10  => \"large\",\n    > 5   => \"medium\",\n    _     => \"small\"\n};\n`);copyBtnbtn_2191690def734c458e74f82ed89fb57a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2191690def734c458e74f82ed89fb57a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_83309e9809bd46ef87a6c3aa59815ed1=document.querySelector('button[name=btn_83309e9809bd46ef87a6c3aa59815ed1]');
+copyBtnbtn_83309e9809bd46ef87a6c3aa59815ed1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Variables and types\nint count = 10;\nstring name = \"Alice\";\nbool active = true;\nvar inferred = 42;           // type inferred at compile time\nint? nullable = null;        // nullable value type\n\n// String interpolation\nConsole.WriteLine($\"Hello, {name}! Count: {count}\");\n\n// Collections\nvar list = new List<string> { \"a\", \"b\", \"c\" };\nvar dict = new Dictionary<string, int> { [\"one\"] = 1, [\"two\"] = 2 };\n\n// Control flow\nif (count > 5)\n    Console.WriteLine(\"big\");\nelse\n    Console.WriteLine(\"small\");\n\nfor (int i = 0; i < 10; i++) { }\nforeach (var item in list) { }\nwhile (count > 0) { count--; }\n\n// Switch expression (modern)\nstring result = count switch\n{\n    > 10  => \"large\",\n    > 5   => \"medium\",\n    _     => \"small\"\n};\n`);copyBtnbtn_83309e9809bd46ef87a6c3aa59815ed1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_83309e9809bd46ef87a6c3aa59815ed1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -952,11 +952,11 @@ let res = copyTextToClipboard(`// Variables and types\nint count = 10;\nstring n
 <h2 id="org3e8a9d5">Classes and OOP</h2>
 <div class="outline-text-2" id="text-org3e8a9d5">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_eca9c155a3264717b9a0ae7d405edc5d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_bb1d50f736694d70a13216c68326f126>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_eca9c155a3264717b9a0ae7d405edc5d=document.querySelector('button[name=btn_eca9c155a3264717b9a0ae7d405edc5d]');
-copyBtnbtn_eca9c155a3264717b9a0ae7d405edc5d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`public class User\n{\n    // Properties (auto-implemented)\n    public int Id       { get; set; }\n    public string Name  { get; private set; }\n    public bool Active  { get; init; }   // init-only (C# 9)\n\n    // Constructor\n    public User(int id, string name, bool active = true)\n    {\n        Id = id;\n        Name = name ?? throw new ArgumentNullException(nameof(name));\n        Active = active;\n    }\n\n    // Method\n    public string Greet() => $\"Hello, I am {Name}\";\n\n    // Override\n    public override string ToString() => $\"User({Id}, {Name})\";\n}\n\n// Inheritance\npublic class AdminUser : User\n{\n    public string Role { get; set; } = \"admin\";\n\n    public AdminUser(int id, string name) : base(id, name) { }\n}\n\n// Record (immutable, value semantics — C# 9)\npublic record Point(int X, int Y);\nvar p1 = new Point(1, 2);\nvar p2 = p1 with { Y = 5 };   // non-destructive mutation\n`);copyBtnbtn_eca9c155a3264717b9a0ae7d405edc5d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_eca9c155a3264717b9a0ae7d405edc5d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bb1d50f736694d70a13216c68326f126=document.querySelector('button[name=btn_bb1d50f736694d70a13216c68326f126]');
+copyBtnbtn_bb1d50f736694d70a13216c68326f126.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`public class User\n{\n    // Properties (auto-implemented)\n    public int Id       { get; set; }\n    public string Name  { get; private set; }\n    public bool Active  { get; init; }   // init-only (C# 9)\n\n    // Constructor\n    public User(int id, string name, bool active = true)\n    {\n        Id = id;\n        Name = name ?? throw new ArgumentNullException(nameof(name));\n        Active = active;\n    }\n\n    // Method\n    public string Greet() => $\"Hello, I am {Name}\";\n\n    // Override\n    public override string ToString() => $\"User({Id}, {Name})\";\n}\n\n// Inheritance\npublic class AdminUser : User\n{\n    public string Role { get; set; } = \"admin\";\n\n    public AdminUser(int id, string name) : base(id, name) { }\n}\n\n// Record (immutable, value semantics — C# 9)\npublic record Point(int X, int Y);\nvar p1 = new Point(1, 2);\nvar p2 = p1 with { Y = 5 };   // non-destructive mutation\n`);copyBtnbtn_bb1d50f736694d70a13216c68326f126.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bb1d50f736694d70a13216c68326f126.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1002,11 +1002,11 @@ let res = copyTextToClipboard(`public class User\n{\n    // Properties (auto-imp
 <h2 id="orgac5e5bb">Interfaces and Generics</h2>
 <div class="outline-text-2" id="text-orgac5e5bb">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_fc2b08e924984b47a81bd770dc261326>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_dabdd542e62e451f959d448b3e18cdd9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fc2b08e924984b47a81bd770dc261326=document.querySelector('button[name=btn_fc2b08e924984b47a81bd770dc261326]');
-copyBtnbtn_fc2b08e924984b47a81bd770dc261326.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`public interface IRepository<T>\n{\n    T GetById(int id);\n    IEnumerable<T> GetAll();\n    void Save(T entity);\n}\n\npublic class UserRepository : IRepository<User>\n{\n    private readonly List<User> _users = new();\n\n    public User GetById(int id) =>\n        _users.FirstOrDefault(u => u.Id == id)\n        ?? throw new KeyNotFoundException();\n\n    public IEnumerable<User> GetAll() => _users.AsReadOnly();\n    public void Save(User entity) => _users.Add(entity);\n}\n`);copyBtnbtn_fc2b08e924984b47a81bd770dc261326.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fc2b08e924984b47a81bd770dc261326.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_dabdd542e62e451f959d448b3e18cdd9=document.querySelector('button[name=btn_dabdd542e62e451f959d448b3e18cdd9]');
+copyBtnbtn_dabdd542e62e451f959d448b3e18cdd9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`public interface IRepository<T>\n{\n    T GetById(int id);\n    IEnumerable<T> GetAll();\n    void Save(T entity);\n}\n\npublic class UserRepository : IRepository<User>\n{\n    private readonly List<User> _users = new();\n\n    public User GetById(int id) =>\n        _users.FirstOrDefault(u => u.Id == id)\n        ?? throw new KeyNotFoundException();\n\n    public IEnumerable<User> GetAll() => _users.AsReadOnly();\n    public void Save(User entity) => _users.Add(entity);\n}\n`);copyBtnbtn_dabdd542e62e451f959d448b3e18cdd9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dabdd542e62e451f959d448b3e18cdd9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1041,11 +1041,11 @@ syntax or fluent method chaining.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_7aa5204720114befa288aa0c0838ce5f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_55e7fe3d7bd54f64ace15beb1db477a2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7aa5204720114befa288aa0c0838ce5f=document.querySelector('button[name=btn_7aa5204720114befa288aa0c0838ce5f]');
-copyBtnbtn_7aa5204720114befa288aa0c0838ce5f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`var users = new List<User>\n{\n    new(1, \"Alice\"),\n    new(2, \"Bob\"),\n    new(3, \"Alice\")\n};\n\n// Method syntax (most common)\nvar activeAlices = users\n    .Where(u => u.Active && u.Name == \"Alice\")\n    .OrderBy(u => u.Id)\n    .Select(u => u.Name)\n    .ToList();\n\n// Query syntax\nvar result = from u in users\n             where u.Active\n             orderby u.Id\n             select u.Name;\n\n// Aggregation\nint count = users.Count(u => u.Active);\nvar grouped = users.GroupBy(u => u.Name);\nvar first = users.FirstOrDefault(u => u.Id == 1);\n\n// ToList(), ToArray(), ToDictionary() materialise the query\nvar byId = users.ToDictionary(u => u.Id, u => u.Name);\n`);copyBtnbtn_7aa5204720114befa288aa0c0838ce5f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7aa5204720114befa288aa0c0838ce5f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_55e7fe3d7bd54f64ace15beb1db477a2=document.querySelector('button[name=btn_55e7fe3d7bd54f64ace15beb1db477a2]');
+copyBtnbtn_55e7fe3d7bd54f64ace15beb1db477a2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`var users = new List<User>\n{\n    new(1, \"Alice\"),\n    new(2, \"Bob\"),\n    new(3, \"Alice\")\n};\n\n// Method syntax (most common)\nvar activeAlices = users\n    .Where(u => u.Active && u.Name == \"Alice\")\n    .OrderBy(u => u.Id)\n    .Select(u => u.Name)\n    .ToList();\n\n// Query syntax\nvar result = from u in users\n             where u.Active\n             orderby u.Id\n             select u.Name;\n\n// Aggregation\nint count = users.Count(u => u.Active);\nvar grouped = users.GroupBy(u => u.Name);\nvar first = users.FirstOrDefault(u => u.Id == 1);\n\n// ToList(), ToArray(), ToDictionary() materialise the query\nvar byId = users.ToDictionary(u => u.Id, u => u.Name);\n`);copyBtnbtn_55e7fe3d7bd54f64ace15beb1db477a2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_55e7fe3d7bd54f64ace15beb1db477a2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1084,11 +1084,11 @@ let res = copyTextToClipboard(`var users = new List<User>\n{\n    new(1, \"Alice
 <h2 id="org027d4e8">Async / Await</h2>
 <div class="outline-text-2" id="text-org027d4e8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_6ce774b33bd042ddabdf352fc50afe13>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_1bc39b382a8b42f391c9a0ff893fdcb8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6ce774b33bd042ddabdf352fc50afe13=document.querySelector('button[name=btn_6ce774b33bd042ddabdf352fc50afe13]');
-copyBtnbtn_6ce774b33bd042ddabdf352fc50afe13.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`public async Task<string> FetchDataAsync(string url)\n{\n    using var client = new HttpClient();\n    var response = await client.GetAsync(url);\n    response.EnsureSuccessStatusCode();\n    return await response.Content.ReadAsStringAsync();\n}\n\n// Call async from async\npublic async Task RunAsync()\n{\n    string data = await FetchDataAsync(\"https://api.example.com/data\");\n    Console.WriteLine(data);\n}\n\n// Run from synchronous context\nstring result = FetchDataAsync(\"https://api.example.com\").GetAwaiter().GetResult();\n\n// Parallel async\nvar tasks = urls.Select(u => FetchDataAsync(u));\nvar results = await Task.WhenAll(tasks);\n`);copyBtnbtn_6ce774b33bd042ddabdf352fc50afe13.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6ce774b33bd042ddabdf352fc50afe13.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1bc39b382a8b42f391c9a0ff893fdcb8=document.querySelector('button[name=btn_1bc39b382a8b42f391c9a0ff893fdcb8]');
+copyBtnbtn_1bc39b382a8b42f391c9a0ff893fdcb8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`public async Task<string> FetchDataAsync(string url)\n{\n    using var client = new HttpClient();\n    var response = await client.GetAsync(url);\n    response.EnsureSuccessStatusCode();\n    return await response.Content.ReadAsStringAsync();\n}\n\n// Call async from async\npublic async Task RunAsync()\n{\n    string data = await FetchDataAsync(\"https://api.example.com/data\");\n    Console.WriteLine(data);\n}\n\n// Run from synchronous context\nstring result = FetchDataAsync(\"https://api.example.com\").GetAwaiter().GetResult();\n\n// Parallel async\nvar tasks = urls.Select(u => FetchDataAsync(u));\nvar results = await Task.WhenAll(tasks);\n`);copyBtnbtn_1bc39b382a8b42f391c9a0ff893fdcb8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1bc39b382a8b42f391c9a0ff893fdcb8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1121,11 +1121,11 @@ let res = copyTextToClipboard(`public async Task<string> FetchDataAsync(string u
 <h2 id="orgdcac543">Exception Handling</h2>
 <div class="outline-text-2" id="text-orgdcac543">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_65688cdee46f40b7a59e671abd33cec7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_b150f78578744982af108a08e39f2fe2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_65688cdee46f40b7a59e671abd33cec7=document.querySelector('button[name=btn_65688cdee46f40b7a59e671abd33cec7]');
-copyBtnbtn_65688cdee46f40b7a59e671abd33cec7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`try\n{\n    var result = int.Parse(\"not a number\");\n}\ncatch (FormatException ex)\n{\n    Console.WriteLine($\"Parse error: {ex.Message}\");\n}\ncatch (Exception ex) when (ex.Message.Contains(\"specific\"))\n{\n    // Exception filter — C# 6\n}\nfinally\n{\n    // Always runs — cleanup\n}\n\n// Custom exception\npublic class DomainException : Exception\n{\n    public DomainException(string message) : base(message) { }\n}\n`);copyBtnbtn_65688cdee46f40b7a59e671abd33cec7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_65688cdee46f40b7a59e671abd33cec7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b150f78578744982af108a08e39f2fe2=document.querySelector('button[name=btn_b150f78578744982af108a08e39f2fe2]');
+copyBtnbtn_b150f78578744982af108a08e39f2fe2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`try\n{\n    var result = int.Parse(\"not a number\");\n}\ncatch (FormatException ex)\n{\n    Console.WriteLine($\"Parse error: {ex.Message}\");\n}\ncatch (Exception ex) when (ex.Message.Contains(\"specific\"))\n{\n    // Exception filter — C# 6\n}\nfinally\n{\n    // Always runs — cleanup\n}\n\n// Custom exception\npublic class DomainException : Exception\n{\n    public DomainException(string message) : base(message) { }\n}\n`);copyBtnbtn_b150f78578744982af108a08e39f2fe2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b150f78578744982af108a08e39f2fe2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1159,11 +1159,11 @@ let res = copyTextToClipboard(`try\n{\n    var result = int.Parse(\"not a number
 <h2 id="org8a15499">Null Safety</h2>
 <div class="outline-text-2" id="text-org8a15499">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_15a286ab45cf4ff6851e692675f64c00>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_be6a24e03fd945b18dbd003e63fe5023>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_15a286ab45cf4ff6851e692675f64c00=document.querySelector('button[name=btn_15a286ab45cf4ff6851e692675f64c00]');
-copyBtnbtn_15a286ab45cf4ff6851e692675f64c00.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Null conditional operator\nstring? name = user?.Name;           // null if user is null\nint length = user?.Name?.Length ?? 0;\n\n// Null coalescing\nstring display = name ?? \"Unknown\";\n\n// Null coalescing assignment\nname ??= \"Default\";\n\n// Non-nullable reference types (C# 8 with nullable enabled)\n// string name = null;   ← compiler warning\n// string? name = null;  ← explicit nullable\n`);copyBtnbtn_15a286ab45cf4ff6851e692675f64c00.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_15a286ab45cf4ff6851e692675f64c00.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_be6a24e03fd945b18dbd003e63fe5023=document.querySelector('button[name=btn_be6a24e03fd945b18dbd003e63fe5023]');
+copyBtnbtn_be6a24e03fd945b18dbd003e63fe5023.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Null conditional operator\nstring? name = user?.Name;           // null if user is null\nint length = user?.Name?.Length ?? 0;\n\n// Null coalescing\nstring display = name ?? \"Unknown\";\n\n// Null coalescing assignment\nname ??= \"Default\";\n\n// Non-nullable reference types (C# 8 with nullable enabled)\n// string name = null;   ← compiler warning\n// string? name = null;  ← explicit nullable\n`);copyBtnbtn_be6a24e03fd945b18dbd003e63fe5023.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_be6a24e03fd945b18dbd003e63fe5023.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1235,11 +1235,11 @@ let res = copyTextToClipboard(`// Null conditional operator\nstring? name = user
 </table>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_982a6e6816ab4dc585ef05ddb95455fb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_992ffdfc1f0a42e1bd2a6586d5bef361>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_982a6e6816ab4dc585ef05ddb95455fb=document.querySelector('button[name=btn_982a6e6816ab4dc585ef05ddb95455fb]');
-copyBtnbtn_982a6e6816ab4dc585ef05ddb95455fb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# CLI commands\ndotnet new console -n MyApp\ndotnet new webapi -n MyApi\ndotnet run\ndotnet test\ndotnet build\ndotnet add package Newtonsoft.Json\ndotnet publish -c Release -r linux-x64 --self-contained\n`);copyBtnbtn_982a6e6816ab4dc585ef05ddb95455fb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_982a6e6816ab4dc585ef05ddb95455fb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_992ffdfc1f0a42e1bd2a6586d5bef361=document.querySelector('button[name=btn_992ffdfc1f0a42e1bd2a6586d5bef361]');
+copyBtnbtn_992ffdfc1f0a42e1bd2a6586d5bef361.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# CLI commands\ndotnet new console -n MyApp\ndotnet new webapi -n MyApi\ndotnet run\ndotnet test\ndotnet build\ndotnet add package Newtonsoft.Json\ndotnet publish -c Release -r linux-x64 --self-contained\n`);copyBtnbtn_992ffdfc1f0a42e1bd2a6586d5bef361.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_992ffdfc1f0a42e1bd2a6586d5bef361.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1272,11 +1272,11 @@ custom Sysmon parsers</li>
 </ul>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_91159674b4f3442ebd4b5da2f1b4434f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSHARP</span><button class='copyBtn' name=btn_74ef3bf7ca874a9e980fb0209d467b30>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_91159674b4f3442ebd4b5da2f1b4434f=document.querySelector('button[name=btn_91159674b4f3442ebd4b5da2f1b4434f]');
-copyBtnbtn_91159674b4f3442ebd4b5da2f1b4434f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Minimal ASPX webshell (see File Upload note)\n// <%@ Page Language=\"C#\" %>\n// System.Diagnostics.Process.Start(cmd)\n`);copyBtnbtn_91159674b4f3442ebd4b5da2f1b4434f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_91159674b4f3442ebd4b5da2f1b4434f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_74ef3bf7ca874a9e980fb0209d467b30=document.querySelector('button[name=btn_74ef3bf7ca874a9e980fb0209d467b30]');
+copyBtnbtn_74ef3bf7ca874a9e980fb0209d467b30.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Minimal ASPX webshell (see File Upload note)\n// <%@ Page Language=\"C#\" %>\n// System.Diagnostics.Process.Start(cmd)\n`);copyBtnbtn_74ef3bf7ca874a9e980fb0209d467b30.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_74ef3bf7ca874a9e980fb0209d467b30.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
