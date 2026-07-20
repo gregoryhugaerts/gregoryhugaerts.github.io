@@ -1,0 +1,1528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-07-20 Mon 09:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Proxy Server</title>
+<meta name="author" content="termux" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<style type='text/css'>
+<!--/*--><![CDATA[/*><!--*/
+/* nice-org-html.css
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+*/
+
+/* basic layout ***************************************************************/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-family: Sans;
+    line-height: 1.3;
+    font-size: calc(15px + 0.390625vw);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: #999; /* overwritten with theme --bg */
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family:
+	-apple-system,
+	BlinkMacSystemFont,
+	segoe ui,
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	open sans,
+	helvetica neue,
+	sans-serif,
+	system-ui
+}
+
+#preamble,
+#postamble {
+    width: 100%;
+}
+
+#content {
+    width: 80%;
+    max-width: 80ch;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex: 1;
+}
+
+/* custom facing **************************************************************/
+/* The variable values are injected by CSS pre-processing in et-org-html.el */
+:root {
+    --bc-tb: #000000;
+    --bc-block: #595959;
+    --clr: #000000;
+    --clr-tb-hd: #000000;
+    --clr-code: #000000;
+    --bg: #fbf7f0;
+    --bg-code: #cab9b2;
+    --bg-tb-hd: #cab9b2;
+    --bg-block: #efe9dd;
+    --clr-link: #531ab6;
+    --clr-title: #000000;
+    --clr-todo: #00598b;
+    --bg-todo: initial;
+    --clr-done: #7f0000;
+    --bg-done: initial;
+    --ts-clr: #0031a9;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #0031a9;
+    --bg-constant: initial;
+    --clr-constant: #531ab6;
+    --bg-comment: initial;
+    --clr-comment: #7f0000;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #7f0000;
+    --bg-function: initial;
+    --clr-function: #602938;
+    --bg-variable: initial;
+    --clr-variable: #00603f;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #894000;
+    --bg-doc: initial;
+    --clr-doc: #304463;
+    --bg-builtin: initial;
+    --clr-builtin: #721045;
+    --bg-string: initial;
+    --clr-string: #00598b;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+body[data-mode='light'] {
+    background: var(--bg);
+    color: var(--clr);
+}
+
+body[data-mode='dark'] {
+    background: var(--bg);
+    color: var(--clr);
+    --bc-tb: #ffffff;
+    --bc-block: #989898;
+    --clr: #ffffff;
+    --clr-code: #ffffff;
+    --clr-tb-hd: #ffffff;
+    --bg: #0d0e1c;
+    --bg-tb-hd: #484d67;
+    --bg-code: #484d67;
+    --bg-block: #1d2235;
+    --clr-link: #b6a0ff;
+    --clr-title: #ffffff;
+    --clr-todo: #2fafff;
+    --bg-todo: initial;
+    --clr-done: #ef8386;
+    --bg-done: initial;
+    --ts-clr: #79a8ff;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #79a8ff;
+    --bg-constant: initial;
+    --clr-constant: #b6a0ff;
+    --bg-comment: initial;
+    --clr-comment: #ef8386;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #ef8386;
+    --bg-function: initial;
+    --clr-function: #f78fe7;
+    --bg-variable: initial;
+    --clr-variable: #4ae2f0;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #ff7f86;
+    --bg-doc: initial;
+    --clr-doc: #9ac8e0;
+    --bg-builtin: initial;
+    --clr-builtin: #feacd0;
+    --bg-string: initial;
+    --clr-string: #2fafff;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+/* exceptions for badly rendering themes **************************************/
+body[data-theme='leuven'],
+body[data-theme='leuven-dark'] {
+    --bg-code: var(--bg-block);
+}
+
+/* ootb page layout ***********************************************************/
+#view-controls {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    color: var(--clr-code);
+    height: 2.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    z-index: 100;
+    border-radius: 5px; /* Rounded corners */
+}
+#toggle-mode {
+    position: absolute;
+    right: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#goto-top {
+    display: none;
+}
+#goto-top[data-show="true"] {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#toggle-toc {
+    display: none;
+}
+#toggle-toc[data-show="true"] {
+    position: absolute;
+    left: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+
+#toggle-toc:hover,
+#goto-top:hover,
+#toggle-mode:hover {
+    cursor: pointer;
+}
+
+#table-of-contents {
+    display: none;
+}
+#table-of-contents[data-show="true"] {
+    width: 80%;
+    max-width: 80rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: var(--bg);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#table-of-contents::-webkit-scrollbar {
+    display: none;
+}
+
+body[data-toc="true"] #content * {
+    display: none;
+}
+body[data-toc="true"] #content #table-of-contents,
+body[data-toc="true"] #content #table-of-contents * {
+    display: block;
+}
+
+
+/* misc elements **************************************************************/
+
+hr {
+    height: 0;
+    color: inherit;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+    font-family:
+	Menlo,
+	ui-monospace,
+	SFMono-Regular,
+	Consolas,
+	'Liberation Mono',
+	monospace;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+}
+
+summary {
+    display: list-item;
+}
+
+h1 {
+    color: var(--clr-title);
+    text-align: center;
+}
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+code {
+    color: var(--clr-code);
+    background: var(--bg-code);
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+pre::-webkit-scrollbar {
+    display: none;
+}
+
+.todo {
+    color: var(--clr-todo);
+    background: var(--bg-todo);
+}
+
+.done {
+    color: var(--clr-done);
+    background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+    font-size: 0.8rem;
+    color: var(--clr-ts);
+}
+
+table {
+    width: 100%;
+    border: 2px solid var(--bc-tb);
+}
+
+thead {
+    color: var(--clr-tb-hd);
+    background: var(--bg-tb-hd);
+}
+
+td, th {
+    border: thin solid var(--bc-tb);
+}
+
+li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#text-table-of-contents li a:before {
+    content: "• "
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-link);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.MathJax_Display {
+    font-size: 1.25em;
+}
+
+img {
+    max-width: 100%;
+}
+
+pre {
+    padding: 1rem;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-block);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+.org-src-wrapper {
+    position: relative;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+}
+
+.org-src-bar {
+    position: relative;
+    top: 0rem;
+    width: 100%;
+    background: var(--bg-code);
+    border-radius: 0.5rem;
+    text-align: right;
+    min-height: 1rem;
+}
+
+.org-src-wrapper .org-src-container {
+    position: relative;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+    z-index: 0;
+}
+
+.org-src-wrapper .org-src-container pre.src {
+    border: none !important;
+    background: var(--bg-code) !important;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding-bottom: 1.6rem;
+}
+
+.org-src-wrapper .org-src-bar .srcLangLabel {
+    top: 0rem;
+    right: 1.6rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    z-index: 1;
+    display: none;
+}
+
+.org-src-wrapper .org-src-bar .copyBtn {
+    top: 0rem;
+    right: 0.1rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-right: 0.7rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+.org-src-wrapper .copyBtn:hover {
+    opacity: 1;
+}
+
+.org-src-wrapper .copyBtn i {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+}
+
+.admonition {
+    margin: 0.2rem;
+    color: inherit;
+    border-left: .25rem solid;
+}
+.admonition-title {
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.admonition-content > p {
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.admonition.note {
+    border-left-color: var(--clr-note);
+}
+.admonition-title.note {
+    color: var(--clr-note);
+}
+.admonition-title.note:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-note);
+    mask-size: cover;    
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path class="admonition-icon-note" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+.admonition-icon-note {
+    fill: var(--clr-note);
+}
+
+.admonition.tip {
+    border-left-color: var(--clr-tip);
+}
+.admonition-title.tip {
+    color: var(--clr-tip);
+}
+.admonition-title.tip:before {
+    content: '';
+    fill: var(--clr-tip);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-tip);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>');    
+}
+
+.admonition.important {
+    border-left-color: var(--clr-important);
+}
+.admonition-title.important {
+    color: var(--clr-important);
+}
+.admonition-title.important:before {
+    content: '';
+    fill: var(--clr-important);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-important);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');    
+}
+
+.admonition.warning {
+    border-left-color: var(--clr-warning);
+}
+.admonition-title.warning {
+    color: var(--clr-warning);
+}
+.admonition-title.warning:before {
+    content: '';
+    color: var(--clr-warning);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-warning);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');
+}
+
+
+.admonition.caution {
+    border-left-color: var(--clr-caution);
+}
+.admonition-title.caution {
+    color: var(--clr-caution);
+}
+.admonition-title.caution:before {
+    content: '';
+    fill: var(--clr-caution);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-caution);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+/* responsive layouts *********************************************************/
+
+@media only screen and (max-width: 768px) {
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #view-controls {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+    }
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+
+/* generated header and footer ************************************************/
+
+#generated-header,
+#generated-footer {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 1;
+}
+.generated header {
+    top: 0;
+    left: 0;
+}
+.generated footer {
+    bottom: 0;
+    left: 0;
+}
+.generated header a,
+.generated footer a {
+    display: inline;
+    color: var(--clr-title);
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+.generated header a:hover,
+.generated footer a:hover {
+    color: var(--clr-link);
+}
+
+.generated header nav {
+    position: relative;
+    margin-top: 1rem;
+    top: 0;
+    left: 0;
+}
+.generated footer nav {
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.generated .separator {
+    display: block;
+    width: 111%;
+    margin-left: -5.5%;
+    max-width: 100vw;
+    height: 0.125rem;
+    background: var(--bg-code);
+}
+
+.generated a .nav-title,
+.generated a .nav-author {
+    display: inline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 10rem;
+}
+
+.generated .nav-title {
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.generated .nav-toggle {
+    display: none;
+}
+.generated .nav-button {
+    display: none;
+}
+.generated .nav-list {
+    overflow-y: hidden;
+    display: block;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.generated .nav-item {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.generated .nav-link {
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.generated .nav-toggle {
+    max-height: 0;
+    visibility: hidden;
+    overflow-y: hidden;
+}
+
+.generated header .separator {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.generated footer .separator {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.generated .menu-sep {
+    display: none;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.generated footer {
+    padding-bottom: 1rem;
+}
+
+.generated.compact footer {
+    padding-bottom: 0;
+}
+
+.generated.compact header .separator {
+    margin-top: 0;
+    margin-bottom:0;
+}
+.generated.compact footer .separator {
+    margin-bottom: 1rem;
+}
+
+.generated.compact .nav-toggle {
+    visibility: visible;
+}
+
+.generated.compact .nav-toggle + label span::before {
+    transition: all 0.2s ease-in;
+}
+.generated.compact .nav-toggle:checked + label span::before {
+    transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+    transition: all 0.2s ease;
+}
+
+.generated.compact .menu-sep {
+    display: flex;
+    max-height: 0rem;
+}
+.generated.compact .nav-toggle:checked + label + .menu-sep {
+    display: block;
+    position: relative;
+    max-height: 1rem;
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-list {
+    float: none !important;
+    position: relative;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+.generated.compact .nav-toggle:checked + label ~ .nav-list {
+    display: block;
+    max-height: 100rem;
+    overflow-y: hidden;
+}
+.generated.compact header .nav-toggle:checked + label ~ .nav-list {
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-button {
+    display: inline;
+    position: relative;
+    float: right;
+    font-size: 1rem;
+}
+.generated.compact .nav-button span::before {
+    display: inline-block;
+    content: '\2807';
+    font-size: 2rem;
+    transform: translateX(0.25rem) translateY(-0.5rem);
+}
+
+.generated.compact .nav-item {
+    float: none !important;
+    text-align: center !important;
+}
+.generated.compact .nav-link {
+    line-height: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    float: none !important;
+}
+
+.generated.compact footer .separator.menu-sep {
+    margin-bottom: -1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.collapsible:hover {
+    cursor: pointer;
+}
+
+.collapsible.collapsed::after {
+    display: inline-block;
+    content: '...';
+}
+/*]]>*/-->
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Proxy Server</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgf86bab4">Types</a>
+<ul>
+<li><a href="#orge66bb09">Forward Proxy</a></li>
+<li><a href="#orgdc99ede">Reverse Proxy</a></li>
+<li><a href="#orgdff2614">Transparent Proxy</a></li>
+<li><a href="#org03f92a9">SOCKS Proxy</a></li>
+</ul>
+</li>
+<li><a href="#org5d7f762">Security Relevance</a>
+<ul>
+<li><a href="#org624bb48">Burp Suite as an Intercepting Proxy</a></li>
+<li><a href="#orga999584">Proxychains — Routing Tools Through a Proxy</a></li>
+<li><a href="#org6cca7b6">SOCKS Proxy via SSH</a></li>
+<li><a href="#org9adb4f8">Proxy Evasion (Red Team)</a></li>
+<li><a href="#org64cf533">Proxy Detection (Blue Team)</a></li>
+</ul>
+</li>
+<li><a href="#org9afe007">Configuration Examples</a>
+<ul>
+<li><a href="#orgef6c231">Nginx as Reverse Proxy</a></li>
+<li><a href="#org65dcc2f">System-wide HTTP proxy (Linux)</a></li>
+</ul>
+</li>
+<li><a href="#orgab33c02">Tips</a></li>
+</ul>
+</div>
+</div>
+<p>
+An intermediary between a client and a server that forwards
+requests on the client's behalf. The destination server sees
+the proxy's IP, not the client's. Proxies serve many purposes —
+from corporate content filtering to penetration testing tooling
+to network pivoting.
+</p>
+
+<p>
+Related: <a href="../org/20260314T005617--burp-suite__cybersecurity_tool.html">Burp Suite</a>
+         <a href="../org/20260314T005740--pivoting__concept_cybersecurity.html">Pivoting</a>
+         <a href="../org/20260314T005723--pfsense__cybersecurity_networking_tool.html">pfSense</a>
+</p>
+<div id="outline-container-orgf86bab4" class="outline-2">
+<h2 id="orgf86bab4">Types</h2>
+<div class="outline-text-2" id="text-orgf86bab4">
+</div>
+<div id="outline-container-orge66bb09" class="outline-3">
+<h3 id="orge66bb09">Forward Proxy</h3>
+<div class="outline-text-3" id="text-orge66bb09">
+<p>
+Client-side — the client is configured to route traffic through
+it. The proxy makes requests to the internet on the client's behalf.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_5651554d5c4342e3ac5374005d94fb3d>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_5651554d5c4342e3ac5374005d94fb3d=document.querySelector('button[name=btn_5651554d5c4342e3ac5374005d94fb3d]');
+copyBtnbtn_5651554d5c4342e3ac5374005d94fb3d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Client → Forward Proxy → Internet\n`);copyBtnbtn_5651554d5c4342e3ac5374005d94fb3d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5651554d5c4342e3ac5374005d94fb3d.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">Client &#8594; Forward Proxy &#8594; Internet
+</pre>
+</div></div>
+
+<p>
+Use cases: corporate internet filtering, anonymisation,
+bypassing geo-restrictions, Burp Suite intercepting browser traffic.
+</p>
+</div>
+</div>
+<div id="outline-container-orgdc99ede" class="outline-3">
+<h3 id="orgdc99ede">Reverse Proxy</h3>
+<div class="outline-text-3" id="text-orgdc99ede">
+<p>
+Server-side — sits in front of one or more backend servers.
+Clients connect to the proxy; they may not know the real server
+exists.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_28b7bdbc4af74ac59c2ada9ed6e15411>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_28b7bdbc4af74ac59c2ada9ed6e15411=document.querySelector('button[name=btn_28b7bdbc4af74ac59c2ada9ed6e15411]');
+copyBtnbtn_28b7bdbc4af74ac59c2ada9ed6e15411.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Internet → Reverse Proxy → Backend Server(s)\n`);copyBtnbtn_28b7bdbc4af74ac59c2ada9ed6e15411.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_28b7bdbc4af74ac59c2ada9ed6e15411.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">Internet &#8594; Reverse Proxy &#8594; Backend Server(s)
+</pre>
+</div></div>
+
+<p>
+Use cases: load balancing, TLS termination, WAF, CDN caching,
+hiding backend infrastructure.
+</p>
+
+<p>
+Common implementations: Nginx, HAProxy, AWS ALB, Cloudflare.
+</p>
+</div>
+</div>
+<div id="outline-container-orgdff2614" class="outline-3">
+<h3 id="orgdff2614">Transparent Proxy</h3>
+<div class="outline-text-3" id="text-orgdff2614">
+<p>
+Neither client nor server is aware — traffic is intercepted
+at the network level (router/firewall). No client configuration
+required.
+</p>
+
+<p>
+Use cases: corporate monitoring, ISP traffic shaping, caching.
+</p>
+</div>
+</div>
+<div id="outline-container-org03f92a9" class="outline-3">
+<h3 id="org03f92a9">SOCKS Proxy</h3>
+<div class="outline-text-3" id="text-org03f92a9">
+<p>
+Protocol-agnostic — can proxy any TCP (or UDP with SOCKS5)
+traffic, not just HTTP. Does not modify the traffic.
+</p>
+
+<p>
+Use cases: SSH dynamic forwarding, Chisel, Tor, network pivoting.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c91e64bef4ae479a8097551f3b9e9d94>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_c91e64bef4ae479a8097551f3b9e9d94=document.querySelector('button[name=btn_c91e64bef4ae479a8097551f3b9e9d94]');
+copyBtnbtn_c91e64bef4ae479a8097551f3b9e9d94.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SOCKS4: TCP only, no authentication\nSOCKS5: TCP + UDP, authentication support\n`);copyBtnbtn_c91e64bef4ae479a8097551f3b9e9d94.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c91e64bef4ae479a8097551f3b9e9d94.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">SOCKS4: TCP only, no authentication
+SOCKS5: TCP + UDP, authentication support
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5d7f762" class="outline-2">
+<h2 id="org5d7f762">Security Relevance</h2>
+<div class="outline-text-2" id="text-org5d7f762">
+</div>
+<div id="outline-container-org624bb48" class="outline-3">
+<h3 id="org624bb48">Burp Suite as an Intercepting Proxy</h3>
+<div class="outline-text-3" id="text-org624bb48">
+<p>
+Burp sits between the browser and the target, intercepting
+and modifying HTTP/S requests and responses.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f7db432b7f094e3fb126a3d1e678fcaa>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_f7db432b7f094e3fb126a3d1e678fcaa=document.querySelector('button[name=btn_f7db432b7f094e3fb126a3d1e678fcaa]');
+copyBtnbtn_f7db432b7f094e3fb126a3d1e678fcaa.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Browser → Burp (127.0.0.1:8080) → Target server\n`);copyBtnbtn_f7db432b7f094e3fb126a3d1e678fcaa.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f7db432b7f094e3fb126a3d1e678fcaa.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">Browser &#8594; Burp (127.0.0.1:8080) &#8594; Target server
+</pre>
+</div></div>
+
+<p>
+Configure browser proxy to <code>127.0.0.1:8080</code>, install Burp's
+CA certificate. See <a href="../org/20260314T005617--burp-suite__cybersecurity_tool.html">Burp Suite</a> for full setup.
+</p>
+</div>
+</div>
+<div id="outline-container-orga999584" class="outline-3">
+<h3 id="orga999584">Proxychains — Routing Tools Through a Proxy</h3>
+<div class="outline-text-3" id="text-orga999584">
+<p>
+Routes command-line tool output through a SOCKS or HTTP proxy —
+essential for accessing internal networks after pivoting.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9f0f8bc4ad5b43848b122c78efb9c007>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_9f0f8bc4ad5b43848b122c78efb9c007=document.querySelector('button[name=btn_9f0f8bc4ad5b43848b122c78efb9c007]');
+copyBtnbtn_9f0f8bc4ad5b43848b122c78efb9c007.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Configure /etc/proxychains.conf\n# [ProxyList]\n# socks5 127.0.0.1 1080\n\n# Route nmap through proxy\nproxychains nmap -sT -Pn 192.168.1.0/24\n\n# Route other tools\nproxychains curl http://192.168.1.50\nproxychains python3 exploit.py\n`);copyBtnbtn_9f0f8bc4ad5b43848b122c78efb9c007.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9f0f8bc4ad5b43848b122c78efb9c007.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Configure /etc/proxychains.conf
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">[ProxyList]
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">socks5 127.0.0.1 1080
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Route nmap through proxy
+</span>proxychains nmap -sT -Pn 192.168.1.0/24
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Route other tools
+</span>proxychains curl http://192.168.1.50
+proxychains python3 exploit.py
+</pre>
+</div></div>
+
+<p>
+See <a href="../org/20260314T005740--pivoting__concept_cybersecurity.html">Pivoting</a> for SSH dynamic forwarding, Chisel, and Ligolo
+setups that provide the SOCKS listener proxychains connects to.
+</p>
+</div>
+</div>
+<div id="outline-container-org6cca7b6" class="outline-3">
+<h3 id="org6cca7b6">SOCKS Proxy via SSH</h3>
+<div class="outline-text-3" id="text-org6cca7b6">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_dc8a724611454c7e9a0e4442c44b5dd7>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_dc8a724611454c7e9a0e4442c44b5dd7=document.querySelector('button[name=btn_dc8a724611454c7e9a0e4442c44b5dd7]');
+copyBtnbtn_dc8a724611454c7e9a0e4442c44b5dd7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Open SOCKS5 proxy on localhost:1080 through a jump host\nssh -D 1080 -N user@jumphost\n\n# Then route tools through proxychains\nproxychains curl http://internal-server\n`);copyBtnbtn_dc8a724611454c7e9a0e4442c44b5dd7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dc8a724611454c7e9a0e4442c44b5dd7.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Open SOCKS5 proxy on localhost:1080 through a jump host
+</span>ssh -D 1080 -N user@jumphost
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Then route tools through proxychains
+</span>proxychains curl http://internal-server
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org9adb4f8" class="outline-3">
+<h3 id="org9adb4f8">Proxy Evasion (Red Team)</h3>
+<div class="outline-text-3" id="text-org9adb4f8">
+<p>
+Proxies and WAFs inspect HTTP traffic — common evasion:
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b1221f8e98f44efca876002bf9209b56>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_b1221f8e98f44efca876002bf9209b56=document.querySelector('button[name=btn_b1221f8e98f44efca876002bf9209b56]');
+copyBtnbtn_b1221f8e98f44efca876002bf9209b56.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— Encoding: URL-encode, double-encode, Unicode-encode payloads\n— Case variation: bypasses simple string-match rules\n— Chunked transfer encoding: splits payload across chunks\n— HTTP/2: some proxies inspect only HTTP/1.1\n— Non-standard headers: inject payload in headers the proxy ignores\n— HTTPS: older transparent proxies cannot inspect without MITM setup\n`);copyBtnbtn_b1221f8e98f44efca876002bf9209b56.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b1221f8e98f44efca876002bf9209b56.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">&#8212; Encoding: URL-encode, double-encode, Unicode-encode payloads
+&#8212; Case variation: bypasses simple string-match rules
+&#8212; Chunked transfer encoding: splits payload across chunks
+&#8212; HTTP/2: some proxies inspect only HTTP/1.1
+&#8212; Non-standard headers: inject payload in headers the proxy ignores
+&#8212; HTTPS: older transparent proxies cannot inspect without MITM setup
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org64cf533" class="outline-3">
+<h3 id="org64cf533">Proxy Detection (Blue Team)</h3>
+<div class="outline-text-3" id="text-org64cf533">
+<p>
+Anomalies suggesting proxy use by an internal host:
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e80ad12bb41f4d7d8ad001194cf082b7>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_e80ad12bb41f4d7d8ad001194cf082b7=document.querySelector('button[name=btn_e80ad12bb41f4d7d8ad001194cf082b7]');
+copyBtnbtn_e80ad12bb41f4d7d8ad001194cf082b7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— CONNECT method in HTTP logs (used by forward proxies for HTTPS)\n— Traffic to known proxy/anonymiser IP ranges (Tor exit nodes, VPN providers)\n— Unusual user agents matching proxy tools\n— All traffic from one host going to a single external IP (SOCKS proxy)\n— DNS requests suddenly absent (proxy may handle DNS resolution)\n`);copyBtnbtn_e80ad12bb41f4d7d8ad001194cf082b7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e80ad12bb41f4d7d8ad001194cf082b7.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">&#8212; CONNECT method in HTTP logs (used by forward proxies for HTTPS)
+&#8212; Traffic to known proxy/anonymiser IP ranges (Tor exit nodes, VPN providers)
+&#8212; Unusual user agents matching proxy tools
+&#8212; All traffic from one host going to a single external IP (SOCKS proxy)
+&#8212; DNS requests suddenly absent (proxy may handle DNS resolution)
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-org9afe007" class="outline-2">
+<h2 id="org9afe007">Configuration Examples</h2>
+<div class="outline-text-2" id="text-org9afe007">
+</div>
+<div id="outline-container-orgef6c231" class="outline-3">
+<h3 id="orgef6c231">Nginx as Reverse Proxy</h3>
+<div class="outline-text-3" id="text-orgef6c231">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>NGINX</span><button class='copyBtn' name=btn_9b4255f643f84f1badf25ff172227414>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_9b4255f643f84f1badf25ff172227414=document.querySelector('button[name=btn_9b4255f643f84f1badf25ff172227414]');
+copyBtnbtn_9b4255f643f84f1badf25ff172227414.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`server {\n    listen 80;\n    server_name example.com;\n\n    location / {\n        proxy_pass http://localhost:3000;\n        proxy_set_header Host $host;\n        proxy_set_header X-Real-IP $remote_addr;\n        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n    }\n}\n`);copyBtnbtn_9b4255f643f84f1badf25ff172227414.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9b4255f643f84f1badf25ff172227414.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-nginx">server {
+    listen 80;
+    server_name example.com;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org65dcc2f" class="outline-3">
+<h3 id="org65dcc2f">System-wide HTTP proxy (Linux)</h3>
+<div class="outline-text-3" id="text-org65dcc2f">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a4bcfd3444134ac9beed64734380a586>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_a4bcfd3444134ac9beed64734380a586=document.querySelector('button[name=btn_a4bcfd3444134ac9beed64734380a586]');
+copyBtnbtn_a4bcfd3444134ac9beed64734380a586.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`export http_proxy=\"http://proxy.company.com:8080\"\nexport https_proxy=\"http://proxy.company.com:8080\"\nexport no_proxy=\"localhost,127.0.0.1,internal.company.com\"\n\n# For apt\necho 'Acquire::http::Proxy \"http://proxy.company.com:8080\";' \\\n  >> /etc/apt/apt.conf\n`);copyBtnbtn_a4bcfd3444134ac9beed64734380a586.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a4bcfd3444134ac9beed64734380a586.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">export</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">http_proxy</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">"http://proxy.company.com:8080"</span>
+<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">export</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">https_proxy</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">"http://proxy.company.com:8080"</span>
+<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">export</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">no_proxy</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">"localhost,127.0.0.1,internal.company.com"</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">For apt
+</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Acquire::http::Proxy "http://proxy.company.com:8080";'</span> <span style="color: #2fafff;">\</span>
+  &gt;&gt; /etc/apt/apt.conf
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgab33c02" class="outline-2">
+<h2 id="orgab33c02">Tips</h2>
+<div class="outline-text-2" id="text-orgab33c02">
+<ul class="org-ul">
+<li>proxychains requires <code>-sT</code> (TCP connect) with nmap — SYN
+scans require raw sockets which cannot go through a SOCKS proxy</li>
+<li>Burp's invisible proxy mode (Project Options → Connections)
+allows interception without browser proxy configuration — useful
+for thick clients</li>
+<li>A reverse proxy hiding the real backend IP is common in
+production — Shodan and Censys may still index the real IP
+from certificate transparency records</li>
+<li>X-Forwarded-For header is set by forward proxies to pass the
+original client IP — applications trusting this header without
+validation are vulnerable to IP spoofing</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
+document.cookie = 'mode=dark'
+}
+document.cookie = 'light=modus-operandi-tinted'
+document.cookie = 'dark=modus-vivendi-tinted'
+/*
+;; nice-org-html.js
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+;; JS for html exported by et-org-html.el
+ */
+
+const preamble = document.getElementById("preamble");
+const content = document.getElementById("content");
+const postamble = document.getElementById("postamble");
+
+const controls = document.getElementById("view-controls");
+const toggleTocBtn = document.getElementById("toggle-toc");
+const gotoTopBtn = document.getElementById("goto-top");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const toc = document.getElementById("table-of-contents");
+
+// Get and parse options passed in cookie string
+const optCookie = document.cookie.split('; ').find(r => r.startsWith('options'));
+const options = {};
+if (optCookie) {
+  optCookie.split('=')[1].split('__').forEach(pair => {
+    const [key, val] = pair.split(':');
+    if (key && val) {
+      options[key] = val;
+    }
+  })
+}
+
+// Move sticky control bar (injected within preamble)
+document.body.insertBefore(controls, content);
+
+// Mode handling
+function getMode() {
+  let cookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+  return cookie && cookie.split("=")[1];
+}
+
+function setMode(mode) {
+  document.body.dataset.mode = mode;
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
+  document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
+  toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
+  document.cookie = 'mode=' + mode;
+}
+
+// Initially, set mode based on stored cookie
+let mode = getMode();
+if (mode && ["light", "dark"].includes(mode)) {
+  setMode(mode);
+} else {  
+  let prop = "prefers-color-scheme";
+  let pref = (mode === "query") && window.matchMedia &&
+    ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
+  setMode(pref || "dark"); // fallback: dark
+}
+
+// Mode toggling
+toggleModeBtn.addEventListener('click', () => {
+  setMode(document.body.dataset.mode === 'dark' ? 'light' : 'dark');
+})
+
+
+// Jump to top
+let scrollY = document.documentElement.scrollTop;
+window.addEventListener('scroll', () => {
+  let atTop = document.documentElement.scrollTop <= preamble.offsetHeight;
+  gotoTopBtn.dataset.show = !atTop + "";
+});
+gotoTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
+
+// Table-of-contents toggling
+if (toc) {
+  toggleTocBtn.dataset.show = 'true';
+  toggleTocBtn.addEventListener('click', () => {
+    let showingToc = document.body.dataset.toc;
+    scrollY = showingToc ? scrollY : document.documentElement.scrollTop;
+    if (showingToc) {
+      document.body.dataset.toc = '';
+      document.documentElement.scrollTop = scrollY;
+    } else {
+      let tocHeight =
+	Math.max(
+	  window.innerHeight - controls.offsetHeight,
+	  toc.offsetHeight
+	);
+      const header = document.getElementById("injected-header");
+      if (header && (scrollY > header.offsetHeight)) {
+	document.documentElement.scrollTop = preamble.offsetHeight;
+      }
+      toc.style.height = `${tocHeight}px`;
+      document.body.dataset.toc = 'true';
+    }
+    toc.addEventListener('click', () => {
+      if (document.body.dataset.toc) {
+	document.body.dataset.toc = '';
+	document.documentElement.scrollTop = scrollY;
+      }
+    })
+  })
+};
+
+// Instrument anchor linking for sticky control bar
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const target = document.querySelector(targetId);
+
+    setTimeout(() => {
+      const targetPos = target.getBoundingClientRect().top;
+      let offset = targetPos + document.documentElement.scrollTop;
+      offset -= controls.offsetHeight;
+      window.scrollTo({
+	top: offset,
+	behavior: "smooth"
+      });
+    }, 0);
+  });
+});
+
+function copyTextToClipboard(text) {
+  // Make invisible textarea
+  var textArea = document.createElement("textarea");
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = 0;
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+
+  // Copy contents into it
+  textArea.value = text;
+
+  // Try to copy from it to clipboard
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  var res;
+  try {
+    res = document.execCommand('copy');
+  } catch (err) {
+    res = false;
+  }
+
+  // Remove invisible textarea
+  document.body.removeChild(textArea);
+
+  return res;
+}
+
+// Handle the default header / footer drawers
+const header = document.getElementById("generated-header");
+const footer = document.getElementById("generated-footer");
+
+if (header) {
+  let toggle = header.querySelector("header nav input.nav-toggle");
+  if (toggle) { toggle.checked = false; }
+}
+if (footer) {
+  let nav = footer.querySelector("nav");
+  let toggle = nav && nav.querySelector(".nav-toggle");
+  let navList = nav && nav.querySelector(".nav-list");
+  let navElem = navList && [...navList.querySelectorAll(".nav-item")];
+  let numLink = navElem && navElem.length;
+  if (numLink) {
+    toggle.checked = false;
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+	setTimeout(() => window.scrollTo({
+	  behavior: 'smooth',
+	  top: document.body.scrollHeight	  
+	}), 88);
+      }
+   });
+  }
+}
+
+function autoCompact() {
+  var anchor, links, overlap, trivial;
+  const domCompute = (node) => {
+    if (node) {
+      anchor = node.querySelector('.nav-title, .nav-author');
+      links = node.querySelector('.nav-list');
+      overlap = links.offsetLeft - 5 <= anchor.offsetLeft + anchor.offsetWidth;	
+      trivial = links.offsetLeft === anchor.offsetLeft;
+    }
+  };
+  let mediaMatch = window.matchMedia('(max-width: 768px)').matches;
+  [header, footer].forEach(e => {
+    if (e) {
+      if (mediaMatch) {
+	e.classList.add('compact');
+      } else {
+	domCompute(e);
+	if (overlap && !trivial) {
+	  e.classList.add('compact');
+	} else {	
+	  let clone = e.cloneNode(true);
+	  clone.style.top = '-2000px';
+	  clone.style.maxHeight = '0px';
+	  clone.classList.remove('compact');
+	  e.parentNode.insertBefore(clone, e);
+	  domCompute(clone);
+	  let toggle = e.querySelector('.nav-toggle');
+	  if (!overlap && toggle && !toggle.checked) {
+	    e.classList.remove('compact');
+	  }
+	  e.parentNode.removeChild(clone);
+	}
+      }
+    }
+  })
+}
+
+if ((header || footer)) {
+  if (options.hasOwnProperty('layout')) {
+    [header, footer].forEach(e => e ? e.classList.add(options.layout) : null);
+  } else {
+    autoCompact();
+    window.addEventListener('resize', autoCompact);
+  }
+}
+
+if (options.hasOwnProperty('src-lang') && options['src-lang'] == 't') {
+  let labels = [...document.querySelectorAll('.srcLangLabel')];
+  labels.forEach(l => l.style.display = 'inline-block');
+}
+
+if (options.hasOwnProperty('collapsing') && options.collapsing == 't') {
+  let levels = [2, 3, 4, 5, 6];
+  let containerPrefix = 'outline-container-';
+  levels.forEach(l => {
+    let containers = [...document.querySelectorAll(`.outline-${l}`)];
+    containers.forEach(c => {
+      let id = c.id.slice(containerPrefix.length);
+      let headline = document.getElementById(id);
+      let siblings = [...c.children].filter(child => child.id != id);
+      headline.classList.add('collapsible');
+      headline.addEventListener('click', () => {	
+	if (headline.classList.contains('collapsed')) {
+	  headline.classList.remove('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.remove('hidden');
+	  });	  
+	} else {
+	  headline.classList.add('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.add('hidden');
+	  });
+	}
+      })
+    })
+  })
+}
+/*]]>*/-->
+</script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
+</div>
+</body>
+</html>

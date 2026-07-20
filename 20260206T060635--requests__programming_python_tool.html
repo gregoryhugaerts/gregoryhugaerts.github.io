@@ -1,0 +1,1630 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-07-20 Mon 09:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Requests</title>
+<meta name="author" content="termux" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<style type='text/css'>
+<!--/*--><![CDATA[/*><!--*/
+/* nice-org-html.css
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+*/
+
+/* basic layout ***************************************************************/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-family: Sans;
+    line-height: 1.3;
+    font-size: calc(15px + 0.390625vw);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: #999; /* overwritten with theme --bg */
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family:
+	-apple-system,
+	BlinkMacSystemFont,
+	segoe ui,
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	open sans,
+	helvetica neue,
+	sans-serif,
+	system-ui
+}
+
+#preamble,
+#postamble {
+    width: 100%;
+}
+
+#content {
+    width: 80%;
+    max-width: 80ch;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex: 1;
+}
+
+/* custom facing **************************************************************/
+/* The variable values are injected by CSS pre-processing in et-org-html.el */
+:root {
+    --bc-tb: #000000;
+    --bc-block: #595959;
+    --clr: #000000;
+    --clr-tb-hd: #000000;
+    --clr-code: #000000;
+    --bg: #fbf7f0;
+    --bg-code: #cab9b2;
+    --bg-tb-hd: #cab9b2;
+    --bg-block: #efe9dd;
+    --clr-link: #531ab6;
+    --clr-title: #000000;
+    --clr-todo: #00598b;
+    --bg-todo: initial;
+    --clr-done: #7f0000;
+    --bg-done: initial;
+    --ts-clr: #0031a9;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #0031a9;
+    --bg-constant: initial;
+    --clr-constant: #531ab6;
+    --bg-comment: initial;
+    --clr-comment: #7f0000;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #7f0000;
+    --bg-function: initial;
+    --clr-function: #602938;
+    --bg-variable: initial;
+    --clr-variable: #00603f;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #894000;
+    --bg-doc: initial;
+    --clr-doc: #304463;
+    --bg-builtin: initial;
+    --clr-builtin: #721045;
+    --bg-string: initial;
+    --clr-string: #00598b;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+body[data-mode='light'] {
+    background: var(--bg);
+    color: var(--clr);
+}
+
+body[data-mode='dark'] {
+    background: var(--bg);
+    color: var(--clr);
+    --bc-tb: #ffffff;
+    --bc-block: #989898;
+    --clr: #ffffff;
+    --clr-code: #ffffff;
+    --clr-tb-hd: #ffffff;
+    --bg: #0d0e1c;
+    --bg-tb-hd: #484d67;
+    --bg-code: #484d67;
+    --bg-block: #1d2235;
+    --clr-link: #b6a0ff;
+    --clr-title: #ffffff;
+    --clr-todo: #2fafff;
+    --bg-todo: initial;
+    --clr-done: #ef8386;
+    --bg-done: initial;
+    --ts-clr: #79a8ff;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #79a8ff;
+    --bg-constant: initial;
+    --clr-constant: #b6a0ff;
+    --bg-comment: initial;
+    --clr-comment: #ef8386;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #ef8386;
+    --bg-function: initial;
+    --clr-function: #f78fe7;
+    --bg-variable: initial;
+    --clr-variable: #4ae2f0;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #ff7f86;
+    --bg-doc: initial;
+    --clr-doc: #9ac8e0;
+    --bg-builtin: initial;
+    --clr-builtin: #feacd0;
+    --bg-string: initial;
+    --clr-string: #2fafff;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+/* exceptions for badly rendering themes **************************************/
+body[data-theme='leuven'],
+body[data-theme='leuven-dark'] {
+    --bg-code: var(--bg-block);
+}
+
+/* ootb page layout ***********************************************************/
+#view-controls {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    color: var(--clr-code);
+    height: 2.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    z-index: 100;
+    border-radius: 5px; /* Rounded corners */
+}
+#toggle-mode {
+    position: absolute;
+    right: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#goto-top {
+    display: none;
+}
+#goto-top[data-show="true"] {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#toggle-toc {
+    display: none;
+}
+#toggle-toc[data-show="true"] {
+    position: absolute;
+    left: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+
+#toggle-toc:hover,
+#goto-top:hover,
+#toggle-mode:hover {
+    cursor: pointer;
+}
+
+#table-of-contents {
+    display: none;
+}
+#table-of-contents[data-show="true"] {
+    width: 80%;
+    max-width: 80rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: var(--bg);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#table-of-contents::-webkit-scrollbar {
+    display: none;
+}
+
+body[data-toc="true"] #content * {
+    display: none;
+}
+body[data-toc="true"] #content #table-of-contents,
+body[data-toc="true"] #content #table-of-contents * {
+    display: block;
+}
+
+
+/* misc elements **************************************************************/
+
+hr {
+    height: 0;
+    color: inherit;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+    font-family:
+	Menlo,
+	ui-monospace,
+	SFMono-Regular,
+	Consolas,
+	'Liberation Mono',
+	monospace;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+}
+
+summary {
+    display: list-item;
+}
+
+h1 {
+    color: var(--clr-title);
+    text-align: center;
+}
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+code {
+    color: var(--clr-code);
+    background: var(--bg-code);
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+pre::-webkit-scrollbar {
+    display: none;
+}
+
+.todo {
+    color: var(--clr-todo);
+    background: var(--bg-todo);
+}
+
+.done {
+    color: var(--clr-done);
+    background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+    font-size: 0.8rem;
+    color: var(--clr-ts);
+}
+
+table {
+    width: 100%;
+    border: 2px solid var(--bc-tb);
+}
+
+thead {
+    color: var(--clr-tb-hd);
+    background: var(--bg-tb-hd);
+}
+
+td, th {
+    border: thin solid var(--bc-tb);
+}
+
+li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#text-table-of-contents li a:before {
+    content: "• "
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-link);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.MathJax_Display {
+    font-size: 1.25em;
+}
+
+img {
+    max-width: 100%;
+}
+
+pre {
+    padding: 1rem;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-block);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+.org-src-wrapper {
+    position: relative;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+}
+
+.org-src-bar {
+    position: relative;
+    top: 0rem;
+    width: 100%;
+    background: var(--bg-code);
+    border-radius: 0.5rem;
+    text-align: right;
+    min-height: 1rem;
+}
+
+.org-src-wrapper .org-src-container {
+    position: relative;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+    z-index: 0;
+}
+
+.org-src-wrapper .org-src-container pre.src {
+    border: none !important;
+    background: var(--bg-code) !important;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding-bottom: 1.6rem;
+}
+
+.org-src-wrapper .org-src-bar .srcLangLabel {
+    top: 0rem;
+    right: 1.6rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    z-index: 1;
+    display: none;
+}
+
+.org-src-wrapper .org-src-bar .copyBtn {
+    top: 0rem;
+    right: 0.1rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-right: 0.7rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+.org-src-wrapper .copyBtn:hover {
+    opacity: 1;
+}
+
+.org-src-wrapper .copyBtn i {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+}
+
+.admonition {
+    margin: 0.2rem;
+    color: inherit;
+    border-left: .25rem solid;
+}
+.admonition-title {
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.admonition-content > p {
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.admonition.note {
+    border-left-color: var(--clr-note);
+}
+.admonition-title.note {
+    color: var(--clr-note);
+}
+.admonition-title.note:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-note);
+    mask-size: cover;    
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path class="admonition-icon-note" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+.admonition-icon-note {
+    fill: var(--clr-note);
+}
+
+.admonition.tip {
+    border-left-color: var(--clr-tip);
+}
+.admonition-title.tip {
+    color: var(--clr-tip);
+}
+.admonition-title.tip:before {
+    content: '';
+    fill: var(--clr-tip);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-tip);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>');    
+}
+
+.admonition.important {
+    border-left-color: var(--clr-important);
+}
+.admonition-title.important {
+    color: var(--clr-important);
+}
+.admonition-title.important:before {
+    content: '';
+    fill: var(--clr-important);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-important);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');    
+}
+
+.admonition.warning {
+    border-left-color: var(--clr-warning);
+}
+.admonition-title.warning {
+    color: var(--clr-warning);
+}
+.admonition-title.warning:before {
+    content: '';
+    color: var(--clr-warning);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-warning);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');
+}
+
+
+.admonition.caution {
+    border-left-color: var(--clr-caution);
+}
+.admonition-title.caution {
+    color: var(--clr-caution);
+}
+.admonition-title.caution:before {
+    content: '';
+    fill: var(--clr-caution);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-caution);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+/* responsive layouts *********************************************************/
+
+@media only screen and (max-width: 768px) {
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #view-controls {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+    }
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+
+/* generated header and footer ************************************************/
+
+#generated-header,
+#generated-footer {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 1;
+}
+.generated header {
+    top: 0;
+    left: 0;
+}
+.generated footer {
+    bottom: 0;
+    left: 0;
+}
+.generated header a,
+.generated footer a {
+    display: inline;
+    color: var(--clr-title);
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+.generated header a:hover,
+.generated footer a:hover {
+    color: var(--clr-link);
+}
+
+.generated header nav {
+    position: relative;
+    margin-top: 1rem;
+    top: 0;
+    left: 0;
+}
+.generated footer nav {
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.generated .separator {
+    display: block;
+    width: 111%;
+    margin-left: -5.5%;
+    max-width: 100vw;
+    height: 0.125rem;
+    background: var(--bg-code);
+}
+
+.generated a .nav-title,
+.generated a .nav-author {
+    display: inline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 10rem;
+}
+
+.generated .nav-title {
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.generated .nav-toggle {
+    display: none;
+}
+.generated .nav-button {
+    display: none;
+}
+.generated .nav-list {
+    overflow-y: hidden;
+    display: block;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.generated .nav-item {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.generated .nav-link {
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.generated .nav-toggle {
+    max-height: 0;
+    visibility: hidden;
+    overflow-y: hidden;
+}
+
+.generated header .separator {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.generated footer .separator {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.generated .menu-sep {
+    display: none;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.generated footer {
+    padding-bottom: 1rem;
+}
+
+.generated.compact footer {
+    padding-bottom: 0;
+}
+
+.generated.compact header .separator {
+    margin-top: 0;
+    margin-bottom:0;
+}
+.generated.compact footer .separator {
+    margin-bottom: 1rem;
+}
+
+.generated.compact .nav-toggle {
+    visibility: visible;
+}
+
+.generated.compact .nav-toggle + label span::before {
+    transition: all 0.2s ease-in;
+}
+.generated.compact .nav-toggle:checked + label span::before {
+    transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+    transition: all 0.2s ease;
+}
+
+.generated.compact .menu-sep {
+    display: flex;
+    max-height: 0rem;
+}
+.generated.compact .nav-toggle:checked + label + .menu-sep {
+    display: block;
+    position: relative;
+    max-height: 1rem;
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-list {
+    float: none !important;
+    position: relative;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+.generated.compact .nav-toggle:checked + label ~ .nav-list {
+    display: block;
+    max-height: 100rem;
+    overflow-y: hidden;
+}
+.generated.compact header .nav-toggle:checked + label ~ .nav-list {
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-button {
+    display: inline;
+    position: relative;
+    float: right;
+    font-size: 1rem;
+}
+.generated.compact .nav-button span::before {
+    display: inline-block;
+    content: '\2807';
+    font-size: 2rem;
+    transform: translateX(0.25rem) translateY(-0.5rem);
+}
+
+.generated.compact .nav-item {
+    float: none !important;
+    text-align: center !important;
+}
+.generated.compact .nav-link {
+    line-height: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    float: none !important;
+}
+
+.generated.compact footer .separator.menu-sep {
+    margin-bottom: -1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.collapsible:hover {
+    cursor: pointer;
+}
+
+.collapsible.collapsed::after {
+    display: inline-block;
+    content: '...';
+}
+/*]]>*/-->
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Requests</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgff0a938">Installation</a></li>
+<li><a href="#org1052ea6">Basic Requests</a></li>
+<li><a href="#org528fd43">Query Parameters</a></li>
+<li><a href="#org52b2640">Headers</a></li>
+<li><a href="#orgceb1273">Authentication</a></li>
+<li><a href="#orgcbb7887">Sessions</a></li>
+<li><a href="#org3c79341">Response Object</a></li>
+<li><a href="#orgaf4c1f2">Error Handling</a></li>
+<li><a href="#org64aa1e2">Timeouts</a></li>
+<li><a href="#org6fb4e2f">File Upload</a></li>
+<li><a href="#orgb5def5c">Proxying Through Burp Suite</a></li>
+<li><a href="#orgc97824c">Streaming (Large Responses)</a></li>
+<li><a href="#orgc5d9dd0">Security-Focused Patterns</a></li>
+<li><a href="#orga696fd4">Tips</a></li>
+</ul>
+</div>
+</div>
+<p>
+The de-facto standard Python library for HTTP. Clean, intuitive
+API for all HTTP methods, session management, authentication,
+file upload, and streaming. Used throughout security tooling —
+from quick API testing scripts to automated vulnerability
+checkers.
+</p>
+
+<p>
+Related: <a href="../org/20260210T195845--python__language_programming.html">Python</a>
+         <a href="../org/20260611T065009--api-testing-methodology__cybersecurity_pentesting_technique.html">API Testing Methodology</a>
+</p>
+<div id="outline-container-orgff0a938" class="outline-2">
+<h2 id="orgff0a938">Installation</h2>
+<div class="outline-text-2" id="text-orgff0a938">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_53830788f7ee4a1a97e259dadbc0c5c6>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_53830788f7ee4a1a97e259dadbc0c5c6=document.querySelector('button[name=btn_53830788f7ee4a1a97e259dadbc0c5c6]');
+copyBtnbtn_53830788f7ee4a1a97e259dadbc0c5c6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`pip install requests --break-system-packages\n`);copyBtnbtn_53830788f7ee4a1a97e259dadbc0c5c6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_53830788f7ee4a1a97e259dadbc0c5c6.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell">pip install requests --break-system-packages
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org1052ea6" class="outline-2">
+<h2 id="org1052ea6">Basic Requests</h2>
+<div class="outline-text-2" id="text-org1052ea6">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_225f1f7d56884afea00c080155675f36>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_225f1f7d56884afea00c080155675f36=document.querySelector('button[name=btn_225f1f7d56884afea00c080155675f36]');
+copyBtnbtn_225f1f7d56884afea00c080155675f36.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import requests\n\n# GET\nresponse = requests.get(\"https://httpbin.org/get\")\nprint(response.status_code)     # 200\nprint(response.headers)         # dict of response headers\nprint(response.text)            # response body as string\nprint(response.json())          # parse JSON body\n\n# POST with JSON body\nresponse = requests.post(\n    \"https://httpbin.org/post\",\n    json={\"username\": \"alice\", \"password\": \"secret\"}\n)\n\n# POST with form data\nresponse = requests.post(\n    \"https://httpbin.org/post\",\n    data={\"username\": \"alice\", \"password\": \"secret\"}\n)\n\n# PUT, PATCH, DELETE\nrequests.put(\"https://api.example.com/users/1\", json={\"name\": \"Bob\"})\nrequests.patch(\"https://api.example.com/users/1\", json={\"name\": \"Bob\"})\nrequests.delete(\"https://api.example.com/users/1\")\n\n# HEAD — get headers without body\nresponse = requests.head(\"https://example.com\")\nprint(response.headers.get(\"Server\"))\n`);copyBtnbtn_225f1f7d56884afea00c080155675f36.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_225f1f7d56884afea00c080155675f36.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-python"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">import</span> requests
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">GET
+</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.get(<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://httpbin.org/get"</span>)
+<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">print</span>(response.status_code)     <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">200
+</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">print</span>(response.headers)         <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">dict of response headers
+</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">print</span>(response.text)            <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">response body as string
+</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">print</span>(response.json())          <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">parse JSON body
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">POST with JSON body
+</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.post(
+    <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://httpbin.org/post"</span>,
+    json<span style="color: #ffffff;">=</span>{<span style="color: var(--clr-string); background-color: var(--bg-string);">"username"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"alice"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"password"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"secret"</span>}
+)
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">POST with form data
+</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.post(
+    <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://httpbin.org/post"</span>,
+    data<span style="color: #ffffff;">=</span>{<span style="color: var(--clr-string); background-color: var(--bg-string);">"username"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"alice"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"password"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"secret"</span>}
+)
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">PUT, PATCH, DELETE
+</span>requests.put(<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://api.example.com/users/1"</span>, json<span style="color: #ffffff;">=</span>{<span style="color: var(--clr-string); background-color: var(--bg-string);">"name"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"Bob"</span>})
+requests.patch(<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://api.example.com/users/1"</span>, json<span style="color: #ffffff;">=</span>{<span style="color: var(--clr-string); background-color: var(--bg-string);">"name"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"Bob"</span>})
+requests.delete(<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://api.example.com/users/1"</span>)
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">HEAD &#8212; get headers without body
+</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.head(<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://example.com"</span>)
+<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">print</span>(response.headers.get(<span style="color: var(--clr-string); background-color: var(--bg-string);">"Server"</span>))
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org528fd43" class="outline-2">
+<h2 id="org528fd43">Query Parameters</h2>
+<div class="outline-text-2" id="text-org528fd43">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_cd054ae2cac5487880edaa33743960ed>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_cd054ae2cac5487880edaa33743960ed=document.querySelector('button[name=btn_cd054ae2cac5487880edaa33743960ed]');
+copyBtnbtn_cd054ae2cac5487880edaa33743960ed.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Append as dict — requests handles URL encoding\nparams = {\"q\": \"python security\", \"page\": 1, \"limit\": 10}\nresponse = requests.get(\"https://api.example.com/search\", params=params)\nprint(response.url)   # https://api.example.com/search?q=python+security&page=1&limit=10\n`);copyBtnbtn_cd054ae2cac5487880edaa33743960ed.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cd054ae2cac5487880edaa33743960ed.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-python"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Append as dict &#8212; requests handles URL encoding
+</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">params</span> <span style="color: #ffffff;">=</span> {<span style="color: var(--clr-string); background-color: var(--bg-string);">"q"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"python security"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"page"</span>: 1, <span style="color: var(--clr-string); background-color: var(--bg-string);">"limit"</span>: 10}
+<span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.get(<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://api.example.com/search"</span>, params<span style="color: #ffffff;">=</span>params)
+<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">print</span>(response.url)   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">https://api.example.com/search?q=python+security&amp;page=1&amp;limit=10</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org52b2640" class="outline-2">
+<h2 id="org52b2640">Headers</h2>
+<div class="outline-text-2" id="text-org52b2640">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_f8bfa288ab624e38af867f491304138a>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_f8bfa288ab624e38af867f491304138a=document.querySelector('button[name=btn_f8bfa288ab624e38af867f491304138a]');
+copyBtnbtn_f8bfa288ab624e38af867f491304138a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`headers = {\n    \"Authorization\": \"Bearer eyJhbGci...\",\n    \"Content-Type\": \"application/json\",\n    \"User-Agent\": \"Mozilla/5.0 (custom)\",\n    \"X-API-Key\": \"abc123\",\n}\n\nresponse = requests.get(\"https://api.example.com/profile\", headers=headers)\n`);copyBtnbtn_f8bfa288ab624e38af867f491304138a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f8bfa288ab624e38af867f491304138a.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-python"><span style="color: var(--clr-variable); background-color: var(--bg-variable);">headers</span> <span style="color: #ffffff;">=</span> {
+    <span style="color: var(--clr-string); background-color: var(--bg-string);">"Authorization"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"Bearer eyJhbGci..."</span>,
+    <span style="color: var(--clr-string); background-color: var(--bg-string);">"Content-Type"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"application/json"</span>,
+    <span style="color: var(--clr-string); background-color: var(--bg-string);">"User-Agent"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"Mozilla/5.0 (custom)"</span>,
+    <span style="color: var(--clr-string); background-color: var(--bg-string);">"X-API-Key"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"abc123"</span>,
+}
+
+<span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.get(<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://api.example.com/profile"</span>, headers<span style="color: #ffffff;">=</span>headers)
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgceb1273" class="outline-2">
+<h2 id="orgceb1273">Authentication</h2>
+<div class="outline-text-2" id="text-orgceb1273">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_73b2c86045b540848299466d812f1c8d>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_73b2c86045b540848299466d812f1c8d=document.querySelector('button[name=btn_73b2c86045b540848299466d812f1c8d]');
+copyBtnbtn_73b2c86045b540848299466d812f1c8d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# HTTP Basic Auth\nresponse = requests.get(\n    \"https://api.example.com/protected\",\n    auth=(\"username\", \"password\")\n)\n\n# Bearer token (via header)\nresponse = requests.get(\n    \"https://api.example.com/protected\",\n    headers={\"Authorization\": f\"Bearer {token}\"}\n)\n\n# Digest auth\nfrom requests.auth import HTTPDigestAuth\nresponse = requests.get(url, auth=HTTPDigestAuth(\"user\", \"pass\"))\n\n# Custom auth class\nfrom requests.auth import AuthBase\nclass ApiKeyAuth(AuthBase):\n    def __init__(self, key):\n        self.key = key\n    def __call__(self, r):\n        r.headers[\"X-API-Key\"] = self.key\n        return r\n\nresponse = requests.get(url, auth=ApiKeyAuth(\"my-key\"))\n`);copyBtnbtn_73b2c86045b540848299466d812f1c8d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_73b2c86045b540848299466d812f1c8d.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-python"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">HTTP Basic Auth
+</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.get(
+    <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://api.example.com/protected"</span>,
+    auth<span style="color: #ffffff;">=</span>(<span style="color: var(--clr-string); background-color: var(--bg-string);">"username"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"password"</span>)
+)
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Bearer token (via header)
+</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.get(
+    <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://api.example.com/protected"</span>,
+    headers<span style="color: #ffffff;">=</span>{<span style="color: var(--clr-string); background-color: var(--bg-string);">"Authorization"</span>: f<span style="color: var(--clr-string); background-color: var(--bg-string);">"Bearer </span>{token}<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span>}
+)
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Digest auth
+</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">from</span> requests.auth <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">import</span> HTTPDigestAuth
+<span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.get(url, auth<span style="color: #ffffff;">=</span>HTTPDigestAuth(<span style="color: var(--clr-string); background-color: var(--bg-string);">"user"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"pass"</span>))
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Custom auth class
+</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">from</span> requests.auth <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">import</span> AuthBase
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #11c777;">ApiKeyAuth</span>(AuthBase):
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">def</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">__init__</span>(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">self</span>, key):
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">self</span>.<span style="color: var(--clr-variable); background-color: var(--bg-variable);">key</span> <span style="color: #ffffff;">=</span> key
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">def</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">__call__</span>(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">self</span>, r):
+        r.<span style="color: var(--clr-variable); background-color: var(--bg-variable);">headers</span>[<span style="color: var(--clr-string); background-color: var(--bg-string);">"X-API-Key"</span>] <span style="color: #ffffff;">=</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">self</span>.key
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">return</span> r
+
+<span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.get(url, auth<span style="color: #ffffff;">=</span>ApiKeyAuth(<span style="color: var(--clr-string); background-color: var(--bg-string);">"my-key"</span>))
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgcbb7887" class="outline-2">
+<h2 id="orgcbb7887">Sessions</h2>
+<div class="outline-text-2" id="text-orgcbb7887">
+<p>
+Sessions persist cookies, headers, and connection pooling across
+requests. Essential for testing authenticated application flows.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_5ae78cd1a1284ba9adf2fbd9089946a0>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_5ae78cd1a1284ba9adf2fbd9089946a0=document.querySelector('button[name=btn_5ae78cd1a1284ba9adf2fbd9089946a0]');
+copyBtnbtn_5ae78cd1a1284ba9adf2fbd9089946a0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`session = requests.Session()\n\n# Set headers for all requests in this session\nsession.headers.update({\"User-Agent\": \"TestClient/1.0\"})\n\n# Login — session stores the returned cookie\nsession.post(\"https://target.com/login\", data={\n    \"username\": \"alice\",\n    \"password\": \"password\"\n})\n\n# Subsequent requests carry the session cookie automatically\nresponse = session.get(\"https://target.com/dashboard\")\nresponse = session.get(\"https://target.com/admin\")\n\n# Inspect cookies\nprint(session.cookies.get_dict())\n\n# Close session when done\nsession.close()\n\n# Or use as context manager\nwith requests.Session() as s:\n    s.post(\"https://target.com/login\", data={\"user\": \"alice\", \"pass\": \"pw\"})\n    r = s.get(\"https://target.com/profile\")\n`);copyBtnbtn_5ae78cd1a1284ba9adf2fbd9089946a0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5ae78cd1a1284ba9adf2fbd9089946a0.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-python"><span style="color: var(--clr-variable); background-color: var(--bg-variable);">session</span> <span style="color: #ffffff;">=</span> requests.Session()
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Set headers for all requests in this session
+</span>session.headers.update({<span style="color: var(--clr-string); background-color: var(--bg-string);">"User-Agent"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"TestClient/1.0"</span>})
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Login &#8212; session stores the returned cookie
+</span>session.post(<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://target.com/login"</span>, data<span style="color: #ffffff;">=</span>{
+    <span style="color: var(--clr-string); background-color: var(--bg-string);">"username"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"alice"</span>,
+    <span style="color: var(--clr-string); background-color: var(--bg-string);">"password"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"password"</span>
+})
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Subsequent requests carry the session cookie automatically
+</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> session.get(<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://target.com/dashboard"</span>)
+<span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> session.get(<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://target.com/admin"</span>)
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Inspect cookies
+</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">print</span>(session.cookies.get_dict())
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Close session when done
+</span>session.close()
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Or use as context manager
+</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">with</span> requests.Session() <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">as</span> s:
+    s.post(<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://target.com/login"</span>, data<span style="color: #ffffff;">=</span>{<span style="color: var(--clr-string); background-color: var(--bg-string);">"user"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"alice"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"pass"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"pw"</span>})
+    <span style="color: var(--clr-variable); background-color: var(--bg-variable);">r</span> <span style="color: #ffffff;">=</span> s.get(<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://target.com/profile"</span>)
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org3c79341" class="outline-2">
+<h2 id="org3c79341">Response Object</h2>
+<div class="outline-text-2" id="text-org3c79341">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_73e92a30cf464d82a2549b731f6cac90>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_73e92a30cf464d82a2549b731f6cac90=document.querySelector('button[name=btn_73e92a30cf464d82a2549b731f6cac90]');
+copyBtnbtn_73e92a30cf464d82a2549b731f6cac90.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`r = requests.get(\"https://api.example.com/data\")\n\nr.status_code           # 200\nr.ok                    # True if status < 400\nr.headers               # dict-like object\nr.headers[\"Content-Type\"]\nr.text                  # body as string\nr.content               # body as bytes\nr.json()                # parse JSON (raises if not JSON)\nr.url                   # final URL (after redirects)\nr.history               # list of redirect responses\nr.elapsed               # timedelta of request duration\nr.encoding              # detected encoding\n\n# Raise an exception for 4xx/5xx responses\nr.raise_for_status()    # raises HTTPError if bad status\n`);copyBtnbtn_73e92a30cf464d82a2549b731f6cac90.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_73e92a30cf464d82a2549b731f6cac90.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-python"><span style="color: var(--clr-variable); background-color: var(--bg-variable);">r</span> <span style="color: #ffffff;">=</span> requests.get(<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://api.example.com/data"</span>)
+
+r.status_code           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">200
+</span>r.ok                    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">True if status &lt; 400
+</span>r.headers               <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">dict-like object
+</span>r.headers[<span style="color: var(--clr-string); background-color: var(--bg-string);">"Content-Type"</span>]
+r.text                  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">body as string
+</span>r.content               <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">body as bytes
+</span>r.json()                <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">parse JSON (raises if not JSON)
+</span>r.url                   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">final URL (after redirects)
+</span>r.history               <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">list of redirect responses
+</span>r.elapsed               <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">timedelta of request duration
+</span>r.encoding              <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">detected encoding
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Raise an exception for 4xx/5xx responses
+</span>r.raise_for_status()    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">raises HTTPError if bad status</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgaf4c1f2" class="outline-2">
+<h2 id="orgaf4c1f2">Error Handling</h2>
+<div class="outline-text-2" id="text-orgaf4c1f2">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_ea3138cf7afc4959ac95d9f662e3272e>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_ea3138cf7afc4959ac95d9f662e3272e=document.querySelector('button[name=btn_ea3138cf7afc4959ac95d9f662e3272e]');
+copyBtnbtn_ea3138cf7afc4959ac95d9f662e3272e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import requests\nfrom requests.exceptions import (\n    HTTPError, ConnectionError, Timeout, RequestException\n)\n\ntry:\n    response = requests.get(\"https://api.example.com/data\", timeout=5)\n    response.raise_for_status()\n    data = response.json()\nexcept HTTPError as e:\n    print(f\"HTTP error: {e.response.status_code}\")\nexcept ConnectionError:\n    print(\"Connection failed\")\nexcept Timeout:\n    print(\"Request timed out\")\nexcept RequestException as e:\n    print(f\"Request error: {e}\")\n`);copyBtnbtn_ea3138cf7afc4959ac95d9f662e3272e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ea3138cf7afc4959ac95d9f662e3272e.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-python"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">import</span> requests
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">from</span> requests.exceptions <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">import</span> (
+    HTTPError, <span style="color: #11c777;">ConnectionError</span>, Timeout, RequestException
+)
+
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">try</span>:
+    <span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.get(<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://api.example.com/data"</span>, timeout<span style="color: #ffffff;">=</span>5)
+    response.raise_for_status()
+    <span style="color: var(--clr-variable); background-color: var(--bg-variable);">data</span> <span style="color: #ffffff;">=</span> response.json()
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">except</span> HTTPError <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">as</span> e:
+    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">print</span>(f<span style="color: var(--clr-string); background-color: var(--bg-string);">"HTTP error: </span>{e.response.status_code}<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span>)
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">except</span> <span style="color: #11c777;">ConnectionError</span>:
+    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">print</span>(<span style="color: var(--clr-string); background-color: var(--bg-string);">"Connection failed"</span>)
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">except</span> Timeout:
+    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">print</span>(<span style="color: var(--clr-string); background-color: var(--bg-string);">"Request timed out"</span>)
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">except</span> RequestException <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">as</span> e:
+    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">print</span>(f<span style="color: var(--clr-string); background-color: var(--bg-string);">"Request error: </span>{e}<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span>)
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org64aa1e2" class="outline-2">
+<h2 id="org64aa1e2">Timeouts</h2>
+<div class="outline-text-2" id="text-org64aa1e2">
+<p>
+Always set a timeout — by default requests waits forever:
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_5621c0d0dcd04f7fa48df7c5f7725e28>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_5621c0d0dcd04f7fa48df7c5f7725e28=document.querySelector('button[name=btn_5621c0d0dcd04f7fa48df7c5f7725e28]');
+copyBtnbtn_5621c0d0dcd04f7fa48df7c5f7725e28.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Connect timeout, read timeout\nresponse = requests.get(url, timeout=(3.05, 10))\n\n# Single value applies to both\nresponse = requests.get(url, timeout=5)\n`);copyBtnbtn_5621c0d0dcd04f7fa48df7c5f7725e28.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5621c0d0dcd04f7fa48df7c5f7725e28.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-python"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Connect timeout, read timeout
+</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.get(url, timeout<span style="color: #ffffff;">=</span>(3.05, 10))
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Single value applies to both
+</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.get(url, timeout<span style="color: #ffffff;">=</span>5)
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org6fb4e2f" class="outline-2">
+<h2 id="org6fb4e2f">File Upload</h2>
+<div class="outline-text-2" id="text-org6fb4e2f">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_02b1a859836845ea86f181af2ff66ce2>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_02b1a859836845ea86f181af2ff66ce2=document.querySelector('button[name=btn_02b1a859836845ea86f181af2ff66ce2]');
+copyBtnbtn_02b1a859836845ea86f181af2ff66ce2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Single file\nwith open(\"report.pdf\", \"rb\") as f:\n    response = requests.post(\n        \"https://target.com/upload\",\n        files={\"file\": f}\n    )\n\n# Specify filename and content-type (for filter bypass testing)\nwith open(\"shell.php\", \"rb\") as f:\n    response = requests.post(\n        \"https://target.com/upload\",\n        files={\"file\": (\"image.jpg\", f, \"image/jpeg\")}   # spoofed name and type\n    )\n\n# File upload with additional form fields\nwith open(\"image.png\", \"rb\") as f:\n    response = requests.post(\n        \"https://target.com/upload\",\n        files={\"file\": f},\n        data={\"description\": \"profile photo\"}\n    )\n`);copyBtnbtn_02b1a859836845ea86f181af2ff66ce2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_02b1a859836845ea86f181af2ff66ce2.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-python"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Single file
+</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">with</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">open</span>(<span style="color: var(--clr-string); background-color: var(--bg-string);">"report.pdf"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"rb"</span>) <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">as</span> f:
+    <span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.post(
+        <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://target.com/upload"</span>,
+        files<span style="color: #ffffff;">=</span>{<span style="color: var(--clr-string); background-color: var(--bg-string);">"file"</span>: f}
+    )
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Specify filename and content-type (for filter bypass testing)
+</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">with</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">open</span>(<span style="color: var(--clr-string); background-color: var(--bg-string);">"shell.php"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"rb"</span>) <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">as</span> f:
+    <span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.post(
+        <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://target.com/upload"</span>,
+        files<span style="color: #ffffff;">=</span>{<span style="color: var(--clr-string); background-color: var(--bg-string);">"file"</span>: (<span style="color: var(--clr-string); background-color: var(--bg-string);">"image.jpg"</span>, f, <span style="color: var(--clr-string); background-color: var(--bg-string);">"image/jpeg"</span>)}   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">spoofed name and type
+</span>    )
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">File upload with additional form fields
+</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">with</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">open</span>(<span style="color: var(--clr-string); background-color: var(--bg-string);">"image.png"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"rb"</span>) <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">as</span> f:
+    <span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.post(
+        <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://target.com/upload"</span>,
+        files<span style="color: #ffffff;">=</span>{<span style="color: var(--clr-string); background-color: var(--bg-string);">"file"</span>: f},
+        data<span style="color: #ffffff;">=</span>{<span style="color: var(--clr-string); background-color: var(--bg-string);">"description"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"profile photo"</span>}
+    )
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgb5def5c" class="outline-2">
+<h2 id="orgb5def5c">Proxying Through Burp Suite</h2>
+<div class="outline-text-2" id="text-orgb5def5c">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_47fedebc572f4a4b81337fbb42d7ec03>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_47fedebc572f4a4b81337fbb42d7ec03=document.querySelector('button[name=btn_47fedebc572f4a4b81337fbb42d7ec03]');
+copyBtnbtn_47fedebc572f4a4b81337fbb42d7ec03.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`proxies = {\n    \"http\":  \"http://127.0.0.1:8080\",\n    \"https\": \"http://127.0.0.1:8080\",\n}\n\n# Disable SSL verification for Burp's certificate\nresponse = requests.get(\n    \"https://target.com/api/profile\",\n    proxies=proxies,\n    verify=False\n)\n\n# Suppress the InsecureRequestWarning\nimport urllib3\nurllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)\n`);copyBtnbtn_47fedebc572f4a4b81337fbb42d7ec03.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_47fedebc572f4a4b81337fbb42d7ec03.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-python"><span style="color: var(--clr-variable); background-color: var(--bg-variable);">proxies</span> <span style="color: #ffffff;">=</span> {
+    <span style="color: var(--clr-string); background-color: var(--bg-string);">"http"</span>:  <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://127.0.0.1:8080"</span>,
+    <span style="color: var(--clr-string); background-color: var(--bg-string);">"https"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://127.0.0.1:8080"</span>,
+}
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Disable SSL verification for Burp's certificate
+</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">response</span> <span style="color: #ffffff;">=</span> requests.get(
+    <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://target.com/api/profile"</span>,
+    proxies<span style="color: #ffffff;">=</span>proxies,
+    verify<span style="color: #ffffff;">=</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">False</span>
+)
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Suppress the InsecureRequestWarning
+</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">import</span> urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgc97824c" class="outline-2">
+<h2 id="orgc97824c">Streaming (Large Responses)</h2>
+<div class="outline-text-2" id="text-orgc97824c">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_43defa9ef69640e586799ca348a871db>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_43defa9ef69640e586799ca348a871db=document.querySelector('button[name=btn_43defa9ef69640e586799ca348a871db]');
+copyBtnbtn_43defa9ef69640e586799ca348a871db.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Download large file without loading into memory\nwith requests.get(url, stream=True) as r:\n    r.raise_for_status()\n    with open(\"output.bin\", \"wb\") as f:\n        for chunk in r.iter_content(chunk_size=8192):\n            f.write(chunk)\n`);copyBtnbtn_43defa9ef69640e586799ca348a871db.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_43defa9ef69640e586799ca348a871db.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-python"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Download large file without loading into memory
+</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">with</span> requests.get(url, stream<span style="color: #ffffff;">=</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">True</span>) <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">as</span> r:
+    r.raise_for_status()
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">with</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">open</span>(<span style="color: var(--clr-string); background-color: var(--bg-string);">"output.bin"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"wb"</span>) <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">as</span> f:
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">for</span> chunk <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">in</span> r.iter_content(chunk_size<span style="color: #ffffff;">=</span>8192):
+            f.write(chunk)
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgc5d9dd0" class="outline-2">
+<h2 id="orgc5d9dd0">Security-Focused Patterns</h2>
+<div class="outline-text-2" id="text-orgc5d9dd0">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_733ab2e2bb404a279a9e299f0b1eee14>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_733ab2e2bb404a279a9e299f0b1eee14=document.querySelector('button[name=btn_733ab2e2bb404a279a9e299f0b1eee14]');
+copyBtnbtn_733ab2e2bb404a279a9e299f0b1eee14.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Enumerate IDs (IDOR testing)\nsession = requests.Session()\nsession.headers[\"Authorization\"] = f\"Bearer {token}\"\n\nfor user_id in range(1, 1000):\n    r = session.get(f\"https://target.com/api/users/{user_id}\")\n    if r.status_code == 200:\n        print(f\"ID {user_id}: {r.json()}\")\n\n# Test multiple payloads against an endpoint\npayloads = [\"' OR 1=1--\", \"admin'--\", \"\\\" OR \\\"1\\\"=\\\"1\"]\nfor payload in payloads:\n    r = requests.post(\"https://target.com/login\",\n        data={\"username\": payload, \"password\": \"x\"})\n    print(f\"{payload!r}: {r.status_code} {len(r.text)} bytes\")\n\n# Collect response sizes for parameter fuzzing\nimport time\nparams_to_test = [\"debug\", \"admin\", \"test\", \"dev\", \"verbose\"]\nfor param in params_to_test:\n    r = requests.get(f\"https://target.com/page?{param}=1\")\n    print(f\"{param}: {r.status_code} {len(r.content)} bytes elapsed={r.elapsed.total_seconds():.3f}s\")\n`);copyBtnbtn_733ab2e2bb404a279a9e299f0b1eee14.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_733ab2e2bb404a279a9e299f0b1eee14.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-python"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Enumerate IDs (IDOR testing)
+</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">session</span> <span style="color: #ffffff;">=</span> requests.Session()
+session.<span style="color: var(--clr-variable); background-color: var(--bg-variable);">headers</span>[<span style="color: var(--clr-string); background-color: var(--bg-string);">"Authorization"</span>] <span style="color: #ffffff;">=</span> f<span style="color: var(--clr-string); background-color: var(--bg-string);">"Bearer </span>{token}<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span>
+
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">for</span> user_id <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">in</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">range</span>(1, 1000):
+    <span style="color: var(--clr-variable); background-color: var(--bg-variable);">r</span> <span style="color: #ffffff;">=</span> session.get(f<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://target.com/api/users/</span>{user_id}<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span>)
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> r.status_code <span style="color: #ffffff;">==</span> 200:
+        <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">print</span>(f<span style="color: var(--clr-string); background-color: var(--bg-string);">"ID </span>{user_id}<span style="color: var(--clr-string); background-color: var(--bg-string);">: </span>{r.json()}<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span>)
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Test multiple payloads against an endpoint
+</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">payloads</span> <span style="color: #ffffff;">=</span> [<span style="color: var(--clr-string); background-color: var(--bg-string);">"' OR 1=1--"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"admin'--"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"\" OR \"1\"=\"1"</span>]
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">for</span> payload <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">in</span> payloads:
+    <span style="color: var(--clr-variable); background-color: var(--bg-variable);">r</span> <span style="color: #ffffff;">=</span> requests.post(<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://target.com/login"</span>,
+        data<span style="color: #ffffff;">=</span>{<span style="color: var(--clr-string); background-color: var(--bg-string);">"username"</span>: payload, <span style="color: var(--clr-string); background-color: var(--bg-string);">"password"</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">"x"</span>})
+    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">print</span>(f<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span>{payload!r}<span style="color: var(--clr-string); background-color: var(--bg-string);">: </span>{r.status_code}<span style="color: var(--clr-string); background-color: var(--bg-string);"> </span>{<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">len</span>(r.text)}<span style="color: var(--clr-string); background-color: var(--bg-string);"> bytes"</span>)
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Collect response sizes for parameter fuzzing
+</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">import</span> time
+<span style="color: var(--clr-variable); background-color: var(--bg-variable);">params_to_test</span> <span style="color: #ffffff;">=</span> [<span style="color: var(--clr-string); background-color: var(--bg-string);">"debug"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"admin"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"test"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"dev"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"verbose"</span>]
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">for</span> param <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">in</span> params_to_test:
+    <span style="color: var(--clr-variable); background-color: var(--bg-variable);">r</span> <span style="color: #ffffff;">=</span> requests.get(f<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://target.com/page?</span>{param}<span style="color: var(--clr-string); background-color: var(--bg-string);">=1"</span>)
+    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">print</span>(f<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span>{param}<span style="color: var(--clr-string); background-color: var(--bg-string);">: </span>{r.status_code}<span style="color: var(--clr-string); background-color: var(--bg-string);"> </span>{<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">len</span>(r.content)}<span style="color: var(--clr-string); background-color: var(--bg-string);"> bytes elapsed=</span>{r.elapsed.total_seconds():.3f}<span style="color: var(--clr-string); background-color: var(--bg-string);">s"</span>)
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orga696fd4" class="outline-2">
+<h2 id="orga696fd4">Tips</h2>
+<div class="outline-text-2" id="text-orga696fd4">
+<ul class="org-ul">
+<li>Always set <code>timeout</code> — a default requests call blocks forever
+if the server doesn't respond</li>
+<li>Use <code>session</code> when testing authenticated flows — cookies are
+maintained automatically between requests</li>
+<li><code>verify=False</code> disables SSL verification — necessary when
+proxying through Burp but never use it against real targets
+outside a test environment</li>
+<li><code>response.raise_for_status()</code> is the cleanest way to handle
+error responses in scripts — raises an exception you can catch
+rather than checking <code>status_code</code> everywhere</li>
+<li><code>elapsed</code> gives you response time per request — useful for
+detecting timing-based differences during blind injection testing</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
+document.cookie = 'mode=dark'
+}
+document.cookie = 'light=modus-operandi-tinted'
+document.cookie = 'dark=modus-vivendi-tinted'
+/*
+;; nice-org-html.js
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+;; JS for html exported by et-org-html.el
+ */
+
+const preamble = document.getElementById("preamble");
+const content = document.getElementById("content");
+const postamble = document.getElementById("postamble");
+
+const controls = document.getElementById("view-controls");
+const toggleTocBtn = document.getElementById("toggle-toc");
+const gotoTopBtn = document.getElementById("goto-top");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const toc = document.getElementById("table-of-contents");
+
+// Get and parse options passed in cookie string
+const optCookie = document.cookie.split('; ').find(r => r.startsWith('options'));
+const options = {};
+if (optCookie) {
+  optCookie.split('=')[1].split('__').forEach(pair => {
+    const [key, val] = pair.split(':');
+    if (key && val) {
+      options[key] = val;
+    }
+  })
+}
+
+// Move sticky control bar (injected within preamble)
+document.body.insertBefore(controls, content);
+
+// Mode handling
+function getMode() {
+  let cookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+  return cookie && cookie.split("=")[1];
+}
+
+function setMode(mode) {
+  document.body.dataset.mode = mode;
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
+  document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
+  toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
+  document.cookie = 'mode=' + mode;
+}
+
+// Initially, set mode based on stored cookie
+let mode = getMode();
+if (mode && ["light", "dark"].includes(mode)) {
+  setMode(mode);
+} else {  
+  let prop = "prefers-color-scheme";
+  let pref = (mode === "query") && window.matchMedia &&
+    ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
+  setMode(pref || "dark"); // fallback: dark
+}
+
+// Mode toggling
+toggleModeBtn.addEventListener('click', () => {
+  setMode(document.body.dataset.mode === 'dark' ? 'light' : 'dark');
+})
+
+
+// Jump to top
+let scrollY = document.documentElement.scrollTop;
+window.addEventListener('scroll', () => {
+  let atTop = document.documentElement.scrollTop <= preamble.offsetHeight;
+  gotoTopBtn.dataset.show = !atTop + "";
+});
+gotoTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
+
+// Table-of-contents toggling
+if (toc) {
+  toggleTocBtn.dataset.show = 'true';
+  toggleTocBtn.addEventListener('click', () => {
+    let showingToc = document.body.dataset.toc;
+    scrollY = showingToc ? scrollY : document.documentElement.scrollTop;
+    if (showingToc) {
+      document.body.dataset.toc = '';
+      document.documentElement.scrollTop = scrollY;
+    } else {
+      let tocHeight =
+	Math.max(
+	  window.innerHeight - controls.offsetHeight,
+	  toc.offsetHeight
+	);
+      const header = document.getElementById("injected-header");
+      if (header && (scrollY > header.offsetHeight)) {
+	document.documentElement.scrollTop = preamble.offsetHeight;
+      }
+      toc.style.height = `${tocHeight}px`;
+      document.body.dataset.toc = 'true';
+    }
+    toc.addEventListener('click', () => {
+      if (document.body.dataset.toc) {
+	document.body.dataset.toc = '';
+	document.documentElement.scrollTop = scrollY;
+      }
+    })
+  })
+};
+
+// Instrument anchor linking for sticky control bar
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const target = document.querySelector(targetId);
+
+    setTimeout(() => {
+      const targetPos = target.getBoundingClientRect().top;
+      let offset = targetPos + document.documentElement.scrollTop;
+      offset -= controls.offsetHeight;
+      window.scrollTo({
+	top: offset,
+	behavior: "smooth"
+      });
+    }, 0);
+  });
+});
+
+function copyTextToClipboard(text) {
+  // Make invisible textarea
+  var textArea = document.createElement("textarea");
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = 0;
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+
+  // Copy contents into it
+  textArea.value = text;
+
+  // Try to copy from it to clipboard
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  var res;
+  try {
+    res = document.execCommand('copy');
+  } catch (err) {
+    res = false;
+  }
+
+  // Remove invisible textarea
+  document.body.removeChild(textArea);
+
+  return res;
+}
+
+// Handle the default header / footer drawers
+const header = document.getElementById("generated-header");
+const footer = document.getElementById("generated-footer");
+
+if (header) {
+  let toggle = header.querySelector("header nav input.nav-toggle");
+  if (toggle) { toggle.checked = false; }
+}
+if (footer) {
+  let nav = footer.querySelector("nav");
+  let toggle = nav && nav.querySelector(".nav-toggle");
+  let navList = nav && nav.querySelector(".nav-list");
+  let navElem = navList && [...navList.querySelectorAll(".nav-item")];
+  let numLink = navElem && navElem.length;
+  if (numLink) {
+    toggle.checked = false;
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+	setTimeout(() => window.scrollTo({
+	  behavior: 'smooth',
+	  top: document.body.scrollHeight	  
+	}), 88);
+      }
+   });
+  }
+}
+
+function autoCompact() {
+  var anchor, links, overlap, trivial;
+  const domCompute = (node) => {
+    if (node) {
+      anchor = node.querySelector('.nav-title, .nav-author');
+      links = node.querySelector('.nav-list');
+      overlap = links.offsetLeft - 5 <= anchor.offsetLeft + anchor.offsetWidth;	
+      trivial = links.offsetLeft === anchor.offsetLeft;
+    }
+  };
+  let mediaMatch = window.matchMedia('(max-width: 768px)').matches;
+  [header, footer].forEach(e => {
+    if (e) {
+      if (mediaMatch) {
+	e.classList.add('compact');
+      } else {
+	domCompute(e);
+	if (overlap && !trivial) {
+	  e.classList.add('compact');
+	} else {	
+	  let clone = e.cloneNode(true);
+	  clone.style.top = '-2000px';
+	  clone.style.maxHeight = '0px';
+	  clone.classList.remove('compact');
+	  e.parentNode.insertBefore(clone, e);
+	  domCompute(clone);
+	  let toggle = e.querySelector('.nav-toggle');
+	  if (!overlap && toggle && !toggle.checked) {
+	    e.classList.remove('compact');
+	  }
+	  e.parentNode.removeChild(clone);
+	}
+      }
+    }
+  })
+}
+
+if ((header || footer)) {
+  if (options.hasOwnProperty('layout')) {
+    [header, footer].forEach(e => e ? e.classList.add(options.layout) : null);
+  } else {
+    autoCompact();
+    window.addEventListener('resize', autoCompact);
+  }
+}
+
+if (options.hasOwnProperty('src-lang') && options['src-lang'] == 't') {
+  let labels = [...document.querySelectorAll('.srcLangLabel')];
+  labels.forEach(l => l.style.display = 'inline-block');
+}
+
+if (options.hasOwnProperty('collapsing') && options.collapsing == 't') {
+  let levels = [2, 3, 4, 5, 6];
+  let containerPrefix = 'outline-container-';
+  levels.forEach(l => {
+    let containers = [...document.querySelectorAll(`.outline-${l}`)];
+    containers.forEach(c => {
+      let id = c.id.slice(containerPrefix.length);
+      let headline = document.getElementById(id);
+      let siblings = [...c.children].filter(child => child.id != id);
+      headline.classList.add('collapsible');
+      headline.addEventListener('click', () => {	
+	if (headline.classList.contains('collapsed')) {
+	  headline.classList.remove('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.remove('hidden');
+	  });	  
+	} else {
+	  headline.classList.add('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.add('hidden');
+	  });
+	}
+      })
+    })
+  })
+}
+/*]]>*/-->
+</script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
+</div>
+</body>
+</html>

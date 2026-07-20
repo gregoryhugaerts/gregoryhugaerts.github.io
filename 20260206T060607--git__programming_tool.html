@@ -1,0 +1,1629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-07-20 Mon 09:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Git</title>
+<meta name="author" content="termux" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<style type='text/css'>
+<!--/*--><![CDATA[/*><!--*/
+/* nice-org-html.css
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+*/
+
+/* basic layout ***************************************************************/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-family: Sans;
+    line-height: 1.3;
+    font-size: calc(15px + 0.390625vw);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: #999; /* overwritten with theme --bg */
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family:
+	-apple-system,
+	BlinkMacSystemFont,
+	segoe ui,
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	open sans,
+	helvetica neue,
+	sans-serif,
+	system-ui
+}
+
+#preamble,
+#postamble {
+    width: 100%;
+}
+
+#content {
+    width: 80%;
+    max-width: 80ch;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex: 1;
+}
+
+/* custom facing **************************************************************/
+/* The variable values are injected by CSS pre-processing in et-org-html.el */
+:root {
+    --bc-tb: #000000;
+    --bc-block: #595959;
+    --clr: #000000;
+    --clr-tb-hd: #000000;
+    --clr-code: #000000;
+    --bg: #fbf7f0;
+    --bg-code: #cab9b2;
+    --bg-tb-hd: #cab9b2;
+    --bg-block: #efe9dd;
+    --clr-link: #531ab6;
+    --clr-title: #000000;
+    --clr-todo: #00598b;
+    --bg-todo: initial;
+    --clr-done: #7f0000;
+    --bg-done: initial;
+    --ts-clr: #0031a9;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #0031a9;
+    --bg-constant: initial;
+    --clr-constant: #531ab6;
+    --bg-comment: initial;
+    --clr-comment: #7f0000;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #7f0000;
+    --bg-function: initial;
+    --clr-function: #602938;
+    --bg-variable: initial;
+    --clr-variable: #00603f;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #894000;
+    --bg-doc: initial;
+    --clr-doc: #304463;
+    --bg-builtin: initial;
+    --clr-builtin: #721045;
+    --bg-string: initial;
+    --clr-string: #00598b;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+body[data-mode='light'] {
+    background: var(--bg);
+    color: var(--clr);
+}
+
+body[data-mode='dark'] {
+    background: var(--bg);
+    color: var(--clr);
+    --bc-tb: #ffffff;
+    --bc-block: #989898;
+    --clr: #ffffff;
+    --clr-code: #ffffff;
+    --clr-tb-hd: #ffffff;
+    --bg: #0d0e1c;
+    --bg-tb-hd: #484d67;
+    --bg-code: #484d67;
+    --bg-block: #1d2235;
+    --clr-link: #b6a0ff;
+    --clr-title: #ffffff;
+    --clr-todo: #2fafff;
+    --bg-todo: initial;
+    --clr-done: #ef8386;
+    --bg-done: initial;
+    --ts-clr: #79a8ff;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #79a8ff;
+    --bg-constant: initial;
+    --clr-constant: #b6a0ff;
+    --bg-comment: initial;
+    --clr-comment: #ef8386;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #ef8386;
+    --bg-function: initial;
+    --clr-function: #f78fe7;
+    --bg-variable: initial;
+    --clr-variable: #4ae2f0;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #ff7f86;
+    --bg-doc: initial;
+    --clr-doc: #9ac8e0;
+    --bg-builtin: initial;
+    --clr-builtin: #feacd0;
+    --bg-string: initial;
+    --clr-string: #2fafff;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+/* exceptions for badly rendering themes **************************************/
+body[data-theme='leuven'],
+body[data-theme='leuven-dark'] {
+    --bg-code: var(--bg-block);
+}
+
+/* ootb page layout ***********************************************************/
+#view-controls {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    color: var(--clr-code);
+    height: 2.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    z-index: 100;
+    border-radius: 5px; /* Rounded corners */
+}
+#toggle-mode {
+    position: absolute;
+    right: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#goto-top {
+    display: none;
+}
+#goto-top[data-show="true"] {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#toggle-toc {
+    display: none;
+}
+#toggle-toc[data-show="true"] {
+    position: absolute;
+    left: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+
+#toggle-toc:hover,
+#goto-top:hover,
+#toggle-mode:hover {
+    cursor: pointer;
+}
+
+#table-of-contents {
+    display: none;
+}
+#table-of-contents[data-show="true"] {
+    width: 80%;
+    max-width: 80rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: var(--bg);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#table-of-contents::-webkit-scrollbar {
+    display: none;
+}
+
+body[data-toc="true"] #content * {
+    display: none;
+}
+body[data-toc="true"] #content #table-of-contents,
+body[data-toc="true"] #content #table-of-contents * {
+    display: block;
+}
+
+
+/* misc elements **************************************************************/
+
+hr {
+    height: 0;
+    color: inherit;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+    font-family:
+	Menlo,
+	ui-monospace,
+	SFMono-Regular,
+	Consolas,
+	'Liberation Mono',
+	monospace;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+}
+
+summary {
+    display: list-item;
+}
+
+h1 {
+    color: var(--clr-title);
+    text-align: center;
+}
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+code {
+    color: var(--clr-code);
+    background: var(--bg-code);
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+pre::-webkit-scrollbar {
+    display: none;
+}
+
+.todo {
+    color: var(--clr-todo);
+    background: var(--bg-todo);
+}
+
+.done {
+    color: var(--clr-done);
+    background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+    font-size: 0.8rem;
+    color: var(--clr-ts);
+}
+
+table {
+    width: 100%;
+    border: 2px solid var(--bc-tb);
+}
+
+thead {
+    color: var(--clr-tb-hd);
+    background: var(--bg-tb-hd);
+}
+
+td, th {
+    border: thin solid var(--bc-tb);
+}
+
+li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#text-table-of-contents li a:before {
+    content: "• "
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-link);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.MathJax_Display {
+    font-size: 1.25em;
+}
+
+img {
+    max-width: 100%;
+}
+
+pre {
+    padding: 1rem;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-block);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+.org-src-wrapper {
+    position: relative;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+}
+
+.org-src-bar {
+    position: relative;
+    top: 0rem;
+    width: 100%;
+    background: var(--bg-code);
+    border-radius: 0.5rem;
+    text-align: right;
+    min-height: 1rem;
+}
+
+.org-src-wrapper .org-src-container {
+    position: relative;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+    z-index: 0;
+}
+
+.org-src-wrapper .org-src-container pre.src {
+    border: none !important;
+    background: var(--bg-code) !important;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding-bottom: 1.6rem;
+}
+
+.org-src-wrapper .org-src-bar .srcLangLabel {
+    top: 0rem;
+    right: 1.6rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    z-index: 1;
+    display: none;
+}
+
+.org-src-wrapper .org-src-bar .copyBtn {
+    top: 0rem;
+    right: 0.1rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-right: 0.7rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+.org-src-wrapper .copyBtn:hover {
+    opacity: 1;
+}
+
+.org-src-wrapper .copyBtn i {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+}
+
+.admonition {
+    margin: 0.2rem;
+    color: inherit;
+    border-left: .25rem solid;
+}
+.admonition-title {
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.admonition-content > p {
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.admonition.note {
+    border-left-color: var(--clr-note);
+}
+.admonition-title.note {
+    color: var(--clr-note);
+}
+.admonition-title.note:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-note);
+    mask-size: cover;    
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path class="admonition-icon-note" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+.admonition-icon-note {
+    fill: var(--clr-note);
+}
+
+.admonition.tip {
+    border-left-color: var(--clr-tip);
+}
+.admonition-title.tip {
+    color: var(--clr-tip);
+}
+.admonition-title.tip:before {
+    content: '';
+    fill: var(--clr-tip);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-tip);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>');    
+}
+
+.admonition.important {
+    border-left-color: var(--clr-important);
+}
+.admonition-title.important {
+    color: var(--clr-important);
+}
+.admonition-title.important:before {
+    content: '';
+    fill: var(--clr-important);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-important);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');    
+}
+
+.admonition.warning {
+    border-left-color: var(--clr-warning);
+}
+.admonition-title.warning {
+    color: var(--clr-warning);
+}
+.admonition-title.warning:before {
+    content: '';
+    color: var(--clr-warning);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-warning);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');
+}
+
+
+.admonition.caution {
+    border-left-color: var(--clr-caution);
+}
+.admonition-title.caution {
+    color: var(--clr-caution);
+}
+.admonition-title.caution:before {
+    content: '';
+    fill: var(--clr-caution);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-caution);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+/* responsive layouts *********************************************************/
+
+@media only screen and (max-width: 768px) {
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #view-controls {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+    }
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+
+/* generated header and footer ************************************************/
+
+#generated-header,
+#generated-footer {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 1;
+}
+.generated header {
+    top: 0;
+    left: 0;
+}
+.generated footer {
+    bottom: 0;
+    left: 0;
+}
+.generated header a,
+.generated footer a {
+    display: inline;
+    color: var(--clr-title);
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+.generated header a:hover,
+.generated footer a:hover {
+    color: var(--clr-link);
+}
+
+.generated header nav {
+    position: relative;
+    margin-top: 1rem;
+    top: 0;
+    left: 0;
+}
+.generated footer nav {
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.generated .separator {
+    display: block;
+    width: 111%;
+    margin-left: -5.5%;
+    max-width: 100vw;
+    height: 0.125rem;
+    background: var(--bg-code);
+}
+
+.generated a .nav-title,
+.generated a .nav-author {
+    display: inline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 10rem;
+}
+
+.generated .nav-title {
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.generated .nav-toggle {
+    display: none;
+}
+.generated .nav-button {
+    display: none;
+}
+.generated .nav-list {
+    overflow-y: hidden;
+    display: block;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.generated .nav-item {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.generated .nav-link {
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.generated .nav-toggle {
+    max-height: 0;
+    visibility: hidden;
+    overflow-y: hidden;
+}
+
+.generated header .separator {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.generated footer .separator {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.generated .menu-sep {
+    display: none;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.generated footer {
+    padding-bottom: 1rem;
+}
+
+.generated.compact footer {
+    padding-bottom: 0;
+}
+
+.generated.compact header .separator {
+    margin-top: 0;
+    margin-bottom:0;
+}
+.generated.compact footer .separator {
+    margin-bottom: 1rem;
+}
+
+.generated.compact .nav-toggle {
+    visibility: visible;
+}
+
+.generated.compact .nav-toggle + label span::before {
+    transition: all 0.2s ease-in;
+}
+.generated.compact .nav-toggle:checked + label span::before {
+    transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+    transition: all 0.2s ease;
+}
+
+.generated.compact .menu-sep {
+    display: flex;
+    max-height: 0rem;
+}
+.generated.compact .nav-toggle:checked + label + .menu-sep {
+    display: block;
+    position: relative;
+    max-height: 1rem;
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-list {
+    float: none !important;
+    position: relative;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+.generated.compact .nav-toggle:checked + label ~ .nav-list {
+    display: block;
+    max-height: 100rem;
+    overflow-y: hidden;
+}
+.generated.compact header .nav-toggle:checked + label ~ .nav-list {
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-button {
+    display: inline;
+    position: relative;
+    float: right;
+    font-size: 1rem;
+}
+.generated.compact .nav-button span::before {
+    display: inline-block;
+    content: '\2807';
+    font-size: 2rem;
+    transform: translateX(0.25rem) translateY(-0.5rem);
+}
+
+.generated.compact .nav-item {
+    float: none !important;
+    text-align: center !important;
+}
+.generated.compact .nav-link {
+    line-height: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    float: none !important;
+}
+
+.generated.compact footer .separator.menu-sep {
+    margin-bottom: -1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.collapsible:hover {
+    cursor: pointer;
+}
+
+.collapsible.collapsed::after {
+    display: inline-block;
+    content: '...';
+}
+/*]]>*/-->
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Git</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgec023a9">Setup</a></li>
+<li><a href="#org71fa095">Starting a Repository</a></li>
+<li><a href="#orgccb6db0">Core Workflow</a></li>
+<li><a href="#org1147938">Branches</a></li>
+<li><a href="#org79eb8ba">Merging and Rebasing</a></li>
+<li><a href="#org6ca71dc">Remote Operations</a></li>
+<li><a href="#org5d18c47">Undoing Things</a></li>
+<li><a href="#orgd5c0667">Stashing</a></li>
+<li><a href="#orge4dacef">Tagging</a></li>
+<li><a href="#org73c9f4c">Useful One-Liners</a></li>
+<li><a href="#org1ab5ee5">.gitignore</a></li>
+<li><a href="#orge84a706">Security Relevance</a></li>
+<li><a href="#org6516422">Tips</a></li>
+</ul>
+</div>
+</div>
+<p>
+Distributed version control system. Every developer has a full
+copy of the repository including its complete history. The
+standard tool for source code management — used for both personal
+projects and team collaboration.
+</p>
+
+<p>
+Related: <a href="../org/20260314T005701--version-control__concept_programming.html">Version Control</a>
+         <a href="../org/20260206T060533--devops__concept_programming.html">DevOps</a>
+</p>
+<div id="outline-container-orgec023a9" class="outline-2">
+<h2 id="orgec023a9">Setup</h2>
+<div class="outline-text-2" id="text-orgec023a9">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3dcdae8b48ec452dab71199cca7dec21>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_3dcdae8b48ec452dab71199cca7dec21=document.querySelector('button[name=btn_3dcdae8b48ec452dab71199cca7dec21]');
+copyBtnbtn_3dcdae8b48ec452dab71199cca7dec21.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Global config — set once per machine\ngit config --global user.name \"Your Name\"\ngit config --global user.email \"you@example.com\"\ngit config --global core.editor \"emacs\"\n\n# Show current config\ngit config --list\n`);copyBtnbtn_3dcdae8b48ec452dab71199cca7dec21.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3dcdae8b48ec452dab71199cca7dec21.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Global config &#8212; set once per machine
+</span>git config --global user.name <span style="color: var(--clr-string); background-color: var(--bg-string);">"Your Name"</span>
+git config --global user.email <span style="color: var(--clr-string); background-color: var(--bg-string);">"you@example.com"</span>
+git config --global core.editor <span style="color: var(--clr-string); background-color: var(--bg-string);">"emacs"</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Show current config
+</span>git config --list
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org71fa095" class="outline-2">
+<h2 id="org71fa095">Starting a Repository</h2>
+<div class="outline-text-2" id="text-org71fa095">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7be644428f654f13aa5e2b1ac5e0f7da>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_7be644428f654f13aa5e2b1ac5e0f7da=document.querySelector('button[name=btn_7be644428f654f13aa5e2b1ac5e0f7da]');
+copyBtnbtn_7be644428f654f13aa5e2b1ac5e0f7da.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Initialise a new repo\ngit init\ngit init my-project && cd my-project\n\n# Clone an existing repo\ngit clone https://github.com/user/repo.git\ngit clone https://github.com/user/repo.git my-folder   # clone into named dir\ngit clone --depth 1 https://github.com/user/repo.git   # shallow clone, latest commit only\n`);copyBtnbtn_7be644428f654f13aa5e2b1ac5e0f7da.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7be644428f654f13aa5e2b1ac5e0f7da.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Initialise a new repo
+</span>git init
+git init my-project &amp;&amp; <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">cd</span> my-project
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Clone an existing repo
+</span>git clone https://github.com/user/repo.git
+git clone https://github.com/user/repo.git my-folder   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">clone into named dir
+</span>git clone --depth 1 https://github.com/user/repo.git   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">shallow clone, latest commit only</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgccb6db0" class="outline-2">
+<h2 id="orgccb6db0">Core Workflow</h2>
+<div class="outline-text-2" id="text-orgccb6db0">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_97877d5f1d2b4508a5864e195b35378f>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_97877d5f1d2b4508a5864e195b35378f=document.querySelector('button[name=btn_97877d5f1d2b4508a5864e195b35378f]');
+copyBtnbtn_97877d5f1d2b4508a5864e195b35378f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Check status\ngit status\ngit status -s                   # short format\n\n# Stage changes\ngit add file.py\ngit add .                       # stage everything\ngit add -p                      # interactive — stage hunks selectively\n\n# Commit\ngit commit -m \"descriptive message\"\ngit commit -am \"stage tracked files and commit\"  # skip git add for tracked files\ngit commit --amend              # modify the last commit (message or content)\n\n# View history\ngit log\ngit log --oneline               # compact one-line-per-commit view\ngit log --oneline --graph       # show branch graph\ngit log -p                      # show diffs in log\ngit log --author=\"Alice\"\ngit log --since=\"2 weeks ago\"\n\n# View changes\ngit diff                        # unstaged changes\ngit diff --staged               # staged changes (ready to commit)\ngit diff HEAD                   # all changes since last commit\ngit diff main..feature          # diff between two branches\n`);copyBtnbtn_97877d5f1d2b4508a5864e195b35378f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_97877d5f1d2b4508a5864e195b35378f.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Check status
+</span>git status
+git status -s                   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">short format
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Stage changes
+</span>git add file.py
+git add .                       <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">stage everything
+</span>git add -p                      <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">interactive &#8212; stage hunks selectively
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Commit
+</span>git commit -m <span style="color: var(--clr-string); background-color: var(--bg-string);">"descriptive message"</span>
+git commit -am <span style="color: var(--clr-string); background-color: var(--bg-string);">"stage tracked files and commit"</span>  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">skip git add for tracked files
+</span>git commit --amend              <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">modify the last commit (message or content)
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">View history
+</span>git log
+git log --oneline               <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">compact one-line-per-commit view
+</span>git log --oneline --graph       <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">show branch graph
+</span>git log -p                      <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">show diffs in log
+</span>git log --author=<span style="color: var(--clr-string); background-color: var(--bg-string);">"Alice"</span>
+git log --since=<span style="color: var(--clr-string); background-color: var(--bg-string);">"2 weeks ago"</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">View changes
+</span>git diff                        <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">unstaged changes
+</span>git diff --staged               <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">staged changes (ready to commit)
+</span>git diff HEAD                   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">all changes since last commit
+</span>git diff main..feature          <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">diff between two branches</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org1147938" class="outline-2">
+<h2 id="org1147938">Branches</h2>
+<div class="outline-text-2" id="text-org1147938">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_001d461f38cf4053818a5c886ddb8d14>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_001d461f38cf4053818a5c886ddb8d14=document.querySelector('button[name=btn_001d461f38cf4053818a5c886ddb8d14]');
+copyBtnbtn_001d461f38cf4053818a5c886ddb8d14.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List branches\ngit branch                      # local\ngit branch -r                   # remote\ngit branch -a                   # all\n\n# Create and switch\ngit switch -c feature/login     # create and switch (modern syntax)\ngit checkout -b feature/login   # equivalent older syntax\n\n# Switch branch\ngit switch main\ngit checkout main\n\n# Delete branch\ngit branch -d feature/login     # safe delete (checks merged)\ngit branch -D feature/login     # force delete\n\n# Rename current branch\ngit branch -m new-name\n`);copyBtnbtn_001d461f38cf4053818a5c886ddb8d14.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_001d461f38cf4053818a5c886ddb8d14.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">List branches
+</span>git branch                      <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">local
+</span>git branch -r                   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">remote
+</span>git branch -a                   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">all
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Create and switch
+</span>git switch -c feature/login     <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">create and switch (modern syntax)
+</span>git checkout -b feature/login   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">equivalent older syntax
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Switch branch
+</span>git switch main
+git checkout main
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Delete branch
+</span>git branch -d feature/login     <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">safe delete (checks merged)
+</span>git branch -D feature/login     <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">force delete
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Rename current branch
+</span>git branch -m new-name
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org79eb8ba" class="outline-2">
+<h2 id="org79eb8ba">Merging and Rebasing</h2>
+<div class="outline-text-2" id="text-org79eb8ba">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d5489160c46342b4a1728a38426af5b0>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_d5489160c46342b4a1728a38426af5b0=document.querySelector('button[name=btn_d5489160c46342b4a1728a38426af5b0]');
+copyBtnbtn_d5489160c46342b4a1728a38426af5b0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Merge feature into current branch\ngit switch main\ngit merge feature/login\n\n# Merge with explicit commit (no fast-forward)\ngit merge --no-ff feature/login\n\n# Abort a conflicted merge\ngit merge --abort\n\n# Rebase current branch onto main\ngit switch feature/login\ngit rebase main\n\n# Interactive rebase — squash, reword, reorder last N commits\ngit rebase -i HEAD~3\n\n# Abort rebase\ngit rebase --abort\n`);copyBtnbtn_d5489160c46342b4a1728a38426af5b0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d5489160c46342b4a1728a38426af5b0.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Merge feature into current branch
+</span>git switch main
+git merge feature/login
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Merge with explicit commit (no fast-forward)
+</span>git merge --no-ff feature/login
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Abort a conflicted merge
+</span>git merge --abort
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Rebase current branch onto main
+</span>git switch feature/login
+git rebase main
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Interactive rebase &#8212; squash, reword, reorder last N commits
+</span>git rebase -i HEAD~3
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Abort rebase
+</span>git rebase --abort
+</pre>
+</div></div>
+
+<p>
+Prefer merge for shared branches, rebase for cleaning up local
+work before pushing.
+</p>
+</div>
+</div>
+<div id="outline-container-org6ca71dc" class="outline-2">
+<h2 id="org6ca71dc">Remote Operations</h2>
+<div class="outline-text-2" id="text-org6ca71dc">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2cde54221b5e486f9ccffa306aec81a9>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_2cde54221b5e486f9ccffa306aec81a9=document.querySelector('button[name=btn_2cde54221b5e486f9ccffa306aec81a9]');
+copyBtnbtn_2cde54221b5e486f9ccffa306aec81a9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Show remotes\ngit remote -v\n\n# Add remote\ngit remote add origin https://github.com/user/repo.git\n\n# Fetch (download without merging)\ngit fetch origin\ngit fetch --all\n\n# Pull (fetch + merge)\ngit pull\ngit pull origin main\n\n# Push\ngit push origin main\ngit push -u origin feature/login   # set upstream tracking\ngit push --force-with-lease        # safer force push (checks for new remote commits)\n\n# Delete remote branch\ngit push origin --delete feature/login\n`);copyBtnbtn_2cde54221b5e486f9ccffa306aec81a9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2cde54221b5e486f9ccffa306aec81a9.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Show remotes
+</span>git remote -v
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Add remote
+</span>git remote add origin https://github.com/user/repo.git
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Fetch (download without merging)
+</span>git fetch origin
+git fetch --all
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Pull (fetch + merge)
+</span>git pull
+git pull origin main
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Push
+</span>git push origin main
+git push -u origin feature/login   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">set upstream tracking
+</span>git push --force-with-lease        <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">safer force push (checks for new remote commits)
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Delete remote branch
+</span>git push origin --delete feature/login
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org5d18c47" class="outline-2">
+<h2 id="org5d18c47">Undoing Things</h2>
+<div class="outline-text-2" id="text-org5d18c47">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_150cc6a5fe7948fe9aab62426cdb5d68>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_150cc6a5fe7948fe9aab62426cdb5d68=document.querySelector('button[name=btn_150cc6a5fe7948fe9aab62426cdb5d68]');
+copyBtnbtn_150cc6a5fe7948fe9aab62426cdb5d68.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Discard changes in working directory (unstaged)\ngit restore file.py\ngit restore .                   # discard all unstaged changes\n\n# Unstage (keep changes in working dir)\ngit restore --staged file.py\ngit reset HEAD file.py          # equivalent older syntax\n\n# Undo last commit (keep changes staged)\ngit reset --soft HEAD~1\n\n# Undo last commit (keep changes unstaged)\ngit reset --mixed HEAD~1\n\n# Undo last commit (discard changes entirely)\ngit reset --hard HEAD~1\n\n# Revert a specific commit (creates a new undo commit — safe for shared branches)\ngit revert abc1234\n\n# Discard all local changes and reset to remote\ngit fetch origin\ngit reset --hard origin/main\n`);copyBtnbtn_150cc6a5fe7948fe9aab62426cdb5d68.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_150cc6a5fe7948fe9aab62426cdb5d68.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Discard changes in working directory (unstaged)
+</span>git restore file.py
+git restore .                   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">discard all unstaged changes
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Unstage (keep changes in working dir)
+</span>git restore --staged file.py
+git reset HEAD file.py          <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">equivalent older syntax
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Undo last commit (keep changes staged)
+</span>git reset --soft HEAD~1
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Undo last commit (keep changes unstaged)
+</span>git reset --mixed HEAD~1
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Undo last commit (discard changes entirely)
+</span>git reset --hard HEAD~1
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Revert a specific commit (creates a new undo commit &#8212; safe for shared branches)
+</span>git revert abc1234
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Discard all local changes and reset to remote
+</span>git fetch origin
+git reset --hard origin/main
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgd5c0667" class="outline-2">
+<h2 id="orgd5c0667">Stashing</h2>
+<div class="outline-text-2" id="text-orgd5c0667">
+<p>
+Save work in progress without committing:
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_302c94edb65f4bc7a5d14d8501d1a9e0>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_302c94edb65f4bc7a5d14d8501d1a9e0=document.querySelector('button[name=btn_302c94edb65f4bc7a5d14d8501d1a9e0]');
+copyBtnbtn_302c94edb65f4bc7a5d14d8501d1a9e0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`git stash                       # stash current changes\ngit stash push -m \"wip: auth\"  # stash with description\ngit stash list                  # list all stashes\ngit stash pop                   # apply and remove most recent stash\ngit stash apply stash@{2}       # apply specific stash without removing\ngit stash drop stash@{0}        # delete a stash\ngit stash clear                 # delete all stashes\n`);copyBtnbtn_302c94edb65f4bc7a5d14d8501d1a9e0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_302c94edb65f4bc7a5d14d8501d1a9e0.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell">git stash                       <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">stash current changes
+</span>git stash push -m <span style="color: var(--clr-string); background-color: var(--bg-string);">"wip: auth"</span>  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">stash with description
+</span>git stash list                  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">list all stashes
+</span>git stash pop                   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">apply and remove most recent stash
+</span>git stash apply stash@{2}       <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">apply specific stash without removing
+</span>git stash drop stash@{0}        <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">delete a stash
+</span>git stash clear                 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">delete all stashes</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orge4dacef" class="outline-2">
+<h2 id="orge4dacef">Tagging</h2>
+<div class="outline-text-2" id="text-orge4dacef">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4020928c7b9640c0b3aad46ac1ca3aa3>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_4020928c7b9640c0b3aad46ac1ca3aa3=document.querySelector('button[name=btn_4020928c7b9640c0b3aad46ac1ca3aa3]');
+copyBtnbtn_4020928c7b9640c0b3aad46ac1ca3aa3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Create tag\ngit tag v1.0.0\ngit tag -a v1.0.0 -m \"Release 1.0.0\"   # annotated tag (preferred)\n\n# List tags\ngit tag\n\n# Push tags\ngit push origin v1.0.0\ngit push origin --tags          # push all tags\n\n# Delete tag\ngit tag -d v1.0.0\ngit push origin --delete v1.0.0\n`);copyBtnbtn_4020928c7b9640c0b3aad46ac1ca3aa3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4020928c7b9640c0b3aad46ac1ca3aa3.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Create tag
+</span>git tag v1.0.0
+git tag -a v1.0.0 -m <span style="color: var(--clr-string); background-color: var(--bg-string);">"Release 1.0.0"</span>   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">annotated tag (preferred)
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">List tags
+</span>git tag
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Push tags
+</span>git push origin v1.0.0
+git push origin --tags          <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">push all tags
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Delete tag
+</span>git tag -d v1.0.0
+git push origin --delete v1.0.0
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org73c9f4c" class="outline-2">
+<h2 id="org73c9f4c">Useful One-Liners</h2>
+<div class="outline-text-2" id="text-org73c9f4c">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0613064f3b3441d991af7dda9e4e4388>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_0613064f3b3441d991af7dda9e4e4388=document.querySelector('button[name=btn_0613064f3b3441d991af7dda9e4e4388]');
+copyBtnbtn_0613064f3b3441d991af7dda9e4e4388.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Show what changed in a specific commit\ngit show abc1234\n\n# Search commit messages\ngit log --grep=\"fix\"\n\n# Find which commit introduced a string\ngit log -S \"password\" --source --all\n\n# Show file at a specific commit\ngit show abc1234:path/to/file.py\n\n# List files changed in last commit\ngit diff --name-only HEAD~1 HEAD\n\n# Cherry-pick a single commit from another branch\ngit cherry-pick abc1234\n\n# Find the commit that introduced a bug (binary search)\ngit bisect start\ngit bisect bad                  # current commit is bad\ngit bisect good v1.0.0          # last known good state\n# Git checks out midpoints — mark each as good or bad\ngit bisect reset                # when done\n`);copyBtnbtn_0613064f3b3441d991af7dda9e4e4388.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0613064f3b3441d991af7dda9e4e4388.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Show what changed in a specific commit
+</span>git show abc1234
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Search commit messages
+</span>git log --grep=<span style="color: var(--clr-string); background-color: var(--bg-string);">"fix"</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Find which commit introduced a string
+</span>git log -S <span style="color: var(--clr-string); background-color: var(--bg-string);">"password"</span> --source --all
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Show file at a specific commit
+</span>git show abc1234:path/to/file.py
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">List files changed in last commit
+</span>git diff --name-only HEAD~1 HEAD
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Cherry-pick a single commit from another branch
+</span>git cherry-pick abc1234
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Find the commit that introduced a bug (binary search)
+</span>git bisect start
+git bisect bad                  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">current commit is bad
+</span>git bisect good v1.0.0          <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">last known good state
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Git checks out midpoints &#8212; mark each as good or bad
+</span>git bisect reset                <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">when done</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org1ab5ee5" class="outline-2">
+<h2 id="org1ab5ee5">.gitignore</h2>
+<div class="outline-text-2" id="text-org1ab5ee5">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_87b16423d83a4c21bcb239d6d88a5288>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_87b16423d83a4c21bcb239d6d88a5288=document.querySelector('button[name=btn_87b16423d83a4c21bcb239d6d88a5288]');
+copyBtnbtn_87b16423d83a4c21bcb239d6d88a5288.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Common patterns\n*.pyc\n__pycache__/\n.env\n.venv/\nnode_modules/\n*.log\n.DS_Store\n\n# Security — never commit these\n.env.local\n*.pem\n*.key\nid_rsa\nsecrets.yml\n`);copyBtnbtn_87b16423d83a4c21bcb239d6d88a5288.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_87b16423d83a4c21bcb239d6d88a5288.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text"># Common patterns
+*.pyc
+__pycache__/
+.env
+.venv/
+node_modules/
+*.log
+.DS_Store
+
+# Security &#8212; never commit these
+.env.local
+*.pem
+*.key
+id_rsa
+secrets.yml
+</pre>
+</div></div>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_626d3aba0b004136ba0bec33afe7d198>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_626d3aba0b004136ba0bec33afe7d198=document.querySelector('button[name=btn_626d3aba0b004136ba0bec33afe7d198]');
+copyBtnbtn_626d3aba0b004136ba0bec33afe7d198.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Check what is ignored\ngit status --ignored\ngit check-ignore -v filename    # why is this file ignored?\n`);copyBtnbtn_626d3aba0b004136ba0bec33afe7d198.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_626d3aba0b004136ba0bec33afe7d198.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Check what is ignored
+</span>git status --ignored
+git check-ignore -v filename    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">why is this file ignored?</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orge84a706" class="outline-2">
+<h2 id="orge84a706">Security Relevance</h2>
+<div class="outline-text-2" id="text-orge84a706">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_983646c422f340fa9a5a0f441db4e725>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_983646c422f340fa9a5a0f441db4e725=document.querySelector('button[name=btn_983646c422f340fa9a5a0f441db4e725]');
+copyBtnbtn_983646c422f340fa9a5a0f441db4e725.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Search a repo's full history for secrets — common post-exploitation find\ngit log -p | grep -i \"password\\|secret\\|api_key\\|token\"\ngit log --all -p -- .env        # history of a specific sensitive file\n\n# Check git config for credentials stored in plaintext\ncat .git/config\ncat ~/.gitconfig\n\n# Find all branches including remote (may reveal dev/staging branches)\ngit branch -a\n\n# Exposed .git directory on a web server is a critical finding\n# An attacker can reconstruct the full source code:\n# https://target.com/.git/config — check if accessible\n`);copyBtnbtn_983646c422f340fa9a5a0f441db4e725.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_983646c422f340fa9a5a0f441db4e725.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Search a repo's full history for secrets &#8212; common post-exploitation find
+</span>git log -p | grep -i <span style="color: var(--clr-string); background-color: var(--bg-string);">"password\|secret\|api_key\|token"</span>
+git log --all -p -- .env        <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">history of a specific sensitive file
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Check git config for credentials stored in plaintext
+</span>cat .git/config
+cat ~/.gitconfig
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Find all branches including remote (may reveal dev/staging branches)
+</span>git branch -a
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Exposed .git directory on a web server is a critical finding
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">An attacker can reconstruct the full source code:
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">https://target.com/.git/config &#8212; check if accessible</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org6516422" class="outline-2">
+<h2 id="org6516422">Tips</h2>
+<div class="outline-text-2" id="text-org6516422">
+<ul class="org-ul">
+<li><code>git restore</code> is the modern replacement for <code>git checkout -- file</code>
+and <code>git reset HEAD file</code> — use it for clarity</li>
+<li><code>--force-with-lease</code> is always safer than <code>--force</code> on pushes —
+it fails if someone else has pushed since your last fetch</li>
+<li>Stage with <code>-p</code> (patch mode) when you want fine-grained control
+over what goes into each commit rather than committing everything</li>
+<li>Commit messages should complete the sentence "If applied, this
+commit will&#x2026;" — keeps history readable</li>
+<li>The <code>.git</code> directory being accessible on a web server is a
+Critical finding — it allows full source code reconstruction
+including history which may contain removed secrets</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
+document.cookie = 'mode=dark'
+}
+document.cookie = 'light=modus-operandi-tinted'
+document.cookie = 'dark=modus-vivendi-tinted'
+/*
+;; nice-org-html.js
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+;; JS for html exported by et-org-html.el
+ */
+
+const preamble = document.getElementById("preamble");
+const content = document.getElementById("content");
+const postamble = document.getElementById("postamble");
+
+const controls = document.getElementById("view-controls");
+const toggleTocBtn = document.getElementById("toggle-toc");
+const gotoTopBtn = document.getElementById("goto-top");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const toc = document.getElementById("table-of-contents");
+
+// Get and parse options passed in cookie string
+const optCookie = document.cookie.split('; ').find(r => r.startsWith('options'));
+const options = {};
+if (optCookie) {
+  optCookie.split('=')[1].split('__').forEach(pair => {
+    const [key, val] = pair.split(':');
+    if (key && val) {
+      options[key] = val;
+    }
+  })
+}
+
+// Move sticky control bar (injected within preamble)
+document.body.insertBefore(controls, content);
+
+// Mode handling
+function getMode() {
+  let cookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+  return cookie && cookie.split("=")[1];
+}
+
+function setMode(mode) {
+  document.body.dataset.mode = mode;
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
+  document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
+  toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
+  document.cookie = 'mode=' + mode;
+}
+
+// Initially, set mode based on stored cookie
+let mode = getMode();
+if (mode && ["light", "dark"].includes(mode)) {
+  setMode(mode);
+} else {  
+  let prop = "prefers-color-scheme";
+  let pref = (mode === "query") && window.matchMedia &&
+    ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
+  setMode(pref || "dark"); // fallback: dark
+}
+
+// Mode toggling
+toggleModeBtn.addEventListener('click', () => {
+  setMode(document.body.dataset.mode === 'dark' ? 'light' : 'dark');
+})
+
+
+// Jump to top
+let scrollY = document.documentElement.scrollTop;
+window.addEventListener('scroll', () => {
+  let atTop = document.documentElement.scrollTop <= preamble.offsetHeight;
+  gotoTopBtn.dataset.show = !atTop + "";
+});
+gotoTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
+
+// Table-of-contents toggling
+if (toc) {
+  toggleTocBtn.dataset.show = 'true';
+  toggleTocBtn.addEventListener('click', () => {
+    let showingToc = document.body.dataset.toc;
+    scrollY = showingToc ? scrollY : document.documentElement.scrollTop;
+    if (showingToc) {
+      document.body.dataset.toc = '';
+      document.documentElement.scrollTop = scrollY;
+    } else {
+      let tocHeight =
+	Math.max(
+	  window.innerHeight - controls.offsetHeight,
+	  toc.offsetHeight
+	);
+      const header = document.getElementById("injected-header");
+      if (header && (scrollY > header.offsetHeight)) {
+	document.documentElement.scrollTop = preamble.offsetHeight;
+      }
+      toc.style.height = `${tocHeight}px`;
+      document.body.dataset.toc = 'true';
+    }
+    toc.addEventListener('click', () => {
+      if (document.body.dataset.toc) {
+	document.body.dataset.toc = '';
+	document.documentElement.scrollTop = scrollY;
+      }
+    })
+  })
+};
+
+// Instrument anchor linking for sticky control bar
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const target = document.querySelector(targetId);
+
+    setTimeout(() => {
+      const targetPos = target.getBoundingClientRect().top;
+      let offset = targetPos + document.documentElement.scrollTop;
+      offset -= controls.offsetHeight;
+      window.scrollTo({
+	top: offset,
+	behavior: "smooth"
+      });
+    }, 0);
+  });
+});
+
+function copyTextToClipboard(text) {
+  // Make invisible textarea
+  var textArea = document.createElement("textarea");
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = 0;
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+
+  // Copy contents into it
+  textArea.value = text;
+
+  // Try to copy from it to clipboard
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  var res;
+  try {
+    res = document.execCommand('copy');
+  } catch (err) {
+    res = false;
+  }
+
+  // Remove invisible textarea
+  document.body.removeChild(textArea);
+
+  return res;
+}
+
+// Handle the default header / footer drawers
+const header = document.getElementById("generated-header");
+const footer = document.getElementById("generated-footer");
+
+if (header) {
+  let toggle = header.querySelector("header nav input.nav-toggle");
+  if (toggle) { toggle.checked = false; }
+}
+if (footer) {
+  let nav = footer.querySelector("nav");
+  let toggle = nav && nav.querySelector(".nav-toggle");
+  let navList = nav && nav.querySelector(".nav-list");
+  let navElem = navList && [...navList.querySelectorAll(".nav-item")];
+  let numLink = navElem && navElem.length;
+  if (numLink) {
+    toggle.checked = false;
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+	setTimeout(() => window.scrollTo({
+	  behavior: 'smooth',
+	  top: document.body.scrollHeight	  
+	}), 88);
+      }
+   });
+  }
+}
+
+function autoCompact() {
+  var anchor, links, overlap, trivial;
+  const domCompute = (node) => {
+    if (node) {
+      anchor = node.querySelector('.nav-title, .nav-author');
+      links = node.querySelector('.nav-list');
+      overlap = links.offsetLeft - 5 <= anchor.offsetLeft + anchor.offsetWidth;	
+      trivial = links.offsetLeft === anchor.offsetLeft;
+    }
+  };
+  let mediaMatch = window.matchMedia('(max-width: 768px)').matches;
+  [header, footer].forEach(e => {
+    if (e) {
+      if (mediaMatch) {
+	e.classList.add('compact');
+      } else {
+	domCompute(e);
+	if (overlap && !trivial) {
+	  e.classList.add('compact');
+	} else {	
+	  let clone = e.cloneNode(true);
+	  clone.style.top = '-2000px';
+	  clone.style.maxHeight = '0px';
+	  clone.classList.remove('compact');
+	  e.parentNode.insertBefore(clone, e);
+	  domCompute(clone);
+	  let toggle = e.querySelector('.nav-toggle');
+	  if (!overlap && toggle && !toggle.checked) {
+	    e.classList.remove('compact');
+	  }
+	  e.parentNode.removeChild(clone);
+	}
+      }
+    }
+  })
+}
+
+if ((header || footer)) {
+  if (options.hasOwnProperty('layout')) {
+    [header, footer].forEach(e => e ? e.classList.add(options.layout) : null);
+  } else {
+    autoCompact();
+    window.addEventListener('resize', autoCompact);
+  }
+}
+
+if (options.hasOwnProperty('src-lang') && options['src-lang'] == 't') {
+  let labels = [...document.querySelectorAll('.srcLangLabel')];
+  labels.forEach(l => l.style.display = 'inline-block');
+}
+
+if (options.hasOwnProperty('collapsing') && options.collapsing == 't') {
+  let levels = [2, 3, 4, 5, 6];
+  let containerPrefix = 'outline-container-';
+  levels.forEach(l => {
+    let containers = [...document.querySelectorAll(`.outline-${l}`)];
+    containers.forEach(c => {
+      let id = c.id.slice(containerPrefix.length);
+      let headline = document.getElementById(id);
+      let siblings = [...c.children].filter(child => child.id != id);
+      headline.classList.add('collapsible');
+      headline.addEventListener('click', () => {	
+	if (headline.classList.contains('collapsed')) {
+	  headline.classList.remove('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.remove('hidden');
+	  });	  
+	} else {
+	  headline.classList.add('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.add('hidden');
+	  });
+	}
+      })
+    })
+  })
+}
+/*]]>*/-->
+</script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
+</div>
+</body>
+</html>

