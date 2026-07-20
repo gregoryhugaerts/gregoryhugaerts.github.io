@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 09:25 -->
+<!-- 2026-07-20 Mon 10:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Enums in Rust</title>
@@ -911,11 +911,11 @@ In Rust, <b>enums</b> (enumerations) are custom data types that allow you to def
 <h3 id="org011be24">Defining an Enum</h3>
 <div class="outline-text-3" id="text-org011be24">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_051864ddbf4545db8e28cf0566e111e4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_d004c07957ef418186b52781443fabd9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_051864ddbf4545db8e28cf0566e111e4=document.querySelector('button[name=btn_051864ddbf4545db8e28cf0566e111e4]');
-copyBtnbtn_051864ddbf4545db8e28cf0566e111e4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Example: A Message enum representing different kinds of messages\nenum Message {\n    Quit, // Unit-like variant (no data)\n    Move { x: i32, y: i32 }, // Struct-like variant (named fields)\n    Write(String), // Tuple-like variant (unnamed data)\n    ChangeColor(i32, i32, i32), // Another tuple-like variant\n}\n`);copyBtnbtn_051864ddbf4545db8e28cf0566e111e4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_051864ddbf4545db8e28cf0566e111e4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d004c07957ef418186b52781443fabd9=document.querySelector('button[name=btn_d004c07957ef418186b52781443fabd9]');
+copyBtnbtn_d004c07957ef418186b52781443fabd9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Example: A Message enum representing different kinds of messages\nenum Message {\n    Quit, // Unit-like variant (no data)\n    Move { x: i32, y: i32 }, // Struct-like variant (named fields)\n    Write(String), // Tuple-like variant (unnamed data)\n    ChangeColor(i32, i32, i32), // Another tuple-like variant\n}\n`);copyBtnbtn_d004c07957ef418186b52781443fabd9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d004c07957ef418186b52781443fabd9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -938,11 +938,11 @@ You create instances of enum variants using the enum name followed by:: and the 
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_184ee6f1c3c843b680cd7682c55e2f03>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_e06291c608284eb4b9f4365c45070844>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_184ee6f1c3c843b680cd7682c55e2f03=document.querySelector('button[name=btn_184ee6f1c3c843b680cd7682c55e2f03]');
-copyBtnbtn_184ee6f1c3c843b680cd7682c55e2f03.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let m1 = Message::Quit;\nlet m2 = Message::Move { x: 10, y: 20 };\nlet m3 = Message::Write(String::from(\"hello\"));\nlet m4 = Message::ChangeColor(255, 0, 0);\n`);copyBtnbtn_184ee6f1c3c843b680cd7682c55e2f03.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_184ee6f1c3c843b680cd7682c55e2f03.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e06291c608284eb4b9f4365c45070844=document.querySelector('button[name=btn_e06291c608284eb4b9f4365c45070844]');
+copyBtnbtn_e06291c608284eb4b9f4365c45070844.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let m1 = Message::Quit;\nlet m2 = Message::Move { x: 10, y: 20 };\nlet m3 = Message::Write(String::from(\"hello\"));\nlet m4 = Message::ChangeColor(255, 0, 0);\n`);copyBtnbtn_e06291c608284eb4b9f4365c45070844.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e06291c608284eb4b9f4365c45070844.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -962,11 +962,11 @@ The match expression is the most common way to destructure enum values and execu
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_0b2e76ad32734539b2ff87b6eaf6d914>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_514912b30e2a458c9ba0f4f98fe8ba28>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0b2e76ad32734539b2ff87b6eaf6d914=document.querySelector('button[name=btn_0b2e76ad32734539b2ff87b6eaf6d914]');
-copyBtnbtn_0b2e76ad32734539b2ff87b6eaf6d914.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`fn process_message(msg: Message) {\n    match msg {\n        Message::Quit => {\n            println!(\"The Quit variant has no data.\");\n        }\n        Message::Move { x, y } => { // Destructure named fields\n            println!(\"Move to x: {}, y: {}\", x, y);\n        }\n        Message::Write(text) => { // Destructure tuple data\n            println!(\"Text message: {}\", text);\n        }\n        Message::ChangeColor(r, g, b) => { // Destructure tuple data\n            println!(\"Change color to R:{}, G:{}, B:{}\", r, g, b);\n        }\n    }\n}\n\n// Example usage:\nprocess_message(Message::Move { x: 5, y: 8 });\nprocess_message(Message::Write(String::from(\"Hello Rust!\")));\n`);copyBtnbtn_0b2e76ad32734539b2ff87b6eaf6d914.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0b2e76ad32734539b2ff87b6eaf6d914.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_514912b30e2a458c9ba0f4f98fe8ba28=document.querySelector('button[name=btn_514912b30e2a458c9ba0f4f98fe8ba28]');
+copyBtnbtn_514912b30e2a458c9ba0f4f98fe8ba28.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`fn process_message(msg: Message) {\n    match msg {\n        Message::Quit => {\n            println!(\"The Quit variant has no data.\");\n        }\n        Message::Move { x, y } => { // Destructure named fields\n            println!(\"Move to x: {}, y: {}\", x, y);\n        }\n        Message::Write(text) => { // Destructure tuple data\n            println!(\"Text message: {}\", text);\n        }\n        Message::ChangeColor(r, g, b) => { // Destructure tuple data\n            println!(\"Change color to R:{}, G:{}, B:{}\", r, g, b);\n        }\n    }\n}\n\n// Example usage:\nprocess_message(Message::Move { x: 5, y: 8 });\nprocess_message(Message::Write(String::from(\"Hello Rust!\")));\n`);copyBtnbtn_514912b30e2a458c9ba0f4f98fe8ba28.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_514912b30e2a458c9ba0f4f98fe8ba28.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1002,11 +1002,11 @@ One of the most important and frequently used enums in Rust is Option, which han
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_7dc9a926e7cb4ff0915c6fdfc89640cb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_2bbc212ec0224f8491de903cab24522f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7dc9a926e7cb4ff0915c6fdfc89640cb=document.querySelector('button[name=btn_7dc9a926e7cb4ff0915c6fdfc89640cb]');
-copyBtnbtn_7dc9a926e7cb4ff0915c6fdfc89640cb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`enum Option<T> {\n    None, // Represents no value\n    Some(T), // Represents a value of type T\n}\n\n// Example usage:\nlet some_number = Some(5); // An Option holding an integer\nlet some_string = Some(\"a string\"); // An Option holding a string slice\nlet absent_number: Option<i32> = None; // An Option holding no value\n\n// Using match with Option:\nmatch some_number {\n    Some(number) => println!(\"There is a number: {}\", number),\n    None => println!(\"There is no number.\"),\n}\n`);copyBtnbtn_7dc9a926e7cb4ff0915c6fdfc89640cb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7dc9a926e7cb4ff0915c6fdfc89640cb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2bbc212ec0224f8491de903cab24522f=document.querySelector('button[name=btn_2bbc212ec0224f8491de903cab24522f]');
+copyBtnbtn_2bbc212ec0224f8491de903cab24522f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`enum Option<T> {\n    None, // Represents no value\n    Some(T), // Represents a value of type T\n}\n\n// Example usage:\nlet some_number = Some(5); // An Option holding an integer\nlet some_string = Some(\"a string\"); // An Option holding a string slice\nlet absent_number: Option<i32> = None; // An Option holding no value\n\n// Using match with Option:\nmatch some_number {\n    Some(number) => println!(\"There is a number: {}\", number),\n    None => println!(\"There is no number.\"),\n}\n`);copyBtnbtn_2bbc212ec0224f8491de903cab24522f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2bbc212ec0224f8491de903cab24522f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1037,11 +1037,11 @@ Another crucial enum is Result&lt;T, E&gt;, used for error handling. It represen
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_61a0a507e3214041939f6b34f73d3c48>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_69de218bc38942dfb11c060007fda6c9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_61a0a507e3214041939f6b34f73d3c48=document.querySelector('button[name=btn_61a0a507e3214041939f6b34f73d3c48]');
-copyBtnbtn_61a0a507e3214041939f6b34f73d3c48.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`enum Result<T, E> {\n    Ok(T),    // Represents a successful value of type T\n    Err(E),   // Represents an error value of type E\n}\n`);copyBtnbtn_61a0a507e3214041939f6b34f73d3c48.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_61a0a507e3214041939f6b34f73d3c48.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_69de218bc38942dfb11c060007fda6c9=document.querySelector('button[name=btn_69de218bc38942dfb11c060007fda6c9]');
+copyBtnbtn_69de218bc38942dfb11c060007fda6c9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`enum Result<T, E> {\n    Ok(T),    // Represents a successful value of type T\n    Err(E),   // Represents an error value of type E\n}\n`);copyBtnbtn_69de218bc38942dfb11c060007fda6c9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_69de218bc38942dfb11c060007fda6c9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1061,11 +1061,11 @@ Like <a href="Structs in Rust.html#structs-in-rust">Structs in Rust</a>, enums c
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_f82d2b9ff7f34d52b380834610a33d2a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_eb61699948754bb8b53e40d616bce833>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f82d2b9ff7f34d52b380834610a33d2a=document.querySelector('button[name=btn_f82d2b9ff7f34d52b380834610a33d2a]');
-copyBtnbtn_f82d2b9ff7f34d52b380834610a33d2a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`impl Message {\n\n    fn call(&self) {\n\n        // Method implementation depends on the variant\n\n        match self {\n\n            Message::Write(text) => println!(\"Calling with text: {}\", text),\n\n            _ => println!(\"Calling with other message type.\"), // Wildcard for other variants\n\n        }\n\n    }\n\n}\n\nlet msg_write = Message::Write(String::from(\"Hello from method!\"));\n\nmsg_write.call();\n`);copyBtnbtn_f82d2b9ff7f34d52b380834610a33d2a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f82d2b9ff7f34d52b380834610a33d2a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_eb61699948754bb8b53e40d616bce833=document.querySelector('button[name=btn_eb61699948754bb8b53e40d616bce833]');
+copyBtnbtn_eb61699948754bb8b53e40d616bce833.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`impl Message {\n\n    fn call(&self) {\n\n        // Method implementation depends on the variant\n\n        match self {\n\n            Message::Write(text) => println!(\"Calling with text: {}\", text),\n\n            _ => println!(\"Calling with other message type.\"), // Wildcard for other variants\n\n        }\n\n    }\n\n}\n\nlet msg_write = Message::Write(String::from(\"Hello from method!\"));\n\nmsg_write.call();\n`);copyBtnbtn_eb61699948754bb8b53e40d616bce833.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_eb61699948754bb8b53e40d616bce833.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
