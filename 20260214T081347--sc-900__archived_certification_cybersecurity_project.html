@@ -1,0 +1,1636 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-07-20 Mon 14:10 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SC 900</title>
+<meta name="author" content="termux" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<style type='text/css'>
+<!--/*--><![CDATA[/*><!--*/
+/* nice-org-html.css
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+*/
+
+/* basic layout ***************************************************************/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-family: Sans;
+    line-height: 1.3;
+    font-size: calc(15px + 0.390625vw);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: #999; /* overwritten with theme --bg */
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family:
+	-apple-system,
+	BlinkMacSystemFont,
+	segoe ui,
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	open sans,
+	helvetica neue,
+	sans-serif,
+	system-ui
+}
+
+#preamble,
+#postamble {
+    width: 100%;
+}
+
+#content {
+    width: 80%;
+    max-width: 80ch;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex: 1;
+}
+
+/* custom facing **************************************************************/
+/* The variable values are injected by CSS pre-processing in et-org-html.el */
+:root {
+    --bc-tb: #000000;
+    --bc-block: #595959;
+    --clr: #000000;
+    --clr-tb-hd: #000000;
+    --clr-code: #000000;
+    --bg: #fbf7f0;
+    --bg-code: #cab9b2;
+    --bg-tb-hd: #cab9b2;
+    --bg-block: #efe9dd;
+    --clr-link: #531ab6;
+    --clr-title: #000000;
+    --clr-todo: #00598b;
+    --bg-todo: initial;
+    --clr-done: #7f0000;
+    --bg-done: initial;
+    --ts-clr: #0031a9;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #0031a9;
+    --bg-constant: initial;
+    --clr-constant: #531ab6;
+    --bg-comment: initial;
+    --clr-comment: #7f0000;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #7f0000;
+    --bg-function: initial;
+    --clr-function: #602938;
+    --bg-variable: initial;
+    --clr-variable: #00603f;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #894000;
+    --bg-doc: initial;
+    --clr-doc: #304463;
+    --bg-builtin: initial;
+    --clr-builtin: #721045;
+    --bg-string: initial;
+    --clr-string: #00598b;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+body[data-mode='light'] {
+    background: var(--bg);
+    color: var(--clr);
+}
+
+body[data-mode='dark'] {
+    background: var(--bg);
+    color: var(--clr);
+    --bc-tb: #ffffff;
+    --bc-block: #989898;
+    --clr: #ffffff;
+    --clr-code: #ffffff;
+    --clr-tb-hd: #ffffff;
+    --bg: #0d0e1c;
+    --bg-tb-hd: #484d67;
+    --bg-code: #484d67;
+    --bg-block: #1d2235;
+    --clr-link: #b6a0ff;
+    --clr-title: #ffffff;
+    --clr-todo: #2fafff;
+    --bg-todo: initial;
+    --clr-done: #ef8386;
+    --bg-done: initial;
+    --ts-clr: #79a8ff;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #79a8ff;
+    --bg-constant: initial;
+    --clr-constant: #b6a0ff;
+    --bg-comment: initial;
+    --clr-comment: #ef8386;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #ef8386;
+    --bg-function: initial;
+    --clr-function: #f78fe7;
+    --bg-variable: initial;
+    --clr-variable: #4ae2f0;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #ff7f86;
+    --bg-doc: initial;
+    --clr-doc: #9ac8e0;
+    --bg-builtin: initial;
+    --clr-builtin: #feacd0;
+    --bg-string: initial;
+    --clr-string: #2fafff;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+/* exceptions for badly rendering themes **************************************/
+body[data-theme='leuven'],
+body[data-theme='leuven-dark'] {
+    --bg-code: var(--bg-block);
+}
+
+/* ootb page layout ***********************************************************/
+#view-controls {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    color: var(--clr-code);
+    height: 2.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    z-index: 100;
+    border-radius: 5px; /* Rounded corners */
+}
+#toggle-mode {
+    position: absolute;
+    right: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#goto-top {
+    display: none;
+}
+#goto-top[data-show="true"] {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#toggle-toc {
+    display: none;
+}
+#toggle-toc[data-show="true"] {
+    position: absolute;
+    left: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+
+#toggle-toc:hover,
+#goto-top:hover,
+#toggle-mode:hover {
+    cursor: pointer;
+}
+
+#table-of-contents {
+    display: none;
+}
+#table-of-contents[data-show="true"] {
+    width: 80%;
+    max-width: 80rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: var(--bg);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#table-of-contents::-webkit-scrollbar {
+    display: none;
+}
+
+body[data-toc="true"] #content * {
+    display: none;
+}
+body[data-toc="true"] #content #table-of-contents,
+body[data-toc="true"] #content #table-of-contents * {
+    display: block;
+}
+
+
+/* misc elements **************************************************************/
+
+hr {
+    height: 0;
+    color: inherit;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+    font-family:
+	Menlo,
+	ui-monospace,
+	SFMono-Regular,
+	Consolas,
+	'Liberation Mono',
+	monospace;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+}
+
+summary {
+    display: list-item;
+}
+
+h1 {
+    color: var(--clr-title);
+    text-align: center;
+}
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+code {
+    color: var(--clr-code);
+    background: var(--bg-code);
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+pre::-webkit-scrollbar {
+    display: none;
+}
+
+.todo {
+    color: var(--clr-todo);
+    background: var(--bg-todo);
+}
+
+.done {
+    color: var(--clr-done);
+    background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+    font-size: 0.8rem;
+    color: var(--clr-ts);
+}
+
+table {
+    width: 100%;
+    border: 2px solid var(--bc-tb);
+}
+
+thead {
+    color: var(--clr-tb-hd);
+    background: var(--bg-tb-hd);
+}
+
+td, th {
+    border: thin solid var(--bc-tb);
+}
+
+li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#text-table-of-contents li a:before {
+    content: "• "
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-link);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.MathJax_Display {
+    font-size: 1.25em;
+}
+
+img {
+    max-width: 100%;
+}
+
+pre {
+    padding: 1rem;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-block);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+.org-src-wrapper {
+    position: relative;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+}
+
+.org-src-bar {
+    position: relative;
+    top: 0rem;
+    width: 100%;
+    background: var(--bg-code);
+    border-radius: 0.5rem;
+    text-align: right;
+    min-height: 1rem;
+}
+
+.org-src-wrapper .org-src-container {
+    position: relative;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+    z-index: 0;
+}
+
+.org-src-wrapper .org-src-container pre.src {
+    border: none !important;
+    background: var(--bg-code) !important;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding-bottom: 1.6rem;
+}
+
+.org-src-wrapper .org-src-bar .srcLangLabel {
+    top: 0rem;
+    right: 1.6rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    z-index: 1;
+    display: none;
+}
+
+.org-src-wrapper .org-src-bar .copyBtn {
+    top: 0rem;
+    right: 0.1rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-right: 0.7rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+.org-src-wrapper .copyBtn:hover {
+    opacity: 1;
+}
+
+.org-src-wrapper .copyBtn i {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+}
+
+.admonition {
+    margin: 0.2rem;
+    color: inherit;
+    border-left: .25rem solid;
+}
+.admonition-title {
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.admonition-content > p {
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.admonition.note {
+    border-left-color: var(--clr-note);
+}
+.admonition-title.note {
+    color: var(--clr-note);
+}
+.admonition-title.note:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-note);
+    mask-size: cover;    
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path class="admonition-icon-note" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+.admonition-icon-note {
+    fill: var(--clr-note);
+}
+
+.admonition.tip {
+    border-left-color: var(--clr-tip);
+}
+.admonition-title.tip {
+    color: var(--clr-tip);
+}
+.admonition-title.tip:before {
+    content: '';
+    fill: var(--clr-tip);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-tip);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>');    
+}
+
+.admonition.important {
+    border-left-color: var(--clr-important);
+}
+.admonition-title.important {
+    color: var(--clr-important);
+}
+.admonition-title.important:before {
+    content: '';
+    fill: var(--clr-important);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-important);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');    
+}
+
+.admonition.warning {
+    border-left-color: var(--clr-warning);
+}
+.admonition-title.warning {
+    color: var(--clr-warning);
+}
+.admonition-title.warning:before {
+    content: '';
+    color: var(--clr-warning);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-warning);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');
+}
+
+
+.admonition.caution {
+    border-left-color: var(--clr-caution);
+}
+.admonition-title.caution {
+    color: var(--clr-caution);
+}
+.admonition-title.caution:before {
+    content: '';
+    fill: var(--clr-caution);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-caution);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+/* responsive layouts *********************************************************/
+
+@media only screen and (max-width: 768px) {
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #view-controls {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+    }
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+
+/* generated header and footer ************************************************/
+
+#generated-header,
+#generated-footer {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 1;
+}
+.generated header {
+    top: 0;
+    left: 0;
+}
+.generated footer {
+    bottom: 0;
+    left: 0;
+}
+.generated header a,
+.generated footer a {
+    display: inline;
+    color: var(--clr-title);
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+.generated header a:hover,
+.generated footer a:hover {
+    color: var(--clr-link);
+}
+
+.generated header nav {
+    position: relative;
+    margin-top: 1rem;
+    top: 0;
+    left: 0;
+}
+.generated footer nav {
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.generated .separator {
+    display: block;
+    width: 111%;
+    margin-left: -5.5%;
+    max-width: 100vw;
+    height: 0.125rem;
+    background: var(--bg-code);
+}
+
+.generated a .nav-title,
+.generated a .nav-author {
+    display: inline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 10rem;
+}
+
+.generated .nav-title {
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.generated .nav-toggle {
+    display: none;
+}
+.generated .nav-button {
+    display: none;
+}
+.generated .nav-list {
+    overflow-y: hidden;
+    display: block;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.generated .nav-item {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.generated .nav-link {
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.generated .nav-toggle {
+    max-height: 0;
+    visibility: hidden;
+    overflow-y: hidden;
+}
+
+.generated header .separator {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.generated footer .separator {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.generated .menu-sep {
+    display: none;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.generated footer {
+    padding-bottom: 1rem;
+}
+
+.generated.compact footer {
+    padding-bottom: 0;
+}
+
+.generated.compact header .separator {
+    margin-top: 0;
+    margin-bottom:0;
+}
+.generated.compact footer .separator {
+    margin-bottom: 1rem;
+}
+
+.generated.compact .nav-toggle {
+    visibility: visible;
+}
+
+.generated.compact .nav-toggle + label span::before {
+    transition: all 0.2s ease-in;
+}
+.generated.compact .nav-toggle:checked + label span::before {
+    transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+    transition: all 0.2s ease;
+}
+
+.generated.compact .menu-sep {
+    display: flex;
+    max-height: 0rem;
+}
+.generated.compact .nav-toggle:checked + label + .menu-sep {
+    display: block;
+    position: relative;
+    max-height: 1rem;
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-list {
+    float: none !important;
+    position: relative;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+.generated.compact .nav-toggle:checked + label ~ .nav-list {
+    display: block;
+    max-height: 100rem;
+    overflow-y: hidden;
+}
+.generated.compact header .nav-toggle:checked + label ~ .nav-list {
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-button {
+    display: inline;
+    position: relative;
+    float: right;
+    font-size: 1rem;
+}
+.generated.compact .nav-button span::before {
+    display: inline-block;
+    content: '\2807';
+    font-size: 2rem;
+    transform: translateX(0.25rem) translateY(-0.5rem);
+}
+
+.generated.compact .nav-item {
+    float: none !important;
+    text-align: center !important;
+}
+.generated.compact .nav-link {
+    line-height: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    float: none !important;
+}
+
+.generated.compact footer .separator.menu-sep {
+    margin-bottom: -1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.collapsible:hover {
+    cursor: pointer;
+}
+
+.collapsible.collapsed::after {
+    display: inline-block;
+    content: '...';
+}
+/*]]>*/-->
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">SC 900</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org727ca2b">SC-900</a>
+<ul>
+<li><a href="#orgb76477e">Description</a></li>
+<li><a href="#orgc71c0d4">Badge</a></li>
+<li><a href="#org18ffe26">Key Areas of Focus</a></li>
+<li><a href="#orgdc542a5">Notes</a>
+<ul>
+<li><a href="#org19a6bee">Describe the Concepts of Security, Compliance, and Identity</a></li>
+<li><a href="#org8605371">Describe the Capabilities of Microsoft Entra ID</a></li>
+<li><a href="#org5198356">Describe the Authentication Capabilities of Microsoft Entra ID</a></li>
+<li><a href="#orgee06367">Describe Access Management Capabilities of Microsoft Entra ID</a></li>
+<li><a href="#org7a29d09">Describe Microsoft Entra Identity Protection and Governance</a></li>
+<li><a href="#org7b8f54f">Describe Microsoft Security Solutions</a></li>
+<li><a href="#org2f30584">Describe Core Infrastructure Security Services in Azure</a></li>
+<li><a href="#orgc525399">Describe Security Management Capabilities of Azure</a></li>
+<li><a href="#org699c346">Describe Microsoft Sentinel</a></li>
+<li><a href="#orga594664">Describe Threat Protection with Microsoft Defender XDR</a></li>
+<li><a href="#orga25cb29">Describe Microsoft compliance Solutions</a></li>
+<li><a href="#org0a68e08">Describe Microsoft Purview compliance Management</a></li>
+<li><a href="#org6ec9de0">Describe Microsoft Purview Information Protection, Data Lifecycle Management, and Data Governance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org727ca2b" class="outline-2">
+<h2 id="org727ca2b">SC-900</h2>
+<div class="outline-text-2" id="text-org727ca2b">
+</div>
+<div id="outline-container-orgb76477e" class="outline-3">
+<h3 id="orgb76477e">Description</h3>
+<div class="outline-text-3" id="text-orgb76477e">
+<p>
+The SC-900 certification validates foundational knowledge of security, compliance, and identity (SCI) concepts and related Microsoft cloud-based solutions. It provides a solid understanding of how Microsoft's SCI solutions can address organizational needs across various industries.
+</p>
+
+<hr />
+</div>
+</div>
+<div id="outline-container-orgc71c0d4" class="outline-3">
+<h3 id="orgc71c0d4">Badge</h3>
+<div class="outline-text-3" id="text-orgc71c0d4">
+<p>
+<a href="https://learn.microsoft.com/api/credentials/share/en-us/Gregory-5924/696AA535F73B41DE?sharingId&amp;fbclid=IwZXh0bgNhZW0CMTEAAR1l2_5EIgFwd_ge8JmzqgRz58-m9y0rJIL6UzbRUaSxNOFdPMAnT3r3U4M_aem_lNqhLra6V0a712X6MG6AAw">Certification Badge</a>
+</p>
+
+<hr />
+</div>
+</div>
+<div id="outline-container-org18ffe26" class="outline-3">
+<h3 id="org18ffe26">Key Areas of Focus</h3>
+<div class="outline-text-3" id="text-org18ffe26">
+<ul class="org-ul">
+<li>Security Fundamentals: Understanding security concepts, threats, and vulnerabilities.</li>
+<li>Compliance Fundamentals: Knowledge of regulatory requirements and industry standards.</li>
+<li>Identity and Access Management (IAM): Managing user identities and access controls.</li>
+<li>Threat Protection: Protecting against cyber threats.</li>
+<li>Information Protection: Safeguarding sensitive information.</li>
+<li>Governance: Implementing security and compliance policies.</li>
+<li>Privacy: Understanding privacy regulations and data protection.</li>
+</ul>
+
+<hr />
+</div>
+</div>
+<div id="outline-container-orgdc542a5" class="outline-3">
+<h3 id="orgdc542a5">Notes</h3>
+<div class="outline-text-3" id="text-orgdc542a5">
+</div>
+<div id="outline-container-org19a6bee" class="outline-4">
+<h4 id="org19a6bee">Describe the Concepts of Security, Compliance, and Identity</h4>
+<div class="outline-text-4" id="text-org19a6bee">
+<ul class="org-ul">
+<li></li>
+<li></li>
+<li>Defence In Depth</li>
+<li>List Common Threaths In Cyber Security
+<ul class="org-ul">
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li>Other common threats include coin miners, rootkits, trojans, worms, and exploits and exploit kits.</li>
+</ul></li>
+<li></li>
+<li></li>
+<li></li>
+<li>Identity as the primary security perimeter
+<ul class="org-ul">
+<li>The traditional perimeter-based security model is no longer enough.</li>
+<li>Identity has become the new security perimeter that enables organizations to secure their assets.</li>
+<li>An identity is how someone or something can be verified and authenticated to be who they say they are.</li>
+<li>An identity may be associated with a user, an application, a device, or something else.</li>
+<li>Addressing each of these four pillars is key to a comprehensive and robust identity and access control ​solution.</li>
+<li>Four pillars of identity. Identity is a concept that spans an entire environment, so ​organizations need to think about it broadly. There's a collection of processes, technologies, and policies for ​managing digital identities and controlling how they're used to access resources. There are four fundamental pillars of identity that organizations should consider when creating an identity infrastructure.
+<ul class="org-ul">
+<li>Administration: Administration is about the creation ​and management/governance of identities for users, devices, ​and services. As an administrator, you manage how and ​under what circumstances the characteristics of identities can ​change (be created, updated, deleted).</li>
+<li>Authentication: The authentication pillar tells the story of how much assurance for a particular identity is enough. In ​other words, how much does an IT system need to know about an identity to have sufficient proof that they really are ​who they say they are? It involves the act of challenging a ​party for legitimate credentials. Authentication is sometimes ​shortened to AuthN.</li>
+<li>Authorization: The authorization pillar is about ​processing the incoming identity data to determine the level ​of access an authenticated person or service has within the application or service that it wants to access. Authorization is ​sometimes shortened to AuthZ.</li>
+<li>Auditing: The auditing pillar is about tracking who does ​what, when, where, and how. Auditing includes having in-depth reporting, alerts, and governance of identities.</li>
+</ul></li>
+</ul></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8605371" class="outline-4">
+<h4 id="org8605371">Describe the Capabilities of </h4>
+<div class="outline-text-4" id="text-org8605371">
+<ul class="org-ul">
+<li>Entra ID
+<ul class="org-ul">
+<li>Microsoft Entra ID, formerly Azure Active directory, is Microsoft's cloud-based identity and access management service.</li>
+</ul></li>
+<li>Entra ID identity types
+<ul class="org-ul">
+<li>User: A user identity is a representation of something that's managed by Azure AD. Employees and guests are represented as users in Azure AD. If you have several users with the same access needs, you can create a group. You use groups to give access permissions to all members of the group, instead of having to assign access rights individually.</li>
+<li>Service principal A service principal is a security identity used by applications or services to access specific Azure resources. You can think of it as an identity for an application that is commonly referred to by its Service Principal Name (SPN).</li>
+<li>Managed identity Managed identities are typically used to manage the credentials for authenticating a cloud application with an Azure service. Managed identities are automatically managed in Azure AD and may be user assigned or system assigned. There are several benefits to using managed identities, including:
+<ul class="org-ul">
+<li>Application developers can authenticate to services that support managed identities for Azure resources. For a complete list ​of services, refer to Azure Services that support managed identities.</li>
+<li>Any Azure service that supports Azure AD authentication can use managed identities to authenticate to another Azure service for example, accessing Azure Key Vault. Managed identities can be ​used without any extra cost.</li>
+<li>Device - A device is a piece of hardware, such as mobile devices, ​laptops, servers, or printer. Device identities can be set up in different ways in Azure AD, to determine properties such as who owns the device.</li>
+</ul></li>
+<li>Hybrid identity
+<ul class="org-ul">
+<li>Hybrid identity referes to an identity solution that allows users both on-premises and in the cloud to authenticate using a single common user identity.</li>
+<li>Hybrid identity is accomplished through provisioning and synchronization.</li>
+<li>Inter-directory provisioning is provisioning an identity between two different directory services systems. For a hybrid environment, the most common scenario for inter-directory provisioning is when a user already in Active Directory is provisioned into Microsoft Entra ID.</li>
+<li>Synchronization is responsible for making sure identity information for your on-premises users and groups is matching the cloud.</li>
+</ul></li>
+<li>External Identity
+<ul class="org-ul">
+<li>Microsoft Entra External ID refers to all the ways you can securely interact with users outside of your organization.</li>
+<li>The following capabilities make up External Identities: - B2B collaboration - B2B direct connect - Microsoft Entra External ID for customers (preview) - Microsoft Entra multi-tenant organization</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5198356" class="outline-4">
+<h4 id="org5198356">Describe the Authentication Capabilities of Microsoft Entra ID</h4>
+<div class="outline-text-4" id="text-org5198356">
+<ul class="org-ul">
+<li>Authentication methods
+<ul class="org-ul">
+<li>Mobile app notification</li>
+<li>Mobile app code</li>
+<li>Email</li>
+<li>Mobile phone (SMS)</li>
+<li>Office phone (voice)</li>
+<li>Security questions</li>
+<li>Physical token (e.g. FIDO2 key)</li>
+<li>Self Servself-service password reset (SSPR) gives users the ability to change or reset their password, with no administrator or help desk involvement. ​Self-service password reset works in the following scenarios:
+<ul class="org-ul">
+<li>Password change: when a user knows their password but wants to change it to something new.</li>
+<li>Password reset: when a user can't sign in, such as when they forget ​the password, and want to reset it.</li>
+<li>Account unlock: when a user can't sign in because their account is ​locked out</li>
+</ul></li>
+<li>password protection and management capabilities
+<ul class="org-ul">
+<li>Global banned password list - A global banned password list with ​known weak passwords is automatically updated and enforced by ​Microsoft. This list is maintained by the Azure AD Identity Protection ​team, who analyze security telemetry data to find weak or ​compromised passwords. Examples of passwords that might be ​blocked are <code>P@$$w0rd</code> or Passw0rd1 and all variations.</li>
+<li>Custom banned password lists - Admins can also create custom ​banned password lists to support specific business security needs. The ​custom banned password list prohibits passwords such as the ​organization name or location.</li>
+</ul></li>
+<li>Protecting against password spray - Most password spray attacks ​submit a few of the known weakest passwords against each of the accounts in an enterprise.</li>
+<li>Hybrid security - For hybrid security, admins can integrate Azure AD ​Password Protection within an on-premises Active Directory ​environment</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgee06367" class="outline-4">
+<h4 id="orgee06367">Describe Access Management Capabilities of Microsoft Entra ID</h4>
+<div class="outline-text-4" id="text-orgee06367">
+<ul class="org-ul">
+<li>Conditional Access Conditional Access is a feature of Entra ID that provides an extra ​layer of security before allowing authenticated users to access data ​or other assets. Conditional Access is implemented through policies ​that are created and managed in Entra ID. A Conditional Access ​policy analyses signals including user, location, device, application, ​and risk to automate decisions for authorizing access to resources ​(apps and data).</li>
+<li>Role Based Access Control (RBAC) Entra ID roles control permissions to manage Entra ID resources. There are many built-in roles for different areas of responsibility. All ​built-in roles are preconfigured bundles of permissions designed for ​specific tasks. Entra ID built-in and custom roles are a form of ​RBAC in that Entra ID roles control access to Entra ID resources. ​It's best practice, and more secure, to grant users the least privilege ​to get their work done.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7a29d09" class="outline-4">
+<h4 id="org7a29d09">Describe Microsoft Entra Identity Protection and Governance</h4>
+<div class="outline-text-4" id="text-org7a29d09">
+<ul class="org-ul">
+<li>Microsoft Entra ID Governance
+<ul class="org-ul">
+<li>Entitlement Management
+<ul class="org-ul">
+<li>Defines which users or groups can request access to specific resources</li>
+<li>Includes access packages, catalog, and policy-based access assignments</li>
+</ul></li>
+<li>Access Reviews
+<ul class="org-ul">
+<li>Periodically verifies if users still need assigned access</li>
+<li>Automated, delegated, generates reports for</li>
+<li>Delegation Allows business owners to manage access decisions for their respective areas</li>
+<li>Identity Lifecycle Management (ILM) Automates user provisioning, modifications, and de-provisioning based on lifecycle events (e.g., hire, job change, termination)</li>
+<li>Scheduled reviews Define frequency and scope of reviews (e.g., quarterly review of all external users)</li>
+<li>Customizable reviewers Assign review responsibilities to appropriate individuals or groups</li>
+<li>Review outcomes Track approval, rejection, or request for more information outcomes</li>
+<li>Reporting Generate reports on review activity, completion rates, and access changes</li>
+</ul></li>
+<li>Microsoft Entra Privileged Identity Management (PIM)
+<ul class="org-ul">
+<li>Privileged Role Management Controls access to sensitive administrative roles through just-in-time (JIT) and just-enough-access (JEA) principles</li>
+<li>Active Directory PIM Manages privileged accounts in on-premises environments</li>
+<li>Entra ID PIM Manages privileged roles in Enta ID</li>
+</ul></li>
+<li>Reporting and Analytics Tracks privileged access activities, usage patterns, and potential risks</li>
+</ul></li>
+<li>Microsoft Entra ID Protection
+<ul class="org-ul">
+<li>Risk Detection Identifies suspicious activities like unusual sign-ins, password resets, or data exfiltration attempts</li>
+<li>Risk Investigation Provides detailed information about potential threats, allowing security teams to analyze incidents</li>
+<li>Risk Remediation Offers actions to mitigate risks, such as password resets, enforcement, or account suspension</li>
+<li>Conditional Access Enforces access policies based on user, device, location, and risk level conditions</li>
+</ul></li>
+<li>Microsoft Entra Permissions Management
+<ul class="org-ul">
+<li>Role-Based Access Control (RBAC) ​Assigns permissions based on user roles and responsibilities</li>
+<li>Resource-Based Permissions Grants access to specific resources or data within applications</li>
+<li>Permission Analysis Evaluates existing permissions and identifies potential access risks</li>
+<li>Audit and Reporting Tracks permission changes, access activities, and provides reports for compliance and security</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7b8f54f" class="outline-4">
+<h4 id="org7b8f54f">Describe Microsoft Security Solutions</h4>
+</div>
+<div id="outline-container-org2f30584" class="outline-4">
+<h4 id="org2f30584">Describe Core Infrastructure Security Services in Azure</h4>
+<div class="outline-text-4" id="text-org2f30584">
+<ul class="org-ul">
+<li>Azure Distributed Denial-of-Service (DDoS) Protection
+<ul class="org-ul">
+<li>Mitigates volumetric and protocol-based DDoS attacks</li>
+<li>Offers DDoS Network Protection and DDoS IP Protection tiers</li>
+<li>Provides automatic tuning for protection of Azure resources</li>
+</ul></li>
+<li>Azure - Manages network traffic between on-premises and cloud environments - Provides stateful , NAT, and application proxy functions - Offers and (IPS) capabilities</li>
+<li>Web Application (WAF) - Protects web applications from common web vulnerabilities - Provides protection against attacks - Integrates with Azure Application Gateway and Azure Front Door</li>
+<li>Network Segmentation with Azure Virtual Networks - Creates isolated network environments for resources
+<ul class="org-ul">
+<li>Enhances security by limiting network exposure</li>
+<li>Supports multiple subnets and address spaces</li>
+</ul></li>
+<li>Network Security Groups (NSGs)
+<ul class="org-ul">
+<li>Filters network traffic based on source, destination, port, and protocol</li>
+<li>Provides inbound and outbound security rules</li>
+<li>Can be applied to subnets, network interfaces, and load balancers</li>
+</ul></li>
+<li>Azure Bastion - Provides secure, browser-based access to virtual machines - Eliminates the need for public IP addresses on VMs - Offers enhanced security compared to RDP</li>
+<li>Azure Key Vault - Stores and manages cryptographic keys, secrets, and certificates - Protects sensitive information from unauthorized access - Integrates with Azure applications and services</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc525399" class="outline-4">
+<h4 id="orgc525399">Describe Security Management Capabilities of Azure</h4>
+<div class="outline-text-4" id="text-orgc525399">
+<ul class="org-ul">
+<li>Microsoft Defender for Cloud - Provides comprehensive cloud security posture management - Offers threat detection, vulnerability assessment, and compliance monitoring - Integrates with Azure services and third-party tools</li>
+<li>Cloud Security Posture Management (CSPM)
+<ul class="org-ul">
+<li>Assesses cloud configurations against security best practices</li>
+<li>Identifies misconfigurations and compliance gaps</li>
+<li>Provides recommendations for improving security posture</li>
+</ul></li>
+<li>Security Policies and Initiatives
+<ul class="org-ul">
+<li>Define security standards and guidelines</li>
+<li>Implement access controls, data protection, and incident response plans</li>
+<li>Continuously monitor and improve security posture</li>
+</ul></li>
+<li>Cloud Workload Protection
+<ul class="org-ul">
+<li>Protects virtual machines and containers from threats</li>
+<li>Offers vulnerability assessment, malware protection, and intrusion prevention</li>
+<li>Integrates with Azure Security Center</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org699c346" class="outline-4">
+<h4 id="org699c346">Describe Microsoft Sentinel</h4>
+<div class="outline-text-4" id="text-org699c346">
+<ul class="org-ul">
+<li>and Concepts
+<ul class="org-ul">
+<li>SIEM collects, correlates, and analyzes security events from various sources</li>
+<li>SOAR automates security operations and incident response processes</li>
+</ul></li>
+<li>Threat Detection and Mitigation
+<ul class="org-ul">
+<li>Detects threats through advanced analytics and machine learning</li>
+<li>Provides capabilities and automation</li>
+<li>Integrates with security information sources and tools</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga594664" class="outline-4">
+<h4 id="orga594664">Describe Threat Protection with Microsoft Defender XDR</h4>
+<div class="outline-text-4" id="text-orga594664">
+<ul class="org-ul">
+<li>Microsoft Defender XDR Services
+<ul class="org-ul">
+<li>Provides unified threat protection across endpoints, identities, emails, and applications</li>
+<li>Correlates security signals to detect advanced threats</li>
+<li>Offers and investigation capabilities</li>
+</ul></li>
+<li>Microsoft Defender for Office 365
+<ul class="org-ul">
+<li>Protects against email, collaboration, and identity-based threats</li>
+<li>Detects , malware, and data loss - Provides advanced threat protection capabilities</li>
+</ul></li>
+<li>Microsoft Defender for Endpoint
+<ul class="org-ul">
+<li>Protects endpoints from malware, , and other threats
+<ul class="org-ul">
+<li>Offers endpoint detection and response (EDR) capabilities</li>
+</ul></li>
+<li>Provides vulnerability assessment and remediation</li>
+</ul></li>
+<li>Microsoft Defender for Cloud Apps
+<ul class="org-ul">
+<li>Protects cloud applications and data</li>
+<li>Discovers cloud apps and assesses risks</li>
+<li>Provides data loss prevention and threat protection</li>
+</ul></li>
+<li>Microsoft Defender for Identity
+<ul class="org-ul">
+<li>Protects identities and access privileges</li>
+<li>Detects suspicious user behavior and identity-based attacks</li>
+<li>Provides privileged identity management (PIM) capabilities</li>
+</ul></li>
+<li>Microsoft Defender Vulnerability Management
+<ul class="org-ul">
+<li>Assesses vulnerabilities in on-premises and cloud environments</li>
+<li>Prioritizes vulnerabilities based on risk</li>
+<li>Provides remediation guidance</li>
+</ul></li>
+<li>Microsoft Defender Threat Intelligence (Defender TI)</li>
+<li>Delivers actionable to protect against emerging threats
+<ul class="org-ul">
+<li>Provides threat indicators, campaigns, and reports</li>
+<li>Integrates with other security tools</li>
+</ul></li>
+<li>Microsoft Defender Portal
+<ul class="org-ul">
+<li>Unified console for managing and monitoring security solutions</li>
+<li>Offers centralized visibility and control</li>
+<li>Provides reporting and analytics capabilities</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga25cb29" class="outline-4">
+<h4 id="orga25cb29">Describe Microsoft compliance Solutions</h4>
+<div class="outline-text-4" id="text-orga25cb29">
+<ul class="org-ul">
+<li>Microsoft Service Trust Portal and Privacy Principles
+<ul class="org-ul">
+<li>Service Trust Portal Offerings
+<ul class="org-ul">
+<li>Provides access to compliance reports, certifications, and whitepapers</li>
+<li>Offers transparency into Microsoft's security and privacy practices</li>
+<li>Supports customer trust and confidence in Microsoft cloud services</li>
+</ul></li>
+<li>Privacy Principles
+<ul class="org-ul">
+<li>Focuses on data privacy and protection</li>
+<li>Adheres to global privacy regulations (e.g., , CCPA)</li>
+<li>Commits to transparency, accountability, and user control</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0a68e08" class="outline-4">
+<h4 id="org0a68e08">Describe Microsoft Purview compliance Management</h4>
+<div class="outline-text-4" id="text-org0a68e08">
+<ul class="org-ul">
+<li>Microsoft Purview compliance Portal
+<ul class="org-ul">
+<li>Unified platform for managing obligations</li>
+<li>Provides access to compliance templates, assessments, and reports</li>
+<li>Offers insights into compliance posture and risk</li>
+</ul></li>
+<li>compliance Manager
+<ul class="org-ul">
+<li>Helps organizations assess compliance against industry standards and regulations</li>
+<li>Identifies gaps and provides remediation guidance</li>
+<li>Tracks compliance progress and generates reports</li>
+</ul></li>
+<li>compliance Score
+<ul class="org-ul">
+<li>Measures an organization's overall compliance posture</li>
+<li>Provides a numerical score based on implemented controls</li>
+<li>Helps prioritize compliance efforts and demonstrate compliance progress</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6ec9de0" class="outline-4">
+<h4 id="org6ec9de0">Describe Microsoft Purview Information Protection, Data Lifecycle Management, and Data Governance</h4>
+<div class="outline-text-4" id="text-org6ec9de0">
+<ul class="org-ul">
+<li>Data Classification
+<ul class="org-ul">
+<li>Automatically or manually classifies data based on sensitivity</li>
+<li>Applies labels to data to indicate its sensitivity level</li>
+<li>Enables appropriate protection and handling of data</li>
+</ul></li>
+<li>Content Explorer and Activity Explorer - Provides visibility into data locations and usage patterns
+<ul class="org-ul">
+<li>Helps identify sensitive information and potential risks</li>
+<li>Supports data discovery and classification efforts</li>
+</ul></li>
+<li>Sensitivity Labels and Sensitivity Label Policies
+<ul class="org-ul">
+<li>Define protection levels for data based on sensitivity
+<ul class="org-ul">
+<li>Automatically apply labels to documents and emails</li>
+</ul></li>
+<li>Enforce data protection policies through label conditions</li>
+</ul></li>
+<li>Data Loss Prevention (DLP)
+<ul class="org-ul">
+<li>Prevents sensitive data from being shared or leaked</li>
+<li>Detects and protects sensitive information in emails, documents, and cloud applications - Provides policies for data protection and incident response</li>
+</ul></li>
+<li>Records Management
+<ul class="org-ul">
+<li>Manages the entire lifecycle of records, from creation to disposition</li>
+<li>Includes retention policies, records declaration, and holds
+<ul class="org-ul">
+<li>Supports compliance with record keeping regulations</li>
+</ul></li>
+</ul></li>
+<li>Retention Policies, Retention Labels, and Retention Label Policies
+<ul class="org-ul">
+<li>Define data retention periods based on business needs and legal requirements</li>
+<li>Automatically apply retention labels to content</li>
+<li>Manage data lifecycle and prevent data loss</li>
+</ul></li>
+<li>Unified Data Governance
+<ul class="org-ul">
+<li>Provides a centralized platform for data governance</li>
+<li>Integrates data classification, labeling, and protection - Supports collaboration between data owners, stewards, and consumers</li>
+</ul></li>
+<li>Microsoft Purview Insider Risk, eDiscovery, and Audit
+<ul class="org-ul">
+<li>Insider Risk Management - Identifies potential insider threats and risks - Detects anomalous user behavior and data leaks - Provides tools for investigation and response</li>
+<li>eDiscovery - Collects, preserves, and analyzes data for legal and compliance purposes - Supports electronic discovery processes and litigation hold - Offers advanced search and review capabilities</li>
+<li>Audit Solutions - Tracks user activities and system events - Provides audit logs and reports for compliance and security - Supports investigations and incident response</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
+document.cookie = 'mode=dark'
+}
+document.cookie = 'light=modus-operandi-tinted'
+document.cookie = 'dark=modus-vivendi-tinted'
+/*
+;; nice-org-html.js
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+;; JS for html exported by et-org-html.el
+ */
+
+const preamble = document.getElementById("preamble");
+const content = document.getElementById("content");
+const postamble = document.getElementById("postamble");
+
+const controls = document.getElementById("view-controls");
+const toggleTocBtn = document.getElementById("toggle-toc");
+const gotoTopBtn = document.getElementById("goto-top");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const toc = document.getElementById("table-of-contents");
+
+// Get and parse options passed in cookie string
+const optCookie = document.cookie.split('; ').find(r => r.startsWith('options'));
+const options = {};
+if (optCookie) {
+  optCookie.split('=')[1].split('__').forEach(pair => {
+    const [key, val] = pair.split(':');
+    if (key && val) {
+      options[key] = val;
+    }
+  })
+}
+
+// Move sticky control bar (injected within preamble)
+document.body.insertBefore(controls, content);
+
+// Mode handling
+function getMode() {
+  let cookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+  return cookie && cookie.split("=")[1];
+}
+
+function setMode(mode) {
+  document.body.dataset.mode = mode;
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
+  document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
+  toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
+  document.cookie = 'mode=' + mode;
+}
+
+// Initially, set mode based on stored cookie
+let mode = getMode();
+if (mode && ["light", "dark"].includes(mode)) {
+  setMode(mode);
+} else {  
+  let prop = "prefers-color-scheme";
+  let pref = (mode === "query") && window.matchMedia &&
+    ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
+  setMode(pref || "dark"); // fallback: dark
+}
+
+// Mode toggling
+toggleModeBtn.addEventListener('click', () => {
+  setMode(document.body.dataset.mode === 'dark' ? 'light' : 'dark');
+})
+
+
+// Jump to top
+let scrollY = document.documentElement.scrollTop;
+window.addEventListener('scroll', () => {
+  let atTop = document.documentElement.scrollTop <= preamble.offsetHeight;
+  gotoTopBtn.dataset.show = !atTop + "";
+});
+gotoTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
+
+// Table-of-contents toggling
+if (toc) {
+  toggleTocBtn.dataset.show = 'true';
+  toggleTocBtn.addEventListener('click', () => {
+    let showingToc = document.body.dataset.toc;
+    scrollY = showingToc ? scrollY : document.documentElement.scrollTop;
+    if (showingToc) {
+      document.body.dataset.toc = '';
+      document.documentElement.scrollTop = scrollY;
+    } else {
+      let tocHeight =
+	Math.max(
+	  window.innerHeight - controls.offsetHeight,
+	  toc.offsetHeight
+	);
+      const header = document.getElementById("injected-header");
+      if (header && (scrollY > header.offsetHeight)) {
+	document.documentElement.scrollTop = preamble.offsetHeight;
+      }
+      toc.style.height = `${tocHeight}px`;
+      document.body.dataset.toc = 'true';
+    }
+    toc.addEventListener('click', () => {
+      if (document.body.dataset.toc) {
+	document.body.dataset.toc = '';
+	document.documentElement.scrollTop = scrollY;
+      }
+    })
+  })
+};
+
+// Instrument anchor linking for sticky control bar
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const target = document.querySelector(targetId);
+
+    setTimeout(() => {
+      const targetPos = target.getBoundingClientRect().top;
+      let offset = targetPos + document.documentElement.scrollTop;
+      offset -= controls.offsetHeight;
+      window.scrollTo({
+	top: offset,
+	behavior: "smooth"
+      });
+    }, 0);
+  });
+});
+
+function copyTextToClipboard(text) {
+  // Make invisible textarea
+  var textArea = document.createElement("textarea");
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = 0;
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+
+  // Copy contents into it
+  textArea.value = text;
+
+  // Try to copy from it to clipboard
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  var res;
+  try {
+    res = document.execCommand('copy');
+  } catch (err) {
+    res = false;
+  }
+
+  // Remove invisible textarea
+  document.body.removeChild(textArea);
+
+  return res;
+}
+
+// Handle the default header / footer drawers
+const header = document.getElementById("generated-header");
+const footer = document.getElementById("generated-footer");
+
+if (header) {
+  let toggle = header.querySelector("header nav input.nav-toggle");
+  if (toggle) { toggle.checked = false; }
+}
+if (footer) {
+  let nav = footer.querySelector("nav");
+  let toggle = nav && nav.querySelector(".nav-toggle");
+  let navList = nav && nav.querySelector(".nav-list");
+  let navElem = navList && [...navList.querySelectorAll(".nav-item")];
+  let numLink = navElem && navElem.length;
+  if (numLink) {
+    toggle.checked = false;
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+	setTimeout(() => window.scrollTo({
+	  behavior: 'smooth',
+	  top: document.body.scrollHeight	  
+	}), 88);
+      }
+   });
+  }
+}
+
+function autoCompact() {
+  var anchor, links, overlap, trivial;
+  const domCompute = (node) => {
+    if (node) {
+      anchor = node.querySelector('.nav-title, .nav-author');
+      links = node.querySelector('.nav-list');
+      overlap = links.offsetLeft - 5 <= anchor.offsetLeft + anchor.offsetWidth;	
+      trivial = links.offsetLeft === anchor.offsetLeft;
+    }
+  };
+  let mediaMatch = window.matchMedia('(max-width: 768px)').matches;
+  [header, footer].forEach(e => {
+    if (e) {
+      if (mediaMatch) {
+	e.classList.add('compact');
+      } else {
+	domCompute(e);
+	if (overlap && !trivial) {
+	  e.classList.add('compact');
+	} else {	
+	  let clone = e.cloneNode(true);
+	  clone.style.top = '-2000px';
+	  clone.style.maxHeight = '0px';
+	  clone.classList.remove('compact');
+	  e.parentNode.insertBefore(clone, e);
+	  domCompute(clone);
+	  let toggle = e.querySelector('.nav-toggle');
+	  if (!overlap && toggle && !toggle.checked) {
+	    e.classList.remove('compact');
+	  }
+	  e.parentNode.removeChild(clone);
+	}
+      }
+    }
+  })
+}
+
+if ((header || footer)) {
+  if (options.hasOwnProperty('layout')) {
+    [header, footer].forEach(e => e ? e.classList.add(options.layout) : null);
+  } else {
+    autoCompact();
+    window.addEventListener('resize', autoCompact);
+  }
+}
+
+if (options.hasOwnProperty('src-lang') && options['src-lang'] == 't') {
+  let labels = [...document.querySelectorAll('.srcLangLabel')];
+  labels.forEach(l => l.style.display = 'inline-block');
+}
+
+if (options.hasOwnProperty('collapsing') && options.collapsing == 't') {
+  let levels = [2, 3, 4, 5, 6];
+  let containerPrefix = 'outline-container-';
+  levels.forEach(l => {
+    let containers = [...document.querySelectorAll(`.outline-${l}`)];
+    containers.forEach(c => {
+      let id = c.id.slice(containerPrefix.length);
+      let headline = document.getElementById(id);
+      let siblings = [...c.children].filter(child => child.id != id);
+      headline.classList.add('collapsible');
+      headline.addEventListener('click', () => {	
+	if (headline.classList.contains('collapsed')) {
+	  headline.classList.remove('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.remove('hidden');
+	  });	  
+	} else {
+	  headline.classList.add('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.add('hidden');
+	  });
+	}
+      })
+    })
+  })
+}
+/*]]>*/-->
+</script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
+</div>
+</body>
+</html>

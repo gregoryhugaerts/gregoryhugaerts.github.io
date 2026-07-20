@@ -1,0 +1,1602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-07-20 Mon 14:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wazuh</title>
+<meta name="author" content="termux" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<style type='text/css'>
+<!--/*--><![CDATA[/*><!--*/
+/* nice-org-html.css
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+*/
+
+/* basic layout ***************************************************************/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-family: Sans;
+    line-height: 1.3;
+    font-size: calc(15px + 0.390625vw);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: #999; /* overwritten with theme --bg */
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family:
+	-apple-system,
+	BlinkMacSystemFont,
+	segoe ui,
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	open sans,
+	helvetica neue,
+	sans-serif,
+	system-ui
+}
+
+#preamble,
+#postamble {
+    width: 100%;
+}
+
+#content {
+    width: 80%;
+    max-width: 80ch;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex: 1;
+}
+
+/* custom facing **************************************************************/
+/* The variable values are injected by CSS pre-processing in et-org-html.el */
+:root {
+    --bc-tb: #000000;
+    --bc-block: #595959;
+    --clr: #000000;
+    --clr-tb-hd: #000000;
+    --clr-code: #000000;
+    --bg: #fbf7f0;
+    --bg-code: #cab9b2;
+    --bg-tb-hd: #cab9b2;
+    --bg-block: #efe9dd;
+    --clr-link: #531ab6;
+    --clr-title: #000000;
+    --clr-todo: #00598b;
+    --bg-todo: initial;
+    --clr-done: #7f0000;
+    --bg-done: initial;
+    --ts-clr: #0031a9;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #0031a9;
+    --bg-constant: initial;
+    --clr-constant: #531ab6;
+    --bg-comment: initial;
+    --clr-comment: #7f0000;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #7f0000;
+    --bg-function: initial;
+    --clr-function: #602938;
+    --bg-variable: initial;
+    --clr-variable: #00603f;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #894000;
+    --bg-doc: initial;
+    --clr-doc: #304463;
+    --bg-builtin: initial;
+    --clr-builtin: #721045;
+    --bg-string: initial;
+    --clr-string: #00598b;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+body[data-mode='light'] {
+    background: var(--bg);
+    color: var(--clr);
+}
+
+body[data-mode='dark'] {
+    background: var(--bg);
+    color: var(--clr);
+    --bc-tb: #ffffff;
+    --bc-block: #989898;
+    --clr: #ffffff;
+    --clr-code: #ffffff;
+    --clr-tb-hd: #ffffff;
+    --bg: #0d0e1c;
+    --bg-tb-hd: #484d67;
+    --bg-code: #484d67;
+    --bg-block: #1d2235;
+    --clr-link: #b6a0ff;
+    --clr-title: #ffffff;
+    --clr-todo: #2fafff;
+    --bg-todo: initial;
+    --clr-done: #ef8386;
+    --bg-done: initial;
+    --ts-clr: #79a8ff;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #79a8ff;
+    --bg-constant: initial;
+    --clr-constant: #b6a0ff;
+    --bg-comment: initial;
+    --clr-comment: #ef8386;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #ef8386;
+    --bg-function: initial;
+    --clr-function: #f78fe7;
+    --bg-variable: initial;
+    --clr-variable: #4ae2f0;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #ff7f86;
+    --bg-doc: initial;
+    --clr-doc: #9ac8e0;
+    --bg-builtin: initial;
+    --clr-builtin: #feacd0;
+    --bg-string: initial;
+    --clr-string: #2fafff;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+/* exceptions for badly rendering themes **************************************/
+body[data-theme='leuven'],
+body[data-theme='leuven-dark'] {
+    --bg-code: var(--bg-block);
+}
+
+/* ootb page layout ***********************************************************/
+#view-controls {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    color: var(--clr-code);
+    height: 2.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    z-index: 100;
+    border-radius: 5px; /* Rounded corners */
+}
+#toggle-mode {
+    position: absolute;
+    right: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#goto-top {
+    display: none;
+}
+#goto-top[data-show="true"] {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#toggle-toc {
+    display: none;
+}
+#toggle-toc[data-show="true"] {
+    position: absolute;
+    left: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+
+#toggle-toc:hover,
+#goto-top:hover,
+#toggle-mode:hover {
+    cursor: pointer;
+}
+
+#table-of-contents {
+    display: none;
+}
+#table-of-contents[data-show="true"] {
+    width: 80%;
+    max-width: 80rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: var(--bg);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#table-of-contents::-webkit-scrollbar {
+    display: none;
+}
+
+body[data-toc="true"] #content * {
+    display: none;
+}
+body[data-toc="true"] #content #table-of-contents,
+body[data-toc="true"] #content #table-of-contents * {
+    display: block;
+}
+
+
+/* misc elements **************************************************************/
+
+hr {
+    height: 0;
+    color: inherit;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+    font-family:
+	Menlo,
+	ui-monospace,
+	SFMono-Regular,
+	Consolas,
+	'Liberation Mono',
+	monospace;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+}
+
+summary {
+    display: list-item;
+}
+
+h1 {
+    color: var(--clr-title);
+    text-align: center;
+}
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+code {
+    color: var(--clr-code);
+    background: var(--bg-code);
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+pre::-webkit-scrollbar {
+    display: none;
+}
+
+.todo {
+    color: var(--clr-todo);
+    background: var(--bg-todo);
+}
+
+.done {
+    color: var(--clr-done);
+    background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+    font-size: 0.8rem;
+    color: var(--clr-ts);
+}
+
+table {
+    width: 100%;
+    border: 2px solid var(--bc-tb);
+}
+
+thead {
+    color: var(--clr-tb-hd);
+    background: var(--bg-tb-hd);
+}
+
+td, th {
+    border: thin solid var(--bc-tb);
+}
+
+li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#text-table-of-contents li a:before {
+    content: "• "
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-link);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.MathJax_Display {
+    font-size: 1.25em;
+}
+
+img {
+    max-width: 100%;
+}
+
+pre {
+    padding: 1rem;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-block);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+.org-src-wrapper {
+    position: relative;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+}
+
+.org-src-bar {
+    position: relative;
+    top: 0rem;
+    width: 100%;
+    background: var(--bg-code);
+    border-radius: 0.5rem;
+    text-align: right;
+    min-height: 1rem;
+}
+
+.org-src-wrapper .org-src-container {
+    position: relative;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+    z-index: 0;
+}
+
+.org-src-wrapper .org-src-container pre.src {
+    border: none !important;
+    background: var(--bg-code) !important;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding-bottom: 1.6rem;
+}
+
+.org-src-wrapper .org-src-bar .srcLangLabel {
+    top: 0rem;
+    right: 1.6rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    z-index: 1;
+    display: none;
+}
+
+.org-src-wrapper .org-src-bar .copyBtn {
+    top: 0rem;
+    right: 0.1rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-right: 0.7rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+.org-src-wrapper .copyBtn:hover {
+    opacity: 1;
+}
+
+.org-src-wrapper .copyBtn i {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+}
+
+.admonition {
+    margin: 0.2rem;
+    color: inherit;
+    border-left: .25rem solid;
+}
+.admonition-title {
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.admonition-content > p {
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.admonition.note {
+    border-left-color: var(--clr-note);
+}
+.admonition-title.note {
+    color: var(--clr-note);
+}
+.admonition-title.note:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-note);
+    mask-size: cover;    
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path class="admonition-icon-note" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+.admonition-icon-note {
+    fill: var(--clr-note);
+}
+
+.admonition.tip {
+    border-left-color: var(--clr-tip);
+}
+.admonition-title.tip {
+    color: var(--clr-tip);
+}
+.admonition-title.tip:before {
+    content: '';
+    fill: var(--clr-tip);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-tip);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>');    
+}
+
+.admonition.important {
+    border-left-color: var(--clr-important);
+}
+.admonition-title.important {
+    color: var(--clr-important);
+}
+.admonition-title.important:before {
+    content: '';
+    fill: var(--clr-important);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-important);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');    
+}
+
+.admonition.warning {
+    border-left-color: var(--clr-warning);
+}
+.admonition-title.warning {
+    color: var(--clr-warning);
+}
+.admonition-title.warning:before {
+    content: '';
+    color: var(--clr-warning);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-warning);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');
+}
+
+
+.admonition.caution {
+    border-left-color: var(--clr-caution);
+}
+.admonition-title.caution {
+    color: var(--clr-caution);
+}
+.admonition-title.caution:before {
+    content: '';
+    fill: var(--clr-caution);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-caution);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+/* responsive layouts *********************************************************/
+
+@media only screen and (max-width: 768px) {
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #view-controls {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+    }
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+
+/* generated header and footer ************************************************/
+
+#generated-header,
+#generated-footer {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 1;
+}
+.generated header {
+    top: 0;
+    left: 0;
+}
+.generated footer {
+    bottom: 0;
+    left: 0;
+}
+.generated header a,
+.generated footer a {
+    display: inline;
+    color: var(--clr-title);
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+.generated header a:hover,
+.generated footer a:hover {
+    color: var(--clr-link);
+}
+
+.generated header nav {
+    position: relative;
+    margin-top: 1rem;
+    top: 0;
+    left: 0;
+}
+.generated footer nav {
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.generated .separator {
+    display: block;
+    width: 111%;
+    margin-left: -5.5%;
+    max-width: 100vw;
+    height: 0.125rem;
+    background: var(--bg-code);
+}
+
+.generated a .nav-title,
+.generated a .nav-author {
+    display: inline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 10rem;
+}
+
+.generated .nav-title {
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.generated .nav-toggle {
+    display: none;
+}
+.generated .nav-button {
+    display: none;
+}
+.generated .nav-list {
+    overflow-y: hidden;
+    display: block;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.generated .nav-item {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.generated .nav-link {
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.generated .nav-toggle {
+    max-height: 0;
+    visibility: hidden;
+    overflow-y: hidden;
+}
+
+.generated header .separator {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.generated footer .separator {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.generated .menu-sep {
+    display: none;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.generated footer {
+    padding-bottom: 1rem;
+}
+
+.generated.compact footer {
+    padding-bottom: 0;
+}
+
+.generated.compact header .separator {
+    margin-top: 0;
+    margin-bottom:0;
+}
+.generated.compact footer .separator {
+    margin-bottom: 1rem;
+}
+
+.generated.compact .nav-toggle {
+    visibility: visible;
+}
+
+.generated.compact .nav-toggle + label span::before {
+    transition: all 0.2s ease-in;
+}
+.generated.compact .nav-toggle:checked + label span::before {
+    transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+    transition: all 0.2s ease;
+}
+
+.generated.compact .menu-sep {
+    display: flex;
+    max-height: 0rem;
+}
+.generated.compact .nav-toggle:checked + label + .menu-sep {
+    display: block;
+    position: relative;
+    max-height: 1rem;
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-list {
+    float: none !important;
+    position: relative;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+.generated.compact .nav-toggle:checked + label ~ .nav-list {
+    display: block;
+    max-height: 100rem;
+    overflow-y: hidden;
+}
+.generated.compact header .nav-toggle:checked + label ~ .nav-list {
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-button {
+    display: inline;
+    position: relative;
+    float: right;
+    font-size: 1rem;
+}
+.generated.compact .nav-button span::before {
+    display: inline-block;
+    content: '\2807';
+    font-size: 2rem;
+    transform: translateX(0.25rem) translateY(-0.5rem);
+}
+
+.generated.compact .nav-item {
+    float: none !important;
+    text-align: center !important;
+}
+.generated.compact .nav-link {
+    line-height: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    float: none !important;
+}
+
+.generated.compact footer .separator.menu-sep {
+    margin-bottom: -1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.collapsible:hover {
+    cursor: pointer;
+}
+
+.collapsible.collapsed::after {
+    display: inline-block;
+    content: '...';
+}
+/*]]>*/-->
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Wazuh</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orge590f21">Installation</a>
+<ul>
+<li><a href="#orge6cab3d">Docker (recommended for lab)</a></li>
+<li><a href="#orgd8e2cd7">Raspberry Pi / Linux (native)</a></li>
+</ul>
+</li>
+<li><a href="#orgea1a27e">Agent Deployment</a>
+<ul>
+<li><a href="#org79c75eb">Linux agent</a></li>
+<li><a href="#orgdf15518">Windows agent</a></li>
+<li><a href="#org6d34de7">Verify agent connection (on manager)</a></li>
+</ul>
+</li>
+<li><a href="#org09e1ddd">Key Components</a></li>
+<li><a href="#org92fcc22">Configuration</a></li>
+<li><a href="#org5cb44f4">Alert Levels</a></li>
+<li><a href="#org9c610e6">Custom Rules</a></li>
+<li><a href="#org51cca3d">Useful CLI Commands</a></li>
+<li><a href="#org73d7e6a">Tips</a></li>
+</ul>
+</div>
+</div>
+<p>
+Open-source SIEM and XDR platform. Collects logs and security
+events from agents deployed on endpoints, performs rule-based
+detection, and provides file integrity monitoring, vulnerability
+scanning, and compliance reporting. A practical alternative to
+commercial SIEMs for a home lab or small internal security team.
+</p>
+
+<p>
+Architecture: central Wazuh Manager + Wazuh Indexer (OpenSearch)
+</p>
+<ul class="org-ul">
+<li>Wazuh Dashboard. Agents run on monitored endpoints and forward</li>
+</ul>
+<p>
+events to the manager.
+</p>
+
+<p>
+Related: <a href="../org/20260314T005749==siem--security-information-and-event-management__concept_cybersecurity.html">SIEM</a>
+         <a href="../org/20260212T065226==soar--security-orchestration-automation-and-response__concept_cybersecurity.html">SOAR</a>
+         <a href="../org/20260206T060659--incident-response__concept_cybersecurity.html">Incident Response</a>
+         <a href="../org/20260213T072338--endpoint-detection-and-response__concept_cybersecurity.html">EDR</a>
+         <a href="../org/20260616T220417--windows-client-dfir__concept_cybersecurity.html">windows client DFIR</a>
+</p>
+<div id="outline-container-orge590f21" class="outline-2">
+<h2 id="orge590f21">Installation</h2>
+<div class="outline-text-2" id="text-orge590f21">
+</div>
+<div id="outline-container-orge6cab3d" class="outline-3">
+<h3 id="orge6cab3d">Docker (recommended for lab)</h3>
+<div class="outline-text-3" id="text-orge6cab3d">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_96be7f3dcbb844c5b131b12578747edb>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_96be7f3dcbb844c5b131b12578747edb=document.querySelector('button[name=btn_96be7f3dcbb844c5b131b12578747edb]');
+copyBtnbtn_96be7f3dcbb844c5b131b12578747edb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Clone the docker deployment repo\ngit clone https://github.com/wazuh/wazuh-docker.git -b v4.9.0\ncd wazuh-docker/single-node\n\n# Generate certificates\ndocker compose -f generate-indexer-certs.yml run --rm generator\n\n# Start the stack\ndocker compose up -d\n\n# Access dashboard\n# https://localhost (default: admin / SecretPassword)\n`);copyBtnbtn_96be7f3dcbb844c5b131b12578747edb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_96be7f3dcbb844c5b131b12578747edb.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Clone the docker deployment repo
+</span>git clone https://github.com/wazuh/wazuh-docker.git -b v4.9.0
+<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">cd</span> wazuh-docker/single-node
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Generate certificates
+</span>docker compose -f generate-indexer-certs.yml run --rm generator
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Start the stack
+</span>docker compose up -d
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Access dashboard
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">https://localhost (default: admin / SecretPassword)</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgd8e2cd7" class="outline-3">
+<h3 id="orgd8e2cd7">Raspberry Pi / Linux (native)</h3>
+<div class="outline-text-3" id="text-orgd8e2cd7">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5831a7f5a72449cb80cdf1fbb5a2f360>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_5831a7f5a72449cb80cdf1fbb5a2f360=document.querySelector('button[name=btn_5831a7f5a72449cb80cdf1fbb5a2f360]');
+copyBtnbtn_5831a7f5a72449cb80cdf1fbb5a2f360.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Add Wazuh repository\ncurl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | gpg --no-default-keyring \\\n  --keyring gnupg-ring:/usr/share/keyrings/wazuh.gpg --import\n\necho \"deb [signed-by=/usr/share/keyrings/wazuh.gpg] \\\n  https://packages.wazuh.com/4.x/apt/ stable main\" \\\n  | tee /etc/apt/sources.list.d/wazuh.list\n\napt update\n\n# Install manager (on the Wazuh server)\napt install wazuh-manager\n\n# Install indexer and dashboard separately\n# Full docs: https://documentation.wazuh.com/current/installation-guide/\n`);copyBtnbtn_5831a7f5a72449cb80cdf1fbb5a2f360.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5831a7f5a72449cb80cdf1fbb5a2f360.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Add Wazuh repository
+</span>curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | gpg --no-default-keyring <span style="color: #2fafff;">\</span>
+  --keyring gnupg-ring:/usr/share/keyrings/wazuh.gpg --import
+
+<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"deb [signed-by=/usr/share/keyrings/wazuh.gpg] \
+  https://packages.wazuh.com/4.x/apt/ stable main"</span> <span style="color: #2fafff;">\</span>
+  | tee /etc/apt/sources.list.d/wazuh.list
+
+apt update
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Install manager (on the Wazuh server)
+</span>apt install wazuh-manager
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Install indexer and dashboard separately
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Full docs: https://documentation.wazuh.com/current/installation-guide/</span>
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgea1a27e" class="outline-2">
+<h2 id="orgea1a27e">Agent Deployment</h2>
+<div class="outline-text-2" id="text-orgea1a27e">
+<p>
+Agents run on monitored endpoints and forward events to the
+manager on port 1514/UDP or 1514/TCP.
+</p>
+</div>
+<div id="outline-container-org79c75eb" class="outline-3">
+<h3 id="org79c75eb">Linux agent</h3>
+<div class="outline-text-3" id="text-org79c75eb">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9503fde5046041a7ba1ed103997ad5e0>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_9503fde5046041a7ba1ed103997ad5e0=document.querySelector('button[name=btn_9503fde5046041a7ba1ed103997ad5e0]');
+copyBtnbtn_9503fde5046041a7ba1ed103997ad5e0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Install\napt install wazuh-agent\n\n# Configure manager address\nsed -i \"s|MANAGER_IP|$MANAGER_IP|g\" /var/ossec/etc/ossec.conf\n\n# Start\nsystemctl daemon-reload\nsystemctl enable wazuh-agent\nsystemctl start wazuh-agent\n`);copyBtnbtn_9503fde5046041a7ba1ed103997ad5e0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9503fde5046041a7ba1ed103997ad5e0.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Install
+</span>apt install wazuh-agent
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Configure manager address
+</span>sed -i <span style="color: var(--clr-string); background-color: var(--bg-string);">"s|MANAGER_IP|$MANAGER_IP|g"</span> /var/ossec/etc/ossec.conf
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Start
+</span>systemctl daemon-reload
+systemctl enable wazuh-agent
+systemctl start wazuh-agent
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgdf15518" class="outline-3">
+<h3 id="orgdf15518">Windows agent</h3>
+<div class="outline-text-3" id="text-orgdf15518">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_b9891304e0024dad9ed530f403b989f1>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_b9891304e0024dad9ed530f403b989f1=document.querySelector('button[name=btn_b9891304e0024dad9ed530f403b989f1]');
+copyBtnbtn_b9891304e0024dad9ed530f403b989f1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# PowerShell — download and install silently\nInvoke-WebRequest -Uri \"https://packages.wazuh.com/4.x/windows/wazuh-agent-4.9.0-1.msi\" \`\n  -OutFile wazuh-agent.msi\nmsiexec /i wazuh-agent.msi WAZUH_MANAGER=$MANAGER_IP /quiet\n\n# Start service\nNET START WazuhSvc\n`);copyBtnbtn_b9891304e0024dad9ed530f403b989f1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b9891304e0024dad9ed530f403b989f1.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">PowerShell &#8212; download and install silently
+</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Invoke-WebRequest</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Uri</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://packages.wazuh.com/4.x/windows/wazuh-agent-4.9.0-1.msi"</span> `
+  <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-OutFile</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">wazuh-agent</span>.msi
+msiexec /i <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">wazuh-agent</span>.msi WAZUH_MANAGER=<span style="color: var(--clr-variable); background-color: var(--bg-variable);">$MANAGER_IP</span> /quiet
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Start service
+</span>NET START WazuhSvc
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org6d34de7" class="outline-3">
+<h3 id="org6d34de7">Verify agent connection (on manager)</h3>
+<div class="outline-text-3" id="text-org6d34de7">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d131ac2972a74c8daeeb0bcf5dca6e53>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_d131ac2972a74c8daeeb0bcf5dca6e53=document.querySelector('button[name=btn_d131ac2972a74c8daeeb0bcf5dca6e53]');
+copyBtnbtn_d131ac2972a74c8daeeb0bcf5dca6e53.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List connected agents\n/var/ossec/bin/agent_control -l\n\n# Check agent status\n/var/ossec/bin/agent_control -i 001\n`);copyBtnbtn_d131ac2972a74c8daeeb0bcf5dca6e53.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d131ac2972a74c8daeeb0bcf5dca6e53.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">List connected agents
+</span>/var/ossec/bin/agent_control -l
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Check agent status
+</span>/var/ossec/bin/agent_control -i 001
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-org09e1ddd" class="outline-2">
+<h2 id="org09e1ddd">Key Components</h2>
+<div class="outline-text-2" id="text-org09e1ddd">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Component</th>
+<th scope="col" class="org-left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Wazuh Manager</td>
+<td class="org-left">Receives events from agents, applies rules, generates alerts</td>
+</tr>
+
+<tr>
+<td class="org-left">Wazuh Indexer</td>
+<td class="org-left">OpenSearch-based storage for events and alerts</td>
+</tr>
+
+<tr>
+<td class="org-left">Wazuh Dashboard</td>
+<td class="org-left">Web UI for querying events, viewing alerts, managing agents</td>
+</tr>
+
+<tr>
+<td class="org-left">Wazuh Agent</td>
+<td class="org-left">Lightweight process on monitored endpoints</td>
+</tr>
+
+<tr>
+<td class="org-left">Ruleset</td>
+<td class="org-left">XML rules defining what constitutes an alert</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org92fcc22" class="outline-2">
+<h2 id="org92fcc22">Configuration</h2>
+<div class="outline-text-2" id="text-org92fcc22">
+<p>
+Main config file: <code>/var/ossec/etc/ossec.conf</code>
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>XML</span><button class='copyBtn' name=btn_1513acb550344e7fb5757b3b39b6494f>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_1513acb550344e7fb5757b3b39b6494f=document.querySelector('button[name=btn_1513acb550344e7fb5757b3b39b6494f]');
+copyBtnbtn_1513acb550344e7fb5757b3b39b6494f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<!-- File integrity monitoring — add directories to watch -->\n<syscheck>\n  <frequency>43200</frequency>\n  <directories check_all=\"yes\">/etc,/usr/bin,/usr/sbin</directories>\n  <directories check_all=\"yes\" report_changes=\"yes\">/var/www/html</directories>\n</syscheck>\n\n<!-- Log collection — add sources -->\n<localfile>\n  <log_format>syslog</log_format>\n  <location>/var/log/auth.log</location>\n</localfile>\n\n<!-- Windows event log collection (in Windows agent config) -->\n<localfile>\n  <log_format>eventchannel</log_format>\n  <location>Security</location>\n</localfile>\n<localfile>\n  <log_format>eventchannel</log_format>\n  <location>Microsoft-Windows-Sysmon/Operational</location>\n</localfile>\n`);copyBtnbtn_1513acb550344e7fb5757b3b39b6494f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1513acb550344e7fb5757b3b39b6494f.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-xml"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">File integrity monitoring &#8212; add directories to watch</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+<span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">syscheck</span><span style="color: #989898;">&gt;</span>
+  <span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">frequency</span><span style="color: #989898;">&gt;</span><span style="color: #ffffff; background-color: #0d0e1c;">43200</span><span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">frequency</span><span style="color: #989898;">&gt;</span>
+  <span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">directories</span> <span style="color: #4ae2f0;">check_all</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">"yes"</span><span style="color: #989898;">&gt;</span><span style="color: #ffffff; background-color: #0d0e1c;">/etc,/usr/bin,/usr/sbin</span><span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">directories</span><span style="color: #989898;">&gt;</span>
+  <span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">directories</span> <span style="color: #4ae2f0;">check_all</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">"yes"</span> <span style="color: #4ae2f0;">report_changes</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">"yes"</span><span style="color: #989898;">&gt;</span><span style="color: #ffffff; background-color: #0d0e1c;">/var/www/html</span><span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">directories</span><span style="color: #989898;">&gt;</span>
+<span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">syscheck</span><span style="color: #989898;">&gt;</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Log collection &#8212; add sources</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+<span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">localfile</span><span style="color: #989898;">&gt;</span>
+  <span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">log_format</span><span style="color: #989898;">&gt;</span><span style="color: #ffffff; background-color: #0d0e1c;">syslog</span><span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">log_format</span><span style="color: #989898;">&gt;</span>
+  <span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">location</span><span style="color: #989898;">&gt;</span><span style="color: #ffffff; background-color: #0d0e1c;">/var/log/auth.log</span><span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">location</span><span style="color: #989898;">&gt;</span>
+<span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">localfile</span><span style="color: #989898;">&gt;</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Windows event log collection (in Windows agent config)</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+<span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">localfile</span><span style="color: #989898;">&gt;</span>
+  <span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">log_format</span><span style="color: #989898;">&gt;</span><span style="color: #ffffff; background-color: #0d0e1c;">eventchannel</span><span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">log_format</span><span style="color: #989898;">&gt;</span>
+  <span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">location</span><span style="color: #989898;">&gt;</span><span style="color: #ffffff; background-color: #0d0e1c;">Security</span><span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">location</span><span style="color: #989898;">&gt;</span>
+<span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">localfile</span><span style="color: #989898;">&gt;</span>
+<span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">localfile</span><span style="color: #989898;">&gt;</span>
+  <span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">log_format</span><span style="color: #989898;">&gt;</span><span style="color: #ffffff; background-color: #0d0e1c;">eventchannel</span><span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">log_format</span><span style="color: #989898;">&gt;</span>
+  <span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">location</span><span style="color: #989898;">&gt;</span><span style="color: #ffffff; background-color: #0d0e1c;">Microsoft-Windows-Sysmon/Operational</span><span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">location</span><span style="color: #989898;">&gt;</span>
+<span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">localfile</span><span style="color: #989898;">&gt;</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org5cb44f4" class="outline-2">
+<h2 id="org5cb44f4">Alert Levels</h2>
+<div class="outline-text-2" id="text-org5cb44f4">
+<p>
+Wazuh uses a numeric severity level 0–15:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Level</th>
+<th scope="col" class="org-left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">0–3</td>
+<td class="org-left">Informational / ignored</td>
+</tr>
+
+<tr>
+<td class="org-left">4–6</td>
+<td class="org-left">Low severity</td>
+</tr>
+
+<tr>
+<td class="org-left">7–9</td>
+<td class="org-left">Medium — worth investigating</td>
+</tr>
+
+<tr>
+<td class="org-left">10–12</td>
+<td class="org-left">High — likely threat</td>
+</tr>
+
+<tr>
+<td class="org-left">13–15</td>
+<td class="org-left">Critical</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org9c610e6" class="outline-2">
+<h2 id="org9c610e6">Custom Rules</h2>
+<div class="outline-text-2" id="text-org9c610e6">
+<p>
+Rules live in <code>/var/ossec/etc/rules/local_rules.xml</code>:
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>XML</span><button class='copyBtn' name=btn_e0fefe3e7f314ed9ba1383f073d2a65e>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_e0fefe3e7f314ed9ba1383f073d2a65e=document.querySelector('button[name=btn_e0fefe3e7f314ed9ba1383f073d2a65e]');
+copyBtnbtn_e0fefe3e7f314ed9ba1383f073d2a65e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<!-- Alert on any new user created -->\n<rule id=\"100001\" level=\"10\">\n  <if_sid>5901</if_sid>\n  <description>New user account created</description>\n</rule>\n\n<!-- Alert on SSH login from an unusual country (requires GeoIP) -->\n<rule id=\"100002\" level=\"10\">\n  <if_sid>5715</if_sid>\n  <geoip not_field=\"GeoIP.country_code2\">GB</geoip>\n  <description>SSH login from outside expected country</description>\n</rule>\n`);copyBtnbtn_e0fefe3e7f314ed9ba1383f073d2a65e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e0fefe3e7f314ed9ba1383f073d2a65e.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-xml"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Alert on any new user created</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+<span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">rule</span> <span style="color: #4ae2f0;">id</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">"100001"</span> <span style="color: #4ae2f0;">level</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">"10"</span><span style="color: #989898;">&gt;</span>
+  <span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">if_sid</span><span style="color: #989898;">&gt;</span><span style="color: #ffffff; background-color: #0d0e1c;">5901</span><span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">if_sid</span><span style="color: #989898;">&gt;</span>
+  <span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">description</span><span style="color: #989898;">&gt;</span><span style="color: #ffffff; background-color: #0d0e1c;">New user account created</span><span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">description</span><span style="color: #989898;">&gt;</span>
+<span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">rule</span><span style="color: #989898;">&gt;</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">&lt;!-- </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Alert on SSH login from an unusual country (requires GeoIP)</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"> --&gt;</span>
+<span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">rule</span> <span style="color: #4ae2f0;">id</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">"100002"</span> <span style="color: #4ae2f0;">level</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">"10"</span><span style="color: #989898;">&gt;</span>
+  <span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">if_sid</span><span style="color: #989898;">&gt;</span><span style="color: #ffffff; background-color: #0d0e1c;">5715</span><span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">if_sid</span><span style="color: #989898;">&gt;</span>
+  <span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">geoip</span> <span style="color: #4ae2f0;">not_field</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">"GeoIP.country_code2"</span><span style="color: #989898;">&gt;</span><span style="color: #ffffff; background-color: #0d0e1c;">GB</span><span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">geoip</span><span style="color: #989898;">&gt;</span>
+  <span style="color: #989898;">&lt;</span><span style="color: #f78fe7;">description</span><span style="color: #989898;">&gt;</span><span style="color: #ffffff; background-color: #0d0e1c;">SSH login from outside expected country</span><span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">description</span><span style="color: #989898;">&gt;</span>
+<span style="color: #989898;">&lt;</span><span style="color: #989898;">/</span><span style="color: #f78fe7;">rule</span><span style="color: #989898;">&gt;</span>
+</pre>
+</div></div>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3c36b75b21ea4eaba4b942c0b3e06ebd>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_3c36b75b21ea4eaba4b942c0b3e06ebd=document.querySelector('button[name=btn_3c36b75b21ea4eaba4b942c0b3e06ebd]');
+copyBtnbtn_3c36b75b21ea4eaba4b942c0b3e06ebd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Reload rules without restart\n/var/ossec/bin/ossec-control reload\n\n# Test rules against a log entry\n/var/ossec/bin/ossec-logtest\n`);copyBtnbtn_3c36b75b21ea4eaba4b942c0b3e06ebd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3c36b75b21ea4eaba4b942c0b3e06ebd.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Reload rules without restart
+</span>/var/ossec/bin/ossec-control reload
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Test rules against a log entry
+</span>/var/ossec/bin/ossec-logtest
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org51cca3d" class="outline-2">
+<h2 id="org51cca3d">Useful CLI Commands</h2>
+<div class="outline-text-2" id="text-org51cca3d">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b2dbed55c329484aa9f3974a1ba25f77>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_b2dbed55c329484aa9f3974a1ba25f77=document.querySelector('button[name=btn_b2dbed55c329484aa9f3974a1ba25f77]');
+copyBtnbtn_b2dbed55c329484aa9f3974a1ba25f77.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Service management\nsystemctl status wazuh-manager\nsystemctl restart wazuh-manager\n\n# Real-time alert stream\ntail -f /var/ossec/logs/alerts/alerts.log\n\n# JSON alerts (better for parsing)\ntail -f /var/ossec/logs/alerts/alerts.json\n\n# Check manager status\n/var/ossec/bin/ossec-control status\n\n# Run vulnerability scan on all agents\n/var/ossec/bin/agent_groups -l\n\n# Manually trigger FIM scan\n/var/ossec/bin/agent_control -r -a\n`);copyBtnbtn_b2dbed55c329484aa9f3974a1ba25f77.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b2dbed55c329484aa9f3974a1ba25f77.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Service management
+</span>systemctl status wazuh-manager
+systemctl restart wazuh-manager
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Real-time alert stream
+</span>tail -f /var/ossec/logs/alerts/alerts.log
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">JSON alerts (better for parsing)
+</span>tail -f /var/ossec/logs/alerts/alerts.json
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Check manager status
+</span>/var/ossec/bin/ossec-control status
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Run vulnerability scan on all agents
+</span>/var/ossec/bin/agent_groups -l
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Manually trigger FIM scan
+</span>/var/ossec/bin/agent_control -r -a
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org73d7e6a" class="outline-2">
+<h2 id="org73d7e6a">Tips</h2>
+<div class="outline-text-2" id="text-org73d7e6a">
+<ul class="org-ul">
+<li>Docker deployment is the fastest way to get the full stack
+running — the native install involves setting up the indexer
+and dashboard separately which is more involved</li>
+<li>For the Raspberry Pi home lab, the Docker single-node
+deployment works on 8GB RAM but keep the agent count low
+and set reasonable alert levels to avoid indexer pressure</li>
+<li>Windows agent with Sysmon forwarding gives significantly
+better endpoint visibility than Windows event logs alone —
+install Sysmon first, then configure the agent to forward
+the Sysmon operational channel</li>
+<li>FIM on <code>/var/www/html</code> (or IIS web root on Windows) is
+a practical detection for webshell drops</li>
+<li>The Wazuh TryHackMe room is a good orientation before
+deploying it in the home lab</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
+document.cookie = 'mode=dark'
+}
+document.cookie = 'light=modus-operandi-tinted'
+document.cookie = 'dark=modus-vivendi-tinted'
+/*
+;; nice-org-html.js
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+;; JS for html exported by et-org-html.el
+ */
+
+const preamble = document.getElementById("preamble");
+const content = document.getElementById("content");
+const postamble = document.getElementById("postamble");
+
+const controls = document.getElementById("view-controls");
+const toggleTocBtn = document.getElementById("toggle-toc");
+const gotoTopBtn = document.getElementById("goto-top");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const toc = document.getElementById("table-of-contents");
+
+// Get and parse options passed in cookie string
+const optCookie = document.cookie.split('; ').find(r => r.startsWith('options'));
+const options = {};
+if (optCookie) {
+  optCookie.split('=')[1].split('__').forEach(pair => {
+    const [key, val] = pair.split(':');
+    if (key && val) {
+      options[key] = val;
+    }
+  })
+}
+
+// Move sticky control bar (injected within preamble)
+document.body.insertBefore(controls, content);
+
+// Mode handling
+function getMode() {
+  let cookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+  return cookie && cookie.split("=")[1];
+}
+
+function setMode(mode) {
+  document.body.dataset.mode = mode;
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
+  document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
+  toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
+  document.cookie = 'mode=' + mode;
+}
+
+// Initially, set mode based on stored cookie
+let mode = getMode();
+if (mode && ["light", "dark"].includes(mode)) {
+  setMode(mode);
+} else {  
+  let prop = "prefers-color-scheme";
+  let pref = (mode === "query") && window.matchMedia &&
+    ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
+  setMode(pref || "dark"); // fallback: dark
+}
+
+// Mode toggling
+toggleModeBtn.addEventListener('click', () => {
+  setMode(document.body.dataset.mode === 'dark' ? 'light' : 'dark');
+})
+
+
+// Jump to top
+let scrollY = document.documentElement.scrollTop;
+window.addEventListener('scroll', () => {
+  let atTop = document.documentElement.scrollTop <= preamble.offsetHeight;
+  gotoTopBtn.dataset.show = !atTop + "";
+});
+gotoTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
+
+// Table-of-contents toggling
+if (toc) {
+  toggleTocBtn.dataset.show = 'true';
+  toggleTocBtn.addEventListener('click', () => {
+    let showingToc = document.body.dataset.toc;
+    scrollY = showingToc ? scrollY : document.documentElement.scrollTop;
+    if (showingToc) {
+      document.body.dataset.toc = '';
+      document.documentElement.scrollTop = scrollY;
+    } else {
+      let tocHeight =
+	Math.max(
+	  window.innerHeight - controls.offsetHeight,
+	  toc.offsetHeight
+	);
+      const header = document.getElementById("injected-header");
+      if (header && (scrollY > header.offsetHeight)) {
+	document.documentElement.scrollTop = preamble.offsetHeight;
+      }
+      toc.style.height = `${tocHeight}px`;
+      document.body.dataset.toc = 'true';
+    }
+    toc.addEventListener('click', () => {
+      if (document.body.dataset.toc) {
+	document.body.dataset.toc = '';
+	document.documentElement.scrollTop = scrollY;
+      }
+    })
+  })
+};
+
+// Instrument anchor linking for sticky control bar
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const target = document.querySelector(targetId);
+
+    setTimeout(() => {
+      const targetPos = target.getBoundingClientRect().top;
+      let offset = targetPos + document.documentElement.scrollTop;
+      offset -= controls.offsetHeight;
+      window.scrollTo({
+	top: offset,
+	behavior: "smooth"
+      });
+    }, 0);
+  });
+});
+
+function copyTextToClipboard(text) {
+  // Make invisible textarea
+  var textArea = document.createElement("textarea");
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = 0;
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+
+  // Copy contents into it
+  textArea.value = text;
+
+  // Try to copy from it to clipboard
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  var res;
+  try {
+    res = document.execCommand('copy');
+  } catch (err) {
+    res = false;
+  }
+
+  // Remove invisible textarea
+  document.body.removeChild(textArea);
+
+  return res;
+}
+
+// Handle the default header / footer drawers
+const header = document.getElementById("generated-header");
+const footer = document.getElementById("generated-footer");
+
+if (header) {
+  let toggle = header.querySelector("header nav input.nav-toggle");
+  if (toggle) { toggle.checked = false; }
+}
+if (footer) {
+  let nav = footer.querySelector("nav");
+  let toggle = nav && nav.querySelector(".nav-toggle");
+  let navList = nav && nav.querySelector(".nav-list");
+  let navElem = navList && [...navList.querySelectorAll(".nav-item")];
+  let numLink = navElem && navElem.length;
+  if (numLink) {
+    toggle.checked = false;
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+	setTimeout(() => window.scrollTo({
+	  behavior: 'smooth',
+	  top: document.body.scrollHeight	  
+	}), 88);
+      }
+   });
+  }
+}
+
+function autoCompact() {
+  var anchor, links, overlap, trivial;
+  const domCompute = (node) => {
+    if (node) {
+      anchor = node.querySelector('.nav-title, .nav-author');
+      links = node.querySelector('.nav-list');
+      overlap = links.offsetLeft - 5 <= anchor.offsetLeft + anchor.offsetWidth;	
+      trivial = links.offsetLeft === anchor.offsetLeft;
+    }
+  };
+  let mediaMatch = window.matchMedia('(max-width: 768px)').matches;
+  [header, footer].forEach(e => {
+    if (e) {
+      if (mediaMatch) {
+	e.classList.add('compact');
+      } else {
+	domCompute(e);
+	if (overlap && !trivial) {
+	  e.classList.add('compact');
+	} else {	
+	  let clone = e.cloneNode(true);
+	  clone.style.top = '-2000px';
+	  clone.style.maxHeight = '0px';
+	  clone.classList.remove('compact');
+	  e.parentNode.insertBefore(clone, e);
+	  domCompute(clone);
+	  let toggle = e.querySelector('.nav-toggle');
+	  if (!overlap && toggle && !toggle.checked) {
+	    e.classList.remove('compact');
+	  }
+	  e.parentNode.removeChild(clone);
+	}
+      }
+    }
+  })
+}
+
+if ((header || footer)) {
+  if (options.hasOwnProperty('layout')) {
+    [header, footer].forEach(e => e ? e.classList.add(options.layout) : null);
+  } else {
+    autoCompact();
+    window.addEventListener('resize', autoCompact);
+  }
+}
+
+if (options.hasOwnProperty('src-lang') && options['src-lang'] == 't') {
+  let labels = [...document.querySelectorAll('.srcLangLabel')];
+  labels.forEach(l => l.style.display = 'inline-block');
+}
+
+if (options.hasOwnProperty('collapsing') && options.collapsing == 't') {
+  let levels = [2, 3, 4, 5, 6];
+  let containerPrefix = 'outline-container-';
+  levels.forEach(l => {
+    let containers = [...document.querySelectorAll(`.outline-${l}`)];
+    containers.forEach(c => {
+      let id = c.id.slice(containerPrefix.length);
+      let headline = document.getElementById(id);
+      let siblings = [...c.children].filter(child => child.id != id);
+      headline.classList.add('collapsible');
+      headline.addEventListener('click', () => {	
+	if (headline.classList.contains('collapsed')) {
+	  headline.classList.remove('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.remove('hidden');
+	  });	  
+	} else {
+	  headline.classList.add('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.add('hidden');
+	  });
+	}
+      })
+    })
+  })
+}
+/*]]>*/-->
+</script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
+</div>
+</body>
+</html>

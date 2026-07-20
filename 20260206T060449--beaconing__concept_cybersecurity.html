@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 10:43 -->
+<!-- 2026-07-20 Mon 14:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Beaconing</title>
@@ -919,11 +919,11 @@ like organic traffic.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_cc00e49fcee14756b13b25ce65ad58c2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f02b15aca1af4278a8eca0b98521f353>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_cc00e49fcee14756b13b25ce65ad58c2=document.querySelector('button[name=btn_cc00e49fcee14756b13b25ce65ad58c2]');
-copyBtnbtn_cc00e49fcee14756b13b25ce65ad58c2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Fixed interval:  C2 every 60s exactly → high beacon score in RITA\nJittered:        C2 every 45–75s (±25%) → harder to detect\nSleep callback:  beacon only when idle, user not present\n`);copyBtnbtn_cc00e49fcee14756b13b25ce65ad58c2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cc00e49fcee14756b13b25ce65ad58c2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f02b15aca1af4278a8eca0b98521f353=document.querySelector('button[name=btn_f02b15aca1af4278a8eca0b98521f353]');
+copyBtnbtn_f02b15aca1af4278a8eca0b98521f353.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Fixed interval:  C2 every 60s exactly → high beacon score in RITA\nJittered:        C2 every 45–75s (±25%) → harder to detect\nSleep callback:  beacon only when idle, user not present\n`);copyBtnbtn_f02b15aca1af4278a8eca0b98521f353.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f02b15aca1af4278a8eca0b98521f353.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1009,11 +1009,11 @@ at suspiciously consistent intervals.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_4cc88b89749a4e9ab394d50536f5a6c8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_1747bfa6f7b74b2896182c81de94dd31>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4cc88b89749a4e9ab394d50536f5a6c8=document.querySelector('button[name=btn_4cc88b89749a4e9ab394d50536f5a6c8]');
-copyBtnbtn_4cc88b89749a4e9ab394d50536f5a6c8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`RITA indicators:\n— High beacon score (0.9+ is very suspicious)\n— Same source/destination IP pair, same port\n— Consistent connection duration\n— Low variance in bytes transferred per session\n`);copyBtnbtn_4cc88b89749a4e9ab394d50536f5a6c8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4cc88b89749a4e9ab394d50536f5a6c8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1747bfa6f7b74b2896182c81de94dd31=document.querySelector('button[name=btn_1747bfa6f7b74b2896182c81de94dd31]');
+copyBtnbtn_1747bfa6f7b74b2896182c81de94dd31.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`RITA indicators:\n— High beacon score (0.9+ is very suspicious)\n— Same source/destination IP pair, same port\n— Consistent connection duration\n— Low variance in bytes transferred per session\n`);copyBtnbtn_1747bfa6f7b74b2896182c81de94dd31.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1747bfa6f7b74b2896182c81de94dd31.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1034,11 +1034,11 @@ See <a href="../org/20260314T005746==rita--real-intelligence-threat-analytics__c
 <h3 id="orgc1e3cc9">Manual detection in Zeek/Brim</h3>
 <div class="outline-text-3" id="text-orgc1e3cc9">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_179be7c13e4e4d3f88a7f72d27ac4d70>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_fc9664ac28124e349106c6fb7e9eb13a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_179be7c13e4e4d3f88a7f72d27ac4d70=document.querySelector('button[name=btn_179be7c13e4e4d3f88a7f72d27ac4d70]');
-copyBtnbtn_179be7c13e4e4d3f88a7f72d27ac4d70.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# In conn.log — look for repeated connections to same destination\n_path == \"conn\" | count() by id.orig_h, id.resp_h, id.resp_p | sort -r count\n\n# Long-duration connections (persistent implant keeping session open)\n_path == \"conn\" | duration > 1h | sort -r duration\n\n# Consistent small packet sizes (command polling)\n_path == \"conn\" | where orig_bytes < 500 | count() by id.resp_h | sort -r count\n`);copyBtnbtn_179be7c13e4e4d3f88a7f72d27ac4d70.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_179be7c13e4e4d3f88a7f72d27ac4d70.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_fc9664ac28124e349106c6fb7e9eb13a=document.querySelector('button[name=btn_fc9664ac28124e349106c6fb7e9eb13a]');
+copyBtnbtn_fc9664ac28124e349106c6fb7e9eb13a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# In conn.log — look for repeated connections to same destination\n_path == \"conn\" | count() by id.orig_h, id.resp_h, id.resp_p | sort -r count\n\n# Long-duration connections (persistent implant keeping session open)\n_path == \"conn\" | duration > 1h | sort -r duration\n\n# Consistent small packet sizes (command polling)\n_path == \"conn\" | where orig_bytes < 500 | count() by id.resp_h | sort -r count\n`);copyBtnbtn_fc9664ac28124e349106c6fb7e9eb13a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fc9664ac28124e349106c6fb7e9eb13a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1058,11 +1058,11 @@ _path == "conn" | where orig_bytes &lt; 500 | count() by id.resp_h | sort -r cou
 <h3 id="orgf8f90bf">DNS beaconing indicators</h3>
 <div class="outline-text-3" id="text-orgf8f90bf">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_bced6b54c0bd4658b3ee806f4aa71dc8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9e6f4cfa4b98457588992b754852d7f9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bced6b54c0bd4658b3ee806f4aa71dc8=document.querySelector('button[name=btn_bced6b54c0bd4658b3ee806f4aa71dc8]');
-copyBtnbtn_bced6b54c0bd4658b3ee806f4aa71dc8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# High-entropy subdomain queries (DGA or DNS tunnelling)\n_path == \"dns\" | len(query) > 50\n\n# Unusually high DNS query rate to same domain\n_path == \"dns\" | count() by query | sort -r count\n\n# NXDOMAIN flood (DGA domain generation)\n_path == \"dns\" | rcode_name == \"NXDOMAIN\" | count() by id.orig_h\n`);copyBtnbtn_bced6b54c0bd4658b3ee806f4aa71dc8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bced6b54c0bd4658b3ee806f4aa71dc8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9e6f4cfa4b98457588992b754852d7f9=document.querySelector('button[name=btn_9e6f4cfa4b98457588992b754852d7f9]');
+copyBtnbtn_9e6f4cfa4b98457588992b754852d7f9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# High-entropy subdomain queries (DGA or DNS tunnelling)\n_path == \"dns\" | len(query) > 50\n\n# Unusually high DNS query rate to same domain\n_path == \"dns\" | count() by query | sort -r count\n\n# NXDOMAIN flood (DGA domain generation)\n_path == \"dns\" | rcode_name == \"NXDOMAIN\" | count() by id.orig_h\n`);copyBtnbtn_9e6f4cfa4b98457588992b754852d7f9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9e6f4cfa4b98457588992b754852d7f9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1082,11 +1082,11 @@ _path == "dns" | rcode_name == "NXDOMAIN" | count() by id.orig_h
 <h3 id="orga0e418f">Splunk detection</h3>
 <div class="outline-text-3" id="text-orga0e418f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SPLUNK</span><button class='copyBtn' name=btn_02180ad2a8754346ba1515635652adc5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SPLUNK</span><button class='copyBtn' name=btn_ab943518c3f84af3aed90a2d45a0c55f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_02180ad2a8754346ba1515635652adc5=document.querySelector('button[name=btn_02180ad2a8754346ba1515635652adc5]');
-copyBtnbtn_02180ad2a8754346ba1515635652adc5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Find hosts with consistent outbound connection intervals\nindex=network sourcetype=zeek:conn\n| bin _time span=1m\n| stats count by _time, id_orig_h, id_resp_h\n| eventstats stdev(count) as stddev by id_orig_h, id_resp_h\n| where stddev < 2\n| table id_orig_h, id_resp_h, stddev\n`);copyBtnbtn_02180ad2a8754346ba1515635652adc5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_02180ad2a8754346ba1515635652adc5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ab943518c3f84af3aed90a2d45a0c55f=document.querySelector('button[name=btn_ab943518c3f84af3aed90a2d45a0c55f]');
+copyBtnbtn_ab943518c3f84af3aed90a2d45a0c55f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Find hosts with consistent outbound connection intervals\nindex=network sourcetype=zeek:conn\n| bin _time span=1m\n| stats count by _time, id_orig_h, id_resp_h\n| eventstats stdev(count) as stddev by id_orig_h, id_resp_h\n| where stddev < 2\n| table id_orig_h, id_resp_h, stddev\n`);copyBtnbtn_ab943518c3f84af3aed90a2d45a0c55f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ab943518c3f84af3aed90a2d45a0c55f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1111,11 +1111,11 @@ helps tune detection:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f5ee084dc49a450c8ad9c871f876079d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_5d84254c94dc4b96897cfaef78eca431>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f5ee084dc49a450c8ad9c871f876079d=document.querySelector('button[name=btn_f5ee084dc49a450c8ad9c871f876079d]');
-copyBtnbtn_f5ee084dc49a450c8ad9c871f876079d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— Jitter: randomise the interval (±20–50%)\n— Sleep: beacon only during business hours to blend with user traffic\n— Domain fronting: route through legitimate CDN (Cloudflare, AWS)\n— Malleable C2 profiles (Cobalt Strike): customise HTTP headers,\n  URI patterns, and user-agents to mimic legitimate traffic\n— Fast-flux DNS: rotate C2 IP rapidly to evade IP blocklists\n— Protocol mimicry: make beacon traffic look like known-good app\n`);copyBtnbtn_f5ee084dc49a450c8ad9c871f876079d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f5ee084dc49a450c8ad9c871f876079d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5d84254c94dc4b96897cfaef78eca431=document.querySelector('button[name=btn_5d84254c94dc4b96897cfaef78eca431]');
+copyBtnbtn_5d84254c94dc4b96897cfaef78eca431.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— Jitter: randomise the interval (±20–50%)\n— Sleep: beacon only during business hours to blend with user traffic\n— Domain fronting: route through legitimate CDN (Cloudflare, AWS)\n— Malleable C2 profiles (Cobalt Strike): customise HTTP headers,\n  URI patterns, and user-agents to mimic legitimate traffic\n— Fast-flux DNS: rotate C2 IP rapidly to evade IP blocklists\n— Protocol mimicry: make beacon traffic look like known-good app\n`);copyBtnbtn_5d84254c94dc4b96897cfaef78eca431.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5d84254c94dc4b96897cfaef78eca431.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

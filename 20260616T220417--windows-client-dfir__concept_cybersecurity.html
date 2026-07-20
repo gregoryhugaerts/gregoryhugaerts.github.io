@@ -1,0 +1,1960 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-07-20 Mon 14:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>windows client DFIR</title>
+<meta name="author" content="termux" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<style type='text/css'>
+<!--/*--><![CDATA[/*><!--*/
+/* nice-org-html.css
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+*/
+
+/* basic layout ***************************************************************/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-family: Sans;
+    line-height: 1.3;
+    font-size: calc(15px + 0.390625vw);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: #999; /* overwritten with theme --bg */
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family:
+	-apple-system,
+	BlinkMacSystemFont,
+	segoe ui,
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	open sans,
+	helvetica neue,
+	sans-serif,
+	system-ui
+}
+
+#preamble,
+#postamble {
+    width: 100%;
+}
+
+#content {
+    width: 80%;
+    max-width: 80ch;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex: 1;
+}
+
+/* custom facing **************************************************************/
+/* The variable values are injected by CSS pre-processing in et-org-html.el */
+:root {
+    --bc-tb: #000000;
+    --bc-block: #595959;
+    --clr: #000000;
+    --clr-tb-hd: #000000;
+    --clr-code: #000000;
+    --bg: #fbf7f0;
+    --bg-code: #cab9b2;
+    --bg-tb-hd: #cab9b2;
+    --bg-block: #efe9dd;
+    --clr-link: #531ab6;
+    --clr-title: #000000;
+    --clr-todo: #00598b;
+    --bg-todo: initial;
+    --clr-done: #7f0000;
+    --bg-done: initial;
+    --ts-clr: #0031a9;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #0031a9;
+    --bg-constant: initial;
+    --clr-constant: #531ab6;
+    --bg-comment: initial;
+    --clr-comment: #7f0000;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #7f0000;
+    --bg-function: initial;
+    --clr-function: #602938;
+    --bg-variable: initial;
+    --clr-variable: #00603f;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #894000;
+    --bg-doc: initial;
+    --clr-doc: #304463;
+    --bg-builtin: initial;
+    --clr-builtin: #721045;
+    --bg-string: initial;
+    --clr-string: #00598b;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+body[data-mode='light'] {
+    background: var(--bg);
+    color: var(--clr);
+}
+
+body[data-mode='dark'] {
+    background: var(--bg);
+    color: var(--clr);
+    --bc-tb: #ffffff;
+    --bc-block: #989898;
+    --clr: #ffffff;
+    --clr-code: #ffffff;
+    --clr-tb-hd: #ffffff;
+    --bg: #0d0e1c;
+    --bg-tb-hd: #484d67;
+    --bg-code: #484d67;
+    --bg-block: #1d2235;
+    --clr-link: #b6a0ff;
+    --clr-title: #ffffff;
+    --clr-todo: #2fafff;
+    --bg-todo: initial;
+    --clr-done: #ef8386;
+    --bg-done: initial;
+    --ts-clr: #79a8ff;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #79a8ff;
+    --bg-constant: initial;
+    --clr-constant: #b6a0ff;
+    --bg-comment: initial;
+    --clr-comment: #ef8386;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #ef8386;
+    --bg-function: initial;
+    --clr-function: #f78fe7;
+    --bg-variable: initial;
+    --clr-variable: #4ae2f0;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #ff7f86;
+    --bg-doc: initial;
+    --clr-doc: #9ac8e0;
+    --bg-builtin: initial;
+    --clr-builtin: #feacd0;
+    --bg-string: initial;
+    --clr-string: #2fafff;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+/* exceptions for badly rendering themes **************************************/
+body[data-theme='leuven'],
+body[data-theme='leuven-dark'] {
+    --bg-code: var(--bg-block);
+}
+
+/* ootb page layout ***********************************************************/
+#view-controls {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    color: var(--clr-code);
+    height: 2.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    z-index: 100;
+    border-radius: 5px; /* Rounded corners */
+}
+#toggle-mode {
+    position: absolute;
+    right: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#goto-top {
+    display: none;
+}
+#goto-top[data-show="true"] {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#toggle-toc {
+    display: none;
+}
+#toggle-toc[data-show="true"] {
+    position: absolute;
+    left: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+
+#toggle-toc:hover,
+#goto-top:hover,
+#toggle-mode:hover {
+    cursor: pointer;
+}
+
+#table-of-contents {
+    display: none;
+}
+#table-of-contents[data-show="true"] {
+    width: 80%;
+    max-width: 80rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: var(--bg);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#table-of-contents::-webkit-scrollbar {
+    display: none;
+}
+
+body[data-toc="true"] #content * {
+    display: none;
+}
+body[data-toc="true"] #content #table-of-contents,
+body[data-toc="true"] #content #table-of-contents * {
+    display: block;
+}
+
+
+/* misc elements **************************************************************/
+
+hr {
+    height: 0;
+    color: inherit;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+    font-family:
+	Menlo,
+	ui-monospace,
+	SFMono-Regular,
+	Consolas,
+	'Liberation Mono',
+	monospace;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+}
+
+summary {
+    display: list-item;
+}
+
+h1 {
+    color: var(--clr-title);
+    text-align: center;
+}
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+code {
+    color: var(--clr-code);
+    background: var(--bg-code);
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+pre::-webkit-scrollbar {
+    display: none;
+}
+
+.todo {
+    color: var(--clr-todo);
+    background: var(--bg-todo);
+}
+
+.done {
+    color: var(--clr-done);
+    background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+    font-size: 0.8rem;
+    color: var(--clr-ts);
+}
+
+table {
+    width: 100%;
+    border: 2px solid var(--bc-tb);
+}
+
+thead {
+    color: var(--clr-tb-hd);
+    background: var(--bg-tb-hd);
+}
+
+td, th {
+    border: thin solid var(--bc-tb);
+}
+
+li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#text-table-of-contents li a:before {
+    content: "• "
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-link);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.MathJax_Display {
+    font-size: 1.25em;
+}
+
+img {
+    max-width: 100%;
+}
+
+pre {
+    padding: 1rem;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-block);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+.org-src-wrapper {
+    position: relative;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+}
+
+.org-src-bar {
+    position: relative;
+    top: 0rem;
+    width: 100%;
+    background: var(--bg-code);
+    border-radius: 0.5rem;
+    text-align: right;
+    min-height: 1rem;
+}
+
+.org-src-wrapper .org-src-container {
+    position: relative;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+    z-index: 0;
+}
+
+.org-src-wrapper .org-src-container pre.src {
+    border: none !important;
+    background: var(--bg-code) !important;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding-bottom: 1.6rem;
+}
+
+.org-src-wrapper .org-src-bar .srcLangLabel {
+    top: 0rem;
+    right: 1.6rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    z-index: 1;
+    display: none;
+}
+
+.org-src-wrapper .org-src-bar .copyBtn {
+    top: 0rem;
+    right: 0.1rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-right: 0.7rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+.org-src-wrapper .copyBtn:hover {
+    opacity: 1;
+}
+
+.org-src-wrapper .copyBtn i {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+}
+
+.admonition {
+    margin: 0.2rem;
+    color: inherit;
+    border-left: .25rem solid;
+}
+.admonition-title {
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.admonition-content > p {
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.admonition.note {
+    border-left-color: var(--clr-note);
+}
+.admonition-title.note {
+    color: var(--clr-note);
+}
+.admonition-title.note:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-note);
+    mask-size: cover;    
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path class="admonition-icon-note" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+.admonition-icon-note {
+    fill: var(--clr-note);
+}
+
+.admonition.tip {
+    border-left-color: var(--clr-tip);
+}
+.admonition-title.tip {
+    color: var(--clr-tip);
+}
+.admonition-title.tip:before {
+    content: '';
+    fill: var(--clr-tip);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-tip);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>');    
+}
+
+.admonition.important {
+    border-left-color: var(--clr-important);
+}
+.admonition-title.important {
+    color: var(--clr-important);
+}
+.admonition-title.important:before {
+    content: '';
+    fill: var(--clr-important);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-important);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');    
+}
+
+.admonition.warning {
+    border-left-color: var(--clr-warning);
+}
+.admonition-title.warning {
+    color: var(--clr-warning);
+}
+.admonition-title.warning:before {
+    content: '';
+    color: var(--clr-warning);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-warning);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');
+}
+
+
+.admonition.caution {
+    border-left-color: var(--clr-caution);
+}
+.admonition-title.caution {
+    color: var(--clr-caution);
+}
+.admonition-title.caution:before {
+    content: '';
+    fill: var(--clr-caution);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-caution);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+/* responsive layouts *********************************************************/
+
+@media only screen and (max-width: 768px) {
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #view-controls {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+    }
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+
+/* generated header and footer ************************************************/
+
+#generated-header,
+#generated-footer {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 1;
+}
+.generated header {
+    top: 0;
+    left: 0;
+}
+.generated footer {
+    bottom: 0;
+    left: 0;
+}
+.generated header a,
+.generated footer a {
+    display: inline;
+    color: var(--clr-title);
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+.generated header a:hover,
+.generated footer a:hover {
+    color: var(--clr-link);
+}
+
+.generated header nav {
+    position: relative;
+    margin-top: 1rem;
+    top: 0;
+    left: 0;
+}
+.generated footer nav {
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.generated .separator {
+    display: block;
+    width: 111%;
+    margin-left: -5.5%;
+    max-width: 100vw;
+    height: 0.125rem;
+    background: var(--bg-code);
+}
+
+.generated a .nav-title,
+.generated a .nav-author {
+    display: inline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 10rem;
+}
+
+.generated .nav-title {
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.generated .nav-toggle {
+    display: none;
+}
+.generated .nav-button {
+    display: none;
+}
+.generated .nav-list {
+    overflow-y: hidden;
+    display: block;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.generated .nav-item {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.generated .nav-link {
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.generated .nav-toggle {
+    max-height: 0;
+    visibility: hidden;
+    overflow-y: hidden;
+}
+
+.generated header .separator {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.generated footer .separator {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.generated .menu-sep {
+    display: none;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.generated footer {
+    padding-bottom: 1rem;
+}
+
+.generated.compact footer {
+    padding-bottom: 0;
+}
+
+.generated.compact header .separator {
+    margin-top: 0;
+    margin-bottom:0;
+}
+.generated.compact footer .separator {
+    margin-bottom: 1rem;
+}
+
+.generated.compact .nav-toggle {
+    visibility: visible;
+}
+
+.generated.compact .nav-toggle + label span::before {
+    transition: all 0.2s ease-in;
+}
+.generated.compact .nav-toggle:checked + label span::before {
+    transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+    transition: all 0.2s ease;
+}
+
+.generated.compact .menu-sep {
+    display: flex;
+    max-height: 0rem;
+}
+.generated.compact .nav-toggle:checked + label + .menu-sep {
+    display: block;
+    position: relative;
+    max-height: 1rem;
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-list {
+    float: none !important;
+    position: relative;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+.generated.compact .nav-toggle:checked + label ~ .nav-list {
+    display: block;
+    max-height: 100rem;
+    overflow-y: hidden;
+}
+.generated.compact header .nav-toggle:checked + label ~ .nav-list {
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-button {
+    display: inline;
+    position: relative;
+    float: right;
+    font-size: 1rem;
+}
+.generated.compact .nav-button span::before {
+    display: inline-block;
+    content: '\2807';
+    font-size: 2rem;
+    transform: translateX(0.25rem) translateY(-0.5rem);
+}
+
+.generated.compact .nav-item {
+    float: none !important;
+    text-align: center !important;
+}
+.generated.compact .nav-link {
+    line-height: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    float: none !important;
+}
+
+.generated.compact footer .separator.menu-sep {
+    margin-bottom: -1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.collapsible:hover {
+    cursor: pointer;
+}
+
+.collapsible.collapsed::after {
+    display: inline-block;
+    content: '...';
+}
+/*]]>*/-->
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">windows client DFIR</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgf43588c">1. First Response — Live System</a>
+<ul>
+<li><a href="#orge71784b">Memory Acquisition</a></li>
+<li><a href="#org24c77e9">Artifact Collection</a></li>
+</ul>
+</li>
+<li><a href="#org86a8221">2. Key Artifact Locations</a>
+<ul>
+<li><a href="#org2f05aab">Event Logs</a></li>
+<li><a href="#org108f123">Prefetch</a></li>
+<li><a href="#org05289f1">Registry — User Activity</a></li>
+<li><a href="#orgf7c2ee6">Registry — System and Persistence</a></li>
+<li><a href="#org2bea8e2">Shimcache and Amcache</a></li>
+<li><a href="#org9b8add0">Jump Lists and LNK Files</a></li>
+<li><a href="#org3bde4e1">Browser Artifacts</a></li>
+<li><a href="#orgc7e1880">USB History</a></li>
+</ul>
+</li>
+<li><a href="#orgd0e517e">3. Timeline Reconstruction</a></li>
+<li><a href="#orgb8fefd9">4. Common Incident Patterns</a>
+<ul>
+<li><a href="#orgb33d7a8">Malware Execution</a></li>
+<li><a href="#orgdb71667">Credential Theft</a></li>
+<li><a href="#orga454fe6">Persistence</a></li>
+<li><a href="#org4b33736">Lateral Movement</a></li>
+</ul>
+</li>
+<li><a href="#org897adb9">5. Eric Zimmerman Tools Reference</a></li>
+<li><a href="#orgb00ab65">Tips</a></li>
+</ul>
+</div>
+</div>
+<p>
+DFIR methodology for Windows endpoints. Covers both live system
+investigation and post-fact artifact analysis. Live investigations
+prioritise volatile data capture before it is lost; post-fact
+investigations work from collected artifacts, exported logs, or a
+disk image.
+</p>
+
+<p>
+Related: <a href="../org/20260212T065120==dfir--digital-forensics-and-incidence-response__concept_cybersecurity.html">DFIR</a>
+         <a href="../org/20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a>
+         <a href="../org/20260206T060445--core-windows-processes__cybersecurity.html">Core Windows Processes</a>
+         <a href="../org/20260213T110700--fireeye-redline__cybersecurity_tool.html">KAPE</a>
+         <a href="../org/20260213T110634--kape__cybersecurity_tool.html">Autopsy</a>
+         <a href="../org/20260213T110733--volatility__cybersecurity_tool.html">Volatility</a>
+         <a href="../org/20260212T065120==dfir--digital-forensics-and-incidence-response__concept_cybersecurity.html">dfir  Digital Forensics and Incidence response</a>
+</p>
+<div id="outline-container-orgf43588c" class="outline-2">
+<h2 id="orgf43588c">1. First Response — Live System</h2>
+<div class="outline-text-2" id="text-orgf43588c">
+<p>
+Before touching anything document the system state. Note the
+system time first — everything else is relative to it.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_355969e4ed04459385dfd4e1266ea0eb>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_355969e4ed04459385dfd4e1266ea0eb=document.querySelector('button[name=btn_355969e4ed04459385dfd4e1266ea0eb]');
+copyBtnbtn_355969e4ed04459385dfd4e1266ea0eb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Time and identity\ndate /t & time /t\nhostname\nquery user\nwhoami\n\n# Volatile state — capture before anything changes\ntasklist /svc                           # running processes\nnetstat -ano                            # active connections\nnet use                                 # mapped drives\nnet share                               # active shares\nwmic startup list full                  # startup items\nipconfig /all                           # network config\n`);copyBtnbtn_355969e4ed04459385dfd4e1266ea0eb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_355969e4ed04459385dfd4e1266ea0eb.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Time and identity
+</span>date /t &amp; <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">time</span> /t
+hostname
+query user
+whoami
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Volatile state &#8212; capture before anything changes
+</span>tasklist /svc                           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">running processes
+</span>netstat -ano                            <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">active connections
+</span>net use                                 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">mapped drives
+</span>net share                               <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">active shares
+</span>wmic startup list full                  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">startup items
+</span>ipconfig /all                           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">network config</span>
+</pre>
+</div></div>
+</div>
+<div id="outline-container-orge71784b" class="outline-3">
+<h3 id="orge71784b">Memory Acquisition</h3>
+<div class="outline-text-3" id="text-orge71784b">
+<p>
+Capture RAM before rebooting or shutting down. Lost on restart.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6dfa73aa9d3c4bea84e9d3745acf2646>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_6dfa73aa9d3c4bea84e9d3745acf2646=document.querySelector('button[name=btn_6dfa73aa9d3c4bea84e9d3745acf2646]');
+copyBtnbtn_6dfa73aa9d3c4bea84e9d3745acf2646.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Magnet RAM Capture — GUI, save to external drive\n# Winpmem — command line\nwinpmem_mini_x64.exe memory.raw\n\n# RamCapture x64 — GUI alternative\n# Always save to external drive — never write to suspect system\n`);copyBtnbtn_6dfa73aa9d3c4bea84e9d3745acf2646.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6dfa73aa9d3c4bea84e9d3745acf2646.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Magnet RAM Capture &#8212; GUI, save to external drive
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Winpmem &#8212; command line
+</span>winpmem_mini_x64.exe memory.raw
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">RamCapture x64 &#8212; GUI alternative
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Always save to external drive &#8212; never write to suspect system</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org24c77e9" class="outline-3">
+<h3 id="org24c77e9">Artifact Collection</h3>
+<div class="outline-text-3" id="text-org24c77e9">
+<p>
+KAPE is the fastest way to collect a consistent artifact set
+from a live system:
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_daad60e5eb5d422da60fb45bf77506e8>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_daad60e5eb5d422da60fb45bf77506e8=document.querySelector('button[name=btn_daad60e5eb5d422da60fb45bf77506e8]');
+copyBtnbtn_daad60e5eb5d422da60fb45bf77506e8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Gkape — GUI\n# Select Target: !BasicCollection or !SANS_Triage\n# Select Module: as appropriate\n# Output to external drive\n\n# Command line\nkape.exe --tsource C: --tdest E:\\output --target !BasicCollection\n`);copyBtnbtn_daad60e5eb5d422da60fb45bf77506e8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_daad60e5eb5d422da60fb45bf77506e8.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Gkape &#8212; GUI
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Select Target: !BasicCollection or !SANS_Triage
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Select Module: as appropriate
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Output to external drive
+</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Command line
+</span>kape.exe --tsource C: --tdest E:\output --target !BasicCollection
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-org86a8221" class="outline-2">
+<h2 id="org86a8221">2. Key Artifact Locations</h2>
+<div class="outline-text-2" id="text-org86a8221">
+</div>
+<div id="outline-container-org2f05aab" class="outline-3">
+<h3 id="org2f05aab">Event Logs</h3>
+<div class="outline-text-3" id="text-org2f05aab">
+<p>
+Primary source for user and system activity.
+See <a href="../org/20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a> for full Event ID reference.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_720f3b8ca664450d884068dd5a2c1117>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_720f3b8ca664450d884068dd5a2c1117=document.querySelector('button[name=btn_720f3b8ca664450d884068dd5a2c1117]');
+copyBtnbtn_720f3b8ca664450d884068dd5a2c1117.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`C:\\Windows\\System32\\winevt\\Logs\\\n`);copyBtnbtn_720f3b8ca664450d884068dd5a2c1117.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_720f3b8ca664450d884068dd5a2c1117.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">C:\Windows\System32\winevt\Logs\
+</pre>
+</div></div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Log</th>
+<th scope="col" class="org-left">Key Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Security.evtx</td>
+<td class="org-left">Logon/logoff, privilege use, account changes</td>
+</tr>
+
+<tr>
+<td class="org-left">System.evtx</td>
+<td class="org-left">Service start/stop, driver events, crashes</td>
+</tr>
+
+<tr>
+<td class="org-left">Application.evtx</td>
+<td class="org-left">Application errors and events</td>
+</tr>
+
+<tr>
+<td class="org-left">PowerShell/Operational.evtx</td>
+<td class="org-left">PowerShell execution</td>
+</tr>
+
+<tr>
+<td class="org-left">Sysmon/Operational.evtx</td>
+<td class="org-left">Process, network, file events (if Sysmon deployed)</td>
+</tr>
+
+<tr>
+<td class="org-left">TaskScheduler/Operational.evtx</td>
+<td class="org-left">Scheduled task creation and execution</td>
+</tr>
+
+<tr>
+<td class="org-left">TerminalServices-LocalSessionManager</td>
+<td class="org-left">RDP session activity</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org108f123" class="outline-3">
+<h3 id="org108f123">Prefetch</h3>
+<div class="outline-text-3" id="text-org108f123">
+<p>
+Proves execution — file name, run count, first and last run time.
+Survives executable deletion.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_4416bf60027c444caba6f3162067dc4b>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_4416bf60027c444caba6f3162067dc4b=document.querySelector('button[name=btn_4416bf60027c444caba6f3162067dc4b]');
+copyBtnbtn_4416bf60027c444caba6f3162067dc4b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`C:\\Windows\\Prefetch\\*.pf\n`);copyBtnbtn_4416bf60027c444caba6f3162067dc4b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4416bf60027c444caba6f3162067dc4b.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">C:\Windows\Prefetch\*.pf
+</pre>
+</div></div>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_795fb81bd2cb40519e3546ebf21ceae0>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_795fb81bd2cb40519e3546ebf21ceae0=document.querySelector('button[name=btn_795fb81bd2cb40519e3546ebf21ceae0]');
+copyBtnbtn_795fb81bd2cb40519e3546ebf21ceae0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Parse with PECmd (Eric Zimmerman)\nPECmd.exe -d C:\\Windows\\Prefetch --csv output\\\nPECmd.exe -f C:\\Windows\\Prefetch\\MALWARE.EXE-XXXXXXXX.pf\n\n# Look for:\n# — Executables run from \\Temp\\, \\AppData\\, \\Downloads\\\n# — Suspicious names: random strings, mimicking system processes\n# — Execution timestamps for timeline\n`);copyBtnbtn_795fb81bd2cb40519e3546ebf21ceae0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_795fb81bd2cb40519e3546ebf21ceae0.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Parse with PECmd (Eric Zimmerman)
+</span>PECmd.exe -d C:\Windows\Prefetch --csv output<span style="color: #2fafff;">\</span>
+PECmd.exe -f C:\Windows\Prefetch\MALWARE.EXE-XXXXXXXX.pf
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Look for:
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">&#8212; Executables run from \Temp\, \AppData\, \Downloads\
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">&#8212; Suspicious names: random strings, mimicking system processes
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">&#8212; Execution timestamps for timeline</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org05289f1" class="outline-3">
+<h3 id="org05289f1">Registry — User Activity</h3>
+<div class="outline-text-3" id="text-org05289f1">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_7cb9f64137c540b79f3acbbe23e718fe>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_7cb9f64137c540b79f3acbbe23e718fe=document.querySelector('button[name=btn_7cb9f64137c540b79f3acbbe23e718fe]');
+copyBtnbtn_7cb9f64137c540b79f3acbbe23e718fe.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Per-user hive\nC:\\Users\\<user>\\NTUSER.DAT\n\n# Key locations within NTUSER.DAT:\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\RecentDocs\n  → recently opened files by extension\n\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\UserAssist\n  → GUI application execution with run count and last run time\n  → values are ROT13-encoded\n\nHKCU\\Software\\Microsoft\\Windows\\Shell\\Bags\n  → folder browsing history (ShellBags)\n  → persists even for deleted folders and removable media\n\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\RunMRU\n  → commands run via Win+R (Run dialog)\n\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\TypedPaths\n  → paths typed directly into Explorer address bar\n`);copyBtnbtn_7cb9f64137c540b79f3acbbe23e718fe.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7cb9f64137c540b79f3acbbe23e718fe.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text"># Per-user hive
+C:\Users\&lt;user&gt;\NTUSER.DAT
+
+# Key locations within NTUSER.DAT:
+HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs
+  &#8594; recently opened files by extension
+
+HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist
+  &#8594; GUI application execution with run count and last run time
+  &#8594; values are ROT13-encoded
+
+HKCU\Software\Microsoft\Windows\Shell\Bags
+  &#8594; folder browsing history (ShellBags)
+  &#8594; persists even for deleted folders and removable media
+
+HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
+  &#8594; commands run via Win+R (Run dialog)
+
+HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths
+  &#8594; paths typed directly into Explorer address bar
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgf7c2ee6" class="outline-3">
+<h3 id="orgf7c2ee6">Registry — System and Persistence</h3>
+<div class="outline-text-3" id="text-orgf7c2ee6">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_5549ae46736b40039456d367bdfc0f5e>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_5549ae46736b40039456d367bdfc0f5e=document.querySelector('button[name=btn_5549ae46736b40039456d367bdfc0f5e]');
+copyBtnbtn_5549ae46736b40039456d367bdfc0f5e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Autorun / persistence locations\nHKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\nHKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce\nHKLM\\System\\CurrentControlSet\\Services\n  → malware frequently registers as a service\n\n# Installed software\nHKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\n\n# USB devices ever connected\nHKLM\\System\\CurrentControlSet\\Enum\\USBSTOR\n  → device type, vendor, product, serial number\n\n# Network interfaces and recent connections\nHKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\NetworkList\\Profiles\n`);copyBtnbtn_5549ae46736b40039456d367bdfc0f5e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5549ae46736b40039456d367bdfc0f5e.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text"># Autorun / persistence locations
+HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce
+HKLM\System\CurrentControlSet\Services
+  &#8594; malware frequently registers as a service
+
+# Installed software
+HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall
+
+# USB devices ever connected
+HKLM\System\CurrentControlSet\Enum\USBSTOR
+  &#8594; device type, vendor, product, serial number
+
+# Network interfaces and recent connections
+HKLM\Software\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles
+</pre>
+</div></div>
+
+<p>
+Parse hives with Registry Explorer or RegRipper (Eric Zimmerman).
+</p>
+</div>
+</div>
+<div id="outline-container-org2bea8e2" class="outline-3">
+<h3 id="org2bea8e2">Shimcache and Amcache</h3>
+<div class="outline-text-3" id="text-org2bea8e2">
+<p>
+Prove a file existed on the system and was executed — even after
+deletion.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_368873a09bf346bda72ef04b3e4d748a>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_368873a09bf346bda72ef04b3e4d748a=document.querySelector('button[name=btn_368873a09bf346bda72ef04b3e4d748a]');
+copyBtnbtn_368873a09bf346bda72ef04b3e4d748a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Shimcache — execution evidence, no timestamps in Win11\nHKLM\\System\\CurrentControlSet\\Control\\Session Manager\\AppCompatCache\n\n# Amcache — richer: SHA1 hash, file path, first execution time\nC:\\Windows\\AppCompat\\Programs\\Amcache.hve\n\n# Parse with AppCompatCacheParser and AmcacheParser (Eric Zimmerman)\nAppCompatCacheParser.exe -f SYSTEM --csv output\\\nAmcacheParser.exe -f Amcache.hve --csv output\\\n`);copyBtnbtn_368873a09bf346bda72ef04b3e4d748a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_368873a09bf346bda72ef04b3e4d748a.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text"># Shimcache &#8212; execution evidence, no timestamps in Win11
+HKLM\System\CurrentControlSet\Control\Session Manager\AppCompatCache
+
+# Amcache &#8212; richer: SHA1 hash, file path, first execution time
+C:\Windows\AppCompat\Programs\Amcache.hve
+
+# Parse with AppCompatCacheParser and AmcacheParser (Eric Zimmerman)
+AppCompatCacheParser.exe -f SYSTEM --csv output\
+AmcacheParser.exe -f Amcache.hve --csv output\
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org9b8add0" class="outline-3">
+<h3 id="org9b8add0">Jump Lists and LNK Files</h3>
+<div class="outline-text-3" id="text-org9b8add0">
+<p>
+Jump Lists: recently opened files per application
+LNK files: shortcut files auto-created when files are opened
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_257156a03d8b4b0b862caa291f8d93a2>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_257156a03d8b4b0b862caa291f8d93a2=document.querySelector('button[name=btn_257156a03d8b4b0b862caa291f8d93a2]');
+copyBtnbtn_257156a03d8b4b0b862caa291f8d93a2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Jump Lists\nC:\\Users\\<user>\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\AutomaticDestinations\\\nC:\\Users\\<user>\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\CustomDestinations\\\n\n# LNK files\nC:\\Users\\<user>\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\\n\n# LNK files contain: original path, timestamps, volume serial\n# number, host MAC address — useful for proving file access and\n# identifying other machines files were accessed from\n\n# Parse with LECmd and JLECmd (Eric Zimmerman)\nLECmd.exe -d \"C:\\Users\\user\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\\" --csv output\\\nJLECmd.exe -d \"C:\\Users\\user\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\AutomaticDestinations\\\" --csv output\\\n`);copyBtnbtn_257156a03d8b4b0b862caa291f8d93a2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_257156a03d8b4b0b862caa291f8d93a2.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text"># Jump Lists
+C:\Users\&lt;user&gt;\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\
+C:\Users\&lt;user&gt;\AppData\Roaming\Microsoft\Windows\Recent\CustomDestinations\
+
+# LNK files
+C:\Users\&lt;user&gt;\AppData\Roaming\Microsoft\Windows\Recent\
+
+# LNK files contain: original path, timestamps, volume serial
+# number, host MAC address &#8212; useful for proving file access and
+# identifying other machines files were accessed from
+
+# Parse with LECmd and JLECmd (Eric Zimmerman)
+LECmd.exe -d "C:\Users\user\AppData\Roaming\Microsoft\Windows\Recent\" --csv output\
+JLECmd.exe -d "C:\Users\user\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\" --csv output\
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org3bde4e1" class="outline-3">
+<h3 id="org3bde4e1">Browser Artifacts</h3>
+<div class="outline-text-3" id="text-org3bde4e1">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_667a77cdb555463d99022ed481e40400>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_667a77cdb555463d99022ed481e40400=document.querySelector('button[name=btn_667a77cdb555463d99022ed481e40400]');
+copyBtnbtn_667a77cdb555463d99022ed481e40400.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Chrome / Edge (Chromium-based)\nC:\\Users\\<user>\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\History\nC:\\Users\\<user>\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\History\n  → SQLite databases — open with DB Browser for SQLite or NirSoft tools\n\n# Firefox\nC:\\Users\\<user>\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\*.default-release\\\n  → places.sqlite (history and bookmarks)\n  → downloads.sqlite (download history)\n\n# Key tables in Chrome/Edge History SQLite:\n# urls — visited URLs with visit count and last visit time\n# downloads — downloaded files with source URL and local path\n`);copyBtnbtn_667a77cdb555463d99022ed481e40400.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_667a77cdb555463d99022ed481e40400.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text"># Chrome / Edge (Chromium-based)
+C:\Users\&lt;user&gt;\AppData\Local\Google\Chrome\User Data\Default\History
+C:\Users\&lt;user&gt;\AppData\Local\Microsoft\Edge\User Data\Default\History
+  &#8594; SQLite databases &#8212; open with DB Browser for SQLite or NirSoft tools
+
+# Firefox
+C:\Users\&lt;user&gt;\AppData\Roaming\Mozilla\Firefox\Profiles\*.default-release\
+  &#8594; places.sqlite (history and bookmarks)
+  &#8594; downloads.sqlite (download history)
+
+# Key tables in Chrome/Edge History SQLite:
+# urls &#8212; visited URLs with visit count and last visit time
+# downloads &#8212; downloaded files with source URL and local path
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgc7e1880" class="outline-3">
+<h3 id="orgc7e1880">USB History</h3>
+<div class="outline-text-3" id="text-orgc7e1880">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9f69bb279fb54871b9582e272a1e4813>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_9f69bb279fb54871b9582e272a1e4813=document.querySelector('button[name=btn_9f69bb279fb54871b9582e272a1e4813]');
+copyBtnbtn_9f69bb279fb54871b9582e272a1e4813.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Devices connected\nHKLM\\System\\CurrentControlSet\\Enum\\USBSTOR\n  → VID/PID, serial number, friendly name\n\n# First connection time\nC:\\Windows\\inf\\setupapi.dev.log\n  → search for device serial number\n\n# Last connection / removal times\nHKLM\\System\\CurrentControlSet\\Enum\\USB (timestamps)\nHKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\EMDMgmt\n\n# Drive letter assigned\nHKLM\\System\\MountedDevices\n`);copyBtnbtn_9f69bb279fb54871b9582e272a1e4813.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9f69bb279fb54871b9582e272a1e4813.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text"># Devices connected
+HKLM\System\CurrentControlSet\Enum\USBSTOR
+  &#8594; VID/PID, serial number, friendly name
+
+# First connection time
+C:\Windows\inf\setupapi.dev.log
+  &#8594; search for device serial number
+
+# Last connection / removal times
+HKLM\System\CurrentControlSet\Enum\USB (timestamps)
+HKLM\Software\Microsoft\Windows NT\CurrentVersion\EMDMgmt
+
+# Drive letter assigned
+HKLM\System\MountedDevices
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd0e517e" class="outline-2">
+<h2 id="orgd0e517e">3. Timeline Reconstruction</h2>
+<div class="outline-text-2" id="text-orgd0e517e">
+<p>
+Build a timeline by correlating timestamps across artifact sources.
+Use a spreadsheet or timeline tool (e.g. Plaso / log2timeline).
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Time</th>
+<th scope="col" class="org-left">Source</th>
+<th scope="col" class="org-left">Event</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">T+0</td>
+<td class="org-left">Security.evtx 4624</td>
+<td class="org-left">User logged on</td>
+</tr>
+
+<tr>
+<td class="org-left">T+2m</td>
+<td class="org-left">Prefetch</td>
+<td class="org-left">malware.exe first executed</td>
+</tr>
+
+<tr>
+<td class="org-left">T+2m</td>
+<td class="org-left">Amcache</td>
+<td class="org-left">malware.exe recorded</td>
+</tr>
+
+<tr>
+<td class="org-left">T+3m</td>
+<td class="org-left">Security.evtx 4698</td>
+<td class="org-left">Scheduled task created</td>
+</tr>
+
+<tr>
+<td class="org-left">T+5m</td>
+<td class="org-left">USBSTOR</td>
+<td class="org-left">USB device connected</td>
+</tr>
+
+<tr>
+<td class="org-left">T+6m</td>
+<td class="org-left">LNK files</td>
+<td class="org-left">Files accessed on USB</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Key timestamp types to be aware of:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Artifact</th>
+<th scope="col" class="org-left">Timestamps available</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Prefetch</td>
+<td class="org-left">First run, last run, run count</td>
+</tr>
+
+<tr>
+<td class="org-left">Amcache</td>
+<td class="org-left">First execution time, SHA1 hash</td>
+</tr>
+
+<tr>
+<td class="org-left">LNK files</td>
+<td class="org-left">Target created, modified, accessed</td>
+</tr>
+
+<tr>
+<td class="org-left">Event logs</td>
+<td class="org-left">Log entry timestamp (UTC)</td>
+</tr>
+
+<tr>
+<td class="org-left">NTFS MFT</td>
+<td class="org-left">Created, modified, accessed, MFT entry changed</td>
+</tr>
+
+<tr>
+<td class="org-left">Browser history</td>
+<td class="org-left">Visit time, download start/end</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Note: NTFS timestamps can be manipulated by attackers
+(timestomping). Cross-reference against other artifact sources.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb8fefd9" class="outline-2">
+<h2 id="orgb8fefd9">4. Common Incident Patterns</h2>
+<div class="outline-text-2" id="text-orgb8fefd9">
+</div>
+<div id="outline-container-orgb33d7a8" class="outline-3">
+<h3 id="orgb33d7a8">Malware Execution</h3>
+<div class="outline-text-3" id="text-orgb33d7a8">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_a7da10545a34448f9d7ae90873aac6fb>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_a7da10545a34448f9d7ae90873aac6fb=document.querySelector('button[name=btn_a7da10545a34448f9d7ae90873aac6fb]');
+copyBtnbtn_a7da10545a34448f9d7ae90873aac6fb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Indicators:\n— Prefetch entry for unknown executable in \\Temp\\ or \\AppData\\\n— Amcache entry with no corresponding installed software\n— New service or Run key pointing to unusual path\n— Scheduled task created at time of execution\n— UserAssist entry for executable not in Program Files\n\nEvent IDs to check:\n— 4688: Process creation (if auditing enabled)\n— 7045: New service installed\n— 4698: Scheduled task created\n— Sysmon 1: Process creation (if Sysmon deployed)\n`);copyBtnbtn_a7da10545a34448f9d7ae90873aac6fb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a7da10545a34448f9d7ae90873aac6fb.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">Indicators:
+&#8212; Prefetch entry for unknown executable in \Temp\ or \AppData\
+&#8212; Amcache entry with no corresponding installed software
+&#8212; New service or Run key pointing to unusual path
+&#8212; Scheduled task created at time of execution
+&#8212; UserAssist entry for executable not in Program Files
+
+Event IDs to check:
+&#8212; 4688: Process creation (if auditing enabled)
+&#8212; 7045: New service installed
+&#8212; 4698: Scheduled task created
+&#8212; Sysmon 1: Process creation (if Sysmon deployed)
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgdb71667" class="outline-3">
+<h3 id="orgdb71667">Credential Theft</h3>
+<div class="outline-text-3" id="text-orgdb71667">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_07ed71dbcbfc41f7b56eb3fa271002f3>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_07ed71dbcbfc41f7b56eb3fa271002f3=document.querySelector('button[name=btn_07ed71dbcbfc41f7b56eb3fa271002f3]');
+copyBtnbtn_07ed71dbcbfc41f7b56eb3fa271002f3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Indicators:\n— Mimikatz or known credential dumper in Prefetch / Amcache\n— lsass.exe accessed by non-system process (Sysmon Event 10)\n— SAM / SYSTEM hive accessed or copied\n— Security event 4656: Handle to SAM requested\n— LSASS dump file in temp directory\n\nEvent IDs to check:\n— 4648: Logon with explicit credentials (Pass-the-Hash indicator)\n— 4672: Special privileges assigned (admin token)\n— 4624 type 3: Network logon (lateral movement)\n`);copyBtnbtn_07ed71dbcbfc41f7b56eb3fa271002f3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_07ed71dbcbfc41f7b56eb3fa271002f3.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">Indicators:
+&#8212; Mimikatz or known credential dumper in Prefetch / Amcache
+&#8212; lsass.exe accessed by non-system process (Sysmon Event 10)
+&#8212; SAM / SYSTEM hive accessed or copied
+&#8212; Security event 4656: Handle to SAM requested
+&#8212; LSASS dump file in temp directory
+
+Event IDs to check:
+&#8212; 4648: Logon with explicit credentials (Pass-the-Hash indicator)
+&#8212; 4672: Special privileges assigned (admin token)
+&#8212; 4624 type 3: Network logon (lateral movement)
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orga454fe6" class="outline-3">
+<h3 id="orga454fe6">Persistence</h3>
+<div class="outline-text-3" id="text-orga454fe6">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2eea44ca9ede45758102cb0639779940>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_2eea44ca9ede45758102cb0639779940=document.querySelector('button[name=btn_2eea44ca9ede45758102cb0639779940]');
+copyBtnbtn_2eea44ca9ede45758102cb0639779940.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Indicators:\n— New Run / RunOnce registry key pointing to unusual binary\n— New service with suspicious binary path\n— New scheduled task (Event 4698)\n— LNK file or startup folder entry for unknown executable\n— Modified hosts file: C:\\Windows\\System32\\drivers\\etc\\hosts\n\nEvent IDs to check:\n— 7045: Service installed\n— 4698 / 4702: Task created / modified\n— 4657: Registry value modified\n`);copyBtnbtn_2eea44ca9ede45758102cb0639779940.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2eea44ca9ede45758102cb0639779940.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">Indicators:
+&#8212; New Run / RunOnce registry key pointing to unusual binary
+&#8212; New service with suspicious binary path
+&#8212; New scheduled task (Event 4698)
+&#8212; LNK file or startup folder entry for unknown executable
+&#8212; Modified hosts file: C:\Windows\System32\drivers\etc\hosts
+
+Event IDs to check:
+&#8212; 7045: Service installed
+&#8212; 4698 / 4702: Task created / modified
+&#8212; 4657: Registry value modified
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org4b33736" class="outline-3">
+<h3 id="org4b33736">Lateral Movement</h3>
+<div class="outline-text-3" id="text-org4b33736">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_1c5731d414464192a2d4e308af2b696d>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_1c5731d414464192a2d4e308af2b696d=document.querySelector('button[name=btn_1c5731d414464192a2d4e308af2b696d]');
+copyBtnbtn_1c5731d414464192a2d4e308af2b696d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Indicators:\n— Event 4624 type 3 (network logon) from unexpected source IP\n— Event 4648: Explicit credential logon\n— PsExec in Prefetch (PSEXEC.EXE or PSEXESVC.EXE)\n— WMI activity: wmiprvse.exe spawning child processes (Sysmon 1)\n— New admin share connections in event log\n\nEvent IDs to check:\n— 4624 / 4625: Successful / failed logon\n— 4776: Credential validation (NTLM)\n— 4768 / 4769: Kerberos ticket requested\n`);copyBtnbtn_1c5731d414464192a2d4e308af2b696d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1c5731d414464192a2d4e308af2b696d.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-text">Indicators:
+&#8212; Event 4624 type 3 (network logon) from unexpected source IP
+&#8212; Event 4648: Explicit credential logon
+&#8212; PsExec in Prefetch (PSEXEC.EXE or PSEXESVC.EXE)
+&#8212; WMI activity: wmiprvse.exe spawning child processes (Sysmon 1)
+&#8212; New admin share connections in event log
+
+Event IDs to check:
+&#8212; 4624 / 4625: Successful / failed logon
+&#8212; 4776: Credential validation (NTLM)
+&#8212; 4768 / 4769: Kerberos ticket requested
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-org897adb9" class="outline-2">
+<h2 id="org897adb9">5. Eric Zimmerman Tools Reference</h2>
+<div class="outline-text-2" id="text-org897adb9">
+<p>
+The EZ tools are the standard for parsing Windows artifacts offline.
+All output to CSV for easy filtering.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Tool</th>
+<th scope="col" class="org-left">Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">PECmd</td>
+<td class="org-left">Prefetch</td>
+</tr>
+
+<tr>
+<td class="org-left">AppCompatCacheParser</td>
+<td class="org-left">Shimcache</td>
+</tr>
+
+<tr>
+<td class="org-left">AmcacheParser</td>
+<td class="org-left">Amcache</td>
+</tr>
+
+<tr>
+<td class="org-left">LECmd</td>
+<td class="org-left">LNK files</td>
+</tr>
+
+<tr>
+<td class="org-left">JLECmd</td>
+<td class="org-left">Jump Lists</td>
+</tr>
+
+<tr>
+<td class="org-left">Registry Explorer</td>
+<td class="org-left">Registry hives (GUI)</td>
+</tr>
+
+<tr>
+<td class="org-left">RegRipper</td>
+<td class="org-left">Registry (automated report)</td>
+</tr>
+
+<tr>
+<td class="org-left">MFTECmd</td>
+<td class="org-left">NTFS MFT</td>
+</tr>
+
+<tr>
+<td class="org-left">EvtxECmd</td>
+<td class="org-left">Event logs → CSV</td>
+</tr>
+
+<tr>
+<td class="org-left">Timeline Explorer</td>
+<td class="org-left">View and filter CSV output (GUI)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Download: <a href="https://ericzimmerman.github.io">https://ericzimmerman.github.io</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgb00ab65" class="outline-2">
+<h2 id="orgb00ab65">Tips</h2>
+<div class="outline-text-2" id="text-orgb00ab65">
+<ul class="org-ul">
+<li>Always note the system timezone before pulling timestamps —
+event logs are UTC but some artifacts use local time</li>
+<li>Prefetch is disabled by default on systems with SSDs in some
+configurations — verify it is enabled before relying on absence
+of entries as evidence of non-execution</li>
+<li>ShellBags persist for folders that no longer exist — useful for
+proving access to deleted directories or previously connected
+removable media</li>
+<li>Timestomping (MACE timestamp manipulation) is common in targeted
+attacks — cross-reference NTFS timestamps against Prefetch and
+event log timestamps which are harder to manipulate</li>
+<li>UserAssist values are ROT13-encoded — decode before reading</li>
+<li>EvtxECmd + Timeline Explorer is the fastest workflow for event
+log analysis — export all logs to CSV, filter in Timeline Explorer</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
+document.cookie = 'mode=dark'
+}
+document.cookie = 'light=modus-operandi-tinted'
+document.cookie = 'dark=modus-vivendi-tinted'
+/*
+;; nice-org-html.js
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+;; JS for html exported by et-org-html.el
+ */
+
+const preamble = document.getElementById("preamble");
+const content = document.getElementById("content");
+const postamble = document.getElementById("postamble");
+
+const controls = document.getElementById("view-controls");
+const toggleTocBtn = document.getElementById("toggle-toc");
+const gotoTopBtn = document.getElementById("goto-top");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const toc = document.getElementById("table-of-contents");
+
+// Get and parse options passed in cookie string
+const optCookie = document.cookie.split('; ').find(r => r.startsWith('options'));
+const options = {};
+if (optCookie) {
+  optCookie.split('=')[1].split('__').forEach(pair => {
+    const [key, val] = pair.split(':');
+    if (key && val) {
+      options[key] = val;
+    }
+  })
+}
+
+// Move sticky control bar (injected within preamble)
+document.body.insertBefore(controls, content);
+
+// Mode handling
+function getMode() {
+  let cookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+  return cookie && cookie.split("=")[1];
+}
+
+function setMode(mode) {
+  document.body.dataset.mode = mode;
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
+  document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
+  toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
+  document.cookie = 'mode=' + mode;
+}
+
+// Initially, set mode based on stored cookie
+let mode = getMode();
+if (mode && ["light", "dark"].includes(mode)) {
+  setMode(mode);
+} else {  
+  let prop = "prefers-color-scheme";
+  let pref = (mode === "query") && window.matchMedia &&
+    ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
+  setMode(pref || "dark"); // fallback: dark
+}
+
+// Mode toggling
+toggleModeBtn.addEventListener('click', () => {
+  setMode(document.body.dataset.mode === 'dark' ? 'light' : 'dark');
+})
+
+
+// Jump to top
+let scrollY = document.documentElement.scrollTop;
+window.addEventListener('scroll', () => {
+  let atTop = document.documentElement.scrollTop <= preamble.offsetHeight;
+  gotoTopBtn.dataset.show = !atTop + "";
+});
+gotoTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
+
+// Table-of-contents toggling
+if (toc) {
+  toggleTocBtn.dataset.show = 'true';
+  toggleTocBtn.addEventListener('click', () => {
+    let showingToc = document.body.dataset.toc;
+    scrollY = showingToc ? scrollY : document.documentElement.scrollTop;
+    if (showingToc) {
+      document.body.dataset.toc = '';
+      document.documentElement.scrollTop = scrollY;
+    } else {
+      let tocHeight =
+	Math.max(
+	  window.innerHeight - controls.offsetHeight,
+	  toc.offsetHeight
+	);
+      const header = document.getElementById("injected-header");
+      if (header && (scrollY > header.offsetHeight)) {
+	document.documentElement.scrollTop = preamble.offsetHeight;
+      }
+      toc.style.height = `${tocHeight}px`;
+      document.body.dataset.toc = 'true';
+    }
+    toc.addEventListener('click', () => {
+      if (document.body.dataset.toc) {
+	document.body.dataset.toc = '';
+	document.documentElement.scrollTop = scrollY;
+      }
+    })
+  })
+};
+
+// Instrument anchor linking for sticky control bar
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const target = document.querySelector(targetId);
+
+    setTimeout(() => {
+      const targetPos = target.getBoundingClientRect().top;
+      let offset = targetPos + document.documentElement.scrollTop;
+      offset -= controls.offsetHeight;
+      window.scrollTo({
+	top: offset,
+	behavior: "smooth"
+      });
+    }, 0);
+  });
+});
+
+function copyTextToClipboard(text) {
+  // Make invisible textarea
+  var textArea = document.createElement("textarea");
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = 0;
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+
+  // Copy contents into it
+  textArea.value = text;
+
+  // Try to copy from it to clipboard
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  var res;
+  try {
+    res = document.execCommand('copy');
+  } catch (err) {
+    res = false;
+  }
+
+  // Remove invisible textarea
+  document.body.removeChild(textArea);
+
+  return res;
+}
+
+// Handle the default header / footer drawers
+const header = document.getElementById("generated-header");
+const footer = document.getElementById("generated-footer");
+
+if (header) {
+  let toggle = header.querySelector("header nav input.nav-toggle");
+  if (toggle) { toggle.checked = false; }
+}
+if (footer) {
+  let nav = footer.querySelector("nav");
+  let toggle = nav && nav.querySelector(".nav-toggle");
+  let navList = nav && nav.querySelector(".nav-list");
+  let navElem = navList && [...navList.querySelectorAll(".nav-item")];
+  let numLink = navElem && navElem.length;
+  if (numLink) {
+    toggle.checked = false;
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+	setTimeout(() => window.scrollTo({
+	  behavior: 'smooth',
+	  top: document.body.scrollHeight	  
+	}), 88);
+      }
+   });
+  }
+}
+
+function autoCompact() {
+  var anchor, links, overlap, trivial;
+  const domCompute = (node) => {
+    if (node) {
+      anchor = node.querySelector('.nav-title, .nav-author');
+      links = node.querySelector('.nav-list');
+      overlap = links.offsetLeft - 5 <= anchor.offsetLeft + anchor.offsetWidth;	
+      trivial = links.offsetLeft === anchor.offsetLeft;
+    }
+  };
+  let mediaMatch = window.matchMedia('(max-width: 768px)').matches;
+  [header, footer].forEach(e => {
+    if (e) {
+      if (mediaMatch) {
+	e.classList.add('compact');
+      } else {
+	domCompute(e);
+	if (overlap && !trivial) {
+	  e.classList.add('compact');
+	} else {	
+	  let clone = e.cloneNode(true);
+	  clone.style.top = '-2000px';
+	  clone.style.maxHeight = '0px';
+	  clone.classList.remove('compact');
+	  e.parentNode.insertBefore(clone, e);
+	  domCompute(clone);
+	  let toggle = e.querySelector('.nav-toggle');
+	  if (!overlap && toggle && !toggle.checked) {
+	    e.classList.remove('compact');
+	  }
+	  e.parentNode.removeChild(clone);
+	}
+      }
+    }
+  })
+}
+
+if ((header || footer)) {
+  if (options.hasOwnProperty('layout')) {
+    [header, footer].forEach(e => e ? e.classList.add(options.layout) : null);
+  } else {
+    autoCompact();
+    window.addEventListener('resize', autoCompact);
+  }
+}
+
+if (options.hasOwnProperty('src-lang') && options['src-lang'] == 't') {
+  let labels = [...document.querySelectorAll('.srcLangLabel')];
+  labels.forEach(l => l.style.display = 'inline-block');
+}
+
+if (options.hasOwnProperty('collapsing') && options.collapsing == 't') {
+  let levels = [2, 3, 4, 5, 6];
+  let containerPrefix = 'outline-container-';
+  levels.forEach(l => {
+    let containers = [...document.querySelectorAll(`.outline-${l}`)];
+    containers.forEach(c => {
+      let id = c.id.slice(containerPrefix.length);
+      let headline = document.getElementById(id);
+      let siblings = [...c.children].filter(child => child.id != id);
+      headline.classList.add('collapsible');
+      headline.addEventListener('click', () => {	
+	if (headline.classList.contains('collapsed')) {
+	  headline.classList.remove('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.remove('hidden');
+	  });	  
+	} else {
+	  headline.classList.add('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.add('hidden');
+	  });
+	}
+      })
+    })
+  })
+}
+/*]]>*/-->
+</script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
+</div>
+</body>
+</html>

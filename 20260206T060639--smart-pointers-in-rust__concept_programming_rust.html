@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 10:44 -->
+<!-- 2026-07-20 Mon 14:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Smart Pointers in Rust</title>
@@ -945,11 +945,11 @@ Here are some of the most common smart pointers found in Rust's standard library
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_6b2fafc29ccf4aba8f25bf098fe077fd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_f8e3b3601abf4114b3a57d744b7d032f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6b2fafc29ccf4aba8f25bf098fe077fd=document.querySelector('button[name=btn_6b2fafc29ccf4aba8f25bf098fe077fd]');
-copyBtnbtn_6b2fafc29ccf4aba8f25bf098fe077fd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`fn main() {\n    let b = Box::new(5); // \`5\` is allocated on the heap\n    println!(\"b = {}\", b); // \`b\` acts like an integer\n}\n`);copyBtnbtn_6b2fafc29ccf4aba8f25bf098fe077fd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6b2fafc29ccf4aba8f25bf098fe077fd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f8e3b3601abf4114b3a57d744b7d032f=document.querySelector('button[name=btn_f8e3b3601abf4114b3a57d744b7d032f]');
+copyBtnbtn_f8e3b3601abf4114b3a57d744b7d032f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`fn main() {\n    let b = Box::new(5); // \`5\` is allocated on the heap\n    println!(\"b = {}\", b); // \`b\` acts like an integer\n}\n`);copyBtnbtn_f8e3b3601abf4114b3a57d744b7d032f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f8e3b3601abf4114b3a57d744b7d032f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -976,11 +976,11 @@ let res = copyTextToClipboard(`fn main() {\n    let b = Box::new(5); // \`5\` is
 </ul>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_087acbfc889c4ab7bb9ec4b9eb05d2fe>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_e2b0e9902ff24aa2823e5478b1eb68ca>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_087acbfc889c4ab7bb9ec4b9eb05d2fe=document.querySelector('button[name=btn_087acbfc889c4ab7bb9ec4b9eb05d2fe]');
-copyBtnbtn_087acbfc889c4ab7bb9ec4b9eb05d2fe.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use std::rc::Rc;\n\nenum List {\n    Cons(i32, Rc<List>),\n    Nil,\n}\n\nuse List::{Cons, Nil};\n\nfn main() {\n    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));\n    println!(\"count after creating a = {}\", Rc::strong_count(&a));\n    let b = Cons(3, Rc::clone(&a)); // \`Rc::clone\` increments the reference count\n    println!(\"count after creating b = {}\", Rc::strong_count(&a));\n    {\n        let c = Cons(4, Rc::clone(&a));\n        println!(\"count after creating c = {}\", Rc::strong_count(&a));\n    } // \`c\` goes out of scope, decrementing the count\n    println!(\"count after c goes out of scope = {}\", Rc::strong_count(&a));\n}\n`);copyBtnbtn_087acbfc889c4ab7bb9ec4b9eb05d2fe.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_087acbfc889c4ab7bb9ec4b9eb05d2fe.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e2b0e9902ff24aa2823e5478b1eb68ca=document.querySelector('button[name=btn_e2b0e9902ff24aa2823e5478b1eb68ca]');
+copyBtnbtn_e2b0e9902ff24aa2823e5478b1eb68ca.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use std::rc::Rc;\n\nenum List {\n    Cons(i32, Rc<List>),\n    Nil,\n}\n\nuse List::{Cons, Nil};\n\nfn main() {\n    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));\n    println!(\"count after creating a = {}\", Rc::strong_count(&a));\n    let b = Cons(3, Rc::clone(&a)); // \`Rc::clone\` increments the reference count\n    println!(\"count after creating b = {}\", Rc::strong_count(&a));\n    {\n        let c = Cons(4, Rc::clone(&a));\n        println!(\"count after creating c = {}\", Rc::strong_count(&a));\n    } // \`c\` goes out of scope, decrementing the count\n    println!(\"count after c goes out of scope = {}\", Rc::strong_count(&a));\n}\n`);copyBtnbtn_e2b0e9902ff24aa2823e5478b1eb68ca.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e2b0e9902ff24aa2823e5478b1eb68ca.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1022,11 +1022,11 @@ fn main() {
 </ul>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_f5b8e3e5aa5e4b7595093748b84be2a4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_8ce21f5c284642b6ae29b9cbad10e8d0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f5b8e3e5aa5e4b7595093748b84be2a4=document.querySelector('button[name=btn_f5b8e3e5aa5e4b7595093748b84be2a4]');
-copyBtnbtn_f5b8e3e5aa5e4b7595093748b84be2a4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use std::sync::Arc;\nuse std::thread;\n\nfn main() {\n    let numbers = Arc::new(vec![1, 2, 3]);\n    let mut handles = vec![];\n\n    for i in 0..3 {\n        let numbers_clone = Arc::clone(&numbers); // Clone the Arc for each thread\n        let handle = thread::spawn(move || {\n            println!(\"Thread {}: {:?}\", i, *numbers_clone);\n        });\n        handles.push(handle);\n    }\n\n    for handle in handles {\n        handle.join().unwrap();\n    }\n}\n`);copyBtnbtn_f5b8e3e5aa5e4b7595093748b84be2a4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f5b8e3e5aa5e4b7595093748b84be2a4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8ce21f5c284642b6ae29b9cbad10e8d0=document.querySelector('button[name=btn_8ce21f5c284642b6ae29b9cbad10e8d0]');
+copyBtnbtn_8ce21f5c284642b6ae29b9cbad10e8d0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use std::sync::Arc;\nuse std::thread;\n\nfn main() {\n    let numbers = Arc::new(vec![1, 2, 3]);\n    let mut handles = vec![];\n\n    for i in 0..3 {\n        let numbers_clone = Arc::clone(&numbers); // Clone the Arc for each thread\n        let handle = thread::spawn(move || {\n            println!(\"Thread {}: {:?}\", i, *numbers_clone);\n        });\n        handles.push(handle);\n    }\n\n    for handle in handles {\n        handle.join().unwrap();\n    }\n}\n`);copyBtnbtn_8ce21f5c284642b6ae29b9cbad10e8d0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8ce21f5c284642b6ae29b9cbad10e8d0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1068,11 +1068,11 @@ fn main() {
 </ul>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_4bfb13e3d0e44eb1ae3bb1bfed45c6e3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_2e93ee2b539743b988ef45056ed55a29>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4bfb13e3d0e44eb1ae3bb1bfed45c6e3=document.querySelector('button[name=btn_4bfb13e3d0e44eb1ae3bb1bfed45c6e3]');
-copyBtnbtn_4bfb13e3d0e44eb1ae3bb1bfed45c6e3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use std::cell::RefCell;\n\nfn main() {\n    let my_value = RefCell::new(5);\n\n    // Get an immutable borrow\n    let borrowed_value = my_value.borrow();\n    println!(\"Borrowed value: {}\", *borrowed_value);\n\n    // Get a mutable borrow and modify the value\n    let mut mutable_value = my_value.borrow_mut();\n    *mutable_value += 1;\n    println!(\"Modified value: {}\", *mutable_value);\n\n    // The original RefCell now holds the updated value\n    println!(\"My value after modification: {}\", *my_value.borrow());\n\n    // This would panic at runtime because we already have an immutable borrow\n    // let borrowed_value2 = my_value.borrow(); // Panics here if uncommented\n}\n`);copyBtnbtn_4bfb13e3d0e44eb1ae3bb1bfed45c6e3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4bfb13e3d0e44eb1ae3bb1bfed45c6e3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2e93ee2b539743b988ef45056ed55a29=document.querySelector('button[name=btn_2e93ee2b539743b988ef45056ed55a29]');
+copyBtnbtn_2e93ee2b539743b988ef45056ed55a29.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use std::cell::RefCell;\n\nfn main() {\n    let my_value = RefCell::new(5);\n\n    // Get an immutable borrow\n    let borrowed_value = my_value.borrow();\n    println!(\"Borrowed value: {}\", *borrowed_value);\n\n    // Get a mutable borrow and modify the value\n    let mut mutable_value = my_value.borrow_mut();\n    *mutable_value += 1;\n    println!(\"Modified value: {}\", *mutable_value);\n\n    // The original RefCell now holds the updated value\n    println!(\"My value after modification: {}\", *my_value.borrow());\n\n    // This would panic at runtime because we already have an immutable borrow\n    // let borrowed_value2 = my_value.borrow(); // Panics here if uncommented\n}\n`);copyBtnbtn_2e93ee2b539743b988ef45056ed55a29.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2e93ee2b539743b988ef45056ed55a29.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

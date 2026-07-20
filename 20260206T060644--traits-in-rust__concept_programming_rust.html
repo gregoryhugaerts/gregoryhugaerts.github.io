@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 10:44 -->
+<!-- 2026-07-20 Mon 14:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Traits in Rust</title>
@@ -906,11 +906,11 @@ In Rust, <b>traits</b> are a fundamental concept that define shared behavior. Th
 <h3 id="orgd5a70f6">Defining a Trait</h3>
 <div class="outline-text-3" id="text-orgd5a70f6">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_b03e3e32389547b89f15c307dab1a5d5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_622ccf2a45a741d786f5a346ffa913bb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b03e3e32389547b89f15c307dab1a5d5=document.querySelector('button[name=btn_b03e3e32389547b89f15c307dab1a5d5]');
-copyBtnbtn_b03e3e32389547b89f15c307dab1a5d5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`pub trait Summary {\n    // Required method: Every type implementing Summary must provide a summarize method\n    fn summarize(&self) -> String;\n\n    // Default method: Types implementing Summary get this for free, but can override\n    fn summarize_default(&self) -> String {\n        String::from(\"(Read more...)\")\n    }\n}\n`);copyBtnbtn_b03e3e32389547b89f15c307dab1a5d5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b03e3e32389547b89f15c307dab1a5d5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_622ccf2a45a741d786f5a346ffa913bb=document.querySelector('button[name=btn_622ccf2a45a741d786f5a346ffa913bb]');
+copyBtnbtn_622ccf2a45a741d786f5a346ffa913bb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`pub trait Summary {\n    // Required method: Every type implementing Summary must provide a summarize method\n    fn summarize(&self) -> String;\n\n    // Default method: Types implementing Summary get this for free, but can override\n    fn summarize_default(&self) -> String {\n        String::from(\"(Read more...)\")\n    }\n}\n`);copyBtnbtn_622ccf2a45a741d786f5a346ffa913bb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_622ccf2a45a741d786f5a346ffa913bb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -935,11 +935,11 @@ Here, we implement the Summary trait for NewsArticle and Tweet <a href="Structs 
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_2ff807f2205d4ec3ae40e9e58aca1ad0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_f71a26f99fd74131ab9367d7f89e5de3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2ff807f2205d4ec3ae40e9e58aca1ad0=document.querySelector('button[name=btn_2ff807f2205d4ec3ae40e9e58aca1ad0]');
-copyBtnbtn_2ff807f2205d4ec3ae40e9e58aca1ad0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`pub struct NewsArticle {\n    pub headline: String,\n    pub location: String,\n    pub author: String,\n    pub content: String,\n}\n\n// Implement Summary for NewsArticle\nimpl Summary for NewsArticle {\n    fn summarize(&self) -> String {\n        format!(\"{}, by {} ({})\", self.headline, self.author, self.location)\n    }\n\n    // We can also override the default method\n    fn summarize_default(&self) -> String {\n        format!(\"ARTICLE: {}\", self.summarize())\n    }\n}\n\npub struct Tweet {\n    pub username: String,\n    pub content: String,\n    pub reply: bool,\n    pub retweet: bool,\n}\n\n// Implement Summary for Tweet\nimpl Summary for Tweet {\n    fn summarize(&self) -> String {\n        format!(\"{}: {}\", self.username, self.content)\n    }\n}\n`);copyBtnbtn_2ff807f2205d4ec3ae40e9e58aca1ad0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2ff807f2205d4ec3ae40e9e58aca1ad0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f71a26f99fd74131ab9367d7f89e5de3=document.querySelector('button[name=btn_f71a26f99fd74131ab9367d7f89e5de3]');
+copyBtnbtn_f71a26f99fd74131ab9367d7f89e5de3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`pub struct NewsArticle {\n    pub headline: String,\n    pub location: String,\n    pub author: String,\n    pub content: String,\n}\n\n// Implement Summary for NewsArticle\nimpl Summary for NewsArticle {\n    fn summarize(&self) -> String {\n        format!(\"{}, by {} ({})\", self.headline, self.author, self.location)\n    }\n\n    // We can also override the default method\n    fn summarize_default(&self) -> String {\n        format!(\"ARTICLE: {}\", self.summarize())\n    }\n}\n\npub struct Tweet {\n    pub username: String,\n    pub content: String,\n    pub reply: bool,\n    pub retweet: bool,\n}\n\n// Implement Summary for Tweet\nimpl Summary for Tweet {\n    fn summarize(&self) -> String {\n        format!(\"{}: {}\", self.username, self.content)\n    }\n}\n`);copyBtnbtn_f71a26f99fd74131ab9367d7f89e5de3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f71a26f99fd74131ab9367d7f89e5de3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -987,11 +987,11 @@ impl Summary for Tweet {
 </ol>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_195e750501ec4fb6aa142e7ea1355f9a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_4505c011113449d0a90d208393296fc9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_195e750501ec4fb6aa142e7ea1355f9a=document.querySelector('button[name=btn_195e750501ec4fb6aa142e7ea1355f9a]');
-copyBtnbtn_195e750501ec4fb6aa142e7ea1355f9a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// This function can accept any type that implements the Summary trait.\n// The 'impl Summary' syntax is syntactic sugar for a trait bound.\npub fn notify(item: &impl Summary) { // or pub fn notify<T: Summary>(item: &T)\n    println!(\"Breaking news! {}\", item.summarize());\n}\n\n// Example usage:\nlet tweet = Tweet {\n    username: String::from(\"horse_ebooks\"),\n    content: String::from(\"of course, as you probably already know, people\"),\n    reply: false,\n    retweet: false,\n};\nnotify(&tweet); // Works because Tweet implements Summary\n\nlet article = NewsArticle {\n    headline: String::from(\"Penguins win Stanley Cup!\"),\n    location: String::from(\"Pittsburgh\"),\n    author: String::from(\"Iceburgh\"),\n    content: String::from(\"The Pittsburgh Penguins once again won the Stanley Cup.\"),\n};\nnotify(&article); // Works because NewsArticle implements Summary\n`);copyBtnbtn_195e750501ec4fb6aa142e7ea1355f9a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_195e750501ec4fb6aa142e7ea1355f9a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4505c011113449d0a90d208393296fc9=document.querySelector('button[name=btn_4505c011113449d0a90d208393296fc9]');
+copyBtnbtn_4505c011113449d0a90d208393296fc9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// This function can accept any type that implements the Summary trait.\n// The 'impl Summary' syntax is syntactic sugar for a trait bound.\npub fn notify(item: &impl Summary) { // or pub fn notify<T: Summary>(item: &T)\n    println!(\"Breaking news! {}\", item.summarize());\n}\n\n// Example usage:\nlet tweet = Tweet {\n    username: String::from(\"horse_ebooks\"),\n    content: String::from(\"of course, as you probably already know, people\"),\n    reply: false,\n    retweet: false,\n};\nnotify(&tweet); // Works because Tweet implements Summary\n\nlet article = NewsArticle {\n    headline: String::from(\"Penguins win Stanley Cup!\"),\n    location: String::from(\"Pittsburgh\"),\n    author: String::from(\"Iceburgh\"),\n    content: String::from(\"The Pittsburgh Penguins once again won the Stanley Cup.\"),\n};\nnotify(&article); // Works because NewsArticle implements Summary\n`);copyBtnbtn_4505c011113449d0a90d208393296fc9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4505c011113449d0a90d208393296fc9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1025,11 +1025,11 @@ notify(&amp;article); // Works because NewsArticle implements Summary
 </ol>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_e683d0d240544c88a55f49b4dca5d4d5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_d4b0bc64c4c649928beccf7dd571006a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e683d0d240544c88a55f49b4dca5d4d5=document.querySelector('button[name=btn_e683d0d240544c88a55f49b4dca5d4d5]');
-copyBtnbtn_e683d0d240544c88a55f49b4dca5d4d5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use std::fmt::Debug; // Example: using another trait\n\n// This function can accept any type that implements BOTH Summary AND Debug\n// You can stack trait bounds using '+'\npub fn notify_complex(item: &(impl Summary + Debug)) {\n    println!(\"Complex notification for {:?}: {}\", item, item.summarize());\n}\n\n// A vector holding different types that implement Summary\npub fn returns_summarizable() -> Box<dyn Summary> {\n    // You must box the trait object because its size isn't known at compile time\n    Box::new(Tweet {\n        username: String::from(\"bird_person\"),\n        content: String::from(\"My life is a lie.\"),\n        reply: false,\n        retweet: false,\n    })\n}\n`);copyBtnbtn_e683d0d240544c88a55f49b4dca5d4d5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e683d0d240544c88a55f49b4dca5d4d5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d4b0bc64c4c649928beccf7dd571006a=document.querySelector('button[name=btn_d4b0bc64c4c649928beccf7dd571006a]');
+copyBtnbtn_d4b0bc64c4c649928beccf7dd571006a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use std::fmt::Debug; // Example: using another trait\n\n// This function can accept any type that implements BOTH Summary AND Debug\n// You can stack trait bounds using '+'\npub fn notify_complex(item: &(impl Summary + Debug)) {\n    println!(\"Complex notification for {:?}: {}\", item, item.summarize());\n}\n\n// A vector holding different types that implement Summary\npub fn returns_summarizable() -> Box<dyn Summary> {\n    // You must box the trait object because its size isn't known at compile time\n    Box::new(Tweet {\n        username: String::from(\"bird_person\"),\n        content: String::from(\"My life is a lie.\"),\n        reply: false,\n        retweet: false,\n    })\n}\n`);copyBtnbtn_d4b0bc64c4c649928beccf7dd571006a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d4b0bc64c4c649928beccf7dd571006a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

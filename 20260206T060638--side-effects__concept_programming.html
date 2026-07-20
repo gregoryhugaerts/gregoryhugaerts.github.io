@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 10:44 -->
+<!-- 2026-07-20 Mon 14:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Side Effects</title>
@@ -899,11 +899,11 @@ Related: <a href="../org/20260206T060606--functional-programming__concept_progra
 <h2 id="org0712e23">What Counts as a Side Effect</h2>
 <div class="outline-text-2" id="text-org0712e23">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_bc7b8f598a784af48481036946e20e92>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_0465b3b1a2ea4e9ab51c78ac8214fa3a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bc7b8f598a784af48481036946e20e92=document.querySelector('button[name=btn_bc7b8f598a784af48481036946e20e92]');
-copyBtnbtn_bc7b8f598a784af48481036946e20e92.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Modifying a global variable\ntotal = 0\ndef add_to_total(x):\n    global total\n    total += x           # side effect: modifies external state\n\n# Mutating an argument\ndef append_item(lst, item):\n    lst.append(item)     # side effect: mutates the caller's list\n\n# I/O\ndef log(message):\n    print(message)       # side effect: writes to stdout\n\ndef save(data, path):\n    with open(path, \"w\") as f:\n        f.write(data)    # side effect: writes to disk\n\n# Database write\ndef create_user(name):\n    db.insert(\"users\", {\"name\": name})   # side effect: external state change\n\n# Network call\ndef notify(url, payload):\n    requests.post(url, json=payload)     # side effect: external system call\n`);copyBtnbtn_bc7b8f598a784af48481036946e20e92.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bc7b8f598a784af48481036946e20e92.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0465b3b1a2ea4e9ab51c78ac8214fa3a=document.querySelector('button[name=btn_0465b3b1a2ea4e9ab51c78ac8214fa3a]');
+copyBtnbtn_0465b3b1a2ea4e9ab51c78ac8214fa3a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Modifying a global variable\ntotal = 0\ndef add_to_total(x):\n    global total\n    total += x           # side effect: modifies external state\n\n# Mutating an argument\ndef append_item(lst, item):\n    lst.append(item)     # side effect: mutates the caller's list\n\n# I/O\ndef log(message):\n    print(message)       # side effect: writes to stdout\n\ndef save(data, path):\n    with open(path, \"w\") as f:\n        f.write(data)    # side effect: writes to disk\n\n# Database write\ndef create_user(name):\n    db.insert(\"users\", {\"name\": name})   # side effect: external state change\n\n# Network call\ndef notify(url, payload):\n    requests.post(url, json=payload)     # side effect: external system call\n`);copyBtnbtn_0465b3b1a2ea4e9ab51c78ac8214fa3a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0465b3b1a2ea4e9ab51c78ac8214fa3a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -950,11 +950,11 @@ function requires only inputs and assertions:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_9a3252f610034e57a971d3f21a6f7213>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_6cd69eaee43541d6af92083cb19cce19>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9a3252f610034e57a971d3f21a6f7213=document.querySelector('button[name=btn_9a3252f610034e57a971d3f21a6f7213]');
-copyBtnbtn_9a3252f610034e57a971d3f21a6f7213.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Hard to test — depends on and modifies global\ndef process():\n    global result\n    result = compute_something()\n\n# Easy to test — all inputs explicit, no external state\ndef process(data):\n    return compute_something(data)\n`);copyBtnbtn_9a3252f610034e57a971d3f21a6f7213.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9a3252f610034e57a971d3f21a6f7213.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6cd69eaee43541d6af92083cb19cce19=document.querySelector('button[name=btn_6cd69eaee43541d6af92083cb19cce19]');
+copyBtnbtn_6cd69eaee43541d6af92083cb19cce19.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Hard to test — depends on and modifies global\ndef process():\n    global result\n    result = compute_something()\n\n# Easy to test — all inputs explicit, no external state\ndef process(data):\n    return compute_something(data)\n`);copyBtnbtn_6cd69eaee43541d6af92083cb19cce19.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6cd69eaee43541d6af92083cb19cce19.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -980,11 +980,11 @@ A and B appear unrelated:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_e2931596c81b466eacbed6966be92342>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_b961cfb5bbd845e78aa9e53b807f46e2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e2931596c81b466eacbed6966be92342=document.querySelector('button[name=btn_e2931596c81b466eacbed6966be92342]');
-copyBtnbtn_e2931596c81b466eacbed6966be92342.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`shared_list = [1, 2, 3]\n\ndef function_a():\n    shared_list.append(4)    # mutates shared state\n\ndef function_b():\n    return sum(shared_list)  # result depends on whether A ran first\n`);copyBtnbtn_e2931596c81b466eacbed6966be92342.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e2931596c81b466eacbed6966be92342.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b961cfb5bbd845e78aa9e53b807f46e2=document.querySelector('button[name=btn_b961cfb5bbd845e78aa9e53b807f46e2]');
+copyBtnbtn_b961cfb5bbd845e78aa9e53b807f46e2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`shared_list = [1, 2, 3]\n\ndef function_a():\n    shared_list.append(4)    # mutates shared state\n\ndef function_b():\n    return sum(shared_list)  # result depends on whether A ran first\n`);copyBtnbtn_b961cfb5bbd845e78aa9e53b807f46e2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b961cfb5bbd845e78aa9e53b807f46e2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1008,11 +1008,11 @@ functions run in parallel:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_441095e345ec410ab502d5b5ef3fd0c5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_becaf5ed775e471ebc66bb3c19d9c248>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_441095e345ec410ab502d5b5ef3fd0c5=document.querySelector('button[name=btn_441095e345ec410ab502d5b5ef3fd0c5]');
-copyBtnbtn_441095e345ec410ab502d5b5ef3fd0c5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import threading\n\ncounter = 0\n\ndef increment():\n    global counter\n    counter += 1   # read-modify-write — not atomic, race condition\n\nthreads = [threading.Thread(target=increment) for _ in range(100)]\n# counter may not be 100 after all threads finish\n`);copyBtnbtn_441095e345ec410ab502d5b5ef3fd0c5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_441095e345ec410ab502d5b5ef3fd0c5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_becaf5ed775e471ebc66bb3c19d9c248=document.querySelector('button[name=btn_becaf5ed775e471ebc66bb3c19d9c248]');
+copyBtnbtn_becaf5ed775e471ebc66bb3c19d9c248.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import threading\n\ncounter = 0\n\ndef increment():\n    global counter\n    counter += 1   # read-modify-write — not atomic, race condition\n\nthreads = [threading.Thread(target=increment) for _ in range(100)]\n# counter may not be 100 after all threads finish\n`);copyBtnbtn_becaf5ed775e471ebc66bb3c19d9c248.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_becaf5ed775e471ebc66bb3c19d9c248.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1040,11 +1040,11 @@ must eventually do I/O — but to isolate them:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_58646562d69b4581b18cf6270476493f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_3362e087df5848cfb1237d5972fed01f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_58646562d69b4581b18cf6270476493f=document.querySelector('button[name=btn_58646562d69b4581b18cf6270476493f]');
-copyBtnbtn_58646562d69b4581b18cf6270476493f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Push side effects to the edges; keep core logic pure\n\n# Pure core — easy to test, reason about, parallelise\ndef calculate_total(items: list[dict]) -> float:\n    return sum(item[\"price\"] * item[\"quantity\"] for item in items)\n\n# Side effect isolated at the boundary\ndef process_order(order_id: int) -> None:\n    items = db.fetch_order_items(order_id)   # side effect: I/O\n    total = calculate_total(items)           # pure\n    db.save_total(order_id, total)           # side effect: I/O\n`);copyBtnbtn_58646562d69b4581b18cf6270476493f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_58646562d69b4581b18cf6270476493f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3362e087df5848cfb1237d5972fed01f=document.querySelector('button[name=btn_3362e087df5848cfb1237d5972fed01f]');
+copyBtnbtn_3362e087df5848cfb1237d5972fed01f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Push side effects to the edges; keep core logic pure\n\n# Pure core — easy to test, reason about, parallelise\ndef calculate_total(items: list[dict]) -> float:\n    return sum(item[\"price\"] * item[\"quantity\"] for item in items)\n\n# Side effect isolated at the boundary\ndef process_order(order_id: int) -> None:\n    items = db.fetch_order_items(order_id)   # side effect: I/O\n    total = calculate_total(items)           # pure\n    db.save_total(order_id, total)           # side effect: I/O\n`);copyBtnbtn_3362e087df5848cfb1237d5972fed01f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3362e087df5848cfb1237d5972fed01f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

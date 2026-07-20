@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 10:44 -->
+<!-- 2026-07-20 Mon 14:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Determinism</title>
@@ -908,11 +908,11 @@ Determinism is one of two requirements for a <b>pure function</b>:
 </ol>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_9a2f9269996e4511bb93230d3e0c1956>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_f93d283665cb49ecbee0e29e4f045cd7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9a2f9269996e4511bb93230d3e0c1956=document.querySelector('button[name=btn_9a2f9269996e4511bb93230d3e0c1956]');
-copyBtnbtn_9a2f9269996e4511bb93230d3e0c1956.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Pure — deterministic, no side effects\ndef add(a, b):\n    return a + b\n\ndef square(x):\n    return x ** 2\n\n# Impure — non-deterministic (depends on external state)\nimport random, time\n\ndef random_value():\n    return random.randint(0, 100)    # different each call\n\ndef current_timestamp():\n    return time.time()               # different each call\n\n# Impure — has side effects (modifies external state)\ntotal = 0\ndef accumulate(x):\n    global total\n    total += x    # modifies global variable\n    return total\n`);copyBtnbtn_9a2f9269996e4511bb93230d3e0c1956.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9a2f9269996e4511bb93230d3e0c1956.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f93d283665cb49ecbee0e29e4f045cd7=document.querySelector('button[name=btn_f93d283665cb49ecbee0e29e4f045cd7]');
+copyBtnbtn_f93d283665cb49ecbee0e29e4f045cd7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Pure — deterministic, no side effects\ndef add(a, b):\n    return a + b\n\ndef square(x):\n    return x ** 2\n\n# Impure — non-deterministic (depends on external state)\nimport random, time\n\ndef random_value():\n    return random.randint(0, 100)    # different each call\n\ndef current_timestamp():\n    return time.time()               # different each call\n\n# Impure — has side effects (modifies external state)\ntotal = 0\ndef accumulate(x):\n    global total\n    total += x    # modifies global variable\n    return total\n`);copyBtnbtn_f93d283665cb49ecbee0e29e4f045cd7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f93d283665cb49ecbee0e29e4f045cd7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1010,11 +1010,11 @@ no freezing time, no managing shared state between tests:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_bbbcd76515984419a16362ba2ee0b9fc>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_a0dd5af0093b440dab62ddfd5a3b505d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bbbcd76515984419a16362ba2ee0b9fc=document.querySelector('button[name=btn_bbbcd76515984419a16362ba2ee0b9fc]');
-copyBtnbtn_bbbcd76515984419a16362ba2ee0b9fc.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`def test_add():\n    assert add(2, 3) == 5    # always passes, always reproducible\n`);copyBtnbtn_bbbcd76515984419a16362ba2ee0b9fc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bbbcd76515984419a16362ba2ee0b9fc.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a0dd5af0093b440dab62ddfd5a3b505d=document.querySelector('button[name=btn_a0dd5af0093b440dab62ddfd5a3b505d]');
+copyBtnbtn_a0dd5af0093b440dab62ddfd5a3b505d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`def test_add():\n    assert add(2, 3) == 5    # always passes, always reproducible\n`);copyBtnbtn_a0dd5af0093b440dab62ddfd5a3b505d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a0dd5af0093b440dab62ddfd5a3b505d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1044,11 +1044,11 @@ no race conditions:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_1bf0862c313d406c9967387cc555f6a1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_fb0bb7dffb244f3bad9e846dbcd36654>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1bf0862c313d406c9967387cc555f6a1=document.querySelector('button[name=btn_1bf0862c313d406c9967387cc555f6a1]');
-copyBtnbtn_1bf0862c313d406c9967387cc555f6a1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`from concurrent.futures import ProcessPoolExecutor\n\n# Safe to parallelise — pure function\nwith ProcessPoolExecutor() as executor:\n    results = list(executor.map(square, range(1000)))\n`);copyBtnbtn_1bf0862c313d406c9967387cc555f6a1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1bf0862c313d406c9967387cc555f6a1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_fb0bb7dffb244f3bad9e846dbcd36654=document.querySelector('button[name=btn_fb0bb7dffb244f3bad9e846dbcd36654]');
+copyBtnbtn_fb0bb7dffb244f3bad9e846dbcd36654.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`from concurrent.futures import ProcessPoolExecutor\n\n# Safe to parallelise — pure function\nwith ProcessPoolExecutor() as executor:\n    results = list(executor.map(square, range(1000)))\n`);copyBtnbtn_fb0bb7dffb244f3bad9e846dbcd36654.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fb0bb7dffb244f3bad9e846dbcd36654.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1070,11 +1070,11 @@ safely cached — the same input will always produce the same output:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_b47e0979e5c0458a937028c40a2b1285>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_1f37828da9324f97a2b9f752e7c18758>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b47e0979e5c0458a937028c40a2b1285=document.querySelector('button[name=btn_b47e0979e5c0458a937028c40a2b1285]');
-copyBtnbtn_b47e0979e5c0458a937028c40a2b1285.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`from functools import lru_cache\n\n@lru_cache(maxsize=None)\ndef fibonacci(n):\n    if n <= 1: return n\n    return fibonacci(n - 1) + fibonacci(n - 2)\n`);copyBtnbtn_b47e0979e5c0458a937028c40a2b1285.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b47e0979e5c0458a937028c40a2b1285.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1f37828da9324f97a2b9f752e7c18758=document.querySelector('button[name=btn_1f37828da9324f97a2b9f752e7c18758]');
+copyBtnbtn_1f37828da9324f97a2b9f752e7c18758.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`from functools import lru_cache\n\n@lru_cache(maxsize=None)\ndef fibonacci(n):\n    if n <= 1: return n\n    return fibonacci(n - 1) + fibonacci(n - 2)\n`);copyBtnbtn_1f37828da9324f97a2b9f752e7c18758.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1f37828da9324f97a2b9f752e7c18758.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1106,11 +1106,11 @@ parameters rather than calling them from inside functions</li>
 </ol>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_9662d843460249a7b00e6618af41da4b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_0d639f4a48ec46819f1e8292844de0de>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9662d843460249a7b00e6618af41da4b=document.querySelector('button[name=btn_9662d843460249a7b00e6618af41da4b]');
-copyBtnbtn_9662d843460249a7b00e6618af41da4b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Instead of:\ndef create_session():\n    return {\"created_at\": time.time()}   # non-deterministic\n\n# Prefer:\ndef create_session(timestamp):           # deterministic\n    return {\"created_at\": timestamp}\n\n# Call site handles the non-deterministic part:\nsession = create_session(time.time())\n`);copyBtnbtn_9662d843460249a7b00e6618af41da4b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9662d843460249a7b00e6618af41da4b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0d639f4a48ec46819f1e8292844de0de=document.querySelector('button[name=btn_0d639f4a48ec46819f1e8292844de0de]');
+copyBtnbtn_0d639f4a48ec46819f1e8292844de0de.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Instead of:\ndef create_session():\n    return {\"created_at\": time.time()}   # non-deterministic\n\n# Prefer:\ndef create_session(timestamp):           # deterministic\n    return {\"created_at\": timestamp}\n\n# Call site handles the non-deterministic part:\nsession = create_session(time.time())\n`);copyBtnbtn_0d639f4a48ec46819f1e8292844de0de.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0d639f4a48ec46819f1e8292844de0de.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
