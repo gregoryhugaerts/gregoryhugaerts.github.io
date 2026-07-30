@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:14 -->
+<!-- 2026-07-30 Thu 22:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Brim</title>
@@ -918,11 +918,11 @@ Related: <a href="20260213T105110--zeek__cybersecurity_networking_tool.html">Zee
 <h2 id="org4574a25">Workflow</h2>
 <div class="outline-text-2" id="text-org4574a25">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_38671e2242a24eca9cbb6581bf9e4e58>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_fe509883d7164181b7bca3fb4732b10d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_38671e2242a24eca9cbb6581bf9e4e58=document.querySelector('button[name=btn_38671e2242a24eca9cbb6581bf9e4e58]');
-copyBtnbtn_38671e2242a24eca9cbb6581bf9e4e58.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Open Brim / Zui\n2. Load data source:\n   — Drag and drop a .pcap file (Brim auto-runs Zeek on it)\n   — Or load pre-existing Zeek logs directly\n3. Select a pool (dataset) from the left panel\n4. Query using the Zed language in the search bar\n5. Click into events to expand detail and correlate\n`);copyBtnbtn_38671e2242a24eca9cbb6581bf9e4e58.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_38671e2242a24eca9cbb6581bf9e4e58.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_fe509883d7164181b7bca3fb4732b10d=document.querySelector('button[name=btn_fe509883d7164181b7bca3fb4732b10d]');
+copyBtnbtn_fe509883d7164181b7bca3fb4732b10d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Open Brim / Zui\n2. Load data source:\n   — Drag and drop a .pcap file (Brim auto-runs Zeek on it)\n   — Or load pre-existing Zeek logs directly\n3. Select a pool (dataset) from the left panel\n4. Query using the Zed language in the search bar\n5. Click into events to expand detail and correlate\n`);copyBtnbtn_fe509883d7164181b7bca3fb4732b10d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fe509883d7164181b7bca3fb4732b10d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -945,11 +945,11 @@ Brim uses Zed — a pipeline language similar to KQL or SPL.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_7b644811ea78462d83a7c2ae3e3cd02a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f36af6fadc764afd868e5470834ee99c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7b644811ea78462d83a7c2ae3e3cd02a=document.querySelector('button[name=btn_7b644811ea78462d83a7c2ae3e3cd02a]');
-copyBtnbtn_7b644811ea78462d83a7c2ae3e3cd02a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Filter by field value\n_path == \"conn\"\n_path == \"dns\"\n_path == \"http\"\n\n# Filter by time range\nts > 2025-01-01T00:00:00Z and ts < 2025-01-02T00:00:00Z\n\n# Grep for a string across all logs\ngrep(\"malware.com\")\n\n# Aggregate — count connections per destination\n_path == \"conn\" | count() by id.resp_h\n\n# Top talkers by bytes\n_path == \"conn\" | sum(orig_bytes) by id.orig_h | sort -r sum\n\n# Find all DNS queries for a domain\n_path == \"dns\" | grep(\"*.evil.com\")\n\n# HTTP requests with suspicious user agents\n_path == \"http\" | user_agent == \"python-requests/2.28\"\n\n# Filter by protocol\n_path == \"conn\" | proto == \"tcp\" | id.resp_p == 4444\n`);copyBtnbtn_7b644811ea78462d83a7c2ae3e3cd02a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7b644811ea78462d83a7c2ae3e3cd02a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f36af6fadc764afd868e5470834ee99c=document.querySelector('button[name=btn_f36af6fadc764afd868e5470834ee99c]');
+copyBtnbtn_f36af6fadc764afd868e5470834ee99c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Filter by field value\n_path == \"conn\"\n_path == \"dns\"\n_path == \"http\"\n\n# Filter by time range\nts > 2025-01-01T00:00:00Z and ts < 2025-01-02T00:00:00Z\n\n# Grep for a string across all logs\ngrep(\"malware.com\")\n\n# Aggregate — count connections per destination\n_path == \"conn\" | count() by id.resp_h\n\n# Top talkers by bytes\n_path == \"conn\" | sum(orig_bytes) by id.orig_h | sort -r sum\n\n# Find all DNS queries for a domain\n_path == \"dns\" | grep(\"*.evil.com\")\n\n# HTTP requests with suspicious user agents\n_path == \"http\" | user_agent == \"python-requests/2.28\"\n\n# Filter by protocol\n_path == \"conn\" | proto == \"tcp\" | id.resp_p == 4444\n`);copyBtnbtn_f36af6fadc764afd868e5470834ee99c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f36af6fadc764afd868e5470834ee99c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1042,11 +1042,11 @@ _path == "conn" | proto == "tcp" | id.resp_p == 4444
 <h2 id="org4eda783">Security Investigation Queries</h2>
 <div class="outline-text-2" id="text-org4eda783">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_105eac11fb1f44c9b758f91c17cb0471>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_5c574ee1fe9f4178ac35fc5b865f9640>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_105eac11fb1f44c9b758f91c17cb0471=document.querySelector('button[name=btn_105eac11fb1f44c9b758f91c17cb0471]');
-copyBtnbtn_105eac11fb1f44c9b758f91c17cb0471.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Long-duration connections (beaconing)\n_path == \"conn\" | duration > 1h | count() by id.resp_h | sort -r count\n\n# Large outbound transfers (exfiltration)\n_path == \"conn\" | orig_bytes > 10000000 | sort -r orig_bytes\n\n# Connections to rare external IPs\n_path == \"conn\" | not grep(\"192.168.*\") | count() by id.resp_h | sort count\n\n# DNS queries to unusual domains (DGA-like)\n_path == \"dns\" | len(query) > 50\n\n# HTTP to non-standard ports\n_path == \"http\" | id.resp_p != 80 and id.resp_p != 8080\n\n# Suspicious user agents\n_path == \"http\" | grep(\"curl|python|wget|powershell\")\n`);copyBtnbtn_105eac11fb1f44c9b758f91c17cb0471.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_105eac11fb1f44c9b758f91c17cb0471.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5c574ee1fe9f4178ac35fc5b865f9640=document.querySelector('button[name=btn_5c574ee1fe9f4178ac35fc5b865f9640]');
+copyBtnbtn_5c574ee1fe9f4178ac35fc5b865f9640.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Long-duration connections (beaconing)\n_path == \"conn\" | duration > 1h | count() by id.resp_h | sort -r count\n\n# Large outbound transfers (exfiltration)\n_path == \"conn\" | orig_bytes > 10000000 | sort -r orig_bytes\n\n# Connections to rare external IPs\n_path == \"conn\" | not grep(\"192.168.*\") | count() by id.resp_h | sort count\n\n# DNS queries to unusual domains (DGA-like)\n_path == \"dns\" | len(query) > 50\n\n# HTTP to non-standard ports\n_path == \"http\" | id.resp_p != 80 and id.resp_p != 8080\n\n# Suspicious user agents\n_path == \"http\" | grep(\"curl|python|wget|powershell\")\n`);copyBtnbtn_5c574ee1fe9f4178ac35fc5b865f9640.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5c574ee1fe9f4178ac35fc5b865f9640.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

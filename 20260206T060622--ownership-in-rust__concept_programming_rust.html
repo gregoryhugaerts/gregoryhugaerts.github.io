@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:12 -->
+<!-- 2026-07-30 Thu 22:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ownership in Rust</title>
@@ -933,7 +933,7 @@ Ownership is Rust's most unique and fundamental concept, central to its promise 
 The range within a program for which an item is valid. In Rust, values are valid from the point they are declared until the end of their current scope (typically defined by curly braces <code>{}</code>).
 </p>
 
-<pre class="example" id="org3ec2031">
+<pre class="example" id="org94efb04">
 ```rust
 { // s is not valid here, it's not yet declared
     let s = String::from("hello"); // s is valid from this point onward
@@ -955,11 +955,11 @@ A move means ownership is <i>transferred</i> to the new variable/function, and t
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_adcfc1faed4d481a9e5bd6188b8d4f73>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_c49fb8c0220245e7929bf0ab244ce31e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_adcfc1faed4d481a9e5bd6188b8d4f73=document.querySelector('button[name=btn_adcfc1faed4d481a9e5bd6188b8d4f73]');
-copyBtnbtn_adcfc1faed4d481a9e5bd6188b8d4f73.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let s1 = String::from(\"hello\");\nlet s2 = s1; // Ownership of \"hello\" is moved from s1 to s2.\n             // s1 is now invalid and cannot be used.\n\n// println!(\"{}\", s1); // This would cause a compile-time error!\n\nprintln!(\"{}\", s2); // This is fine.\n`);copyBtnbtn_adcfc1faed4d481a9e5bd6188b8d4f73.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_adcfc1faed4d481a9e5bd6188b8d4f73.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c49fb8c0220245e7929bf0ab244ce31e=document.querySelector('button[name=btn_c49fb8c0220245e7929bf0ab244ce31e]');
+copyBtnbtn_c49fb8c0220245e7929bf0ab244ce31e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let s1 = String::from(\"hello\");\nlet s2 = s1; // Ownership of \"hello\" is moved from s1 to s2.\n             // s1 is now invalid and cannot be used.\n\n// println!(\"{}\", s1); // This would cause a compile-time error!\n\nprintln!(\"{}\", s2); // This is fine.\n`);copyBtnbtn_c49fb8c0220245e7929bf0ab244ce31e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c49fb8c0220245e7929bf0ab244ce31e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -986,11 +986,11 @@ When a copy occurs, both variables are valid.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_0bdae0e0f55942e19d31c981df01423f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_eeb58fdf8f174a2b8e5d2f838d8d9f2e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0bdae0e0f55942e19d31c981df01423f=document.querySelector('button[name=btn_0bdae0e0f55942e19d31c981df01423f]');
-copyBtnbtn_0bdae0e0f55942e19d31c981df01423f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let x = 5;\nlet y = x; // 5 is copied. Both x and y are valid.\n\nprintln!(\"x = {}, y = {}\", x, y); // Output: x = 5, y = 5\n`);copyBtnbtn_0bdae0e0f55942e19d31c981df01423f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0bdae0e0f55942e19d31c981df01423f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_eeb58fdf8f174a2b8e5d2f838d8d9f2e=document.querySelector('button[name=btn_eeb58fdf8f174a2b8e5d2f838d8d9f2e]');
+copyBtnbtn_eeb58fdf8f174a2b8e5d2f838d8d9f2e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let x = 5;\nlet y = x; // 5 is copied. Both x and y are valid.\n\nprintln!(\"x = {}, y = {}\", x, y); // Output: x = 5, y = 5\n`);copyBtnbtn_eeb58fdf8f174a2b8e5d2f838d8d9f2e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_eeb58fdf8f174a2b8e5d2f838d8d9f2e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1014,11 +1014,11 @@ Returning a value from a function also moves ownership.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_f487152f29654c728ef2a7a23f225aac>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_b7b88c3bad464003a582a290df98d380>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f487152f29654c728ef2a7a23f225aac=document.querySelector('button[name=btn_f487152f29654c728ef2a7a23f225aac]');
-copyBtnbtn_f487152f29654c728ef2a7a23f225aac.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`fn takes_ownership(some_string: String) { // some_string comes into scope\n    println!(\"{}\", some_string);\n} // some_string goes out of scope and \`drop\` is called.\n\nfn makes_copy(some_integer: i32) { // some_integer comes into scope\n    println!(\"{}\", some_integer);\n} // some_integer goes out of scope. Nothing special happens as it's Copy.\n\nlet s = String::from(\"world\");\ntakes_ownership(s); // s's value moves into the function.\n                    // s is now invalid.\n\n// println!(\"{}\", s); // Compile-time error!\n\nlet x = 5;\nmakes_copy(x); // x's value copies into the function.\n               // x is still valid.\n\nprintln!(\"{}\", x); // This is fine.\n`);copyBtnbtn_f487152f29654c728ef2a7a23f225aac.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f487152f29654c728ef2a7a23f225aac.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b7b88c3bad464003a582a290df98d380=document.querySelector('button[name=btn_b7b88c3bad464003a582a290df98d380]');
+copyBtnbtn_b7b88c3bad464003a582a290df98d380.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`fn takes_ownership(some_string: String) { // some_string comes into scope\n    println!(\"{}\", some_string);\n} // some_string goes out of scope and \`drop\` is called.\n\nfn makes_copy(some_integer: i32) { // some_integer comes into scope\n    println!(\"{}\", some_integer);\n} // some_integer goes out of scope. Nothing special happens as it's Copy.\n\nlet s = String::from(\"world\");\ntakes_ownership(s); // s's value moves into the function.\n                    // s is now invalid.\n\n// println!(\"{}\", s); // Compile-time error!\n\nlet x = 5;\nmakes_copy(x); // x's value copies into the function.\n               // x is still valid.\n\nprintln!(\"{}\", x); // This is fine.\n`);copyBtnbtn_b7b88c3bad464003a582a290df98d380.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b7b88c3bad464003a582a290df98d380.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

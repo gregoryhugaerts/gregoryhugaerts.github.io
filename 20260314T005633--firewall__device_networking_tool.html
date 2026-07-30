@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:15 -->
+<!-- 2026-07-30 Thu 22:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Firewall</title>
@@ -974,11 +974,11 @@ Related: <a href="20260213T104011--network-security__concept_cybersecurity.html"
 <h2 id="org334605b">Linux — iptables</h2>
 <div class="outline-text-2" id="text-org334605b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5ac2e5ec2efc4334a2554f9b750c4d3a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e1b37932d8ce4950a7f73bcc68cf6335>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5ac2e5ec2efc4334a2554f9b750c4d3a=document.querySelector('button[name=btn_5ac2e5ec2efc4334a2554f9b750c4d3a]');
-copyBtnbtn_5ac2e5ec2efc4334a2554f9b750c4d3a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# View current rules\niptables -L -n -v\niptables -L -n -v --line-numbers   # with line numbers for deletion\n\n# Allow established/related connections (required for stateful behaviour)\niptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT\n\n# Allow incoming SSH\niptables -A INPUT -p tcp --dport 22 -j ACCEPT\n\n# Allow incoming HTTP and HTTPS\niptables -A INPUT -p tcp -m multiport --dports 80,443 -j ACCEPT\n\n# Block a specific IP\niptables -A INPUT -s 192.168.1.50 -j DROP\n\n# Allow traffic from a specific subnet\niptables -A INPUT -s 10.0.0.0/8 -j ACCEPT\n\n# Set default policy — drop everything not explicitly allowed\niptables -P INPUT DROP\niptables -P FORWARD DROP\niptables -P OUTPUT ACCEPT\n\n# Delete a rule by line number\niptables -D INPUT 3\n\n# Save rules (Debian/Ubuntu)\niptables-save > /etc/iptables/rules.v4\n\n# Flush all rules (careful — removes all rules)\niptables -F\n`);copyBtnbtn_5ac2e5ec2efc4334a2554f9b750c4d3a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5ac2e5ec2efc4334a2554f9b750c4d3a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e1b37932d8ce4950a7f73bcc68cf6335=document.querySelector('button[name=btn_e1b37932d8ce4950a7f73bcc68cf6335]');
+copyBtnbtn_e1b37932d8ce4950a7f73bcc68cf6335.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# View current rules\niptables -L -n -v\niptables -L -n -v --line-numbers   # with line numbers for deletion\n\n# Allow established/related connections (required for stateful behaviour)\niptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT\n\n# Allow incoming SSH\niptables -A INPUT -p tcp --dport 22 -j ACCEPT\n\n# Allow incoming HTTP and HTTPS\niptables -A INPUT -p tcp -m multiport --dports 80,443 -j ACCEPT\n\n# Block a specific IP\niptables -A INPUT -s 192.168.1.50 -j DROP\n\n# Allow traffic from a specific subnet\niptables -A INPUT -s 10.0.0.0/8 -j ACCEPT\n\n# Set default policy — drop everything not explicitly allowed\niptables -P INPUT DROP\niptables -P FORWARD DROP\niptables -P OUTPUT ACCEPT\n\n# Delete a rule by line number\niptables -D INPUT 3\n\n# Save rules (Debian/Ubuntu)\niptables-save > /etc/iptables/rules.v4\n\n# Flush all rules (careful — removes all rules)\niptables -F\n`);copyBtnbtn_e1b37932d8ce4950a7f73bcc68cf6335.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e1b37932d8ce4950a7f73bcc68cf6335.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1027,11 +1027,11 @@ tasks.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4dbeeb7cd49f4bb4ab85129bffea5ddb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_999306a55a874ec191b6a780ea39e79c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4dbeeb7cd49f4bb4ab85129bffea5ddb=document.querySelector('button[name=btn_4dbeeb7cd49f4bb4ab85129bffea5ddb]');
-copyBtnbtn_4dbeeb7cd49f4bb4ab85129bffea5ddb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Enable / disable\nufw enable\nufw disable\nufw status verbose\n\n# Allow / deny by port\nufw allow 22\nufw allow 80/tcp\nufw deny 3306\n\n# Allow / deny by service name\nufw allow ssh\nufw allow http\nufw allow https\n\n# Allow from specific IP\nufw allow from 192.168.1.0/24 to any port 22\n\n# Delete a rule\nufw delete allow 80\n\n# Reset to defaults\nufw reset\n`);copyBtnbtn_4dbeeb7cd49f4bb4ab85129bffea5ddb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4dbeeb7cd49f4bb4ab85129bffea5ddb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_999306a55a874ec191b6a780ea39e79c=document.querySelector('button[name=btn_999306a55a874ec191b6a780ea39e79c]');
+copyBtnbtn_999306a55a874ec191b6a780ea39e79c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Enable / disable\nufw enable\nufw disable\nufw status verbose\n\n# Allow / deny by port\nufw allow 22\nufw allow 80/tcp\nufw deny 3306\n\n# Allow / deny by service name\nufw allow ssh\nufw allow http\nufw allow https\n\n# Allow from specific IP\nufw allow from 192.168.1.0/24 to any port 22\n\n# Delete a rule\nufw delete allow 80\n\n# Reset to defaults\nufw reset\n`);copyBtnbtn_999306a55a874ec191b6a780ea39e79c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_999306a55a874ec191b6a780ea39e79c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1066,11 +1066,11 @@ ufw allow https
 <h2 id="org16e882b">Linux — nftables (Modern Replacement for iptables)</h2>
 <div class="outline-text-2" id="text-org16e882b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a2bd1eadd0654298894c5c6165935132>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b85549e0edc64ad3b8cc8c7dedffc54a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a2bd1eadd0654298894c5c6165935132=document.querySelector('button[name=btn_a2bd1eadd0654298894c5c6165935132]');
-copyBtnbtn_a2bd1eadd0654298894c5c6165935132.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# View ruleset\nnft list ruleset\n\n# Basic stateful firewall\nnft add table inet filter\nnft add chain inet filter input { type filter hook input priority 0 \\; policy drop \\; }\nnft add rule inet filter input ct state established,related accept\nnft add rule inet filter input tcp dport 22 accept\nnft add rule inet filter input tcp dport { 80, 443 } accept\nnft add rule inet filter input drop\n\n# Save and restore\nnft list ruleset > /etc/nftables.conf\nnft -f /etc/nftables.conf\n`);copyBtnbtn_a2bd1eadd0654298894c5c6165935132.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a2bd1eadd0654298894c5c6165935132.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b85549e0edc64ad3b8cc8c7dedffc54a=document.querySelector('button[name=btn_b85549e0edc64ad3b8cc8c7dedffc54a]');
+copyBtnbtn_b85549e0edc64ad3b8cc8c7dedffc54a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# View ruleset\nnft list ruleset\n\n# Basic stateful firewall\nnft add table inet filter\nnft add chain inet filter input { type filter hook input priority 0 \\; policy drop \\; }\nnft add rule inet filter input ct state established,related accept\nnft add rule inet filter input tcp dport 22 accept\nnft add rule inet filter input tcp dport { 80, 443 } accept\nnft add rule inet filter input drop\n\n# Save and restore\nnft list ruleset > /etc/nftables.conf\nnft -f /etc/nftables.conf\n`);copyBtnbtn_b85549e0edc64ad3b8cc8c7dedffc54a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b85549e0edc64ad3b8cc8c7dedffc54a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1096,11 +1096,11 @@ nft -f /etc/nftables.conf
 <h2 id="orgc1fbd23">Windows Firewall</h2>
 <div class="outline-text-2" id="text-orgc1fbd23">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_278aab294fa644a5a225f54e6a6ef9ef>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_d55d36cf1a664588b02ab0dacf677273>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_278aab294fa644a5a225f54e6a6ef9ef=document.querySelector('button[name=btn_278aab294fa644a5a225f54e6a6ef9ef]');
-copyBtnbtn_278aab294fa644a5a225f54e6a6ef9ef.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# View firewall status\nGet-NetFirewallProfile\n\n# Enable / disable\nSet-NetFirewallProfile -Profile Domain,Public,Private -Enabled True\n\n# List rules\nGet-NetFirewallRule | Where-Object {$_.Enabled -eq \"True\"} | Select-Object DisplayName, Direction, Action\n\n# Add inbound rule (allow SSH)\nNew-NetFirewallRule -DisplayName \"Allow SSH\" -Direction Inbound \`\n  -Protocol TCP -LocalPort 22 -Action Allow\n\n# Add outbound block rule\nNew-NetFirewallRule -DisplayName \"Block outbound 4444\" -Direction Outbound \`\n  -Protocol TCP -RemotePort 4444 -Action Block\n\n# Remove a rule\nRemove-NetFirewallRule -DisplayName \"Allow SSH\"\n\n# netsh equivalent (older syntax)\nnetsh advfirewall firewall add rule name=\"Allow SSH\" \`\n  protocol=TCP dir=in localport=22 action=allow\n`);copyBtnbtn_278aab294fa644a5a225f54e6a6ef9ef.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_278aab294fa644a5a225f54e6a6ef9ef.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d55d36cf1a664588b02ab0dacf677273=document.querySelector('button[name=btn_d55d36cf1a664588b02ab0dacf677273]');
+copyBtnbtn_d55d36cf1a664588b02ab0dacf677273.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# View firewall status\nGet-NetFirewallProfile\n\n# Enable / disable\nSet-NetFirewallProfile -Profile Domain,Public,Private -Enabled True\n\n# List rules\nGet-NetFirewallRule | Where-Object {$_.Enabled -eq \"True\"} | Select-Object DisplayName, Direction, Action\n\n# Add inbound rule (allow SSH)\nNew-NetFirewallRule -DisplayName \"Allow SSH\" -Direction Inbound \`\n  -Protocol TCP -LocalPort 22 -Action Allow\n\n# Add outbound block rule\nNew-NetFirewallRule -DisplayName \"Block outbound 4444\" -Direction Outbound \`\n  -Protocol TCP -RemotePort 4444 -Action Block\n\n# Remove a rule\nRemove-NetFirewallRule -DisplayName \"Allow SSH\"\n\n# netsh equivalent (older syntax)\nnetsh advfirewall firewall add rule name=\"Allow SSH\" \`\n  protocol=TCP dir=in localport=22 action=allow\n`);copyBtnbtn_d55d36cf1a664588b02ab0dacf677273.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d55d36cf1a664588b02ab0dacf677273.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1147,11 +1147,11 @@ blocks inbound connections but not outbound.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2b5beb45b6dd4d4793e4532e117865da>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_50bee2863e134f48aee576fc7b856572>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2b5beb45b6dd4d4793e4532e117865da=document.querySelector('button[name=btn_2b5beb45b6dd4d4793e4532e117865da]');
-copyBtnbtn_2b5beb45b6dd4d4793e4532e117865da.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Attacker (listener) ← ← ← Victim (connects out on permitted port)\nVictim firewall: outbound 443 allowed → reverse shell works\nVictim firewall: inbound 4444 blocked → bind shell fails\n`);copyBtnbtn_2b5beb45b6dd4d4793e4532e117865da.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2b5beb45b6dd4d4793e4532e117865da.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_50bee2863e134f48aee576fc7b856572=document.querySelector('button[name=btn_50bee2863e134f48aee576fc7b856572]');
+copyBtnbtn_50bee2863e134f48aee576fc7b856572.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Attacker (listener) ← ← ← Victim (connects out on permitted port)\nVictim firewall: outbound 443 allowed → reverse shell works\nVictim firewall: inbound 4444 blocked → bind shell fails\n`);copyBtnbtn_50bee2863e134f48aee576fc7b856572.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_50bee2863e134f48aee576fc7b856572.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1170,11 +1170,11 @@ Common techniques encountered in pentests:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_256c0561d4f24135971ce53c9aa9babf>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_65789a4a9ae443cdaf0b79a13bf614c2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_256c0561d4f24135971ce53c9aa9babf=document.querySelector('button[name=btn_256c0561d4f24135971ce53c9aa9babf]');
-copyBtnbtn_256c0561d4f24135971ce53c9aa9babf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Use permitted ports (80, 443, 53) for reverse shells\nnc -lvnp 443   # listener on HTTPS port — often not egress-filtered\n\n# DNS tunnelling — exfiltrate over port 53 (almost never blocked)\n# Tools: iodine, dnscat2\n\n# Port knocking — send specific sequence to open a port\n# Requires knowledge of the knock sequence\n\n# Nmap firewall evasion\nnmap -f $IP            # fragment packets\nnmap --mtu 24 $IP      # custom MTU fragmentation\nnmap -D RND:10 $IP     # decoy scan\nnmap -sA $IP           # ACK scan — maps firewall rules\n`);copyBtnbtn_256c0561d4f24135971ce53c9aa9babf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_256c0561d4f24135971ce53c9aa9babf.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_65789a4a9ae443cdaf0b79a13bf614c2=document.querySelector('button[name=btn_65789a4a9ae443cdaf0b79a13bf614c2]');
+copyBtnbtn_65789a4a9ae443cdaf0b79a13bf614c2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Use permitted ports (80, 443, 53) for reverse shells\nnc -lvnp 443   # listener on HTTPS port — often not egress-filtered\n\n# DNS tunnelling — exfiltrate over port 53 (almost never blocked)\n# Tools: iodine, dnscat2\n\n# Port knocking — send specific sequence to open a port\n# Requires knowledge of the knock sequence\n\n# Nmap firewall evasion\nnmap -f $IP            # fragment packets\nnmap --mtu 24 $IP      # custom MTU fragmentation\nnmap -D RND:10 $IP     # decoy scan\nnmap -sA $IP           # ACK scan — maps firewall rules\n`);copyBtnbtn_65789a4a9ae443cdaf0b79a13bf614c2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_65789a4a9ae443cdaf0b79a13bf614c2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1200,11 +1200,11 @@ let res = copyTextToClipboard(`# Use permitted ports (80, 443, 53) for reverse s
 <h3 id="orgb06adae">Checking Firewall Rules Post-Compromise</h3>
 <div class="outline-text-3" id="text-orgb06adae">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c3a5145c29454752977c52ea0edb83b7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_af542b7985094d009bf48e76e792fb84>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c3a5145c29454752977c52ea0edb83b7=document.querySelector('button[name=btn_c3a5145c29454752977c52ea0edb83b7]');
-copyBtnbtn_c3a5145c29454752977c52ea0edb83b7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Linux\niptables -L -n -v\nnft list ruleset\nufw status verbose\ncat /etc/iptables/rules.v4\n\n# Windows\nGet-NetFirewallRule | Where-Object {$_.Enabled -eq \"True\"}\nnetsh advfirewall firewall show rule name=all\n`);copyBtnbtn_c3a5145c29454752977c52ea0edb83b7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c3a5145c29454752977c52ea0edb83b7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_af542b7985094d009bf48e76e792fb84=document.querySelector('button[name=btn_af542b7985094d009bf48e76e792fb84]');
+copyBtnbtn_af542b7985094d009bf48e76e792fb84.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Linux\niptables -L -n -v\nnft list ruleset\nufw status verbose\ncat /etc/iptables/rules.v4\n\n# Windows\nGet-NetFirewallRule | Where-Object {$_.Enabled -eq \"True\"}\nnetsh advfirewall firewall show rule name=all\n`);copyBtnbtn_af542b7985094d009bf48e76e792fb84.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_af542b7985094d009bf48e76e792fb84.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

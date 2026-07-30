@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:12 -->
+<!-- 2026-07-30 Thu 22:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Core Windows Processes</title>
@@ -1321,11 +1321,11 @@ Most common masquerade target — malware names itself
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_a927165a19054bb4aad293b9231c8e34>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_710c03b0e23c4acf883ae177595b2018>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a927165a19054bb4aad293b9231c8e34=document.querySelector('button[name=btn_a927165a19054bb4aad293b9231c8e34]');
-copyBtnbtn_a927165a19054bb4aad293b9231c8e34.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Inspect services hosted by each svchost instance\nGet-WmiObject Win32_Service | Where-Object {$_.ProcessId -eq <PID>}\n\n# Or with tasklist\ntasklist /svc | findstr svchost\n\n# Check path — all legitimate instances run from System32\nGet-Process svchost | Select-Object Id, Path\n`);copyBtnbtn_a927165a19054bb4aad293b9231c8e34.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a927165a19054bb4aad293b9231c8e34.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_710c03b0e23c4acf883ae177595b2018=document.querySelector('button[name=btn_710c03b0e23c4acf883ae177595b2018]');
+copyBtnbtn_710c03b0e23c4acf883ae177595b2018.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Inspect services hosted by each svchost instance\nGet-WmiObject Win32_Service | Where-Object {$_.ProcessId -eq <PID>}\n\n# Or with tasklist\ntasklist /svc | findstr svchost\n\n# Check path — all legitimate instances run from System32\nGet-Process svchost | Select-Object Id, Path\n`);copyBtnbtn_710c03b0e23c4acf883ae177595b2018.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_710c03b0e23c4acf883ae177595b2018.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1397,11 +1397,11 @@ user-level privileges.
 <h2 id="org702d552">Key Detection Signals</h2>
 <div class="outline-text-2" id="text-org702d552">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_6b15b962082c41168d0c1e57e12d6a7d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ac77fa2eb01b43c4bc4eb316026ca90e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6b15b962082c41168d0c1e57e12d6a7d=document.querySelector('button[name=btn_6b15b962082c41168d0c1e57e12d6a7d]');
-copyBtnbtn_6b15b962082c41168d0c1e57e12d6a7d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Wrong path       — any core process running outside System32\nWrong parent     — check against the table above\nMultiple instances where only one is expected\nNetwork connections from processes that shouldn't make them\n  (lsass.exe, smss.exe, wininit.exe)\nUnexpected child processes\nRunning under a user account instead of SYSTEM/LOCAL SERVICE\n`);copyBtnbtn_6b15b962082c41168d0c1e57e12d6a7d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6b15b962082c41168d0c1e57e12d6a7d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ac77fa2eb01b43c4bc4eb316026ca90e=document.querySelector('button[name=btn_ac77fa2eb01b43c4bc4eb316026ca90e]');
+copyBtnbtn_ac77fa2eb01b43c4bc4eb316026ca90e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Wrong path       — any core process running outside System32\nWrong parent     — check against the table above\nMultiple instances where only one is expected\nNetwork connections from processes that shouldn't make them\n  (lsass.exe, smss.exe, wininit.exe)\nUnexpected child processes\nRunning under a user account instead of SYSTEM/LOCAL SERVICE\n`);copyBtnbtn_ac77fa2eb01b43c4bc4eb316026ca90e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ac77fa2eb01b43c4bc4eb316026ca90e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1420,11 +1420,11 @@ Running under a user account instead of SYSTEM/LOCAL SERVICE
 <h2 id="org1958715">Investigation Commands</h2>
 <div class="outline-text-2" id="text-org1958715">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_8ce04df5300c4891b5a59d9cda48e43a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_c5542ce55212454aa53667bd4882b5e3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8ce04df5300c4891b5a59d9cda48e43a=document.querySelector('button[name=btn_8ce04df5300c4891b5a59d9cda48e43a]');
-copyBtnbtn_8ce04df5300c4891b5a59d9cda48e43a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List all processes with parent IDs\nGet-WmiObject Win32_Process | Select-Object Name, ProcessId, ParentProcessId, ExecutablePath\n\n# Find processes not in System32\nGet-WmiObject Win32_Process |\n  Where-Object {$_.ExecutablePath -and $_.ExecutablePath -notlike \"*System32*\"} |\n  Select-Object Name, ProcessId, ExecutablePath\n\n# Check svchost instances and their services\ntasklist /svc | findstr svchost\n\n# Network connections with owning process\nGet-NetTCPConnection | Where-Object {$_.State -eq \"Established\"} |\n  Select-Object LocalPort, RemoteAddress, RemotePort, OwningProcess\n`);copyBtnbtn_8ce04df5300c4891b5a59d9cda48e43a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8ce04df5300c4891b5a59d9cda48e43a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c5542ce55212454aa53667bd4882b5e3=document.querySelector('button[name=btn_c5542ce55212454aa53667bd4882b5e3]');
+copyBtnbtn_c5542ce55212454aa53667bd4882b5e3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List all processes with parent IDs\nGet-WmiObject Win32_Process | Select-Object Name, ProcessId, ParentProcessId, ExecutablePath\n\n# Find processes not in System32\nGet-WmiObject Win32_Process |\n  Where-Object {$_.ExecutablePath -and $_.ExecutablePath -notlike \"*System32*\"} |\n  Select-Object Name, ProcessId, ExecutablePath\n\n# Check svchost instances and their services\ntasklist /svc | findstr svchost\n\n# Network connections with owning process\nGet-NetTCPConnection | Where-Object {$_.State -eq \"Established\"} |\n  Select-Object LocalPort, RemoteAddress, RemotePort, OwningProcess\n`);copyBtnbtn_c5542ce55212454aa53667bd4882b5e3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c5542ce55212454aa53667bd4882b5e3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

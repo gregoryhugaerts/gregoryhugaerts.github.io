@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:16 -->
+<!-- 2026-07-30 Thu 22:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>windows client DFIR</title>
@@ -944,11 +944,11 @@ system time first — everything else is relative to it.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ad403c46e0cb4a5497c8808450b4cff9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_29361e347b54440e9cf303669de18193>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ad403c46e0cb4a5497c8808450b4cff9=document.querySelector('button[name=btn_ad403c46e0cb4a5497c8808450b4cff9]');
-copyBtnbtn_ad403c46e0cb4a5497c8808450b4cff9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Time and identity\ndate /t & time /t\nhostname\nquery user\nwhoami\n\n# Volatile state — capture before anything changes\ntasklist /svc                           # running processes\nnetstat -ano                            # active connections\nnet use                                 # mapped drives\nnet share                               # active shares\nwmic startup list full                  # startup items\nipconfig /all                           # network config\n`);copyBtnbtn_ad403c46e0cb4a5497c8808450b4cff9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ad403c46e0cb4a5497c8808450b4cff9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_29361e347b54440e9cf303669de18193=document.querySelector('button[name=btn_29361e347b54440e9cf303669de18193]');
+copyBtnbtn_29361e347b54440e9cf303669de18193.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Time and identity\ndate /t & time /t\nhostname\nquery user\nwhoami\n\n# Volatile state — capture before anything changes\ntasklist /svc                           # running processes\nnetstat -ano                            # active connections\nnet use                                 # mapped drives\nnet share                               # active shares\nwmic startup list full                  # startup items\nipconfig /all                           # network config\n`);copyBtnbtn_29361e347b54440e9cf303669de18193.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_29361e347b54440e9cf303669de18193.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -976,11 +976,11 @@ Capture RAM before rebooting or shutting down. Lost on restart.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4105ded2d94e43fd9e99752d29b13412>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_575c955d758d4219abcde4f8862a5a43>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4105ded2d94e43fd9e99752d29b13412=document.querySelector('button[name=btn_4105ded2d94e43fd9e99752d29b13412]');
-copyBtnbtn_4105ded2d94e43fd9e99752d29b13412.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Magnet RAM Capture — GUI, save to external drive\n# Winpmem — command line\nwinpmem_mini_x64.exe memory.raw\n\n# RamCapture x64 — GUI alternative\n# Always save to external drive — never write to suspect system\n`);copyBtnbtn_4105ded2d94e43fd9e99752d29b13412.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4105ded2d94e43fd9e99752d29b13412.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_575c955d758d4219abcde4f8862a5a43=document.querySelector('button[name=btn_575c955d758d4219abcde4f8862a5a43]');
+copyBtnbtn_575c955d758d4219abcde4f8862a5a43.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Magnet RAM Capture — GUI, save to external drive\n# Winpmem — command line\nwinpmem_mini_x64.exe memory.raw\n\n# RamCapture x64 — GUI alternative\n# Always save to external drive — never write to suspect system\n`);copyBtnbtn_575c955d758d4219abcde4f8862a5a43.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_575c955d758d4219abcde4f8862a5a43.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1003,11 +1003,11 @@ from a live system:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b457e1571d134807b682cf1a74eecd28>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9a5701382d3c41c29f1e8e9ea9588d41>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b457e1571d134807b682cf1a74eecd28=document.querySelector('button[name=btn_b457e1571d134807b682cf1a74eecd28]');
-copyBtnbtn_b457e1571d134807b682cf1a74eecd28.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Gkape — GUI\n# Select Target: !BasicCollection or !SANS_Triage\n# Select Module: as appropriate\n# Output to external drive\n\n# Command line\nkape.exe --tsource C: --tdest E:\\output --target !BasicCollection\n`);copyBtnbtn_b457e1571d134807b682cf1a74eecd28.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b457e1571d134807b682cf1a74eecd28.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9a5701382d3c41c29f1e8e9ea9588d41=document.querySelector('button[name=btn_9a5701382d3c41c29f1e8e9ea9588d41]');
+copyBtnbtn_9a5701382d3c41c29f1e8e9ea9588d41.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Gkape — GUI\n# Select Target: !BasicCollection or !SANS_Triage\n# Select Module: as appropriate\n# Output to external drive\n\n# Command line\nkape.exe --tsource C: --tdest E:\\output --target !BasicCollection\n`);copyBtnbtn_9a5701382d3c41c29f1e8e9ea9588d41.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9a5701382d3c41c29f1e8e9ea9588d41.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1036,11 +1036,11 @@ See <a href="20260206T060740--windows-event-logs__concept_cybersecurity.html">Wi
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_981b6d52e6b34557bc3249b55b0b77a2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_423efb26ee2846249fd8fc5acb5d1d17>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_981b6d52e6b34557bc3249b55b0b77a2=document.querySelector('button[name=btn_981b6d52e6b34557bc3249b55b0b77a2]');
-copyBtnbtn_981b6d52e6b34557bc3249b55b0b77a2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`C:\\Windows\\System32\\winevt\\Logs\\\n`);copyBtnbtn_981b6d52e6b34557bc3249b55b0b77a2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_981b6d52e6b34557bc3249b55b0b77a2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_423efb26ee2846249fd8fc5acb5d1d17=document.querySelector('button[name=btn_423efb26ee2846249fd8fc5acb5d1d17]');
+copyBtnbtn_423efb26ee2846249fd8fc5acb5d1d17.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`C:\\Windows\\System32\\winevt\\Logs\\\n`);copyBtnbtn_423efb26ee2846249fd8fc5acb5d1d17.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_423efb26ee2846249fd8fc5acb5d1d17.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1110,11 +1110,11 @@ Survives executable deletion.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c46893fe311446849e06847fb5969275>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c7808d1b26a347b8ad7f09c39d6e794a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c46893fe311446849e06847fb5969275=document.querySelector('button[name=btn_c46893fe311446849e06847fb5969275]');
-copyBtnbtn_c46893fe311446849e06847fb5969275.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`C:\\Windows\\Prefetch\\*.pf\n`);copyBtnbtn_c46893fe311446849e06847fb5969275.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c46893fe311446849e06847fb5969275.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c7808d1b26a347b8ad7f09c39d6e794a=document.querySelector('button[name=btn_c7808d1b26a347b8ad7f09c39d6e794a]');
+copyBtnbtn_c7808d1b26a347b8ad7f09c39d6e794a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`C:\\Windows\\Prefetch\\*.pf\n`);copyBtnbtn_c7808d1b26a347b8ad7f09c39d6e794a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c7808d1b26a347b8ad7f09c39d6e794a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1123,11 +1123,11 @@ let res = copyTextToClipboard(`C:\\Windows\\Prefetch\\*.pf\n`);copyBtnbtn_c46893
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_fe5a7ca5d6de4b79a8923cb23846c070>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4433acbe283e4f76b135bca74c9a0d54>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fe5a7ca5d6de4b79a8923cb23846c070=document.querySelector('button[name=btn_fe5a7ca5d6de4b79a8923cb23846c070]');
-copyBtnbtn_fe5a7ca5d6de4b79a8923cb23846c070.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Parse with PECmd (Eric Zimmerman)\nPECmd.exe -d C:\\Windows\\Prefetch --csv output\\\nPECmd.exe -f C:\\Windows\\Prefetch\\MALWARE.EXE-XXXXXXXX.pf\n\n# Look for:\n# — Executables run from \\Temp\\, \\AppData\\, \\Downloads\\\n# — Suspicious names: random strings, mimicking system processes\n# — Execution timestamps for timeline\n`);copyBtnbtn_fe5a7ca5d6de4b79a8923cb23846c070.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fe5a7ca5d6de4b79a8923cb23846c070.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4433acbe283e4f76b135bca74c9a0d54=document.querySelector('button[name=btn_4433acbe283e4f76b135bca74c9a0d54]');
+copyBtnbtn_4433acbe283e4f76b135bca74c9a0d54.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Parse with PECmd (Eric Zimmerman)\nPECmd.exe -d C:\\Windows\\Prefetch --csv output\\\nPECmd.exe -f C:\\Windows\\Prefetch\\MALWARE.EXE-XXXXXXXX.pf\n\n# Look for:\n# — Executables run from \\Temp\\, \\AppData\\, \\Downloads\\\n# — Suspicious names: random strings, mimicking system processes\n# — Execution timestamps for timeline\n`);copyBtnbtn_4433acbe283e4f76b135bca74c9a0d54.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4433acbe283e4f76b135bca74c9a0d54.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1147,11 +1147,11 @@ PECmd.exe -f C:\Windows\Prefetch\MALWARE.EXE-XXXXXXXX.pf
 <h3 id="org2ea0917">Registry — User Activity</h3>
 <div class="outline-text-3" id="text-org2ea0917">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_1a1b701a6caa4213a388d76ed8a27751>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_dc3990d472ff46f69ba1624a32b5044b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1a1b701a6caa4213a388d76ed8a27751=document.querySelector('button[name=btn_1a1b701a6caa4213a388d76ed8a27751]');
-copyBtnbtn_1a1b701a6caa4213a388d76ed8a27751.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Per-user hive\nC:\\Users\\<user>\\NTUSER.DAT\n\n# Key locations within NTUSER.DAT:\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\RecentDocs\n  → recently opened files by extension\n\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\UserAssist\n  → GUI application execution with run count and last run time\n  → values are ROT13-encoded\n\nHKCU\\Software\\Microsoft\\Windows\\Shell\\Bags\n  → folder browsing history (ShellBags)\n  → persists even for deleted folders and removable media\n\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\RunMRU\n  → commands run via Win+R (Run dialog)\n\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\TypedPaths\n  → paths typed directly into Explorer address bar\n`);copyBtnbtn_1a1b701a6caa4213a388d76ed8a27751.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1a1b701a6caa4213a388d76ed8a27751.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_dc3990d472ff46f69ba1624a32b5044b=document.querySelector('button[name=btn_dc3990d472ff46f69ba1624a32b5044b]');
+copyBtnbtn_dc3990d472ff46f69ba1624a32b5044b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Per-user hive\nC:\\Users\\<user>\\NTUSER.DAT\n\n# Key locations within NTUSER.DAT:\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\RecentDocs\n  → recently opened files by extension\n\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\UserAssist\n  → GUI application execution with run count and last run time\n  → values are ROT13-encoded\n\nHKCU\\Software\\Microsoft\\Windows\\Shell\\Bags\n  → folder browsing history (ShellBags)\n  → persists even for deleted folders and removable media\n\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\RunMRU\n  → commands run via Win+R (Run dialog)\n\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\TypedPaths\n  → paths typed directly into Explorer address bar\n`);copyBtnbtn_dc3990d472ff46f69ba1624a32b5044b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dc3990d472ff46f69ba1624a32b5044b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1183,11 +1183,11 @@ HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths
 <h3 id="org4f0f84d">Registry — System and Persistence</h3>
 <div class="outline-text-3" id="text-org4f0f84d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2c44f134ca1140188becb27c9867dea3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_cb228d01824d4c0593dda2287f7e3880>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2c44f134ca1140188becb27c9867dea3=document.querySelector('button[name=btn_2c44f134ca1140188becb27c9867dea3]');
-copyBtnbtn_2c44f134ca1140188becb27c9867dea3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Autorun / persistence locations\nHKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\nHKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce\nHKLM\\System\\CurrentControlSet\\Services\n  → malware frequently registers as a service\n\n# Installed software\nHKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\n\n# USB devices ever connected\nHKLM\\System\\CurrentControlSet\\Enum\\USBSTOR\n  → device type, vendor, product, serial number\n\n# Network interfaces and recent connections\nHKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\NetworkList\\Profiles\n`);copyBtnbtn_2c44f134ca1140188becb27c9867dea3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2c44f134ca1140188becb27c9867dea3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cb228d01824d4c0593dda2287f7e3880=document.querySelector('button[name=btn_cb228d01824d4c0593dda2287f7e3880]');
+copyBtnbtn_cb228d01824d4c0593dda2287f7e3880.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Autorun / persistence locations\nHKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\nHKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce\nHKLM\\System\\CurrentControlSet\\Services\n  → malware frequently registers as a service\n\n# Installed software\nHKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\n\n# USB devices ever connected\nHKLM\\System\\CurrentControlSet\\Enum\\USBSTOR\n  → device type, vendor, product, serial number\n\n# Network interfaces and recent connections\nHKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\NetworkList\\Profiles\n`);copyBtnbtn_cb228d01824d4c0593dda2287f7e3880.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cb228d01824d4c0593dda2287f7e3880.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1224,11 +1224,11 @@ deletion.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ba70630144604b838f4b88ccfb7d8b99>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_64caa4a2da9f450291a4e2d1fe0646a8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ba70630144604b838f4b88ccfb7d8b99=document.querySelector('button[name=btn_ba70630144604b838f4b88ccfb7d8b99]');
-copyBtnbtn_ba70630144604b838f4b88ccfb7d8b99.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Shimcache — execution evidence, no timestamps in Win11\nHKLM\\System\\CurrentControlSet\\Control\\Session Manager\\AppCompatCache\n\n# Amcache — richer: SHA1 hash, file path, first execution time\nC:\\Windows\\AppCompat\\Programs\\Amcache.hve\n\n# Parse with AppCompatCacheParser and AmcacheParser (Eric Zimmerman)\nAppCompatCacheParser.exe -f SYSTEM --csv output\\\nAmcacheParser.exe -f Amcache.hve --csv output\\\n`);copyBtnbtn_ba70630144604b838f4b88ccfb7d8b99.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ba70630144604b838f4b88ccfb7d8b99.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_64caa4a2da9f450291a4e2d1fe0646a8=document.querySelector('button[name=btn_64caa4a2da9f450291a4e2d1fe0646a8]');
+copyBtnbtn_64caa4a2da9f450291a4e2d1fe0646a8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Shimcache — execution evidence, no timestamps in Win11\nHKLM\\System\\CurrentControlSet\\Control\\Session Manager\\AppCompatCache\n\n# Amcache — richer: SHA1 hash, file path, first execution time\nC:\\Windows\\AppCompat\\Programs\\Amcache.hve\n\n# Parse with AppCompatCacheParser and AmcacheParser (Eric Zimmerman)\nAppCompatCacheParser.exe -f SYSTEM --csv output\\\nAmcacheParser.exe -f Amcache.hve --csv output\\\n`);copyBtnbtn_64caa4a2da9f450291a4e2d1fe0646a8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_64caa4a2da9f450291a4e2d1fe0646a8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1254,11 +1254,11 @@ LNK files: shortcut files auto-created when files are opened
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b5f3e94038fd4e2885fa899bca0d3306>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_51f21335a1e34085918124d2fd5054f2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b5f3e94038fd4e2885fa899bca0d3306=document.querySelector('button[name=btn_b5f3e94038fd4e2885fa899bca0d3306]');
-copyBtnbtn_b5f3e94038fd4e2885fa899bca0d3306.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Jump Lists\nC:\\Users\\<user>\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\AutomaticDestinations\\\nC:\\Users\\<user>\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\CustomDestinations\\\n\n# LNK files\nC:\\Users\\<user>\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\\n\n# LNK files contain: original path, timestamps, volume serial\n# number, host MAC address — useful for proving file access and\n# identifying other machines files were accessed from\n\n# Parse with LECmd and JLECmd (Eric Zimmerman)\nLECmd.exe -d \"C:\\Users\\user\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\\" --csv output\\\nJLECmd.exe -d \"C:\\Users\\user\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\AutomaticDestinations\\\" --csv output\\\n`);copyBtnbtn_b5f3e94038fd4e2885fa899bca0d3306.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b5f3e94038fd4e2885fa899bca0d3306.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_51f21335a1e34085918124d2fd5054f2=document.querySelector('button[name=btn_51f21335a1e34085918124d2fd5054f2]');
+copyBtnbtn_51f21335a1e34085918124d2fd5054f2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Jump Lists\nC:\\Users\\<user>\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\AutomaticDestinations\\\nC:\\Users\\<user>\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\CustomDestinations\\\n\n# LNK files\nC:\\Users\\<user>\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\\n\n# LNK files contain: original path, timestamps, volume serial\n# number, host MAC address — useful for proving file access and\n# identifying other machines files were accessed from\n\n# Parse with LECmd and JLECmd (Eric Zimmerman)\nLECmd.exe -d \"C:\\Users\\user\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\\" --csv output\\\nJLECmd.exe -d \"C:\\Users\\user\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\AutomaticDestinations\\\" --csv output\\\n`);copyBtnbtn_51f21335a1e34085918124d2fd5054f2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_51f21335a1e34085918124d2fd5054f2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1284,11 +1284,11 @@ JLECmd.exe -d "C:\Users\user\AppData\Roaming\Microsoft\Windows\Recent\AutomaticD
 <h3 id="org92a7d31">Browser Artifacts</h3>
 <div class="outline-text-3" id="text-org92a7d31">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_4842a33e14234cf994ece2d55c2319c8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_519f7843ffff4ef195b22c307d1f9bee>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4842a33e14234cf994ece2d55c2319c8=document.querySelector('button[name=btn_4842a33e14234cf994ece2d55c2319c8]');
-copyBtnbtn_4842a33e14234cf994ece2d55c2319c8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Chrome / Edge (Chromium-based)\nC:\\Users\\<user>\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\History\nC:\\Users\\<user>\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\History\n  → SQLite databases — open with DB Browser for SQLite or NirSoft tools\n\n# Firefox\nC:\\Users\\<user>\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\*.default-release\\\n  → places.sqlite (history and bookmarks)\n  → downloads.sqlite (download history)\n\n# Key tables in Chrome/Edge History SQLite:\n# urls — visited URLs with visit count and last visit time\n# downloads — downloaded files with source URL and local path\n`);copyBtnbtn_4842a33e14234cf994ece2d55c2319c8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4842a33e14234cf994ece2d55c2319c8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_519f7843ffff4ef195b22c307d1f9bee=document.querySelector('button[name=btn_519f7843ffff4ef195b22c307d1f9bee]');
+copyBtnbtn_519f7843ffff4ef195b22c307d1f9bee.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Chrome / Edge (Chromium-based)\nC:\\Users\\<user>\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\History\nC:\\Users\\<user>\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\History\n  → SQLite databases — open with DB Browser for SQLite or NirSoft tools\n\n# Firefox\nC:\\Users\\<user>\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\*.default-release\\\n  → places.sqlite (history and bookmarks)\n  → downloads.sqlite (download history)\n\n# Key tables in Chrome/Edge History SQLite:\n# urls — visited URLs with visit count and last visit time\n# downloads — downloaded files with source URL and local path\n`);copyBtnbtn_519f7843ffff4ef195b22c307d1f9bee.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_519f7843ffff4ef195b22c307d1f9bee.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1313,11 +1313,11 @@ C:\Users\&lt;user&gt;\AppData\Roaming\Mozilla\Firefox\Profiles\*.default-release
 <h3 id="org75910a4">USB History</h3>
 <div class="outline-text-3" id="text-org75910a4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2600410fea064a649e3895259a1e654c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d2a29826a2a44c739eae50aa0034e065>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2600410fea064a649e3895259a1e654c=document.querySelector('button[name=btn_2600410fea064a649e3895259a1e654c]');
-copyBtnbtn_2600410fea064a649e3895259a1e654c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Devices connected\nHKLM\\System\\CurrentControlSet\\Enum\\USBSTOR\n  → VID/PID, serial number, friendly name\n\n# First connection time\nC:\\Windows\\inf\\setupapi.dev.log\n  → search for device serial number\n\n# Last connection / removal times\nHKLM\\System\\CurrentControlSet\\Enum\\USB (timestamps)\nHKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\EMDMgmt\n\n# Drive letter assigned\nHKLM\\System\\MountedDevices\n`);copyBtnbtn_2600410fea064a649e3895259a1e654c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2600410fea064a649e3895259a1e654c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d2a29826a2a44c739eae50aa0034e065=document.querySelector('button[name=btn_d2a29826a2a44c739eae50aa0034e065]');
+copyBtnbtn_d2a29826a2a44c739eae50aa0034e065.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Devices connected\nHKLM\\System\\CurrentControlSet\\Enum\\USBSTOR\n  → VID/PID, serial number, friendly name\n\n# First connection time\nC:\\Windows\\inf\\setupapi.dev.log\n  → search for device serial number\n\n# Last connection / removal times\nHKLM\\System\\CurrentControlSet\\Enum\\USB (timestamps)\nHKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\EMDMgmt\n\n# Drive letter assigned\nHKLM\\System\\MountedDevices\n`);copyBtnbtn_d2a29826a2a44c739eae50aa0034e065.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d2a29826a2a44c739eae50aa0034e065.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1469,11 +1469,11 @@ Note: NTFS timestamps can be manipulated by attackers
 <h3 id="org1f90fa8">Malware Execution</h3>
 <div class="outline-text-3" id="text-org1f90fa8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_fc913860fc0b4835bcc2ec61e9673d6e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_1b59f9035ae7455098f36b869cd7328e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fc913860fc0b4835bcc2ec61e9673d6e=document.querySelector('button[name=btn_fc913860fc0b4835bcc2ec61e9673d6e]');
-copyBtnbtn_fc913860fc0b4835bcc2ec61e9673d6e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Indicators:\n— Prefetch entry for unknown executable in \\Temp\\ or \\AppData\\\n— Amcache entry with no corresponding installed software\n— New service or Run key pointing to unusual path\n— Scheduled task created at time of execution\n— UserAssist entry for executable not in Program Files\n\nEvent IDs to check:\n— 4688: Process creation (if auditing enabled)\n— 7045: New service installed\n— 4698: Scheduled task created\n— Sysmon 1: Process creation (if Sysmon deployed)\n`);copyBtnbtn_fc913860fc0b4835bcc2ec61e9673d6e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fc913860fc0b4835bcc2ec61e9673d6e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1b59f9035ae7455098f36b869cd7328e=document.querySelector('button[name=btn_1b59f9035ae7455098f36b869cd7328e]');
+copyBtnbtn_1b59f9035ae7455098f36b869cd7328e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Indicators:\n— Prefetch entry for unknown executable in \\Temp\\ or \\AppData\\\n— Amcache entry with no corresponding installed software\n— New service or Run key pointing to unusual path\n— Scheduled task created at time of execution\n— UserAssist entry for executable not in Program Files\n\nEvent IDs to check:\n— 4688: Process creation (if auditing enabled)\n— 7045: New service installed\n— 4698: Scheduled task created\n— Sysmon 1: Process creation (if Sysmon deployed)\n`);copyBtnbtn_1b59f9035ae7455098f36b869cd7328e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1b59f9035ae7455098f36b869cd7328e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1497,11 +1497,11 @@ Event IDs to check:
 <h3 id="org7dd4103">Credential Theft</h3>
 <div class="outline-text-3" id="text-org7dd4103">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b62b8e6ccfc34c66b028c6ca59b347a7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_956a78593d514ba5a8b24adc14acb7f8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b62b8e6ccfc34c66b028c6ca59b347a7=document.querySelector('button[name=btn_b62b8e6ccfc34c66b028c6ca59b347a7]');
-copyBtnbtn_b62b8e6ccfc34c66b028c6ca59b347a7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Indicators:\n— Mimikatz or known credential dumper in Prefetch / Amcache\n— lsass.exe accessed by non-system process (Sysmon Event 10)\n— SAM / SYSTEM hive accessed or copied\n— Security event 4656: Handle to SAM requested\n— LSASS dump file in temp directory\n\nEvent IDs to check:\n— 4648: Logon with explicit credentials (Pass-the-Hash indicator)\n— 4672: Special privileges assigned (admin token)\n— 4624 type 3: Network logon (lateral movement)\n`);copyBtnbtn_b62b8e6ccfc34c66b028c6ca59b347a7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b62b8e6ccfc34c66b028c6ca59b347a7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_956a78593d514ba5a8b24adc14acb7f8=document.querySelector('button[name=btn_956a78593d514ba5a8b24adc14acb7f8]');
+copyBtnbtn_956a78593d514ba5a8b24adc14acb7f8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Indicators:\n— Mimikatz or known credential dumper in Prefetch / Amcache\n— lsass.exe accessed by non-system process (Sysmon Event 10)\n— SAM / SYSTEM hive accessed or copied\n— Security event 4656: Handle to SAM requested\n— LSASS dump file in temp directory\n\nEvent IDs to check:\n— 4648: Logon with explicit credentials (Pass-the-Hash indicator)\n— 4672: Special privileges assigned (admin token)\n— 4624 type 3: Network logon (lateral movement)\n`);copyBtnbtn_956a78593d514ba5a8b24adc14acb7f8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_956a78593d514ba5a8b24adc14acb7f8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1524,11 +1524,11 @@ Event IDs to check:
 <h3 id="org77eef09">Persistence</h3>
 <div class="outline-text-3" id="text-org77eef09">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_fceccb767257402498dfdd945745e40d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_a2d4ab5c7bd5455289393d6a56b2fea0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fceccb767257402498dfdd945745e40d=document.querySelector('button[name=btn_fceccb767257402498dfdd945745e40d]');
-copyBtnbtn_fceccb767257402498dfdd945745e40d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Indicators:\n— New Run / RunOnce registry key pointing to unusual binary\n— New service with suspicious binary path\n— New scheduled task (Event 4698)\n— LNK file or startup folder entry for unknown executable\n— Modified hosts file: C:\\Windows\\System32\\drivers\\etc\\hosts\n\nEvent IDs to check:\n— 7045: Service installed\n— 4698 / 4702: Task created / modified\n— 4657: Registry value modified\n`);copyBtnbtn_fceccb767257402498dfdd945745e40d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fceccb767257402498dfdd945745e40d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a2d4ab5c7bd5455289393d6a56b2fea0=document.querySelector('button[name=btn_a2d4ab5c7bd5455289393d6a56b2fea0]');
+copyBtnbtn_a2d4ab5c7bd5455289393d6a56b2fea0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Indicators:\n— New Run / RunOnce registry key pointing to unusual binary\n— New service with suspicious binary path\n— New scheduled task (Event 4698)\n— LNK file or startup folder entry for unknown executable\n— Modified hosts file: C:\\Windows\\System32\\drivers\\etc\\hosts\n\nEvent IDs to check:\n— 7045: Service installed\n— 4698 / 4702: Task created / modified\n— 4657: Registry value modified\n`);copyBtnbtn_a2d4ab5c7bd5455289393d6a56b2fea0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a2d4ab5c7bd5455289393d6a56b2fea0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1551,11 +1551,11 @@ Event IDs to check:
 <h3 id="org26426e8">Lateral Movement</h3>
 <div class="outline-text-3" id="text-org26426e8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_a249017b53ca481bb6ac4d3fdd51551e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_41100ab91ce94345acbaa3eb48a761c1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a249017b53ca481bb6ac4d3fdd51551e=document.querySelector('button[name=btn_a249017b53ca481bb6ac4d3fdd51551e]');
-copyBtnbtn_a249017b53ca481bb6ac4d3fdd51551e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Indicators:\n— Event 4624 type 3 (network logon) from unexpected source IP\n— Event 4648: Explicit credential logon\n— PsExec in Prefetch (PSEXEC.EXE or PSEXESVC.EXE)\n— WMI activity: wmiprvse.exe spawning child processes (Sysmon 1)\n— New admin share connections in event log\n\nEvent IDs to check:\n— 4624 / 4625: Successful / failed logon\n— 4776: Credential validation (NTLM)\n— 4768 / 4769: Kerberos ticket requested\n`);copyBtnbtn_a249017b53ca481bb6ac4d3fdd51551e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a249017b53ca481bb6ac4d3fdd51551e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_41100ab91ce94345acbaa3eb48a761c1=document.querySelector('button[name=btn_41100ab91ce94345acbaa3eb48a761c1]');
+copyBtnbtn_41100ab91ce94345acbaa3eb48a761c1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Indicators:\n— Event 4624 type 3 (network logon) from unexpected source IP\n— Event 4648: Explicit credential logon\n— PsExec in Prefetch (PSEXEC.EXE or PSEXESVC.EXE)\n— WMI activity: wmiprvse.exe spawning child processes (Sysmon 1)\n— New admin share connections in event log\n\nEvent IDs to check:\n— 4624 / 4625: Successful / failed logon\n— 4776: Credential validation (NTLM)\n— 4768 / 4769: Kerberos ticket requested\n`);copyBtnbtn_41100ab91ce94345acbaa3eb48a761c1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_41100ab91ce94345acbaa3eb48a761c1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

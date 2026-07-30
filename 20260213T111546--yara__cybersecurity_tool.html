@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:14 -->
+<!-- 2026-07-30 Thu 22:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>YARA</title>
@@ -918,11 +918,11 @@ Related: <a href="20260314T005732--malware-analysis__concept_cybersecurity.html"
 <h2 id="org0b5c48c">Installation</h2>
 <div class="outline-text-2" id="text-org0b5c48c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f5c890f7ace242ecb280d9ffa9ef140f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bd489f25f3b743f0a21052b55d21acab>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f5c890f7ace242ecb280d9ffa9ef140f=document.querySelector('button[name=btn_f5c890f7ace242ecb280d9ffa9ef140f]');
-copyBtnbtn_f5c890f7ace242ecb280d9ffa9ef140f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Ubuntu / Debian\napt install yara\n\n# macOS\nbrew install yara\n\n# From source (for latest version)\ngit clone https://github.com/VirusTotal/yara\ncd yara && autoreconf -fiv && ./configure && make && make install\n`);copyBtnbtn_f5c890f7ace242ecb280d9ffa9ef140f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f5c890f7ace242ecb280d9ffa9ef140f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bd489f25f3b743f0a21052b55d21acab=document.querySelector('button[name=btn_bd489f25f3b743f0a21052b55d21acab]');
+copyBtnbtn_bd489f25f3b743f0a21052b55d21acab.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Ubuntu / Debian\napt install yara\n\n# macOS\nbrew install yara\n\n# From source (for latest version)\ngit clone https://github.com/VirusTotal/yara\ncd yara && autoreconf -fiv && ./configure && make && make install\n`);copyBtnbtn_bd489f25f3b743f0a21052b55d21acab.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bd489f25f3b743f0a21052b55d21acab.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -943,11 +943,11 @@ let res = copyTextToClipboard(`# Ubuntu / Debian\napt install yara\n\n# macOS\nb
 <h2 id="orgb474dd2">Rule Structure</h2>
 <div class="outline-text-2" id="text-orgb474dd2">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>YARA</span><button class='copyBtn' name=btn_c26fe7e40ba14ab7a37a079b83b5144f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>YARA</span><button class='copyBtn' name=btn_c68180798b324b2595cba340ea0542b4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c26fe7e40ba14ab7a37a079b83b5144f=document.querySelector('button[name=btn_c26fe7e40ba14ab7a37a079b83b5144f]');
-copyBtnbtn_c26fe7e40ba14ab7a37a079b83b5144f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`rule RuleName\n{\n    meta:\n        description = \"What this rule detects\"\n        author      = \"Name\"\n        date        = \"2025-01-01\"\n        hash        = \"sha256 of a known sample\"\n\n    strings:\n        $text   = \"malicious_function_name\"\n        $text2  = \"another_indicator\" nocase         // case-insensitive\n        $hex    = { 4D 5A 90 00 03 00 }              // byte sequence\n        $hex2   = { 6A ?? 68 ?? ?? ?? ?? E8 }        // ?? = wildcard byte\n        $regex  = /https?:\\/\\/[0-9]{1,3}\\.[0-9]{1,3}/ // regex pattern\n\n    condition:\n        $text and $hex\n}\n`);copyBtnbtn_c26fe7e40ba14ab7a37a079b83b5144f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c26fe7e40ba14ab7a37a079b83b5144f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c68180798b324b2595cba340ea0542b4=document.querySelector('button[name=btn_c68180798b324b2595cba340ea0542b4]');
+copyBtnbtn_c68180798b324b2595cba340ea0542b4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`rule RuleName\n{\n    meta:\n        description = \"What this rule detects\"\n        author      = \"Name\"\n        date        = \"2025-01-01\"\n        hash        = \"sha256 of a known sample\"\n\n    strings:\n        $text   = \"malicious_function_name\"\n        $text2  = \"another_indicator\" nocase         // case-insensitive\n        $hex    = { 4D 5A 90 00 03 00 }              // byte sequence\n        $hex2   = { 6A ?? 68 ?? ?? ?? ?? E8 }        // ?? = wildcard byte\n        $regex  = /https?:\\/\\/[0-9]{1,3}\\.[0-9]{1,3}/ // regex pattern\n\n    condition:\n        $text and $hex\n}\n`);copyBtnbtn_c68180798b324b2595cba340ea0542b4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c68180798b324b2595cba340ea0542b4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1038,11 +1038,11 @@ let res = copyTextToClipboard(`rule RuleName\n{\n    meta:\n        description 
 <h2 id="org568e7f8">Condition Expressions</h2>
 <div class="outline-text-2" id="text-org568e7f8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>YARA</span><button class='copyBtn' name=btn_62c1cf6a6914445a9efb0a32880fc30f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>YARA</span><button class='copyBtn' name=btn_14a0137cf9144b70977ab4670a4916af>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_62c1cf6a6914445a9efb0a32880fc30f=document.querySelector('button[name=btn_62c1cf6a6914445a9efb0a32880fc30f]');
-copyBtnbtn_62c1cf6a6914445a9efb0a32880fc30f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`condition:\n    $a                      // string must be present\n    $a and $b               // both must be present\n    $a or $b                // either must be present\n    not $a                  // string must be absent\n    any of ($a, $b, $c)     // at least one\n    all of ($a, $b, $c)     // all must be present\n    2 of ($*)               // at least 2 of any defined strings\n    1 of ($hex*)            // at least 1 string starting with $hex\n    #a > 3                  // string $a must appear more than 3 times\n    @a < 100                // $a must appear within first 100 bytes\n    filesize < 500KB        // file size constraint\n    filesize > 1MB and filesize < 5MB\n`);copyBtnbtn_62c1cf6a6914445a9efb0a32880fc30f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_62c1cf6a6914445a9efb0a32880fc30f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_14a0137cf9144b70977ab4670a4916af=document.querySelector('button[name=btn_14a0137cf9144b70977ab4670a4916af]');
+copyBtnbtn_14a0137cf9144b70977ab4670a4916af.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`condition:\n    $a                      // string must be present\n    $a and $b               // both must be present\n    $a or $b                // either must be present\n    not $a                  // string must be absent\n    any of ($a, $b, $c)     // at least one\n    all of ($a, $b, $c)     // all must be present\n    2 of ($*)               // at least 2 of any defined strings\n    1 of ($hex*)            // at least 1 string starting with $hex\n    #a > 3                  // string $a must appear more than 3 times\n    @a < 100                // $a must appear within first 100 bytes\n    filesize < 500KB        // file size constraint\n    filesize > 1MB and filesize < 5MB\n`);copyBtnbtn_14a0137cf9144b70977ab4670a4916af.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_14a0137cf9144b70977ab4670a4916af.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1072,11 +1072,11 @@ conditions based on PE header properties:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>YARA</span><button class='copyBtn' name=btn_0a60c3e86366430d9ecc69417fbf2410>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>YARA</span><button class='copyBtn' name=btn_a8fee89574f14594a6b0efc3398a539d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0a60c3e86366430d9ecc69417fbf2410=document.querySelector('button[name=btn_0a60c3e86366430d9ecc69417fbf2410]');
-copyBtnbtn_0a60c3e86366430d9ecc69417fbf2410.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import \"pe\"\n\nrule SuspiciousPE\n{\n    condition:\n        pe.number_of_sections > 8              // unusual section count\n        or pe.number_of_imports < 3            // very few imports (packed?)\n        or pe.entry_point_in_section(\".text\") == false  // EP not in .text\n        or pe.timestamp == 0                   // invalid compile timestamp\n}\n\nrule KnownImports\n{\n    condition:\n        pe.imports(\"kernel32.dll\", \"VirtualAlloc\") and\n        pe.imports(\"kernel32.dll\", \"WriteProcessMemory\") and\n        pe.imports(\"kernel32.dll\", \"CreateRemoteThread\")\n        // Process injection triad\n}\n\nrule HasSection\n{\n    condition:\n        pe.sections[0].name == \".text\" and\n        pe.sections[0].characteristics & pe.SECTION_WRITE  // writable .text (suspicious)\n}\n`);copyBtnbtn_0a60c3e86366430d9ecc69417fbf2410.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0a60c3e86366430d9ecc69417fbf2410.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a8fee89574f14594a6b0efc3398a539d=document.querySelector('button[name=btn_a8fee89574f14594a6b0efc3398a539d]');
+copyBtnbtn_a8fee89574f14594a6b0efc3398a539d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import \"pe\"\n\nrule SuspiciousPE\n{\n    condition:\n        pe.number_of_sections > 8              // unusual section count\n        or pe.number_of_imports < 3            // very few imports (packed?)\n        or pe.entry_point_in_section(\".text\") == false  // EP not in .text\n        or pe.timestamp == 0                   // invalid compile timestamp\n}\n\nrule KnownImports\n{\n    condition:\n        pe.imports(\"kernel32.dll\", \"VirtualAlloc\") and\n        pe.imports(\"kernel32.dll\", \"WriteProcessMemory\") and\n        pe.imports(\"kernel32.dll\", \"CreateRemoteThread\")\n        // Process injection triad\n}\n\nrule HasSection\n{\n    condition:\n        pe.sections[0].name == \".text\" and\n        pe.sections[0].characteristics & pe.SECTION_WRITE  // writable .text (suspicious)\n}\n`);copyBtnbtn_a8fee89574f14594a6b0efc3398a539d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a8fee89574f14594a6b0efc3398a539d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1114,11 +1114,11 @@ rule HasSection
 <h2 id="orgbf41338">Scanning</h2>
 <div class="outline-text-2" id="text-orgbf41338">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d4fec69233fd42bea024331244f9b3e6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7c1d243b6188413ab3af900e18113255>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d4fec69233fd42bea024331244f9b3e6=document.querySelector('button[name=btn_d4fec69233fd42bea024331244f9b3e6]');
-copyBtnbtn_d4fec69233fd42bea024331244f9b3e6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Scan a single file\nyara rule.yar sample.exe\n\n# Scan a directory recursively\nyara -r rule.yar /path/to/samples/\n\n# Scan with multiple rule files\nyara rule1.yar rule2.yar sample.exe\n\n# Scan all rules in a directory\nyara /path/to/rules/*.yar sample.exe\n\n# Verbose output (show matching strings)\nyara -s rule.yar sample.exe\n\n# Scan a memory process (requires root)\nyara -p rule.yar <pid>\n\n# Output only filenames (no rule names)\nyara -l rule.yar /samples/\n\n# Scan and write results to file\nyara -r rule.yar /samples/ > hits.txt\n\n# Negate — show files that do NOT match\nyara -n rule.yar /samples/\n`);copyBtnbtn_d4fec69233fd42bea024331244f9b3e6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d4fec69233fd42bea024331244f9b3e6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7c1d243b6188413ab3af900e18113255=document.querySelector('button[name=btn_7c1d243b6188413ab3af900e18113255]');
+copyBtnbtn_7c1d243b6188413ab3af900e18113255.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Scan a single file\nyara rule.yar sample.exe\n\n# Scan a directory recursively\nyara -r rule.yar /path/to/samples/\n\n# Scan with multiple rule files\nyara rule1.yar rule2.yar sample.exe\n\n# Scan all rules in a directory\nyara /path/to/rules/*.yar sample.exe\n\n# Verbose output (show matching strings)\nyara -s rule.yar sample.exe\n\n# Scan a memory process (requires root)\nyara -p rule.yar <pid>\n\n# Output only filenames (no rule names)\nyara -l rule.yar /samples/\n\n# Scan and write results to file\nyara -r rule.yar /samples/ > hits.txt\n\n# Negate — show files that do NOT match\nyara -n rule.yar /samples/\n`);copyBtnbtn_7c1d243b6188413ab3af900e18113255.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7c1d243b6188413ab3af900e18113255.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1156,11 +1156,11 @@ let res = copyTextToClipboard(`# Scan a single file\nyara rule.yar sample.exe\n\
 <h2 id="org5106820">Writing Effective Rules</h2>
 <div class="outline-text-2" id="text-org5106820">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>YARA</span><button class='copyBtn' name=btn_3502f6c3ce4e4c62bd9101033eaff7cf>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>YARA</span><button class='copyBtn' name=btn_a1bdfc1b849f4911afbb392a348b8248>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3502f6c3ce4e4c62bd9101033eaff7cf=document.querySelector('button[name=btn_3502f6c3ce4e4c62bd9101033eaff7cf]');
-copyBtnbtn_3502f6c3ce4e4c62bd9101033eaff7cf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Target unique strings — avoid common strings present in benign files\n// Bad: $s = \"GetProcAddress\"   (in almost every PE)\n// Good: $s = \"MalwareFamilySpecificMutex\"\n\n// Combine indicators for higher confidence, lower false positives\nrule ConfidentDetection\n{\n    strings:\n        $mutex  = \"SPECIFIC_MUTEX_NAME\"\n        $c2     = \"evil.c2domain.com\"\n        $func   = \"anti_debug_function_name\"\n\n    condition:\n        2 of them     // require 2 of 3 — tolerates minor variants\n}\n\n// Use hex for binary sequences that may vary in string representation\nrule ShellcodeIndicator\n{\n    strings:\n        $push_ret = { 68 ?? ?? ?? ?? C3 }   // PUSH imm32; RET pattern\n        $nop_sled = { 90 90 90 90 90 90 }   // NOP sled\n\n    condition:\n        any of them\n}\n`);copyBtnbtn_3502f6c3ce4e4c62bd9101033eaff7cf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3502f6c3ce4e4c62bd9101033eaff7cf.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a1bdfc1b849f4911afbb392a348b8248=document.querySelector('button[name=btn_a1bdfc1b849f4911afbb392a348b8248]');
+copyBtnbtn_a1bdfc1b849f4911afbb392a348b8248.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Target unique strings — avoid common strings present in benign files\n// Bad: $s = \"GetProcAddress\"   (in almost every PE)\n// Good: $s = \"MalwareFamilySpecificMutex\"\n\n// Combine indicators for higher confidence, lower false positives\nrule ConfidentDetection\n{\n    strings:\n        $mutex  = \"SPECIFIC_MUTEX_NAME\"\n        $c2     = \"evil.c2domain.com\"\n        $func   = \"anti_debug_function_name\"\n\n    condition:\n        2 of them     // require 2 of 3 — tolerates minor variants\n}\n\n// Use hex for binary sequences that may vary in string representation\nrule ShellcodeIndicator\n{\n    strings:\n        $push_ret = { 68 ?? ?? ?? ?? C3 }   // PUSH imm32; RET pattern\n        $nop_sled = { 90 90 90 90 90 90 }   // NOP sled\n\n    condition:\n        any of them\n}\n`);copyBtnbtn_a1bdfc1b849f4911afbb392a348b8248.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a1bdfc1b849f4911afbb392a348b8248.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1198,11 +1198,11 @@ rule ShellcodeIndicator
 <h2 id="org63080dd">Community Rule Sources</h2>
 <div class="outline-text-2" id="text-org63080dd">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b3e6c077592d4809a9c0e471f4fd8d76>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_48225a8ae80e4328822646b989a275c4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b3e6c077592d4809a9c0e471f4fd8d76=document.querySelector('button[name=btn_b3e6c077592d4809a9c0e471f4fd8d76]');
-copyBtnbtn_b3e6c077592d4809a9c0e471f4fd8d76.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# YARA rules from threat intel community\ngit clone https://github.com/Yara-Rules/rules\ngit clone https://github.com/Neo23x0/signature-base   # Florian Roth's rules (comprehensive)\n\n# Scan with community rules\nyara -r signature-base/yara/ suspicious_file.exe\n`);copyBtnbtn_b3e6c077592d4809a9c0e471f4fd8d76.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b3e6c077592d4809a9c0e471f4fd8d76.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_48225a8ae80e4328822646b989a275c4=document.querySelector('button[name=btn_48225a8ae80e4328822646b989a275c4]');
+copyBtnbtn_48225a8ae80e4328822646b989a275c4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# YARA rules from threat intel community\ngit clone https://github.com/Yara-Rules/rules\ngit clone https://github.com/Neo23x0/signature-base   # Florian Roth's rules (comprehensive)\n\n# Scan with community rules\nyara -r signature-base/yara/ suspicious_file.exe\n`);copyBtnbtn_48225a8ae80e4328822646b989a275c4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_48225a8ae80e4328822646b989a275c4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1220,11 +1220,11 @@ git clone https://github.com/Neo23x0/signature-base   <span style="color: var(--
 <h2 id="org9e3d0c6">Integration</h2>
 <div class="outline-text-2" id="text-org9e3d0c6">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a1c76b18013d49c3ae2d6849ed6c9a98>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d8e3ade766014c3fa24349e8bb0eaf9c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a1c76b18013d49c3ae2d6849ed6c9a98=document.querySelector('button[name=btn_a1c76b18013d49c3ae2d6849ed6c9a98]');
-copyBtnbtn_a1c76b18013d49c3ae2d6849ed6c9a98.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Use with Python (yara-python)\npip install yara-python --break-system-packages\n\npython3 << 'EOF'\nimport yara\n\nrules = yara.compile('rule.yar')\nmatches = rules.match('sample.exe')\nfor m in matches:\n    print(f\"Rule: {m.rule}\")\n    for s in m.strings:\n        print(f\"  Match: {s}\")\nEOF\n\n# Clamav can convert YARA rules to ClamAV signatures\n# Wazuh supports YARA integration for file scanning on agents\n# Velociraptor has built-in YARA hunt capability\n`);copyBtnbtn_a1c76b18013d49c3ae2d6849ed6c9a98.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a1c76b18013d49c3ae2d6849ed6c9a98.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d8e3ade766014c3fa24349e8bb0eaf9c=document.querySelector('button[name=btn_d8e3ade766014c3fa24349e8bb0eaf9c]');
+copyBtnbtn_d8e3ade766014c3fa24349e8bb0eaf9c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Use with Python (yara-python)\npip install yara-python --break-system-packages\n\npython3 << 'EOF'\nimport yara\n\nrules = yara.compile('rule.yar')\nmatches = rules.match('sample.exe')\nfor m in matches:\n    print(f\"Rule: {m.rule}\")\n    for s in m.strings:\n        print(f\"  Match: {s}\")\nEOF\n\n# Clamav can convert YARA rules to ClamAV signatures\n# Wazuh supports YARA integration for file scanning on agents\n# Velociraptor has built-in YARA hunt capability\n`);copyBtnbtn_d8e3ade766014c3fa24349e8bb0eaf9c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d8e3ade766014c3fa24349e8bb0eaf9c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

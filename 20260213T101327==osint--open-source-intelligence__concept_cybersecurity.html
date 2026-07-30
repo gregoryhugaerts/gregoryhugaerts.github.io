@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:14 -->
+<!-- 2026-07-30 Thu 22:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Open Source Intelligence</title>
@@ -927,11 +927,11 @@ contact with the target.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_61e3a47efd334351883c97da288a6e0b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b5d682e6c58f4c0f843e77d74dbc2e55>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_61e3a47efd334351883c97da288a6e0b=document.querySelector('button[name=btn_61e3a47efd334351883c97da288a6e0b]');
-copyBtnbtn_61e3a47efd334351883c97da288a6e0b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# WHOIS — registrant, nameservers, registration and expiry dates\nwhois target.com\n\n# DNS records — map the full record set\ndig any target.com\ndig ns target.com      # nameservers\ndig mx target.com      # mail servers\ndig txt target.com     # SPF, DKIM, DMARC, verification tokens\n\n# Subdomain enumeration via certificate transparency\n# Every TLS certificate issued for a domain is publicly logged\ncurl \"https://crt.sh/?q=%.target.com&output=json\" \\\n  | python3 -c \"import sys,json; [print(e['name_value']) for e in json.load(sys.stdin)]\" \\\n  | sort -u\n\n# DNSDumpster — passive subdomain and DNS map\n# https://dnsdumpster.com — web UI\n`);copyBtnbtn_61e3a47efd334351883c97da288a6e0b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_61e3a47efd334351883c97da288a6e0b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b5d682e6c58f4c0f843e77d74dbc2e55=document.querySelector('button[name=btn_b5d682e6c58f4c0f843e77d74dbc2e55]');
+copyBtnbtn_b5d682e6c58f4c0f843e77d74dbc2e55.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# WHOIS — registrant, nameservers, registration and expiry dates\nwhois target.com\n\n# DNS records — map the full record set\ndig any target.com\ndig ns target.com      # nameservers\ndig mx target.com      # mail servers\ndig txt target.com     # SPF, DKIM, DMARC, verification tokens\n\n# Subdomain enumeration via certificate transparency\n# Every TLS certificate issued for a domain is publicly logged\ncurl \"https://crt.sh/?q=%.target.com&output=json\" \\\n  | python3 -c \"import sys,json; [print(e['name_value']) for e in json.load(sys.stdin)]\" \\\n  | sort -u\n\n# DNSDumpster — passive subdomain and DNS map\n# https://dnsdumpster.com — web UI\n`);copyBtnbtn_b5d682e6c58f4c0f843e77d74dbc2e55.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b5d682e6c58f4c0f843e77d74dbc2e55.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -960,11 +960,11 @@ dig ns target.com      <span style="color: var(--clr-comment-delimiter); backgro
 <h2 id="org6b01a5d">2. Infrastructure and Service Discovery</h2>
 <div class="outline-text-2" id="text-org6b01a5d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_76e5b7be4bd3456f815c699c79dd743f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0a63c50ff1534cd7ba18399023055f2c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_76e5b7be4bd3456f815c699c79dd743f=document.querySelector('button[name=btn_76e5b7be4bd3456f815c699c79dd743f]');
-copyBtnbtn_76e5b7be4bd3456f815c699c79dd743f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Shodan — indexed scan data for IP ranges, hostnames, services\n# Find all exposed services for a domain without scanning it\nshodan host $IP\nshodan search \"hostname:target.com\"\nshodan search \"org:\\\"Target Organisation\\\"\"\n\n# Censys — similar to Shodan, stronger certificate data\n# https://search.censys.io\n\n# Common Shodan filters\nshodan search 'http.title:\"Dashboard\" org:\"Target\"'\nshodan search 'product:\"Apache httpd\" version:\"2.4.49\"'\nshodan search 'port:3389 org:\"Target\"'           # exposed RDP\nshodan search 'port:5985 org:\"Target\"'           # exposed WinRM\n`);copyBtnbtn_76e5b7be4bd3456f815c699c79dd743f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_76e5b7be4bd3456f815c699c79dd743f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0a63c50ff1534cd7ba18399023055f2c=document.querySelector('button[name=btn_0a63c50ff1534cd7ba18399023055f2c]');
+copyBtnbtn_0a63c50ff1534cd7ba18399023055f2c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Shodan — indexed scan data for IP ranges, hostnames, services\n# Find all exposed services for a domain without scanning it\nshodan host $IP\nshodan search \"hostname:target.com\"\nshodan search \"org:\\\"Target Organisation\\\"\"\n\n# Censys — similar to Shodan, stronger certificate data\n# https://search.censys.io\n\n# Common Shodan filters\nshodan search 'http.title:\"Dashboard\" org:\"Target\"'\nshodan search 'product:\"Apache httpd\" version:\"2.4.49\"'\nshodan search 'port:3389 org:\"Target\"'           # exposed RDP\nshodan search 'port:5985 org:\"Target\"'           # exposed WinRM\n`);copyBtnbtn_0a63c50ff1534cd7ba18399023055f2c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0a63c50ff1534cd7ba18399023055f2c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -996,11 +996,11 @@ and configuration data.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d6c019e79822435ba5b228b1cb771a16>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_64352e2bc11d40f298dd840c4aaf9554>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d6c019e79822435ba5b228b1cb771a16=document.querySelector('button[name=btn_d6c019e79822435ba5b228b1cb771a16]');
-copyBtnbtn_d6c019e79822435ba5b228b1cb771a16.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`site:target.com                    # restrict to domain\nsite:target.com filetype:pdf       # specific file types\nsite:target.com ext:xml OR ext:json # config files\nsite:target.com inurl:admin        # admin panels\nsite:target.com intitle:\"index of\" # directory listings\nsite:target.com \"password\"         # exposed credentials in pages\nsite:target.com filetype:env       # exposed .env files\n\n# Find subdomains not linked from the main site\nsite:*.target.com -site:www.target.com\n\n# Find exposed login pages\nsite:target.com inurl:login OR inurl:signin OR intitle:\"Login\"\n\n# Find exposed documents that may contain internal info\nsite:target.com filetype:doc OR filetype:docx OR filetype:xls\n`);copyBtnbtn_d6c019e79822435ba5b228b1cb771a16.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d6c019e79822435ba5b228b1cb771a16.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_64352e2bc11d40f298dd840c4aaf9554=document.querySelector('button[name=btn_64352e2bc11d40f298dd840c4aaf9554]');
+copyBtnbtn_64352e2bc11d40f298dd840c4aaf9554.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`site:target.com                    # restrict to domain\nsite:target.com filetype:pdf       # specific file types\nsite:target.com ext:xml OR ext:json # config files\nsite:target.com inurl:admin        # admin panels\nsite:target.com intitle:\"index of\" # directory listings\nsite:target.com \"password\"         # exposed credentials in pages\nsite:target.com filetype:env       # exposed .env files\n\n# Find subdomains not linked from the main site\nsite:*.target.com -site:www.target.com\n\n# Find exposed login pages\nsite:target.com inurl:login OR inurl:signin OR intitle:\"Login\"\n\n# Find exposed documents that may contain internal info\nsite:target.com filetype:doc OR filetype:docx OR filetype:xls\n`);copyBtnbtn_64352e2bc11d40f298dd840c4aaf9554.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_64352e2bc11d40f298dd840c4aaf9554.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1032,11 +1032,11 @@ Full database of dorks: <a href="https://www.exploit-db.com/google-hacking-datab
 <h2 id="orgced223c">4. Email and Personnel</h2>
 <div class="outline-text-2" id="text-orgced223c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4dc48f84786f447ab8a2e970374ed56d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8a7375552e8941bc8e369b41763db9ce>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4dc48f84786f447ab8a2e970374ed56d=document.querySelector('button[name=btn_4dc48f84786f447ab8a2e970374ed56d]');
-copyBtnbtn_4dc48f84786f447ab8a2e970374ed56d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Hunter.io — find email addresses for a domain\n# https://hunter.io — web UI, also has API\n\n# Phonebook.cz — email, subdomain, and URL enumeration\n# https://phonebook.cz\n\n# LinkedIn — find employee names, roles, and org structure\n# Useful for: target selection, spear phishing pretext,\n# identifying who manages specific infrastructure\n\n# Email format discovery — once you know names\n# Common patterns: firstname@, f.lastname@, firstname.lastname@\n# Verify format by checking if a known employee's email bounces\n`);copyBtnbtn_4dc48f84786f447ab8a2e970374ed56d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4dc48f84786f447ab8a2e970374ed56d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8a7375552e8941bc8e369b41763db9ce=document.querySelector('button[name=btn_8a7375552e8941bc8e369b41763db9ce]');
+copyBtnbtn_8a7375552e8941bc8e369b41763db9ce.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Hunter.io — find email addresses for a domain\n# https://hunter.io — web UI, also has API\n\n# Phonebook.cz — email, subdomain, and URL enumeration\n# https://phonebook.cz\n\n# LinkedIn — find employee names, roles, and org structure\n# Useful for: target selection, spear phishing pretext,\n# identifying who manages specific infrastructure\n\n# Email format discovery — once you know names\n# Common patterns: firstname@, f.lastname@, firstname.lastname@\n# Verify format by checking if a known employee's email bounces\n`);copyBtnbtn_8a7375552e8941bc8e369b41763db9ce.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8a7375552e8941bc8e369b41763db9ce.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1066,11 +1066,11 @@ sites before being taken down.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e4d504fab6eb404b9f8505d04e903fb6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_01cc5b9fc3894402a649442b808be797>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e4d504fab6eb404b9f8505d04e903fb6=document.querySelector('button[name=btn_e4d504fab6eb404b9f8505d04e903fb6]');
-copyBtnbtn_e4d504fab6eb404b9f8505d04e903fb6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Pastebin, GitHub, GitLab, StackOverflow — search for:\n# — target domain in email addresses\n# — API keys or tokens referencing the target\n# — Internal hostnames or IP ranges\n\n# GitHub search — find accidental secret commits\n# https://github.com/search\n# Queries:\n\"target.com\" password\n\"target.com\" api_key\n\"@target.com\" secret\norg:targetorgname password\n\n# Have I Been Pwned — check if emails appear in known breaches\n# https://haveibeenpwned.com\n`);copyBtnbtn_e4d504fab6eb404b9f8505d04e903fb6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e4d504fab6eb404b9f8505d04e903fb6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_01cc5b9fc3894402a649442b808be797=document.querySelector('button[name=btn_01cc5b9fc3894402a649442b808be797]');
+copyBtnbtn_01cc5b9fc3894402a649442b808be797.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Pastebin, GitHub, GitLab, StackOverflow — search for:\n# — target domain in email addresses\n# — API keys or tokens referencing the target\n# — Internal hostnames or IP ranges\n\n# GitHub search — find accidental secret commits\n# https://github.com/search\n# Queries:\n\"target.com\" password\n\"target.com\" api_key\n\"@target.com\" secret\norg:targetorgname password\n\n# Have I Been Pwned — check if emails appear in known breaches\n# https://haveibeenpwned.com\n`);copyBtnbtn_01cc5b9fc3894402a649442b808be797.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_01cc5b9fc3894402a649442b808be797.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1097,11 +1097,11 @@ org:targetorgname password
 <h2 id="org60ff76b">6. Wayback Machine / Historical Data</h2>
 <div class="outline-text-2" id="text-org60ff76b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0ea4662df2a44976bd2d984d40c55fd4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_11347559705949ec98c21ba6a7c1c99f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0ea4662df2a44976bd2d984d40c55fd4=document.querySelector('button[name=btn_0ea4662df2a44976bd2d984d40c55fd4]');
-copyBtnbtn_0ea4662df2a44976bd2d984d40c55fd4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Internet Archive — historical snapshots of the target's web presence\n# Reveals old endpoints, removed pages, previous software versions\n# https://web.archive.org\n\n# waybackurls — extract all URLs ever indexed for a domain\necho \"target.com\" | waybackurls | sort -u\n\n# Useful for finding:\n# — Old admin panels or login pages\n# — API endpoints removed from current site\n# — Previous software versions (for CVE research)\n# — Backup files left exposed (config.php.bak, etc.)\n`);copyBtnbtn_0ea4662df2a44976bd2d984d40c55fd4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0ea4662df2a44976bd2d984d40c55fd4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_11347559705949ec98c21ba6a7c1c99f=document.querySelector('button[name=btn_11347559705949ec98c21ba6a7c1c99f]');
+copyBtnbtn_11347559705949ec98c21ba6a7c1c99f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Internet Archive — historical snapshots of the target's web presence\n# Reveals old endpoints, removed pages, previous software versions\n# https://web.archive.org\n\n# waybackurls — extract all URLs ever indexed for a domain\necho \"target.com\" | waybackurls | sort -u\n\n# Useful for finding:\n# — Old admin panels or login pages\n# — API endpoints removed from current site\n# — Previous software versions (for CVE research)\n# — Backup files left exposed (config.php.bak, etc.)\n`);copyBtnbtn_11347559705949ec98c21ba6a7c1c99f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_11347559705949ec98c21ba6a7c1c99f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1131,11 +1131,11 @@ network paths, and author names.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c78817311c594540affe69a3a933d560>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3cd54d9575d043a69856c6c00edf4f10>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c78817311c594540affe69a3a933d560=document.querySelector('button[name=btn_c78817311c594540affe69a3a933d560]');
-copyBtnbtn_c78817311c594540affe69a3a933d560.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Download publicly available documents\nwget https://target.com/documents/report.pdf\n\n# Extract metadata from downloaded files\nexiftool report.pdf\nexiftool *.docx\n\n# Look for:\n# — Author / Creator fields (internal usernames)\n# — Software version (Word 2013, Adobe Acrobat X)\n# — Company name confirming scope\n# — Internal file paths (\\\\fileserver\\shares\\...)\n# — GPS coordinates (if photos are involved)\n`);copyBtnbtn_c78817311c594540affe69a3a933d560.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c78817311c594540affe69a3a933d560.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3cd54d9575d043a69856c6c00edf4f10=document.querySelector('button[name=btn_3cd54d9575d043a69856c6c00edf4f10]');
+copyBtnbtn_3cd54d9575d043a69856c6c00edf4f10.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Download publicly available documents\nwget https://target.com/documents/report.pdf\n\n# Extract metadata from downloaded files\nexiftool report.pdf\nexiftool *.docx\n\n# Look for:\n# — Author / Creator fields (internal usernames)\n# — Software version (Word 2013, Adobe Acrobat X)\n# — Company name confirming scope\n# — Internal file paths (\\\\fileserver\\shares\\...)\n# — GPS coordinates (if photos are involved)\n`);copyBtnbtn_3cd54d9575d043a69856c6c00edf4f10.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3cd54d9575d043a69856c6c00edf4f10.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1206,11 +1206,11 @@ When manual enumeration needs to scale:
 </table>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_54939785d23c4c588a89e06bb400046b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_cd14cc01e8634664b79bfca71f7b7a09>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_54939785d23c4c588a89e06bb400046b=document.querySelector('button[name=btn_54939785d23c4c588a89e06bb400046b]');
-copyBtnbtn_54939785d23c4c588a89e06bb400046b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# theHarvester — quick multi-source enumeration\ntheHarvester -d target.com -b all\ntheHarvester -d target.com -b google,linkedin,shodan\n`);copyBtnbtn_54939785d23c4c588a89e06bb400046b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_54939785d23c4c588a89e06bb400046b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cd14cc01e8634664b79bfca71f7b7a09=document.querySelector('button[name=btn_cd14cc01e8634664b79bfca71f7b7a09]');
+copyBtnbtn_cd14cc01e8634664b79bfca71f7b7a09.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# theHarvester — quick multi-source enumeration\ntheHarvester -d target.com -b all\ntheHarvester -d target.com -b google,linkedin,shodan\n`);copyBtnbtn_cd14cc01e8634664b79bfca71f7b7a09.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cd14cc01e8634664b79bfca71f7b7a09.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1236,11 +1236,11 @@ wasted effort scanning irrelevant IP space.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_47c7996fcdcc4729b5d99884e3327b07>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e4ceb389c7974942943b70f11f45fa71>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_47c7996fcdcc4729b5d99884e3327b07=document.querySelector('button[name=btn_47c7996fcdcc4729b5d99884e3327b07]');
-copyBtnbtn_47c7996fcdcc4729b5d99884e3327b07.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Standard passive recon sequence:\n1. WHOIS → registrant details, nameservers, date registered\n2. DNS records → dig any → map full DNS landscape\n3. Certificate transparency → crt.sh → subdomain list\n4. Shodan / Censys → exposed services, open ports, software\n5. Google dorking → exposed files, login panels, indexed data\n6. theHarvester → email addresses, additional subdomains\n7. Wayback Machine → historical endpoints and content\n8. Metadata extraction → from publicly downloaded documents\n9. LinkedIn / social → org structure and personnel\n\nFeed results into:\n- Active recon (Nmap against confirmed in-scope IPs)\n- Vulnerability research (software versions → Searchsploit/NVD)\n- Credential attacks (email addresses for phishing, spray attacks)\n`);copyBtnbtn_47c7996fcdcc4729b5d99884e3327b07.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_47c7996fcdcc4729b5d99884e3327b07.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e4ceb389c7974942943b70f11f45fa71=document.querySelector('button[name=btn_e4ceb389c7974942943b70f11f45fa71]');
+copyBtnbtn_e4ceb389c7974942943b70f11f45fa71.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Standard passive recon sequence:\n1. WHOIS → registrant details, nameservers, date registered\n2. DNS records → dig any → map full DNS landscape\n3. Certificate transparency → crt.sh → subdomain list\n4. Shodan / Censys → exposed services, open ports, software\n5. Google dorking → exposed files, login panels, indexed data\n6. theHarvester → email addresses, additional subdomains\n7. Wayback Machine → historical endpoints and content\n8. Metadata extraction → from publicly downloaded documents\n9. LinkedIn / social → org structure and personnel\n\nFeed results into:\n- Active recon (Nmap against confirmed in-scope IPs)\n- Vulnerability research (software versions → Searchsploit/NVD)\n- Credential attacks (email addresses for phishing, spray attacks)\n`);copyBtnbtn_e4ceb389c7974942943b70f11f45fa71.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e4ceb389c7974942943b70f11f45fa71.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

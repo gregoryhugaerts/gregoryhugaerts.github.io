@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:12 -->
+<!-- 2026-07-30 Thu 22:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Duck Typing</title>
@@ -916,11 +916,11 @@ Related: <a href="20260206T060557--dynamic-typing__concept_programming.html">Dyn
 <h2 id="org9c323f7">Python Examples</h2>
 <div class="outline-text-2" id="text-org9c323f7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_ca5495dd6df04a23935041a61fa4d5d8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_6e7048cce00a4a58a53a9245e62c0c2b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ca5495dd6df04a23935041a61fa4d5d8=document.querySelector('button[name=btn_ca5495dd6df04a23935041a61fa4d5d8]');
-copyBtnbtn_ca5495dd6df04a23935041a61fa4d5d8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Any object with a .quack() method works here —\n# no shared base class or interface required\nclass Duck:\n    def quack(self):\n        return \"Quack!\"\n\nclass Person:\n    def quack(self):\n        return \"I'm quacking like a duck!\"\n\nclass RubberDuck:\n    def quack(self):\n        return \"Squeak!\"\n\ndef make_it_quack(thing):\n    print(thing.quack())   # works for any object with .quack()\n\nmake_it_quack(Duck())        # Quack!\nmake_it_quack(Person())      # I'm quacking like a duck!\nmake_it_quack(RubberDuck())  # Squeak!\n`);copyBtnbtn_ca5495dd6df04a23935041a61fa4d5d8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ca5495dd6df04a23935041a61fa4d5d8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6e7048cce00a4a58a53a9245e62c0c2b=document.querySelector('button[name=btn_6e7048cce00a4a58a53a9245e62c0c2b]');
+copyBtnbtn_6e7048cce00a4a58a53a9245e62c0c2b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Any object with a .quack() method works here —\n# no shared base class or interface required\nclass Duck:\n    def quack(self):\n        return \"Quack!\"\n\nclass Person:\n    def quack(self):\n        return \"I'm quacking like a duck!\"\n\nclass RubberDuck:\n    def quack(self):\n        return \"Squeak!\"\n\ndef make_it_quack(thing):\n    print(thing.quack())   # works for any object with .quack()\n\nmake_it_quack(Duck())        # Quack!\nmake_it_quack(Person())      # I'm quacking like a duck!\nmake_it_quack(RubberDuck())  # Squeak!\n`);copyBtnbtn_6e7048cce00a4a58a53a9245e62c0c2b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6e7048cce00a4a58a53a9245e62c0c2b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -956,11 +956,11 @@ The standard library accepts any object that has <code>.read()</code> and
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_bd23947350b1410abef0ce30fdac1cbf>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_d6510092d17049ebbf10df5f8b0f007b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bd23947350b1410abef0ce30fdac1cbf=document.querySelector('button[name=btn_bd23947350b1410abef0ce30fdac1cbf]');
-copyBtnbtn_bd23947350b1410abef0ce30fdac1cbf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import io\nimport json\n\n# json.dump() accepts any file-like object\nbuffer = io.StringIO()           # in-memory string buffer, not a file\njson.dump({\"key\": \"value\"}, buffer)\ncontent = buffer.getvalue()\n\n# Same function works with a real file, a StringIO, a network socket,\n# a gzip file — any object that has .write()\n`);copyBtnbtn_bd23947350b1410abef0ce30fdac1cbf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bd23947350b1410abef0ce30fdac1cbf.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d6510092d17049ebbf10df5f8b0f007b=document.querySelector('button[name=btn_d6510092d17049ebbf10df5f8b0f007b]');
+copyBtnbtn_d6510092d17049ebbf10df5f8b0f007b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import io\nimport json\n\n# json.dump() accepts any file-like object\nbuffer = io.StringIO()           # in-memory string buffer, not a file\njson.dump({\"key\": \"value\"}, buffer)\ncontent = buffer.getvalue()\n\n# Same function works with a real file, a StringIO, a network socket,\n# a gzip file — any object that has .write()\n`);copyBtnbtn_d6510092d17049ebbf10df5f8b0f007b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d6510092d17049ebbf10df5f8b0f007b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -987,11 +987,11 @@ and <code>__next__</code> — not just lists or tuples:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_28405d6e33434419b532ab47503fa320>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_9f66b3ade1ee42c9a28c31bd0a4ee06d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_28405d6e33434419b532ab47503fa320=document.querySelector('button[name=btn_28405d6e33434419b532ab47503fa320]');
-copyBtnbtn_28405d6e33434419b532ab47503fa320.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`class Countdown:\n    def __init__(self, n):\n        self.n = n\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.n <= 0:\n            raise StopIteration\n        self.n -= 1\n        return self.n + 1\n\nfor n in Countdown(3):\n    print(n)   # 3, 2, 1\n`);copyBtnbtn_28405d6e33434419b532ab47503fa320.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_28405d6e33434419b532ab47503fa320.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9f66b3ade1ee42c9a28c31bd0a4ee06d=document.querySelector('button[name=btn_9f66b3ade1ee42c9a28c31bd0a4ee06d]');
+copyBtnbtn_9f66b3ade1ee42c9a28c31bd0a4ee06d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`class Countdown:\n    def __init__(self, n):\n        self.n = n\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.n <= 0:\n            raise StopIteration\n        self.n -= 1\n        return self.n + 1\n\nfor n in Countdown(3):\n    print(n)   # 3, 2, 1\n`);copyBtnbtn_9f66b3ade1ee42c9a28c31bd0a4ee06d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9f66b3ade1ee42c9a28c31bd0a4ee06d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1025,11 +1025,11 @@ rather than <b>LBYL</b> (Look Before You Leap) — check before acting:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_8ab93ee6f17d4c6a8a27f05da95757f1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_b0d58837ebeb4c17a450f8adecda8543>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8ab93ee6f17d4c6a8a27f05da95757f1=document.querySelector('button[name=btn_8ab93ee6f17d4c6a8a27f05da95757f1]');
-copyBtnbtn_8ab93ee6f17d4c6a8a27f05da95757f1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# LBYL — check type before using (un-Pythonic)\ndef process(obj):\n    if hasattr(obj, 'read'):\n        data = obj.read()\n\n# EAFP — just try it (Pythonic duck typing)\ndef process(obj):\n    try:\n        data = obj.read()\n    except AttributeError:\n        raise TypeError(f\"Expected file-like object, got {type(obj)}\")\n`);copyBtnbtn_8ab93ee6f17d4c6a8a27f05da95757f1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8ab93ee6f17d4c6a8a27f05da95757f1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b0d58837ebeb4c17a450f8adecda8543=document.querySelector('button[name=btn_b0d58837ebeb4c17a450f8adecda8543]');
+copyBtnbtn_b0d58837ebeb4c17a450f8adecda8543.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# LBYL — check type before using (un-Pythonic)\ndef process(obj):\n    if hasattr(obj, 'read'):\n        data = obj.read()\n\n# EAFP — just try it (Pythonic duck typing)\ndef process(obj):\n    try:\n        data = obj.read()\n    except AttributeError:\n        raise TypeError(f\"Expected file-like object, got {type(obj)}\")\n`);copyBtnbtn_b0d58837ebeb4c17a450f8adecda8543.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b0d58837ebeb4c17a450f8adecda8543.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1058,11 +1058,11 @@ structural compatibility without requiring explicit inheritance:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_578d1091f5d641f8a65026afe324ae97>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_316d4b7141564ba08a0037ca130fbe52>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_578d1091f5d641f8a65026afe324ae97=document.querySelector('button[name=btn_578d1091f5d641f8a65026afe324ae97]');
-copyBtnbtn_578d1091f5d641f8a65026afe324ae97.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`from typing import Protocol\n\nclass Quackable(Protocol):\n    def quack(self) -> str: ...\n\nclass Duck:\n    def quack(self) -> str:\n        return \"Quack!\"\n\nclass Person:\n    def quack(self) -> str:\n        return \"I'm quacking!\"\n\ndef make_quack(thing: Quackable) -> None:\n    print(thing.quack())\n\n# Both work — neither inherits from Quackable\nmake_quack(Duck())\nmake_quack(Person())\n`);copyBtnbtn_578d1091f5d641f8a65026afe324ae97.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_578d1091f5d641f8a65026afe324ae97.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_316d4b7141564ba08a0037ca130fbe52=document.querySelector('button[name=btn_316d4b7141564ba08a0037ca130fbe52]');
+copyBtnbtn_316d4b7141564ba08a0037ca130fbe52.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`from typing import Protocol\n\nclass Quackable(Protocol):\n    def quack(self) -> str: ...\n\nclass Duck:\n    def quack(self) -> str:\n        return \"Quack!\"\n\nclass Person:\n    def quack(self) -> str:\n        return \"I'm quacking!\"\n\ndef make_quack(thing: Quackable) -> None:\n    print(thing.quack())\n\n# Both work — neither inherits from Quackable\nmake_quack(Duck())\nmake_quack(Person())\n`);copyBtnbtn_316d4b7141564ba08a0037ca130fbe52.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_316d4b7141564ba08a0037ca130fbe52.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:13 -->
+<!-- 2026-07-30 Thu 22:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Microsoft Sentinel</title>
@@ -965,11 +965,11 @@ Sentinel uses KQL to define rules that look for patterns indicating a potential 
 </ul>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_5314aca7acae45aba558324de235be6e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_57bf3733404c41c6b63b86d3a6e0a461>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5314aca7acae45aba558324de235be6e=document.querySelector('button[name=btn_5314aca7acae45aba558324de235be6e]');
-copyBtnbtn_5314aca7acae45aba558324de235be6e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SigninLogs | where TimeGenerated > ago(30m) | summarize arg_min(TimeGenerated, IPAddress, Latitude, Longitude) by Identity | summarize makeset(IPAddress), makeset(Latitude), makeset(Longitude) by Identity | where array_length(set_IPAddress) > 1 // Further KQL calculations would analyze the distance between points vs. elapsed time | extend SuspiciousReason = \"Impossible Travel Detected\"\n`);copyBtnbtn_5314aca7acae45aba558324de235be6e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5314aca7acae45aba558324de235be6e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_57bf3733404c41c6b63b86d3a6e0a461=document.querySelector('button[name=btn_57bf3733404c41c6b63b86d3a6e0a461]');
+copyBtnbtn_57bf3733404c41c6b63b86d3a6e0a461.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SigninLogs | where TimeGenerated > ago(30m) | summarize arg_min(TimeGenerated, IPAddress, Latitude, Longitude) by Identity | summarize makeset(IPAddress), makeset(Latitude), makeset(Longitude) by Identity | where array_length(set_IPAddress) > 1 // Further KQL calculations would analyze the distance between points vs. elapsed time | extend SuspiciousReason = \"Impossible Travel Detected\"\n`);copyBtnbtn_57bf3733404c41c6b63b86d3a6e0a461.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_57bf3733404c41c6b63b86d3a6e0a461.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

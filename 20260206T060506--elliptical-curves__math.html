@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:12 -->
+<!-- 2026-07-30 Thu 22:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elliptic Curves</title>
@@ -1040,11 +1040,11 @@ square-and-multiply):
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_93cc4bdf56954eb2aeae72e32e121a2e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_59fcc2e85c674b56868284b982859517>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_93cc4bdf56954eb2aeae72e32e121a2e=document.querySelector('button[name=btn_93cc4bdf56954eb2aeae72e32e121a2e]');
-copyBtnbtn_93cc4bdf56954eb2aeae72e32e121a2e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`def scalar_multiply(k, G):\n    result = INFINITY  # identity element\n    addend = G\n    while k:\n        if k & 1:\n            result = point_add(result, addend)\n        addend = point_add(addend, addend)  # double\n        k >>= 1\n    return result\n`);copyBtnbtn_93cc4bdf56954eb2aeae72e32e121a2e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_93cc4bdf56954eb2aeae72e32e121a2e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_59fcc2e85c674b56868284b982859517=document.querySelector('button[name=btn_59fcc2e85c674b56868284b982859517]');
+copyBtnbtn_59fcc2e85c674b56868284b982859517.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`def scalar_multiply(k, G):\n    result = INFINITY  # identity element\n    addend = G\n    while k:\n        if k & 1:\n            result = point_add(result, addend)\n        addend = point_add(addend, addend)  # double\n        k >>= 1\n    return result\n`);copyBtnbtn_59fcc2e85c674b56868284b982859517.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_59fcc2e85c674b56868284b982859517.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1216,11 +1216,11 @@ transmitting it.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_059eac7048d54c88a8b467fdce424ddd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_0587d5b2c50b427187fb1464bfe0efeb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_059eac7048d54c88a8b467fdce424ddd=document.querySelector('button[name=btn_059eac7048d54c88a8b467fdce424ddd]');
-copyBtnbtn_059eac7048d54c88a8b467fdce424ddd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Alice: private key a, public key A = aG\nBob:   private key b, public key B = bG\n\nShared secret: aB = a(bG) = ab·G = b(aG) = bA\nAlice computes: aB\nBob computes:   bA\nBoth arrive at the same point without knowing each other's\nprivate keys.\n`);copyBtnbtn_059eac7048d54c88a8b467fdce424ddd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_059eac7048d54c88a8b467fdce424ddd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0587d5b2c50b427187fb1464bfe0efeb=document.querySelector('button[name=btn_0587d5b2c50b427187fb1464bfe0efeb]');
+copyBtnbtn_0587d5b2c50b427187fb1464bfe0efeb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Alice: private key a, public key A = aG\nBob:   private key b, public key B = bG\n\nShared secret: aB = a(bG) = ab·G = b(aG) = bA\nAlice computes: aB\nBob computes:   bA\nBoth arrive at the same point without knowing each other's\nprivate keys.\n`);copyBtnbtn_0587d5b2c50b427187fb1464bfe0efeb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0587d5b2c50b427187fb1464bfe0efeb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1259,11 +1259,11 @@ Used in SSH keys, Signal protocol, age encryption.
 <h2 id="org4c9b03a">Security Relevance</h2>
 <div class="outline-text-2" id="text-org4c9b03a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_13b1fd0678fe46eba79aca817afa9e22>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2d293447802249fbac661e14f10a826a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_13b1fd0678fe46eba79aca817afa9e22=document.querySelector('button[name=btn_13b1fd0678fe46eba79aca817afa9e22]');
-copyBtnbtn_13b1fd0678fe46eba79aca817afa9e22.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Inspect a TLS certificate's curve\nopenssl s_client -connect target.com:443 | openssl x509 -text | grep -A2 \"Public Key\"\n\n# Check SSH host key type (Ed25519 = elliptic curve)\nssh-keygen -l -f /etc/ssh/ssh_host_ed25519_key.pub\n\n# Check JWT algorithm header (ES256 = ECDSA with P-256)\necho \"eyJ...\" | base64 -d | python3 -m json.tool\n\n# Weak curve usage is a finding — look for:\n# — secp112r1, secp128r1 (too small)\n# — Brainpool curves with implementation concerns\n# — Custom/non-standard curves (red flag)\n`);copyBtnbtn_13b1fd0678fe46eba79aca817afa9e22.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_13b1fd0678fe46eba79aca817afa9e22.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2d293447802249fbac661e14f10a826a=document.querySelector('button[name=btn_2d293447802249fbac661e14f10a826a]');
+copyBtnbtn_2d293447802249fbac661e14f10a826a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Inspect a TLS certificate's curve\nopenssl s_client -connect target.com:443 | openssl x509 -text | grep -A2 \"Public Key\"\n\n# Check SSH host key type (Ed25519 = elliptic curve)\nssh-keygen -l -f /etc/ssh/ssh_host_ed25519_key.pub\n\n# Check JWT algorithm header (ES256 = ECDSA with P-256)\necho \"eyJ...\" | base64 -d | python3 -m json.tool\n\n# Weak curve usage is a finding — look for:\n# — secp112r1, secp128r1 (too small)\n# — Brainpool curves with implementation concerns\n# — Custom/non-standard curves (red flag)\n`);copyBtnbtn_2d293447802249fbac661e14f10a826a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2d293447802249fbac661e14f10a826a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">

