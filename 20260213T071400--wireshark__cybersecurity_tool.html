@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Wireshark</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,32 +886,32 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8571285">Capture</a>
+<li><a href="#orgec85bff">Capture</a>
 <ul>
-<li><a href="#org4df349f">Capture Filters (set before capture starts)</a></li>
+<li><a href="#orgb2bf20b">Capture Filters (set before capture starts)</a></li>
 </ul>
 </li>
-<li><a href="#orgfa2027e">Display Filters</a>
+<li><a href="#orgf61e5b8">Display Filters</a>
 <ul>
-<li><a href="#org67355b2">Basic</a></li>
-<li><a href="#orgb810728">Combining Filters</a></li>
-<li><a href="#org86b93a3">HTTP-Specific</a></li>
-<li><a href="#org234e77a">DNS-Specific</a></li>
-<li><a href="#org233e549">TCP Stream Analysis</a></li>
+<li><a href="#orgbed9749">Basic</a></li>
+<li><a href="#org80b7a57">Combining Filters</a></li>
+<li><a href="#org8c8961b">HTTP-Specific</a></li>
+<li><a href="#org4805a1c">DNS-Specific</a></li>
+<li><a href="#orgd764a26">TCP Stream Analysis</a></li>
 </ul>
 </li>
-<li><a href="#orgf92029c">Security and Malware Analysis Use</a>
+<li><a href="#org490a3f0">Security and Malware Analysis Use</a>
 <ul>
-<li><a href="#org1198ba5">Following a Conversation</a></li>
-<li><a href="#org23da596">Extracting Files from a Capture</a></li>
-<li><a href="#org75b3630">Identifying C2 Beaconing</a></li>
-<li><a href="#org6560b04">Credential Capture</a></li>
-<li><a href="#orge3bc883">DNS Tunnelling / DGA Indicators</a></li>
+<li><a href="#org5e1df9c">Following a Conversation</a></li>
+<li><a href="#org13778e0">Extracting Files from a Capture</a></li>
+<li><a href="#org3b76176">Identifying C2 Beaconing</a></li>
+<li><a href="#org57cc1c0">Credential Capture</a></li>
+<li><a href="#org9558c10">DNS Tunnelling / DGA Indicators</a></li>
 </ul>
 </li>
-<li><a href="#org3f85b3c">Statistics Menu</a></li>
-<li><a href="#orgc9ef76b">Command Line — tshark</a></li>
-<li><a href="#orgc726be3">Tips</a></li>
+<li><a href="#org8aeed75">Statistics Menu</a></li>
+<li><a href="#orge95ddfb">Command Line — tshark</a></li>
+<li><a href="#org6cd7aa7">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -913,15 +931,15 @@ Related: <a href="Malware Analysis.html">Malware Analysis</a>
          <a href="20260314T005740--pivoting__concept_cybersecurity.html">Pivoting</a>
 	 <a href="20260206T060720--pcap__concept_cybersecurity.html">PCAP</a>
 </p>
-<div id="outline-container-org8571285" class="outline-2">
-<h2 id="org8571285">Capture</h2>
-<div class="outline-text-2" id="text-org8571285">
+<div id="outline-container-orgec85bff" class="outline-2">
+<h2 id="orgec85bff">Capture</h2>
+<div class="outline-text-2" id="text-orgec85bff">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_119c014c335d4e23ac4051c4635af1db>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_00e238595d474720b33f932daf9393d1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_119c014c335d4e23ac4051c4635af1db=document.querySelector('button[name=btn_119c014c335d4e23ac4051c4635af1db]');
-copyBtnbtn_119c014c335d4e23ac4051c4635af1db.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Capture → choose interface → start (shark fin icon)\nCtrl+E       — stop/start capture\nCtrl+S       — save capture\nFile → Open — load a .pcap/.pcapng for offline analysis\n`);copyBtnbtn_119c014c335d4e23ac4051c4635af1db.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_119c014c335d4e23ac4051c4635af1db.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_00e238595d474720b33f932daf9393d1=document.querySelector('button[name=btn_00e238595d474720b33f932daf9393d1]');
+copyBtnbtn_00e238595d474720b33f932daf9393d1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Capture → choose interface → start (shark fin icon)\nCtrl+E       — stop/start capture\nCtrl+S       — save capture\nFile → Open — load a .pcap/.pcapng for offline analysis\n`);copyBtnbtn_00e238595d474720b33f932daf9393d1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_00e238595d474720b33f932daf9393d1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -932,15 +950,15 @@ File &#8594; Open &#8212; load a .pcap/.pcapng for offline analysis
 </pre>
 </div></div>
 </div>
-<div id="outline-container-org4df349f" class="outline-3">
-<h3 id="org4df349f">Capture Filters (set before capture starts)</h3>
-<div class="outline-text-3" id="text-org4df349f">
+<div id="outline-container-orgb2bf20b" class="outline-3">
+<h3 id="orgb2bf20b">Capture Filters (set before capture starts)</h3>
+<div class="outline-text-3" id="text-orgb2bf20b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_441afbda52dc494c986d9092e7454de5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_5b2d829359db48ca9ddf36a5263d2d4b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_441afbda52dc494c986d9092e7454de5=document.querySelector('button[name=btn_441afbda52dc494c986d9092e7454de5]');
-copyBtnbtn_441afbda52dc494c986d9092e7454de5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`host 192.168.1.10              # traffic to/from a specific host\nnet 192.168.1.0/24             # traffic within a subnet\nport 443                       # traffic on a specific port\nhost 192.168.1.10 and port 80  # combine conditions\nnot arp and not icmp           # exclude noise\n`);copyBtnbtn_441afbda52dc494c986d9092e7454de5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_441afbda52dc494c986d9092e7454de5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5b2d829359db48ca9ddf36a5263d2d4b=document.querySelector('button[name=btn_5b2d829359db48ca9ddf36a5263d2d4b]');
+copyBtnbtn_5b2d829359db48ca9ddf36a5263d2d4b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`host 192.168.1.10              # traffic to/from a specific host\nnet 192.168.1.0/24             # traffic within a subnet\nport 443                       # traffic on a specific port\nhost 192.168.1.10 and port 80  # combine conditions\nnot arp and not icmp           # exclude noise\n`);copyBtnbtn_5b2d829359db48ca9ddf36a5263d2d4b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5b2d829359db48ca9ddf36a5263d2d4b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -954,23 +972,23 @@ not arp and not icmp           # exclude noise
 </div>
 </div>
 </div>
-<div id="outline-container-orgfa2027e" class="outline-2">
-<h2 id="orgfa2027e">Display Filters</h2>
-<div class="outline-text-2" id="text-orgfa2027e">
+<div id="outline-container-orgf61e5b8" class="outline-2">
+<h2 id="orgf61e5b8">Display Filters</h2>
+<div class="outline-text-2" id="text-orgf61e5b8">
 <p>
 Applied after capture, in the filter bar. Different syntax from
 capture filters.
 </p>
 </div>
-<div id="outline-container-org67355b2" class="outline-3">
-<h3 id="org67355b2">Basic</h3>
-<div class="outline-text-3" id="text-org67355b2">
+<div id="outline-container-orgbed9749" class="outline-3">
+<h3 id="orgbed9749">Basic</h3>
+<div class="outline-text-3" id="text-orgbed9749">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_63f0927bb4314cfb8d9dd42db35f7c31>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2e6c8b80137347cfab72af25c1f224dc>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_63f0927bb4314cfb8d9dd42db35f7c31=document.querySelector('button[name=btn_63f0927bb4314cfb8d9dd42db35f7c31]');
-copyBtnbtn_63f0927bb4314cfb8d9dd42db35f7c31.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ip.addr == 192.168.1.10              # traffic to/from this IP\nip.src == 192.168.1.10               # source only\nip.dst == 192.168.1.10               # destination only\ntcp.port == 443\nudp.port == 53\nhttp\ndns\ntls\n`);copyBtnbtn_63f0927bb4314cfb8d9dd42db35f7c31.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_63f0927bb4314cfb8d9dd42db35f7c31.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2e6c8b80137347cfab72af25c1f224dc=document.querySelector('button[name=btn_2e6c8b80137347cfab72af25c1f224dc]');
+copyBtnbtn_2e6c8b80137347cfab72af25c1f224dc.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ip.addr == 192.168.1.10              # traffic to/from this IP\nip.src == 192.168.1.10               # source only\nip.dst == 192.168.1.10               # destination only\ntcp.port == 443\nudp.port == 53\nhttp\ndns\ntls\n`);copyBtnbtn_2e6c8b80137347cfab72af25c1f224dc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2e6c8b80137347cfab72af25c1f224dc.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -986,15 +1004,15 @@ tls
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb810728" class="outline-3">
-<h3 id="orgb810728">Combining Filters</h3>
-<div class="outline-text-3" id="text-orgb810728">
+<div id="outline-container-org80b7a57" class="outline-3">
+<h3 id="org80b7a57">Combining Filters</h3>
+<div class="outline-text-3" id="text-org80b7a57">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_405f8e241cfe46e58d9ef29b90ac12cd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e52a8f8e7d114e0495a17ef602103b47>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_405f8e241cfe46e58d9ef29b90ac12cd=document.querySelector('button[name=btn_405f8e241cfe46e58d9ef29b90ac12cd]');
-copyBtnbtn_405f8e241cfe46e58d9ef29b90ac12cd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ip.addr == 192.168.1.10 and tcp.port == 443\nhttp.request.method == \"POST\"\nhttp and ip.addr == 192.168.1.10\nnot (ip.addr == 192.168.1.1)         # exclude an address (e.g. gateway noise)\n`);copyBtnbtn_405f8e241cfe46e58d9ef29b90ac12cd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_405f8e241cfe46e58d9ef29b90ac12cd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e52a8f8e7d114e0495a17ef602103b47=document.querySelector('button[name=btn_e52a8f8e7d114e0495a17ef602103b47]');
+copyBtnbtn_e52a8f8e7d114e0495a17ef602103b47.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ip.addr == 192.168.1.10 and tcp.port == 443\nhttp.request.method == \"POST\"\nhttp and ip.addr == 192.168.1.10\nnot (ip.addr == 192.168.1.1)         # exclude an address (e.g. gateway noise)\n`);copyBtnbtn_e52a8f8e7d114e0495a17ef602103b47.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e52a8f8e7d114e0495a17ef602103b47.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1006,15 +1024,15 @@ not (ip.addr == 192.168.1.1)         # exclude an address (e.g. gateway noise)
 </div></div>
 </div>
 </div>
-<div id="outline-container-org86b93a3" class="outline-3">
-<h3 id="org86b93a3">HTTP-Specific</h3>
-<div class="outline-text-3" id="text-org86b93a3">
+<div id="outline-container-org8c8961b" class="outline-3">
+<h3 id="org8c8961b">HTTP-Specific</h3>
+<div class="outline-text-3" id="text-org8c8961b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_a267b99a24824a739429bb6dbef45457>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_867c2123742c4874b7f100afc240e63e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a267b99a24824a739429bb6dbef45457=document.querySelector('button[name=btn_a267b99a24824a739429bb6dbef45457]');
-copyBtnbtn_a267b99a24824a739429bb6dbef45457.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`http.request                          # all HTTP requests\nhttp.request.method == \"POST\"\nhttp.request.uri contains \"login\"\nhttp.response.code == 200\nhttp contains \"password\"              # search payload for plaintext credentials\n`);copyBtnbtn_a267b99a24824a739429bb6dbef45457.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a267b99a24824a739429bb6dbef45457.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_867c2123742c4874b7f100afc240e63e=document.querySelector('button[name=btn_867c2123742c4874b7f100afc240e63e]');
+copyBtnbtn_867c2123742c4874b7f100afc240e63e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`http.request                          # all HTTP requests\nhttp.request.method == \"POST\"\nhttp.request.uri contains \"login\"\nhttp.response.code == 200\nhttp contains \"password\"              # search payload for plaintext credentials\n`);copyBtnbtn_867c2123742c4874b7f100afc240e63e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_867c2123742c4874b7f100afc240e63e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1027,15 +1045,15 @@ http contains "password"              # search payload for plaintext credentials
 </div></div>
 </div>
 </div>
-<div id="outline-container-org234e77a" class="outline-3">
-<h3 id="org234e77a">DNS-Specific</h3>
-<div class="outline-text-3" id="text-org234e77a">
+<div id="outline-container-org4805a1c" class="outline-3">
+<h3 id="org4805a1c">DNS-Specific</h3>
+<div class="outline-text-3" id="text-org4805a1c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_5c6510edc9ba4ddb9d39ce44cfad52c2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f318a638a31849fb852203a75fdb2a59>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5c6510edc9ba4ddb9d39ce44cfad52c2=document.querySelector('button[name=btn_5c6510edc9ba4ddb9d39ce44cfad52c2]');
-copyBtnbtn_5c6510edc9ba4ddb9d39ce44cfad52c2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`dns.qry.name contains \"suspicious\"\ndns.flags.response == 0               # queries only, not responses\ndns.qry.type == 1                     # A record queries\n`);copyBtnbtn_5c6510edc9ba4ddb9d39ce44cfad52c2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5c6510edc9ba4ddb9d39ce44cfad52c2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f318a638a31849fb852203a75fdb2a59=document.querySelector('button[name=btn_f318a638a31849fb852203a75fdb2a59]');
+copyBtnbtn_f318a638a31849fb852203a75fdb2a59.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`dns.qry.name contains \"suspicious\"\ndns.flags.response == 0               # queries only, not responses\ndns.qry.type == 1                     # A record queries\n`);copyBtnbtn_f318a638a31849fb852203a75fdb2a59.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f318a638a31849fb852203a75fdb2a59.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1046,15 +1064,15 @@ dns.qry.type == 1                     # A record queries
 </div></div>
 </div>
 </div>
-<div id="outline-container-org233e549" class="outline-3">
-<h3 id="org233e549">TCP Stream Analysis</h3>
-<div class="outline-text-3" id="text-org233e549">
+<div id="outline-container-orgd764a26" class="outline-3">
+<h3 id="orgd764a26">TCP Stream Analysis</h3>
+<div class="outline-text-3" id="text-orgd764a26">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_26195df0e237443f8832ce1c2f9b116d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_5ae3f00a3f0b46fdb35f9122b65f62f9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_26195df0e237443f8832ce1c2f9b116d=document.querySelector('button[name=btn_26195df0e237443f8832ce1c2f9b116d]');
-copyBtnbtn_26195df0e237443f8832ce1c2f9b116d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`tcp.stream eq 5                       # isolate a single conversation\ntcp.flags.syn == 1 and tcp.flags.ack == 0   # SYN packets — connection attempts\ntcp.analysis.retransmission           # retransmitted packets — possible issues\ntcp.analysis.flags                    # any TCP anomaly\n`);copyBtnbtn_26195df0e237443f8832ce1c2f9b116d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_26195df0e237443f8832ce1c2f9b116d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5ae3f00a3f0b46fdb35f9122b65f62f9=document.querySelector('button[name=btn_5ae3f00a3f0b46fdb35f9122b65f62f9]');
+copyBtnbtn_5ae3f00a3f0b46fdb35f9122b65f62f9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`tcp.stream eq 5                       # isolate a single conversation\ntcp.flags.syn == 1 and tcp.flags.ack == 0   # SYN packets — connection attempts\ntcp.analysis.retransmission           # retransmitted packets — possible issues\ntcp.analysis.flags                    # any TCP anomaly\n`);copyBtnbtn_5ae3f00a3f0b46fdb35f9122b65f62f9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5ae3f00a3f0b46fdb35f9122b65f62f9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1067,19 +1085,19 @@ tcp.analysis.flags                    # any TCP anomaly
 </div>
 </div>
 </div>
-<div id="outline-container-orgf92029c" class="outline-2">
-<h2 id="orgf92029c">Security and Malware Analysis Use</h2>
-<div class="outline-text-2" id="text-orgf92029c">
+<div id="outline-container-org490a3f0" class="outline-2">
+<h2 id="org490a3f0">Security and Malware Analysis Use</h2>
+<div class="outline-text-2" id="text-org490a3f0">
 </div>
-<div id="outline-container-org1198ba5" class="outline-3">
-<h3 id="org1198ba5">Following a Conversation</h3>
-<div class="outline-text-3" id="text-org1198ba5">
+<div id="outline-container-org5e1df9c" class="outline-3">
+<h3 id="org5e1df9c">Following a Conversation</h3>
+<div class="outline-text-3" id="text-org5e1df9c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b0e436d0124748cb88bd49ae017126be>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_5e52629a6a9e4409a96e6203d556210d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b0e436d0124748cb88bd49ae017126be=document.querySelector('button[name=btn_b0e436d0124748cb88bd49ae017126be]');
-copyBtnbtn_b0e436d0124748cb88bd49ae017126be.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Right-click packet → Follow → TCP Stream / HTTP Stream\n# Reconstructs the full conversation in readable form —\n# fastest way to read plaintext credentials, exfiltrated data,\n# or C2 commands sent in cleartext\n`);copyBtnbtn_b0e436d0124748cb88bd49ae017126be.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b0e436d0124748cb88bd49ae017126be.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5e52629a6a9e4409a96e6203d556210d=document.querySelector('button[name=btn_5e52629a6a9e4409a96e6203d556210d]');
+copyBtnbtn_5e52629a6a9e4409a96e6203d556210d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Right-click packet → Follow → TCP Stream / HTTP Stream\n# Reconstructs the full conversation in readable form —\n# fastest way to read plaintext credentials, exfiltrated data,\n# or C2 commands sent in cleartext\n`);copyBtnbtn_5e52629a6a9e4409a96e6203d556210d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5e52629a6a9e4409a96e6203d556210d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1091,15 +1109,15 @@ let res = copyTextToClipboard(`Right-click packet → Follow → TCP Stream / HT
 </div></div>
 </div>
 </div>
-<div id="outline-container-org23da596" class="outline-3">
-<h3 id="org23da596">Extracting Files from a Capture</h3>
-<div class="outline-text-3" id="text-org23da596">
+<div id="outline-container-org13778e0" class="outline-3">
+<h3 id="org13778e0">Extracting Files from a Capture</h3>
+<div class="outline-text-3" id="text-org13778e0">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_62681f8acd9f4b889d346a2a23d727a2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_743551a5b8d24be1ab9d886aa5b3a47e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_62681f8acd9f4b889d346a2a23d727a2=document.querySelector('button[name=btn_62681f8acd9f4b889d346a2a23d727a2]');
-copyBtnbtn_62681f8acd9f4b889d346a2a23d727a2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`File → Export Objects → HTTP (or SMB, DICOM, etc.)\n# Lists every file transferred in the capture — save any of\n# interest for separate analysis (e.g. malware dropped via HTTP)\n`);copyBtnbtn_62681f8acd9f4b889d346a2a23d727a2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_62681f8acd9f4b889d346a2a23d727a2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_743551a5b8d24be1ab9d886aa5b3a47e=document.querySelector('button[name=btn_743551a5b8d24be1ab9d886aa5b3a47e]');
+copyBtnbtn_743551a5b8d24be1ab9d886aa5b3a47e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`File → Export Objects → HTTP (or SMB, DICOM, etc.)\n# Lists every file transferred in the capture — save any of\n# interest for separate analysis (e.g. malware dropped via HTTP)\n`);copyBtnbtn_743551a5b8d24be1ab9d886aa5b3a47e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_743551a5b8d24be1ab9d886aa5b3a47e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1110,15 +1128,15 @@ let res = copyTextToClipboard(`File → Export Objects → HTTP (or SMB, DICOM, 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org75b3630" class="outline-3">
-<h3 id="org75b3630">Identifying C2 Beaconing</h3>
-<div class="outline-text-3" id="text-org75b3630">
+<div id="outline-container-org3b76176" class="outline-3">
+<h3 id="org3b76176">Identifying C2 Beaconing</h3>
+<div class="outline-text-3" id="text-org3b76176">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_436086ed87044c07b671deae961c9ded>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_01040c82e683422bac566dd0d7c18817>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_436086ed87044c07b671deae961c9ded=document.querySelector('button[name=btn_436086ed87044c07b671deae961c9ded]');
-copyBtnbtn_436086ed87044c07b671deae961c9ded.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Statistics → Conversations → sort by Duration or Packets\n# Look for: regular-interval connections to the same destination,\n# small consistent packet sizes, long-duration single conversations\n\n# Filter to isolate a suspect destination\nip.addr == <suspect_C2_IP>\n\n# Statistics → IO Graph — visualise traffic over time, beaconing\n# shows as regular spikes at consistent intervals\n`);copyBtnbtn_436086ed87044c07b671deae961c9ded.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_436086ed87044c07b671deae961c9ded.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_01040c82e683422bac566dd0d7c18817=document.querySelector('button[name=btn_01040c82e683422bac566dd0d7c18817]');
+copyBtnbtn_01040c82e683422bac566dd0d7c18817.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Statistics → Conversations → sort by Duration or Packets\n# Look for: regular-interval connections to the same destination,\n# small consistent packet sizes, long-duration single conversations\n\n# Filter to isolate a suspect destination\nip.addr == <suspect_C2_IP>\n\n# Statistics → IO Graph — visualise traffic over time, beaconing\n# shows as regular spikes at consistent intervals\n`);copyBtnbtn_01040c82e683422bac566dd0d7c18817.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_01040c82e683422bac566dd0d7c18817.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1135,15 +1153,15 @@ ip.addr == &lt;suspect_C2_IP&gt;
 </div></div>
 </div>
 </div>
-<div id="outline-container-org6560b04" class="outline-3">
-<h3 id="org6560b04">Credential Capture</h3>
-<div class="outline-text-3" id="text-org6560b04">
+<div id="outline-container-org57cc1c0" class="outline-3">
+<h3 id="org57cc1c0">Credential Capture</h3>
+<div class="outline-text-3" id="text-org57cc1c0">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_df15ec16fb454053977dcae13605a6b4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_63046f67b79047a58a6610ecf50ced42>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_df15ec16fb454053977dcae13605a6b4=document.querySelector('button[name=btn_df15ec16fb454053977dcae13605a6b4]');
-copyBtnbtn_df15ec16fb454053977dcae13605a6b4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`http contains \"password\"\nhttp.request.method == \"POST\" and http contains \"pass\"\nftp.request.command == \"PASS\"\n`);copyBtnbtn_df15ec16fb454053977dcae13605a6b4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_df15ec16fb454053977dcae13605a6b4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_63046f67b79047a58a6610ecf50ced42=document.querySelector('button[name=btn_63046f67b79047a58a6610ecf50ced42]');
+copyBtnbtn_63046f67b79047a58a6610ecf50ced42.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`http contains \"password\"\nhttp.request.method == \"POST\" and http contains \"pass\"\nftp.request.command == \"PASS\"\n`);copyBtnbtn_63046f67b79047a58a6610ecf50ced42.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_63046f67b79047a58a6610ecf50ced42.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1154,15 +1172,15 @@ ftp.request.command == "PASS"
 </div></div>
 </div>
 </div>
-<div id="outline-container-orge3bc883" class="outline-3">
-<h3 id="orge3bc883">DNS Tunnelling / DGA Indicators</h3>
-<div class="outline-text-3" id="text-orge3bc883">
+<div id="outline-container-org9558c10" class="outline-3">
+<h3 id="org9558c10">DNS Tunnelling / DGA Indicators</h3>
+<div class="outline-text-3" id="text-org9558c10">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ccfce9e4e94241469b1461a5618aad3a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b09201851cb24c409553138677e754a0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ccfce9e4e94241469b1461a5618aad3a=document.querySelector('button[name=btn_ccfce9e4e94241469b1461a5618aad3a]');
-copyBtnbtn_ccfce9e4e94241469b1461a5618aad3a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`dns.qry.name.len > 50              # unusually long queries\ndns and frame.len > 100            # oversized DNS packets (data exfil)\n# DGA domains often appear as long, random-looking subdomains —\n# sort Statistics → DNS by query name to spot patterns\n`);copyBtnbtn_ccfce9e4e94241469b1461a5618aad3a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ccfce9e4e94241469b1461a5618aad3a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b09201851cb24c409553138677e754a0=document.querySelector('button[name=btn_b09201851cb24c409553138677e754a0]');
+copyBtnbtn_b09201851cb24c409553138677e754a0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`dns.qry.name.len > 50              # unusually long queries\ndns and frame.len > 100            # oversized DNS packets (data exfil)\n# DGA domains often appear as long, random-looking subdomains —\n# sort Statistics → DNS by query name to spot patterns\n`);copyBtnbtn_b09201851cb24c409553138677e754a0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b09201851cb24c409553138677e754a0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1175,15 +1193,15 @@ dns and frame.len &gt; 100            # oversized DNS packets (data exfil)
 </div>
 </div>
 </div>
-<div id="outline-container-org3f85b3c" class="outline-2">
-<h2 id="org3f85b3c">Statistics Menu</h2>
-<div class="outline-text-2" id="text-org3f85b3c">
+<div id="outline-container-org8aeed75" class="outline-2">
+<h2 id="org8aeed75">Statistics Menu</h2>
+<div class="outline-text-2" id="text-org8aeed75">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_6cbc5a6e3db043fda439201465c4b580>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_6be3518bdf5d4ebd8ad2d1fadbda93fa>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6cbc5a6e3db043fda439201465c4b580=document.querySelector('button[name=btn_6cbc5a6e3db043fda439201465c4b580]');
-copyBtnbtn_6cbc5a6e3db043fda439201465c4b580.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Statistics → Protocol Hierarchy   — breakdown of traffic by protocol\nStatistics → Conversations        — every host pair, sortable by volume\nStatistics → Endpoints            — every unique host involved\nStatistics → IO Graph             — traffic volume over time, spot beaconing\n`);copyBtnbtn_6cbc5a6e3db043fda439201465c4b580.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6cbc5a6e3db043fda439201465c4b580.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6be3518bdf5d4ebd8ad2d1fadbda93fa=document.querySelector('button[name=btn_6be3518bdf5d4ebd8ad2d1fadbda93fa]');
+copyBtnbtn_6be3518bdf5d4ebd8ad2d1fadbda93fa.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Statistics → Protocol Hierarchy   — breakdown of traffic by protocol\nStatistics → Conversations        — every host pair, sortable by volume\nStatistics → Endpoints            — every unique host involved\nStatistics → IO Graph             — traffic volume over time, spot beaconing\n`);copyBtnbtn_6be3518bdf5d4ebd8ad2d1fadbda93fa.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6be3518bdf5d4ebd8ad2d1fadbda93fa.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1195,20 +1213,20 @@ Statistics &#8594; IO Graph             &#8212; traffic volume over time, spot b
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgc9ef76b" class="outline-2">
-<h2 id="orgc9ef76b">Command Line — tshark</h2>
-<div class="outline-text-2" id="text-orgc9ef76b">
+<div id="outline-container-orge95ddfb" class="outline-2">
+<h2 id="orge95ddfb">Command Line — tshark</h2>
+<div class="outline-text-2" id="text-orge95ddfb">
 <p>
 For scripted or headless analysis, <code>tshark</code> provides the same
 engine without the GUI.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f1830bedd08540f29761f6b540d33b22>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_54152f17f32044ca8df9fba905ab203d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f1830bedd08540f29761f6b540d33b22=document.querySelector('button[name=btn_f1830bedd08540f29761f6b540d33b22]');
-copyBtnbtn_f1830bedd08540f29761f6b540d33b22.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Capture to file\ntshark -i eth0 -w capture.pcap\n\n# Read and filter an existing capture\ntshark -r capture.pcap -Y \"http.request\"\n\n# Extract specific fields\ntshark -r capture.pcap -Y \"dns\" -T fields -e dns.qry.name | sort -u\n`);copyBtnbtn_f1830bedd08540f29761f6b540d33b22.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f1830bedd08540f29761f6b540d33b22.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_54152f17f32044ca8df9fba905ab203d=document.querySelector('button[name=btn_54152f17f32044ca8df9fba905ab203d]');
+copyBtnbtn_54152f17f32044ca8df9fba905ab203d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Capture to file\ntshark -i eth0 -w capture.pcap\n\n# Read and filter an existing capture\ntshark -r capture.pcap -Y \"http.request\"\n\n# Extract specific fields\ntshark -r capture.pcap -Y \"dns\" -T fields -e dns.qry.name | sort -u\n`);copyBtnbtn_54152f17f32044ca8df9fba905ab203d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_54152f17f32044ca8df9fba905ab203d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1224,9 +1242,9 @@ let res = copyTextToClipboard(`# Capture to file\ntshark -i eth0 -w capture.pcap
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgc726be3" class="outline-2">
-<h2 id="orgc726be3">Tips</h2>
-<div class="outline-text-2" id="text-orgc726be3">
+<div id="outline-container-org6cd7aa7" class="outline-2">
+<h2 id="org6cd7aa7">Tips</h2>
+<div class="outline-text-2" id="text-org6cd7aa7">
 <ul class="org-ul">
 <li>Follow TCP/HTTP Stream is the single highest-value feature for
 security analysis — reconstructs readable conversations instantly
@@ -1247,6 +1265,20 @@ actual payload or C2 response content</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1254,6 +1286,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

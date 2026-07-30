@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Subdomain Enumeration</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,16 +886,16 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd754b8f">Subdomain Enumeration</a>
+<li><a href="#org142cff0">Subdomain Enumeration</a>
 <ul>
-<li><a href="#orge3a697a">Tools and Techniques</a>
+<li><a href="#orgad01356">Tools and Techniques</a>
 <ul>
-<li><a href="#org8387f7d">Search Engine orking</a></li>
-<li><a href="#org686de71">NS Record Queries</a></li>
-<li><a href="#org2b975b8">Brute-Forcing with Wordlists</a></li>
-<li><a href="#orgf387f69">SSL Certificate Analysis</a></li>
-<li><a href="#orgeffdf72">OSINT (Open Source Intelligence)</a></li>
-<li><a href="#org6546a86">Virtual Host Enumeration</a></li>
+<li><a href="#orgd502e20">Search Engine orking</a></li>
+<li><a href="#orgdbb2f99">NS Record Queries</a></li>
+<li><a href="#org14793cf">Brute-Forcing with Wordlists</a></li>
+<li><a href="#org3702178">SSL Certificate Analysis</a></li>
+<li><a href="#org7f01c15">OSINT (Open Source Intelligence)</a></li>
+<li><a href="#org1226365">Virtual Host Enumeration</a></li>
 </ul>
 </li>
 </ul>
@@ -885,9 +903,9 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd754b8f" class="outline-2">
-<h2 id="orgd754b8f">Subdomain Enumeration</h2>
-<div class="outline-text-2" id="text-orgd754b8f">
+<div id="outline-container-org142cff0" class="outline-2">
+<h2 id="org142cff0">Subdomain Enumeration</h2>
+<div class="outline-text-2" id="text-org142cff0">
 <p>
 Subdomain enumeration is the process of discovering subdomains associated with a target domain.
 </p>
@@ -896,13 +914,13 @@ Subdomain enumeration is the process of discovering subdomains associated with a
 It's a crucial reconnaissance phase in web hacking, as overlooked or forgotten subdomains can often expose additional attack surfaces, reveal development environments, or provide access to applications that are less secure than the main domain.
 </p>
 </div>
-<div id="outline-container-orge3a697a" class="outline-3">
-<h3 id="orge3a697a">Tools and Techniques</h3>
-<div class="outline-text-3" id="text-orge3a697a">
+<div id="outline-container-orgad01356" class="outline-3">
+<h3 id="orgad01356">Tools and Techniques</h3>
+<div class="outline-text-3" id="text-orgad01356">
 </div>
-<div id="outline-container-org8387f7d" class="outline-4">
-<h4 id="org8387f7d">Search Engine orking</h4>
-<div class="outline-text-4" id="text-org8387f7d">
+<div id="outline-container-orgd502e20" class="outline-4">
+<h4 id="orgd502e20">Search Engine orking</h4>
+<div class="outline-text-4" id="text-orgd502e20">
 <p>
 Leveraging powerful search engines like Google, Bing, or even specialized ones like Shodan and Censys, with specific queries (dorks) to find publicly indexed subdomains.
 </p>
@@ -912,11 +930,11 @@ Leveraging powerful search engines like Google, Bing, or even specialized ones l
 </ul>
 </div>
 </div>
-<div id="outline-container-org686de71" class="outline-4">
-<h4 id="org686de71">NS Record Queries</h4>
-<div class="outline-text-4" id="text-org686de71">
+<div id="outline-container-orgdbb2f99" class="outline-4">
+<h4 id="orgdbb2f99">NS Record Queries</h4>
+<div class="outline-text-4" id="text-orgdbb2f99">
 <p>
-Directly querying <a href="Domain Name System.html#domain-name-system">Domain Name System</a> servers for various record types (A, AAAA, CNAME, NS, MX, PTR, TXT) can reveal subdomains. Zone transfers (AXFR) can be particularly revealing if misconfigured.
+Directly querying <a href="20260314T005632==dns--domain-name-system__networking_protocol.html">Domain Name System</a> servers for various record types (A, AAAA, CNAME, NS, MX, PTR, TXT) can reveal subdomains. Zone transfers (AXFR) can be particularly revealing if misconfigured.
 </p>
 
 <ul class="org-ul">
@@ -925,9 +943,9 @@ Directly querying <a href="Domain Name System.html#domain-name-system">Domain Na
 </ul>
 </div>
 </div>
-<div id="outline-container-org2b975b8" class="outline-4">
-<h4 id="org2b975b8">Brute-Forcing with Wordlists</h4>
-<div class="outline-text-4" id="text-org2b975b8">
+<div id="outline-container-org14793cf" class="outline-4">
+<h4 id="org14793cf">Brute-Forcing with Wordlists</h4>
+<div class="outline-text-4" id="text-org14793cf">
 <p>
 Attempting a large list of common subdomain names (e.g., <code>dev</code>, <code>test</code>, <code>admin</code>, <code>api</code>) against the target domain to see which ones resolve. This is often combined with recursive brute-forcing for deeper enumeration.
 </p>
@@ -938,9 +956,9 @@ Attempting a large list of common subdomain names (e.g., <code>dev</code>, <code
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf387f69" class="outline-4">
-<h4 id="orgf387f69">SSL Certificate Analysis</h4>
-<div class="outline-text-4" id="text-orgf387f69">
+<div id="outline-container-org3702178" class="outline-4">
+<h4 id="org3702178">SSL Certificate Analysis</h4>
+<div class="outline-text-4" id="text-org3702178">
 <p>
 Publicly available SSL/TLS certificates often list multiple subdomains in their Subject Alternative Names (SANs) field.
 </p>
@@ -951,9 +969,9 @@ Publicly available SSL/TLS certificates often list multiple subdomains in their 
 </ul>
 </div>
 </div>
-<div id="outline-container-orgeffdf72" class="outline-4">
-<h4 id="orgeffdf72">OSINT (Open Source Intelligence)</h4>
-<div class="outline-text-4" id="text-orgeffdf72">
+<div id="outline-container-org7f01c15" class="outline-4">
+<h4 id="org7f01c15">OSINT (Open Source Intelligence)</h4>
+<div class="outline-text-4" id="text-org7f01c15">
 <p>
 Gathering information from various public sources, including historical DNS records (Wayback Machine), VirusTotal, GitHub repositories, and other archived data.
 </p>
@@ -964,9 +982,9 @@ Gathering information from various public sources, including historical DNS reco
 </ul>
 </div>
 </div>
-<div id="outline-container-org6546a86" class="outline-4">
-<h4 id="org6546a86">Virtual Host Enumeration</h4>
-<div class="outline-text-4" id="text-org6546a86">
+<div id="outline-container-org1226365" class="outline-4">
+<h4 id="org1226365">Virtual Host Enumeration</h4>
+<div class="outline-text-4" id="text-org1226365">
 <p>
 When multiple subdomains share the same IP address but are differentiated by the <code>Host</code> header, this technique attempts to discover them by cycling through a wordlist of potential subdomain names in the <code>Host</code> header.
 </p>
@@ -981,6 +999,20 @@ When multiple subdomains share the same IP address but are differentiated by the
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -988,6 +1020,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

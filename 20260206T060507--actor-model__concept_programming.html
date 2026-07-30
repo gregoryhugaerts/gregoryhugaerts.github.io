@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Actor Model</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,27 +886,27 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org58669a3">Actor Model</a>
+<li><a href="#org8c97885">Actor Model</a>
 <ul>
-<li><a href="#orge337654">Core Principles</a></li>
-<li><a href="#org83ab534">Actor Actions</a></li>
-<li><a href="#org1fdb409">Benefits</a></li>
-<li><a href="#org993bf57">Implementations</a></li>
+<li><a href="#org2a45f87">Core Principles</a></li>
+<li><a href="#org22c7319">Actor Actions</a></li>
+<li><a href="#org7fa14ee">Benefits</a></li>
+<li><a href="#org8440ab2">Implementations</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org58669a3" class="outline-2">
-<h2 id="org58669a3">Actor Model</h2>
-<div class="outline-text-2" id="text-org58669a3">
+<div id="outline-container-org8c97885" class="outline-2">
+<h2 id="org8c97885">Actor Model</h2>
+<div class="outline-text-2" id="text-org8c97885">
 <p>
 The Actor Model is a conceptual model for concurrent computation that treats "actors" as the universal primitives of a system. It provides a high-level abstraction for building concurrent and distributed systems, avoiding common pitfalls associated with shared state and manual lock management.
 </p>
 </div>
-<div id="outline-container-orge337654" class="outline-3">
-<h3 id="orge337654">Core Principles</h3>
-<div class="outline-text-3" id="text-orge337654">
+<div id="outline-container-org2a45f87" class="outline-3">
+<h3 id="org2a45f87">Core Principles</h3>
+<div class="outline-text-3" id="text-org2a45f87">
 <ul class="org-ul">
 <li>Actors: An actor is a lightweight, independent process that encapsulates its own private state and behavior. It is the fundamental unit of computation.</li>
 <li>Message Passing: Actors communicate exclusively by sending and receiving asynchronous messages. They do not share memory. Each actor has a "mailbox" to queue incoming messages.</li>
@@ -896,9 +914,9 @@ The Actor Model is a conceptual model for concurrent computation that treats "ac
 </ul>
 </div>
 </div>
-<div id="outline-container-org83ab534" class="outline-3">
-<h3 id="org83ab534">Actor Actions</h3>
-<div class="outline-text-3" id="text-org83ab534">
+<div id="outline-container-org22c7319" class="outline-3">
+<h3 id="org22c7319">Actor Actions</h3>
+<div class="outline-text-3" id="text-org22c7319">
 <p>
 In response to receiving a message, an actor can perform three fundamental actions:
 </p>
@@ -910,9 +928,9 @@ In response to receiving a message, an actor can perform three fundamental actio
 </ul>
 </div>
 </div>
-<div id="outline-container-org1fdb409" class="outline-3">
-<h3 id="org1fdb409">Benefits</h3>
-<div class="outline-text-3" id="text-org1fdb409">
+<div id="outline-container-org7fa14ee" class="outline-3">
+<h3 id="org7fa14ee">Benefits</h3>
+<div class="outline-text-3" id="text-org7fa14ee">
 <ul class="org-ul">
 <li>Simplified Concurrency: By avoiding shared state and locks, the model simplifies the development of concurrent applications, preventing issues like deadlocks and race conditions.</li>
 <li>Scalability &amp; Distribution: The message-passing nature of actors allows systems to scale easily, as actors can be distributed across multiple cores or even different machines on a network without changing the fundamental design.</li>
@@ -920,9 +938,9 @@ In response to receiving a message, an actor can perform three fundamental actio
 </ul>
 </div>
 </div>
-<div id="outline-container-org993bf57" class="outline-3">
-<h3 id="org993bf57">Implementations</h3>
-<div class="outline-text-3" id="text-org993bf57">
+<div id="outline-container-org8440ab2" class="outline-3">
+<h3 id="org8440ab2">Implementations</h3>
+<div class="outline-text-3" id="text-org8440ab2">
 <p>
 The Actor Model is the foundational concurrency model for languages like <a href="Erlang.html#erlang">Erlang</a> and <a href="Elixir.html#elixir">Elixir</a>, which leverage it to build highly resilient and scalable systems.
 </p>
@@ -931,6 +949,20 @@ The Actor Model is the foundational concurrency model for languages like <a href
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -938,6 +970,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

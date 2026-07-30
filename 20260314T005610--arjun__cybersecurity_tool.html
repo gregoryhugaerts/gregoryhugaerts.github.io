@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Arjun</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,23 +886,23 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org832c778">Installation</a></li>
-<li><a href="#org0776f46">Core Flags</a></li>
-<li><a href="#org6609923">Common Workflows</a>
+<li><a href="#org1e84448">Installation</a></li>
+<li><a href="#orgcd7dcf0">Core Flags</a></li>
+<li><a href="#orgea25c92">Common Workflows</a>
 <ul>
-<li><a href="#org16d7da2">Basic GET parameter discovery</a></li>
-<li><a href="#org56bf157">POST form parameter discovery</a></li>
-<li><a href="#org833bfe6">JSON API parameter discovery</a></li>
-<li><a href="#org98c75da">With authentication header</a></li>
-<li><a href="#orge8ff9e7">Include required parameters in every request</a></li>
-<li><a href="#org014a5d7">Passive extraction from JavaScript</a></li>
-<li><a href="#org3fb02c2">Import targets from file</a></li>
-<li><a href="#org38754c7">Rate-limited target</a></li>
-<li><a href="#orgfaf078e">Export to Burp Suite for manual follow-up</a></li>
+<li><a href="#org47a4723">Basic GET parameter discovery</a></li>
+<li><a href="#org2583896">POST form parameter discovery</a></li>
+<li><a href="#orge5d5466">JSON API parameter discovery</a></li>
+<li><a href="#orgf3bef1f">With authentication header</a></li>
+<li><a href="#orge192ae2">Include required parameters in every request</a></li>
+<li><a href="#org39bbdd4">Passive extraction from JavaScript</a></li>
+<li><a href="#orgee58dbf">Import targets from file</a></li>
+<li><a href="#org7d8a351">Rate-limited target</a></li>
+<li><a href="#org9cb3436">Export to Burp Suite for manual follow-up</a></li>
 </ul>
 </li>
-<li><a href="#org641f78f">What to Do With Discovered Parameters</a></li>
-<li><a href="#org4d3ea58">Tips</a></li>
+<li><a href="#org2ebddb4">What to Do With Discovered Parameters</a></li>
+<li><a href="#org6cc3505">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -904,15 +922,15 @@ Related: <a href="20260326T201939--ffuf__cybersecurity_tool.html">ffuf</a>
          <a href="20260611T065009--api-testing-methodology__cybersecurity_pentesting_technique.html">API Testing Methodology</a>
          <a href="20260614T000755--mass-assignment__cybersecurity_pentesting_technique.html">Mass Assignment</a>
 </p>
-<div id="outline-container-org832c778" class="outline-2">
-<h2 id="org832c778">Installation</h2>
-<div class="outline-text-2" id="text-org832c778">
+<div id="outline-container-org1e84448" class="outline-2">
+<h2 id="org1e84448">Installation</h2>
+<div class="outline-text-2" id="text-org1e84448">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_25a9e3e0ac5a4780ad503b99e1cf7233>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ed038565828e43339e6bc29f4c440f96>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_25a9e3e0ac5a4780ad503b99e1cf7233=document.querySelector('button[name=btn_25a9e3e0ac5a4780ad503b99e1cf7233]');
-copyBtnbtn_25a9e3e0ac5a4780ad503b99e1cf7233.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`pipx install arjun\n# or\npip install arjun --break-system-packages\n`);copyBtnbtn_25a9e3e0ac5a4780ad503b99e1cf7233.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_25a9e3e0ac5a4780ad503b99e1cf7233.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ed038565828e43339e6bc29f4c440f96=document.querySelector('button[name=btn_ed038565828e43339e6bc29f4c440f96]');
+copyBtnbtn_ed038565828e43339e6bc29f4c440f96.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`pipx install arjun\n# or\npip install arjun --break-system-packages\n`);copyBtnbtn_ed038565828e43339e6bc29f4c440f96.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ed038565828e43339e6bc29f4c440f96.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -923,9 +941,9 @@ let res = copyTextToClipboard(`pipx install arjun\n# or\npip install arjun --bre
 </div></div>
 </div>
 </div>
-<div id="outline-container-org0776f46" class="outline-2">
-<h2 id="org0776f46">Core Flags</h2>
-<div class="outline-text-2" id="text-org0776f46">
+<div id="outline-container-orgcd7dcf0" class="outline-2">
+<h2 id="orgcd7dcf0">Core Flags</h2>
+<div class="outline-text-2" id="text-orgcd7dcf0">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1009,19 +1027,19 @@ let res = copyTextToClipboard(`pipx install arjun\n# or\npip install arjun --bre
 </table>
 </div>
 </div>
-<div id="outline-container-org6609923" class="outline-2">
-<h2 id="org6609923">Common Workflows</h2>
-<div class="outline-text-2" id="text-org6609923">
+<div id="outline-container-orgea25c92" class="outline-2">
+<h2 id="orgea25c92">Common Workflows</h2>
+<div class="outline-text-2" id="text-orgea25c92">
 </div>
-<div id="outline-container-org16d7da2" class="outline-3">
-<h3 id="org16d7da2">Basic GET parameter discovery</h3>
-<div class="outline-text-3" id="text-org16d7da2">
+<div id="outline-container-org47a4723" class="outline-3">
+<h3 id="org47a4723">Basic GET parameter discovery</h3>
+<div class="outline-text-3" id="text-org47a4723">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4a306c4560f246618ffcd05b4b976027>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9cab806f0cbb497cbbfa463d98b1da87>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4a306c4560f246618ffcd05b4b976027=document.querySelector('button[name=btn_4a306c4560f246618ffcd05b4b976027]');
-copyBtnbtn_4a306c4560f246618ffcd05b4b976027.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`arjun -u https://target.com/search\n`);copyBtnbtn_4a306c4560f246618ffcd05b4b976027.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4a306c4560f246618ffcd05b4b976027.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9cab806f0cbb497cbbfa463d98b1da87=document.querySelector('button[name=btn_9cab806f0cbb497cbbfa463d98b1da87]');
+copyBtnbtn_9cab806f0cbb497cbbfa463d98b1da87.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`arjun -u https://target.com/search\n`);copyBtnbtn_9cab806f0cbb497cbbfa463d98b1da87.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9cab806f0cbb497cbbfa463d98b1da87.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1030,15 +1048,15 @@ let res = copyTextToClipboard(`arjun -u https://target.com/search\n`);copyBtnbtn
 </div></div>
 </div>
 </div>
-<div id="outline-container-org56bf157" class="outline-3">
-<h3 id="org56bf157">POST form parameter discovery</h3>
-<div class="outline-text-3" id="text-org56bf157">
+<div id="outline-container-org2583896" class="outline-3">
+<h3 id="org2583896">POST form parameter discovery</h3>
+<div class="outline-text-3" id="text-org2583896">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7510ce1d4a8b482d8cb2b9e51da013dc>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7bee3aa961b34cceb4db9ac6c706b3eb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7510ce1d4a8b482d8cb2b9e51da013dc=document.querySelector('button[name=btn_7510ce1d4a8b482d8cb2b9e51da013dc]');
-copyBtnbtn_7510ce1d4a8b482d8cb2b9e51da013dc.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`arjun -u https://target.com/login -m POST\n`);copyBtnbtn_7510ce1d4a8b482d8cb2b9e51da013dc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7510ce1d4a8b482d8cb2b9e51da013dc.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7bee3aa961b34cceb4db9ac6c706b3eb=document.querySelector('button[name=btn_7bee3aa961b34cceb4db9ac6c706b3eb]');
+copyBtnbtn_7bee3aa961b34cceb4db9ac6c706b3eb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`arjun -u https://target.com/login -m POST\n`);copyBtnbtn_7bee3aa961b34cceb4db9ac6c706b3eb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7bee3aa961b34cceb4db9ac6c706b3eb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1047,15 +1065,15 @@ let res = copyTextToClipboard(`arjun -u https://target.com/login -m POST\n`);cop
 </div></div>
 </div>
 </div>
-<div id="outline-container-org833bfe6" class="outline-3">
-<h3 id="org833bfe6">JSON API parameter discovery</h3>
-<div class="outline-text-3" id="text-org833bfe6">
+<div id="outline-container-orge5d5466" class="outline-3">
+<h3 id="orge5d5466">JSON API parameter discovery</h3>
+<div class="outline-text-3" id="text-orge5d5466">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_35df982fe64c4a3493f10d6c56602b07>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_85ba0da7f9ad46c4ae2ce55eebaf0e0f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_35df982fe64c4a3493f10d6c56602b07=document.querySelector('button[name=btn_35df982fe64c4a3493f10d6c56602b07]');
-copyBtnbtn_35df982fe64c4a3493f10d6c56602b07.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`arjun -u https://target.com/api/user -m JSON\n`);copyBtnbtn_35df982fe64c4a3493f10d6c56602b07.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_35df982fe64c4a3493f10d6c56602b07.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_85ba0da7f9ad46c4ae2ce55eebaf0e0f=document.querySelector('button[name=btn_85ba0da7f9ad46c4ae2ce55eebaf0e0f]');
+copyBtnbtn_85ba0da7f9ad46c4ae2ce55eebaf0e0f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`arjun -u https://target.com/api/user -m JSON\n`);copyBtnbtn_85ba0da7f9ad46c4ae2ce55eebaf0e0f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_85ba0da7f9ad46c4ae2ce55eebaf0e0f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1064,15 +1082,15 @@ let res = copyTextToClipboard(`arjun -u https://target.com/api/user -m JSON\n`);
 </div></div>
 </div>
 </div>
-<div id="outline-container-org98c75da" class="outline-3">
-<h3 id="org98c75da">With authentication header</h3>
-<div class="outline-text-3" id="text-org98c75da">
+<div id="outline-container-orgf3bef1f" class="outline-3">
+<h3 id="orgf3bef1f">With authentication header</h3>
+<div class="outline-text-3" id="text-orgf3bef1f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6307009c19674a7c9245f656ad04e8f2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_79d8fad797914a5fac94cdf2a1b31f41>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6307009c19674a7c9245f656ad04e8f2=document.querySelector('button[name=btn_6307009c19674a7c9245f656ad04e8f2]');
-copyBtnbtn_6307009c19674a7c9245f656ad04e8f2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`arjun -u https://target.com/api/profile \\\n  -m JSON \\\n  --headers \"Authorization: Bearer $TOKEN\"\n`);copyBtnbtn_6307009c19674a7c9245f656ad04e8f2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6307009c19674a7c9245f656ad04e8f2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_79d8fad797914a5fac94cdf2a1b31f41=document.querySelector('button[name=btn_79d8fad797914a5fac94cdf2a1b31f41]');
+copyBtnbtn_79d8fad797914a5fac94cdf2a1b31f41.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`arjun -u https://target.com/api/profile \\\n  -m JSON \\\n  --headers \"Authorization: Bearer $TOKEN\"\n`);copyBtnbtn_79d8fad797914a5fac94cdf2a1b31f41.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_79d8fad797914a5fac94cdf2a1b31f41.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1083,15 +1101,15 @@ let res = copyTextToClipboard(`arjun -u https://target.com/api/profile \\\n  -m 
 </div></div>
 </div>
 </div>
-<div id="outline-container-orge8ff9e7" class="outline-3">
-<h3 id="orge8ff9e7">Include required parameters in every request</h3>
-<div class="outline-text-3" id="text-orge8ff9e7">
+<div id="outline-container-orge192ae2" class="outline-3">
+<h3 id="orge192ae2">Include required parameters in every request</h3>
+<div class="outline-text-3" id="text-orge192ae2">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ac08d93502874f2a8f5516030487f35e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b2ac4a5e6eea482a820f0b386c865b55>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ac08d93502874f2a8f5516030487f35e=document.querySelector('button[name=btn_ac08d93502874f2a8f5516030487f35e]');
-copyBtnbtn_ac08d93502874f2a8f5516030487f35e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# If the endpoint requires id= to respond meaningfully\narjun -u https://target.com/api/user \\\n  --include \"id=1\"\n`);copyBtnbtn_ac08d93502874f2a8f5516030487f35e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ac08d93502874f2a8f5516030487f35e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b2ac4a5e6eea482a820f0b386c865b55=document.querySelector('button[name=btn_b2ac4a5e6eea482a820f0b386c865b55]');
+copyBtnbtn_b2ac4a5e6eea482a820f0b386c865b55.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# If the endpoint requires id= to respond meaningfully\narjun -u https://target.com/api/user \\\n  --include \"id=1\"\n`);copyBtnbtn_b2ac4a5e6eea482a820f0b386c865b55.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b2ac4a5e6eea482a820f0b386c865b55.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1102,15 +1120,15 @@ let res = copyTextToClipboard(`# If the endpoint requires id= to respond meaning
 </div></div>
 </div>
 </div>
-<div id="outline-container-org014a5d7" class="outline-3">
-<h3 id="org014a5d7">Passive extraction from JavaScript</h3>
-<div class="outline-text-3" id="text-org014a5d7">
+<div id="outline-container-org39bbdd4" class="outline-3">
+<h3 id="org39bbdd4">Passive extraction from JavaScript</h3>
+<div class="outline-text-3" id="text-org39bbdd4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_38319f1aee83482ba8b9bb321fa228ed>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3c5778f9d01d43c78c341e8ac24cef48>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_38319f1aee83482ba8b9bb321fa228ed=document.querySelector('button[name=btn_38319f1aee83482ba8b9bb321fa228ed]');
-copyBtnbtn_38319f1aee83482ba8b9bb321fa228ed.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Extract parameter names from JS source — no active requests to the endpoint\narjun -u https://target.com/app.js --passive\n`);copyBtnbtn_38319f1aee83482ba8b9bb321fa228ed.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_38319f1aee83482ba8b9bb321fa228ed.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3c5778f9d01d43c78c341e8ac24cef48=document.querySelector('button[name=btn_3c5778f9d01d43c78c341e8ac24cef48]');
+copyBtnbtn_3c5778f9d01d43c78c341e8ac24cef48.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Extract parameter names from JS source — no active requests to the endpoint\narjun -u https://target.com/app.js --passive\n`);copyBtnbtn_3c5778f9d01d43c78c341e8ac24cef48.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3c5778f9d01d43c78c341e8ac24cef48.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1120,15 +1138,15 @@ let res = copyTextToClipboard(`# Extract parameter names from JS source — no a
 </div></div>
 </div>
 </div>
-<div id="outline-container-org3fb02c2" class="outline-3">
-<h3 id="org3fb02c2">Import targets from file</h3>
-<div class="outline-text-3" id="text-org3fb02c2">
+<div id="outline-container-orgee58dbf" class="outline-3">
+<h3 id="orgee58dbf">Import targets from file</h3>
+<div class="outline-text-3" id="text-orgee58dbf">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d37f588350b840ba9f1f4e953e50d24f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_413d9321750644bea85326978328fad6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d37f588350b840ba9f1f4e953e50d24f=document.querySelector('button[name=btn_d37f588350b840ba9f1f4e953e50d24f]');
-copyBtnbtn_d37f588350b840ba9f1f4e953e50d24f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# One URL per line\narjun -i urls.txt -m GET -oJ results.json\n`);copyBtnbtn_d37f588350b840ba9f1f4e953e50d24f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d37f588350b840ba9f1f4e953e50d24f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_413d9321750644bea85326978328fad6=document.querySelector('button[name=btn_413d9321750644bea85326978328fad6]');
+copyBtnbtn_413d9321750644bea85326978328fad6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# One URL per line\narjun -i urls.txt -m GET -oJ results.json\n`);copyBtnbtn_413d9321750644bea85326978328fad6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_413d9321750644bea85326978328fad6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1138,15 +1156,15 @@ let res = copyTextToClipboard(`# One URL per line\narjun -i urls.txt -m GET -oJ 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org38754c7" class="outline-3">
-<h3 id="org38754c7">Rate-limited target</h3>
-<div class="outline-text-3" id="text-org38754c7">
+<div id="outline-container-org7d8a351" class="outline-3">
+<h3 id="org7d8a351">Rate-limited target</h3>
+<div class="outline-text-3" id="text-org7d8a351">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c86a54bd2eef45cdb01da7a5e715fa5b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8fc7fe48d5d94fdba79ddf4759c2521b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c86a54bd2eef45cdb01da7a5e715fa5b=document.querySelector('button[name=btn_c86a54bd2eef45cdb01da7a5e715fa5b]');
-copyBtnbtn_c86a54bd2eef45cdb01da7a5e715fa5b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`arjun -u https://target.com/api/search -d 1 --stable -t 2\n`);copyBtnbtn_c86a54bd2eef45cdb01da7a5e715fa5b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c86a54bd2eef45cdb01da7a5e715fa5b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8fc7fe48d5d94fdba79ddf4759c2521b=document.querySelector('button[name=btn_8fc7fe48d5d94fdba79ddf4759c2521b]');
+copyBtnbtn_8fc7fe48d5d94fdba79ddf4759c2521b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`arjun -u https://target.com/api/search -d 1 --stable -t 2\n`);copyBtnbtn_8fc7fe48d5d94fdba79ddf4759c2521b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8fc7fe48d5d94fdba79ddf4759c2521b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1155,15 +1173,15 @@ let res = copyTextToClipboard(`arjun -u https://target.com/api/search -d 1 --sta
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgfaf078e" class="outline-3">
-<h3 id="orgfaf078e">Export to Burp Suite for manual follow-up</h3>
-<div class="outline-text-3" id="text-orgfaf078e">
+<div id="outline-container-org9cb3436" class="outline-3">
+<h3 id="org9cb3436">Export to Burp Suite for manual follow-up</h3>
+<div class="outline-text-3" id="text-org9cb3436">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3892ee9c6d1946458cb132bf314afd70>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_423715637891441a95d6ccfeef91fd4d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3892ee9c6d1946458cb132bf314afd70=document.querySelector('button[name=btn_3892ee9c6d1946458cb132bf314afd70]');
-copyBtnbtn_3892ee9c6d1946458cb132bf314afd70.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`arjun -u https://target.com/api/user -m JSON -oB\n# Opens a Burp listener — import results from Burp Proxy → Import\n`);copyBtnbtn_3892ee9c6d1946458cb132bf314afd70.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3892ee9c6d1946458cb132bf314afd70.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_423715637891441a95d6ccfeef91fd4d=document.querySelector('button[name=btn_423715637891441a95d6ccfeef91fd4d]');
+copyBtnbtn_423715637891441a95d6ccfeef91fd4d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`arjun -u https://target.com/api/user -m JSON -oB\n# Opens a Burp listener — import results from Burp Proxy → Import\n`);copyBtnbtn_423715637891441a95d6ccfeef91fd4d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_423715637891441a95d6ccfeef91fd4d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1174,19 +1192,19 @@ let res = copyTextToClipboard(`arjun -u https://target.com/api/user -m JSON -oB\
 </div>
 </div>
 </div>
-<div id="outline-container-org641f78f" class="outline-2">
-<h2 id="org641f78f">What to Do With Discovered Parameters</h2>
-<div class="outline-text-2" id="text-org641f78f">
+<div id="outline-container-org2ebddb4" class="outline-2">
+<h2 id="org2ebddb4">What to Do With Discovered Parameters</h2>
+<div class="outline-text-2" id="text-org2ebddb4">
 <p>
 Once Arjun identifies a parameter that changes the response:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c8646d2ecbe14f739138c7af8d207974>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9ad47965fb42448cbbf490667d4c6757>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c8646d2ecbe14f739138c7af8d207974=document.querySelector('button[name=btn_c8646d2ecbe14f739138c7af8d207974]');
-copyBtnbtn_c8646d2ecbe14f739138c7af8d207974.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Test for Mass Assignment:\n   — Add discovered parameter to a POST/PUT request body\n   — Try: role=admin, isAdmin=true, privilege=1\n   See: Mass Assignment note\n\n2. Test for SSRF:\n   — If parameter looks like it fetches a resource (url=, path=, src=)\n   — Inject: url=http://169.254.169.254/latest/meta-data/\n\n3. Test for IDOR:\n   — If parameter is an ID (user_id=, id=, account=)\n   — Change to another user's ID and check response\n\n4. Test for debug/internal parameters:\n   — Common names: debug=true, test=1, admin=1, verbose=true\n   — Unexpected functionality or info disclosure may appear\n`);copyBtnbtn_c8646d2ecbe14f739138c7af8d207974.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c8646d2ecbe14f739138c7af8d207974.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9ad47965fb42448cbbf490667d4c6757=document.querySelector('button[name=btn_9ad47965fb42448cbbf490667d4c6757]');
+copyBtnbtn_9ad47965fb42448cbbf490667d4c6757.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Test for Mass Assignment:\n   — Add discovered parameter to a POST/PUT request body\n   — Try: role=admin, isAdmin=true, privilege=1\n   See: Mass Assignment note\n\n2. Test for SSRF:\n   — If parameter looks like it fetches a resource (url=, path=, src=)\n   — Inject: url=http://169.254.169.254/latest/meta-data/\n\n3. Test for IDOR:\n   — If parameter is an ID (user_id=, id=, account=)\n   — Change to another user's ID and check response\n\n4. Test for debug/internal parameters:\n   — Common names: debug=true, test=1, admin=1, verbose=true\n   — Unexpected functionality or info disclosure may appear\n`);copyBtnbtn_9ad47965fb42448cbbf490667d4c6757.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9ad47965fb42448cbbf490667d4c6757.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1210,9 +1228,9 @@ let res = copyTextToClipboard(`1. Test for Mass Assignment:\n   — Add discover
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4d3ea58" class="outline-2">
-<h2 id="org4d3ea58">Tips</h2>
-<div class="outline-text-2" id="text-org4d3ea58">
+<div id="outline-container-org6cc3505" class="outline-2">
+<h2 id="org6cc3505">Tips</h2>
+<div class="outline-text-2" id="text-org6cc3505">
 <ul class="org-ul">
 <li>Run Arjun before manually testing an endpoint — undocumented
 parameters are a frequent source of high-impact findings</li>
@@ -1231,6 +1249,20 @@ name, ffuf fuzzes the values</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1238,6 +1270,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

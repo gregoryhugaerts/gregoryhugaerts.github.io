@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>React and Next.js Stack</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,24 +886,24 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0cb8f0a">Components</a></li>
-<li><a href="#orgbea0f76">Architecture</a></li>
-<li><a href="#orgb6250e4">Rendering Modes</a></li>
-<li><a href="#orgb0399bf">Attack Surface</a>
+<li><a href="#orgb5ddee1">Components</a></li>
+<li><a href="#orgb149134">Architecture</a></li>
+<li><a href="#orga285e08">Rendering Modes</a></li>
+<li><a href="#orgf10f12b">Attack Surface</a>
 <ul>
-<li><a href="#org24ea6b9">Server-Side Rendering — SSRF and Injection</a></li>
-<li><a href="#org4ebe863">API Routes — Broken Access Control</a></li>
-<li><a href="#orgffbe56a">Express.js Integration — Middleware Bypass</a></li>
-<li><a href="#org3f81f12">React — XSS via dangerouslySetInnerHTML</a></li>
-<li><a href="#orgbba2d21">Prototype Pollution</a></li>
-<li><a href="#org1badd24">JWT and Session Handling</a></li>
-<li><a href="#orged93c30">Environment Variable Leakage</a></li>
-<li><a href="#org565c475">Source Maps</a></li>
-<li><a href="#org22c6f10">Dependency Vulnerabilities</a></li>
+<li><a href="#org3db398b">Server-Side Rendering — SSRF and Injection</a></li>
+<li><a href="#orga6c5a7e">API Routes — Broken Access Control</a></li>
+<li><a href="#org8da6c9f">Express.js Integration — Middleware Bypass</a></li>
+<li><a href="#orga8176e7">React — XSS via dangerouslySetInnerHTML</a></li>
+<li><a href="#org1d09859">Prototype Pollution</a></li>
+<li><a href="#orgf8192c3">JWT and Session Handling</a></li>
+<li><a href="#org7e987ab">Environment Variable Leakage</a></li>
+<li><a href="#org7dc8d93">Source Maps</a></li>
+<li><a href="#org5dac937">Dependency Vulnerabilities</a></li>
 </ul>
 </li>
-<li><a href="#org274ad20">Enumeration Tips</a></li>
-<li><a href="#org9c1e7bc">Tips</a></li>
+<li><a href="#org52265aa">Enumeration Tips</a></li>
+<li><a href="#org2471196">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -904,9 +922,9 @@ Related: <a href="20260613T194006--mern-stack__concept_cybersecurity_programming
          <a href="20260207T065314--cross-site-scripting__cybersecurity_technique.html">XSS</a>
          <a href="20260611T065134--jwt-attacks__cybersecurity_pentesting_technique.html">JWT Attacks</a>
 </p>
-<div id="outline-container-org0cb8f0a" class="outline-2">
-<h2 id="org0cb8f0a">Components</h2>
-<div class="outline-text-2" id="text-org0cb8f0a">
+<div id="outline-container-orgb5ddee1" class="outline-2">
+<h2 id="orgb5ddee1">Components</h2>
+<div class="outline-text-2" id="text-orgb5ddee1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -958,9 +976,9 @@ Related: <a href="20260613T194006--mern-stack__concept_cybersecurity_programming
 </table>
 </div>
 </div>
-<div id="outline-container-orgbea0f76" class="outline-2">
-<h2 id="orgbea0f76">Architecture</h2>
-<div class="outline-text-2" id="text-orgbea0f76">
+<div id="outline-container-orgb149134" class="outline-2">
+<h2 id="orgb149134">Architecture</h2>
+<div class="outline-text-2" id="text-orgb149134">
 <p>
 Next.js extends React with server-side capabilities. Unlike a
 pure React SPA that renders entirely in the browser, Next.js
@@ -968,7 +986,7 @@ can render pages on the server (SSR), at build time (SSG), or
 on the client depending on configuration.
 </p>
 
-<pre class="example" id="org8d30e0f">
+<pre class="example" id="org8b4129f">
 Browser → Next.js (SSR/SSG/CSR) → API Routes or Express → Database
 </pre>
 
@@ -980,9 +998,9 @@ Express API.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb6250e4" class="outline-2">
-<h2 id="orgb6250e4">Rendering Modes</h2>
-<div class="outline-text-2" id="text-orgb6250e4">
+<div id="outline-container-orga285e08" class="outline-2">
+<h2 id="orga285e08">Rendering Modes</h2>
+<div class="outline-text-2" id="text-orga285e08">
 <p>
 Understanding the rendering mode matters for testing — it affects
 where data is processed and what the server exposes.
@@ -1033,13 +1051,13 @@ where data is processed and what the server exposes.
 </table>
 </div>
 </div>
-<div id="outline-container-orgb0399bf" class="outline-2">
-<h2 id="orgb0399bf">Attack Surface</h2>
-<div class="outline-text-2" id="text-orgb0399bf">
+<div id="outline-container-orgf10f12b" class="outline-2">
+<h2 id="orgf10f12b">Attack Surface</h2>
+<div class="outline-text-2" id="text-orgf10f12b">
 </div>
-<div id="outline-container-org24ea6b9" class="outline-3">
-<h3 id="org24ea6b9">Server-Side Rendering — SSRF and Injection</h3>
-<div class="outline-text-3" id="text-org24ea6b9">
+<div id="outline-container-org3db398b" class="outline-3">
+<h3 id="org3db398b">Server-Side Rendering — SSRF and Injection</h3>
+<div class="outline-text-3" id="text-org3db398b">
 <p>
 SSR pages fetch data server-side before rendering. If user input
 influences what URLs or queries are made server-side, SSRF and
@@ -1047,11 +1065,11 @@ injection are possible.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1dc093990005430b842e137bbb32afd3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8a44b32d7c944bfd9799d1a1bf3342fc>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1dc093990005430b842e137bbb32afd3=document.querySelector('button[name=btn_1dc093990005430b842e137bbb32afd3]');
-copyBtnbtn_1dc093990005430b842e137bbb32afd3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Test for SSRF via a parameter that influences server-side fetching\ncurl \"http://$IP/api/preview?url=http://169.254.169.254/latest/meta-data/\"\n`);copyBtnbtn_1dc093990005430b842e137bbb32afd3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1dc093990005430b842e137bbb32afd3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8a44b32d7c944bfd9799d1a1bf3342fc=document.querySelector('button[name=btn_8a44b32d7c944bfd9799d1a1bf3342fc]');
+copyBtnbtn_8a44b32d7c944bfd9799d1a1bf3342fc.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Test for SSRF via a parameter that influences server-side fetching\ncurl \"http://$IP/api/preview?url=http://169.254.169.254/latest/meta-data/\"\n`);copyBtnbtn_8a44b32d7c944bfd9799d1a1bf3342fc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8a44b32d7c944bfd9799d1a1bf3342fc.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1066,20 +1084,20 @@ Next.js applications. See <a href="20260207T065427==ssrf--server-side-request-fo
 </p>
 </div>
 </div>
-<div id="outline-container-org4ebe863" class="outline-3">
-<h3 id="org4ebe863">API Routes — Broken Access Control</h3>
-<div class="outline-text-3" id="text-org4ebe863">
+<div id="outline-container-orga6c5a7e" class="outline-3">
+<h3 id="orga6c5a7e">API Routes — Broken Access Control</h3>
+<div class="outline-text-3" id="text-orga6c5a7e">
 <p>
 Next.js API routes under <code>/api/</code> are easy to miss during manual
 browsing since they aren't linked in the UI. Enumerate them:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3d4676d98a174d46b78db107e9b8e266>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_af43ce8a18c846979faf6aa9fa9cfa65>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3d4676d98a174d46b78db107e9b8e266=document.querySelector('button[name=btn_3d4676d98a174d46b78db107e9b8e266]');
-copyBtnbtn_3d4676d98a174d46b78db107e9b8e266.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`feroxbuster -u http://$IP/api \\\n  -w /usr/share/wordlists/seclists/Discovery/Web-Content/api/objects.txt \\\n  -x json\n`);copyBtnbtn_3d4676d98a174d46b78db107e9b8e266.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3d4676d98a174d46b78db107e9b8e266.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_af43ce8a18c846979faf6aa9fa9cfa65=document.querySelector('button[name=btn_af43ce8a18c846979faf6aa9fa9cfa65]');
+copyBtnbtn_af43ce8a18c846979faf6aa9fa9cfa65.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`feroxbuster -u http://$IP/api \\\n  -w /usr/share/wordlists/seclists/Discovery/Web-Content/api/objects.txt \\\n  -x json\n`);copyBtnbtn_af43ce8a18c846979faf6aa9fa9cfa65.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_af43ce8a18c846979faf6aa9fa9cfa65.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1099,9 +1117,9 @@ Common misconfigurations:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgffbe56a" class="outline-3">
-<h3 id="orgffbe56a">Express.js Integration — Middleware Bypass</h3>
-<div class="outline-text-3" id="text-orgffbe56a">
+<div id="outline-container-org8da6c9f" class="outline-3">
+<h3 id="org8da6c9f">Express.js Integration — Middleware Bypass</h3>
+<div class="outline-text-3" id="text-org8da6c9f">
 <p>
 When Express sits alongside Next.js, authentication middleware
 applied to Express routes may not cover Next.js API routes and
@@ -1109,11 +1127,11 @@ vice versa. Test both sets of endpoints independently:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8b1988bcafba4cc7a9c0743d455e248e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_dcf8957038504022966249cb6de19c23>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8b1988bcafba4cc7a9c0743d455e248e=document.querySelector('button[name=btn_8b1988bcafba4cc7a9c0743d455e248e]');
-copyBtnbtn_8b1988bcafba4cc7a9c0743d455e248e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Next.js API route\ncurl http://$IP/api/users -H \"Authorization: Bearer $TOKEN\"\n\n# Express route\ncurl http://$IP/express/users -H \"Authorization: Bearer $TOKEN\"\n\n# Try without token on both\ncurl http://$IP/api/users\ncurl http://$IP/express/users\n`);copyBtnbtn_8b1988bcafba4cc7a9c0743d455e248e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8b1988bcafba4cc7a9c0743d455e248e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_dcf8957038504022966249cb6de19c23=document.querySelector('button[name=btn_dcf8957038504022966249cb6de19c23]');
+copyBtnbtn_dcf8957038504022966249cb6de19c23.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Next.js API route\ncurl http://$IP/api/users -H \"Authorization: Bearer $TOKEN\"\n\n# Express route\ncurl http://$IP/express/users -H \"Authorization: Bearer $TOKEN\"\n\n# Try without token on both\ncurl http://$IP/api/users\ncurl http://$IP/express/users\n`);copyBtnbtn_dcf8957038504022966249cb6de19c23.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dcf8957038504022966249cb6de19c23.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1130,15 +1148,15 @@ curl http://$<span style="color: var(--clr-variable); background-color: var(--bg
 </div></div>
 </div>
 </div>
-<div id="outline-container-org3f81f12" class="outline-3">
-<h3 id="org3f81f12">React — XSS via dangerouslySetInnerHTML</h3>
-<div class="outline-text-3" id="text-org3f81f12">
+<div id="outline-container-orga8176e7" class="outline-3">
+<h3 id="orga8176e7">React — XSS via dangerouslySetInnerHTML</h3>
+<div class="outline-text-3" id="text-orga8176e7">
 <p>
 React escapes output by default but <code>dangerouslySetInnerHTML</code>
 bypasses this. Search the bundled JavaScript for it:
 </p>
 
-<pre class="example" id="org65c112c">
+<pre class="example" id="org07585f6">
 dangerouslySetInnerHTML={{ __html: userInput }}
 </pre>
 
@@ -1148,9 +1166,9 @@ component if user input reaches it. See <a href="20260207T065314--cross-site-scr
 </p>
 </div>
 </div>
-<div id="outline-container-orgbba2d21" class="outline-3">
-<h3 id="orgbba2d21">Prototype Pollution</h3>
-<div class="outline-text-3" id="text-orgbba2d21">
+<div id="outline-container-org1d09859" class="outline-3">
+<h3 id="org1d09859">Prototype Pollution</h3>
+<div class="outline-text-3" id="text-org1d09859">
 <p>
 Same risk as other Node.js applications — JSON bodies with
 <code>__proto__</code> or <code>constructor.prototype</code> payloads can pollute the
@@ -1158,11 +1176,11 @@ prototype chain.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8d0bcc27d48340f5bb6958a34df48c0e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b892b9c21bd24eeebd66082b6c009837>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8d0bcc27d48340f5bb6958a34df48c0e=document.querySelector('button[name=btn_8d0bcc27d48340f5bb6958a34df48c0e]');
-copyBtnbtn_8d0bcc27d48340f5bb6958a34df48c0e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl -X POST http://$IP/api/data \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"__proto__\":{\"admin\":true}}'\n`);copyBtnbtn_8d0bcc27d48340f5bb6958a34df48c0e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8d0bcc27d48340f5bb6958a34df48c0e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b892b9c21bd24eeebd66082b6c009837=document.querySelector('button[name=btn_b892b9c21bd24eeebd66082b6c009837]');
+copyBtnbtn_b892b9c21bd24eeebd66082b6c009837.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl -X POST http://$IP/api/data \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"__proto__\":{\"admin\":true}}'\n`);copyBtnbtn_b892b9c21bd24eeebd66082b6c009837.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b892b9c21bd24eeebd66082b6c009837.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1173,9 +1191,9 @@ let res = copyTextToClipboard(`curl -X POST http://$IP/api/data \\\n  -H \"Conte
 </div></div>
 </div>
 </div>
-<div id="outline-container-org1badd24" class="outline-3">
-<h3 id="org1badd24">JWT and Session Handling</h3>
-<div class="outline-text-3" id="text-org1badd24">
+<div id="outline-container-orgf8192c3" class="outline-3">
+<h3 id="orgf8192c3">JWT and Session Handling</h3>
+<div class="outline-text-3" id="text-orgf8192c3">
 <p>
 Next.js applications commonly use <code>next-auth</code> for authentication,
 which wraps JWT or database sessions. Common issues:
@@ -1189,11 +1207,11 @@ weak</li>
 </ul>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f56ca2d85f6c4be0a924e9ce587fd018>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_177631a12d3c43d99b8aa5cef32a11c0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f56ca2d85f6c4be0a924e9ce587fd018=document.querySelector('button[name=btn_f56ca2d85f6c4be0a924e9ce587fd018]');
-copyBtnbtn_f56ca2d85f6c4be0a924e9ce587fd018.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Check for next-auth endpoints\ncurl http://$IP/api/auth/session\ncurl http://$IP/api/auth/providers\ncurl http://$IP/api/auth/csrf\n`);copyBtnbtn_f56ca2d85f6c4be0a924e9ce587fd018.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f56ca2d85f6c4be0a924e9ce587fd018.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_177631a12d3c43d99b8aa5cef32a11c0=document.querySelector('button[name=btn_177631a12d3c43d99b8aa5cef32a11c0]');
+copyBtnbtn_177631a12d3c43d99b8aa5cef32a11c0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Check for next-auth endpoints\ncurl http://$IP/api/auth/session\ncurl http://$IP/api/auth/providers\ncurl http://$IP/api/auth/csrf\n`);copyBtnbtn_177631a12d3c43d99b8aa5cef32a11c0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_177631a12d3c43d99b8aa5cef32a11c0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1211,9 +1229,9 @@ information exposure.
 </p>
 </div>
 </div>
-<div id="outline-container-orged93c30" class="outline-3">
-<h3 id="orged93c30">Environment Variable Leakage</h3>
-<div class="outline-text-3" id="text-orged93c30">
+<div id="outline-container-org7e987ab" class="outline-3">
+<h3 id="org7e987ab">Environment Variable Leakage</h3>
+<div class="outline-text-3" id="text-org7e987ab">
 <p>
 Next.js has two types of environment variables — server-side only
 and client-side (prefixed <code>NEXT_PUBLIC_</code>). Misconfiguration can
@@ -1224,11 +1242,11 @@ expose secrets to the browser.
 Check the bundled JavaScript for leaked variables:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f3c105cefda946a49e757b7ee2d02b97>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_539434ab3c604037af98b296b7dd76bd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f3c105cefda946a49e757b7ee2d02b97=document.querySelector('button[name=btn_f3c105cefda946a49e757b7ee2d02b97]');
-copyBtnbtn_f3c105cefda946a49e757b7ee2d02b97.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Download and search the main bundle\ncurl http://$IP/_next/static/chunks/main.js | grep -i \"secret\\|key\\|token\\|password\"\n`);copyBtnbtn_f3c105cefda946a49e757b7ee2d02b97.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f3c105cefda946a49e757b7ee2d02b97.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_539434ab3c604037af98b296b7dd76bd=document.querySelector('button[name=btn_539434ab3c604037af98b296b7dd76bd]');
+copyBtnbtn_539434ab3c604037af98b296b7dd76bd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Download and search the main bundle\ncurl http://$IP/_next/static/chunks/main.js | grep -i \"secret\\|key\\|token\\|password\"\n`);copyBtnbtn_539434ab3c604037af98b296b7dd76bd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_539434ab3c604037af98b296b7dd76bd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1241,11 +1259,11 @@ let res = copyTextToClipboard(`# Download and search the main bundle\ncurl http:
 Also check for exposed <code>.env</code> files:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4e5986935e4743ac97747d97e0e46d4e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7cb353f6565c42178566adb89aad5b5c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4e5986935e4743ac97747d97e0e46d4e=document.querySelector('button[name=btn_4e5986935e4743ac97747d97e0e46d4e]');
-copyBtnbtn_4e5986935e4743ac97747d97e0e46d4e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl http://$IP/.env\ncurl http://$IP/.env.local\ncurl http://$IP/.env.production\n`);copyBtnbtn_4e5986935e4743ac97747d97e0e46d4e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4e5986935e4743ac97747d97e0e46d4e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7cb353f6565c42178566adb89aad5b5c=document.querySelector('button[name=btn_7cb353f6565c42178566adb89aad5b5c]');
+copyBtnbtn_7cb353f6565c42178566adb89aad5b5c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl http://$IP/.env\ncurl http://$IP/.env.local\ncurl http://$IP/.env.production\n`);copyBtnbtn_7cb353f6565c42178566adb89aad5b5c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7cb353f6565c42178566adb89aad5b5c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1256,9 +1274,9 @@ curl http://$<span style="color: var(--clr-variable); background-color: var(--bg
 </div></div>
 </div>
 </div>
-<div id="outline-container-org565c475" class="outline-3">
-<h3 id="org565c475">Source Maps</h3>
-<div class="outline-text-3" id="text-org565c475">
+<div id="outline-container-org7dc8d93" class="outline-3">
+<h3 id="org7dc8d93">Source Maps</h3>
+<div class="outline-text-3" id="text-org7dc8d93">
 <p>
 Next.js may expose source maps in production, revealing the
 original unminified source code including business logic and
@@ -1266,11 +1284,11 @@ comments.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f1bba92b7a4242d7be79db33adaaa066>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_600d76ec01ca40819150305d83558900>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f1bba92b7a4242d7be79db33adaaa066=document.querySelector('button[name=btn_f1bba92b7a4242d7be79db33adaaa066]');
-copyBtnbtn_f1bba92b7a4242d7be79db33adaaa066.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Check for source maps\ncurl http://$IP/_next/static/chunks/main.js.map\n`);copyBtnbtn_f1bba92b7a4242d7be79db33adaaa066.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f1bba92b7a4242d7be79db33adaaa066.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_600d76ec01ca40819150305d83558900=document.querySelector('button[name=btn_600d76ec01ca40819150305d83558900]');
+copyBtnbtn_600d76ec01ca40819150305d83558900.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Check for source maps\ncurl http://$IP/_next/static/chunks/main.js.map\n`);copyBtnbtn_600d76ec01ca40819150305d83558900.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_600d76ec01ca40819150305d83558900.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1285,20 +1303,20 @@ keys, internal endpoints, and logic flaws.
 </p>
 </div>
 </div>
-<div id="outline-container-org22c6f10" class="outline-3">
-<h3 id="org22c6f10">Dependency Vulnerabilities</h3>
-<div class="outline-text-3" id="text-org22c6f10">
+<div id="outline-container-org5dac937" class="outline-3">
+<h3 id="org5dac937">Dependency Vulnerabilities</h3>
+<div class="outline-text-3" id="text-org5dac937">
 <p>
 Next.js applications pull in large npm dependency trees. If
 <code>package.json</code> is exposed:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e5d8f1732bd743569ce09014d5b71358>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0c5d290a7ba842f398e1f69f61005428>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e5d8f1732bd743569ce09014d5b71358=document.querySelector('button[name=btn_e5d8f1732bd743569ce09014d5b71358]');
-copyBtnbtn_e5d8f1732bd743569ce09014d5b71358.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl http://$IP/package.json\n`);copyBtnbtn_e5d8f1732bd743569ce09014d5b71358.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e5d8f1732bd743569ce09014d5b71358.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0c5d290a7ba842f398e1f69f61005428=document.querySelector('button[name=btn_0c5d290a7ba842f398e1f69f61005428]');
+copyBtnbtn_0c5d290a7ba842f398e1f69f61005428.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl http://$IP/package.json\n`);copyBtnbtn_0c5d290a7ba842f398e1f69f61005428.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0c5d290a7ba842f398e1f69f61005428.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1314,9 +1332,9 @@ to <code>next</code>, <code>react</code>, <code>next-auth</code>, and any ORM pa
 </div>
 </div>
 </div>
-<div id="outline-container-org274ad20" class="outline-2">
-<h2 id="org274ad20">Enumeration Tips</h2>
-<div class="outline-text-2" id="text-org274ad20">
+<div id="outline-container-org52265aa" class="outline-2">
+<h2 id="org52265aa">Enumeration Tips</h2>
+<div class="outline-text-2" id="text-org52265aa">
 <ul class="org-ul">
 <li>Next.js exposes its version in the <code>X-Powered-By</code> header and
 in <code>/_next/static/</code> paths — check for known CVEs for that version</li>
@@ -1330,9 +1348,9 @@ reading</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9c1e7bc" class="outline-2">
-<h2 id="org9c1e7bc">Tips</h2>
-<div class="outline-text-2" id="text-org9c1e7bc">
+<div id="outline-container-org2471196" class="outline-2">
+<h2 id="org2471196">Tips</h2>
+<div class="outline-text-2" id="text-org2471196">
 <ul class="org-ul">
 <li>Always check both <code>/api/</code> Next.js routes and any <code>/express/</code> or
 custom backend routes separately</li>
@@ -1350,6 +1368,20 @@ is a frequent developer mistake — search bundles carefully</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1357,6 +1389,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Indicators Of compromise</title>
-<meta name="author" content="termux" />
+<title>Indicators of Compromise</title>
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,101 +860,207 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
-<h1 class="title">Indicators Of compromise</h1>
+<h1 class="title">Indicators of Compromise</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org65e96a5">Indicators Of Compromise</a>
+<li><a href="#org1191e53">Types of IOCs</a>
 <ul>
-<li><a href="#orge2e2490">Types of IOCs</a>
-<ul>
-<li><a href="#org3ccd1dd">Network-based</a></li>
-<li><a href="#org906425d">Host-based</a></li>
-<li><a href="#orgdce9aa7">Other</a></li>
+<li><a href="#orgeefafad">Network-based</a></li>
+<li><a href="#orgc769a52">Host-based</a></li>
+<li><a href="#orgcb0d57a">Other</a></li>
 </ul>
 </li>
-<li><a href="#org87d696e">Uses of IOCs</a></li>
-<li><a href="#org381bf19">Note</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org65e96a5" class="outline-2">
-<h2 id="org65e96a5">Indicators Of Compromise</h2>
-<div class="outline-text-2" id="text-org65e96a5">
-<ul class="org-ul">
-<li>IOCs are specific pieces of evidence that suggest a system or network has been compromised by a malicious actor.</li>
-<li>They can be artifacts left behind by <a href="Malware.html#malware">Malware</a>, suspicious activity patterns, or other anomalies that indicate a breach has occurred.</li>
+<li><a href="#orgcdfd4fd">IOCs vs Pyramid of Pain — Not All IOCs Are Equally Useful</a></li>
+<li><a href="#org6574827">Uses of IOCs</a></li>
+<li><a href="#org204d4f3">Sources for IOC Lookup</a></li>
+<li><a href="#org421eb09">Note</a></li>
+<li><a href="#orgd129993">Tips</a></li>
 </ul>
 </div>
-<div id="outline-container-orge2e2490" class="outline-3">
-<h3 id="orge2e2490">Types of IOCs</h3>
-<div class="outline-text-3" id="text-orge2e2490">
 </div>
-<div id="outline-container-org3ccd1dd" class="outline-4">
-<h4 id="org3ccd1dd">Network-based</h4>
-<div class="outline-text-4" id="text-org3ccd1dd">
-<ul class="org-ul">
-<li></li>
+<p>
+Indicators of Compromise (IOCs) are specific pieces of evidence
+that suggest a system or network has been compromised by a
+malicious actor. They can be artifacts left behind by
+<a href="20260206T060714--malware__concept_cybersecurity.html">Malware</a>, suspicious activity patterns,
+or other anomalies that indicate a breach has occurred.
+</p>
 
-<li>Domain Names: Malicious domains used for command and control (C&amp;C) or <a href="Data Exfiltration.html#data-exfiltration">Data Exfiltration</a>.</li>
-<li>URLs: <a href="Uniform Resource Locator.html#uniform-resource-locator">Uniform Resource Locator</a>s of malicious websites or <a href="Phishing.html#phishing">Phishing</a> pages.</li>
-<li>: Hash values (e.g., MD5, SHA-1, SHA-256) of malicious files.</li>
-<li><a href="Media Access Control Address.html#media-access-control-address">Media Access Control Address</a>es: Media Access Control addresses of compromised devices.</li>
+<p>
+Related: <a href="20260327T192843--pyramid-of-pain__cybersecurity_model.html">Pyramid of Pain</a>
+         <a href="20260314T005754--threat-intelligence__concept_cybersecurity.html">Threat Intelligence</a>
+         <a href="20260206T060714--malware__concept_cybersecurity.html">Malware</a>
+         <a href="20260213T111546--yara__cybersecurity_tool.html">YARA</a>
+         <a href="20260206T060458--data-exfiltration__concept_cybersecurity.html">Data Exfiltration</a>
+         <a href="20260206T060659--incident-response__concept_cybersecurity.html">Incident Response</a>
+</p>
+<div id="outline-container-org1191e53" class="outline-2">
+<h2 id="org1191e53">Types of IOCs</h2>
+<div class="outline-text-2" id="text-org1191e53">
+</div>
+<div id="outline-container-orgeefafad" class="outline-3">
+<h3 id="orgeefafad">Network-based</h3>
+<div class="outline-text-3" id="text-orgeefafad">
+<ul class="org-ul">
+<li>Domain Names: Malicious domains used for command and control
+(C&amp;C) or <a href="20260206T060458--data-exfiltration__concept_cybersecurity.html">Data Exfiltration</a></li>
+<li>URLs: URLs of malicious websites or
+<a href="20260214T083350--phishing__concept_cybersecurity_technique.html">Phishing</a> pages</li>
+<li><a href="20260206T060656--hashing__concept_cybersecurity_programming.html">Hashes</a>: Hash values (e.g., MD5,
+SHA-1, SHA-256) of malicious files</li>
+<li><a href="20260210T195305--media-access-control-address__concept_networking.html">MAC Addresses</a>: Media Access Control
+addresses of compromised devices</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org906425d" class="outline-4">
-<h4 id="org906425d">Host-based</h4>
-<div class="outline-text-4" id="text-org906425d">
+<div id="outline-container-orgc769a52" class="outline-3">
+<h3 id="orgc769a52">Host-based</h3>
+<div class="outline-text-3" id="text-orgc769a52">
 <ul class="org-ul">
-<li>File Paths: Locations of malicious files on the system.</li>
-<li>Registry Keys: Modified registry entries associated with malware.</li>
-<li>Process IDs (PIDs): IDs of malicious processes running on the system.</li>
-<li>Event Log Entries: Suspicious events recorded in system logs (e.g., security logs, application logs).</li>
+<li>File Paths: Locations of malicious files on the system</li>
+<li>Registry Keys: Modified registry entries associated with malware</li>
+<li>Process IDs (PIDs): IDs of malicious processes running on the system</li>
+<li>Event Log Entries: Suspicious events recorded in system logs
+(e.g., security logs, application logs)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdce9aa7" class="outline-4">
-<h4 id="orgdce9aa7">Other</h4>
-<div class="outline-text-4" id="text-orgdce9aa7">
+<div id="outline-container-orgcb0d57a" class="outline-3">
+<h3 id="orgcb0d57a">Other</h3>
+<div class="outline-text-3" id="text-orgcb0d57a">
 <ul class="org-ul">
-<li>Email Addresses: Email addresses used by attackers.</li>
-<li>Account Names: Compromised usernames and accounts.</li>
-<li><a href="Yara.html#yara">Yara</a> Rules: Patterns and signatures used to identify malicious code.</li>
+<li>Email Addresses: Email addresses used by attackers</li>
+<li>Account Names: Compromised usernames and accounts</li>
+<li><a href="20260213T111546--yara__cybersecurity_tool.html">YARA</a> Rules: Patterns and signatures
+used to identify malicious code</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org87d696e" class="outline-3">
-<h3 id="org87d696e">Uses of IOCs</h3>
-<div class="outline-text-3" id="text-org87d696e">
-<ul class="org-ul">
-<li>Threat Hunting: Actively searching for IOCs within an environment to identify potential threats.</li>
-<li></li>
+<div id="outline-container-orgcdfd4fd" class="outline-2">
+<h2 id="orgcdfd4fd">IOCs vs Pyramid of Pain — Not All IOCs Are Equally Useful</h2>
+<div class="outline-text-2" id="text-orgcdfd4fd">
+<p>
+The list above treats all IOC types as equivalent, but they aren't
+— this is exactly what the
+<a href="20260327T192843--pyramid-of-pain__cybersecurity_model.html">Pyramid of Pain</a> framework addresses.
+Hash values and IP addresses (bottom of the pyramid) are trivial
+for an attacker to change and give you only a momentary block.
+TTPs — how the attacker actually operates, not what specific
+artifact they left behind — sit at the top and are far harder to
+change, making them the more valuable long-term detection target.
+</p>
 
-<li><a href="Threat Intelligence.html#threat-intelligence">Threat Intelligence</a> Sharing: Sharing IOCs with other organizations to improve collective security.</li>
-<li>Intrusion Detection: Using IOCs to create signatures for s (IDS) to detect and block future attacks.</li>
-</ul>
+<p>
+When triaging which IOCs from an incident are worth turning into
+lasting detection rules versus logging once and moving on, rank
+them by pyramid position, not just by how many you found.
+</p>
 </div>
 </div>
-<div id="outline-container-org381bf19" class="outline-3">
-<h3 id="org381bf19">Note</h3>
-<div class="outline-text-3" id="text-org381bf19">
+<div id="outline-container-org6574827" class="outline-2">
+<h2 id="org6574827">Uses of IOCs</h2>
+<div class="outline-text-2" id="text-org6574827">
 <ul class="org-ul">
-<li>IOCs can change rapidly as attackers evolve their tactics.</li>
-<li>It's crucial to stay updated with the latest <a href="Threat Intelligence.html#threat-intelligence">Threat Intelligence</a> and continuously monitor for new IOCs.</li>
+<li>Threat Hunting: Actively searching for IOCs within an environment
+to identify potential threats</li>
+<li><a href="20260314T005754--threat-intelligence__concept_cybersecurity.html">Threat Intelligence</a> Sharing: Sharing
+IOCs with other organizations to improve collective security</li>
+<li>Intrusion Detection: Using IOCs to create signatures for
+<a href="20260213T072318--intrusion-detection-system__concept_cybersecurity.html">Intrusion Detection Systems</a> to detect
+and block future attacks</li>
 </ul>
 </div>
+</div>
+<div id="outline-container-org204d4f3" class="outline-2">
+<h2 id="org204d4f3">Sources for IOC Lookup</h2>
+<div class="outline-text-2" id="text-org204d4f3">
+<p>
+Practical starting points when you have an artifact and need to
+check whether it's already known-malicious:
+</p>
+
+<ul class="org-ul">
+<li>File hashes: VirusTotal, <a href="../../../Org/20260314T005754--threat-intelligence__concept_cybersecurity.html">Threat
+Intelligence</a> platforms</li>
+<li>IPs/domains: AbuseIPDB, Shodan, passive DNS services</li>
+<li><a href="20260212T065603==misp--malware-information-sharing-platform__concept_cybersecurity.html">MISP</a>: aggregates and correlates IOCs
+across multiple feeds, useful when checking a large batch at once
+rather than one artifact at a time</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org421eb09" class="outline-2">
+<h2 id="org421eb09">Note</h2>
+<div class="outline-text-2" id="text-org421eb09">
+<ul class="org-ul">
+<li>IOCs can change rapidly as attackers evolve their tactics</li>
+<li>It's crucial to stay updated with the latest
+<a href="20260314T005754--threat-intelligence__concept_cybersecurity.html">Threat Intelligence</a> and continuously
+monitor for new IOCs</li>
+<li>Given the point above about the Pyramid of Pain: staying current
+matters most for the low-value, fast-changing indicator types
+(hashes, IPs); TTP-level detections built once tend to stay
+relevant far longer</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd129993" class="outline-2">
+<h2 id="orgd129993">Tips</h2>
+<div class="outline-text-2" id="text-orgd129993">
+<ul class="org-ul">
+<li>On the exam or during an engagement, if you're documenting IOCs
+from a compromise you caused (e.g. in a red team report), include
+both the low-level artifacts (file hashes, IPs used) and the
+higher-level TTPs (techniques employed) — the low-level ones let
+defenders block this specific instance, the TTPs let them build
+detections against your general approach</li>
+<li>A single IOC in isolation is weak evidence — correlate multiple
+IOC types together (a suspicious process AND a matching network
+connection AND a registry key change) before treating something
+as confirmed rather than merely worth investigating further</li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -962,6 +1068,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

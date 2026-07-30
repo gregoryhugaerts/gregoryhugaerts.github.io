@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LinPEAS</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,10 +886,10 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org416a133">Description</a></li>
-<li><a href="#orgb19f2ca">Common Workflow</a></li>
-<li><a href="#org7f8af4b">What It Checks</a></li>
-<li><a href="#orge964968">Tips</a></li>
+<li><a href="#orgb0b90d5">Description</a></li>
+<li><a href="#orgb3885c3">Common Workflow</a></li>
+<li><a href="#org769339a">What It Checks</a></li>
+<li><a href="#orgbe5ee41">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -887,9 +905,9 @@ Related: <a href="20260314T005742--privilege-escalation__concept_cybersecurity.h
          <a href="20260314T005718--linux-privilege-escalation__concept_cybersecurity.html">Linux Privilege Escalation</a>
          <a href="20260314T005728--gtfobins__cybersecurity_tool.html">gtfobins</a>
 </p>
-<div id="outline-container-org416a133" class="outline-2">
-<h2 id="org416a133">Description</h2>
-<div class="outline-text-2" id="text-org416a133">
+<div id="outline-container-orgb0b90d5" class="outline-2">
+<h2 id="orgb0b90d5">Description</h2>
+<div class="outline-text-2" id="text-orgb0b90d5">
 <p>
 LinPEAS is a Bash script that automates Linux enumeration. Runs on virtually
 any distribution without special dependencies. Checks for credential storage,
@@ -899,19 +917,19 @@ only identifies vectors.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb19f2ca" class="outline-2">
-<h2 id="orgb19f2ca">Common Workflow</h2>
-<div class="outline-text-2" id="text-orgb19f2ca">
+<div id="outline-container-orgb3885c3" class="outline-2">
+<h2 id="orgb3885c3">Common Workflow</h2>
+<div class="outline-text-2" id="text-orgb3885c3">
 <p>
 Transfer via curl, wget, or base64:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f0fbb95f661b46cc980f26bc2caecb1d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_25e22dd1482941c88be55ffa104b560f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f0fbb95f661b46cc980f26bc2caecb1d=document.querySelector('button[name=btn_f0fbb95f661b46cc980f26bc2caecb1d]');
-copyBtnbtn_f0fbb95f661b46cc980f26bc2caecb1d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Download and run\ncurl https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | bash\n\n# Or locally\n./linpeas.sh\n`);copyBtnbtn_f0fbb95f661b46cc980f26bc2caecb1d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f0fbb95f661b46cc980f26bc2caecb1d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_25e22dd1482941c88be55ffa104b560f=document.querySelector('button[name=btn_25e22dd1482941c88be55ffa104b560f]');
+copyBtnbtn_25e22dd1482941c88be55ffa104b560f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Download and run\ncurl https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | bash\n\n# Or locally\n./linpeas.sh\n`);copyBtnbtn_25e22dd1482941c88be55ffa104b560f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_25e22dd1482941c88be55ffa104b560f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -929,9 +947,9 @@ Review red findings first.
 </p>
 </div>
 </div>
-<div id="outline-container-org7f8af4b" class="outline-2">
-<h2 id="org7f8af4b">What It Checks</h2>
-<div class="outline-text-2" id="text-org7f8af4b">
+<div id="outline-container-org769339a" class="outline-2">
+<h2 id="org769339a">What It Checks</h2>
+<div class="outline-text-2" id="text-org769339a">
 <ul class="org-ul">
 <li>Kernel version and patch level</li>
 <li>SUID/SGID binaries</li>
@@ -946,9 +964,9 @@ Review red findings first.
 </ul>
 </div>
 </div>
-<div id="outline-container-orge964968" class="outline-2">
-<h2 id="orge964968">Tips</h2>
-<div class="outline-text-2" id="text-orge964968">
+<div id="outline-container-orgbe5ee41" class="outline-2">
+<h2 id="orgbe5ee41">Tips</h2>
+<div class="outline-text-2" id="text-orgbe5ee41">
 <ul class="org-ul">
 <li>Run early in post-exploitation to capture baseline before changes</li>
 <li>Focus on red findings: world-writable root files, SUID binaries, sudo
@@ -964,6 +982,20 @@ privesc vector</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -971,6 +1003,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>WinPEAS</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,10 +886,10 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1672fe7">Description</a></li>
-<li><a href="#orgfdbf0ec">Common Workflow</a></li>
-<li><a href="#org3e9453d">What It Checks</a></li>
-<li><a href="#orgc165f4f">Tips</a></li>
+<li><a href="#org0fb3760">Description</a></li>
+<li><a href="#orgcb5a580">Common Workflow</a></li>
+<li><a href="#org88b3742">What It Checks</a></li>
+<li><a href="#org3d0bfaf">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -886,9 +904,9 @@ storage weaknesses.
 Related: <a href="20260611T064004--password-cracking-methodology__cybersecurity_pentesting_technique.html">Password Cracking Methodology</a>
          <a href="20260314T005758--windows-privilege-escalation__concept_cybersecurity.html">Windows Privilege Escalation</a>
 </p>
-<div id="outline-container-org1672fe7" class="outline-2">
-<h2 id="org1672fe7">Description</h2>
-<div class="outline-text-2" id="text-org1672fe7">
+<div id="outline-container-org0fb3760" class="outline-2">
+<h2 id="org0fb3760">Description</h2>
+<div class="outline-text-2" id="text-org0fb3760">
 <p>
 WinPEAS automates the tedious manual enumeration process on a compromised
 Windows host. It performs hundreds of checks across system configuration,
@@ -898,19 +916,19 @@ identifies vectors.
 </p>
 </div>
 </div>
-<div id="outline-container-orgfdbf0ec" class="outline-2">
-<h2 id="orgfdbf0ec">Common Workflow</h2>
-<div class="outline-text-2" id="text-orgfdbf0ec">
+<div id="outline-container-orgcb5a580" class="outline-2">
+<h2 id="orgcb5a580">Common Workflow</h2>
+<div class="outline-text-2" id="text-orgcb5a580">
 <p>
 Download from GitHub releases or generate with msfvenom:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_772d3480bc6947c6ac3bfca9edca4114>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0b8b0d20ac2f4c84b78b79e33a39d4aa>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_772d3480bc6947c6ac3bfca9edca4114=document.querySelector('button[name=btn_772d3480bc6947c6ac3bfca9edca4114]');
-copyBtnbtn_772d3480bc6947c6ac3bfca9edca4114.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Run with default output (console)\n.\\winpeas.exe\n\n# Quiet mode for less output\n.\\winpeas.exe quiet\n\n# Generate HTML report\n.\\winpeas.exe systeminfo > report.html\n`);copyBtnbtn_772d3480bc6947c6ac3bfca9edca4114.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_772d3480bc6947c6ac3bfca9edca4114.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0b8b0d20ac2f4c84b78b79e33a39d4aa=document.querySelector('button[name=btn_0b8b0d20ac2f4c84b78b79e33a39d4aa]');
+copyBtnbtn_0b8b0d20ac2f4c84b78b79e33a39d4aa.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Run with default output (console)\n.\\winpeas.exe\n\n# Quiet mode for less output\n.\\winpeas.exe quiet\n\n# Generate HTML report\n.\\winpeas.exe systeminfo > report.html\n`);copyBtnbtn_0b8b0d20ac2f4c84b78b79e33a39d4aa.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0b8b0d20ac2f4c84b78b79e33a39d4aa.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -931,9 +949,9 @@ green/cyan for informational. Review high-priority findings first.
 </p>
 </div>
 </div>
-<div id="outline-container-org3e9453d" class="outline-2">
-<h2 id="org3e9453d">What It Checks</h2>
-<div class="outline-text-2" id="text-org3e9453d">
+<div id="outline-container-org88b3742" class="outline-2">
+<h2 id="org88b3742">What It Checks</h2>
+<div class="outline-text-2" id="text-org88b3742">
 <ul class="org-ul">
 <li>OS version, architecture, installed patches</li>
 <li>User privileges, group membership</li>
@@ -946,9 +964,9 @@ green/cyan for informational. Review high-priority findings first.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc165f4f" class="outline-2">
-<h2 id="orgc165f4f">Tips</h2>
-<div class="outline-text-2" id="text-orgc165f4f">
+<div id="outline-container-org3d0bfaf" class="outline-2">
+<h2 id="org3d0bfaf">Tips</h2>
+<div class="outline-text-2" id="text-org3d0bfaf">
 <ul class="org-ul">
 <li>Run it early in post-exploitation — captures the baseline configuration
 before changes</li>
@@ -964,6 +982,20 @@ obfuscated form via msfvenom</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -971,6 +1003,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

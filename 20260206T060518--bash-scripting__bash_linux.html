@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bash Scripting</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,51 +886,51 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc17e9c8">Bash Scripting</a>
+<li><a href="#org8b19025">Bash Scripting</a>
 <ul>
-<li><a href="#org35e1493">Basic Structure</a></li>
-<li><a href="#orgb67f9b5">Variables</a>
+<li><a href="#org2d42447">Basic Structure</a></li>
+<li><a href="#orgffae794">Variables</a>
 <ul>
-<li><a href="#org80b8d40">Special Variables</a></li>
+<li><a href="#orgeac8721">Special Variables</a></li>
 </ul>
 </li>
-<li><a href="#org12e2d8a">Control Flow</a>
+<li><a href="#org9da20b5">Control Flow</a>
 <ul>
-<li><a href="#org3529afe">If/Else/Elif</a></li>
-<li><a href="#org8588f8d">For Loops</a></li>
-<li><a href="#org3fd09f0">While Loops</a></li>
-<li><a href="#org4b436e4">Case Statements</a></li>
+<li><a href="#orgfdf2314">If/Else/Elif</a></li>
+<li><a href="#org81f6d35">For Loops</a></li>
+<li><a href="#orgc61e90c">While Loops</a></li>
+<li><a href="#org08b8769">Case Statements</a></li>
 </ul>
 </li>
-<li><a href="#org7fb95ce">Functions</a></li>
-<li><a href="#org7753c7c">Input/Output And Pipes</a></li>
-<li><a href="#org13c585f">Command Substitution</a></li>
-<li><a href="#org4c95136">Debugging</a></li>
+<li><a href="#orgc2ef967">Functions</a></li>
+<li><a href="#org068230a">Input/Output And Pipes</a></li>
+<li><a href="#orgf515348">Command Substitution</a></li>
+<li><a href="#org34f8f4a">Debugging</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc17e9c8" class="outline-2">
-<h2 id="orgc17e9c8">Bash Scripting</h2>
-<div class="outline-text-2" id="text-orgc17e9c8">
+<div id="outline-container-org8b19025" class="outline-2">
+<h2 id="org8b19025">Bash Scripting</h2>
+<div class="outline-text-2" id="text-org8b19025">
 <p>
 Bash (Bourne Again SHell) is a command-line interpreter and scripting language commonly used in Linux and macOS environments. Bash scripts are text files containing a sequence of commands that are executed by the Bash interpreter as if they were typed at the command prompt. They are powerful for automating tasks, managing system configurations, and creating custom commands.
 </p>
 </div>
-<div id="outline-container-org35e1493" class="outline-3">
-<h3 id="org35e1493">Basic Structure</h3>
-<div class="outline-text-3" id="text-org35e1493">
+<div id="outline-container-org2d42447" class="outline-3">
+<h3 id="org2d42447">Basic Structure</h3>
+<div class="outline-text-3" id="text-org2d42447">
 <p>
 A Bash script is a plain text file. The first line, known as the "shebang," specifies the interpreter to be used. For Bash scripts, this is typically <code>#!/bin/bash</code>.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_5bcba5466add4a0ab13899f2a0faad55>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_bf34c2629b4248ff9226b18af59e3835>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5bcba5466add4a0ab13899f2a0faad55=document.querySelector('button[name=btn_5bcba5466add4a0ab13899f2a0faad55]');
-copyBtnbtn_5bcba5466add4a0ab13899f2a0faad55.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`#!/bin/bash\n# This is a comment. The script will ignore this line.\n\n# Commands are executed sequentially\necho \"Starting the script...\"\nls -l\necho \"Script finished.\"\n`);copyBtnbtn_5bcba5466add4a0ab13899f2a0faad55.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5bcba5466add4a0ab13899f2a0faad55.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bf34c2629b4248ff9226b18af59e3835=document.querySelector('button[name=btn_bf34c2629b4248ff9226b18af59e3835]');
+copyBtnbtn_bf34c2629b4248ff9226b18af59e3835.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`#!/bin/bash\n# This is a comment. The script will ignore this line.\n\n# Commands are executed sequentially\necho \"Starting the script...\"\nls -l\necho \"Script finished.\"\n`);copyBtnbtn_bf34c2629b4248ff9226b18af59e3835.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bf34c2629b4248ff9226b18af59e3835.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -943,9 +961,9 @@ And then execute it:
 </p>
 </div>
 </div>
-<div id="outline-container-orgb67f9b5" class="outline-3">
-<h3 id="orgb67f9b5">Variables</h3>
-<div class="outline-text-3" id="text-orgb67f9b5">
+<div id="outline-container-orgffae794" class="outline-3">
+<h3 id="orgffae794">Variables</h3>
+<div class="outline-text-3" id="text-orgffae794">
 <p>
 Variables store data. There are no data types. A variable in Bash can contain a number, a character, or a string of characters.
 </p>
@@ -955,11 +973,11 @@ To assign a value, use <code>variable_name</code>"value"<code>. Note there are n
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_d18639656e6d4902935dd8b0191db5dd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_85e72715d80c401cb39ce3a3b1ce7cb4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d18639656e6d4902935dd8b0191db5dd=document.querySelector('button[name=btn_d18639656e6d4902935dd8b0191db5dd]');
-copyBtnbtn_d18639656e6d4902935dd8b0191db5dd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`#!/bin/bash\n\nGREETING=\"Hello, Gregory\"\necho $GREETING\n\n# Using braces is safer, especially for concatenation\necho \"${GREETING}! Welcome to Bash scripting.\"\n`);copyBtnbtn_d18639656e6d4902935dd8b0191db5dd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d18639656e6d4902935dd8b0191db5dd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_85e72715d80c401cb39ce3a3b1ce7cb4=document.querySelector('button[name=btn_85e72715d80c401cb39ce3a3b1ce7cb4]');
+copyBtnbtn_85e72715d80c401cb39ce3a3b1ce7cb4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`#!/bin/bash\n\nGREETING=\"Hello, Gregory\"\necho $GREETING\n\n# Using braces is safer, especially for concatenation\necho \"${GREETING}! Welcome to Bash scripting.\"\n`);copyBtnbtn_85e72715d80c401cb39ce3a3b1ce7cb4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_85e72715d80c401cb39ce3a3b1ce7cb4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -973,9 +991,9 @@ let res = copyTextToClipboard(`#!/bin/bash\n\nGREETING=\"Hello, Gregory\"\necho 
 </pre>
 </div></div>
 </div>
-<div id="outline-container-org80b8d40" class="outline-4">
-<h4 id="org80b8d40">Special Variables</h4>
-<div class="outline-text-4" id="text-org80b8d40">
+<div id="outline-container-orgeac8721" class="outline-4">
+<h4 id="orgeac8721">Special Variables</h4>
+<div class="outline-text-4" id="text-orgeac8721">
 <ul class="org-ul">
 <li><code>$0</code> - The name of the script.</li>
 <li><code>$1</code> to <code>$9</code> - The first nine arguments to the script.</li>
@@ -986,26 +1004,26 @@ let res = copyTextToClipboard(`#!/bin/bash\n\nGREETING=\"Hello, Gregory\"\necho 
 </div>
 </div>
 </div>
-<div id="outline-container-org12e2d8a" class="outline-3">
-<h3 id="org12e2d8a">Control Flow</h3>
-<div class="outline-text-3" id="text-org12e2d8a">
+<div id="outline-container-org9da20b5" class="outline-3">
+<h3 id="org9da20b5">Control Flow</h3>
+<div class="outline-text-3" id="text-org9da20b5">
 <p>
 Control flow statements allow your script to make decisions and loop over commands.
 </p>
 </div>
-<div id="outline-container-org3529afe" class="outline-4">
-<h4 id="org3529afe">If/Else/Elif</h4>
-<div class="outline-text-4" id="text-org3529afe">
+<div id="outline-container-orgfdf2314" class="outline-4">
+<h4 id="orgfdf2314">If/Else/Elif</h4>
+<div class="outline-text-4" id="text-orgfdf2314">
 <p>
 Conditionally execute code based on an expression.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_078a34e2337b4d3bbfe93d399d6980de>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_a7e4915e0cba405cb12f94d252748fb1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_078a34e2337b4d3bbfe93d399d6980de=document.querySelector('button[name=btn_078a34e2337b4d3bbfe93d399d6980de]');
-copyBtnbtn_078a34e2337b4d3bbfe93d399d6980de.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`#!/bin/bash\n\nif [ \"$1\" == \"Gregory\" ]; then\n  echo \"Hello, Gregory.\"\nelif [ -z \"$1\" ]; then\n  echo \"You didn't provide an argument.\"\nelse\n  echo \"Hello, $1.\"\nfi\n`);copyBtnbtn_078a34e2337b4d3bbfe93d399d6980de.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_078a34e2337b4d3bbfe93d399d6980de.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a7e4915e0cba405cb12f94d252748fb1=document.querySelector('button[name=btn_a7e4915e0cba405cb12f94d252748fb1]');
+copyBtnbtn_a7e4915e0cba405cb12f94d252748fb1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`#!/bin/bash\n\nif [ \"$1\" == \"Gregory\" ]; then\n  echo \"Hello, Gregory.\"\nelif [ -z \"$1\" ]; then\n  echo \"You didn't provide an argument.\"\nelse\n  echo \"Hello, $1.\"\nfi\n`);copyBtnbtn_a7e4915e0cba405cb12f94d252748fb1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a7e4915e0cba405cb12f94d252748fb1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1022,19 +1040,19 @@ let res = copyTextToClipboard(`#!/bin/bash\n\nif [ \"$1\" == \"Gregory\" ]; then
 </div></div>
 </div>
 </div>
-<div id="outline-container-org8588f8d" class="outline-4">
-<h4 id="org8588f8d">For Loops</h4>
-<div class="outline-text-4" id="text-org8588f8d">
+<div id="outline-container-org81f6d35" class="outline-4">
+<h4 id="org81f6d35">For Loops</h4>
+<div class="outline-text-4" id="text-org81f6d35">
 <p>
 Iterate over a list of items.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_4f6ee4b4f067469da72be66e7676e48b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_f1fba371959642bd94906352fbbd4021>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4f6ee4b4f067469da72be66e7676e48b=document.querySelector('button[name=btn_4f6ee4b4f067469da72be66e7676e48b]');
-copyBtnbtn_4f6ee4b4f067469da72be66e7676e48b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`#!/bin/bash\n\n# Loop over a range of numbers\nfor i in {1..5}; do\n  echo \"Number: $i\"\ndone\n\n# Loop over files in the current directory\nfor FILE in *; do\n  echo \"File found: $FILE\"\ndone\n`);copyBtnbtn_4f6ee4b4f067469da72be66e7676e48b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4f6ee4b4f067469da72be66e7676e48b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f1fba371959642bd94906352fbbd4021=document.querySelector('button[name=btn_f1fba371959642bd94906352fbbd4021]');
+copyBtnbtn_f1fba371959642bd94906352fbbd4021.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`#!/bin/bash\n\n# Loop over a range of numbers\nfor i in {1..5}; do\n  echo \"Number: $i\"\ndone\n\n# Loop over files in the current directory\nfor FILE in *; do\n  echo \"File found: $FILE\"\ndone\n`);copyBtnbtn_f1fba371959642bd94906352fbbd4021.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f1fba371959642bd94906352fbbd4021.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1053,19 +1071,19 @@ let res = copyTextToClipboard(`#!/bin/bash\n\n# Loop over a range of numbers\nfo
 </div></div>
 </div>
 </div>
-<div id="outline-container-org3fd09f0" class="outline-4">
-<h4 id="org3fd09f0">While Loops</h4>
-<div class="outline-text-4" id="text-org3fd09f0">
+<div id="outline-container-orgc61e90c" class="outline-4">
+<h4 id="orgc61e90c">While Loops</h4>
+<div class="outline-text-4" id="text-orgc61e90c">
 <p>
 Execute a block of code as long as a condition is true.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_c8b257ade7f34737980de4f89c2c4015>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_aeb1e5c890964a2fb4eacc086df6cc9f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c8b257ade7f34737980de4f89c2c4015=document.querySelector('button[name=btn_c8b257ade7f34737980de4f89c2c4015]');
-copyBtnbtn_c8b257ade7f34737980de4f89c2c4015.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`#!/bin/bash\n\nCOUNT=1\nwhile [ $COUNT -le 5 ]; do\n  echo \"Count: $COUNT\"\n  # Use double parentheses for arithmetic\n  ((COUNT++))\ndone\n`);copyBtnbtn_c8b257ade7f34737980de4f89c2c4015.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c8b257ade7f34737980de4f89c2c4015.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_aeb1e5c890964a2fb4eacc086df6cc9f=document.querySelector('button[name=btn_aeb1e5c890964a2fb4eacc086df6cc9f]');
+copyBtnbtn_aeb1e5c890964a2fb4eacc086df6cc9f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`#!/bin/bash\n\nCOUNT=1\nwhile [ $COUNT -le 5 ]; do\n  echo \"Count: $COUNT\"\n  # Use double parentheses for arithmetic\n  ((COUNT++))\ndone\n`);copyBtnbtn_aeb1e5c890964a2fb4eacc086df6cc9f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aeb1e5c890964a2fb4eacc086df6cc9f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1081,19 +1099,19 @@ let res = copyTextToClipboard(`#!/bin/bash\n\nCOUNT=1\nwhile [ $COUNT -le 5 ]; d
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4b436e4" class="outline-4">
-<h4 id="org4b436e4">Case Statements</h4>
-<div class="outline-text-4" id="text-org4b436e4">
+<div id="outline-container-org08b8769" class="outline-4">
+<h4 id="org08b8769">Case Statements</h4>
+<div class="outline-text-4" id="text-org08b8769">
 <p>
 A simpler way to write a series of <code>if</code> statements.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_847bc2f0826e49abb2590562693dfaee>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_bdf08980c7f747c6960d2330e95db617>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_847bc2f0826e49abb2590562693dfaee=document.querySelector('button[name=btn_847bc2f0826e49abb2590562693dfaee]');
-copyBtnbtn_847bc2f0826e49abb2590562693dfaee.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`#!/bin/bash\n\ncase \"$1\" in\n  \"start\")\n    echo \"Starting service...\"\n    ;;\n  \"stop\")\n    echo \"Stopping service...\"\n    ;;\n  \"restart\")\n    echo \"Restarting service...\"\n    ;;\n  *)\n    echo \"Usage: $0 {start|stop|restart}\"\n    ;;\nesac\n`);copyBtnbtn_847bc2f0826e49abb2590562693dfaee.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_847bc2f0826e49abb2590562693dfaee.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bdf08980c7f747c6960d2330e95db617=document.querySelector('button[name=btn_bdf08980c7f747c6960d2330e95db617]');
+copyBtnbtn_bdf08980c7f747c6960d2330e95db617.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`#!/bin/bash\n\ncase \"$1\" in\n  \"start\")\n    echo \"Starting service...\"\n    ;;\n  \"stop\")\n    echo \"Stopping service...\"\n    ;;\n  \"restart\")\n    echo \"Restarting service...\"\n    ;;\n  *)\n    echo \"Usage: $0 {start|stop|restart}\"\n    ;;\nesac\n`);copyBtnbtn_bdf08980c7f747c6960d2330e95db617.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bdf08980c7f747c6960d2330e95db617.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1118,19 +1136,19 @@ let res = copyTextToClipboard(`#!/bin/bash\n\ncase \"$1\" in\n  \"start\")\n    
 </div>
 </div>
 </div>
-<div id="outline-container-org7fb95ce" class="outline-3">
-<h3 id="org7fb95ce">Functions</h3>
-<div class="outline-text-3" id="text-org7fb95ce">
+<div id="outline-container-orgc2ef967" class="outline-3">
+<h3 id="orgc2ef967">Functions</h3>
+<div class="outline-text-3" id="text-orgc2ef967">
 <p>
 Functions group reusable pieces of code.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_18ff18eb6f7443f0a69ef11fdda2342d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_7fc1ad5a1056453a86bec6db54871bec>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_18ff18eb6f7443f0a69ef11fdda2342d=document.querySelector('button[name=btn_18ff18eb6f7443f0a69ef11fdda2342d]');
-copyBtnbtn_18ff18eb6f7443f0a69ef11fdda2342d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`#!/bin/bash\n\n# Function definition\ngreet() {\n  # Functions can access arguments with $1, $2, etc.\n  echo \"Hello, $1\"\n}\n\n# Calling the function\ngreet \"World\"\ngreet \"Gregory\"\n`);copyBtnbtn_18ff18eb6f7443f0a69ef11fdda2342d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_18ff18eb6f7443f0a69ef11fdda2342d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7fc1ad5a1056453a86bec6db54871bec=document.querySelector('button[name=btn_7fc1ad5a1056453a86bec6db54871bec]');
+copyBtnbtn_7fc1ad5a1056453a86bec6db54871bec.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`#!/bin/bash\n\n# Function definition\ngreet() {\n  # Functions can access arguments with $1, $2, etc.\n  echo \"Hello, $1\"\n}\n\n# Calling the function\ngreet \"World\"\ngreet \"Gregory\"\n`);copyBtnbtn_7fc1ad5a1056453a86bec6db54871bec.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7fc1ad5a1056453a86bec6db54871bec.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1149,9 +1167,9 @@ greet <span style="color: var(--clr-string); background-color: var(--bg-string);
 </div></div>
 </div>
 </div>
-<div id="outline-container-org7753c7c" class="outline-3">
-<h3 id="org7753c7c">Input/Output And Pipes</h3>
-<div class="outline-text-3" id="text-org7753c7c">
+<div id="outline-container-org068230a" class="outline-3">
+<h3 id="org068230a">Input/Output And Pipes</h3>
+<div class="outline-text-3" id="text-org068230a">
 <ul class="org-ul">
 <li><b>Input/Output Redirection</b>: Control where command output goes and where input comes from.
 <ul class="org-ul">
@@ -1166,19 +1184,19 @@ greet <span style="color: var(--clr-string); background-color: var(--bg-string);
 </ul>
 </div>
 </div>
-<div id="outline-container-org13c585f" class="outline-3">
-<h3 id="org13c585f">Command Substitution</h3>
-<div class="outline-text-3" id="text-org13c585f">
+<div id="outline-container-orgf515348" class="outline-3">
+<h3 id="orgf515348">Command Substitution</h3>
+<div class="outline-text-3" id="text-orgf515348">
 <p>
 Capture the output of a command into a variable. The modern syntax is <code>$(command)</code>.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_a248a388a54e452cb6dc451da2f9856d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_38df952356674110808984072354fed6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a248a388a54e452cb6dc451da2f9856d=document.querySelector('button[name=btn_a248a388a54e452cb6dc451da2f9856d]');
-copyBtnbtn_a248a388a54e452cb6dc451da2f9856d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`#!/bin/bash\n\nCURRENT_DATE=$(date +\"%Y-%m-%d\")\necho \"Today's date is: $CURRENT_DATE\"\n\n# Create a dated backup directory\nBACKUP_DIR=\"backup-$CURRENT_DATE\"\nmkdir \"$BACKUP_DIR\"\necho \"Created directory: $BACKUP_DIR\"\n`);copyBtnbtn_a248a388a54e452cb6dc451da2f9856d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a248a388a54e452cb6dc451da2f9856d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_38df952356674110808984072354fed6=document.querySelector('button[name=btn_38df952356674110808984072354fed6]');
+copyBtnbtn_38df952356674110808984072354fed6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`#!/bin/bash\n\nCURRENT_DATE=$(date +\"%Y-%m-%d\")\necho \"Today's date is: $CURRENT_DATE\"\n\n# Create a dated backup directory\nBACKUP_DIR=\"backup-$CURRENT_DATE\"\nmkdir \"$BACKUP_DIR\"\necho \"Created directory: $BACKUP_DIR\"\n`);copyBtnbtn_38df952356674110808984072354fed6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_38df952356674110808984072354fed6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1195,19 +1213,19 @@ mkdir <span style="color: var(--clr-string); background-color: var(--bg-string);
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4c95136" class="outline-3">
-<h3 id="org4c95136">Debugging</h3>
-<div class="outline-text-3" id="text-org4c95136">
+<div id="outline-container-org34f8f4a" class="outline-3">
+<h3 id="org34f8f4a">Debugging</h3>
+<div class="outline-text-3" id="text-org34f8f4a">
 <p>
 To see what your script is doing as it runs, you can use <code>set -x</code>. This will print each command to the terminal before it is executed, with variables expanded.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_4a7e589ec36e4e398edb91374cf004cb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_d11a90d000fa47b9bac4b28169faeab8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4a7e589ec36e4e398edb91374cf004cb=document.querySelector('button[name=btn_4a7e589ec36e4e398edb91374cf004cb]');
-copyBtnbtn_4a7e589ec36e4e398edb91374cf004cb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`#!/bin/bash\nset -x # Start debugging from this point\n\nUSER=\"Gregory\"\necho \"Hello, $USER\"\n\nset +x # Stop debugging\necho \"This part is not traced.\"\n`);copyBtnbtn_4a7e589ec36e4e398edb91374cf004cb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4a7e589ec36e4e398edb91374cf004cb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d11a90d000fa47b9bac4b28169faeab8=document.querySelector('button[name=btn_d11a90d000fa47b9bac4b28169faeab8]');
+copyBtnbtn_d11a90d000fa47b9bac4b28169faeab8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`#!/bin/bash\nset -x # Start debugging from this point\n\nUSER=\"Gregory\"\necho \"Hello, $USER\"\n\nset +x # Stop debugging\necho \"This part is not traced.\"\n`);copyBtnbtn_d11a90d000fa47b9bac4b28169faeab8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d11a90d000fa47b9bac4b28169faeab8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1226,6 +1244,20 @@ let res = copyTextToClipboard(`#!/bin/bash\nset -x # Start debugging from this p
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1233,6 +1265,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

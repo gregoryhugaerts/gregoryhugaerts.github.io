@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Proxy Server</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,30 +886,30 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf86bab4">Types</a>
+<li><a href="#org5c5d7ea">Types</a>
 <ul>
-<li><a href="#orge66bb09">Forward Proxy</a></li>
-<li><a href="#orgdc99ede">Reverse Proxy</a></li>
-<li><a href="#orgdff2614">Transparent Proxy</a></li>
-<li><a href="#org03f92a9">SOCKS Proxy</a></li>
+<li><a href="#org77d0493">Forward Proxy</a></li>
+<li><a href="#orge2aac67">Reverse Proxy</a></li>
+<li><a href="#org3f97a79">Transparent Proxy</a></li>
+<li><a href="#orgb283749">SOCKS Proxy</a></li>
 </ul>
 </li>
-<li><a href="#org5d7f762">Security Relevance</a>
+<li><a href="#org22d0c72">Security Relevance</a>
 <ul>
-<li><a href="#org624bb48">Burp Suite as an Intercepting Proxy</a></li>
-<li><a href="#orga999584">Proxychains — Routing Tools Through a Proxy</a></li>
-<li><a href="#org6cca7b6">SOCKS Proxy via SSH</a></li>
-<li><a href="#org9adb4f8">Proxy Evasion (Red Team)</a></li>
-<li><a href="#org64cf533">Proxy Detection (Blue Team)</a></li>
+<li><a href="#org74785f4">Burp Suite as an Intercepting Proxy</a></li>
+<li><a href="#org1cf0b1b">Proxychains — Routing Tools Through a Proxy</a></li>
+<li><a href="#orgc9d9ac2">SOCKS Proxy via SSH</a></li>
+<li><a href="#org26a6a2f">Proxy Evasion (Red Team)</a></li>
+<li><a href="#org3b24397">Proxy Detection (Blue Team)</a></li>
 </ul>
 </li>
-<li><a href="#org9afe007">Configuration Examples</a>
+<li><a href="#orgc35d860">Configuration Examples</a>
 <ul>
-<li><a href="#orgef6c231">Nginx as Reverse Proxy</a></li>
-<li><a href="#org65dcc2f">System-wide HTTP proxy (Linux)</a></li>
+<li><a href="#org124b645">Nginx as Reverse Proxy</a></li>
+<li><a href="#orge34c6a4">System-wide HTTP proxy (Linux)</a></li>
 </ul>
 </li>
-<li><a href="#orgab33c02">Tips</a></li>
+<li><a href="#org5d96a42">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -908,24 +926,24 @@ Related: <a href="20260314T005617--burp-suite__cybersecurity_tool.html">Burp Sui
          <a href="20260314T005740--pivoting__concept_cybersecurity.html">Pivoting</a>
          <a href="20260314T005723--pfsense__cybersecurity_networking_tool.html">pfSense</a>
 </p>
-<div id="outline-container-orgf86bab4" class="outline-2">
-<h2 id="orgf86bab4">Types</h2>
-<div class="outline-text-2" id="text-orgf86bab4">
+<div id="outline-container-org5c5d7ea" class="outline-2">
+<h2 id="org5c5d7ea">Types</h2>
+<div class="outline-text-2" id="text-org5c5d7ea">
 </div>
-<div id="outline-container-orge66bb09" class="outline-3">
-<h3 id="orge66bb09">Forward Proxy</h3>
-<div class="outline-text-3" id="text-orge66bb09">
+<div id="outline-container-org77d0493" class="outline-3">
+<h3 id="org77d0493">Forward Proxy</h3>
+<div class="outline-text-3" id="text-org77d0493">
 <p>
 Client-side — the client is configured to route traffic through
 it. The proxy makes requests to the internet on the client's behalf.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_960097a112ed4bf1996d7d4d4c72c192>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f54aec2185304c95af54c80412ec73ac>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_960097a112ed4bf1996d7d4d4c72c192=document.querySelector('button[name=btn_960097a112ed4bf1996d7d4d4c72c192]');
-copyBtnbtn_960097a112ed4bf1996d7d4d4c72c192.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Client → Forward Proxy → Internet\n`);copyBtnbtn_960097a112ed4bf1996d7d4d4c72c192.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_960097a112ed4bf1996d7d4d4c72c192.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f54aec2185304c95af54c80412ec73ac=document.querySelector('button[name=btn_f54aec2185304c95af54c80412ec73ac]');
+copyBtnbtn_f54aec2185304c95af54c80412ec73ac.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Client → Forward Proxy → Internet\n`);copyBtnbtn_f54aec2185304c95af54c80412ec73ac.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f54aec2185304c95af54c80412ec73ac.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -939,9 +957,9 @@ bypassing geo-restrictions, Burp Suite intercepting browser traffic.
 </p>
 </div>
 </div>
-<div id="outline-container-orgdc99ede" class="outline-3">
-<h3 id="orgdc99ede">Reverse Proxy</h3>
-<div class="outline-text-3" id="text-orgdc99ede">
+<div id="outline-container-orge2aac67" class="outline-3">
+<h3 id="orge2aac67">Reverse Proxy</h3>
+<div class="outline-text-3" id="text-orge2aac67">
 <p>
 Server-side — sits in front of one or more backend servers.
 Clients connect to the proxy; they may not know the real server
@@ -949,11 +967,11 @@ exists.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_1de019f8ea8742c4a48db348ed787c5d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_08563e17a87644fbae7e4f55cfd9d263>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1de019f8ea8742c4a48db348ed787c5d=document.querySelector('button[name=btn_1de019f8ea8742c4a48db348ed787c5d]');
-copyBtnbtn_1de019f8ea8742c4a48db348ed787c5d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Internet → Reverse Proxy → Backend Server(s)\n`);copyBtnbtn_1de019f8ea8742c4a48db348ed787c5d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1de019f8ea8742c4a48db348ed787c5d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_08563e17a87644fbae7e4f55cfd9d263=document.querySelector('button[name=btn_08563e17a87644fbae7e4f55cfd9d263]');
+copyBtnbtn_08563e17a87644fbae7e4f55cfd9d263.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Internet → Reverse Proxy → Backend Server(s)\n`);copyBtnbtn_08563e17a87644fbae7e4f55cfd9d263.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_08563e17a87644fbae7e4f55cfd9d263.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -971,9 +989,9 @@ Common implementations: Nginx, HAProxy, AWS ALB, Cloudflare.
 </p>
 </div>
 </div>
-<div id="outline-container-orgdff2614" class="outline-3">
-<h3 id="orgdff2614">Transparent Proxy</h3>
-<div class="outline-text-3" id="text-orgdff2614">
+<div id="outline-container-org3f97a79" class="outline-3">
+<h3 id="org3f97a79">Transparent Proxy</h3>
+<div class="outline-text-3" id="text-org3f97a79">
 <p>
 Neither client nor server is aware — traffic is intercepted
 at the network level (router/firewall). No client configuration
@@ -985,9 +1003,9 @@ Use cases: corporate monitoring, ISP traffic shaping, caching.
 </p>
 </div>
 </div>
-<div id="outline-container-org03f92a9" class="outline-3">
-<h3 id="org03f92a9">SOCKS Proxy</h3>
-<div class="outline-text-3" id="text-org03f92a9">
+<div id="outline-container-orgb283749" class="outline-3">
+<h3 id="orgb283749">SOCKS Proxy</h3>
+<div class="outline-text-3" id="text-orgb283749">
 <p>
 Protocol-agnostic — can proxy any TCP (or UDP with SOCKS5)
 traffic, not just HTTP. Does not modify the traffic.
@@ -998,11 +1016,11 @@ Use cases: SSH dynamic forwarding, Chisel, Tor, network pivoting.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_37945da0b5d1405f9b2def6ea952a605>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_baf880e887cf4a7e9d73d25a95f187d0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_37945da0b5d1405f9b2def6ea952a605=document.querySelector('button[name=btn_37945da0b5d1405f9b2def6ea952a605]');
-copyBtnbtn_37945da0b5d1405f9b2def6ea952a605.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SOCKS4: TCP only, no authentication\nSOCKS5: TCP + UDP, authentication support\n`);copyBtnbtn_37945da0b5d1405f9b2def6ea952a605.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_37945da0b5d1405f9b2def6ea952a605.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_baf880e887cf4a7e9d73d25a95f187d0=document.querySelector('button[name=btn_baf880e887cf4a7e9d73d25a95f187d0]');
+copyBtnbtn_baf880e887cf4a7e9d73d25a95f187d0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SOCKS4: TCP only, no authentication\nSOCKS5: TCP + UDP, authentication support\n`);copyBtnbtn_baf880e887cf4a7e9d73d25a95f187d0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_baf880e887cf4a7e9d73d25a95f187d0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1013,24 +1031,24 @@ SOCKS5: TCP + UDP, authentication support
 </div>
 </div>
 </div>
-<div id="outline-container-org5d7f762" class="outline-2">
-<h2 id="org5d7f762">Security Relevance</h2>
-<div class="outline-text-2" id="text-org5d7f762">
+<div id="outline-container-org22d0c72" class="outline-2">
+<h2 id="org22d0c72">Security Relevance</h2>
+<div class="outline-text-2" id="text-org22d0c72">
 </div>
-<div id="outline-container-org624bb48" class="outline-3">
-<h3 id="org624bb48">Burp Suite as an Intercepting Proxy</h3>
-<div class="outline-text-3" id="text-org624bb48">
+<div id="outline-container-org74785f4" class="outline-3">
+<h3 id="org74785f4">Burp Suite as an Intercepting Proxy</h3>
+<div class="outline-text-3" id="text-org74785f4">
 <p>
 Burp sits between the browser and the target, intercepting
 and modifying HTTP/S requests and responses.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_304efa6ae1a8483e9708bc356ac6cc7d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_7b41191b41f84336883636cf12b6870d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_304efa6ae1a8483e9708bc356ac6cc7d=document.querySelector('button[name=btn_304efa6ae1a8483e9708bc356ac6cc7d]');
-copyBtnbtn_304efa6ae1a8483e9708bc356ac6cc7d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Browser → Burp (127.0.0.1:8080) → Target server\n`);copyBtnbtn_304efa6ae1a8483e9708bc356ac6cc7d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_304efa6ae1a8483e9708bc356ac6cc7d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7b41191b41f84336883636cf12b6870d=document.querySelector('button[name=btn_7b41191b41f84336883636cf12b6870d]');
+copyBtnbtn_7b41191b41f84336883636cf12b6870d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Browser → Burp (127.0.0.1:8080) → Target server\n`);copyBtnbtn_7b41191b41f84336883636cf12b6870d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7b41191b41f84336883636cf12b6870d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1044,20 +1062,20 @@ CA certificate. See <a href="20260314T005617--burp-suite__cybersecurity_tool.htm
 </p>
 </div>
 </div>
-<div id="outline-container-orga999584" class="outline-3">
-<h3 id="orga999584">Proxychains — Routing Tools Through a Proxy</h3>
-<div class="outline-text-3" id="text-orga999584">
+<div id="outline-container-org1cf0b1b" class="outline-3">
+<h3 id="org1cf0b1b">Proxychains — Routing Tools Through a Proxy</h3>
+<div class="outline-text-3" id="text-org1cf0b1b">
 <p>
 Routes command-line tool output through a SOCKS or HTTP proxy —
 essential for accessing internal networks after pivoting.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9d3054a38bb44c698f5882b4b0573d5e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8e2ab22adb314ceb91c80d9523a998a4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9d3054a38bb44c698f5882b4b0573d5e=document.querySelector('button[name=btn_9d3054a38bb44c698f5882b4b0573d5e]');
-copyBtnbtn_9d3054a38bb44c698f5882b4b0573d5e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Configure /etc/proxychains.conf\n# [ProxyList]\n# socks5 127.0.0.1 1080\n\n# Route nmap through proxy\nproxychains nmap -sT -Pn 192.168.1.0/24\n\n# Route other tools\nproxychains curl http://192.168.1.50\nproxychains python3 exploit.py\n`);copyBtnbtn_9d3054a38bb44c698f5882b4b0573d5e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9d3054a38bb44c698f5882b4b0573d5e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8e2ab22adb314ceb91c80d9523a998a4=document.querySelector('button[name=btn_8e2ab22adb314ceb91c80d9523a998a4]');
+copyBtnbtn_8e2ab22adb314ceb91c80d9523a998a4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Configure /etc/proxychains.conf\n# [ProxyList]\n# socks5 127.0.0.1 1080\n\n# Route nmap through proxy\nproxychains nmap -sT -Pn 192.168.1.0/24\n\n# Route other tools\nproxychains curl http://192.168.1.50\nproxychains python3 exploit.py\n`);copyBtnbtn_8e2ab22adb314ceb91c80d9523a998a4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8e2ab22adb314ceb91c80d9523a998a4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1080,15 +1098,15 @@ setups that provide the SOCKS listener proxychains connects to.
 </p>
 </div>
 </div>
-<div id="outline-container-org6cca7b6" class="outline-3">
-<h3 id="org6cca7b6">SOCKS Proxy via SSH</h3>
-<div class="outline-text-3" id="text-org6cca7b6">
+<div id="outline-container-orgc9d9ac2" class="outline-3">
+<h3 id="orgc9d9ac2">SOCKS Proxy via SSH</h3>
+<div class="outline-text-3" id="text-orgc9d9ac2">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d30c05a3d48c4ac79946fddbae2fdd53>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0b5e4840a7a240ff91fe8c9c32a0f8f7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d30c05a3d48c4ac79946fddbae2fdd53=document.querySelector('button[name=btn_d30c05a3d48c4ac79946fddbae2fdd53]');
-copyBtnbtn_d30c05a3d48c4ac79946fddbae2fdd53.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Open SOCKS5 proxy on localhost:1080 through a jump host\nssh -D 1080 -N user@jumphost\n\n# Then route tools through proxychains\nproxychains curl http://internal-server\n`);copyBtnbtn_d30c05a3d48c4ac79946fddbae2fdd53.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d30c05a3d48c4ac79946fddbae2fdd53.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0b5e4840a7a240ff91fe8c9c32a0f8f7=document.querySelector('button[name=btn_0b5e4840a7a240ff91fe8c9c32a0f8f7]');
+copyBtnbtn_0b5e4840a7a240ff91fe8c9c32a0f8f7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Open SOCKS5 proxy on localhost:1080 through a jump host\nssh -D 1080 -N user@jumphost\n\n# Then route tools through proxychains\nproxychains curl http://internal-server\n`);copyBtnbtn_0b5e4840a7a240ff91fe8c9c32a0f8f7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0b5e4840a7a240ff91fe8c9c32a0f8f7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1101,19 +1119,19 @@ let res = copyTextToClipboard(`# Open SOCKS5 proxy on localhost:1080 through a j
 </div></div>
 </div>
 </div>
-<div id="outline-container-org9adb4f8" class="outline-3">
-<h3 id="org9adb4f8">Proxy Evasion (Red Team)</h3>
-<div class="outline-text-3" id="text-org9adb4f8">
+<div id="outline-container-org26a6a2f" class="outline-3">
+<h3 id="org26a6a2f">Proxy Evasion (Red Team)</h3>
+<div class="outline-text-3" id="text-org26a6a2f">
 <p>
 Proxies and WAFs inspect HTTP traffic — common evasion:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b9132aabee604caea68a0893884fa429>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_0f7cd8cb65bd4965b89da19c42278094>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b9132aabee604caea68a0893884fa429=document.querySelector('button[name=btn_b9132aabee604caea68a0893884fa429]');
-copyBtnbtn_b9132aabee604caea68a0893884fa429.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— Encoding: URL-encode, double-encode, Unicode-encode payloads\n— Case variation: bypasses simple string-match rules\n— Chunked transfer encoding: splits payload across chunks\n— HTTP/2: some proxies inspect only HTTP/1.1\n— Non-standard headers: inject payload in headers the proxy ignores\n— HTTPS: older transparent proxies cannot inspect without MITM setup\n`);copyBtnbtn_b9132aabee604caea68a0893884fa429.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b9132aabee604caea68a0893884fa429.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0f7cd8cb65bd4965b89da19c42278094=document.querySelector('button[name=btn_0f7cd8cb65bd4965b89da19c42278094]');
+copyBtnbtn_0f7cd8cb65bd4965b89da19c42278094.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— Encoding: URL-encode, double-encode, Unicode-encode payloads\n— Case variation: bypasses simple string-match rules\n— Chunked transfer encoding: splits payload across chunks\n— HTTP/2: some proxies inspect only HTTP/1.1\n— Non-standard headers: inject payload in headers the proxy ignores\n— HTTPS: older transparent proxies cannot inspect without MITM setup\n`);copyBtnbtn_0f7cd8cb65bd4965b89da19c42278094.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0f7cd8cb65bd4965b89da19c42278094.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1127,19 +1145,19 @@ let res = copyTextToClipboard(`— Encoding: URL-encode, double-encode, Unicode-
 </div></div>
 </div>
 </div>
-<div id="outline-container-org64cf533" class="outline-3">
-<h3 id="org64cf533">Proxy Detection (Blue Team)</h3>
-<div class="outline-text-3" id="text-org64cf533">
+<div id="outline-container-org3b24397" class="outline-3">
+<h3 id="org3b24397">Proxy Detection (Blue Team)</h3>
+<div class="outline-text-3" id="text-org3b24397">
 <p>
 Anomalies suggesting proxy use by an internal host:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_14767b417d1f4bdbacb2f85931bb1f8a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_be0424b9c8ee4d76acf55137a69d5b72>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_14767b417d1f4bdbacb2f85931bb1f8a=document.querySelector('button[name=btn_14767b417d1f4bdbacb2f85931bb1f8a]');
-copyBtnbtn_14767b417d1f4bdbacb2f85931bb1f8a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— CONNECT method in HTTP logs (used by forward proxies for HTTPS)\n— Traffic to known proxy/anonymiser IP ranges (Tor exit nodes, VPN providers)\n— Unusual user agents matching proxy tools\n— All traffic from one host going to a single external IP (SOCKS proxy)\n— DNS requests suddenly absent (proxy may handle DNS resolution)\n`);copyBtnbtn_14767b417d1f4bdbacb2f85931bb1f8a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_14767b417d1f4bdbacb2f85931bb1f8a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_be0424b9c8ee4d76acf55137a69d5b72=document.querySelector('button[name=btn_be0424b9c8ee4d76acf55137a69d5b72]');
+copyBtnbtn_be0424b9c8ee4d76acf55137a69d5b72.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— CONNECT method in HTTP logs (used by forward proxies for HTTPS)\n— Traffic to known proxy/anonymiser IP ranges (Tor exit nodes, VPN providers)\n— Unusual user agents matching proxy tools\n— All traffic from one host going to a single external IP (SOCKS proxy)\n— DNS requests suddenly absent (proxy may handle DNS resolution)\n`);copyBtnbtn_be0424b9c8ee4d76acf55137a69d5b72.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_be0424b9c8ee4d76acf55137a69d5b72.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1153,19 +1171,19 @@ let res = copyTextToClipboard(`— CONNECT method in HTTP logs (used by forward 
 </div>
 </div>
 </div>
-<div id="outline-container-org9afe007" class="outline-2">
-<h2 id="org9afe007">Configuration Examples</h2>
-<div class="outline-text-2" id="text-org9afe007">
+<div id="outline-container-orgc35d860" class="outline-2">
+<h2 id="orgc35d860">Configuration Examples</h2>
+<div class="outline-text-2" id="text-orgc35d860">
 </div>
-<div id="outline-container-orgef6c231" class="outline-3">
-<h3 id="orgef6c231">Nginx as Reverse Proxy</h3>
-<div class="outline-text-3" id="text-orgef6c231">
+<div id="outline-container-org124b645" class="outline-3">
+<h3 id="org124b645">Nginx as Reverse Proxy</h3>
+<div class="outline-text-3" id="text-org124b645">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>NGINX</span><button class='copyBtn' name=btn_8483b3e490174a2c85f911b2611a9585>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>NGINX</span><button class='copyBtn' name=btn_3abd73345b9140c5bac9230751ac93be>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8483b3e490174a2c85f911b2611a9585=document.querySelector('button[name=btn_8483b3e490174a2c85f911b2611a9585]');
-copyBtnbtn_8483b3e490174a2c85f911b2611a9585.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`server {\n    listen 80;\n    server_name example.com;\n\n    location / {\n        proxy_pass http://localhost:3000;\n        proxy_set_header Host $host;\n        proxy_set_header X-Real-IP $remote_addr;\n        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n    }\n}\n`);copyBtnbtn_8483b3e490174a2c85f911b2611a9585.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8483b3e490174a2c85f911b2611a9585.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3abd73345b9140c5bac9230751ac93be=document.querySelector('button[name=btn_3abd73345b9140c5bac9230751ac93be]');
+copyBtnbtn_3abd73345b9140c5bac9230751ac93be.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`server {\n    listen 80;\n    server_name example.com;\n\n    location / {\n        proxy_pass http://localhost:3000;\n        proxy_set_header Host $host;\n        proxy_set_header X-Real-IP $remote_addr;\n        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n    }\n}\n`);copyBtnbtn_3abd73345b9140c5bac9230751ac93be.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3abd73345b9140c5bac9230751ac93be.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1184,15 +1202,15 @@ let res = copyTextToClipboard(`server {\n    listen 80;\n    server_name example
 </div></div>
 </div>
 </div>
-<div id="outline-container-org65dcc2f" class="outline-3">
-<h3 id="org65dcc2f">System-wide HTTP proxy (Linux)</h3>
-<div class="outline-text-3" id="text-org65dcc2f">
+<div id="outline-container-orge34c6a4" class="outline-3">
+<h3 id="orge34c6a4">System-wide HTTP proxy (Linux)</h3>
+<div class="outline-text-3" id="text-orge34c6a4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9b86a8c801574c28a0e62ad83896b547>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_00f458334cd247209f4d842890381209>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9b86a8c801574c28a0e62ad83896b547=document.querySelector('button[name=btn_9b86a8c801574c28a0e62ad83896b547]');
-copyBtnbtn_9b86a8c801574c28a0e62ad83896b547.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`export http_proxy=\"http://proxy.company.com:8080\"\nexport https_proxy=\"http://proxy.company.com:8080\"\nexport no_proxy=\"localhost,127.0.0.1,internal.company.com\"\n\n# For apt\necho 'Acquire::http::Proxy \"http://proxy.company.com:8080\";' \\\n  >> /etc/apt/apt.conf\n`);copyBtnbtn_9b86a8c801574c28a0e62ad83896b547.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9b86a8c801574c28a0e62ad83896b547.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_00f458334cd247209f4d842890381209=document.querySelector('button[name=btn_00f458334cd247209f4d842890381209]');
+copyBtnbtn_00f458334cd247209f4d842890381209.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`export http_proxy=\"http://proxy.company.com:8080\"\nexport https_proxy=\"http://proxy.company.com:8080\"\nexport no_proxy=\"localhost,127.0.0.1,internal.company.com\"\n\n# For apt\necho 'Acquire::http::Proxy \"http://proxy.company.com:8080\";' \\\n  >> /etc/apt/apt.conf\n`);copyBtnbtn_00f458334cd247209f4d842890381209.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_00f458334cd247209f4d842890381209.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1208,9 +1226,9 @@ let res = copyTextToClipboard(`export http_proxy=\"http://proxy.company.com:8080
 </div>
 </div>
 </div>
-<div id="outline-container-orgab33c02" class="outline-2">
-<h2 id="orgab33c02">Tips</h2>
-<div class="outline-text-2" id="text-orgab33c02">
+<div id="outline-container-org5d96a42" class="outline-2">
+<h2 id="org5d96a42">Tips</h2>
+<div class="outline-text-2" id="text-org5d96a42">
 <ul class="org-ul">
 <li>proxychains requires <code>-sT</code> (TCP connect) with nmap — SYN
 scans require raw sockets which cannot go through a SOCKS proxy</li>
@@ -1228,6 +1246,20 @@ validation are vulnerable to IP spoofing</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1235,6 +1267,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

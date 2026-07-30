@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Intrusion Prevention System</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,49 +886,196 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7c96da3">Intrusion Prevention System</a>
-<ul>
-<li><a href="#orgcf00bb0">Key Features</a></li>
-<li><a href="#org13fd9e6">Use Cases</a></li>
-</ul>
-</li>
+<li><a href="#orgbc1cd25">IDS vs IPS — The Core Distinction</a></li>
+<li><a href="#orgbc2c366">Detection Methods</a></li>
+<li><a href="#org572649b">Key Features</a></li>
+<li><a href="#orgc9d62fb">Evasion Considerations (Pentest-Relevant)</a></li>
+<li><a href="#org2938c11">Use Cases</a></li>
+<li><a href="#org0b88d13">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7c96da3" class="outline-2">
-<h2 id="org7c96da3">Intrusion Prevention System</h2>
-<div class="outline-text-2" id="text-org7c96da3">
 <p>
-An Intrusion Prevention System (IPS) is a network security tool that continuously monitors network traffic for malicious activity and takes action to prevent it, including reporting, blocking, or dropping it when it occurs.
+An Intrusion Prevention System (IPS) is a network security tool
+that continuously monitors network traffic for malicious activity
+and takes action to prevent it — blocking, dropping, or resetting
+the connection when a match occurs. The defining distinction from
+an <a href="20260213T072318--intrusion-detection-system__concept_cybersecurity.html">Intrusion Detection System</a> (IDS) is
+that an IPS sits inline in the traffic path and can actively stop
+an attack in progress; an IDS only observes and alerts, it cannot
+intervene.
+</p>
+
+<p>
+Related: <a href="20260213T072318--intrusion-detection-system__concept_cybersecurity.html">Intrusion Detection System</a>
+         <a href="20260213T072419--web-application-firewall__concept_cybersecurity.html">Web Application Firewall</a>
+         <a href="20260206T060457--data-breach__concept_cybersecurity.html">Data Breach</a>
+         <a href="20260206T060659--incident-response__concept_cybersecurity.html">Incident Response</a>
+         <a href="20260206T060444--compliance__concept_cybersecurity.html">Compliance</a>
+         <a href="20260206T060501--defense-in-depth__concept_cybersecurity.html">Defense in Depth</a>
+</p>
+<div id="outline-container-orgbc1cd25" class="outline-2">
+<h2 id="orgbc1cd25">IDS vs IPS — The Core Distinction</h2>
+<div class="outline-text-2" id="text-orgbc1cd25">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Aspect</th>
+<th scope="col" class="org-left">IDS</th>
+<th scope="col" class="org-left">IPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Placement</td>
+<td class="org-left">Out-of-band (monitors a copy of traffic, e.g. via SPAN/mirror port)</td>
+<td class="org-left">Inline (sits directly in the traffic path)</td>
+</tr>
+
+<tr>
+<td class="org-left">Action</td>
+<td class="org-left">Alert only — detection, no intervention</td>
+<td class="org-left">Can block, drop, or reset the connection</td>
+</tr>
+
+<tr>
+<td class="org-left">Failure mode</td>
+<td class="org-left">Fails open — traffic keeps flowing if the IDS goes down</td>
+<td class="org-left">Fails open or closed depending on config — an inline device going down can take the network path with it</td>
+</tr>
+
+<tr>
+<td class="org-left">Risk profile</td>
+<td class="org-left">Lower — false positives cost analyst time only</td>
+<td class="org-left">Higher — a false positive can actively block legitimate traffic</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The inline placement is the whole tradeoff: an IPS can actually stop
+an attack, but a misconfigured or overly aggressive one can also
+cause a self-inflicted denial of service by blocking legitimate
+traffic that trips a signature.
 </p>
 </div>
-<div id="outline-container-orgcf00bb0" class="outline-3">
-<h3 id="orgcf00bb0">Key Features</h3>
-<div class="outline-text-3" id="text-orgcf00bb0">
+</div>
+<div id="outline-container-orgbc2c366" class="outline-2">
+<h2 id="orgbc2c366">Detection Methods</h2>
+<div class="outline-text-2" id="text-orgbc2c366">
+<ul class="org-ul">
+<li><b>Signature-based:</b> Matches traffic against known attack
+patterns. Fast and low false-positive rate for known threats, but
+blind to anything novel or slightly obfuscated.</li>
+<li><b>Anomaly-based:</b> Establishes a baseline of normal traffic and
+flags deviations. Can catch novel attacks but has a higher
+false-positive rate.</li>
+<li><b>Policy-based:</b> Enforces explicit rules (e.g. "no Telnet
+traffic") regardless of whether the traffic looks malicious.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org572649b" class="outline-2">
+<h2 id="org572649b">Key Features</h2>
+<div class="outline-text-2" id="text-org572649b">
 <ul class="org-ul">
 <li>Real-time monitoring of network traffic</li>
 <li>Detection of malicious activity and attacks</li>
 <li>Prevention of attacks through blocking or dropping malicious traffic</li>
 <li>Generation of alerts and reports</li>
-<li>Integration with other security tools</li>
+<li>Integration with other security tools (SIEM, firewall, EDR)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org13fd9e6" class="outline-3">
-<h3 id="org13fd9e6">Use Cases</h3>
-<div class="outline-text-3" id="text-org13fd9e6">
+<div id="outline-container-orgc9d62fb" class="outline-2">
+<h2 id="orgc9d62fb">Evasion Considerations (Pentest-Relevant)</h2>
+<div class="outline-text-2" id="text-orgc9d62fb">
+<p>
+An IPS is signature/pattern-matching-dependent, which creates
+specific bypass angles worth knowing during an engagement:
+</p>
+
+<ul class="org-ul">
+<li><b>Fragmentation:</b> Splitting an attack payload across multiple
+packets can prevent a signature that expects the full payload in
+one packet from matching</li>
+<li><b>Encoding/obfuscation:</b> URL encoding, case variation, or
+alternate syntax for the same underlying payload (relevant to
+<a href="20260207T065314--cross-site-scripting__cybersecurity_technique.html">Cross-Site Scripting</a> and
+<a href="20260206T060728--sql-injection__cybersecurity_technique.html">SQL Injection</a> payloads specifically)
+can slip past a signature written for the literal/common form</li>
+<li><b>Timing:</b> Slow, low-and-slow attacks can fall below anomaly-based
+thresholds tuned for burst detection</li>
+<li><b>Encrypted channels:</b> An IPS inspecting unencrypted traffic is
+blind to anything over TLS unless it's doing TLS
+inspection/termination — worth checking whether that's in place
+before assuming HTTPS traffic is being inspected at all</li>
+</ul>
+
+<p>
+None of this is a substitute for testing — always confirm whether
+evasion actually worked by checking if the payload had its intended
+effect, not just whether the IPS failed to alert.
+</p>
+</div>
+</div>
+<div id="outline-container-org2938c11" class="outline-2">
+<h2 id="org2938c11">Use Cases</h2>
+<div class="outline-text-2" id="text-org2938c11">
 <ul class="org-ul">
 <li>Protecting against known and emerging threats</li>
-<li>Preventing <a href="Data Breach.html#data-breach">Data Breach</a>es and</li>
+<li>Preventing <a href="20260206T060457--data-breach__concept_cybersecurity.html">data breaches</a></li>
 <li>Enhancing overall network security posture</li>
-<li>Improving <a href="Incident Response.html#incident-response">Incident Response</a> capabilities</li>
-<li>Meeting <a href="Compliance.html#compliance">Compliance</a> requirements</li>
+<li>Improving <a href="20260206T060659--incident-response__concept_cybersecurity.html">Incident Response</a> capabilities</li>
+<li>Meeting <a href="20260206T060444--compliance__concept_cybersecurity.html">Compliance</a> requirements</li>
 </ul>
 </div>
+</div>
+<div id="outline-container-org0b88d13" class="outline-2">
+<h2 id="org0b88d13">Tips</h2>
+<div class="outline-text-2" id="text-org0b88d13">
+<ul class="org-ul">
+<li>On an engagement, an IPS reset/blocking a connection can look
+identical to a network issue or a crashed service at first — if
+a working payload suddenly stops connecting, consider IPS
+interference before assuming the exploit itself broke</li>
+<li>If you have any visibility into the target's security stack
+(recon, job postings, exposed dashboards), knowing whether it's
+signature-based or anomaly-based changes your evasion approach —
+signature evasion is about payload variation, anomaly evasion is
+about timing and volume</li>
+<li>Fail-open vs fail-closed matters for availability testing
+specifically — an aggressive IPS is itself a potential DoS vector
+worth noting in a report if it can be tripped into blocking
+legitimate traffic</li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -918,6 +1083,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

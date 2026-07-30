@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ffuf</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2015907">Core Flags</a></li>
-<li><a href="#org247f42a">Filtering</a></li>
-<li><a href="#orge036ff6">Common Workflows</a>
+<li><a href="#orgeddf6f9">Core Flags</a></li>
+<li><a href="#org4eb5c8a">Filtering</a></li>
+<li><a href="#orgabdf0aa">Common Workflows</a>
 <ul>
-<li><a href="#orga60c9d8">Directory fuzzing</a></li>
-<li><a href="#org6ebe574">Virtual host / subdomain fuzzing</a></li>
-<li><a href="#org0bce560">GET parameter name discovery</a></li>
-<li><a href="#org63a16bf">GET parameter value fuzzing</a></li>
-<li><a href="#org3e0f0b9">POST body fuzzing</a></li>
+<li><a href="#org00b68c5">Directory fuzzing</a></li>
+<li><a href="#orgf7ccf2b">Virtual host / subdomain fuzzing</a></li>
+<li><a href="#org062dc42">GET parameter name discovery</a></li>
+<li><a href="#org4bd533f">GET parameter value fuzzing</a></li>
+<li><a href="#org39093cb">POST body fuzzing</a></li>
 </ul>
 </li>
-<li><a href="#org513b73c">Tips</a></li>
+<li><a href="#org38c7e85">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -898,9 +916,9 @@ Related: <a href="20260206T060456--content-discovery__concept_cybersecurity_tech
          <a href="20260611T064645--feroxbuster__cybersecurity_tool.html">Feroxbuster</a>
          <a href="20260611T064753--web-application-testing-methodology__cybersecurity_pentesting_technique.html">Web Application Testing Methodology</a>
 </p>
-<div id="outline-container-org2015907" class="outline-2">
-<h2 id="org2015907">Core Flags</h2>
-<div class="outline-text-2" id="text-org2015907">
+<div id="outline-container-orgeddf6f9" class="outline-2">
+<h2 id="orgeddf6f9">Core Flags</h2>
+<div class="outline-text-2" id="text-orgeddf6f9">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -974,9 +992,9 @@ Related: <a href="20260206T060456--content-discovery__concept_cybersecurity_tech
 </table>
 </div>
 </div>
-<div id="outline-container-org247f42a" class="outline-2">
-<h2 id="org247f42a">Filtering</h2>
-<div class="outline-text-2" id="text-org247f42a">
+<div id="outline-container-org4eb5c8a" class="outline-2">
+<h2 id="org4eb5c8a">Filtering</h2>
+<div class="outline-text-2" id="text-org4eb5c8a">
 <p>
 Always establish a baseline response first — run once unfiltered,
 identify the noise pattern, then re-run with filters applied.
@@ -1030,19 +1048,19 @@ identify the noise pattern, then re-run with filters applied.
 </table>
 </div>
 </div>
-<div id="outline-container-orge036ff6" class="outline-2">
-<h2 id="orge036ff6">Common Workflows</h2>
-<div class="outline-text-2" id="text-orge036ff6">
+<div id="outline-container-orgabdf0aa" class="outline-2">
+<h2 id="orgabdf0aa">Common Workflows</h2>
+<div class="outline-text-2" id="text-orgabdf0aa">
 </div>
-<div id="outline-container-orga60c9d8" class="outline-3">
-<h3 id="orga60c9d8">Directory fuzzing</h3>
-<div class="outline-text-3" id="text-orga60c9d8">
+<div id="outline-container-org00b68c5" class="outline-3">
+<h3 id="org00b68c5">Directory fuzzing</h3>
+<div class="outline-text-3" id="text-org00b68c5">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3b6f7595774a4a6f90f06bfd953486b6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0d0d8fb8470345159ec1a7eefb509c00>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3b6f7595774a4a6f90f06bfd953486b6=document.querySelector('button[name=btn_3b6f7595774a4a6f90f06bfd953486b6]');
-copyBtnbtn_3b6f7595774a4a6f90f06bfd953486b6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ffuf -u http://$IP/FUZZ \\\n     -w /usr/share/seclists/Discovery/Web-Content/common.txt \\\n     -fc 404 -fs 1234\n`);copyBtnbtn_3b6f7595774a4a6f90f06bfd953486b6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3b6f7595774a4a6f90f06bfd953486b6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0d0d8fb8470345159ec1a7eefb509c00=document.querySelector('button[name=btn_0d0d8fb8470345159ec1a7eefb509c00]');
+copyBtnbtn_0d0d8fb8470345159ec1a7eefb509c00.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ffuf -u http://$IP/FUZZ \\\n     -w /usr/share/seclists/Discovery/Web-Content/common.txt \\\n     -fc 404 -fs 1234\n`);copyBtnbtn_0d0d8fb8470345159ec1a7eefb509c00.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0d0d8fb8470345159ec1a7eefb509c00.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1056,11 +1074,11 @@ let res = copyTextToClipboard(`ffuf -u http://$IP/FUZZ \\\n     -w /usr/share/se
 With extension appending:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c0b34009d5fa439ca07ed78f041a44ed>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b32f42520b664f65a56ea00ffeba521a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c0b34009d5fa439ca07ed78f041a44ed=document.querySelector('button[name=btn_c0b34009d5fa439ca07ed78f041a44ed]');
-copyBtnbtn_c0b34009d5fa439ca07ed78f041a44ed.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ffuf -u http://$IP/FUZZ \\\n     -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt \\\n     -e .php,.html,.txt -fc 404\n`);copyBtnbtn_c0b34009d5fa439ca07ed78f041a44ed.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c0b34009d5fa439ca07ed78f041a44ed.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b32f42520b664f65a56ea00ffeba521a=document.querySelector('button[name=btn_b32f42520b664f65a56ea00ffeba521a]');
+copyBtnbtn_b32f42520b664f65a56ea00ffeba521a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ffuf -u http://$IP/FUZZ \\\n     -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt \\\n     -e .php,.html,.txt -fc 404\n`);copyBtnbtn_b32f42520b664f65a56ea00ffeba521a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b32f42520b664f65a56ea00ffeba521a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1071,20 +1089,20 @@ let res = copyTextToClipboard(`ffuf -u http://$IP/FUZZ \\\n     -w /usr/share/se
 </div></div>
 </div>
 </div>
-<div id="outline-container-org6ebe574" class="outline-3">
-<h3 id="org6ebe574">Virtual host / subdomain fuzzing</h3>
-<div class="outline-text-3" id="text-org6ebe574">
+<div id="outline-container-orgf7ccf2b" class="outline-3">
+<h3 id="orgf7ccf2b">Virtual host / subdomain fuzzing</h3>
+<div class="outline-text-3" id="text-orgf7ccf2b">
 <p>
 Place <code>FUZZ</code> in the Host header. Establish the fallback response
 size first, then filter it out with <code>-fs</code>.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0486143ff83e42259e6c9679d1014aff>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_dd3259ad00214e3bab87d9c54876e0e2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0486143ff83e42259e6c9679d1014aff=document.querySelector('button[name=btn_0486143ff83e42259e6c9679d1014aff]');
-copyBtnbtn_0486143ff83e42259e6c9679d1014aff.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Establish baseline size\nffuf -u http://$IP -H \"Host: test.example.com\" \\\n     -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt\n\n# Re-run filtering baseline\nffuf -u http://$IP -H \"Host: FUZZ.example.com\" \\\n     -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \\\n     -fs <baseline_size>\n`);copyBtnbtn_0486143ff83e42259e6c9679d1014aff.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0486143ff83e42259e6c9679d1014aff.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_dd3259ad00214e3bab87d9c54876e0e2=document.querySelector('button[name=btn_dd3259ad00214e3bab87d9c54876e0e2]');
+copyBtnbtn_dd3259ad00214e3bab87d9c54876e0e2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Establish baseline size\nffuf -u http://$IP -H \"Host: test.example.com\" \\\n     -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt\n\n# Re-run filtering baseline\nffuf -u http://$IP -H \"Host: FUZZ.example.com\" \\\n     -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \\\n     -fs <baseline_size>\n`);copyBtnbtn_dd3259ad00214e3bab87d9c54876e0e2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dd3259ad00214e3bab87d9c54876e0e2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1100,15 +1118,15 @@ let res = copyTextToClipboard(`# Establish baseline size\nffuf -u http://$IP -H 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org0bce560" class="outline-3">
-<h3 id="org0bce560">GET parameter name discovery</h3>
-<div class="outline-text-3" id="text-org0bce560">
+<div id="outline-container-org062dc42" class="outline-3">
+<h3 id="org062dc42">GET parameter name discovery</h3>
+<div class="outline-text-3" id="text-org062dc42">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_22b2d152d1fb4175b4b5f7dc0ba9f0b8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a0f617ae6067461cacdedc13eb85ae82>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_22b2d152d1fb4175b4b5f7dc0ba9f0b8=document.querySelector('button[name=btn_22b2d152d1fb4175b4b5f7dc0ba9f0b8]');
-copyBtnbtn_22b2d152d1fb4175b4b5f7dc0ba9f0b8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ffuf -u \"http://$IP/page?FUZZ=test\" \\\n     -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt \\\n     -fs 1234\n`);copyBtnbtn_22b2d152d1fb4175b4b5f7dc0ba9f0b8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_22b2d152d1fb4175b4b5f7dc0ba9f0b8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a0f617ae6067461cacdedc13eb85ae82=document.querySelector('button[name=btn_a0f617ae6067461cacdedc13eb85ae82]');
+copyBtnbtn_a0f617ae6067461cacdedc13eb85ae82.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ffuf -u \"http://$IP/page?FUZZ=test\" \\\n     -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt \\\n     -fs 1234\n`);copyBtnbtn_a0f617ae6067461cacdedc13eb85ae82.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a0f617ae6067461cacdedc13eb85ae82.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1119,15 +1137,15 @@ let res = copyTextToClipboard(`ffuf -u \"http://$IP/page?FUZZ=test\" \\\n     -w
 </div></div>
 </div>
 </div>
-<div id="outline-container-org63a16bf" class="outline-3">
-<h3 id="org63a16bf">GET parameter value fuzzing</h3>
-<div class="outline-text-3" id="text-org63a16bf">
+<div id="outline-container-org4bd533f" class="outline-3">
+<h3 id="org4bd533f">GET parameter value fuzzing</h3>
+<div class="outline-text-3" id="text-org4bd533f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_920e6cebb50e4952af5c4146f723a73f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_79d7cbf9e45e4ef89c671523b350de2b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_920e6cebb50e4952af5c4146f723a73f=document.querySelector('button[name=btn_920e6cebb50e4952af5c4146f723a73f]');
-copyBtnbtn_920e6cebb50e4952af5c4146f723a73f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ffuf -u \"http://$IP/page?id=FUZZ\" \\\n     -w /usr/share/seclists/Fuzzing/integers.txt \\\n     -mc 200\n`);copyBtnbtn_920e6cebb50e4952af5c4146f723a73f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_920e6cebb50e4952af5c4146f723a73f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_79d7cbf9e45e4ef89c671523b350de2b=document.querySelector('button[name=btn_79d7cbf9e45e4ef89c671523b350de2b]');
+copyBtnbtn_79d7cbf9e45e4ef89c671523b350de2b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ffuf -u \"http://$IP/page?id=FUZZ\" \\\n     -w /usr/share/seclists/Fuzzing/integers.txt \\\n     -mc 200\n`);copyBtnbtn_79d7cbf9e45e4ef89c671523b350de2b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_79d7cbf9e45e4ef89c671523b350de2b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1138,15 +1156,15 @@ let res = copyTextToClipboard(`ffuf -u \"http://$IP/page?id=FUZZ\" \\\n     -w /
 </div></div>
 </div>
 </div>
-<div id="outline-container-org3e0f0b9" class="outline-3">
-<h3 id="org3e0f0b9">POST body fuzzing</h3>
-<div class="outline-text-3" id="text-org3e0f0b9">
+<div id="outline-container-org39093cb" class="outline-3">
+<h3 id="org39093cb">POST body fuzzing</h3>
+<div class="outline-text-3" id="text-org39093cb">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7e2c032040e14cbda480abf8fd6e37cb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_74086c921d8d446c968be811e77b313e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7e2c032040e14cbda480abf8fd6e37cb=document.querySelector('button[name=btn_7e2c032040e14cbda480abf8fd6e37cb]');
-copyBtnbtn_7e2c032040e14cbda480abf8fd6e37cb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Form encoded\nffuf -u http://$IP/login -X POST \\\n     -d \"username=admin&password=FUZZ\" \\\n     -H \"Content-Type: application/x-www-form-urlencoded\" \\\n     -w /usr/share/seclists/Passwords/Common-Credentials/10k-most-common.txt \\\n     -fc 401\n\n# JSON body\nffuf -u http://$IP/api/login -X POST \\\n     -d '{\"username\":\"admin\",\"password\":\"FUZZ\"}' \\\n     -H \"Content-Type: application/json\" \\\n     -w /usr/share/seclists/Passwords/Common-Credentials/10k-most-common.txt \\\n     -fc 401\n`);copyBtnbtn_7e2c032040e14cbda480abf8fd6e37cb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7e2c032040e14cbda480abf8fd6e37cb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_74086c921d8d446c968be811e77b313e=document.querySelector('button[name=btn_74086c921d8d446c968be811e77b313e]');
+copyBtnbtn_74086c921d8d446c968be811e77b313e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Form encoded\nffuf -u http://$IP/login -X POST \\\n     -d \"username=admin&password=FUZZ\" \\\n     -H \"Content-Type: application/x-www-form-urlencoded\" \\\n     -w /usr/share/seclists/Passwords/Common-Credentials/10k-most-common.txt \\\n     -fc 401\n\n# JSON body\nffuf -u http://$IP/api/login -X POST \\\n     -d '{\"username\":\"admin\",\"password\":\"FUZZ\"}' \\\n     -H \"Content-Type: application/json\" \\\n     -w /usr/share/seclists/Passwords/Common-Credentials/10k-most-common.txt \\\n     -fc 401\n`);copyBtnbtn_74086c921d8d446c968be811e77b313e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_74086c921d8d446c968be811e77b313e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1168,9 +1186,9 @@ let res = copyTextToClipboard(`# Form encoded\nffuf -u http://$IP/login -X POST 
 </div>
 </div>
 </div>
-<div id="outline-container-org513b73c" class="outline-2">
-<h2 id="org513b73c">Tips</h2>
-<div class="outline-text-2" id="text-org513b73c">
+<div id="outline-container-org38c7e85" class="outline-2">
+<h2 id="org38c7e85">Tips</h2>
+<div class="outline-text-2" id="text-org38c7e85">
 <ul class="org-ul">
 <li>Always run unfiltered first — establish the noise baseline before
 applying <code>-fc</code> or <code>-fs</code>; unfiltered output is rarely actionable</li>
@@ -1188,6 +1206,20 @@ wordlist for parameter name discovery</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1195,6 +1227,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

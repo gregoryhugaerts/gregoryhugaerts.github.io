@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rust</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,65 +886,64 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd3c91e8">Rust</a>
+<li><a href="#org737a70c">Rust</a>
 <ul>
-<li><a href="#org3eecf8b">Overview</a></li>
-<li><a href="#orgf026e10">Core Concepts</a></li>
-<li><a href="#org9a6bbaf">Rust Type system|Rust's Type System</a></li>
-<li><a href="#org107212f">Key Advantages</a></li>
-<li><a href="#orga630329">Disadvantages</a></li>
-<li><a href="#org4c138ae">Use Cases</a></li>
-<li><a href="#orgc795761">Waypoints</a></li>
+<li><a href="#orgcf90d05">Overview</a></li>
+<li><a href="#org42e9ed4">Core Concepts</a></li>
+<li><a href="#org1b6b10d">Rust Type system|Rust's Type System</a></li>
+<li><a href="#orgb469a7c">Key Advantages</a></li>
+<li><a href="#org8e12339">Disadvantages</a></li>
+<li><a href="#org30b6479">Use Cases</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd3c91e8" class="outline-2">
-<h2 id="orgd3c91e8">Rust</h2>
-<div class="outline-text-2" id="text-orgd3c91e8">
+<div id="outline-container-org737a70c" class="outline-2">
+<h2 id="org737a70c">Rust</h2>
+<div class="outline-text-2" id="text-org737a70c">
 </div>
-<div id="outline-container-org3eecf8b" class="outline-3">
-<h3 id="org3eecf8b">Overview</h3>
-<div class="outline-text-3" id="text-org3eecf8b">
+<div id="outline-container-orgcf90d05" class="outline-3">
+<h3 id="orgcf90d05">Overview</h3>
+<div class="outline-text-3" id="text-orgcf90d05">
 <p>
 Rust is a modern, multi-paradigm system programming language developed by Mozilla, primarily focused on <b>performance, memory safety, and Concurrency</b>. It aims to provide the low-level control and speed of C/C++ while eliminating common pitfalls like null pointer dereferences, buffer overflows, and data races, without relying on a garbage collector.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf026e10" class="outline-3">
-<h3 id="orgf026e10">Core Concepts</h3>
-<div class="outline-text-3" id="text-orgf026e10">
+<div id="outline-container-org42e9ed4" class="outline-3">
+<h3 id="org42e9ed4">Core Concepts</h3>
+<div class="outline-text-3" id="text-org42e9ed4">
 <ul class="org-ul">
-<li><b><a href="Ownership in Rust.html#ownership-in-rust">Ownership in Rust</a>:</b> Every value in Rust has a variable that is its "owner." When the owner goes out of scope, the memory for the value is automatically deallocated. There can only be one owner at a time.</li>
+<li><b><a href="20260206T060622--ownership-in-rust__concept_programming_rust.html">Ownership in Rust</a>:</b> Every value in Rust has a variable that is its "owner." When the owner goes out of scope, the memory for the value is automatically deallocated. There can only be one owner at a time.</li>
 <li><b>Borrowing:</b> Instead of transferring ownership, you can create "references" to a value, allowing temporary access without taking ownership.
 <ul class="org-ul">
 <li><b>Immutable References (<code>&amp;</code>):</b> Multiple immutable references to a value are allowed.</li>
 <li><b>Mutable References (<code>&amp;mut</code>):</b> Only one mutable reference to a value is allowed at a time. This rule, enforced by the "borrow checker" at compile time, prevents data races.</li>
 </ul></li>
-<li><b><a href="Lifetimes in Rust.html#lifetimes-in-rust">Lifetimes in Rust</a>:</b> Ensure that references remain valid for as long as they are needed, preventing "dangling references" (references pointing to freed memory). Explicit lifetime annotations are sometimes required by the compiler.</li>
+<li><a href="20260314T005649--lifetimes-in-rust__concept_programming_rust.html">Lifetimes in Rust</a>: Ensure that references remain valid for as long as they are needed, preventing "dangling references" (references pointing to freed memory). Explicit lifetime annotations are sometimes required by the compiler.</li>
 <li><b>Zero-Cost Abstractions:</b> Rust's high-level features (like iterators, traits, smart pointers) compile down to efficient machine code, incurring minimal or no runtime overhead.</li>
-<li><b><a href="Traits in Rust.html#traits-in-rust">Traits in Rust</a>:</b> Similar to interfaces or abstract classes in other languages, traits define shared behavior that types can implement. They are central to Rust's polymorphism and generic Programming.</li>
+<li><b><a href="20260206T060644--traits-in-rust__concept_programming_rust.html">Traits in Rust</a>:</b> Similar to interfaces or abstract classes in other languages, traits define shared behavior that types can implement. They are central to Rust's polymorphism and generic Programming.</li>
 <li><b>Cargo:</b> Rust's built-in package manager and build system. It simplifies dependency management, compilation, testing, and documentation generation, providing a unified developer experience.</li>
 <li><b>Crates.io:</b> The central package registry for Rust, hosting a vast collection of open-source libraries (crates).</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9a6bbaf" class="outline-3">
-<h3 id="org9a6bbaf">Rust Type system|Rust's Type System</h3>
-<div class="outline-text-3" id="text-org9a6bbaf">
+<div id="outline-container-org1b6b10d" class="outline-3">
+<h3 id="org1b6b10d">Rust Type system|Rust's Type System</h3>
+<div class="outline-text-3" id="text-org1b6b10d">
 <p>
 Rust has a strong, static Type System that is central to its guarantees of memory safety and performance. Every value has a type that is known at compile time, which eliminates a whole class of runtime errors. However, Rust also features powerful type inference, allowing the compiler to automatically deduce types in many situations, so you don't always have to write them out explicitly.
 </p>
 </div>
 </div>
-<div id="outline-container-org107212f" class="outline-3">
-<h3 id="org107212f">Key Advantages</h3>
-<div class="outline-text-3" id="text-org107212f">
+<div id="outline-container-orgb469a7c" class="outline-3">
+<h3 id="orgb469a7c">Key Advantages</h3>
+<div class="outline-text-3" id="text-orgb469a7c">
 <ul class="org-ul">
 <li><b>Memory Safety (Without GC):</b> Rust's ownership and borrowing system, enforced at compile time by the borrow checker, prevents entire classes of memory-related bugs (e.g., use-after-free, double-free, null pointer dereferences) without the performance overhead of a garbage collector.</li>
 <li><b>Performance:</b> Offers performance comparable to C/C++ due to its low-level control, efficient memory management, and zero-cost abstractions.</li>
-<li><b><a href="Fearless concurrency in rust.html#fearless-concurrency-in-rust">Fearless Concurrency in Rust</a>:</b> The ownership system extends to Concurrency, ensuring thread safety at compile time and preventing data races. This makes writing safe, concurrent code much easier.</li>
+<li><b><a href="20260206T060605--fearless-concurrency-in-rust__concept_programming_rust.html">Fearless concurrency in rust</a>:</b> The ownership system extends to Concurrency, ensuring thread safety at compile time and preventing data races. This makes writing safe, concurrent code much easier.</li>
 <li><b>Reliability &amp; Robustness:</b> The strict compile-time checks catch many errors early in development, leading to more stable and reliable applications.</li>
 <li><b>Unified Tooling (Cargo):</b> Provides a consistent and streamlined development experience for building, testing, and managing projects.</li>
 <li><b>Growing Ecosystem &amp; Community:</b> A vibrant and welcoming community, with a rapidly expanding collection of high-quality libraries.</li>
@@ -934,9 +951,9 @@ Rust has a strong, static Type System that is central to its guarantees of memor
 </ul>
 </div>
 </div>
-<div id="outline-container-orga630329" class="outline-3">
-<h3 id="orga630329">Disadvantages</h3>
-<div class="outline-text-3" id="text-orga630329">
+<div id="outline-container-org8e12339" class="outline-3">
+<h3 id="org8e12339">Disadvantages</h3>
+<div class="outline-text-3" id="text-org8e12339">
 <ul class="org-ul">
 <li><b>Steep Learning Curve:</b> Rust's unique ownership and borrowing concepts can be challenging for developers accustomed to other languages, leading to a significant initial learning investment.</li>
 <li><b>Compilation Time:</b> For larger projects, Rust's rigorous compile-time checks can result in longer compilation times compared to some other languages.</li>
@@ -945,9 +962,9 @@ Rust has a strong, static Type System that is central to its guarantees of memor
 </ul>
 </div>
 </div>
-<div id="outline-container-org4c138ae" class="outline-3">
-<h3 id="org4c138ae">Use Cases</h3>
-<div class="outline-text-3" id="text-org4c138ae">
+<div id="outline-container-org30b6479" class="outline-3">
+<h3 id="org30b6479">Use Cases</h3>
+<div class="outline-text-3" id="text-org30b6479">
 <p>
 Rust is increasingly adopted in areas where performance, safety, and reliability are critical:
 </p>
@@ -963,41 +980,23 @@ Rust is increasingly adopted in areas where performance, safety, and reliability
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc795761" class="outline-3">
-<h3 id="orgc795761">Waypoints</h3>
-<div class="outline-text-3" id="text-orgc795761">
-<p>
-%% Begin Waypoint %%
-</p>
-
-<ul class="org-ul">
-<li><b>Concepts</b>
-<ul class="org-ul">
-<li><a href="Closures in Rust.html#closures-in-rust">Closures in Rust</a></li>
-<li><a href="Enums in Rust.html#enums-in-rust">Enums in Rust</a></li>
-<li><a href="Fearless concurrency in rust.html#fearless-concurrency-in-rust">Fearless Concurrency in Rust</a></li>
-<li><a href="Iterators in Rust.html#iterators-in-rust">Iterators in Rust</a></li>
-<li><a href="Lifetimes in Rust.html#lifetimes-in-rust">Lifetimes in Rust</a></li>
-<li><a href="Ownership in Rust.html#ownership-in-rust">Ownership in Rust</a></li>
-<li><a href="Rust type system.html#rust-type-system">Rust Type System</a></li>
-<li><a href="Smart Pointers in Rust.html#smart-pointers-in-rust">Smart Pointers in Rust</a></li>
-<li><a href="Structs in Rust.html#structs-in-rust">Structs in Rust</a></li>
-<li><a href="Traits in Rust.html#traits-in-rust">Traits in Rust</a></li>
-</ul></li>
-<li><b>Libraries</b>
-<ul class="org-ul">
-<li><a href="Serde.html#serde">Serde</a></li>
-</ul></li>
-</ul>
-
-<p>
-%% End Waypoint %%
-</p>
-</div>
-</div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1005,6 +1004,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

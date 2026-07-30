@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>hydra</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb3808c0">Core Flags</a></li>
-<li><a href="#org6f54ec6">Common Workflows</a>
+<li><a href="#orga84e71d">Core Flags</a></li>
+<li><a href="#orgd9d8dee">Common Workflows</a>
 <ul>
-<li><a href="#orgdeaf135">SSH</a></li>
-<li><a href="#org9e84634">FTP</a></li>
-<li><a href="#org957ef92">RDP</a></li>
-<li><a href="#org64a0571">SMB</a></li>
-<li><a href="#org0acbf75">HTTP POST Form</a></li>
-<li><a href="#org36bdd9e">HTTP Basic Auth</a></li>
-<li><a href="#orgaf5e3c6">MySQL / PostgreSQL</a></li>
+<li><a href="#orga9568e9">SSH</a></li>
+<li><a href="#org4326935">FTP</a></li>
+<li><a href="#org141b1f8">RDP</a></li>
+<li><a href="#org6d4f2d4">SMB</a></li>
+<li><a href="#orgcf29c0e">HTTP POST Form</a></li>
+<li><a href="#orga298061">HTTP Basic Auth</a></li>
+<li><a href="#org1b9d6a7">MySQL / PostgreSQL</a></li>
 </ul>
 </li>
-<li><a href="#org52d8659">Tips</a></li>
+<li><a href="#orgbdfc80d">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -897,9 +915,9 @@ Related: <a href="20260611T064004--password-cracking-methodology__cybersecurity_
          <a href="20260314T005729--hashcat__cybersecurity_tool.html">Hashcat</a>
          <a href="20260611T064753--web-application-testing-methodology__cybersecurity_pentesting_technique.html">Web Application Testing Methodology</a>
 </p>
-<div id="outline-container-orgb3808c0" class="outline-2">
-<h2 id="orgb3808c0">Core Flags</h2>
-<div class="outline-text-2" id="text-orgb3808c0">
+<div id="outline-container-orga84e71d" class="outline-2">
+<h2 id="orga84e71d">Core Flags</h2>
+<div class="outline-text-2" id="text-orga84e71d">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -963,19 +981,19 @@ Related: <a href="20260611T064004--password-cracking-methodology__cybersecurity_
 </table>
 </div>
 </div>
-<div id="outline-container-org6f54ec6" class="outline-2">
-<h2 id="org6f54ec6">Common Workflows</h2>
-<div class="outline-text-2" id="text-org6f54ec6">
+<div id="outline-container-orgd9d8dee" class="outline-2">
+<h2 id="orgd9d8dee">Common Workflows</h2>
+<div class="outline-text-2" id="text-orgd9d8dee">
 </div>
-<div id="outline-container-orgdeaf135" class="outline-3">
-<h3 id="orgdeaf135">SSH</h3>
-<div class="outline-text-3" id="text-orgdeaf135">
+<div id="outline-container-orga9568e9" class="outline-3">
+<h3 id="orga9568e9">SSH</h3>
+<div class="outline-text-3" id="text-orga9568e9">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_69b3fb6744d8476482dfcc8ff4842afa>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2c7ed838b9164076a526eb5b60ef9843>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_69b3fb6744d8476482dfcc8ff4842afa=document.querySelector('button[name=btn_69b3fb6744d8476482dfcc8ff4842afa]');
-copyBtnbtn_69b3fb6744d8476482dfcc8ff4842afa.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Known username\nhydra -l admin -P /usr/share/wordlists/rockyou.txt ssh://$IP\n\n# Username list\nhydra -L users.txt -P /usr/share/wordlists/rockyou.txt ssh://$IP -t 4\n\n# Custom port\nhydra -l admin -P /usr/share/wordlists/rockyou.txt -s 2222 ssh://$IP\n`);copyBtnbtn_69b3fb6744d8476482dfcc8ff4842afa.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_69b3fb6744d8476482dfcc8ff4842afa.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2c7ed838b9164076a526eb5b60ef9843=document.querySelector('button[name=btn_2c7ed838b9164076a526eb5b60ef9843]');
+copyBtnbtn_2c7ed838b9164076a526eb5b60ef9843.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Known username\nhydra -l admin -P /usr/share/wordlists/rockyou.txt ssh://$IP\n\n# Username list\nhydra -L users.txt -P /usr/share/wordlists/rockyou.txt ssh://$IP -t 4\n\n# Custom port\nhydra -l admin -P /usr/share/wordlists/rockyou.txt -s 2222 ssh://$IP\n`);copyBtnbtn_2c7ed838b9164076a526eb5b60ef9843.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2c7ed838b9164076a526eb5b60ef9843.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -991,15 +1009,15 @@ let res = copyTextToClipboard(`# Known username\nhydra -l admin -P /usr/share/wo
 </div></div>
 </div>
 </div>
-<div id="outline-container-org9e84634" class="outline-3">
-<h3 id="org9e84634">FTP</h3>
-<div class="outline-text-3" id="text-org9e84634">
+<div id="outline-container-org4326935" class="outline-3">
+<h3 id="org4326935">FTP</h3>
+<div class="outline-text-3" id="text-org4326935">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2741b3cc1d454a90aca28eef486131fd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_fbb1e29ec3814592a6bb516fed50567c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2741b3cc1d454a90aca28eef486131fd=document.querySelector('button[name=btn_2741b3cc1d454a90aca28eef486131fd]');
-copyBtnbtn_2741b3cc1d454a90aca28eef486131fd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`hydra -l admin -P /usr/share/wordlists/rockyou.txt ftp://$IP\n`);copyBtnbtn_2741b3cc1d454a90aca28eef486131fd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2741b3cc1d454a90aca28eef486131fd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_fbb1e29ec3814592a6bb516fed50567c=document.querySelector('button[name=btn_fbb1e29ec3814592a6bb516fed50567c]');
+copyBtnbtn_fbb1e29ec3814592a6bb516fed50567c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`hydra -l admin -P /usr/share/wordlists/rockyou.txt ftp://$IP\n`);copyBtnbtn_fbb1e29ec3814592a6bb516fed50567c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fbb1e29ec3814592a6bb516fed50567c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1008,15 +1026,15 @@ let res = copyTextToClipboard(`hydra -l admin -P /usr/share/wordlists/rockyou.tx
 </div></div>
 </div>
 </div>
-<div id="outline-container-org957ef92" class="outline-3">
-<h3 id="org957ef92">RDP</h3>
-<div class="outline-text-3" id="text-org957ef92">
+<div id="outline-container-org141b1f8" class="outline-3">
+<h3 id="org141b1f8">RDP</h3>
+<div class="outline-text-3" id="text-org141b1f8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_18339c6664fa413f9d53d0f0bd786d6a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_82a8325b635d4d7cacef6a8b37cb9875>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_18339c6664fa413f9d53d0f0bd786d6a=document.querySelector('button[name=btn_18339c6664fa413f9d53d0f0bd786d6a]');
-copyBtnbtn_18339c6664fa413f9d53d0f0bd786d6a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`hydra -l administrator -P /usr/share/wordlists/rockyou.txt rdp://$IP -t 4\n`);copyBtnbtn_18339c6664fa413f9d53d0f0bd786d6a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_18339c6664fa413f9d53d0f0bd786d6a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_82a8325b635d4d7cacef6a8b37cb9875=document.querySelector('button[name=btn_82a8325b635d4d7cacef6a8b37cb9875]');
+copyBtnbtn_82a8325b635d4d7cacef6a8b37cb9875.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`hydra -l administrator -P /usr/share/wordlists/rockyou.txt rdp://$IP -t 4\n`);copyBtnbtn_82a8325b635d4d7cacef6a8b37cb9875.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_82a8325b635d4d7cacef6a8b37cb9875.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1025,15 +1043,15 @@ let res = copyTextToClipboard(`hydra -l administrator -P /usr/share/wordlists/ro
 </div></div>
 </div>
 </div>
-<div id="outline-container-org64a0571" class="outline-3">
-<h3 id="org64a0571">SMB</h3>
-<div class="outline-text-3" id="text-org64a0571">
+<div id="outline-container-org6d4f2d4" class="outline-3">
+<h3 id="org6d4f2d4">SMB</h3>
+<div class="outline-text-3" id="text-org6d4f2d4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3c6478888d774801a4eb0f0068ba84fd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_72ba985ad01f406c9a59cbf176a366d5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3c6478888d774801a4eb0f0068ba84fd=document.querySelector('button[name=btn_3c6478888d774801a4eb0f0068ba84fd]');
-copyBtnbtn_3c6478888d774801a4eb0f0068ba84fd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`hydra -l administrator -P /usr/share/wordlists/rockyou.txt smb://$IP\n`);copyBtnbtn_3c6478888d774801a4eb0f0068ba84fd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3c6478888d774801a4eb0f0068ba84fd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_72ba985ad01f406c9a59cbf176a366d5=document.querySelector('button[name=btn_72ba985ad01f406c9a59cbf176a366d5]');
+copyBtnbtn_72ba985ad01f406c9a59cbf176a366d5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`hydra -l administrator -P /usr/share/wordlists/rockyou.txt smb://$IP\n`);copyBtnbtn_72ba985ad01f406c9a59cbf176a366d5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_72ba985ad01f406c9a59cbf176a366d5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1042,20 +1060,20 @@ let res = copyTextToClipboard(`hydra -l administrator -P /usr/share/wordlists/ro
 </div></div>
 </div>
 </div>
-<div id="outline-container-org0acbf75" class="outline-3">
-<h3 id="org0acbf75">HTTP POST Form</h3>
-<div class="outline-text-3" id="text-org0acbf75">
+<div id="outline-container-orgcf29c0e" class="outline-3">
+<h3 id="orgcf29c0e">HTTP POST Form</h3>
+<div class="outline-text-3" id="text-orgcf29c0e">
 <p>
 Requires three components: URL path, POST parameters with
 <code>^USER^</code> and <code>^PASS^</code> placeholders, and failure string.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7df079161a504297956ab3b651532b52>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d6e89244ce2744c3835a6ea2ea920e4b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7df079161a504297956ab3b651532b52=document.querySelector('button[name=btn_7df079161a504297956ab3b651532b52]');
-copyBtnbtn_7df079161a504297956ab3b651532b52.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Basic form\nhydra -l admin -P /usr/share/wordlists/rockyou.txt \\\n  $IP http-post-form \"/login:username=^USER^&password=^PASS^:Invalid credentials\"\n\n# With cookie (authenticated area)\nhydra -l admin -P /usr/share/wordlists/rockyou.txt \\\n  $IP http-post-form \\\n  \"/login:username=^USER^&password=^PASS^:Invalid:H=Cookie: session=abc123\"\n\n# HTTPS\nhydra -l admin -P /usr/share/wordlists/rockyou.txt \\\n  $IP https-post-form \"/login:username=^USER^&password=^PASS^:Invalid\"\n`);copyBtnbtn_7df079161a504297956ab3b651532b52.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7df079161a504297956ab3b651532b52.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d6e89244ce2744c3835a6ea2ea920e4b=document.querySelector('button[name=btn_d6e89244ce2744c3835a6ea2ea920e4b]');
+copyBtnbtn_d6e89244ce2744c3835a6ea2ea920e4b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Basic form\nhydra -l admin -P /usr/share/wordlists/rockyou.txt \\\n  $IP http-post-form \"/login:username=^USER^&password=^PASS^:Invalid credentials\"\n\n# With cookie (authenticated area)\nhydra -l admin -P /usr/share/wordlists/rockyou.txt \\\n  $IP http-post-form \\\n  \"/login:username=^USER^&password=^PASS^:Invalid:H=Cookie: session=abc123\"\n\n# HTTPS\nhydra -l admin -P /usr/share/wordlists/rockyou.txt \\\n  $IP https-post-form \"/login:username=^USER^&password=^PASS^:Invalid\"\n`);copyBtnbtn_d6e89244ce2744c3835a6ea2ea920e4b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d6e89244ce2744c3835a6ea2ea920e4b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1075,15 +1093,15 @@ let res = copyTextToClipboard(`# Basic form\nhydra -l admin -P /usr/share/wordli
 </div></div>
 </div>
 </div>
-<div id="outline-container-org36bdd9e" class="outline-3">
-<h3 id="org36bdd9e">HTTP Basic Auth</h3>
-<div class="outline-text-3" id="text-org36bdd9e">
+<div id="outline-container-orga298061" class="outline-3">
+<h3 id="orga298061">HTTP Basic Auth</h3>
+<div class="outline-text-3" id="text-orga298061">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c3fd4784aeab4e43b3f8e3eb54ae417f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e2c083519c524a1eacd466c9d4b0817c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c3fd4784aeab4e43b3f8e3eb54ae417f=document.querySelector('button[name=btn_c3fd4784aeab4e43b3f8e3eb54ae417f]');
-copyBtnbtn_c3fd4784aeab4e43b3f8e3eb54ae417f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`hydra -l admin -P /usr/share/wordlists/rockyou.txt \\\n  http-get://$IP/protected-path\n`);copyBtnbtn_c3fd4784aeab4e43b3f8e3eb54ae417f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c3fd4784aeab4e43b3f8e3eb54ae417f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e2c083519c524a1eacd466c9d4b0817c=document.querySelector('button[name=btn_e2c083519c524a1eacd466c9d4b0817c]');
+copyBtnbtn_e2c083519c524a1eacd466c9d4b0817c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`hydra -l admin -P /usr/share/wordlists/rockyou.txt \\\n  http-get://$IP/protected-path\n`);copyBtnbtn_e2c083519c524a1eacd466c9d4b0817c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e2c083519c524a1eacd466c9d4b0817c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1093,15 +1111,15 @@ let res = copyTextToClipboard(`hydra -l admin -P /usr/share/wordlists/rockyou.tx
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgaf5e3c6" class="outline-3">
-<h3 id="orgaf5e3c6">MySQL / PostgreSQL</h3>
-<div class="outline-text-3" id="text-orgaf5e3c6">
+<div id="outline-container-org1b9d6a7" class="outline-3">
+<h3 id="org1b9d6a7">MySQL / PostgreSQL</h3>
+<div class="outline-text-3" id="text-org1b9d6a7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1e29ca61610b413f82b84395b232c905>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5f1dfd545074428db69109a1d17396d0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1e29ca61610b413f82b84395b232c905=document.querySelector('button[name=btn_1e29ca61610b413f82b84395b232c905]');
-copyBtnbtn_1e29ca61610b413f82b84395b232c905.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`hydra -l root -P /usr/share/wordlists/rockyou.txt mysql://$IP\nhydra -l postgres -P /usr/share/wordlists/rockyou.txt postgres://$IP\n`);copyBtnbtn_1e29ca61610b413f82b84395b232c905.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1e29ca61610b413f82b84395b232c905.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5f1dfd545074428db69109a1d17396d0=document.querySelector('button[name=btn_5f1dfd545074428db69109a1d17396d0]');
+copyBtnbtn_5f1dfd545074428db69109a1d17396d0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`hydra -l root -P /usr/share/wordlists/rockyou.txt mysql://$IP\nhydra -l postgres -P /usr/share/wordlists/rockyou.txt postgres://$IP\n`);copyBtnbtn_5f1dfd545074428db69109a1d17396d0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5f1dfd545074428db69109a1d17396d0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1112,9 +1130,9 @@ hydra -l postgres -P /usr/share/wordlists/rockyou.txt postgres://$<span style="c
 </div>
 </div>
 </div>
-<div id="outline-container-org52d8659" class="outline-2">
-<h2 id="org52d8659">Tips</h2>
-<div class="outline-text-2" id="text-org52d8659">
+<div id="outline-container-orgbdfc80d" class="outline-2">
+<h2 id="orgbdfc80d">Tips</h2>
+<div class="outline-text-2" id="text-orgbdfc80d">
 <ul class="org-ul">
 <li>Use <code>-f</code> to stop on first hit — avoids locking accounts</li>
 <li>Reduce <code>-t</code> for SSH and RDP — too many parallel connections
@@ -1130,6 +1148,20 @@ correctly before running large wordlists</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1137,6 +1169,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

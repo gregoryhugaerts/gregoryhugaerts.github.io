@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Burp Suite</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0a39a9f">Setup</a></li>
-<li><a href="#orge8248a7">Core Tools</a>
+<li><a href="#org6464e4e">Setup</a></li>
+<li><a href="#orge402651">Core Tools</a>
 <ul>
-<li><a href="#org2f61a9f">Proxy</a></li>
-<li><a href="#orgccb1c80">Repeater</a></li>
-<li><a href="#orgbecaae2">Intruder</a></li>
-<li><a href="#org92541f3">Decoder</a></li>
-<li><a href="#orgb29cb61">Comparer</a></li>
+<li><a href="#org1e68898">Proxy</a></li>
+<li><a href="#org87f32b7">Repeater</a></li>
+<li><a href="#org5c0cd86">Intruder</a></li>
+<li><a href="#org88e1e5f">Decoder</a></li>
+<li><a href="#org4a882b9">Comparer</a></li>
 </ul>
 </li>
-<li><a href="#org05cb13f">Useful Extensions (BApp Store)</a></li>
-<li><a href="#org9b71267">Key Shortcuts</a></li>
-<li><a href="#org787aa12">Tips</a></li>
+<li><a href="#orgf2cc89e">Useful Extensions (BApp Store)</a></li>
+<li><a href="#org2f9e46a">Key Shortcuts</a></li>
+<li><a href="#orgf4204c5">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -897,15 +915,15 @@ Related: <a href="20260611T064753--web-application-testing-methodology__cybersec
          <a href="20260326T201939--ffuf__cybersecurity_tool.html">ffuf</a>
          <a href="20260408T060128==jwt--json-web-tokens__concept_cybersecurity.html">JSON Web Tokens</a>
 </p>
-<div id="outline-container-org0a39a9f" class="outline-2">
-<h2 id="org0a39a9f">Setup</h2>
-<div class="outline-text-2" id="text-org0a39a9f">
+<div id="outline-container-org6464e4e" class="outline-2">
+<h2 id="org6464e4e">Setup</h2>
+<div class="outline-text-2" id="text-org6464e4e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d502b8c756304a31b81fb4a81f8aa48f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8a4b0f0b64d14c15bc575d85cf805086>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d502b8c756304a31b81fb4a81f8aa48f=document.querySelector('button[name=btn_d502b8c756304a31b81fb4a81f8aa48f]');
-copyBtnbtn_d502b8c756304a31b81fb4a81f8aa48f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Start Burp → Proxy → Options → confirm listener on 127.0.0.1:8080\n\n# Browser — configure proxy to 127.0.0.1:8080\n# Firefox: Settings → Network → Manual proxy → HTTP 127.0.0.1:8080\n\n# Install CA certificate (for HTTPS interception)\n# Browse to http://burpsuite → Download CA Certificate\n# Firefox: Settings → Certificates → Import → trust for websites\n\n# FoxyProxy extension — easiest proxy toggle in browser\n`);copyBtnbtn_d502b8c756304a31b81fb4a81f8aa48f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d502b8c756304a31b81fb4a81f8aa48f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8a4b0f0b64d14c15bc575d85cf805086=document.querySelector('button[name=btn_8a4b0f0b64d14c15bc575d85cf805086]');
+copyBtnbtn_8a4b0f0b64d14c15bc575d85cf805086.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Start Burp → Proxy → Options → confirm listener on 127.0.0.1:8080\n\n# Browser — configure proxy to 127.0.0.1:8080\n# Firefox: Settings → Network → Manual proxy → HTTP 127.0.0.1:8080\n\n# Install CA certificate (for HTTPS interception)\n# Browse to http://burpsuite → Download CA Certificate\n# Firefox: Settings → Certificates → Import → trust for websites\n\n# FoxyProxy extension — easiest proxy toggle in browser\n`);copyBtnbtn_8a4b0f0b64d14c15bc575d85cf805086.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8a4b0f0b64d14c15bc575d85cf805086.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -923,23 +941,23 @@ let res = copyTextToClipboard(`# Start Burp → Proxy → Options → confirm li
 </div></div>
 </div>
 </div>
-<div id="outline-container-orge8248a7" class="outline-2">
-<h2 id="orge8248a7">Core Tools</h2>
-<div class="outline-text-2" id="text-orge8248a7">
+<div id="outline-container-orge402651" class="outline-2">
+<h2 id="orge402651">Core Tools</h2>
+<div class="outline-text-2" id="text-orge402651">
 </div>
-<div id="outline-container-org2f61a9f" class="outline-3">
-<h3 id="org2f61a9f">Proxy</h3>
-<div class="outline-text-3" id="text-org2f61a9f">
+<div id="outline-container-org1e68898" class="outline-3">
+<h3 id="org1e68898">Proxy</h3>
+<div class="outline-text-3" id="text-org1e68898">
 <p>
 Intercepts all browser traffic. Forward, drop, or send to other tools.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c0c89acdfd4848c89a0fceb78f58cafb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_62a8acb53dc749a9bf94b245d1ce7be3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c0c89acdfd4848c89a0fceb78f58cafb=document.querySelector('button[name=btn_c0c89acdfd4848c89a0fceb78f58cafb]');
-copyBtnbtn_c0c89acdfd4848c89a0fceb78f58cafb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Intercept on  → captures each request for manual review\nIntercept off → passes traffic through, still logged in HTTP History\nRight-click any request → Send to Repeater / Intruder / Scanner\n`);copyBtnbtn_c0c89acdfd4848c89a0fceb78f58cafb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c0c89acdfd4848c89a0fceb78f58cafb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_62a8acb53dc749a9bf94b245d1ce7be3=document.querySelector('button[name=btn_62a8acb53dc749a9bf94b245d1ce7be3]');
+copyBtnbtn_62a8acb53dc749a9bf94b245d1ce7be3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Intercept on  → captures each request for manual review\nIntercept off → passes traffic through, still logged in HTTP History\nRight-click any request → Send to Repeater / Intruder / Scanner\n`);copyBtnbtn_62a8acb53dc749a9bf94b245d1ce7be3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_62a8acb53dc749a9bf94b245d1ce7be3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -950,20 +968,20 @@ Right-click any request &#8594; Send to Repeater / Intruder / Scanner
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgccb1c80" class="outline-3">
-<h3 id="orgccb1c80">Repeater</h3>
-<div class="outline-text-3" id="text-orgccb1c80">
+<div id="outline-container-org87f32b7" class="outline-3">
+<h3 id="org87f32b7">Repeater</h3>
+<div class="outline-text-3" id="text-org87f32b7">
 <p>
 Manually modify and replay individual requests. Primary tool for
 testing injection, authentication bypass, and parameter tampering.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ab7fca85bc654c8b9f1aec1daf1b5fce>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b2b4c6777c0742daa3ab05954ce20008>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ab7fca85bc654c8b9f1aec1daf1b5fce=document.querySelector('button[name=btn_ab7fca85bc654c8b9f1aec1daf1b5fce]');
-copyBtnbtn_ab7fca85bc654c8b9f1aec1daf1b5fce.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Ctrl+R          → send selected request to Repeater\nCtrl+Space      → send request (in Repeater)\nCtrl+Z          → undo modification\n`);copyBtnbtn_ab7fca85bc654c8b9f1aec1daf1b5fce.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ab7fca85bc654c8b9f1aec1daf1b5fce.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b2b4c6777c0742daa3ab05954ce20008=document.querySelector('button[name=btn_b2b4c6777c0742daa3ab05954ce20008]');
+copyBtnbtn_b2b4c6777c0742daa3ab05954ce20008.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Ctrl+R          → send selected request to Repeater\nCtrl+Space      → send request (in Repeater)\nCtrl+Z          → undo modification\n`);copyBtnbtn_b2b4c6777c0742daa3ab05954ce20008.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b2b4c6777c0742daa3ab05954ce20008.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -974,20 +992,20 @@ Ctrl+Z          &#8594; undo modification
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgbecaae2" class="outline-3">
-<h3 id="orgbecaae2">Intruder</h3>
-<div class="outline-text-3" id="text-orgbecaae2">
+<div id="outline-container-org5c0cd86" class="outline-3">
+<h3 id="org5c0cd86">Intruder</h3>
+<div class="outline-text-3" id="text-org5c0cd86">
 <p>
 Automated payload injection. Rate-limited in Community — use ffuf
 for speed, Intruder for precision.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_0b5ca45a505046649e0fec63ad59beb5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c3153195c8744e14ac5481f46e6595b0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0b5ca45a505046649e0fec63ad59beb5=document.querySelector('button[name=btn_0b5ca45a505046649e0fec63ad59beb5]');
-copyBtnbtn_0b5ca45a505046649e0fec63ad59beb5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Attack types:\n  Sniper       → single payload list, one position at a time\n  Battering Ram → same payload in all positions simultaneously\n  Pitchfork    → parallel payload lists, one per position\n  Cluster Bomb → all combinations across multiple lists\n\nMark positions with § delimiters — highlight text → Add §\nPayload sets → Simple list, load wordlist\nStart attack → filter by status code, length\n`);copyBtnbtn_0b5ca45a505046649e0fec63ad59beb5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0b5ca45a505046649e0fec63ad59beb5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c3153195c8744e14ac5481f46e6595b0=document.querySelector('button[name=btn_c3153195c8744e14ac5481f46e6595b0]');
+copyBtnbtn_c3153195c8744e14ac5481f46e6595b0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Attack types:\n  Sniper       → single payload list, one position at a time\n  Battering Ram → same payload in all positions simultaneously\n  Pitchfork    → parallel payload lists, one per position\n  Cluster Bomb → all combinations across multiple lists\n\nMark positions with § delimiters — highlight text → Add §\nPayload sets → Simple list, load wordlist\nStart attack → filter by status code, length\n`);copyBtnbtn_c3153195c8744e14ac5481f46e6595b0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c3153195c8744e14ac5481f46e6595b0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1004,19 +1022,19 @@ Start attack &#8594; filter by status code, length
 </div></div>
 </div>
 </div>
-<div id="outline-container-org92541f3" class="outline-3">
-<h3 id="org92541f3">Decoder</h3>
-<div class="outline-text-3" id="text-org92541f3">
+<div id="outline-container-org88e1e5f" class="outline-3">
+<h3 id="org88e1e5f">Decoder</h3>
+<div class="outline-text-3" id="text-org88e1e5f">
 <p>
 Encode / decode between URL, HTML, Base64, Hex, Gzip.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_faa7c75e0b5243b0ae75072c266a3a97>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d647132eb02a4f6e955e1d0f4c7afb8e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_faa7c75e0b5243b0ae75072c266a3a97=document.querySelector('button[name=btn_faa7c75e0b5243b0ae75072c266a3a97]');
-copyBtnbtn_faa7c75e0b5243b0ae75072c266a3a97.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Ctrl+Shift+D → open Decoder\nPaste value → select encoding → Encode/Decode\nSmart decode → attempts to auto-detect encoding\n`);copyBtnbtn_faa7c75e0b5243b0ae75072c266a3a97.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_faa7c75e0b5243b0ae75072c266a3a97.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d647132eb02a4f6e955e1d0f4c7afb8e=document.querySelector('button[name=btn_d647132eb02a4f6e955e1d0f4c7afb8e]');
+copyBtnbtn_d647132eb02a4f6e955e1d0f4c7afb8e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Ctrl+Shift+D → open Decoder\nPaste value → select encoding → Encode/Decode\nSmart decode → attempts to auto-detect encoding\n`);copyBtnbtn_d647132eb02a4f6e955e1d0f4c7afb8e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d647132eb02a4f6e955e1d0f4c7afb8e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1027,20 +1045,20 @@ Smart decode &#8594; attempts to auto-detect encoding
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb29cb61" class="outline-3">
-<h3 id="orgb29cb61">Comparer</h3>
-<div class="outline-text-3" id="text-orgb29cb61">
+<div id="outline-container-org4a882b9" class="outline-3">
+<h3 id="org4a882b9">Comparer</h3>
+<div class="outline-text-3" id="text-org4a882b9">
 <p>
 Diff two requests or responses — useful for spotting subtle
 differences in responses to different payloads.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_15b623054c994cf58570499b7159bbe8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_bef18c59e2624b49aadbbbc188b00208>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_15b623054c994cf58570499b7159bbe8=document.querySelector('button[name=btn_15b623054c994cf58570499b7159bbe8]');
-copyBtnbtn_15b623054c994cf58570499b7159bbe8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Right-click request → Send to Comparer\nWords view → highlights changed words\nBytes view → highlights changed bytes\n`);copyBtnbtn_15b623054c994cf58570499b7159bbe8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_15b623054c994cf58570499b7159bbe8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bef18c59e2624b49aadbbbc188b00208=document.querySelector('button[name=btn_bef18c59e2624b49aadbbbc188b00208]');
+copyBtnbtn_bef18c59e2624b49aadbbbc188b00208.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Right-click request → Send to Comparer\nWords view → highlights changed words\nBytes view → highlights changed bytes\n`);copyBtnbtn_bef18c59e2624b49aadbbbc188b00208.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bef18c59e2624b49aadbbbc188b00208.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1052,9 +1070,9 @@ Bytes view &#8594; highlights changed bytes
 </div>
 </div>
 </div>
-<div id="outline-container-org05cb13f" class="outline-2">
-<h2 id="org05cb13f">Useful Extensions (BApp Store)</h2>
-<div class="outline-text-2" id="text-org05cb13f">
+<div id="outline-container-orgf2cc89e" class="outline-2">
+<h2 id="orgf2cc89e">Useful Extensions (BApp Store)</h2>
+<div class="outline-text-2" id="text-orgf2cc89e">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1098,9 +1116,9 @@ Bytes view &#8594; highlights changed bytes
 </table>
 </div>
 </div>
-<div id="outline-container-org9b71267" class="outline-2">
-<h2 id="org9b71267">Key Shortcuts</h2>
-<div class="outline-text-2" id="text-org9b71267">
+<div id="outline-container-org2f9e46a" class="outline-2">
+<h2 id="org2f9e46a">Key Shortcuts</h2>
+<div class="outline-text-2" id="text-org2f9e46a">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1154,9 +1172,9 @@ Bytes view &#8594; highlights changed bytes
 </table>
 </div>
 </div>
-<div id="outline-container-org787aa12" class="outline-2">
-<h2 id="org787aa12">Tips</h2>
-<div class="outline-text-2" id="text-org787aa12">
+<div id="outline-container-orgf4204c5" class="outline-2">
+<h2 id="orgf4204c5">Tips</h2>
+<div class="outline-text-2" id="text-orgf4204c5">
 <ul class="org-ul">
 <li>HTTP History (Proxy tab) is your map of the application —
 review it before starting manual testing</li>
@@ -1173,6 +1191,20 @@ history on close in Community edition</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1180,6 +1212,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

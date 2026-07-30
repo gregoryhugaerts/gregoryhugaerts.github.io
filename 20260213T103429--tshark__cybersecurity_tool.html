@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tshark</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,17 +886,17 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgbb157cc">Tshark</a>
+<li><a href="#org13ff916">Tshark</a>
 <ul>
-<li><a href="#orgc509cc7">Core Features</a></li>
-<li><a href="#orgdb7679a">Use Cases</a></li>
-<li><a href="#orgf654171">Basic Syntax</a>
+<li><a href="#orgbceed82">Core Features</a></li>
+<li><a href="#orgeaf747b">Use Cases</a></li>
+<li><a href="#orgf7bd9dc">Basic Syntax</a>
 <ul>
-<li><a href="#orgdc54e2b">Common Options</a></li>
+<li><a href="#orga86c9b7">Common Options</a></li>
 </ul>
 </li>
-<li><a href="#org5ac531f">Basic Examples</a></li>
-<li><a href="#org9f75503">Key ifferences from Wireshark</a></li>
+<li><a href="#orgac23965">Basic Examples</a></li>
+<li><a href="#org7d2a019">Key ifferences from Wireshark</a></li>
 </ul>
 </li>
 </ul>
@@ -888,16 +906,16 @@ pre {
 related: <a href="20260213T071400--wireshark__cybersecurity_tool.html">Wireshark</a>
          <a href="20260206T060720--pcap__concept_cybersecurity.html">PCAP</a>
 </p>
-<div id="outline-container-orgbb157cc" class="outline-2">
-<h2 id="orgbb157cc">Tshark</h2>
-<div class="outline-text-2" id="text-orgbb157cc">
+<div id="outline-container-org13ff916" class="outline-2">
+<h2 id="org13ff916">Tshark</h2>
+<div class="outline-text-2" id="text-org13ff916">
 <p>
 Tshark is a powerful command-line network protocol analyzer. It is the terminal-based counterpart of Wireshark and provides a way to capture and analyze network traffic without a graphical user interface. Tshark is highly scriptable and useful for automation, remote analysis, and situations where a GUI is not available or desired.
 </p>
 </div>
-<div id="outline-container-orgc509cc7" class="outline-3">
-<h3 id="orgc509cc7">Core Features</h3>
-<div class="outline-text-3" id="text-orgc509cc7">
+<div id="outline-container-orgbceed82" class="outline-3">
+<h3 id="orgbceed82">Core Features</h3>
+<div class="outline-text-3" id="text-orgbceed82">
 <ul class="org-ul">
 <li><b>Live Capture:</b> Captures network traffic in real-time from specified interfaces.</li>
 <li><b>PCAP Analysis:</b> Reads and analyzes network traffic data stored in <a href="PCAP.html#pcap">PCAP</a> files (and other formats supported by Wireshark).</li>
@@ -911,9 +929,9 @@ Tshark is a powerful command-line network protocol analyzer. It is the terminal-
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdb7679a" class="outline-3">
-<h3 id="orgdb7679a">Use Cases</h3>
-<div class="outline-text-3" id="text-orgdb7679a">
+<div id="outline-container-orgeaf747b" class="outline-3">
+<h3 id="orgeaf747b">Use Cases</h3>
+<div class="outline-text-3" id="text-orgeaf747b">
 <ul class="org-ul">
 <li><b>Automated Network Analysis:</b> Scripting traffic capture and analysis for routine tasks or monitoring.</li>
 <li><b>Remote Network Troubleshooting:</b> Analyzing network issues on servers or headless systems without a GUI.</li>
@@ -925,15 +943,15 @@ Tshark is a powerful command-line network protocol analyzer. It is the terminal-
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf654171" class="outline-3">
-<h3 id="orgf654171">Basic Syntax</h3>
-<div class="outline-text-3" id="text-orgf654171">
+<div id="outline-container-orgf7bd9dc" class="outline-3">
+<h3 id="orgf7bd9dc">Basic Syntax</h3>
+<div class="outline-text-3" id="text-orgf7bd9dc">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_44c2b6a8399a4ccea260c25de866a862>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_1b174b0affd444c49ebb176366ff31b6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_44c2b6a8399a4ccea260c25de866a862=document.querySelector('button[name=btn_44c2b6a8399a4ccea260c25de866a862]');
-copyBtnbtn_44c2b6a8399a4ccea260c25de866a862.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`tshark [options] [capture_filter] [read_file]\n`);copyBtnbtn_44c2b6a8399a4ccea260c25de866a862.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_44c2b6a8399a4ccea260c25de866a862.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1b174b0affd444c49ebb176366ff31b6=document.querySelector('button[name=btn_1b174b0affd444c49ebb176366ff31b6]');
+copyBtnbtn_1b174b0affd444c49ebb176366ff31b6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`tshark [options] [capture_filter] [read_file]\n`);copyBtnbtn_1b174b0affd444c49ebb176366ff31b6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1b174b0affd444c49ebb176366ff31b6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -947,9 +965,9 @@ let res = copyTextToClipboard(`tshark [options] [capture_filter] [read_file]\n`)
 <li>read<sub>file</sub>: The path to a PCAP file to analyze.</li>
 </ul>
 </div>
-<div id="outline-container-orgdc54e2b" class="outline-4">
-<h4 id="orgdc54e2b">Common Options</h4>
-<div class="outline-text-4" id="text-orgdc54e2b">
+<div id="outline-container-orga86c9b7" class="outline-4">
+<h4 id="orga86c9b7">Common Options</h4>
+<div class="outline-text-4" id="text-orga86c9b7">
 <ul class="org-ul">
 <li><code>-i &lt;interface&gt;</code>: Specify the network interface to capture from (e.g., eth0, wlan0).</li>
 <li><code>-r &lt;file&gt;</code>: Read packet data from the specified PCAP file.</li>
@@ -966,9 +984,9 @@ let res = copyTextToClipboard(`tshark [options] [capture_filter] [read_file]\n`)
 </div>
 </div>
 </div>
-<div id="outline-container-org5ac531f" class="outline-3">
-<h3 id="org5ac531f">Basic Examples</h3>
-<div class="outline-text-3" id="text-org5ac531f">
+<div id="outline-container-orgac23965" class="outline-3">
+<h3 id="orgac23965">Basic Examples</h3>
+<div class="outline-text-3" id="text-orgac23965">
 <ul class="org-ul">
 <li>Capture live traffic on eth0 and display in default format: `tshark -i eth0</li>
 
@@ -984,9 +1002,9 @@ let res = copyTextToClipboard(`tshark [options] [capture_filter] [read_file]\n`)
 </ul>
 </div>
 </div>
-<div id="outline-container-org9f75503" class="outline-3">
-<h3 id="org9f75503">Key ifferences from Wireshark</h3>
-<div class="outline-text-3" id="text-org9f75503">
+<div id="outline-container-org7d2a019" class="outline-3">
+<h3 id="org7d2a019">Key ifferences from Wireshark</h3>
+<div class="outline-text-3" id="text-org7d2a019">
 <ul class="org-ul">
 <li>Interface: Tshark is command-line only, while Wireshark has a graphical user interface.</li>
 <li>Interactivity: Wireshark is more interactive for exploration, while Tshark excels in automation and scripting.</li>
@@ -997,6 +1015,20 @@ let res = copyTextToClipboard(`tshark [options] [capture_filter] [read_file]\n`)
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1004,6 +1036,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

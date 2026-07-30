@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>prompt injection</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org61caf91">Prompt Injection</a>
+<li><a href="#org9d5108c">Prompt Injection</a>
 <ul>
-<li><a href="#org46795e5">Description</a>
+<li><a href="#org6f281ad">Description</a>
 <ul>
-<li><a href="#orgd159155">How it Works</a></li>
-<li><a href="#org5d5a562">Types of Prompt Injection</a></li>
+<li><a href="#org42eb860">How it Works</a></li>
+<li><a href="#orgd056e5c">Types of Prompt Injection</a></li>
 </ul>
 </li>
-<li><a href="#org461d9b0">Examples</a>
+<li><a href="#org7e23416">Examples</a>
 <ul>
-<li><a href="#org9ec670f">1. Data Exfiltration/Pillaging Example</a></li>
-<li><a href="#org7969ebe">2. Goal Hijacking Example (Evasion)</a></li>
+<li><a href="#org78d1570">1. Data Exfiltration/Pillaging Example</a></li>
+<li><a href="#org1307cdb">2. Goal Hijacking Example (Evasion)</a></li>
 </ul>
 </li>
 </ul>
@@ -887,20 +905,20 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-org61caf91" class="outline-2">
-<h2 id="org61caf91">Prompt Injection</h2>
-<div class="outline-text-2" id="text-org61caf91">
+<div id="outline-container-org9d5108c" class="outline-2">
+<h2 id="org9d5108c">Prompt Injection</h2>
+<div class="outline-text-2" id="text-org9d5108c">
 </div>
-<div id="outline-container-org46795e5" class="outline-3">
-<h3 id="org46795e5">Description</h3>
-<div class="outline-text-3" id="text-org46795e5">
+<div id="outline-container-org6f281ad" class="outline-3">
+<h3 id="org6f281ad">Description</h3>
+<div class="outline-text-3" id="text-org6f281ad">
 <p>
 <b>Prompt Injection</b> is a specific type of attack targeting systems built around <b>Large Language Models (LLMs)</b>, such as advanced chatbots, AI assistants, and autonomous agents. It exploits the LLM's primary mode of interaction&#x2014;natural language input&#x2014;to achieve unauthorized or unintended behaviors.
 </p>
 </div>
-<div id="outline-container-orgd159155" class="outline-4">
-<h4 id="orgd159155">How it Works</h4>
-<div class="outline-text-4" id="text-orgd159155">
+<div id="outline-container-org42eb860" class="outline-4">
+<h4 id="org42eb860">How it Works</h4>
+<div class="outline-text-4" id="text-org42eb860">
 <p>
 The core of the attack lies in the model's reliance on a <b>System Prompt</b> (or pre-prompt), which contains the initial, hidden instructions defining the model's persona, rules, and safety boundaries. An attacker crafts a malicious input designed to confuse the model's context window:
 </p>
@@ -912,9 +930,9 @@ The core of the attack lies in the model's reliance on a <b>System Prompt</b> (o
 </ol>
 </div>
 </div>
-<div id="outline-container-org5d5a562" class="outline-4">
-<h4 id="org5d5a562">Types of Prompt Injection</h4>
-<div class="outline-text-4" id="text-org5d5a562">
+<div id="outline-container-orgd056e5c" class="outline-4">
+<h4 id="orgd056e5c">Types of Prompt Injection</h4>
+<div class="outline-text-4" id="text-orgd056e5c">
 <ul class="org-ul">
 <li><b>Direct Prompt Injection:</b> The attacker directly inputs the malicious prompt to the LLM.</li>
 
@@ -923,13 +941,13 @@ The core of the attack lies in the model's reliance on a <b>System Prompt</b> (o
 </div>
 </div>
 </div>
-<div id="outline-container-org461d9b0" class="outline-3">
-<h3 id="org461d9b0">Examples</h3>
-<div class="outline-text-3" id="text-org461d9b0">
+<div id="outline-container-org7e23416" class="outline-3">
+<h3 id="org7e23416">Examples</h3>
+<div class="outline-text-3" id="text-org7e23416">
 </div>
-<div id="outline-container-org9ec670f" class="outline-4">
-<h4 id="org9ec670f">1. Data Exfiltration/Pillaging Example</h4>
-<div class="outline-text-4" id="text-org9ec670f">
+<div id="outline-container-org78d1570" class="outline-4">
+<h4 id="org78d1570">1. Data Exfiltration/Pillaging Example</h4>
+<div class="outline-text-4" id="text-org78d1570">
 <p>
 The attacker tricks the LLM into using its function-calling capabilities for malicious purposes.
 </p>
@@ -941,9 +959,9 @@ The attacker tricks the LLM into using its function-calling capabilities for mal
 </ul>
 </div>
 </div>
-<div id="outline-container-org7969ebe" class="outline-4">
-<h4 id="org7969ebe">2. Goal Hijacking Example (Evasion)</h4>
-<div class="outline-text-4" id="text-org7969ebe">
+<div id="outline-container-org1307cdb" class="outline-4">
+<h4 id="org1307cdb">2. Goal Hijacking Example (Evasion)</h4>
+<div class="outline-text-4" id="text-org1307cdb">
 <p>
 The attacker attempts to break the model's ethical or safety constraints.
 </p>
@@ -959,6 +977,20 @@ The attacker attempts to break the model's ethical or safety constraints.
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -966,6 +998,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

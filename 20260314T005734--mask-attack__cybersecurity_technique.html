@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mask attack</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -892,6 +892,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -900,19 +918,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7975d15">Mask Attack</a>
+<li><a href="#orgb5f4d8d">Mask Attack</a>
 <ul>
-<li><a href="#org19cc066">Description</a>
+<li><a href="#org59dfca1">Description</a>
 <ul>
-<li><a href="#orga164a60">How It Works</a></li>
-<li><a href="#orge963ed4">Mask Attack vs. Brute Force vs. ictionary</a></li>
+<li><a href="#orgbee8ecd">How It Works</a></li>
+<li><a href="#org4ccac54">Mask Attack vs. Brute Force vs. ictionary</a></li>
 </ul>
 </li>
-<li><a href="#org28028fc">Examples</a>
+<li><a href="#org0f1e323">Examples</a>
 <ul>
-<li><a href="#org60656af">. Common Character Sets</a></li>
-<li><a href="#org09bc264">2. Mask Pattern Scenarios</a></li>
-<li><a href="#org25221f8">3. Hashcat Mask Attack Command</a></li>
+<li><a href="#org5afbb85">. Common Character Sets</a></li>
+<li><a href="#orgbcb6e30">2. Mask Pattern Scenarios</a></li>
+<li><a href="#org1047530">3. Hashcat Mask Attack Command</a></li>
 </ul>
 </li>
 </ul>
@@ -920,20 +938,20 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-org7975d15" class="outline-2">
-<h2 id="org7975d15">Mask Attack</h2>
-<div class="outline-text-2" id="text-org7975d15">
+<div id="outline-container-orgb5f4d8d" class="outline-2">
+<h2 id="orgb5f4d8d">Mask Attack</h2>
+<div class="outline-text-2" id="text-orgb5f4d8d">
 </div>
-<div id="outline-container-org19cc066" class="outline-3">
-<h3 id="org19cc066">Description</h3>
-<div class="outline-text-3" id="text-org19cc066">
+<div id="outline-container-org59dfca1" class="outline-3">
+<h3 id="org59dfca1">Description</h3>
+<div class="outline-text-3" id="text-org59dfca1">
 <p>
 A mask attack is a strategy used in the post-exploitation phase to recover passwords from stolen password <b>hashes</b>. It operates under the principle that most human-created passwords follow predictable patterns. By targeting these common patterns, the attacker dramatically reduces the total <b>keyspace</b> (the number of guesses) compared to a full, traditional brute-force attack.
 </p>
 </div>
-<div id="outline-container-orga164a60" class="outline-4">
-<h4 id="orga164a60">How It Works</h4>
-<div class="outline-text-4" id="text-orga164a60">
+<div id="outline-container-orgbee8ecd" class="outline-4">
+<h4 id="orgbee8ecd">How It Works</h4>
+<div class="outline-text-4" id="text-orgbee8ecd">
 <p>
 The attacker first performs reconnaissance on a set of cracked passwords (or common password behavior) to identify a pattern, such as: "The password is 8 characters long, starts with an uppercase letter, ends with four digits, and has a special character somewhere in the middle."
 </p>
@@ -945,9 +963,9 @@ The attacker first performs reconnaissance on a set of cracked passwords (or com
 </ol>
 </div>
 </div>
-<div id="outline-container-orge963ed4" class="outline-4">
-<h4 id="orge963ed4">Mask Attack vs. Brute Force vs. ictionary</h4>
-<div class="outline-text-4" id="text-orge963ed4">
+<div id="outline-container-org4ccac54" class="outline-4">
+<h4 id="org4ccac54">Mask Attack vs. Brute Force vs. ictionary</h4>
+<div class="outline-text-4" id="text-org4ccac54">
 <ul class="org-ul">
 <li><b>Traditional Brute Force:</b> Tries every single possible character combination (e.g., <code>aaaa</code>, <code>aaab</code>, <code>aaac</code>, etc.). Takes the longest time.</li>
 <li><b>Dictionary Attack:</b> Tries only words found in a dictionary or common wordlist (e.g., <code>password</code>, <code>qwert</code>, <code>soccer</code>).</li>
@@ -958,16 +976,16 @@ The attacker first performs reconnaissance on a set of cracked passwords (or com
 </div>
 </div>
 </div>
-<div id="outline-container-org28028fc" class="outline-3">
-<h3 id="org28028fc">Examples</h3>
-<div class="outline-text-3" id="text-org28028fc">
+<div id="outline-container-org0f1e323" class="outline-3">
+<h3 id="org0f1e323">Examples</h3>
+<div class="outline-text-3" id="text-org0f1e323">
 <p>
 The powerful password cracking tool <b>Hashcat</b> uses a specific syntax for defining masks, where a question mark (<code>?</code>) followed by a character defines a character class for that position.
 </p>
 </div>
-<div id="outline-container-org60656af" class="outline-4">
-<h4 id="org60656af">. Common Character Sets</h4>
-<div class="outline-text-4" id="text-org60656af">
+<div id="outline-container-org5afbb85" class="outline-4">
+<h4 id="org5afbb85">. Common Character Sets</h4>
+<div class="outline-text-4" id="text-org5afbb85">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1019,9 +1037,9 @@ The powerful password cracking tool <b>Hashcat</b> uses a specific syntax for de
 </table>
 </div>
 </div>
-<div id="outline-container-org09bc264" class="outline-4">
-<h4 id="org09bc264">2. Mask Pattern Scenarios</h4>
-<div class="outline-text-4" id="text-org09bc264">
+<div id="outline-container-orgbcb6e30" class="outline-4">
+<h4 id="orgbcb6e30">2. Mask Pattern Scenarios</h4>
+<div class="outline-text-4" id="text-orgbcb6e30">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1067,9 +1085,9 @@ The powerful password cracking tool <b>Hashcat</b> uses a specific syntax for de
 </table>
 </div>
 </div>
-<div id="outline-container-org25221f8" class="outline-4">
-<h4 id="org25221f8">3. Hashcat Mask Attack Command</h4>
-<div class="outline-text-4" id="text-org25221f8">
+<div id="outline-container-org1047530" class="outline-4">
+<h4 id="org1047530">3. Hashcat Mask Attack Command</h4>
+<div class="outline-text-4" id="text-org1047530">
 <p>
 A simplified example of running a mask attack against a file of stolen SHA-256 hashes (<code>hashes.txt</code>) for an 8-character password that is known to start with one uppercase letter, followed by four lowercase letters, and ending with three digits:
 </p>
@@ -1083,6 +1101,20 @@ A simplified example of running a mask attack against a file of stolen SHA-256 h
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1090,6 +1122,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

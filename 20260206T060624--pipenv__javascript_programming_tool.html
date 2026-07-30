@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pipenv</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,13 +886,13 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf6b30eb">Installation</a></li>
-<li><a href="#orgb80589e">Core Workflow</a></li>
-<li><a href="#orga49eb3a">Pipfile</a></li>
-<li><a href="#org84fbfbc">Lockfile and Reproducibility</a></li>
-<li><a href="#org65f4caa">Environment Variables</a></li>
-<li><a href="#org2328d61">Locating the Virtual Environment</a></li>
-<li><a href="#org36e92d4">Tips</a></li>
+<li><a href="#orgb6515c6">Installation</a></li>
+<li><a href="#org9f5a528">Core Workflow</a></li>
+<li><a href="#org2c0fe32">Pipfile</a></li>
+<li><a href="#org4faa5c4">Lockfile and Reproducibility</a></li>
+<li><a href="#org67f29b6">Environment Variables</a></li>
+<li><a href="#org3e1d0cc">Locating the Virtual Environment</a></li>
+<li><a href="#orgd678dc0">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -894,15 +912,15 @@ in existing projects.
 <p>
 Related: <a href="20260210T195845--python__language_programming.html">Python</a>
 </p>
-<div id="outline-container-orgf6b30eb" class="outline-2">
-<h2 id="orgf6b30eb">Installation</h2>
-<div class="outline-text-2" id="text-orgf6b30eb">
+<div id="outline-container-orgb6515c6" class="outline-2">
+<h2 id="orgb6515c6">Installation</h2>
+<div class="outline-text-2" id="text-orgb6515c6">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1b4e37050a7d454e85d988781c78aa72>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5d7ef22e195a4e16a0df39d5f9c7e73e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1b4e37050a7d454e85d988781c78aa72=document.querySelector('button[name=btn_1b4e37050a7d454e85d988781c78aa72]');
-copyBtnbtn_1b4e37050a7d454e85d988781c78aa72.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`pip install pipenv --break-system-packages\n# or\nbrew install pipenv\n`);copyBtnbtn_1b4e37050a7d454e85d988781c78aa72.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1b4e37050a7d454e85d988781c78aa72.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5d7ef22e195a4e16a0df39d5f9c7e73e=document.querySelector('button[name=btn_5d7ef22e195a4e16a0df39d5f9c7e73e]');
+copyBtnbtn_5d7ef22e195a4e16a0df39d5f9c7e73e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`pip install pipenv --break-system-packages\n# or\nbrew install pipenv\n`);copyBtnbtn_5d7ef22e195a4e16a0df39d5f9c7e73e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5d7ef22e195a4e16a0df39d5f9c7e73e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -913,15 +931,15 @@ let res = copyTextToClipboard(`pip install pipenv --break-system-packages\n# or\
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb80589e" class="outline-2">
-<h2 id="orgb80589e">Core Workflow</h2>
-<div class="outline-text-2" id="text-orgb80589e">
+<div id="outline-container-org9f5a528" class="outline-2">
+<h2 id="org9f5a528">Core Workflow</h2>
+<div class="outline-text-2" id="text-org9f5a528">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_daad12c5b07444988b29d1c72ef44b0b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5a6c5c5e5f1c41358e6481d4293edaa3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_daad12c5b07444988b29d1c72ef44b0b=document.querySelector('button[name=btn_daad12c5b07444988b29d1c72ef44b0b]');
-copyBtnbtn_daad12c5b07444988b29d1c72ef44b0b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Start a new project\nmkdir myproject && cd myproject\npipenv install                    # creates Pipfile and venv\n\n# Install packages\npipenv install requests           # production dependency\npipenv install pytest --dev       # development-only dependency\npipenv install \"requests>=2.28\"   # with version constraint\n\n# Remove a package\npipenv uninstall requests\n\n# Activate the virtual environment\npipenv shell\n# Exit: type 'exit' or Ctrl+D\n\n# Run a command without activating\npipenv run python script.py\npipenv run pytest\n\n# Show installed packages and dependencies\npipenv graph\n\n# Check for known security vulnerabilities\npipenv check\n`);copyBtnbtn_daad12c5b07444988b29d1c72ef44b0b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_daad12c5b07444988b29d1c72ef44b0b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5a6c5c5e5f1c41358e6481d4293edaa3=document.querySelector('button[name=btn_5a6c5c5e5f1c41358e6481d4293edaa3]');
+copyBtnbtn_5a6c5c5e5f1c41358e6481d4293edaa3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Start a new project\nmkdir myproject && cd myproject\npipenv install                    # creates Pipfile and venv\n\n# Install packages\npipenv install requests           # production dependency\npipenv install pytest --dev       # development-only dependency\npipenv install \"requests>=2.28\"   # with version constraint\n\n# Remove a package\npipenv uninstall requests\n\n# Activate the virtual environment\npipenv shell\n# Exit: type 'exit' or Ctrl+D\n\n# Run a command without activating\npipenv run python script.py\npipenv run pytest\n\n# Show installed packages and dependencies\npipenv graph\n\n# Check for known security vulnerabilities\npipenv check\n`);copyBtnbtn_5a6c5c5e5f1c41358e6481d4293edaa3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5a6c5c5e5f1c41358e6481d4293edaa3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -954,15 +972,15 @@ pipenv run pytest
 </div></div>
 </div>
 </div>
-<div id="outline-container-orga49eb3a" class="outline-2">
-<h2 id="orga49eb3a">Pipfile</h2>
-<div class="outline-text-2" id="text-orga49eb3a">
+<div id="outline-container-org2c0fe32" class="outline-2">
+<h2 id="org2c0fe32">Pipfile</h2>
+<div class="outline-text-2" id="text-org2c0fe32">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TOML</span><button class='copyBtn' name=btn_e550e94c44394ac3b676296b193247ee>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TOML</span><button class='copyBtn' name=btn_980cd40847514106ba2140a44b01f4e1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e550e94c44394ac3b676296b193247ee=document.querySelector('button[name=btn_e550e94c44394ac3b676296b193247ee]');
-copyBtnbtn_e550e94c44394ac3b676296b193247ee.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`[[source]]\nurl = \"https://pypi.org/simple\"\nverify_ssl = true\nname = \"pypi\"\n\n[packages]\nrequests = \">=2.28\"\nflask = \"*\"\n\n[dev-packages]\npytest = \"*\"\nblack = \"*\"\n\n[requires]\npython_version = \"3.11\"\n`);copyBtnbtn_e550e94c44394ac3b676296b193247ee.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e550e94c44394ac3b676296b193247ee.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_980cd40847514106ba2140a44b01f4e1=document.querySelector('button[name=btn_980cd40847514106ba2140a44b01f4e1]');
+copyBtnbtn_980cd40847514106ba2140a44b01f4e1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`[[source]]\nurl = \"https://pypi.org/simple\"\nverify_ssl = true\nname = \"pypi\"\n\n[packages]\nrequests = \">=2.28\"\nflask = \"*\"\n\n[dev-packages]\npytest = \"*\"\nblack = \"*\"\n\n[requires]\npython_version = \"3.11\"\n`);copyBtnbtn_980cd40847514106ba2140a44b01f4e1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_980cd40847514106ba2140a44b01f4e1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -985,15 +1003,15 @@ let res = copyTextToClipboard(`[[source]]\nurl = \"https://pypi.org/simple\"\nve
 </div></div>
 </div>
 </div>
-<div id="outline-container-org84fbfbc" class="outline-2">
-<h2 id="org84fbfbc">Lockfile and Reproducibility</h2>
-<div class="outline-text-2" id="text-org84fbfbc">
+<div id="outline-container-org4faa5c4" class="outline-2">
+<h2 id="org4faa5c4">Lockfile and Reproducibility</h2>
+<div class="outline-text-2" id="text-org4faa5c4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_72c724b2265f4fb4aa41efd1c7ee645f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_56d11f59a8774a00a9716dfd45c47c95>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_72c724b2265f4fb4aa41efd1c7ee645f=document.querySelector('button[name=btn_72c724b2265f4fb4aa41efd1c7ee645f]');
-copyBtnbtn_72c724b2265f4fb4aa41efd1c7ee645f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Generate Pipfile.lock from current Pipfile\npipenv lock\n\n# Install exact versions from Pipfile.lock (CI/production)\npipenv install --ignore-pipfile\n\n# Install including dev packages\npipenv install --dev\n\n# Sync environment to match Pipfile.lock exactly\npipenv sync\n`);copyBtnbtn_72c724b2265f4fb4aa41efd1c7ee645f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_72c724b2265f4fb4aa41efd1c7ee645f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_56d11f59a8774a00a9716dfd45c47c95=document.querySelector('button[name=btn_56d11f59a8774a00a9716dfd45c47c95]');
+copyBtnbtn_56d11f59a8774a00a9716dfd45c47c95.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Generate Pipfile.lock from current Pipfile\npipenv lock\n\n# Install exact versions from Pipfile.lock (CI/production)\npipenv install --ignore-pipfile\n\n# Install including dev packages\npipenv install --dev\n\n# Sync environment to match Pipfile.lock exactly\npipenv sync\n`);copyBtnbtn_56d11f59a8774a00a9716dfd45c47c95.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_56d11f59a8774a00a9716dfd45c47c95.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1012,20 +1030,20 @@ let res = copyTextToClipboard(`# Generate Pipfile.lock from current Pipfile\npip
 </div></div>
 </div>
 </div>
-<div id="outline-container-org65f4caa" class="outline-2">
-<h2 id="org65f4caa">Environment Variables</h2>
-<div class="outline-text-2" id="text-org65f4caa">
+<div id="outline-container-org67f29b6" class="outline-2">
+<h2 id="org67f29b6">Environment Variables</h2>
+<div class="outline-text-2" id="text-org67f29b6">
 <p>
 Pipenv loads a <code>.env</code> file in the project root automatically
 when <code>pipenv shell</code> or <code>pipenv run</code> is used:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_48c3c844a0024c44b9ba314a65bec958>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f6c674c878a142659823453ddc7950fe>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_48c3c844a0024c44b9ba314a65bec958=document.querySelector('button[name=btn_48c3c844a0024c44b9ba314a65bec958]');
-copyBtnbtn_48c3c844a0024c44b9ba314a65bec958.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# .env\nDATABASE_URL=postgres://localhost/mydb\nSECRET_KEY=dev-secret-key\nDEBUG=true\n`);copyBtnbtn_48c3c844a0024c44b9ba314a65bec958.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_48c3c844a0024c44b9ba314a65bec958.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f6c674c878a142659823453ddc7950fe=document.querySelector('button[name=btn_f6c674c878a142659823453ddc7950fe]');
+copyBtnbtn_f6c674c878a142659823453ddc7950fe.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# .env\nDATABASE_URL=postgres://localhost/mydb\nSECRET_KEY=dev-secret-key\nDEBUG=true\n`);copyBtnbtn_f6c674c878a142659823453ddc7950fe.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f6c674c878a142659823453ddc7950fe.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1037,15 +1055,15 @@ let res = copyTextToClipboard(`# .env\nDATABASE_URL=postgres://localhost/mydb\nS
 </div></div>
 </div>
 </div>
-<div id="outline-container-org2328d61" class="outline-2">
-<h2 id="org2328d61">Locating the Virtual Environment</h2>
-<div class="outline-text-2" id="text-org2328d61">
+<div id="outline-container-org3e1d0cc" class="outline-2">
+<h2 id="org3e1d0cc">Locating the Virtual Environment</h2>
+<div class="outline-text-2" id="text-org3e1d0cc">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_49ebbc584ece404a9bafabff02edb36d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8ea6d09900d64ebcb89102c5ed843d34>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_49ebbc584ece404a9bafabff02edb36d=document.querySelector('button[name=btn_49ebbc584ece404a9bafabff02edb36d]');
-copyBtnbtn_49ebbc584ece404a9bafabff02edb36d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Show path to the virtual environment\npipenv --venv\n\n# Show path to Python interpreter\npipenv --py\n\n# Remove the virtual environment\npipenv --rm\n`);copyBtnbtn_49ebbc584ece404a9bafabff02edb36d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_49ebbc584ece404a9bafabff02edb36d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8ea6d09900d64ebcb89102c5ed843d34=document.querySelector('button[name=btn_8ea6d09900d64ebcb89102c5ed843d34]');
+copyBtnbtn_8ea6d09900d64ebcb89102c5ed843d34.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Show path to the virtual environment\npipenv --venv\n\n# Show path to Python interpreter\npipenv --py\n\n# Remove the virtual environment\npipenv --rm\n`);copyBtnbtn_8ea6d09900d64ebcb89102c5ed843d34.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8ea6d09900d64ebcb89102c5ed843d34.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1061,9 +1079,9 @@ let res = copyTextToClipboard(`# Show path to the virtual environment\npipenv --
 </div></div>
 </div>
 </div>
-<div id="outline-container-org36e92d4" class="outline-2">
-<h2 id="org36e92d4">Tips</h2>
-<div class="outline-text-2" id="text-org36e92d4">
+<div id="outline-container-orgd678dc0" class="outline-2">
+<h2 id="orgd678dc0">Tips</h2>
+<div class="outline-text-2" id="text-orgd678dc0">
 <ul class="org-ul">
 <li>Commit <code>Pipfile</code> and <code>Pipfile.lock</code> — <code>Pipfile</code> defines
 intent, <code>Pipfile.lock</code> ensures reproducibility</li>
@@ -1078,6 +1096,20 @@ deploying to catch known-vulnerable dependency versions</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1085,6 +1117,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

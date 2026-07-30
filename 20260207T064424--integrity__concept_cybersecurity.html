@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Integrity</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,17 +886,17 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3535d33">Technical Controls</a>
+<li><a href="#org7e28952">Technical Controls</a>
 <ul>
-<li><a href="#org2cc1573">Hashing</a></li>
-<li><a href="#orgc91c719">HMAC — Hash-based Message Authentication Code</a></li>
-<li><a href="#orgef40490">Digital Signatures</a></li>
-<li><a href="#org26d5367">File Integrity Monitoring (FIM)</a></li>
-<li><a href="#orgcf0bc4e">Checksums</a></li>
+<li><a href="#org7e19812">Hashing</a></li>
+<li><a href="#orgc602ba6">HMAC — Hash-based Message Authentication Code</a></li>
+<li><a href="#orgee5b50c">Digital Signatures</a></li>
+<li><a href="#org3dfbea2">File Integrity Monitoring (FIM)</a></li>
+<li><a href="#orgfc0f00e">Checksums</a></li>
 </ul>
 </li>
-<li><a href="#orgb349c08">Integrity in Practice</a></li>
-<li><a href="#org88679bb">Tips</a></li>
+<li><a href="#org3be1d90">Integrity in Practice</a></li>
+<li><a href="#orgab2163b">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -902,13 +920,13 @@ Related: <a href="20260327T191855--cia-triad__concept_cybersecurity.html">CIA Tr
          <a href="20260206T060656--hashing__concept_cybersecurity_programming.html">Hashing</a>
          <a href="20260206T060651--encryption__concept_cybersecurity.html">Encryption</a>
 </p>
-<div id="outline-container-org3535d33" class="outline-2">
-<h2 id="org3535d33">Technical Controls</h2>
-<div class="outline-text-2" id="text-org3535d33">
+<div id="outline-container-org7e28952" class="outline-2">
+<h2 id="org7e28952">Technical Controls</h2>
+<div class="outline-text-2" id="text-org7e28952">
 </div>
-<div id="outline-container-org2cc1573" class="outline-3">
-<h3 id="org2cc1573">Hashing</h3>
-<div class="outline-text-3" id="text-org2cc1573">
+<div id="outline-container-org7e19812" class="outline-3">
+<h3 id="org7e19812">Hashing</h3>
+<div class="outline-text-3" id="text-org7e19812">
 <p>
 A cryptographic hash produces a fixed-length digest of data.
 Any modification to the data produces a completely different
@@ -916,11 +934,11 @@ digest — the fundamental integrity verification mechanism.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e54ce8163375402fa841638bb78a74b6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_92d7f746ffdf44f49e20931a9612c35f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e54ce8163375402fa841638bb78a74b6=document.querySelector('button[name=btn_e54ce8163375402fa841638bb78a74b6]');
-copyBtnbtn_e54ce8163375402fa841638bb78a74b6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Generate and verify a file hash\nsha256sum file.iso > file.iso.sha256\nsha256sum -c file.iso.sha256\n\n# Python\nimport hashlib\ndigest = hashlib.sha256(b\"data\").hexdigest()\n`);copyBtnbtn_e54ce8163375402fa841638bb78a74b6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e54ce8163375402fa841638bb78a74b6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_92d7f746ffdf44f49e20931a9612c35f=document.querySelector('button[name=btn_92d7f746ffdf44f49e20931a9612c35f]');
+copyBtnbtn_92d7f746ffdf44f49e20931a9612c35f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Generate and verify a file hash\nsha256sum file.iso > file.iso.sha256\nsha256sum -c file.iso.sha256\n\n# Python\nimport hashlib\ndigest = hashlib.sha256(b\"data\").hexdigest()\n`);copyBtnbtn_92d7f746ffdf44f49e20931a9612c35f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_92d7f746ffdf44f49e20931a9612c35f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -939,9 +957,9 @@ See <a href="20260206T060656--hashing__concept_cybersecurity_programming.html">H
 </p>
 </div>
 </div>
-<div id="outline-container-orgc91c719" class="outline-3">
-<h3 id="orgc91c719">HMAC — Hash-based Message Authentication Code</h3>
-<div class="outline-text-3" id="text-orgc91c719">
+<div id="outline-container-orgc602ba6" class="outline-3">
+<h3 id="orgc602ba6">HMAC — Hash-based Message Authentication Code</h3>
+<div class="outline-text-3" id="text-orgc602ba6">
 <p>
 Combines a hash with a shared secret key. Verifies both
 integrity <b>and</b> authenticity — proves the data was produced
@@ -949,11 +967,11 @@ by someone with the key and has not been altered in transit.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_3c7f0470a581463a9f74320e269c1fe8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_590340a0d4af4650bd254035e5d31c76>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3c7f0470a581463a9f74320e269c1fe8=document.querySelector('button[name=btn_3c7f0470a581463a9f74320e269c1fe8]');
-copyBtnbtn_3c7f0470a581463a9f74320e269c1fe8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import hmac, hashlib\n\nkey  = b\"shared-secret\"\ndata = b\"message to sign\"\n\nmac = hmac.new(key, data, hashlib.sha256).hexdigest()\n\n# Verify — use compare_digest to prevent timing attacks\nis_valid = hmac.compare_digest(\n    hmac.new(key, received_data, hashlib.sha256).hexdigest(),\n    received_mac\n)\n`);copyBtnbtn_3c7f0470a581463a9f74320e269c1fe8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3c7f0470a581463a9f74320e269c1fe8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_590340a0d4af4650bd254035e5d31c76=document.querySelector('button[name=btn_590340a0d4af4650bd254035e5d31c76]');
+copyBtnbtn_590340a0d4af4650bd254035e5d31c76.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import hmac, hashlib\n\nkey  = b\"shared-secret\"\ndata = b\"message to sign\"\n\nmac = hmac.new(key, data, hashlib.sha256).hexdigest()\n\n# Verify — use compare_digest to prevent timing attacks\nis_valid = hmac.compare_digest(\n    hmac.new(key, received_data, hashlib.sha256).hexdigest(),\n    received_mac\n)\n`);copyBtnbtn_590340a0d4af4650bd254035e5d31c76.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_590340a0d4af4650bd254035e5d31c76.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -973,9 +991,9 @@ let res = copyTextToClipboard(`import hmac, hashlib\n\nkey  = b\"shared-secret\"
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgef40490" class="outline-3">
-<h3 id="orgef40490">Digital Signatures</h3>
-<div class="outline-text-3" id="text-orgef40490">
+<div id="outline-container-orgee5b50c" class="outline-3">
+<h3 id="orgee5b50c">Digital Signatures</h3>
+<div class="outline-text-3" id="text-orgee5b50c">
 <p>
 Asymmetric-key integrity and authenticity — the sender signs
 with their private key; anyone with the public key can verify.
@@ -983,11 +1001,11 @@ Provides non-repudiation: the signer cannot later deny signing.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_373a769b4f6a446995aeb38565bdaa85>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_0bac545afff14905a93977ebac929380>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_373a769b4f6a446995aeb38565bdaa85=document.querySelector('button[name=btn_373a769b4f6a446995aeb38565bdaa85]');
-copyBtnbtn_373a769b4f6a446995aeb38565bdaa85.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Signing:      hash(data) → encrypt with private key → signature\nVerifying:    decrypt signature with public key → compare hash\n`);copyBtnbtn_373a769b4f6a446995aeb38565bdaa85.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_373a769b4f6a446995aeb38565bdaa85.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0bac545afff14905a93977ebac929380=document.querySelector('button[name=btn_0bac545afff14905a93977ebac929380]');
+copyBtnbtn_0bac545afff14905a93977ebac929380.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Signing:      hash(data) → encrypt with private key → signature\nVerifying:    decrypt signature with public key → compare hash\n`);copyBtnbtn_0bac545afff14905a93977ebac929380.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0bac545afff14905a93977ebac929380.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -997,9 +1015,9 @@ Verifying:    decrypt signature with public key &#8594; compare hash
 </div></div>
 </div>
 </div>
-<div id="outline-container-org26d5367" class="outline-3">
-<h3 id="org26d5367">File Integrity Monitoring (FIM)</h3>
-<div class="outline-text-3" id="text-org26d5367">
+<div id="outline-container-org3dfbea2" class="outline-3">
+<h3 id="org3dfbea2">File Integrity Monitoring (FIM)</h3>
+<div class="outline-text-3" id="text-org3dfbea2">
 <p>
 Baseline the hash of critical files; alert on changes. FIM is
 a core <a href="20260213T111331--wazuh__cybersecurity_tool.html">Wazuh</a> capability — detects webshell drops, config changes,
@@ -1007,11 +1025,11 @@ and binary tampering on endpoints.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b2f7183e09ab44bdb34544a5e094ece0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c7aa2b6786074d219af6a6666575cf85>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b2f7183e09ab44bdb34544a5e094ece0=document.querySelector('button[name=btn_b2f7183e09ab44bdb34544a5e094ece0]');
-copyBtnbtn_b2f7183e09ab44bdb34544a5e094ece0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Files typically monitored:\n/etc/passwd, /etc/shadow, /etc/sudoers\n/usr/bin/, /usr/sbin/\nWeb root (detect webshell drops)\n`);copyBtnbtn_b2f7183e09ab44bdb34544a5e094ece0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b2f7183e09ab44bdb34544a5e094ece0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c7aa2b6786074d219af6a6666575cf85=document.querySelector('button[name=btn_c7aa2b6786074d219af6a6666575cf85]');
+copyBtnbtn_c7aa2b6786074d219af6a6666575cf85.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Files typically monitored:\n/etc/passwd, /etc/shadow, /etc/sudoers\n/usr/bin/, /usr/sbin/\nWeb root (detect webshell drops)\n`);copyBtnbtn_c7aa2b6786074d219af6a6666575cf85.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c7aa2b6786074d219af6a6666575cf85.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1023,9 +1041,9 @@ Web root (detect webshell drops)
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgcf0bc4e" class="outline-3">
-<h3 id="orgcf0bc4e">Checksums</h3>
-<div class="outline-text-3" id="text-orgcf0bc4e">
+<div id="outline-container-orgfc0f00e" class="outline-3">
+<h3 id="orgfc0f00e">Checksums</h3>
+<div class="outline-text-3" id="text-orgfc0f00e">
 <p>
 Weaker than cryptographic hashes — detect accidental corruption
 but not deliberate tampering (CRC32, Adler32). Suitable for
@@ -1034,9 +1052,9 @@ error detection in storage/transmission, not security.
 </div>
 </div>
 </div>
-<div id="outline-container-orgb349c08" class="outline-2">
-<h2 id="orgb349c08">Integrity in Practice</h2>
-<div class="outline-text-2" id="text-orgb349c08">
+<div id="outline-container-org3be1d90" class="outline-2">
+<h2 id="org3be1d90">Integrity in Practice</h2>
+<div class="outline-text-2" id="text-org3be1d90">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1080,9 +1098,9 @@ error detection in storage/transmission, not security.
 </table>
 </div>
 </div>
-<div id="outline-container-org88679bb" class="outline-2">
-<h2 id="org88679bb">Tips</h2>
-<div class="outline-text-2" id="text-org88679bb">
+<div id="outline-container-orgab2163b" class="outline-2">
+<h2 id="orgab2163b">Tips</h2>
+<div class="outline-text-2" id="text-orgab2163b">
 <ul class="org-ul">
 <li>HMAC is the correct primitive for API authentication tokens
 — not plain hashing, which can be forged by anyone</li>
@@ -1099,6 +1117,20 @@ indicators of a successful webshell upload</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1106,6 +1138,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

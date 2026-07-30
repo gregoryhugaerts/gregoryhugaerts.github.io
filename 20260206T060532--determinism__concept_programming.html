@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Determinism</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org01cdb0b">Pure Functions</a></li>
-<li><a href="#org96db735">Non-Deterministic Sources</a></li>
-<li><a href="#org2569063">Benefits</a>
+<li><a href="#org69690a5">Pure Functions</a></li>
+<li><a href="#orgcac2c84">Non-Deterministic Sources</a></li>
+<li><a href="#orgd64f7f5">Benefits</a>
 <ul>
-<li><a href="#orga451931">Testability</a></li>
-<li><a href="#org2b34c64">Reproducibility</a></li>
-<li><a href="#org0854465">Safe concurrency</a></li>
-<li><a href="#orga44ab0c">Memoisation</a></li>
+<li><a href="#org443570d">Testability</a></li>
+<li><a href="#org6776171">Reproducibility</a></li>
+<li><a href="#orgb765b0a">Safe concurrency</a></li>
+<li><a href="#org8b1fa61">Memoisation</a></li>
 </ul>
 </li>
-<li><a href="#org3e08e09">Practical Boundaries</a></li>
-<li><a href="#org253cf88">Tips</a></li>
+<li><a href="#orgf743fbe">Practical Boundaries</a></li>
+<li><a href="#org99db53a">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -895,9 +913,9 @@ Related: <a href="20260206T060606--functional-programming__concept_programming.h
          <a href="20260206T060610--immutability__concept_programming.html">Immutability</a>
          <a href="20260314T005648--iterators__concept_programming.html">Iterators</a>
 </p>
-<div id="outline-container-org01cdb0b" class="outline-2">
-<h2 id="org01cdb0b">Pure Functions</h2>
-<div class="outline-text-2" id="text-org01cdb0b">
+<div id="outline-container-org69690a5" class="outline-2">
+<h2 id="org69690a5">Pure Functions</h2>
+<div class="outline-text-2" id="text-org69690a5">
 <p>
 Determinism is one of two requirements for a <b>pure function</b>:
 </p>
@@ -908,11 +926,11 @@ Determinism is one of two requirements for a <b>pure function</b>:
 </ol>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_daefd9bca5db492fa5b14e789072d4b0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_9d2630c7113f45659e340bd29d15a3df>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_daefd9bca5db492fa5b14e789072d4b0=document.querySelector('button[name=btn_daefd9bca5db492fa5b14e789072d4b0]');
-copyBtnbtn_daefd9bca5db492fa5b14e789072d4b0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Pure — deterministic, no side effects\ndef add(a, b):\n    return a + b\n\ndef square(x):\n    return x ** 2\n\n# Impure — non-deterministic (depends on external state)\nimport random, time\n\ndef random_value():\n    return random.randint(0, 100)    # different each call\n\ndef current_timestamp():\n    return time.time()               # different each call\n\n# Impure — has side effects (modifies external state)\ntotal = 0\ndef accumulate(x):\n    global total\n    total += x    # modifies global variable\n    return total\n`);copyBtnbtn_daefd9bca5db492fa5b14e789072d4b0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_daefd9bca5db492fa5b14e789072d4b0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9d2630c7113f45659e340bd29d15a3df=document.querySelector('button[name=btn_9d2630c7113f45659e340bd29d15a3df]');
+copyBtnbtn_9d2630c7113f45659e340bd29d15a3df.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Pure — deterministic, no side effects\ndef add(a, b):\n    return a + b\n\ndef square(x):\n    return x ** 2\n\n# Impure — non-deterministic (depends on external state)\nimport random, time\n\ndef random_value():\n    return random.randint(0, 100)    # different each call\n\ndef current_timestamp():\n    return time.time()               # different each call\n\n# Impure — has side effects (modifies external state)\ntotal = 0\ndef accumulate(x):\n    global total\n    total += x    # modifies global variable\n    return total\n`);copyBtnbtn_9d2630c7113f45659e340bd29d15a3df.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9d2630c7113f45659e340bd29d15a3df.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -942,9 +960,9 @@ let res = copyTextToClipboard(`# Pure — deterministic, no side effects\ndef ad
 </div></div>
 </div>
 </div>
-<div id="outline-container-org96db735" class="outline-2">
-<h2 id="org96db735">Non-Deterministic Sources</h2>
-<div class="outline-text-2" id="text-org96db735">
+<div id="outline-container-orgcac2c84" class="outline-2">
+<h2 id="orgcac2c84">Non-Deterministic Sources</h2>
+<div class="outline-text-2" id="text-orgcac2c84">
 <p>
 Functions become non-deterministic when they depend on:
 </p>
@@ -997,24 +1015,24 @@ Functions become non-deterministic when they depend on:
 </table>
 </div>
 </div>
-<div id="outline-container-org2569063" class="outline-2">
-<h2 id="org2569063">Benefits</h2>
-<div class="outline-text-2" id="text-org2569063">
+<div id="outline-container-orgd64f7f5" class="outline-2">
+<h2 id="orgd64f7f5">Benefits</h2>
+<div class="outline-text-2" id="text-orgd64f7f5">
 </div>
-<div id="outline-container-orga451931" class="outline-3">
-<h3 id="orga451931">Testability</h3>
-<div class="outline-text-3" id="text-orga451931">
+<div id="outline-container-org443570d" class="outline-3">
+<h3 id="org443570d">Testability</h3>
+<div class="outline-text-3" id="text-org443570d">
 <p>
 Pure functions are trivially testable — no mocking of databases,
 no freezing time, no managing shared state between tests:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_849726b49a164b82a6b00cde3e7c288b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_e282505e77634165bbd8ffff151aa5f8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_849726b49a164b82a6b00cde3e7c288b=document.querySelector('button[name=btn_849726b49a164b82a6b00cde3e7c288b]');
-copyBtnbtn_849726b49a164b82a6b00cde3e7c288b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`def test_add():\n    assert add(2, 3) == 5    # always passes, always reproducible\n`);copyBtnbtn_849726b49a164b82a6b00cde3e7c288b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_849726b49a164b82a6b00cde3e7c288b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e282505e77634165bbd8ffff151aa5f8=document.querySelector('button[name=btn_e282505e77634165bbd8ffff151aa5f8]');
+copyBtnbtn_e282505e77634165bbd8ffff151aa5f8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`def test_add():\n    assert add(2, 3) == 5    # always passes, always reproducible\n`);copyBtnbtn_e282505e77634165bbd8ffff151aa5f8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e282505e77634165bbd8ffff151aa5f8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1024,9 +1042,9 @@ let res = copyTextToClipboard(`def test_add():\n    assert add(2, 3) == 5    # a
 </div></div>
 </div>
 </div>
-<div id="outline-container-org2b34c64" class="outline-3">
-<h3 id="org2b34c64">Reproducibility</h3>
-<div class="outline-text-3" id="text-org2b34c64">
+<div id="outline-container-org6776171" class="outline-3">
+<h3 id="org6776171">Reproducibility</h3>
+<div class="outline-text-3" id="text-org6776171">
 <p>
 A bug in a deterministic function is 100% reproducible with
 the same inputs — no "works on my machine" timing issues or
@@ -1034,9 +1052,9 @@ hidden state to reconstruct.
 </p>
 </div>
 </div>
-<div id="outline-container-org0854465" class="outline-3">
-<h3 id="org0854465">Safe concurrency</h3>
-<div class="outline-text-3" id="text-org0854465">
+<div id="outline-container-orgb765b0a" class="outline-3">
+<h3 id="orgb765b0a">Safe concurrency</h3>
+<div class="outline-text-3" id="text-orgb765b0a">
 <p>
 Deterministic functions can run in parallel without locks —
 they don't read from or write to shared state, so there are
@@ -1044,11 +1062,11 @@ no race conditions:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_00b6adb7a6fd47358352d8ec4c9a3c01>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_dd74cf5ed8154715aae1543ac896ba4b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_00b6adb7a6fd47358352d8ec4c9a3c01=document.querySelector('button[name=btn_00b6adb7a6fd47358352d8ec4c9a3c01]');
-copyBtnbtn_00b6adb7a6fd47358352d8ec4c9a3c01.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`from concurrent.futures import ProcessPoolExecutor\n\n# Safe to parallelise — pure function\nwith ProcessPoolExecutor() as executor:\n    results = list(executor.map(square, range(1000)))\n`);copyBtnbtn_00b6adb7a6fd47358352d8ec4c9a3c01.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_00b6adb7a6fd47358352d8ec4c9a3c01.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_dd74cf5ed8154715aae1543ac896ba4b=document.querySelector('button[name=btn_dd74cf5ed8154715aae1543ac896ba4b]');
+copyBtnbtn_dd74cf5ed8154715aae1543ac896ba4b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`from concurrent.futures import ProcessPoolExecutor\n\n# Safe to parallelise — pure function\nwith ProcessPoolExecutor() as executor:\n    results = list(executor.map(square, range(1000)))\n`);copyBtnbtn_dd74cf5ed8154715aae1543ac896ba4b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dd74cf5ed8154715aae1543ac896ba4b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1061,20 +1079,20 @@ let res = copyTextToClipboard(`from concurrent.futures import ProcessPoolExecuto
 </div></div>
 </div>
 </div>
-<div id="outline-container-orga44ab0c" class="outline-3">
-<h3 id="orga44ab0c">Memoisation</h3>
-<div class="outline-text-3" id="text-orga44ab0c">
+<div id="outline-container-org8b1fa61" class="outline-3">
+<h3 id="org8b1fa61">Memoisation</h3>
+<div class="outline-text-3" id="text-org8b1fa61">
 <p>
 Because the output depends only on the input, results can be
 safely cached — the same input will always produce the same output:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_3952582499d84bb8bb06aa9972b836ff>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_068bdc6716b141e4a46667ac63e1d557>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3952582499d84bb8bb06aa9972b836ff=document.querySelector('button[name=btn_3952582499d84bb8bb06aa9972b836ff]');
-copyBtnbtn_3952582499d84bb8bb06aa9972b836ff.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`from functools import lru_cache\n\n@lru_cache(maxsize=None)\ndef fibonacci(n):\n    if n <= 1: return n\n    return fibonacci(n - 1) + fibonacci(n - 2)\n`);copyBtnbtn_3952582499d84bb8bb06aa9972b836ff.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3952582499d84bb8bb06aa9972b836ff.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_068bdc6716b141e4a46667ac63e1d557=document.querySelector('button[name=btn_068bdc6716b141e4a46667ac63e1d557]');
+copyBtnbtn_068bdc6716b141e4a46667ac63e1d557.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`from functools import lru_cache\n\n@lru_cache(maxsize=None)\ndef fibonacci(n):\n    if n <= 1: return n\n    return fibonacci(n - 1) + fibonacci(n - 2)\n`);copyBtnbtn_068bdc6716b141e4a46667ac63e1d557.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_068bdc6716b141e4a46667ac63e1d557.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1089,9 +1107,9 @@ let res = copyTextToClipboard(`from functools import lru_cache\n\n@lru_cache(max
 </div>
 </div>
 </div>
-<div id="outline-container-org3e08e09" class="outline-2">
-<h2 id="org3e08e09">Practical Boundaries</h2>
-<div class="outline-text-2" id="text-org3e08e09">
+<div id="outline-container-orgf743fbe" class="outline-2">
+<h2 id="orgf743fbe">Practical Boundaries</h2>
+<div class="outline-text-2" id="text-orgf743fbe">
 <p>
 Fully pure programs cannot exist — at some point software must
 read input, write output, query a database, or get the current
@@ -1106,11 +1124,11 @@ parameters rather than calling them from inside functions</li>
 </ol>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_2c2b4e55bd4a4f1887c980b334dc7cba>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_af34cfdf256443e9ad618d23698b4fd0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2c2b4e55bd4a4f1887c980b334dc7cba=document.querySelector('button[name=btn_2c2b4e55bd4a4f1887c980b334dc7cba]');
-copyBtnbtn_2c2b4e55bd4a4f1887c980b334dc7cba.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Instead of:\ndef create_session():\n    return {\"created_at\": time.time()}   # non-deterministic\n\n# Prefer:\ndef create_session(timestamp):           # deterministic\n    return {\"created_at\": timestamp}\n\n# Call site handles the non-deterministic part:\nsession = create_session(time.time())\n`);copyBtnbtn_2c2b4e55bd4a4f1887c980b334dc7cba.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2c2b4e55bd4a4f1887c980b334dc7cba.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_af34cfdf256443e9ad618d23698b4fd0=document.querySelector('button[name=btn_af34cfdf256443e9ad618d23698b4fd0]');
+copyBtnbtn_af34cfdf256443e9ad618d23698b4fd0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Instead of:\ndef create_session():\n    return {\"created_at\": time.time()}   # non-deterministic\n\n# Prefer:\ndef create_session(timestamp):           # deterministic\n    return {\"created_at\": timestamp}\n\n# Call site handles the non-deterministic part:\nsession = create_session(time.time())\n`);copyBtnbtn_af34cfdf256443e9ad618d23698b4fd0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_af34cfdf256443e9ad618d23698b4fd0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1128,9 +1146,9 @@ let res = copyTextToClipboard(`# Instead of:\ndef create_session():\n    return 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org253cf88" class="outline-2">
-<h2 id="org253cf88">Tips</h2>
-<div class="outline-text-2" id="text-org253cf88">
+<div id="outline-container-org99db53a" class="outline-2">
+<h2 id="org99db53a">Tips</h2>
+<div class="outline-text-2" id="text-org99db53a">
 <ul class="org-ul">
 <li>Functions that are deterministic and have no side effects are
 the easiest to test, reason about, and refactor — default to
@@ -1147,6 +1165,20 @@ deterministic (unlike random functions)</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1154,6 +1186,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

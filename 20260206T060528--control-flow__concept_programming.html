@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Control Flow</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,21 +886,21 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org404b518">Conditionals</a>
+<li><a href="#orgdda714f">Conditionals</a>
 <ul>
-<li><a href="#orgc716d7c">Python</a></li>
+<li><a href="#org492736e">Python</a></li>
 </ul>
 </li>
-<li><a href="#orge6acc7c">Loops</a>
+<li><a href="#org004ffe4">Loops</a>
 <ul>
-<li><a href="#org0341baf">For loops</a></li>
-<li><a href="#org72adbbf">While loops</a></li>
-<li><a href="#orgedd881b">Loop control</a></li>
+<li><a href="#org9bac879">For loops</a></li>
+<li><a href="#org33a6079">While loops</a></li>
+<li><a href="#org425ad59">Loop control</a></li>
 </ul>
 </li>
-<li><a href="#org653d377">Exception Handling</a></li>
-<li><a href="#org76d3ee3">List/Dict/Set Comprehensions</a></li>
-<li><a href="#org6fe3971">Tips</a></li>
+<li><a href="#orgbc54014">Exception Handling</a></li>
+<li><a href="#org34c77c9">List/Dict/Set Comprehensions</a></li>
+<li><a href="#org5060f8a">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -897,19 +915,19 @@ conditions.
 Related: <a href="20260210T195845--python__language_programming.html">Python</a>
          <a href="20260206T060627--python-functions__concept_programming_python.html">Python Functions</a>
 </p>
-<div id="outline-container-org404b518" class="outline-2">
-<h2 id="org404b518">Conditionals</h2>
-<div class="outline-text-2" id="text-org404b518">
+<div id="outline-container-orgdda714f" class="outline-2">
+<h2 id="orgdda714f">Conditionals</h2>
+<div class="outline-text-2" id="text-orgdda714f">
 </div>
-<div id="outline-container-orgc716d7c" class="outline-3">
-<h3 id="orgc716d7c">Python</h3>
-<div class="outline-text-3" id="text-orgc716d7c">
+<div id="outline-container-org492736e" class="outline-3">
+<h3 id="org492736e">Python</h3>
+<div class="outline-text-3" id="text-org492736e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_3d520fdb5f644892b29b52e3852a06df>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_c366f09d92984dc9b4b83ac28380bd9e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3d520fdb5f644892b29b52e3852a06df=document.querySelector('button[name=btn_3d520fdb5f644892b29b52e3852a06df]');
-copyBtnbtn_3d520fdb5f644892b29b52e3852a06df.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`x = 42\n\nif x > 100:\n    print(\"large\")\nelif x > 10:\n    print(\"medium\")\nelse:\n    print(\"small\")\n\n# Ternary (conditional expression)\nlabel = \"even\" if x % 2 == 0 else \"odd\"\n\n# Match statement (Python 3.10+)\nmatch command:\n    case \"quit\":\n        exit()\n    case \"help\":\n        show_help()\n    case _:\n        print(\"unknown command\")\n`);copyBtnbtn_3d520fdb5f644892b29b52e3852a06df.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3d520fdb5f644892b29b52e3852a06df.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c366f09d92984dc9b4b83ac28380bd9e=document.querySelector('button[name=btn_c366f09d92984dc9b4b83ac28380bd9e]');
+copyBtnbtn_c366f09d92984dc9b4b83ac28380bd9e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`x = 42\n\nif x > 100:\n    print(\"large\")\nelif x > 10:\n    print(\"medium\")\nelse:\n    print(\"small\")\n\n# Ternary (conditional expression)\nlabel = \"even\" if x % 2 == 0 else \"odd\"\n\n# Match statement (Python 3.10+)\nmatch command:\n    case \"quit\":\n        exit()\n    case \"help\":\n        show_help()\n    case _:\n        print(\"unknown command\")\n`);copyBtnbtn_c366f09d92984dc9b4b83ac28380bd9e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c366f09d92984dc9b4b83ac28380bd9e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -938,19 +956,19 @@ let res = copyTextToClipboard(`x = 42\n\nif x > 100:\n    print(\"large\")\nelif
 </div>
 </div>
 </div>
-<div id="outline-container-orge6acc7c" class="outline-2">
-<h2 id="orge6acc7c">Loops</h2>
-<div class="outline-text-2" id="text-orge6acc7c">
+<div id="outline-container-org004ffe4" class="outline-2">
+<h2 id="org004ffe4">Loops</h2>
+<div class="outline-text-2" id="text-org004ffe4">
 </div>
-<div id="outline-container-org0341baf" class="outline-3">
-<h3 id="org0341baf">For loops</h3>
-<div class="outline-text-3" id="text-org0341baf">
+<div id="outline-container-org9bac879" class="outline-3">
+<h3 id="org9bac879">For loops</h3>
+<div class="outline-text-3" id="text-org9bac879">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_6a396a90acd84fd29c82e0ff82e3d465>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_1816e04c05944110bdfa973212a50f0c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6a396a90acd84fd29c82e0ff82e3d465=document.querySelector('button[name=btn_6a396a90acd84fd29c82e0ff82e3d465]');
-copyBtnbtn_6a396a90acd84fd29c82e0ff82e3d465.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Iterate over a sequence\nfruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n    print(fruit)\n\n# Range\nfor i in range(5):        # 0, 1, 2, 3, 4\n    print(i)\n\nfor i in range(2, 10, 2): # 2, 4, 6, 8\n    print(i)\n\n# Enumerate — index + value\nfor i, fruit in enumerate(fruits):\n    print(i, fruit)\n\n# Zip — parallel iteration\nfor a, b in zip([1, 2, 3], [\"x\", \"y\", \"z\"]):\n    print(a, b)\n`);copyBtnbtn_6a396a90acd84fd29c82e0ff82e3d465.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6a396a90acd84fd29c82e0ff82e3d465.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1816e04c05944110bdfa973212a50f0c=document.querySelector('button[name=btn_1816e04c05944110bdfa973212a50f0c]');
+copyBtnbtn_1816e04c05944110bdfa973212a50f0c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Iterate over a sequence\nfruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n    print(fruit)\n\n# Range\nfor i in range(5):        # 0, 1, 2, 3, 4\n    print(i)\n\nfor i in range(2, 10, 2): # 2, 4, 6, 8\n    print(i)\n\n# Enumerate — index + value\nfor i, fruit in enumerate(fruits):\n    print(i, fruit)\n\n# Zip — parallel iteration\nfor a, b in zip([1, 2, 3], [\"x\", \"y\", \"z\"]):\n    print(a, b)\n`);copyBtnbtn_1816e04c05944110bdfa973212a50f0c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1816e04c05944110bdfa973212a50f0c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -977,15 +995,15 @@ let res = copyTextToClipboard(`# Iterate over a sequence\nfruits = [\"apple\", \
 </div></div>
 </div>
 </div>
-<div id="outline-container-org72adbbf" class="outline-3">
-<h3 id="org72adbbf">While loops</h3>
-<div class="outline-text-3" id="text-org72adbbf">
+<div id="outline-container-org33a6079" class="outline-3">
+<h3 id="org33a6079">While loops</h3>
+<div class="outline-text-3" id="text-org33a6079">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_aec1618c95bc4c51a498ab91dd49fa66>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_7c9a572b85b34b3d9fd5001f50467be1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_aec1618c95bc4c51a498ab91dd49fa66=document.querySelector('button[name=btn_aec1618c95bc4c51a498ab91dd49fa66]');
-copyBtnbtn_aec1618c95bc4c51a498ab91dd49fa66.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`count = 0\nwhile count < 5:\n    print(count)\n    count += 1\n\n# Infinite loop with explicit break\nwhile True:\n    data = input(\"Enter command: \")\n    if data == \"quit\":\n        break\n    process(data)\n`);copyBtnbtn_aec1618c95bc4c51a498ab91dd49fa66.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aec1618c95bc4c51a498ab91dd49fa66.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7c9a572b85b34b3d9fd5001f50467be1=document.querySelector('button[name=btn_7c9a572b85b34b3d9fd5001f50467be1]');
+copyBtnbtn_7c9a572b85b34b3d9fd5001f50467be1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`count = 0\nwhile count < 5:\n    print(count)\n    count += 1\n\n# Infinite loop with explicit break\nwhile True:\n    data = input(\"Enter command: \")\n    if data == \"quit\":\n        break\n    process(data)\n`);copyBtnbtn_7c9a572b85b34b3d9fd5001f50467be1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7c9a572b85b34b3d9fd5001f50467be1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1004,15 +1022,15 @@ let res = copyTextToClipboard(`count = 0\nwhile count < 5:\n    print(count)\n  
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgedd881b" class="outline-3">
-<h3 id="orgedd881b">Loop control</h3>
-<div class="outline-text-3" id="text-orgedd881b">
+<div id="outline-container-org425ad59" class="outline-3">
+<h3 id="org425ad59">Loop control</h3>
+<div class="outline-text-3" id="text-org425ad59">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_d8c04aa815934e389f9132472b1add3e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_0d201281074c40be956db982f1ebf646>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d8c04aa815934e389f9132472b1add3e=document.querySelector('button[name=btn_d8c04aa815934e389f9132472b1add3e]');
-copyBtnbtn_d8c04aa815934e389f9132472b1add3e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`for i in range(10):\n    if i == 3:\n        continue   # skip to next iteration\n    if i == 7:\n        break      # exit the loop entirely\n    print(i)\n\n# else on a loop — runs if loop completes without break\nfor item in collection:\n    if condition(item):\n        result = item\n        break\nelse:\n    result = None   # loop exhausted without finding item\n`);copyBtnbtn_d8c04aa815934e389f9132472b1add3e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d8c04aa815934e389f9132472b1add3e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0d201281074c40be956db982f1ebf646=document.querySelector('button[name=btn_0d201281074c40be956db982f1ebf646]');
+copyBtnbtn_0d201281074c40be956db982f1ebf646.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`for i in range(10):\n    if i == 3:\n        continue   # skip to next iteration\n    if i == 7:\n        break      # exit the loop entirely\n    print(i)\n\n# else on a loop — runs if loop completes without break\nfor item in collection:\n    if condition(item):\n        result = item\n        break\nelse:\n    result = None   # loop exhausted without finding item\n`);copyBtnbtn_0d201281074c40be956db982f1ebf646.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0d201281074c40be956db982f1ebf646.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1035,19 +1053,19 @@ let res = copyTextToClipboard(`for i in range(10):\n    if i == 3:\n        cont
 </div>
 </div>
 </div>
-<div id="outline-container-org653d377" class="outline-2">
-<h2 id="org653d377">Exception Handling</h2>
-<div class="outline-text-2" id="text-org653d377">
+<div id="outline-container-orgbc54014" class="outline-2">
+<h2 id="orgbc54014">Exception Handling</h2>
+<div class="outline-text-2" id="text-orgbc54014">
 <p>
 Control flow for error conditions:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_33f6b269cdd240bb97e9b9d0d37a3407>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_f16d800b2ed4476094cb31f48e018b95>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_33f6b269cdd240bb97e9b9d0d37a3407=document.querySelector('button[name=btn_33f6b269cdd240bb97e9b9d0d37a3407]');
-copyBtnbtn_33f6b269cdd240bb97e9b9d0d37a3407.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`try:\n    result = int(user_input)\n    data = fetch_data(url)\nexcept ValueError:\n    print(\"Not a valid number\")\nexcept (ConnectionError, TimeoutError) as e:\n    print(f\"Network error: {e}\")\nexcept Exception as e:\n    print(f\"Unexpected error: {e}\")\n    raise               # re-raise to propagate\nelse:\n    print(\"Success\")    # runs only if no exception\nfinally:\n    cleanup()           # always runs\n`);copyBtnbtn_33f6b269cdd240bb97e9b9d0d37a3407.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_33f6b269cdd240bb97e9b9d0d37a3407.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f16d800b2ed4476094cb31f48e018b95=document.querySelector('button[name=btn_f16d800b2ed4476094cb31f48e018b95]');
+copyBtnbtn_f16d800b2ed4476094cb31f48e018b95.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`try:\n    result = int(user_input)\n    data = fetch_data(url)\nexcept ValueError:\n    print(\"Not a valid number\")\nexcept (ConnectionError, TimeoutError) as e:\n    print(f\"Network error: {e}\")\nexcept Exception as e:\n    print(f\"Unexpected error: {e}\")\n    raise               # re-raise to propagate\nelse:\n    print(\"Success\")    # runs only if no exception\nfinally:\n    cleanup()           # always runs\n`);copyBtnbtn_f16d800b2ed4476094cb31f48e018b95.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f16d800b2ed4476094cb31f48e018b95.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1069,19 +1087,19 @@ let res = copyTextToClipboard(`try:\n    result = int(user_input)\n    data = fe
 </div></div>
 </div>
 </div>
-<div id="outline-container-org76d3ee3" class="outline-2">
-<h2 id="org76d3ee3">List/Dict/Set Comprehensions</h2>
-<div class="outline-text-2" id="text-org76d3ee3">
+<div id="outline-container-org34c77c9" class="outline-2">
+<h2 id="org34c77c9">List/Dict/Set Comprehensions</h2>
+<div class="outline-text-2" id="text-org34c77c9">
 <p>
 Concise control flow for building collections:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_d616fd5886794f61aa009e435f72da05>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_bf85ddf9099e475382285cf0593c4496>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d616fd5886794f61aa009e435f72da05=document.querySelector('button[name=btn_d616fd5886794f61aa009e435f72da05]');
-copyBtnbtn_d616fd5886794f61aa009e435f72da05.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List comprehension\nsquares = [x**2 for x in range(10)]\nevens   = [x for x in range(20) if x % 2 == 0]\n\n# Dict comprehension\nword_lengths = {word: len(word) for word in words}\n\n# Set comprehension\nunique_lengths = {len(word) for word in words}\n\n# Generator expression — lazy (not a comprehension, no brackets)\ntotal = sum(x**2 for x in range(1000000))   # no list created\n`);copyBtnbtn_d616fd5886794f61aa009e435f72da05.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d616fd5886794f61aa009e435f72da05.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bf85ddf9099e475382285cf0593c4496=document.querySelector('button[name=btn_bf85ddf9099e475382285cf0593c4496]');
+copyBtnbtn_bf85ddf9099e475382285cf0593c4496.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List comprehension\nsquares = [x**2 for x in range(10)]\nevens   = [x for x in range(20) if x % 2 == 0]\n\n# Dict comprehension\nword_lengths = {word: len(word) for word in words}\n\n# Set comprehension\nunique_lengths = {len(word) for word in words}\n\n# Generator expression — lazy (not a comprehension, no brackets)\ntotal = sum(x**2 for x in range(1000000))   # no list created\n`);copyBtnbtn_bf85ddf9099e475382285cf0593c4496.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bf85ddf9099e475382285cf0593c4496.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1101,9 +1119,9 @@ let res = copyTextToClipboard(`# List comprehension\nsquares = [x**2 for x in ra
 </div></div>
 </div>
 </div>
-<div id="outline-container-org6fe3971" class="outline-2">
-<h2 id="org6fe3971">Tips</h2>
-<div class="outline-text-2" id="text-org6fe3971">
+<div id="outline-container-org5060f8a" class="outline-2">
+<h2 id="org5060f8a">Tips</h2>
+<div class="outline-text-2" id="text-org5060f8a">
 <ul class="org-ul">
 <li>Prefer <code>for</code> over <code>while</code> when the number of iterations is
 known — it is clearer and less likely to infinite-loop</li>
@@ -1119,6 +1137,20 @@ attribute lookup overhead</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1126,6 +1158,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

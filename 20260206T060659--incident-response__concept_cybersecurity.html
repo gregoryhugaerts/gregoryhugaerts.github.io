@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Incident Response</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,29 +886,160 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgbe0af9d">Incident Response</a></li>
+<li><a href="#org41d4d3f">The Six-Phase IR Lifecycle</a></li>
+<li><a href="#orgcef9c41">How the Two Frameworks Inform the Process</a>
+<ul>
+<li><a href="#org6c98ccc">Pyramid of Pain</a></li>
+<li><a href="#org87b9a40">The Unified Kill Chain</a></li>
+</ul>
+</li>
+<li><a href="#org3b9a234">Applying Both Together</a></li>
+<li><a href="#org8f88f16">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbe0af9d" class="outline-2">
-<h2 id="orgbe0af9d">Incident Response</h2>
-<div class="outline-text-2" id="text-orgbe0af9d">
 <p>
-Incident Response (IR) is the structured process of analyzing, managing, and recovering from a cybersecurity breach. Its effectiveness is significantly enhanced by leveraging conceptual models known as Defence Frameworks, which provide a systematic approach to understanding and deconstructing complex attacks.
+Incident Response (IR) is the structured process of detecting,
+analyzing, containing, and recovering from a cybersecurity breach.
+Its effectiveness is significantly enhanced by leveraging
+conceptual models known as Defence Frameworks, which provide a
+systematic approach to understanding and deconstructing complex
+attacks.
 </p>
 
 <p>
-Two key frameworks that inform the IR process are:
+Related: <a href="20260327T192843--pyramid-of-pain__cybersecurity_model.html">Pyramid of Pain</a>
+         <a href="20260206T060733--the-unified-kill-chain__cybersecurity_model.html">The Unified Kill Chain</a>
+         <a href="20260206T060447--cyber-kill-chain__cybersecurity_model.html">Cyber Kill Chain</a>
+         <a href="20260206T060705--mitre-attck__cybersecurity_model.html">MITRE ATT&amp;CK</a>
+         <a href="20260212T065441==ioc--indicators-of-compromise__concept_cybersecurity.html">Indicators of Compromise</a>
+         <a href="20260206T060500--defence-frameworks__cybersecurity_moc_model.html">Defence Frameworks</a>
+</p>
+<div id="outline-container-org41d4d3f" class="outline-2">
+<h2 id="org41d4d3f">The Six-Phase IR Lifecycle</h2>
+<div class="outline-text-2" id="text-org41d4d3f">
+<p>
+Most IR processes (SANS, NIST) follow the same basic structure,
+regardless of which analytical framework informs the investigation
+within each phase:
+</p>
+
+<ol class="org-ol">
+<li><b>Preparation:</b> Tooling, playbooks, and training in place before
+an incident occurs — the phase that determines how fast and
+effective everything after it will be</li>
+<li><b>Identification:</b> Determining that an incident is actually
+occurring, and its initial scope</li>
+<li><b>Containment:</b> Stopping the spread — short-term (isolate the
+affected host) and long-term (patch, rotate credentials) actions</li>
+<li><b>Eradication:</b> Removing the attacker's presence entirely —
+malware, backdoors, persistence mechanisms</li>
+<li><b>Recovery:</b> Restoring systems to normal operation, with
+monitoring to confirm the threat is genuinely gone</li>
+<li><b>Lessons Learned:</b> Post-incident review — what worked, what
+didn't, what changes prevent recurrence</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgcef9c41" class="outline-2">
+<h2 id="orgcef9c41">How the Two Frameworks Inform the Process</h2>
+<div class="outline-text-2" id="text-orgcef9c41">
+</div>
+<div id="outline-container-org6c98ccc" class="outline-3">
+<h3 id="org6c98ccc">Pyramid of Pain</h3>
+<div class="outline-text-3" id="text-org6c98ccc">
+<p>
+Helps prioritize investigation by focusing on indicators that are
+harder for an adversary to change. During an incident, this guides
+responders to move beyond simple, easily-rotated indicators — hash
+values, IP addresses — and concentrate on identifying the
+attacker's tools and TTPs instead. Indicators low on the pyramid
+give you a quick containment action; indicators high on the
+pyramid (TTPs) give you lasting remediation, since an attacker
+can trivially rotate an IP but can't easily change how they operate.
+</p>
+</div>
+</div>
+<div id="outline-container-org87b9a40" class="outline-3">
+<h3 id="org87b9a40">The Unified Kill Chain</h3>
+<div class="outline-text-3" id="text-org87b9a40">
+<p>
+By integrating the Cyber Kill Chain with MITRE ATT&amp;CK, this model
+provides a granular view of an adversary's actions at each stage
+of an attack. For incident responders, this facilitates a more
+detailed understanding of the intrusion, allowing for more precise
+containment, eradication, and recovery — knowing exactly which
+ATT&amp;CK technique was used at each stage tells you precisely what to
+look for elsewhere in the environment, rather than guessing at the
+attacker's full scope.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3b9a234" class="outline-2">
+<h2 id="org3b9a234">Applying Both Together</h2>
+<div class="outline-text-2" id="text-org3b9a234">
+<p>
+In practice, these two frameworks answer different questions during
+the same investigation:
 </p>
 
 <ul class="org-ul">
-<li><b><a href="Pyramid of Pain.html#pyramid-of-pain">Pyramid of Pain</a></b>: This model helps prioritize the investigation by focusing on indicators that are more difficult for an adversary to change. During an incident, this guides responders to move beyond simple indicators like Hash values or IP Addresses and concentrate on identifying the attacker's tools and their Tactics, Techniques, and Procedures (TTPs). This approach leads to a deeper understanding of the threat and more effective, lasting remediation.</li>
-<li><b><a href="The Unified Kill Chain.html#the-unified-kill-chain">The Unified Kill Chain</a></b>: By integrating the Cyber Kill Chain with the MITRE ATT&amp;CK framework, this model provides a granular view of an adversary's actions at each stage of an attack. For incident responders, this facilitates a more detailed understanding of the intrusion, allowing for more precise containment, eradication, and recovery strategies.</li>
+<li>Unified Kill Chain answers <b>"where is the attacker in the
+intrusion lifecycle, and what did they actually do at each
+stage?"</b> — this shapes containment and eradication scope</li>
+<li>Pyramid of Pain answers <b>"which of the indicators I've found are
+worth building long-term detections around, versus which are
+just noise that'll be gone tomorrow?"</b> — this shapes what goes
+into the Lessons Learned phase and future detection engineering</li>
+</ul>
+
+<p>
+A mature IR process uses the Kill Chain mapping to scope the
+incident correctly, then uses the Pyramid to decide which
+indicators get promoted into lasting detection rules rather than
+being logged once and forgotten.
+</p>
+</div>
+</div>
+<div id="outline-container-org8f88f16" class="outline-2">
+<h2 id="org8f88f16">Tips</h2>
+<div class="outline-text-2" id="text-org8f88f16">
+<ul class="org-ul">
+<li>Don't treat Containment as the finish line — an attacker who was
+only evicted from the specific host you found, without addressing
+the TTP-level access method (e.g. a phished credential, a web
+shell reachable via the same vulnerable endpoint), will likely
+return through the same door</li>
+<li>Preparation is the phase most often underinvested in relative to
+its actual impact — playbooks and pre-approved containment
+actions (can you isolate a host without a change-approval
+meeting?) determine your actual response speed far more than
+analyst skill during the incident itself</li>
+<li>Indicators of Compromise gathered during Identification should
+be explicitly triaged against the Pyramid of Pain before Lessons
+Learned — a list of IOCs with no prioritization is far less
+useful to future detection work than a short list of TTP-level
+indicators</li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -898,6 +1047,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

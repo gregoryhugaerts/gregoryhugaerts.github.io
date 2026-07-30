@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Command and Control Server</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,95 +886,166 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd90e430">Command and Control Server</a>
-<ul>
-<li><a href="#org49a2338">Key Characteristics</a></li>
-<li><a href="#org799f69b">Additional Notes</a></li>
-<li><a href="#org82c8d49">Related Concepts</a></li>
-</ul>
-</li>
-<li><a href="#org84e8c45">C2 Infrastructure Models</a></li>
-<li><a href="#org7a0758f">C2 Detection and Mitigation</a></li>
+<li><a href="#orgbe85503">Key Characteristics</a></li>
+<li><a href="#org34eeebe">C2 Infrastructure Models</a></li>
+<li><a href="#org5b5536c">Detection and Mitigation — Brief Summary</a></li>
+<li><a href="#orgff74b38">Pentest-Relevant Setup</a></li>
+<li><a href="#org7269bba">Additional Notes</a></li>
+<li><a href="#org73f046e">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd90e430" class="outline-2">
-<h2 id="orgd90e430">Command and Control Server</h2>
-<div class="outline-text-2" id="text-orgd90e430">
 <p>
-A Command and Control (C&amp;C) server is a computer controlled by an attacker used to communicate with and manage compromised devices, often referred to as bots.
+A Command and Control (C&amp;C/C2) server is a computer controlled by
+an attacker used to communicate with and manage compromised
+devices, often referred to as bots. These infected devices form a
+<a href="20260206T060454--botnet__concept_cybersecurity.html">Botnet</a>, capable of performing various
+malicious actions under the attacker's command.
 </p>
 
 <p>
-These infected devices form a Botnet, capable of performing various malicious actions under the attacker's command.
+Related: <a href="20260206T060454--botnet__concept_cybersecurity.html">Botnet</a>
+         <a href="20260206T060505--domain-generation-algorithm__concept_cybersecurity.html">Domain Generation Algorithm</a>
+         <a href="20260314T005619--command-and-control-detection__concept_cybersecurity.html">Command and Control Detection</a>
+         <a href="20260206T060726--reverse-shell__concept_cybersecurity.html">Reverse Shell</a>
+         <a href="20260213T110116--metasploit__cybersecurity_tool.html">Metasploit</a>
+         <a href="20260314T005736--msfvenom__cybersecurity_tool.html">Msfvenom</a>
 </p>
-</div>
-<div id="outline-container-org49a2338" class="outline-3">
-<h3 id="org49a2338">Key Characteristics</h3>
-<div class="outline-text-3" id="text-org49a2338">
+<div id="outline-container-orgbe85503" class="outline-2">
+<h2 id="orgbe85503">Key Characteristics</h2>
+<div class="outline-text-2" id="text-orgbe85503">
 <ul class="org-ul">
 <li>Centralized communication: Serves as a command hub for a botnet.</li>
 <li>Malicious activity: Used to disseminate commands for data theft, DDoS attacks, spam, and more.</li>
-<li>Evasion techniques: Often employs obfuscation, Encryption, and dynamic communication channels to avoid detection.</li>
+<li>Evasion techniques: Often employs obfuscation, encryption, and dynamic communication channels to avoid detection.</li>
 <li>Botnet management: Coordinates the actions of compromised devices.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org799f69b" class="outline-3">
-<h3 id="org799f69b">Additional Notes</h3>
-<div class="outline-text-3" id="text-org799f69b">
+<div id="outline-container-org34eeebe" class="outline-2">
+<h2 id="org34eeebe">C2 Infrastructure Models</h2>
+<div class="outline-text-2" id="text-org34eeebe">
 <p>
-C&amp;C servers can be hosted on legitimate servers or in the cloud to evade detection.
+Command and Control infrastructures can be designed in several
+ways, each with different levels of resilience and stealth:
 </p>
 
-<p>
-Botnets pose a significant threat to individuals, organizations, and critical infrastructure.
-</p>
-</div>
-</div>
-<div id="outline-container-org82c8d49" class="outline-3">
-<h3 id="org82c8d49">Related Concepts</h3>
-<div class="outline-text-3" id="text-org82c8d49">
 <ul class="org-ul">
-<li><a href="C2 Infrastructure Models.html#c2-infrastructure-models">C2 Infrastructure Models</a></li>
-<li><a href="C2 Detection and Mitigation.html#c2-detection-and-mitigation">C2 Detection and Mitigation</a></li>
-<li><a href="Domain Generation Algorithm.html#domain-generation-algorithm">Domain Generation Algorithm</a></li>
+<li><b>Centralized:</b> A single server controls all bots. Simplest model,
+but a single point of failure — if the server is taken down, the
+entire botnet is disabled.</li>
+<li><b>Peer-to-peer (P2P):</b> Control is distributed among the bots
+themselves, with no central authority. Highly resilient but more
+complex to manage.</li>
+<li><b>Hybrid:</b> Combines centralized and peer-to-peer elements — bots
+organized into groups, each with a leader reporting to a central
+server.</li>
+<li><b>Domain Fronting / <a href="../../../Org/20260206T060505--domain-generation-algorithm__concept_cybersecurity.html">Domain Generation
+Algorithm</a>:</b> Techniques for hiding or rotating C2 infrastructure
+specifically to survive takedown attempts and evade domain-based
+blocklisting.</li>
 </ul>
 </div>
 </div>
-</div>
-<div id="outline-container-org84e8c45" class="outline-2">
-<h2 id="org84e8c45">C2 Infrastructure Models</h2>
-<div class="outline-text-2" id="text-org84e8c45">
+<div id="outline-container-org5b5536c" class="outline-2">
+<h2 id="org5b5536c">Detection and Mitigation — Brief Summary</h2>
+<div class="outline-text-2" id="text-org5b5536c">
 <p>
-Command and Control (C2) infrastructures can be designed in several ways, each with different levels of resilience and stealth.
+Detecting C2 activity involves identifying and blocking the
+communication channel between compromised devices and the
+attacker's infrastructure — see
+<a href="20260314T005619--command-and-control-detection__concept_cybersecurity.html">Command and Control Detection</a> for the
+full methodology (IDS signatures, behavior-based detection, network
+traffic analysis, EDR, threat intelligence). Kept brief here
+deliberately to avoid this note and that one drifting out of sync —
+this section exists only as a pointer, not a duplicate.
+</p>
+</div>
+</div>
+<div id="outline-container-orgff74b38" class="outline-2">
+<h2 id="orgff74b38">Pentest-Relevant Setup</h2>
+<div class="outline-text-2" id="text-orgff74b38">
+<p>
+On the offensive side, standing up C2 infrastructure is a practical
+task, not just a concept to describe:
 </p>
 
-<ul class="org-ul">
-<li>Centralized: A single server controls all bots. This is the simplest model but creates a single point of failure. If the server is taken down, the entire botnet is disabled.</li>
-<li>Peer-to-peer (P2P): Control is distributed among the bots themselves, with no central authority. This model is highly resilient but can be more complex to manage.</li>
-<li>Hybrid: Combines centralized and peer-to-peer elements. For example, bots might be organized into groups, each with a leader that reports to a central server.</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org7a0758f" class="outline-2">
-<h2 id="org7a0758f">C2 Detection and Mitigation</h2>
-<div class="outline-text-2" id="text-org7a0758f">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_fbfb37c3e42d4fd8a343e98e241074f8>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_fbfb37c3e42d4fd8a343e98e241074f8=document.querySelector('button[name=btn_fbfb37c3e42d4fd8a343e98e241074f8]');
+copyBtnbtn_fbfb37c3e42d4fd8a343e98e241074f8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Metasploit multi/handler — the simplest C2 listener for a\n# Meterpreter or reverse shell payload\nmsfconsole -q -x \"use exploit/multi/handler; \\\n  set payload windows/x64/meterpreter/reverse_tcp; \\\n  set LHOST <attacker-ip>; set LPORT 4444; exploit\"\n`);copyBtnbtn_fbfb37c3e42d4fd8a343e98e241074f8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fbfb37c3e42d4fd8a343e98e241074f8.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Metasploit multi/handler &#8212; the simplest C2 listener for a
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Meterpreter or reverse shell payload
+</span>msfconsole -q -x <span style="color: var(--clr-string); background-color: var(--bg-string);">"use exploit/multi/handler; \
+  set payload windows/x64/meterpreter/reverse_tcp; \
+  set LHOST &lt;attacker-ip&gt;; set LPORT 4444; exploit"</span>
+</pre>
+</div></div>
+
 <p>
-Detecting and mitigating Command and Control (C2) activity is a critical part of cybersecurity defense. It involves identifying and blocking the communication channels between compromised devices and the attacker's server.
+See <a href="20260314T005736--msfvenom__cybersecurity_tool.html">Msfvenom</a> for generating the
+corresponding payload, and
+<a href="20260206T060726--reverse-shell__concept_cybersecurity.html">Reverse Shell</a> for lighter-weight
+alternatives when a full Metasploit handler isn't needed (e.g. a
+simple netcat/socat listener for an initial foothold).
+</p>
+</div>
+</div>
+<div id="outline-container-org7269bba" class="outline-2">
+<h2 id="org7269bba">Additional Notes</h2>
+<div class="outline-text-2" id="text-org7269bba">
+<p>
+C&amp;C servers can be hosted on legitimate cloud infrastructure
+specifically to evade detection — traffic to a well-known cloud
+provider's IP range draws far less scrutiny than traffic to an
+obviously suspicious host, a technique sometimes called
+"domain fronting" or "living off trusted domains."
 </p>
 
+<p>
+Botnets pose a significant threat to individuals, organizations,
+and critical infrastructure.
+</p>
+</div>
+</div>
+<div id="outline-container-org73f046e" class="outline-2">
+<h2 id="org73f046e">Tips</h2>
+<div class="outline-text-2" id="text-org73f046e">
 <ul class="org-ul">
-<li>Intrusion Detection Systems: Can identify suspicious network traffic patterns that match known C2 communication signatures.</li>
-<li>Behavior-based detection: Analyzes system behavior for anomalies, such as a process making unusual network connections.</li>
-<li>Network Traffic Analysis: Involves monitoring for unusual communication patterns, such as regular, timed beacons to a specific IP address or domain.</li>
-<li>Endpoint Protection: Endpoint Detection and Response (EDR) tools can prevent malware infection and detect C2 communications originating from a device.</li>
-<li>Threat Intelligence: Staying informed about emerging C&amp;C tactics, domains, and IP addresses helps in proactively blocking them.</li>
+<li>On the exam, your own "C2" is usually just a netcat listener or a
+Metasploit handler — don't overthink infrastructure design the
+way a real threat actor would; the pentest-relevant skill is
+reliably catching and stabilizing a shell, not building resilient
+C2 architecture</li>
+<li>If you're specifically testing detection capability (a
+blue-team-adjacent engagement), the infrastructure model
+distinctions above become relevant — a centralized C2 is far
+easier to detect via network traffic analysis than a
+domain-fronted or P2P setup</li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -964,6 +1053,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

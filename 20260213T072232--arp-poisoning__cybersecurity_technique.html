@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ARP Poisoning</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -892,6 +892,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -900,36 +918,36 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb0ff458">ARP Poisoning</a>
+<li><a href="#orgaeda519">ARP Poisoning</a>
 <ul>
-<li><a href="#orgbf8534e">Description</a>
+<li><a href="#orga3e632f">Description</a>
 <ul>
-<li><a href="#orgf83a752">How it Works</a></li>
+<li><a href="#org813810e">How it Works</a></li>
 </ul>
 </li>
-<li><a href="#org9ef0a2c">Examples</a></li>
+<li><a href="#org1d5b07d">Examples</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb0ff458" class="outline-2">
-<h2 id="orgb0ff458">ARP Poisoning</h2>
-<div class="outline-text-2" id="text-orgb0ff458">
+<div id="outline-container-orgaeda519" class="outline-2">
+<h2 id="orgaeda519">ARP Poisoning</h2>
+<div class="outline-text-2" id="text-orgaeda519">
 </div>
-<div id="outline-container-orgbf8534e" class="outline-3">
-<h3 id="orgbf8534e">Description</h3>
-<div class="outline-text-3" id="text-orgbf8534e">
+<div id="outline-container-orga3e632f" class="outline-3">
+<h3 id="orga3e632f">Description</h3>
+<div class="outline-text-3" id="text-orga3e632f">
 <p>
-<b>Poisoning</b> (or ARP Spoofing) is a type of <b>Man-in-the-Middle (MitM)
+<b><a href="20260314T005631--address-resolution-protocol__networking_protocol.html">ARP</a> Poisoning</b> (or ARP Spoofing) is a type of <b>Man-in-the-Middle (MitM)
 attack</b> that exploits the stateless and trust-based nature of the ARP
 protocol, which is used to resolve <b>IP addresses</b> to <b>MAC addresses</b> on a
 local network segment.
 </p>
 </div>
-<div id="outline-container-orgf83a752" class="outline-4">
-<h4 id="orgf83a752">How it Works</h4>
-<div class="outline-text-4" id="text-orgf83a752">
+<div id="outline-container-org813810e" class="outline-4">
+<h4 id="org813810e">How it Works</h4>
+<div class="outline-text-4" id="text-org813810e">
 <ol class="org-ol">
 <li><b>ARP Request:</b> When one device (A) on a network needs to send data to another device (B), it broadcasts an ARP request asking, "Who has IP address B?"</li>
 <li><b>Legitimate Reply:</b> Device B replies, "I do, and my MAC address is \(M_B\)." Device A then caches this IP-to-MAC mapping.</li>
@@ -944,9 +962,9 @@ local network segment.
 </div>
 </div>
 </div>
-<div id="outline-container-org9ef0a2c" class="outline-3">
-<h3 id="org9ef0a2c">Examples</h3>
-<div class="outline-text-3" id="text-org9ef0a2c">
+<div id="outline-container-org1d5b07d" class="outline-3">
+<h3 id="org1d5b07d">Examples</h3>
+<div class="outline-text-3" id="text-org1d5b07d">
 <ul class="org-ul">
 <li><b>Man-in-the-Middle (MitM) Attack:</b> The primary use. After poisoning the ARP cache of a victim and a gateway, the attacker sits in between, transparently intercepting all traffic, including credentials and sensitive data.</li>
 
@@ -959,11 +977,11 @@ local network segment.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_eb12870f1abe44f2a114f7c1e0559d49>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_129892c5ceb741aa910f0742becd4abf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_eb12870f1abe44f2a114f7c1e0559d49=document.querySelector('button[name=btn_eb12870f1abe44f2a114f7c1e0559d49]');
-copyBtnbtn_eb12870f1abe44f2a114f7c1e0559d49.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# A common tool used for ARP Spoofing and MitM attacks in penetration testing\n# -i eth0: specifies the network interface\n# -t 192.168.1.100: specifies the target IP (victim)\n# -r 192.168.1.1: specifies the router/gateway IP\nettercap -Tq -i eth0 -M arp:remote /192.168.1.100/ /192.168.1.1/\n`);copyBtnbtn_eb12870f1abe44f2a114f7c1e0559d49.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_eb12870f1abe44f2a114f7c1e0559d49.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_129892c5ceb741aa910f0742becd4abf=document.querySelector('button[name=btn_129892c5ceb741aa910f0742becd4abf]');
+copyBtnbtn_129892c5ceb741aa910f0742becd4abf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# A common tool used for ARP Spoofing and MitM attacks in penetration testing\n# -i eth0: specifies the network interface\n# -t 192.168.1.100: specifies the target IP (victim)\n# -r 192.168.1.1: specifies the router/gateway IP\nettercap -Tq -i eth0 -M arp:remote /192.168.1.100/ /192.168.1.1/\n`);copyBtnbtn_129892c5ceb741aa910f0742becd4abf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_129892c5ceb741aa910f0742becd4abf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -980,6 +998,20 @@ let res = copyTextToClipboard(`# A common tool used for ARP Spoofing and MitM at
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -987,6 +1019,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

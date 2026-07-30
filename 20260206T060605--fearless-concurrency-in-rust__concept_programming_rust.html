@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Fearless concurrency in rust</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,16 +886,16 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org208b41e">Fearless Concurrency in Rust</a>
+<li><a href="#org3e5e6d6">Fearless Concurrency in Rust</a>
 <ul>
-<li><a href="#orgbdf4d15">The Problem: Data Races</a></li>
-<li><a href="#org4581cc1">Rust's Solution: The Compiler as a Guardian</a></li>
-<li><a href="#orgf80a54c"><code>Send</code> And <code>Sync</code> Traits</a></li>
-<li><a href="#org74bc318">Practical Examples</a>
+<li><a href="#org6394ae9">The Problem: Data Races</a></li>
+<li><a href="#org7268480">Rust's Solution: The Compiler as a Guardian</a></li>
+<li><a href="#orgdcd6892"><code>Send</code> And <code>Sync</code> Traits</a></li>
+<li><a href="#orgf04938f">Practical Examples</a>
 <ul>
-<li><a href="#org87aa199">1. Spawning a Thread and Moving data</a></li>
-<li><a href="#org96fa348">2. Sharing Read-Only Data with <code>Arc</code></a></li>
-<li><a href="#org5435ea8">3. Sharing Mutable Data with <code>Arc&lt;Mutex&lt;T&gt;&gt;</code></a></li>
+<li><a href="#orgbbc9cd2">1. Spawning a Thread and Moving data</a></li>
+<li><a href="#orgb659a5e">2. Sharing Read-Only Data with <code>Arc</code></a></li>
+<li><a href="#orge3de8cd">3. Sharing Mutable Data with <code>Arc&lt;Mutex&lt;T&gt;&gt;</code></a></li>
 </ul>
 </li>
 </ul>
@@ -885,16 +903,16 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-org208b41e" class="outline-2">
-<h2 id="org208b41e">Fearless Concurrency in Rust</h2>
-<div class="outline-text-2" id="text-org208b41e">
+<div id="outline-container-org3e5e6d6" class="outline-2">
+<h2 id="org3e5e6d6">Fearless Concurrency in Rust</h2>
+<div class="outline-text-2" id="text-org3e5e6d6">
 <p>
 Rust's "fearless concurrency" is a core design principle that allows developers to write safe concurrent code without the typical risks of data races and other multi-threading bugs. This safety is achieved not at runtime, but at compile time, through the same ownership and borrowing rules that guarantee memory safety.
 </p>
 </div>
-<div id="outline-container-orgbdf4d15" class="outline-3">
-<h3 id="orgbdf4d15">The Problem: Data Races</h3>
-<div class="outline-text-3" id="text-orgbdf4d15">
+<div id="outline-container-org6394ae9" class="outline-3">
+<h3 id="org6394ae9">The Problem: Data Races</h3>
+<div class="outline-text-3" id="text-org6394ae9">
 <p>
 In many languages, multi-threaded programming is error-prone. A common and dangerous bug is a <b>data race</b>, which occurs when:
 </p>
@@ -910,9 +928,9 @@ Data races lead to undefined behavior and can be incredibly difficult to debug b
 </p>
 </div>
 </div>
-<div id="outline-container-org4581cc1" class="outline-3">
-<h3 id="org4581cc1">Rust's Solution: The Compiler as a Guardian</h3>
-<div class="outline-text-3" id="text-org4581cc1">
+<div id="outline-container-org7268480" class="outline-3">
+<h3 id="org7268480">Rust's Solution: The Compiler as a Guardian</h3>
+<div class="outline-text-3" id="text-org7268480">
 <p>
 Rust prevents data races at compile time. If your code contains a data race, it simply will not compile. This is a powerful guarantee that eliminates an entire class of Concurrency errors before your application even runs.
 </p>
@@ -935,9 +953,9 @@ When you try to share data between threads, the compiler (specifically the "borr
 </p>
 </div>
 </div>
-<div id="outline-container-orgf80a54c" class="outline-3">
-<h3 id="orgf80a54c"><code>Send</code> And <code>Sync</code> Traits</h3>
-<div class="outline-text-3" id="text-orgf80a54c">
+<div id="outline-container-orgdcd6892" class="outline-3">
+<h3 id="orgdcd6892"><code>Send</code> And <code>Sync</code> Traits</h3>
+<div class="outline-text-3" id="text-orgdcd6892">
 <p>
 To manage how types interact with threads, Rust uses two special traits:
 </p>
@@ -952,26 +970,26 @@ Most types in Rust are <code>Send</code> and <code>Sync</code> automatically. Th
 </p>
 </div>
 </div>
-<div id="outline-container-org74bc318" class="outline-3">
-<h3 id="org74bc318">Practical Examples</h3>
-<div class="outline-text-3" id="text-org74bc318">
+<div id="outline-container-orgf04938f" class="outline-3">
+<h3 id="orgf04938f">Practical Examples</h3>
+<div class="outline-text-3" id="text-orgf04938f">
 <p>
 Here are a few examples demonstrating how Rust's ownership and Type System provide safe Concurrency.
 </p>
 </div>
-<div id="outline-container-org87aa199" class="outline-4">
-<h4 id="org87aa199">1. Spawning a Thread and Moving data</h4>
-<div class="outline-text-4" id="text-org87aa199">
+<div id="outline-container-orgbbc9cd2" class="outline-4">
+<h4 id="orgbbc9cd2">1. Spawning a Thread and Moving data</h4>
+<div class="outline-text-4" id="text-orgbbc9cd2">
 <p>
 To pass data to a new thread, you must transfer ownership. The <code>move</code> keyword before a closure tells Rust to move ownership of any captured variables into the closure.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_fce398bfdb6e48b49c11f623f9e0448b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_9343698bcf9d41a0993eb8f49b1660b5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fce398bfdb6e48b49c11f623f9e0448b=document.querySelector('button[name=btn_fce398bfdb6e48b49c11f623f9e0448b]');
-copyBtnbtn_fce398bfdb6e48b49c11f623f9e0448b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use std::thread;\n\nfn main() {\n    let data = vec![1, 2, 3];\n\n    // 'thread::spawn' starts a new thread.\n    // The 'move' keyword transfers ownership of 'data' to the new thread.\n    let handle = thread::spawn(move || {\n        println!(\"Here's the data from the new thread: {:?}\", data);\n    });\n\n    // This line would cause a compile-time error because 'data' has been moved\n    // and the main thread no longer owns it.\n    // println!(\"Can't access data from main thread: {:?}\", data);\n\n    // Wait for the spawned thread to finish.\n    handle.join().unwrap();\n}\n`);copyBtnbtn_fce398bfdb6e48b49c11f623f9e0448b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fce398bfdb6e48b49c11f623f9e0448b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9343698bcf9d41a0993eb8f49b1660b5=document.querySelector('button[name=btn_9343698bcf9d41a0993eb8f49b1660b5]');
+copyBtnbtn_9343698bcf9d41a0993eb8f49b1660b5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use std::thread;\n\nfn main() {\n    let data = vec![1, 2, 3];\n\n    // 'thread::spawn' starts a new thread.\n    // The 'move' keyword transfers ownership of 'data' to the new thread.\n    let handle = thread::spawn(move || {\n        println!(\"Here's the data from the new thread: {:?}\", data);\n    });\n\n    // This line would cause a compile-time error because 'data' has been moved\n    // and the main thread no longer owns it.\n    // println!(\"Can't access data from main thread: {:?}\", data);\n\n    // Wait for the spawned thread to finish.\n    handle.join().unwrap();\n}\n`);copyBtnbtn_9343698bcf9d41a0993eb8f49b1660b5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9343698bcf9d41a0993eb8f49b1660b5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1001,19 +1019,19 @@ fn main() {
 </p>
 </div>
 </div>
-<div id="outline-container-org96fa348" class="outline-4">
-<h4 id="org96fa348">2. Sharing Read-Only Data with <code>Arc</code></h4>
-<div class="outline-text-4" id="text-org96fa348">
+<div id="outline-container-orgb659a5e" class="outline-4">
+<h4 id="orgb659a5e">2. Sharing Read-Only Data with <code>Arc</code></h4>
+<div class="outline-text-4" id="text-orgb659a5e">
 <p>
 If you need multiple threads to <i>read</i> the same data without transferring ownership, you can use <code>Arc&lt;T&gt;</code>, which stands for "Atomically Reference Counted" pointer. It's a thread-safe way to share a single value between multiple owners.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_e3d47e5dc4e24066b09f6ec4bd8a39de>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_7fb7f47754c0482a80e99ec30ea14513>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e3d47e5dc4e24066b09f6ec4bd8a39de=document.querySelector('button[name=btn_e3d47e5dc4e24066b09f6ec4bd8a39de]');
-copyBtnbtn_e3d47e5dc4e24066b09f6ec4bd8a39de.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use std::sync::Arc;\nuse std::thread;\n\nfn main() {\n    // Wrap the data in an Arc to enable shared ownership.\n    let shared_data = Arc::new(vec![10, 20, 30]);\n    let mut handles = vec![];\n\n    for i in 0..3 {\n        // Create a new reference-counted pointer for the new thread.\n        // This is cheap as it only bumps a counter, not a deep copy.\n        let data_clone = Arc::clone(&shared_data);\n        \n        let handle = thread::spawn(move || {\n            println!(\"Thread {} sees data: {:?}\", i, data_clone);\n        });\n        handles.push(handle);\n    }\n\n    for handle in handles {\n        handle.join().unwrap();\n    }\n}\n`);copyBtnbtn_e3d47e5dc4e24066b09f6ec4bd8a39de.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e3d47e5dc4e24066b09f6ec4bd8a39de.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7fb7f47754c0482a80e99ec30ea14513=document.querySelector('button[name=btn_7fb7f47754c0482a80e99ec30ea14513]');
+copyBtnbtn_7fb7f47754c0482a80e99ec30ea14513.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use std::sync::Arc;\nuse std::thread;\n\nfn main() {\n    // Wrap the data in an Arc to enable shared ownership.\n    let shared_data = Arc::new(vec![10, 20, 30]);\n    let mut handles = vec![];\n\n    for i in 0..3 {\n        // Create a new reference-counted pointer for the new thread.\n        // This is cheap as it only bumps a counter, not a deep copy.\n        let data_clone = Arc::clone(&shared_data);\n        \n        let handle = thread::spawn(move || {\n            println!(\"Thread {} sees data: {:?}\", i, data_clone);\n        });\n        handles.push(handle);\n    }\n\n    for handle in handles {\n        handle.join().unwrap();\n    }\n}\n`);copyBtnbtn_7fb7f47754c0482a80e99ec30ea14513.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7fb7f47754c0482a80e99ec30ea14513.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1048,19 +1066,19 @@ fn main() {
 </p>
 </div>
 </div>
-<div id="outline-container-org5435ea8" class="outline-4">
-<h4 id="org5435ea8">3. Sharing Mutable Data with <code>Arc&lt;Mutex&lt;T&gt;&gt;</code></h4>
-<div class="outline-text-4" id="text-org5435ea8">
+<div id="outline-container-orge3de8cd" class="outline-4">
+<h4 id="orge3de8cd">3. Sharing Mutable Data with <code>Arc&lt;Mutex&lt;T&gt;&gt;</code></h4>
+<div class="outline-text-4" id="text-orge3de8cd">
 <p>
 To allow multiple threads to <i>modify</i> shared data, you must combine <code>Arc</code> with a <code>Mutex&lt;T&gt;</code> (Mutual Exclusion). A <code>Mutex</code> ensures that only one thread can access the data at any given time.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_ae2d04559dde400eb4025273cbeebc6c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_cd4c7402ead24decb6ae5a407ef465b4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ae2d04559dde400eb4025273cbeebc6c=document.querySelector('button[name=btn_ae2d04559dde400eb4025273cbeebc6c]');
-copyBtnbtn_ae2d04559dde400eb4025273cbeebc6c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use std::sync::{Arc, Mutex};\nuse std::thread;\n\nfn main() {\n    // Wrap a counter in a Mutex, then wrap the Mutex in an Arc.\n    let counter = Arc::new(Mutex::new(0));\n    let mut handles = vec![];\n\n    for _ in 0..10 {\n        let counter_clone = Arc::clone(&counter);\n        let handle = thread::spawn(move || {\n            // 'lock()' acquires the mutex, blocking until it's available.\n            // It returns a 'MutexGuard', a smart pointer.\n            let mut num = counter_clone.lock().unwrap();\n            \n            // The MutexGuard dereferences to the inner data.\n            *num += 1;\n\n            // The lock is automatically released when 'num' (the MutexGuard)\n            // goes out of scope at the end of this closure.\n        });\n        handles.push(handle);\n    }\n\n    for handle in handles {\n        handle.join().unwrap();\n    }\n\n    // Lock the mutex in the main thread to print the final result.\n    println!(\"Result: {}\", *counter.lock().unwrap()); // Prints \"Result: 10\"\n}\n`);copyBtnbtn_ae2d04559dde400eb4025273cbeebc6c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ae2d04559dde400eb4025273cbeebc6c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cd4c7402ead24decb6ae5a407ef465b4=document.querySelector('button[name=btn_cd4c7402ead24decb6ae5a407ef465b4]');
+copyBtnbtn_cd4c7402ead24decb6ae5a407ef465b4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use std::sync::{Arc, Mutex};\nuse std::thread;\n\nfn main() {\n    // Wrap a counter in a Mutex, then wrap the Mutex in an Arc.\n    let counter = Arc::new(Mutex::new(0));\n    let mut handles = vec![];\n\n    for _ in 0..10 {\n        let counter_clone = Arc::clone(&counter);\n        let handle = thread::spawn(move || {\n            // 'lock()' acquires the mutex, blocking until it's available.\n            // It returns a 'MutexGuard', a smart pointer.\n            let mut num = counter_clone.lock().unwrap();\n            \n            // The MutexGuard dereferences to the inner data.\n            *num += 1;\n\n            // The lock is automatically released when 'num' (the MutexGuard)\n            // goes out of scope at the end of this closure.\n        });\n        handles.push(handle);\n    }\n\n    for handle in handles {\n        handle.join().unwrap();\n    }\n\n    // Lock the mutex in the main thread to print the final result.\n    println!(\"Result: {}\", *counter.lock().unwrap()); // Prints \"Result: 10\"\n}\n`);copyBtnbtn_cd4c7402ead24decb6ae5a407ef465b4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cd4c7402ead24decb6ae5a407ef465b4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1107,6 +1125,20 @@ fn main() {
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1114,6 +1146,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Closures in Rust</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,24 +886,24 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5552360">Syntax</a></li>
-<li><a href="#org4e0484f">Capture Modes — The Three Fn Traits</a>
+<li><a href="#org70ab750">Syntax</a></li>
+<li><a href="#orgc37baa4">Capture Modes — The Three Fn Traits</a>
 <ul>
-<li><a href="#org7e2d0b6">Fn — immutable borrow</a></li>
-<li><a href="#orge142aab">FnMut — mutable borrow</a></li>
-<li><a href="#orgda8554e">FnOnce — move (ownership transfer)</a></li>
+<li><a href="#org38e6368">Fn — immutable borrow</a></li>
+<li><a href="#org023732f">FnMut — mutable borrow</a></li>
+<li><a href="#org2f84d02">FnOnce — move (ownership transfer)</a></li>
 </ul>
 </li>
-<li><a href="#org41b4389">The move Keyword</a></li>
-<li><a href="#org46a73e0">Common Uses</a>
+<li><a href="#orgfc5ab03">The move Keyword</a></li>
+<li><a href="#orgdefe3ec">Common Uses</a>
 <ul>
-<li><a href="#org2392451">Iterator adaptors</a></li>
-<li><a href="#orgbfed531">Custom sorting</a></li>
-<li><a href="#orgd54f69b">Returning closures</a></li>
+<li><a href="#orgc18c91d">Iterator adaptors</a></li>
+<li><a href="#orgf2843bb">Custom sorting</a></li>
+<li><a href="#org531b6d5">Returning closures</a></li>
 </ul>
 </li>
-<li><a href="#orgbcee6bc">Fn Trait Bounds in Function Signatures</a></li>
-<li><a href="#org0e44d46">Tips</a></li>
+<li><a href="#org8d341e0">Fn Trait Bounds in Function Signatures</a></li>
+<li><a href="#orgd3394fc">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -904,15 +922,15 @@ Related: <a href="20260314T005657--rust__language_programming.html">Rust</a>
          <a href="20260314T005648--iterators__concept_programming.html">Iterators</a>
          <a href="20260206T060606--functional-programming__concept_programming.html">Functional Programming</a>
 </p>
-<div id="outline-container-org5552360" class="outline-2">
-<h2 id="org5552360">Syntax</h2>
-<div class="outline-text-2" id="text-org5552360">
+<div id="outline-container-org70ab750" class="outline-2">
+<h2 id="org70ab750">Syntax</h2>
+<div class="outline-text-2" id="text-org70ab750">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_e1910d23de0e4644bcc8b3700beeabc8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_5aeeecb775604d329b145990fe41c047>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e1910d23de0e4644bcc8b3700beeabc8=document.querySelector('button[name=btn_e1910d23de0e4644bcc8b3700beeabc8]');
-copyBtnbtn_e1910d23de0e4644bcc8b3700beeabc8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Basic closure\nlet add_one = |x| x + 1;\nadd_one(5)   // 6\n\n// With explicit types\nlet add_two = |x: i32| -> i32 { x + 2 };\n\n// Multi-line\nlet greet = |name: &str| {\n    let msg = format!(\"Hello, {name}!\");\n    println!(\"{msg}\");\n};\n\n// Capturing from environment\nlet factor = 3;\nlet multiply = |x| x * factor;   // borrows factor immutably\nmultiply(10)   // 30\n`);copyBtnbtn_e1910d23de0e4644bcc8b3700beeabc8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e1910d23de0e4644bcc8b3700beeabc8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5aeeecb775604d329b145990fe41c047=document.querySelector('button[name=btn_5aeeecb775604d329b145990fe41c047]');
+copyBtnbtn_5aeeecb775604d329b145990fe41c047.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Basic closure\nlet add_one = |x| x + 1;\nadd_one(5)   // 6\n\n// With explicit types\nlet add_two = |x: i32| -> i32 { x + 2 };\n\n// Multi-line\nlet greet = |name: &str| {\n    let msg = format!(\"Hello, {name}!\");\n    println!(\"{msg}\");\n};\n\n// Capturing from environment\nlet factor = 3;\nlet multiply = |x| x * factor;   // borrows factor immutably\nmultiply(10)   // 30\n`);copyBtnbtn_5aeeecb775604d329b145990fe41c047.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5aeeecb775604d329b145990fe41c047.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -937,29 +955,29 @@ multiply(10)   // 30
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4e0484f" class="outline-2">
-<h2 id="org4e0484f">Capture Modes — The Three Fn Traits</h2>
-<div class="outline-text-2" id="text-org4e0484f">
+<div id="outline-container-orgc37baa4" class="outline-2">
+<h2 id="orgc37baa4">Capture Modes — The Three Fn Traits</h2>
+<div class="outline-text-2" id="text-orgc37baa4">
 <p>
 The compiler chooses the capture mode based on what the closure
 does with captured variables. Ordering from least to most
 restrictive:
 </p>
 </div>
-<div id="outline-container-org7e2d0b6" class="outline-3">
-<h3 id="org7e2d0b6">Fn — immutable borrow</h3>
-<div class="outline-text-3" id="text-org7e2d0b6">
+<div id="outline-container-org38e6368" class="outline-3">
+<h3 id="org38e6368">Fn — immutable borrow</h3>
+<div class="outline-text-3" id="text-org38e6368">
 <p>
 Captures by <code>&amp;T</code>. Can be called any number of times. The captured
 variable remains usable outside the closure.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_21bc74ebaf1740b18793d8089e3f709d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_6f6970f66b954cefbedbf8ac42e6b192>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_21bc74ebaf1740b18793d8089e3f709d=document.querySelector('button[name=btn_21bc74ebaf1740b18793d8089e3f709d]');
-copyBtnbtn_21bc74ebaf1740b18793d8089e3f709d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let greeting = String::from(\"Hello\");\nlet print = |name: &str| println!(\"{greeting}, {name}!\");\n\nprint(\"Alice\");\nprint(\"Bob\");\nprintln!(\"{greeting}\");   // still valid — only borrowed\n`);copyBtnbtn_21bc74ebaf1740b18793d8089e3f709d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_21bc74ebaf1740b18793d8089e3f709d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6f6970f66b954cefbedbf8ac42e6b192=document.querySelector('button[name=btn_6f6970f66b954cefbedbf8ac42e6b192]');
+copyBtnbtn_6f6970f66b954cefbedbf8ac42e6b192.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let greeting = String::from(\"Hello\");\nlet print = |name: &str| println!(\"{greeting}, {name}!\");\n\nprint(\"Alice\");\nprint(\"Bob\");\nprintln!(\"{greeting}\");   // still valid — only borrowed\n`);copyBtnbtn_6f6970f66b954cefbedbf8ac42e6b192.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6f6970f66b954cefbedbf8ac42e6b192.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -973,20 +991,20 @@ println!("{greeting}");   // still valid — only borrowed
 </div></div>
 </div>
 </div>
-<div id="outline-container-orge142aab" class="outline-3">
-<h3 id="orge142aab">FnMut — mutable borrow</h3>
-<div class="outline-text-3" id="text-orge142aab">
+<div id="outline-container-org023732f" class="outline-3">
+<h3 id="org023732f">FnMut — mutable borrow</h3>
+<div class="outline-text-3" id="text-org023732f">
 <p>
 Captures by <code>&amp;mut T</code>. Can be called multiple times but mutates
 captured state. The closure must be declared <code>mut</code>.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_5d7f9e1e63234edd832db1987d8ad14d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_136c8395419a43358b3d1086d4ac4349>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5d7f9e1e63234edd832db1987d8ad14d=document.querySelector('button[name=btn_5d7f9e1e63234edd832db1987d8ad14d]');
-copyBtnbtn_5d7f9e1e63234edd832db1987d8ad14d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let mut count = 0;\nlet mut increment = || {\n    count += 1;\n    count\n};\n\nincrement();   // 1\nincrement();   // 2\n// println!(\"{count}\");   // error — mutably borrowed by closure\n`);copyBtnbtn_5d7f9e1e63234edd832db1987d8ad14d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5d7f9e1e63234edd832db1987d8ad14d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_136c8395419a43358b3d1086d4ac4349=document.querySelector('button[name=btn_136c8395419a43358b3d1086d4ac4349]');
+copyBtnbtn_136c8395419a43358b3d1086d4ac4349.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let mut count = 0;\nlet mut increment = || {\n    count += 1;\n    count\n};\n\nincrement();   // 1\nincrement();   // 2\n// println!(\"{count}\");   // error — mutably borrowed by closure\n`);copyBtnbtn_136c8395419a43358b3d1086d4ac4349.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_136c8395419a43358b3d1086d4ac4349.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1003,20 +1021,20 @@ increment();   // 2
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgda8554e" class="outline-3">
-<h3 id="orgda8554e">FnOnce — move (ownership transfer)</h3>
-<div class="outline-text-3" id="text-orgda8554e">
+<div id="outline-container-org2f84d02" class="outline-3">
+<h3 id="org2f84d02">FnOnce — move (ownership transfer)</h3>
+<div class="outline-text-3" id="text-org2f84d02">
 <p>
 Captures by value — takes ownership of the captured variable.
 Can only be called once because the variable is consumed.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_c0b110ffac9d4f4a93ca693361f9872d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_feda69145cda446d8c7b57a7fd94fd15>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c0b110ffac9d4f4a93ca693361f9872d=document.querySelector('button[name=btn_c0b110ffac9d4f4a93ca693361f9872d]');
-copyBtnbtn_c0b110ffac9d4f4a93ca693361f9872d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let data = vec![1, 2, 3];\nlet consume = || {\n    println!(\"{data:?}\");\n    drop(data);   // drops data — ownership consumed\n};\n\nconsume();\n// consume();   // error — FnOnce already consumed data\n// println!(\"{data:?}\");   // error — data was moved\n`);copyBtnbtn_c0b110ffac9d4f4a93ca693361f9872d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c0b110ffac9d4f4a93ca693361f9872d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_feda69145cda446d8c7b57a7fd94fd15=document.querySelector('button[name=btn_feda69145cda446d8c7b57a7fd94fd15]');
+copyBtnbtn_feda69145cda446d8c7b57a7fd94fd15.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let data = vec![1, 2, 3];\nlet consume = || {\n    println!(\"{data:?}\");\n    drop(data);   // drops data — ownership consumed\n};\n\nconsume();\n// consume();   // error — FnOnce already consumed data\n// println!(\"{data:?}\");   // error — data was moved\n`);copyBtnbtn_feda69145cda446d8c7b57a7fd94fd15.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_feda69145cda446d8c7b57a7fd94fd15.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1034,9 +1052,9 @@ consume();
 </div>
 </div>
 </div>
-<div id="outline-container-org41b4389" class="outline-2">
-<h2 id="org41b4389">The move Keyword</h2>
-<div class="outline-text-2" id="text-org41b4389">
+<div id="outline-container-orgfc5ab03" class="outline-2">
+<h2 id="orgfc5ab03">The move Keyword</h2>
+<div class="outline-text-2" id="text-orgfc5ab03">
 <p>
 Forces the closure to take ownership of all captured variables,
 even if it could get by with a reference. Required when passing
@@ -1044,11 +1062,11 @@ closures to threads:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_43ac0d70fbf746b38693ac47dd70a785>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_17cf1bb06c224510949217f6b80d9886>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_43ac0d70fbf746b38693ac47dd70a785=document.querySelector('button[name=btn_43ac0d70fbf746b38693ac47dd70a785]');
-copyBtnbtn_43ac0d70fbf746b38693ac47dd70a785.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let message = String::from(\"hello from thread\");\n\nlet handle = std::thread::spawn(move || {\n    // message is moved into the closure — thread owns it\n    println!(\"{message}\");\n});\n\nhandle.join().unwrap();\n// println!(\"{message}\");   // error — message was moved\n`);copyBtnbtn_43ac0d70fbf746b38693ac47dd70a785.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_43ac0d70fbf746b38693ac47dd70a785.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_17cf1bb06c224510949217f6b80d9886=document.querySelector('button[name=btn_17cf1bb06c224510949217f6b80d9886]');
+copyBtnbtn_17cf1bb06c224510949217f6b80d9886.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let message = String::from(\"hello from thread\");\n\nlet handle = std::thread::spawn(move || {\n    // message is moved into the closure — thread owns it\n    println!(\"{message}\");\n});\n\nhandle.join().unwrap();\n// println!(\"{message}\");   // error — message was moved\n`);copyBtnbtn_17cf1bb06c224510949217f6b80d9886.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_17cf1bb06c224510949217f6b80d9886.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1070,19 +1088,19 @@ not live long enough for the thread.
 </p>
 </div>
 </div>
-<div id="outline-container-org46a73e0" class="outline-2">
-<h2 id="org46a73e0">Common Uses</h2>
-<div class="outline-text-2" id="text-org46a73e0">
+<div id="outline-container-orgdefe3ec" class="outline-2">
+<h2 id="orgdefe3ec">Common Uses</h2>
+<div class="outline-text-2" id="text-orgdefe3ec">
 </div>
-<div id="outline-container-org2392451" class="outline-3">
-<h3 id="org2392451">Iterator adaptors</h3>
-<div class="outline-text-3" id="text-org2392451">
+<div id="outline-container-orgc18c91d" class="outline-3">
+<h3 id="orgc18c91d">Iterator adaptors</h3>
+<div class="outline-text-3" id="text-orgc18c91d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_4e5e522a00794f41a56b52f67164a48c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_4ad2a8306287447bb2190bfa48124b1f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4e5e522a00794f41a56b52f67164a48c=document.querySelector('button[name=btn_4e5e522a00794f41a56b52f67164a48c]');
-copyBtnbtn_4e5e522a00794f41a56b52f67164a48c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let numbers = vec![1, 2, 3, 4, 5];\n\nlet doubled: Vec<i32> = numbers.iter()\n    .map(|x| x * 2)\n    .collect();\n\nlet evens: Vec<&i32> = numbers.iter()\n    .filter(|&&x| x % 2 == 0)\n    .collect();\n\nlet sum: i32 = numbers.iter()\n    .filter(|&&x| x > 2)\n    .map(|x| x * x)\n    .sum();\n`);copyBtnbtn_4e5e522a00794f41a56b52f67164a48c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4e5e522a00794f41a56b52f67164a48c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4ad2a8306287447bb2190bfa48124b1f=document.querySelector('button[name=btn_4ad2a8306287447bb2190bfa48124b1f]');
+copyBtnbtn_4ad2a8306287447bb2190bfa48124b1f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let numbers = vec![1, 2, 3, 4, 5];\n\nlet doubled: Vec<i32> = numbers.iter()\n    .map(|x| x * 2)\n    .collect();\n\nlet evens: Vec<&i32> = numbers.iter()\n    .filter(|&&x| x % 2 == 0)\n    .collect();\n\nlet sum: i32 = numbers.iter()\n    .filter(|&&x| x > 2)\n    .map(|x| x * x)\n    .sum();\n`);copyBtnbtn_4ad2a8306287447bb2190bfa48124b1f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4ad2a8306287447bb2190bfa48124b1f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1104,15 +1122,15 @@ let sum: i32 = numbers.iter()
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgbfed531" class="outline-3">
-<h3 id="orgbfed531">Custom sorting</h3>
-<div class="outline-text-3" id="text-orgbfed531">
+<div id="outline-container-orgf2843bb" class="outline-3">
+<h3 id="orgf2843bb">Custom sorting</h3>
+<div class="outline-text-3" id="text-orgf2843bb">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_acc66c6ee52b4781af0f1f3c9f387d4f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_8b8e1c7d32ba4f26b29d336b7df48d91>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_acc66c6ee52b4781af0f1f3c9f387d4f=document.querySelector('button[name=btn_acc66c6ee52b4781af0f1f3c9f387d4f]');
-copyBtnbtn_acc66c6ee52b4781af0f1f3c9f387d4f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let mut words = vec![\"banana\", \"apple\", \"cherry\"];\nwords.sort_by(|a, b| a.len().cmp(&b.len()));   // sort by length\n`);copyBtnbtn_acc66c6ee52b4781af0f1f3c9f387d4f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_acc66c6ee52b4781af0f1f3c9f387d4f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8b8e1c7d32ba4f26b29d336b7df48d91=document.querySelector('button[name=btn_8b8e1c7d32ba4f26b29d336b7df48d91]');
+copyBtnbtn_8b8e1c7d32ba4f26b29d336b7df48d91.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let mut words = vec![\"banana\", \"apple\", \"cherry\"];\nwords.sort_by(|a, b| a.len().cmp(&b.len()));   // sort by length\n`);copyBtnbtn_8b8e1c7d32ba4f26b29d336b7df48d91.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8b8e1c7d32ba4f26b29d336b7df48d91.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1122,19 +1140,19 @@ words.sort_by(|a, b| a.len().cmp(&amp;b.len()));   // sort by length
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgd54f69b" class="outline-3">
-<h3 id="orgd54f69b">Returning closures</h3>
-<div class="outline-text-3" id="text-orgd54f69b">
+<div id="outline-container-org531b6d5" class="outline-3">
+<h3 id="org531b6d5">Returning closures</h3>
+<div class="outline-text-3" id="text-org531b6d5">
 <p>
 Closures have unique anonymous types — return them via <code>impl Fn</code>:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_a41ebe0a293a4c3296c65b6ba0adeda4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_650c12127f704ddc9d5a647897e89d92>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a41ebe0a293a4c3296c65b6ba0adeda4=document.querySelector('button[name=btn_a41ebe0a293a4c3296c65b6ba0adeda4]');
-copyBtnbtn_a41ebe0a293a4c3296c65b6ba0adeda4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`fn make_adder(n: i32) -> impl Fn(i32) -> i32 {\n    move |x| x + n   // n is moved into the returned closure\n}\n\nlet add5 = make_adder(5);\nadd5(10)   // 15\n`);copyBtnbtn_a41ebe0a293a4c3296c65b6ba0adeda4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a41ebe0a293a4c3296c65b6ba0adeda4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_650c12127f704ddc9d5a647897e89d92=document.querySelector('button[name=btn_650c12127f704ddc9d5a647897e89d92]');
+copyBtnbtn_650c12127f704ddc9d5a647897e89d92.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`fn make_adder(n: i32) -> impl Fn(i32) -> i32 {\n    move |x| x + n   // n is moved into the returned closure\n}\n\nlet add5 = make_adder(5);\nadd5(10)   // 15\n`);copyBtnbtn_650c12127f704ddc9d5a647897e89d92.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_650c12127f704ddc9d5a647897e89d92.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1149,15 +1167,15 @@ add5(10)   // 15
 </div>
 </div>
 </div>
-<div id="outline-container-orgbcee6bc" class="outline-2">
-<h2 id="orgbcee6bc">Fn Trait Bounds in Function Signatures</h2>
-<div class="outline-text-2" id="text-orgbcee6bc">
+<div id="outline-container-org8d341e0" class="outline-2">
+<h2 id="org8d341e0">Fn Trait Bounds in Function Signatures</h2>
+<div class="outline-text-2" id="text-org8d341e0">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_428829add7b64e2784b9eae6471b96d3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_852aca8b5b6c46e297b6bf074577e762>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_428829add7b64e2784b9eae6471b96d3=document.querySelector('button[name=btn_428829add7b64e2784b9eae6471b96d3]');
-copyBtnbtn_428829add7b64e2784b9eae6471b96d3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Accept any callable that takes i32 and returns i32\nfn apply(f: impl Fn(i32) -> i32, x: i32) -> i32 {\n    f(x)\n}\n\n// Store a closure in a struct (requires Box for dynamic dispatch)\nstruct Callback {\n    func: Box<dyn Fn(i32) -> i32>,\n}\n`);copyBtnbtn_428829add7b64e2784b9eae6471b96d3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_428829add7b64e2784b9eae6471b96d3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_852aca8b5b6c46e297b6bf074577e762=document.querySelector('button[name=btn_852aca8b5b6c46e297b6bf074577e762]');
+copyBtnbtn_852aca8b5b6c46e297b6bf074577e762.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Accept any callable that takes i32 and returns i32\nfn apply(f: impl Fn(i32) -> i32, x: i32) -> i32 {\n    f(x)\n}\n\n// Store a closure in a struct (requires Box for dynamic dispatch)\nstruct Callback {\n    func: Box<dyn Fn(i32) -> i32>,\n}\n`);copyBtnbtn_852aca8b5b6c46e297b6bf074577e762.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_852aca8b5b6c46e297b6bf074577e762.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1174,9 +1192,9 @@ struct Callback {
 </div></div>
 </div>
 </div>
-<div id="outline-container-org0e44d46" class="outline-2">
-<h2 id="org0e44d46">Tips</h2>
-<div class="outline-text-2" id="text-org0e44d46">
+<div id="outline-container-orgd3394fc" class="outline-2">
+<h2 id="orgd3394fc">Tips</h2>
+<div class="outline-text-2" id="text-orgd3394fc">
 <ul class="org-ul">
 <li>The compiler infers the <code>Fn</code> trait — you rarely need to
 specify it explicitly; add <code>move</code> when crossing thread
@@ -1193,6 +1211,20 @@ to the same machine code as hand-written loops</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1200,6 +1232,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

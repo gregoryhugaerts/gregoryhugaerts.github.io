@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Post Office Protocol version 3</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org032a079">Ports</a></li>
-<li><a href="#org16147d0">Protocol Flow</a></li>
-<li><a href="#org5f9cbff">Commands</a></li>
-<li><a href="#org3165d4f">Manual Interaction</a></li>
-<li><a href="#org2e39218">POP3 vs IMAP</a></li>
-<li><a href="#org1baf8d9">Security Relevance</a>
+<li><a href="#orgbcf38f1">Ports</a></li>
+<li><a href="#org8160aba">Protocol Flow</a></li>
+<li><a href="#org622bbb8">Commands</a></li>
+<li><a href="#org4ce2282">Manual Interaction</a></li>
+<li><a href="#orge462418">POP3 vs IMAP</a></li>
+<li><a href="#orgd7d6569">Security Relevance</a>
 <ul>
-<li><a href="#org025b9aa">Plaintext credentials</a></li>
-<li><a href="#org29e519f">Credential brute force</a></li>
-<li><a href="#orgfd63423">Nmap enumeration</a></li>
+<li><a href="#orgad99fbb">Plaintext credentials</a></li>
+<li><a href="#org936a5da">Credential brute force</a></li>
+<li><a href="#orgfa8f72f">Nmap enumeration</a></li>
 </ul>
 </li>
-<li><a href="#org80cfa88">Tips</a></li>
+<li><a href="#org572ebd4">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -897,9 +915,9 @@ and in CTF enumeration.
 Related: <a href="20260214T085313--network-protocols__moc_networking_protocol.html">SMTP</a>
          <a href="20260214T083350--phishing__concept_cybersecurity_technique.html">Phishing</a>
 </p>
-<div id="outline-container-org032a079" class="outline-2">
-<h2 id="org032a079">Ports</h2>
-<div class="outline-text-2" id="text-org032a079">
+<div id="outline-container-orgbcf38f1" class="outline-2">
+<h2 id="orgbcf38f1">Ports</h2>
+<div class="outline-text-2" id="text-orgbcf38f1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -933,15 +951,15 @@ Related: <a href="20260214T085313--network-protocols__moc_networking_protocol.ht
 </table>
 </div>
 </div>
-<div id="outline-container-org16147d0" class="outline-2">
-<h2 id="org16147d0">Protocol Flow</h2>
-<div class="outline-text-2" id="text-org16147d0">
+<div id="outline-container-org8160aba" class="outline-2">
+<h2 id="org8160aba">Protocol Flow</h2>
+<div class="outline-text-2" id="text-org8160aba">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_4e1301b1718f4a909fa1c3a7da21f11e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c8c582c99ff448bf9093eb5e5b94e8f9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4e1301b1718f4a909fa1c3a7da21f11e=document.querySelector('button[name=btn_4e1301b1718f4a909fa1c3a7da21f11e]');
-copyBtnbtn_4e1301b1718f4a909fa1c3a7da21f11e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Client connects to server on port 110 (or 995)\n2. Server sends: +OK Dovecot ready\n3. Client authenticates:\n     USER alice\n     PASS secretpassword\n4. Server responds: +OK Logged in\n5. Client issues transaction commands\n6. Client sends QUIT — server deletes marked messages, closes session\n`);copyBtnbtn_4e1301b1718f4a909fa1c3a7da21f11e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4e1301b1718f4a909fa1c3a7da21f11e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c8c582c99ff448bf9093eb5e5b94e8f9=document.querySelector('button[name=btn_c8c582c99ff448bf9093eb5e5b94e8f9]');
+copyBtnbtn_c8c582c99ff448bf9093eb5e5b94e8f9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Client connects to server on port 110 (or 995)\n2. Server sends: +OK Dovecot ready\n3. Client authenticates:\n     USER alice\n     PASS secretpassword\n4. Server responds: +OK Logged in\n5. Client issues transaction commands\n6. Client sends QUIT — server deletes marked messages, closes session\n`);copyBtnbtn_c8c582c99ff448bf9093eb5e5b94e8f9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c8c582c99ff448bf9093eb5e5b94e8f9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -957,9 +975,9 @@ let res = copyTextToClipboard(`1. Client connects to server on port 110 (or 995)
 </div></div>
 </div>
 </div>
-<div id="outline-container-org5f9cbff" class="outline-2">
-<h2 id="org5f9cbff">Commands</h2>
-<div class="outline-text-2" id="text-org5f9cbff">
+<div id="outline-container-org622bbb8" class="outline-2">
+<h2 id="org622bbb8">Commands</h2>
+<div class="outline-text-2" id="text-org622bbb8">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1041,15 +1059,15 @@ let res = copyTextToClipboard(`1. Client connects to server on port 110 (or 995)
 </table>
 </div>
 </div>
-<div id="outline-container-org3165d4f" class="outline-2">
-<h2 id="org3165d4f">Manual Interaction</h2>
-<div class="outline-text-2" id="text-org3165d4f">
+<div id="outline-container-org4ce2282" class="outline-2">
+<h2 id="org4ce2282">Manual Interaction</h2>
+<div class="outline-text-2" id="text-org4ce2282">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_dd37b7ef40474062bbd28df1324fd392>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_cb63ee473e574cd38c452a7e45066d82>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_dd37b7ef40474062bbd28df1324fd392=document.querySelector('button[name=btn_dd37b7ef40474062bbd28df1324fd392]');
-copyBtnbtn_dd37b7ef40474062bbd28df1324fd392.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Plaintext connection (port 110)\nnc $IP 110\n\n# TLS connection (port 995)\nopenssl s_client -connect $IP:995\n\n# Example session\nUSER alice\nPASS password\nSTAT                          # How many messages?\nLIST                          # List all with sizes\nRETR 1                        # Read message 1\nDELE 1                        # Mark for deletion\nQUIT                          # End session, apply deletions\n`);copyBtnbtn_dd37b7ef40474062bbd28df1324fd392.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dd37b7ef40474062bbd28df1324fd392.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cb63ee473e574cd38c452a7e45066d82=document.querySelector('button[name=btn_cb63ee473e574cd38c452a7e45066d82]');
+copyBtnbtn_cb63ee473e574cd38c452a7e45066d82.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Plaintext connection (port 110)\nnc $IP 110\n\n# TLS connection (port 995)\nopenssl s_client -connect $IP:995\n\n# Example session\nUSER alice\nPASS password\nSTAT                          # How many messages?\nLIST                          # List all with sizes\nRETR 1                        # Read message 1\nDELE 1                        # Mark for deletion\nQUIT                          # End session, apply deletions\n`);copyBtnbtn_cb63ee473e574cd38c452a7e45066d82.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cb63ee473e574cd38c452a7e45066d82.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1071,9 +1089,9 @@ STAT                          <span style="color: var(--clr-comment-delimiter); 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org2e39218" class="outline-2">
-<h2 id="org2e39218">POP3 vs IMAP</h2>
-<div class="outline-text-2" id="text-org2e39218">
+<div id="outline-container-orge462418" class="outline-2">
+<h2 id="orge462418">POP3 vs IMAP</h2>
+<div class="outline-text-2" id="text-orge462418">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1131,13 +1149,13 @@ STAT                          <span style="color: var(--clr-comment-delimiter); 
 </table>
 </div>
 </div>
-<div id="outline-container-org1baf8d9" class="outline-2">
-<h2 id="org1baf8d9">Security Relevance</h2>
-<div class="outline-text-2" id="text-org1baf8d9">
+<div id="outline-container-orgd7d6569" class="outline-2">
+<h2 id="orgd7d6569">Security Relevance</h2>
+<div class="outline-text-2" id="text-orgd7d6569">
 </div>
-<div id="outline-container-org025b9aa" class="outline-3">
-<h3 id="org025b9aa">Plaintext credentials</h3>
-<div class="outline-text-3" id="text-org025b9aa">
+<div id="outline-container-orgad99fbb" class="outline-3">
+<h3 id="orgad99fbb">Plaintext credentials</h3>
+<div class="outline-text-3" id="text-orgad99fbb">
 <p>
 POP3 on port 110 transmits usernames and passwords in cleartext —
 visible to anyone with network access. A finding if encountered
@@ -1145,11 +1163,11 @@ on an internal assessment.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c980f23437b24a7f8704f08cb936f70d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_cbbc3f9a67244d789219c0b0c671877b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c980f23437b24a7f8704f08cb936f70d=document.querySelector('button[name=btn_c980f23437b24a7f8704f08cb936f70d]');
-copyBtnbtn_c980f23437b24a7f8704f08cb936f70d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Confirm plaintext auth in Wireshark\n# Filter: tcp.port == 110\n# Look for USER and PASS commands in packet data\n`);copyBtnbtn_c980f23437b24a7f8704f08cb936f70d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c980f23437b24a7f8704f08cb936f70d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cbbc3f9a67244d789219c0b0c671877b=document.querySelector('button[name=btn_cbbc3f9a67244d789219c0b0c671877b]');
+copyBtnbtn_cbbc3f9a67244d789219c0b0c671877b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Confirm plaintext auth in Wireshark\n# Filter: tcp.port == 110\n# Look for USER and PASS commands in packet data\n`);copyBtnbtn_cbbc3f9a67244d789219c0b0c671877b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cbbc3f9a67244d789219c0b0c671877b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1160,15 +1178,15 @@ let res = copyTextToClipboard(`# Confirm plaintext auth in Wireshark\n# Filter: 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org29e519f" class="outline-3">
-<h3 id="org29e519f">Credential brute force</h3>
-<div class="outline-text-3" id="text-org29e519f">
+<div id="outline-container-org936a5da" class="outline-3">
+<h3 id="org936a5da">Credential brute force</h3>
+<div class="outline-text-3" id="text-org936a5da">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0791f73cc3754f4896697d1bf822513d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_440c0a45eaca4cb48780617a6dab2a82>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0791f73cc3754f4896697d1bf822513d=document.querySelector('button[name=btn_0791f73cc3754f4896697d1bf822513d]');
-copyBtnbtn_0791f73cc3754f4896697d1bf822513d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Hydra against POP3\nhydra -l alice -P /usr/share/wordlists/rockyou.txt pop3://$IP\nhydra -l alice -P /usr/share/wordlists/rockyou.txt pop3s://$IP\n`);copyBtnbtn_0791f73cc3754f4896697d1bf822513d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0791f73cc3754f4896697d1bf822513d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_440c0a45eaca4cb48780617a6dab2a82=document.querySelector('button[name=btn_440c0a45eaca4cb48780617a6dab2a82]');
+copyBtnbtn_440c0a45eaca4cb48780617a6dab2a82.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Hydra against POP3\nhydra -l alice -P /usr/share/wordlists/rockyou.txt pop3://$IP\nhydra -l alice -P /usr/share/wordlists/rockyou.txt pop3s://$IP\n`);copyBtnbtn_440c0a45eaca4cb48780617a6dab2a82.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_440c0a45eaca4cb48780617a6dab2a82.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1179,15 +1197,15 @@ hydra -l alice -P /usr/share/wordlists/rockyou.txt pop3s://$<span style="color: 
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgfd63423" class="outline-3">
-<h3 id="orgfd63423">Nmap enumeration</h3>
-<div class="outline-text-3" id="text-orgfd63423">
+<div id="outline-container-orgfa8f72f" class="outline-3">
+<h3 id="orgfa8f72f">Nmap enumeration</h3>
+<div class="outline-text-3" id="text-orgfa8f72f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d38dbb952d0f439c9363e5c4b366191e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1f03addcbcb4452fa3480647c426c265>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d38dbb952d0f439c9363e5c4b366191e=document.querySelector('button[name=btn_d38dbb952d0f439c9363e5c4b366191e]');
-copyBtnbtn_d38dbb952d0f439c9363e5c4b366191e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`nmap -p 110,995 --script pop3-capabilities,pop3-ntlm-info $IP\n`);copyBtnbtn_d38dbb952d0f439c9363e5c4b366191e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d38dbb952d0f439c9363e5c4b366191e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1f03addcbcb4452fa3480647c426c265=document.querySelector('button[name=btn_1f03addcbcb4452fa3480647c426c265]');
+copyBtnbtn_1f03addcbcb4452fa3480647c426c265.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`nmap -p 110,995 --script pop3-capabilities,pop3-ntlm-info $IP\n`);copyBtnbtn_1f03addcbcb4452fa3480647c426c265.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1f03addcbcb4452fa3480647c426c265.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1197,9 +1215,9 @@ let res = copyTextToClipboard(`nmap -p 110,995 --script pop3-capabilities,pop3-n
 </div>
 </div>
 </div>
-<div id="outline-container-org80cfa88" class="outline-2">
-<h2 id="org80cfa88">Tips</h2>
-<div class="outline-text-2" id="text-org80cfa88">
+<div id="outline-container-org572ebd4" class="outline-2">
+<h2 id="org572ebd4">Tips</h2>
+<div class="outline-text-2" id="text-org572ebd4">
 <ul class="org-ul">
 <li>POP3 on port 110 is a straightforward finding in a pentest —
 credentials in cleartext over a network service is at minimum
@@ -1216,6 +1234,20 @@ useful for version fingerprinting</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1223,6 +1255,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Stride Model</title>
-<meta name="author" content="termux" />
+<title>STRIDE Model</title>
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,52 +860,223 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
-<h1 class="title">Stride Model</h1>
+<h1 class="title">STRIDE Model</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9a9fe30">The STRIE Model</a></li>
+<li><a href="#orgde0d20b">STRIDE vs PASTA — When to Use Which</a></li>
+<li><a href="#orgdb919bc">Applying STRIDE During a Pentest</a></li>
+<li><a href="#orga74a93e">Tips</a></li>
 </ul>
 </div>
 </div>
-<dl class="org-dl">
-<dt>related</dt><dd></dd>
-</dl>
-<div id="outline-container-org9a9fe30" class="outline-2">
-<h2 id="org9a9fe30">The STRIE Model</h2>
-<div class="outline-text-2" id="text-org9a9fe30">
 <p>
-The STRIDE model is a powerful threat modeling framework developed by Microsoft, used to systematically identify and categorize potential security threats in applications or systems.
+The STRIDE model is a threat modeling framework developed by
+Microsoft, used to systematically identify and categorize potential
+security threats in applications or systems. Its primary purpose is
+to help developers and security professionals understand what could
+go wrong with a system and how to mitigate those risks during the
+design phase, before code is written.
 </p>
 
 <p>
-Its primary purpose is to help developers and security professionals understand what could go wrong with a system and how to mitigate those risks during the design phase.
+Related: <a href="20260327T191855--cia-triad__concept_cybersecurity.html">CIA Triad</a>
+         <a href="20260327T192729--pasta-model__cybersecurity_model.html">PASTA Model</a>
+         <a href="20260206T060500--defence-frameworks__cybersecurity_moc_model.html">Defence Frameworks</a>
+         <a href="20260206T060441--authentication__concept_cybersecurity.html">Authentication</a>
+         <a href="20260206T060442--authorization__concept_cybersecurity.html">Authorization</a>
 </p>
 
 <p>
-Each letter in STRIDE represents a category of security threat:
+Each letter in STRIDE represents a category of security threat, and
+each maps to a violated security property:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Threat</th>
+<th scope="col" class="org-left">Violates</th>
+<th scope="col" class="org-left">Related Vulnerability Classes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">*S*poofing</td>
+<td class="org-left">Authentication</td>
+<td class="org-left"><a href="20260314T005611--broken-authentication__cybersecurity_technique.html">Broken Authentication</a>, credential theft</td>
+</tr>
+
+<tr>
+<td class="org-left">*T*ampering</td>
+<td class="org-left">Integrity</td>
+<td class="org-left"><a href="20260206T060728--sql-injection__cybersecurity_technique.html">SQL Injection</a> (data tampering), request/parameter tampering</td>
+</tr>
+
+<tr>
+<td class="org-left">*R*epudiation</td>
+<td class="org-left">Non-repudiation</td>
+<td class="org-left">Insufficient logging, log tampering</td>
+</tr>
+
+<tr>
+<td class="org-left">*I*nformation Disclosure</td>
+<td class="org-left">Confidentiality</td>
+<td class="org-left"><a href="20260207T065343==idor--insecure-direct-object-references__cybersecurity_technique.html">IDOR</a>, [[Denote query for ‘20260709T193500’]]</td>
+</tr>
+
+<tr>
+<td class="org-left">*D*enial of Service</td>
+<td class="org-left">Availability</td>
+<td class="org-left"><a href="20260213T072057--denial-of-service__concept_cybersecurity_technique.html">Denial of Service</a> attacks</td>
+</tr>
+
+<tr>
+<td class="org-left">*E*levation of Privilege</td>
+<td class="org-left">Authorization</td>
+<td class="org-left"><a href="20260314T005742--privilege-escalation__concept_cybersecurity.html">Privilege Escalation</a>, <a href="20260621T180112==bola--broken-object-level-authorisation__cybersecurity_pentesting_technique.html">BOLA</a></td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>*S*poofing: Impersonating something or someone else, often
+related to <a href="20260206T060441--authentication__concept_cybersecurity.html">Authentication</a>
+vulnerabilities.</li>
+<li>*T*ampering: Unauthorized modification of data, impacting
+<a href="20260207T064424--integrity__concept_cybersecurity.html">Integrity</a>.</li>
+<li><b>R*epudiation: The ability of an attacker to deny having performed
+an action, affecting *non-repudiation</b>.</li>
+<li><b>I*nformation Disclosure: Unauthorized exposure of information,
+compromising *Confidentiality</b>.</li>
+<li><b>D*enial of Service (<a href="20260213T072057--denial-of-service__concept_cybersecurity_technique.html">Denial of Service</a>): Preventing legitimate users
+from accessing a service or resource, impacting *Availability</b>.</li>
+<li>*E*levation of Privilege: Gaining unauthorized higher-level access
+or capabilities, related to
+<a href="20260206T060442--authorization__concept_cybersecurity.html">Authorization</a>.</li>
+</ul>
+
+<p>
+By applying the STRIDE model, teams can conduct a structured
+analysis to uncover potential vulnerabilities, ensuring a more
+comprehensive approach to designing and building secure systems. It
+helps map threats back to core security properties like the
+<a href="20260327T191855--cia-triad__concept_cybersecurity.html">CIA Triad</a> (Confidentiality, Integrity,
+Availability) and others, providing a foundational tool within
+<a href="20260206T060500--defence-frameworks__cybersecurity_moc_model.html">Defence Frameworks</a> for proactive
+cybersecurity.
+</p>
+<div id="outline-container-orgde0d20b" class="outline-2">
+<h2 id="orgde0d20b">STRIDE vs PASTA — When to Use Which</h2>
+<div class="outline-text-2" id="text-orgde0d20b">
+<p>
+Both are threat modeling frameworks, but suited to different
+contexts:
 </p>
 
 <ul class="org-ul">
-<li><b>S*poofing: Impersonating something or someone else, often related to *<a href="Authentication.html#authentication">Authentication</a></b> vulnerabilities.</li>
-<li><b>T*ampering: Unauthorized modification of data, impacting *<a href="Integrity.html#integrity">Integrity</a></b>.</li>
-<li><b>R*epudiation: The ability of an attacker to deny having performed an action, affecting *non-repudiation</b>.</li>
-<li><b>I*nformation Disclosure: Unauthorized exposure of information, compromising *<a href="Confidentiality.html#confidentiality">Confidentiality</a></b>.</li>
-<li><b>D*enial of Service (<a href="Denial of Service.html#denial-of-service">Denial of Service</a>): Preventing legitimate users from accessing a service or resource, impacting *<a href="Availability.html#availability">Availability</a></b>.</li>
-<li><b>E*levation of Privilege: Gaining unauthorized higher-level access or capabilities, related to *<a href="Authorization.html#authorization">Authorization</a></b>.</li>
+<li><b>STRIDE</b> is component-focused and fast — walk through each threat
+category against a specific system component (an API endpoint, a
+data flow) and ask "could this happen here?" Good for a focused
+design review of one part of a system.</li>
+<li><b><a href="20260327T192729--pasta-model__cybersecurity_model.html">PASTA</a></b> is risk-centric and
+business-impact-driven — a heavier seven-stage process tied to
+actual business risk, better suited to a formal, organization-wide
+threat modeling exercise than a quick per-component pass.</li>
 </ul>
 
 <p>
-By applying the STRIDE model, teams can conduct a structured analysis to uncover potential vulnerabilities, ensuring a more comprehensive approach to designing and building secure systems. It helps map threats back to core security properties like the <a href="CIA Triad.html#cia-triad">CIA Triad</a> (Confidentiality, Integrity, Availability) and others, providing a foundational tool within <a href="Defence Frameworks.html#defence-frameworks">Defence Frameworks</a> for proactive cybersecurity.
+STRIDE is the more practical choice when reviewing a specific
+design decision or API surface; PASTA is the right tool when the
+question is "where should our security investment go across the
+whole organization."
 </p>
+</div>
+</div>
+<div id="outline-container-orgdb919bc" class="outline-2">
+<h2 id="orgdb919bc">Applying STRIDE During a Pentest</h2>
+<div class="outline-text-2" id="text-orgdb919bc">
+<p>
+Though STRIDE is fundamentally a design-time framework, the
+categories map cleanly onto how you'd think through an
+attack-surface review during recon:
+</p>
+
+<ul class="org-ul">
+<li>Walk through each API endpoint or application component and ask
+each STRIDE question in turn — can I spoof identity here? Tamper
+with data in transit or at rest? Cause a denial of service?
+Access information I shouldn't? Escalate privilege?</li>
+<li>This gives a structured checklist for recon on an unfamiliar
+application, rather than testing ad hoc based on whatever looks
+interesting first</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga74a93e" class="outline-2">
+<h2 id="orga74a93e">Tips</h2>
+<div class="outline-text-2" id="text-orga74a93e">
+<ul class="org-ul">
+<li>STRIDE's six categories map directly onto exam vulnerability
+classifications — when you're unsure how to categorize a finding,
+asking "which STRIDE category does this violate?" is a useful
+sanity check before consulting the PT1 Vulnerability
+Classification Cheat Sheet's more specific disambiguation</li>
+<li>Repudiation is the category most often forgotten during ad hoc
+testing since it doesn't map to a common exam vulnerability class
+the way the other five do — worth deliberately checking logging/
+audit trail adequacy as its own step, not just as a byproduct of
+testing something else</li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -913,6 +1084,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

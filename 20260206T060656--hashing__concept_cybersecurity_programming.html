@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Hashing</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,31 +886,38 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8a9e9c3">Hashing</a>
-<ul>
-<li><a href="#org7713c78">Core Concepts</a></li>
-<li><a href="#org25ce953">Properties of a Good Hash Function</a></li>
-<li><a href="#org99b7835">Use Cases</a></li>
-<li><a href="#org51d0ae4">Common Hash Functions</a></li>
-</ul>
-</li>
+<li><a href="#orgd187c3e">Core Concepts</a></li>
+<li><a href="#org55ea7ce">Hashing vs Encryption — The Distinction That Matters Most</a></li>
+<li><a href="#orgebe2434">Properties of a Good Hash Function</a></li>
+<li><a href="#org0807045">Salting — Why "Fast" Is Bad for Password Hashing</a></li>
+<li><a href="#orgc4e9c6a">Identifying Hash Types</a></li>
+<li><a href="#org4f0fc90">Use Cases</a></li>
+<li><a href="#orgfb09efd">Common Hash Functions</a></li>
+<li><a href="#org320b8be">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org8a9e9c3" class="outline-2">
-<h2 id="org8a9e9c3">Hashing</h2>
-<div class="outline-text-2" id="text-org8a9e9c3">
 <p>
-Hashing is a cryptographic function that converts data of any size into a fixed-length string of characters.
+Hashing is a one-way cryptographic function that converts data of
+any size into a fixed-length string of characters. This process is
+irreversible — the original data cannot be recovered from the hash
+value directly, which is the property that makes hashing useful for
+password storage and integrity verification but fundamentally
+different from encryption.
 </p>
 
 <p>
-This process is irreversible, meaning the original data cannot be recovered from the hash value.
+Related: <a href="20260206T060651--encryption__concept_cybersecurity.html">Encryption</a>
+         <a href="20260207T064424--integrity__concept_cybersecurity.html">Integrity</a>
+         <a href="20260206T060441--authentication__concept_cybersecurity.html">Authentication</a>
+         <a href="20260206T060715--message-authentication-codes__concept_cybersecurity.html">Message Authentication Codes</a>
+         [[Denote query for ‘20260716T070800’]]
+         <a href="20260611T064608--john-the-ripper__cybersecurity_tool.html">John the Ripper</a>
+         <a href="20260314T005611--broken-authentication__cybersecurity_technique.html">Broken Authentication</a>
 </p>
-</div>
-<div id="outline-container-org7713c78" class="outline-3">
-<h3 id="org7713c78">Core Concepts</h3>
-<div class="outline-text-3" id="text-org7713c78">
+<div id="outline-container-orgd187c3e" class="outline-2">
+<h2 id="orgd187c3e">Core Concepts</h2>
+<div class="outline-text-2" id="text-orgd187c3e">
 <ul class="org-ul">
 <li><b>Hash function:</b> The algorithm used to create a hash value.</li>
 <li><b>Hash value:</b> The output of a hash function, also known as a digest or message digest.</li>
@@ -900,9 +925,69 @@ This process is irreversible, meaning the original data cannot be recovered from
 </ul>
 </div>
 </div>
-<div id="outline-container-org25ce953" class="outline-3">
-<h3 id="org25ce953">Properties of a Good Hash Function</h3>
-<div class="outline-text-3" id="text-org25ce953">
+<div id="outline-container-org55ea7ce" class="outline-2">
+<h2 id="org55ea7ce">Hashing vs Encryption — The Distinction That Matters Most</h2>
+<div class="outline-text-2" id="text-org55ea7ce">
+<p>
+The single most common conceptual mix-up, worth stating explicitly
+since it drives real security decisions:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Aspect</th>
+<th scope="col" class="org-left">Hashing</th>
+<th scope="col" class="org-left">Encryption</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Direction</td>
+<td class="org-left">One-way — irreversible</td>
+<td class="org-left">Two-way — designed to be decrypted</td>
+</tr>
+
+<tr>
+<td class="org-left">Key</td>
+<td class="org-left">No key required</td>
+<td class="org-left">Requires a key (symmetric or asymmetric)</td>
+</tr>
+
+<tr>
+<td class="org-left">Purpose</td>
+<td class="org-left">Verify integrity/identity, never intended to be reversed</td>
+<td class="org-left">Protect confidentiality, intended to be reversed by the holder of the key</td>
+</tr>
+
+<tr>
+<td class="org-left">Correct for</td>
+<td class="org-left">Passwords, file integrity checks</td>
+<td class="org-left">Data that needs to be read again later</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Storing a password encrypted rather than hashed is itself a
+finding — it implies the application (or an attacker with the key)
+can recover the plaintext password, which a properly hashed
+password never allows even with full database access.
+</p>
+</div>
+</div>
+<div id="outline-container-orgebe2434" class="outline-2">
+<h2 id="orgebe2434">Properties of a Good Hash Function</h2>
+<div class="outline-text-2" id="text-orgebe2434">
 <ul class="org-ul">
 <li><b>Deterministic:</b> The same input always produces the same hash value.</li>
 <li><b>Efficient:</b> The hash function can be computed quickly.</li>
@@ -912,20 +997,88 @@ This process is irreversible, meaning the original data cannot be recovered from
 </ul>
 </div>
 </div>
-<div id="outline-container-org99b7835" class="outline-3">
-<h3 id="org99b7835">Use Cases</h3>
-<div class="outline-text-3" id="text-org99b7835">
+<div id="outline-container-org0807045" class="outline-2">
+<h2 id="org0807045">Salting — Why "Fast" Is Bad for Password Hashing</h2>
+<div class="outline-text-2" id="text-org0807045">
+<p>
+The "efficient" property above is desirable for data integrity
+checks but actively dangerous for password storage — a fast hash
+function makes brute-forcing every possible password fast too.
+</p>
+
 <ul class="org-ul">
-<li><b>Password storage:</b> Storing hashed passwords instead of plain text.</li>
-<li><b>Data <a href="Integrity.html#integrity">Integrity</a>:</b> Verifying data hasn't been altered.</li>
-<li><b>Digital signatures:</b> Creating digital signatures for <a href="Authentication.html#authentication">Authentication</a>.</li>
-<li><b>Blockchain technology:</b> Securing and verifying transactions.</li>
+<li><b>Salt:</b> Random data added to each password before hashing, unique
+per user. Defeats precomputed rainbow table attacks, since an
+attacker can no longer reuse one lookup table across every
+hashed password in a breach — each salt requires its own table.</li>
+<li><b>Purpose-built slow hashes:</b> bcrypt, scrypt, and Argon2 are
+deliberately slow and memory-intensive, specifically to make
+brute-forcing computationally expensive even at scale — this is
+the opposite tradeoff from MD5/SHA-256's speed, and the reason
+finding MD5 used for password storage is itself a reportable
+finding regardless of anything else about the implementation</li>
+<li><b>Pepper:</b> A secret value added in addition to the salt, stored
+separately from the database (e.g. in application config or a
+secrets manager) — protects against an attacker who obtains the
+database but not the application server</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org51d0ae4" class="outline-3">
-<h3 id="org51d0ae4">Common Hash Functions</h3>
-<div class="outline-text-3" id="text-org51d0ae4">
+<div id="outline-container-orgc4e9c6a" class="outline-2">
+<h2 id="orgc4e9c6a">Identifying Hash Types</h2>
+<div class="outline-text-2" id="text-orgc4e9c6a">
+<p>
+Recognizing a hash format from its structure before attempting to
+crack it:
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b85651ff945d476699bdb0e15f99d8cb>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_b85651ff945d476699bdb0e15f99d8cb=document.querySelector('button[name=btn_b85651ff945d476699bdb0e15f99d8cb]');
+copyBtnbtn_b85651ff945d476699bdb0e15f99d8cb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# hashid identifies likely hash types from format/length\nhashid '$2b$12$KIXQ...'\n\n# Common format signatures:\n# 32 hex chars                    -> MD5\n# 40 hex chars                    -> SHA-1\n# 64 hex chars                    -> SHA-256\n# $1$...                          -> md5crypt\n# $2a$/$2b$/$2y$...                -> bcrypt\n# $6$...                          -> sha512crypt\n`);copyBtnbtn_b85651ff945d476699bdb0e15f99d8cb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b85651ff945d476699bdb0e15f99d8cb.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">hashid identifies likely hash types from format/length
+</span>hashid <span style="color: var(--clr-string); background-color: var(--bg-string);">'$2b$12$KIXQ...'</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Common format signatures:
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">32 hex chars                    -&gt; MD5
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">40 hex chars                    -&gt; SHA-1
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">64 hex chars                    -&gt; SHA-256
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">$1$...                          -&gt; md5crypt
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">$2a$/$2b$/$2y$...                -&gt; bcrypt
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">$6$...                          -&gt; sha512crypt</span>
+</pre>
+</div></div>
+
+<p>
+See [[Denote query for ‘20260716T070800’]] and
+<a href="20260611T064608--john-the-ripper__cybersecurity_tool.html">John the Ripper</a> for cracking
+methodology once the type is identified.
+</p>
+</div>
+</div>
+<div id="outline-container-org4f0fc90" class="outline-2">
+<h2 id="org4f0fc90">Use Cases</h2>
+<div class="outline-text-2" id="text-org4f0fc90">
+<ul class="org-ul">
+<li><b>Password storage:</b> Storing hashed (and salted) passwords instead
+of plain text — see the salting section above for why this alone
+isn't sufficient without a slow hash function</li>
+<li><b>Data <a href="20260207T064424--integrity__concept_cybersecurity.html">Integrity</a>:</b> Verifying data
+hasn't been altered</li>
+<li><b>Digital signatures:</b> Creating digital signatures for
+<a href="20260206T060441--authentication__concept_cybersecurity.html">Authentication</a></li>
+<li><b>Blockchain technology:</b> Securing and verifying transactions</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfb09efd" class="outline-2">
+<h2 id="orgfb09efd">Common Hash Functions</h2>
+<div class="outline-text-2" id="text-orgfb09efd">
 <ul class="org-ul">
 <li><b>MD5:</b> Widely used but considered insecure due to vulnerabilities.</li>
 <li><b>SHA-1:</b> More secure than MD5 but also showing signs of weakness.</li>
@@ -933,9 +1086,42 @@ This process is irreversible, meaning the original data cannot be recovered from
 </ul>
 </div>
 </div>
+<div id="outline-container-org320b8be" class="outline-2">
+<h2 id="org320b8be">Tips</h2>
+<div class="outline-text-2" id="text-org320b8be">
+<ul class="org-ul">
+<li>On the exam, finding a fast/general-purpose hash (MD5, SHA-1,
+unsalted SHA-256) used specifically for password storage is
+worth flagging as its own finding — Security Misconfiguration or
+Insecure Authentication Mechanism depending on context — distinct
+from whatever you do with the cracked credentials afterward</li>
+<li>If you find hashes without an obvious source password, check
+whether the format is even a password hash at all before
+attempting to crack it — <a href="20260206T060715--message-authentication-codes__concept_cybersecurity.html">Message Authentication Codes</a> and password hashes can look superficially
+similar but require entirely different attack approaches</li>
+<li>Length and prefix are the fastest way to identify a hash type
+manually without a tool — memorize the common signatures above,
+since misidentifying the type wastes time running the wrong
+hashcat mode against it</li>
+</ul>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -943,6 +1129,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

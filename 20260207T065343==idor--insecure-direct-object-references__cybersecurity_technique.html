@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Insecure Direct Object References</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,21 +886,21 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf2da952">Common Techniques</a>
+<li><a href="#org3afdac5">Common Techniques</a>
 <ul>
-<li><a href="#orgac17410">1. Parameter Tampering in URLs</a></li>
-<li><a href="#org0f5f7ef">2. Manipulating Request Body Parameters</a></li>
-<li><a href="#org7838e77">3. Changing HTTP Method</a></li>
-<li><a href="#org1a9026d">4. Referer Header Bypass</a></li>
-<li><a href="#org1f816fd">5. Path Traversal in File References</a></li>
-<li><a href="#org109568d">6. Exploiting API Endpoints</a></li>
-<li><a href="#org4b533cf">7. Batch Processing / Array Manipulation</a></li>
-<li><a href="#org2a4753c">8. Encoded IDs</a></li>
+<li><a href="#org3626696">1. Parameter Tampering in URLs</a></li>
+<li><a href="#org7cd8f4e">2. Manipulating Request Body Parameters</a></li>
+<li><a href="#org71ff737">3. Changing HTTP Method</a></li>
+<li><a href="#org3dc11e1">4. Referer Header Bypass</a></li>
+<li><a href="#org82715a1">5. Path Traversal in File References</a></li>
+<li><a href="#org0255bbf">6. Exploiting API Endpoints</a></li>
+<li><a href="#org1b1d051">7. Batch Processing / Array Manipulation</a></li>
+<li><a href="#orgc437011">8. Encoded IDs</a></li>
 </ul>
 </li>
-<li><a href="#org925dd04">Testing Methodology / Checklist</a></li>
-<li><a href="#org7df9ed1">Reporting Template</a></li>
-<li><a href="#orgdb9f545">Tips</a></li>
+<li><a href="#org45a1f22">Testing Methodology / Checklist</a></li>
+<li><a href="#org89ce89a">Reporting Template</a></li>
+<li><a href="#org33db223">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -921,13 +939,13 @@ Related: <a href="20260621T180112==bola--broken-object-level-authorisation__cybe
          <a href="20260614T002010--pt1-vulnerability-classification-cheat-sheet__comparison_cybersecurity_pentesting_reference.html">PT1 Vulnerability Classification Cheat Sheet</a>
          <a href="20260611T064753--web-application-testing-methodology__cybersecurity_pentesting_technique.html">Web Application Testing Methodology</a>
 </p>
-<div id="outline-container-orgf2da952" class="outline-2">
-<h2 id="orgf2da952">Common Techniques</h2>
-<div class="outline-text-2" id="text-orgf2da952">
+<div id="outline-container-org3afdac5" class="outline-2">
+<h2 id="org3afdac5">Common Techniques</h2>
+<div class="outline-text-2" id="text-org3afdac5">
 </div>
-<div id="outline-container-orgac17410" class="outline-3">
-<h3 id="orgac17410">1. Parameter Tampering in URLs</h3>
-<div class="outline-text-3" id="text-orgac17410">
+<div id="outline-container-org3626696" class="outline-3">
+<h3 id="org3626696">1. Parameter Tampering in URLs</h3>
+<div class="outline-text-3" id="text-org3626696">
 <ul class="org-ul">
 <li><b>Direct Object ID Modification:</b> The most straightforward
 technique. Look for numerical or alphanumeric IDs in URL
@@ -944,9 +962,9 @@ them leaked elsewhere.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0f5f7ef" class="outline-3">
-<h3 id="org0f5f7ef">2. Manipulating Request Body Parameters</h3>
-<div class="outline-text-3" id="text-org0f5f7ef">
+<div id="outline-container-org7cd8f4e" class="outline-3">
+<h3 id="org7cd8f4e">2. Manipulating Request Body Parameters</h3>
+<div class="outline-text-3" id="text-org7cd8f4e">
 <p>
 For <code>POST</code>, <code>PUT</code>, or <code>DELETE</code> requests, sensitive object
 references might be sent in the request body (JSON, XML, or form
@@ -955,11 +973,11 @@ modify the object IDs within the body to target other resources.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_4740d56591d94aae996ec0d9fd2a6f1a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_8881249448c942ff9fd1aa5fcd767990>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4740d56591d94aae996ec0d9fd2a6f1a=document.querySelector('button[name=btn_4740d56591d94aae996ec0d9fd2a6f1a]');
-copyBtnbtn_4740d56591d94aae996ec0d9fd2a6f1a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Original\n{\"account_number\": \"USER_ABC_001\", \"action\": \"update_details\"}\n\n# Tampered — targeting another user's account\n{\"account_number\": \"USER_XYZ_002\", \"action\": \"update_details\"}\n`);copyBtnbtn_4740d56591d94aae996ec0d9fd2a6f1a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4740d56591d94aae996ec0d9fd2a6f1a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8881249448c942ff9fd1aa5fcd767990=document.querySelector('button[name=btn_8881249448c942ff9fd1aa5fcd767990]');
+copyBtnbtn_8881249448c942ff9fd1aa5fcd767990.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Original\n{\"account_number\": \"USER_ABC_001\", \"action\": \"update_details\"}\n\n# Tampered — targeting another user's account\n{\"account_number\": \"USER_XYZ_002\", \"action\": \"update_details\"}\n`);copyBtnbtn_8881249448c942ff9fd1aa5fcd767990.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8881249448c942ff9fd1aa5fcd767990.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -972,9 +990,9 @@ let res = copyTextToClipboard(`# Original\n{\"account_number\": \"USER_ABC_001\"
 </div></div>
 </div>
 </div>
-<div id="outline-container-org7838e77" class="outline-3">
-<h3 id="org7838e77">3. Changing HTTP Method</h3>
-<div class="outline-text-3" id="text-org7838e77">
+<div id="outline-container-org71ff737" class="outline-3">
+<h3 id="org71ff737">3. Changing HTTP Method</h3>
+<div class="outline-text-3" id="text-org71ff737">
 <p>
 Sometimes an application enforces strict access controls for <code>GET</code>
 requests (e.g., <code>/user/123/delete</code> might be rejected) but has
@@ -984,9 +1002,9 @@ or vice-versa. Experiment with different HTTP verbs (<code>GET</code>,
 </p>
 </div>
 </div>
-<div id="outline-container-org1a9026d" class="outline-3">
-<h3 id="org1a9026d">4. Referer Header Bypass</h3>
-<div class="outline-text-3" id="text-org1a9026d">
+<div id="outline-container-org3dc11e1" class="outline-3">
+<h3 id="org3dc11e1">4. Referer Header Bypass</h3>
+<div class="outline-text-3" id="text-org3dc11e1">
 <p>
 Some applications rely on the <code>Referer</code> header for basic access
 control, assuming a request for a resource came from a legitimate
@@ -995,9 +1013,9 @@ the <code>Referer</code> header might bypass some checks.
 </p>
 </div>
 </div>
-<div id="outline-container-org1f816fd" class="outline-3">
-<h3 id="org1f816fd">5. Path Traversal in File References</h3>
-<div class="outline-text-3" id="text-org1f816fd">
+<div id="outline-container-org82715a1" class="outline-3">
+<h3 id="org82715a1">5. Path Traversal in File References</h3>
+<div class="outline-text-3" id="text-org82715a1">
 <p>
 Though often categorised as a separate vulnerability, when an
 IDOR deals with file names or paths, it can overlap with
@@ -1009,9 +1027,9 @@ authorised directory.
 </p>
 </div>
 </div>
-<div id="outline-container-org109568d" class="outline-3">
-<h3 id="org109568d">6. Exploiting API Endpoints</h3>
-<div class="outline-text-3" id="text-org109568d">
+<div id="outline-container-org0255bbf" class="outline-3">
+<h3 id="org0255bbf">6. Exploiting API Endpoints</h3>
+<div class="outline-text-3" id="text-org0255bbf">
 <p>
 APIs are a common target for IDORs. They often use clear object
 identifiers in their URLs or request bodies (e.g.,
@@ -1027,9 +1045,9 @@ without proper authorisation checks.
 </p>
 </div>
 </div>
-<div id="outline-container-org4b533cf" class="outline-3">
-<h3 id="org4b533cf">7. Batch Processing / Array Manipulation</h3>
-<div class="outline-text-3" id="text-org4b533cf">
+<div id="outline-container-org1b1d051" class="outline-3">
+<h3 id="org1b1d051">7. Batch Processing / Array Manipulation</h3>
+<div class="outline-text-3" id="text-org1b1d051">
 <p>
 If an application allows operations on multiple items using an
 array of IDs (e.g., <code>delete_items</code>[1,2,3]=), try adding IDs of
@@ -1037,9 +1055,9 @@ objects you shouldn't have access to into the array.
 </p>
 </div>
 </div>
-<div id="outline-container-org2a4753c" class="outline-3">
-<h3 id="org2a4753c">8. Encoded IDs</h3>
-<div class="outline-text-3" id="text-org2a4753c">
+<div id="outline-container-orgc437011" class="outline-3">
+<h3 id="orgc437011">8. Encoded IDs</h3>
+<div class="outline-text-3" id="text-orgc437011">
 <p>
 Sometimes object IDs are encoded (e.g., Base64, URL encoding).
 Decode them, modify the underlying ID, and then re-encode before
@@ -1048,9 +1066,9 @@ sending the request.
 </div>
 </div>
 </div>
-<div id="outline-container-org925dd04" class="outline-2">
-<h2 id="org925dd04">Testing Methodology / Checklist</h2>
-<div class="outline-text-2" id="text-org925dd04">
+<div id="outline-container-org45a1f22" class="outline-2">
+<h2 id="org45a1f22">Testing Methodology / Checklist</h2>
+<div class="outline-text-2" id="text-org45a1f22">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> Identify object references in URLs, request bodies, or
 headers (<code>id</code>, <code>user_id</code>, <code>account_id</code>, <code>doc_id</code>, <code>filename</code>,
@@ -1071,9 +1089,9 @@ before concluding a parameter is not exploitable</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7df9ed1" class="outline-2">
-<h2 id="org7df9ed1">Reporting Template</h2>
-<div class="outline-text-2" id="text-org7df9ed1">
+<div id="outline-container-org89ce89a" class="outline-2">
+<h2 id="org89ce89a">Reporting Template</h2>
+<div class="outline-text-2" id="text-org89ce89a">
 <p>
 <b>Classification:</b> Broken Access Control (IDOR)
 </p>
@@ -1095,7 +1113,7 @@ data belonging to other users by altering the parameter value.
 <p>
 <b>Evidence:</b>
 </p>
-<pre class="example" id="orgc614a91">
+<pre class="example" id="orgf45d112">
 [Raw request/response pair showing access to another user's data
 using a manipulated ID, ideally captured with two distinct test
 accounts]
@@ -1115,9 +1133,9 @@ methods for a given resource</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdb9f545" class="outline-2">
-<h2 id="orgdb9f545">Tips</h2>
-<div class="outline-text-2" id="text-orgdb9f545">
+<div id="outline-container-org33db223" class="outline-2">
+<h2 id="org33db223">Tips</h2>
+<div class="outline-text-2" id="text-org33db223">
 <ul class="org-ul">
 <li>Always test with two separate accounts — accessing your own data
 with a slightly different ID proves nothing; cross-account access
@@ -1134,6 +1152,20 @@ PT1 Cheat Sheet if genuinely ambiguous</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1141,6 +1173,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

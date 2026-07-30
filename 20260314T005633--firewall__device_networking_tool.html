@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Firewall</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0ad0dd6">Types</a></li>
-<li><a href="#org85e2ba9">Linux — iptables</a></li>
-<li><a href="#org4648ce6">Linux — ufw (Uncomplicated Firewall)</a></li>
-<li><a href="#orgf90b88a">Linux — nftables (Modern Replacement for iptables)</a></li>
-<li><a href="#org2b2d31e">Windows Firewall</a></li>
-<li><a href="#org71e58b3">Security Relevance</a>
+<li><a href="#orgea545f3">Types</a></li>
+<li><a href="#org334605b">Linux — iptables</a></li>
+<li><a href="#orgadccd91">Linux — ufw (Uncomplicated Firewall)</a></li>
+<li><a href="#org16e882b">Linux — nftables (Modern Replacement for iptables)</a></li>
+<li><a href="#orgc1fbd23">Windows Firewall</a></li>
+<li><a href="#org2485690">Security Relevance</a>
 <ul>
-<li><a href="#orgb04049f">Egress Filtering</a></li>
-<li><a href="#org277ca71">Firewall Evasion</a></li>
-<li><a href="#org11042d2">Checking Firewall Rules Post-Compromise</a></li>
+<li><a href="#org71d64b6">Egress Filtering</a></li>
+<li><a href="#orgc1203bd">Firewall Evasion</a></li>
+<li><a href="#orgb06adae">Checking Firewall Rules Post-Compromise</a></li>
 </ul>
 </li>
-<li><a href="#org4a118d2">Tips</a></li>
+<li><a href="#org6e876fa">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -898,9 +916,9 @@ Related: <a href="20260213T104011--network-security__concept_cybersecurity.html"
          <a href="20260314T005723--pfsense__cybersecurity_networking_tool.html">pfSense</a>
          <a href="20260213T103802--virtual-local-area-networks__concept_networking.html">VLANs</a>
 </p>
-<div id="outline-container-org0ad0dd6" class="outline-2">
-<h2 id="org0ad0dd6">Types</h2>
-<div class="outline-text-2" id="text-org0ad0dd6">
+<div id="outline-container-orgea545f3" class="outline-2">
+<h2 id="orgea545f3">Types</h2>
+<div class="outline-text-2" id="text-orgea545f3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -952,15 +970,15 @@ Related: <a href="20260213T104011--network-security__concept_cybersecurity.html"
 </table>
 </div>
 </div>
-<div id="outline-container-org85e2ba9" class="outline-2">
-<h2 id="org85e2ba9">Linux — iptables</h2>
-<div class="outline-text-2" id="text-org85e2ba9">
+<div id="outline-container-org334605b" class="outline-2">
+<h2 id="org334605b">Linux — iptables</h2>
+<div class="outline-text-2" id="text-org334605b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_855be1c9fdb1440495494b41c3101200>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5ac2e5ec2efc4334a2554f9b750c4d3a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_855be1c9fdb1440495494b41c3101200=document.querySelector('button[name=btn_855be1c9fdb1440495494b41c3101200]');
-copyBtnbtn_855be1c9fdb1440495494b41c3101200.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# View current rules\niptables -L -n -v\niptables -L -n -v --line-numbers   # with line numbers for deletion\n\n# Allow established/related connections (required for stateful behaviour)\niptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT\n\n# Allow incoming SSH\niptables -A INPUT -p tcp --dport 22 -j ACCEPT\n\n# Allow incoming HTTP and HTTPS\niptables -A INPUT -p tcp -m multiport --dports 80,443 -j ACCEPT\n\n# Block a specific IP\niptables -A INPUT -s 192.168.1.50 -j DROP\n\n# Allow traffic from a specific subnet\niptables -A INPUT -s 10.0.0.0/8 -j ACCEPT\n\n# Set default policy — drop everything not explicitly allowed\niptables -P INPUT DROP\niptables -P FORWARD DROP\niptables -P OUTPUT ACCEPT\n\n# Delete a rule by line number\niptables -D INPUT 3\n\n# Save rules (Debian/Ubuntu)\niptables-save > /etc/iptables/rules.v4\n\n# Flush all rules (careful — removes all rules)\niptables -F\n`);copyBtnbtn_855be1c9fdb1440495494b41c3101200.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_855be1c9fdb1440495494b41c3101200.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5ac2e5ec2efc4334a2554f9b750c4d3a=document.querySelector('button[name=btn_5ac2e5ec2efc4334a2554f9b750c4d3a]');
+copyBtnbtn_5ac2e5ec2efc4334a2554f9b750c4d3a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# View current rules\niptables -L -n -v\niptables -L -n -v --line-numbers   # with line numbers for deletion\n\n# Allow established/related connections (required for stateful behaviour)\niptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT\n\n# Allow incoming SSH\niptables -A INPUT -p tcp --dport 22 -j ACCEPT\n\n# Allow incoming HTTP and HTTPS\niptables -A INPUT -p tcp -m multiport --dports 80,443 -j ACCEPT\n\n# Block a specific IP\niptables -A INPUT -s 192.168.1.50 -j DROP\n\n# Allow traffic from a specific subnet\niptables -A INPUT -s 10.0.0.0/8 -j ACCEPT\n\n# Set default policy — drop everything not explicitly allowed\niptables -P INPUT DROP\niptables -P FORWARD DROP\niptables -P OUTPUT ACCEPT\n\n# Delete a rule by line number\niptables -D INPUT 3\n\n# Save rules (Debian/Ubuntu)\niptables-save > /etc/iptables/rules.v4\n\n# Flush all rules (careful — removes all rules)\niptables -F\n`);copyBtnbtn_5ac2e5ec2efc4334a2554f9b750c4d3a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5ac2e5ec2efc4334a2554f9b750c4d3a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1000,20 +1018,20 @@ iptables -P OUTPUT ACCEPT
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4648ce6" class="outline-2">
-<h2 id="org4648ce6">Linux — ufw (Uncomplicated Firewall)</h2>
-<div class="outline-text-2" id="text-org4648ce6">
+<div id="outline-container-orgadccd91" class="outline-2">
+<h2 id="orgadccd91">Linux — ufw (Uncomplicated Firewall)</h2>
+<div class="outline-text-2" id="text-orgadccd91">
 <p>
 Higher-level wrapper over iptables — simpler syntax for common
 tasks.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f0ca83af0e424a68b836fcdbb4639f0e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4dbeeb7cd49f4bb4ab85129bffea5ddb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f0ca83af0e424a68b836fcdbb4639f0e=document.querySelector('button[name=btn_f0ca83af0e424a68b836fcdbb4639f0e]');
-copyBtnbtn_f0ca83af0e424a68b836fcdbb4639f0e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Enable / disable\nufw enable\nufw disable\nufw status verbose\n\n# Allow / deny by port\nufw allow 22\nufw allow 80/tcp\nufw deny 3306\n\n# Allow / deny by service name\nufw allow ssh\nufw allow http\nufw allow https\n\n# Allow from specific IP\nufw allow from 192.168.1.0/24 to any port 22\n\n# Delete a rule\nufw delete allow 80\n\n# Reset to defaults\nufw reset\n`);copyBtnbtn_f0ca83af0e424a68b836fcdbb4639f0e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f0ca83af0e424a68b836fcdbb4639f0e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4dbeeb7cd49f4bb4ab85129bffea5ddb=document.querySelector('button[name=btn_4dbeeb7cd49f4bb4ab85129bffea5ddb]');
+copyBtnbtn_4dbeeb7cd49f4bb4ab85129bffea5ddb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Enable / disable\nufw enable\nufw disable\nufw status verbose\n\n# Allow / deny by port\nufw allow 22\nufw allow 80/tcp\nufw deny 3306\n\n# Allow / deny by service name\nufw allow ssh\nufw allow http\nufw allow https\n\n# Allow from specific IP\nufw allow from 192.168.1.0/24 to any port 22\n\n# Delete a rule\nufw delete allow 80\n\n# Reset to defaults\nufw reset\n`);copyBtnbtn_4dbeeb7cd49f4bb4ab85129bffea5ddb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4dbeeb7cd49f4bb4ab85129bffea5ddb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1044,15 +1062,15 @@ ufw allow https
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgf90b88a" class="outline-2">
-<h2 id="orgf90b88a">Linux — nftables (Modern Replacement for iptables)</h2>
-<div class="outline-text-2" id="text-orgf90b88a">
+<div id="outline-container-org16e882b" class="outline-2">
+<h2 id="org16e882b">Linux — nftables (Modern Replacement for iptables)</h2>
+<div class="outline-text-2" id="text-org16e882b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7a9b9e872ad543fea1bb832b255e8ec6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a2bd1eadd0654298894c5c6165935132>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7a9b9e872ad543fea1bb832b255e8ec6=document.querySelector('button[name=btn_7a9b9e872ad543fea1bb832b255e8ec6]');
-copyBtnbtn_7a9b9e872ad543fea1bb832b255e8ec6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# View ruleset\nnft list ruleset\n\n# Basic stateful firewall\nnft add table inet filter\nnft add chain inet filter input { type filter hook input priority 0 \\; policy drop \\; }\nnft add rule inet filter input ct state established,related accept\nnft add rule inet filter input tcp dport 22 accept\nnft add rule inet filter input tcp dport { 80, 443 } accept\nnft add rule inet filter input drop\n\n# Save and restore\nnft list ruleset > /etc/nftables.conf\nnft -f /etc/nftables.conf\n`);copyBtnbtn_7a9b9e872ad543fea1bb832b255e8ec6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7a9b9e872ad543fea1bb832b255e8ec6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a2bd1eadd0654298894c5c6165935132=document.querySelector('button[name=btn_a2bd1eadd0654298894c5c6165935132]');
+copyBtnbtn_a2bd1eadd0654298894c5c6165935132.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# View ruleset\nnft list ruleset\n\n# Basic stateful firewall\nnft add table inet filter\nnft add chain inet filter input { type filter hook input priority 0 \\; policy drop \\; }\nnft add rule inet filter input ct state established,related accept\nnft add rule inet filter input tcp dport 22 accept\nnft add rule inet filter input tcp dport { 80, 443 } accept\nnft add rule inet filter input drop\n\n# Save and restore\nnft list ruleset > /etc/nftables.conf\nnft -f /etc/nftables.conf\n`);copyBtnbtn_a2bd1eadd0654298894c5c6165935132.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a2bd1eadd0654298894c5c6165935132.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1074,52 +1092,52 @@ nft -f /etc/nftables.conf
 </div></div>
 </div>
 </div>
-<div id="outline-container-org2b2d31e" class="outline-2">
-<h2 id="org2b2d31e">Windows Firewall</h2>
-<div class="outline-text-2" id="text-org2b2d31e">
+<div id="outline-container-orgc1fbd23" class="outline-2">
+<h2 id="orgc1fbd23">Windows Firewall</h2>
+<div class="outline-text-2" id="text-orgc1fbd23">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_cbc3b562cd6d4c6f8e7e8f20846b4974>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_278aab294fa644a5a225f54e6a6ef9ef>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_cbc3b562cd6d4c6f8e7e8f20846b4974=document.querySelector('button[name=btn_cbc3b562cd6d4c6f8e7e8f20846b4974]');
-copyBtnbtn_cbc3b562cd6d4c6f8e7e8f20846b4974.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# View firewall status\nGet-NetFirewallProfile\n\n# Enable / disable\nSet-NetFirewallProfile -Profile Domain,Public,Private -Enabled True\n\n# List rules\nGet-NetFirewallRule | Where-Object {$_.Enabled -eq \"True\"} | Select-Object DisplayName, Direction, Action\n\n# Add inbound rule (allow SSH)\nNew-NetFirewallRule -DisplayName \"Allow SSH\" -Direction Inbound \`\n  -Protocol TCP -LocalPort 22 -Action Allow\n\n# Add outbound block rule\nNew-NetFirewallRule -DisplayName \"Block outbound 4444\" -Direction Outbound \`\n  -Protocol TCP -RemotePort 4444 -Action Block\n\n# Remove a rule\nRemove-NetFirewallRule -DisplayName \"Allow SSH\"\n\n# netsh equivalent (older syntax)\nnetsh advfirewall firewall add rule name=\"Allow SSH\" \`\n  protocol=TCP dir=in localport=22 action=allow\n`);copyBtnbtn_cbc3b562cd6d4c6f8e7e8f20846b4974.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cbc3b562cd6d4c6f8e7e8f20846b4974.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_278aab294fa644a5a225f54e6a6ef9ef=document.querySelector('button[name=btn_278aab294fa644a5a225f54e6a6ef9ef]');
+copyBtnbtn_278aab294fa644a5a225f54e6a6ef9ef.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# View firewall status\nGet-NetFirewallProfile\n\n# Enable / disable\nSet-NetFirewallProfile -Profile Domain,Public,Private -Enabled True\n\n# List rules\nGet-NetFirewallRule | Where-Object {$_.Enabled -eq \"True\"} | Select-Object DisplayName, Direction, Action\n\n# Add inbound rule (allow SSH)\nNew-NetFirewallRule -DisplayName \"Allow SSH\" -Direction Inbound \`\n  -Protocol TCP -LocalPort 22 -Action Allow\n\n# Add outbound block rule\nNew-NetFirewallRule -DisplayName \"Block outbound 4444\" -Direction Outbound \`\n  -Protocol TCP -RemotePort 4444 -Action Block\n\n# Remove a rule\nRemove-NetFirewallRule -DisplayName \"Allow SSH\"\n\n# netsh equivalent (older syntax)\nnetsh advfirewall firewall add rule name=\"Allow SSH\" \`\n  protocol=TCP dir=in localport=22 action=allow\n`);copyBtnbtn_278aab294fa644a5a225f54e6a6ef9ef.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_278aab294fa644a5a225f54e6a6ef9ef.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">View firewall status
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-NetFirewallProfile</span>
+<pre class="src src-powershell"># View firewall status
+Get-NetFirewallProfile
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Enable / disable
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Set-NetFirewallProfile</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Profile</span> Domain,Public,Private <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Enabled</span> True
+# Enable / disable
+Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">List rules
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-NetFirewallRule</span> | <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Where-Object</span> {<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">$_</span>.Enabled <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">-eq</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"True"</span>} | <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Select-Object</span> DisplayName, Direction, Action
+# List rules
+Get-NetFirewallRule | Where-Object {$_.Enabled -eq "True"} | Select-Object DisplayName, Direction, Action
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Add inbound rule (allow SSH)
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">New-NetFirewallRule</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-DisplayName</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Allow SSH"</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Direction</span> Inbound `
-  <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Protocol</span> TCP <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-LocalPort</span> 22 <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Action</span> Allow
+# Add inbound rule (allow SSH)
+New-NetFirewallRule -DisplayName "Allow SSH" -Direction Inbound `
+  -Protocol TCP -LocalPort 22 -Action Allow
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Add outbound block rule
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">New-NetFirewallRule</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-DisplayName</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Block outbound 4444"</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Direction</span> Outbound `
-  <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Protocol</span> TCP <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-RemotePort</span> 4444 <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Action</span> Block
+# Add outbound block rule
+New-NetFirewallRule -DisplayName "Block outbound 4444" -Direction Outbound `
+  -Protocol TCP -RemotePort 4444 -Action Block
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Remove a rule
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Remove-NetFirewallRule</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-DisplayName</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Allow SSH"</span>
+# Remove a rule
+Remove-NetFirewallRule -DisplayName "Allow SSH"
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">netsh equivalent (older syntax)
-</span>netsh advfirewall firewall add rule name=<span style="color: var(--clr-string); background-color: var(--bg-string);">"Allow SSH"</span> `
-  protocol=TCP dir=<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">in</span> localport=22 action=allow
+# netsh equivalent (older syntax)
+netsh advfirewall firewall add rule name="Allow SSH" `
+  protocol=TCP dir=in localport=22 action=allow
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org71e58b3" class="outline-2">
-<h2 id="org71e58b3">Security Relevance</h2>
-<div class="outline-text-2" id="text-org71e58b3">
+<div id="outline-container-org2485690" class="outline-2">
+<h2 id="org2485690">Security Relevance</h2>
+<div class="outline-text-2" id="text-org2485690">
 </div>
-<div id="outline-container-orgb04049f" class="outline-3">
-<h3 id="orgb04049f">Egress Filtering</h3>
-<div class="outline-text-3" id="text-orgb04049f">
+<div id="outline-container-org71d64b6" class="outline-3">
+<h3 id="org71d64b6">Egress Filtering</h3>
+<div class="outline-text-3" id="text-org71d64b6">
 <p>
 Outbound filtering is frequently neglected — most firewalls
 restrict inbound by default but allow all outbound. This is
@@ -1129,11 +1147,11 @@ blocks inbound connections but not outbound.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b63c061c88b242c3913cfff4e5eaf805>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2b5beb45b6dd4d4793e4532e117865da>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b63c061c88b242c3913cfff4e5eaf805=document.querySelector('button[name=btn_b63c061c88b242c3913cfff4e5eaf805]');
-copyBtnbtn_b63c061c88b242c3913cfff4e5eaf805.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Attacker (listener) ← ← ← Victim (connects out on permitted port)\nVictim firewall: outbound 443 allowed → reverse shell works\nVictim firewall: inbound 4444 blocked → bind shell fails\n`);copyBtnbtn_b63c061c88b242c3913cfff4e5eaf805.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b63c061c88b242c3913cfff4e5eaf805.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2b5beb45b6dd4d4793e4532e117865da=document.querySelector('button[name=btn_2b5beb45b6dd4d4793e4532e117865da]');
+copyBtnbtn_2b5beb45b6dd4d4793e4532e117865da.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Attacker (listener) ← ← ← Victim (connects out on permitted port)\nVictim firewall: outbound 443 allowed → reverse shell works\nVictim firewall: inbound 4444 blocked → bind shell fails\n`);copyBtnbtn_2b5beb45b6dd4d4793e4532e117865da.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2b5beb45b6dd4d4793e4532e117865da.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1144,19 +1162,19 @@ Victim firewall: inbound 4444 blocked &#8594; bind shell fails
 </div></div>
 </div>
 </div>
-<div id="outline-container-org277ca71" class="outline-3">
-<h3 id="org277ca71">Firewall Evasion</h3>
-<div class="outline-text-3" id="text-org277ca71">
+<div id="outline-container-orgc1203bd" class="outline-3">
+<h3 id="orgc1203bd">Firewall Evasion</h3>
+<div class="outline-text-3" id="text-orgc1203bd">
 <p>
 Common techniques encountered in pentests:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4d233a0e6dfa4d86af63fb54ce687b43>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_256c0561d4f24135971ce53c9aa9babf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4d233a0e6dfa4d86af63fb54ce687b43=document.querySelector('button[name=btn_4d233a0e6dfa4d86af63fb54ce687b43]');
-copyBtnbtn_4d233a0e6dfa4d86af63fb54ce687b43.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Use permitted ports (80, 443, 53) for reverse shells\nnc -lvnp 443   # listener on HTTPS port — often not egress-filtered\n\n# DNS tunnelling — exfiltrate over port 53 (almost never blocked)\n# Tools: iodine, dnscat2\n\n# Port knocking — send specific sequence to open a port\n# Requires knowledge of the knock sequence\n\n# Nmap firewall evasion\nnmap -f $IP            # fragment packets\nnmap --mtu 24 $IP      # custom MTU fragmentation\nnmap -D RND:10 $IP     # decoy scan\nnmap -sA $IP           # ACK scan — maps firewall rules\n`);copyBtnbtn_4d233a0e6dfa4d86af63fb54ce687b43.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4d233a0e6dfa4d86af63fb54ce687b43.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_256c0561d4f24135971ce53c9aa9babf=document.querySelector('button[name=btn_256c0561d4f24135971ce53c9aa9babf]');
+copyBtnbtn_256c0561d4f24135971ce53c9aa9babf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Use permitted ports (80, 443, 53) for reverse shells\nnc -lvnp 443   # listener on HTTPS port — often not egress-filtered\n\n# DNS tunnelling — exfiltrate over port 53 (almost never blocked)\n# Tools: iodine, dnscat2\n\n# Port knocking — send specific sequence to open a port\n# Requires knowledge of the knock sequence\n\n# Nmap firewall evasion\nnmap -f $IP            # fragment packets\nnmap --mtu 24 $IP      # custom MTU fragmentation\nnmap -D RND:10 $IP     # decoy scan\nnmap -sA $IP           # ACK scan — maps firewall rules\n`);copyBtnbtn_256c0561d4f24135971ce53c9aa9babf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_256c0561d4f24135971ce53c9aa9babf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1178,15 +1196,15 @@ let res = copyTextToClipboard(`# Use permitted ports (80, 443, 53) for reverse s
 </div></div>
 </div>
 </div>
-<div id="outline-container-org11042d2" class="outline-3">
-<h3 id="org11042d2">Checking Firewall Rules Post-Compromise</h3>
-<div class="outline-text-3" id="text-org11042d2">
+<div id="outline-container-orgb06adae" class="outline-3">
+<h3 id="orgb06adae">Checking Firewall Rules Post-Compromise</h3>
+<div class="outline-text-3" id="text-orgb06adae">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_761e34c0a49a462b9f9125e8f659c42b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c3a5145c29454752977c52ea0edb83b7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_761e34c0a49a462b9f9125e8f659c42b=document.querySelector('button[name=btn_761e34c0a49a462b9f9125e8f659c42b]');
-copyBtnbtn_761e34c0a49a462b9f9125e8f659c42b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Linux\niptables -L -n -v\nnft list ruleset\nufw status verbose\ncat /etc/iptables/rules.v4\n\n# Windows\nGet-NetFirewallRule | Where-Object {$_.Enabled -eq \"True\"}\nnetsh advfirewall firewall show rule name=all\n`);copyBtnbtn_761e34c0a49a462b9f9125e8f659c42b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_761e34c0a49a462b9f9125e8f659c42b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c3a5145c29454752977c52ea0edb83b7=document.querySelector('button[name=btn_c3a5145c29454752977c52ea0edb83b7]');
+copyBtnbtn_c3a5145c29454752977c52ea0edb83b7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Linux\niptables -L -n -v\nnft list ruleset\nufw status verbose\ncat /etc/iptables/rules.v4\n\n# Windows\nGet-NetFirewallRule | Where-Object {$_.Enabled -eq \"True\"}\nnetsh advfirewall firewall show rule name=all\n`);copyBtnbtn_c3a5145c29454752977c52ea0edb83b7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c3a5145c29454752977c52ea0edb83b7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1204,9 +1222,9 @@ netsh advfirewall firewall show rule <span style="color: var(--clr-variable); ba
 </div>
 </div>
 </div>
-<div id="outline-container-org4a118d2" class="outline-2">
-<h2 id="org4a118d2">Tips</h2>
-<div class="outline-text-2" id="text-org4a118d2">
+<div id="outline-container-org6e876fa" class="outline-2">
+<h2 id="org6e876fa">Tips</h2>
+<div class="outline-text-2" id="text-org6e876fa">
 <ul class="org-ul">
 <li>Default deny (allowlist) is the correct base policy — deny all
 then explicitly permit what is needed, rather than permit all
@@ -1226,6 +1244,20 @@ see what the firewall is blocking or detect scanning activity</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1233,6 +1265,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

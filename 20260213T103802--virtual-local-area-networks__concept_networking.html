@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Virtual Local Area Networks</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,30 +886,30 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org00e03b3">Virtual Local Area Networks</a>
+<li><a href="#org1dd1873">Virtual Local Area Networks</a>
 <ul>
-<li><a href="#orgfcd2d20">Overview</a></li>
+<li><a href="#orgaf4a300">Overview</a></li>
 </ul>
 </li>
-<li><a href="#orga1c33ac">Benefits of VLANs</a>
+<li><a href="#org127e96b">Benefits of VLANs</a>
 <ul>
-<li><a href="#org1e4d3e3">VLAN Configuration</a></li>
-<li><a href="#org8583302">Use Cases</a></li>
-<li><a href="#orgdf82626">VLAN Standards</a></li>
+<li><a href="#org53471db">VLAN Configuration</a></li>
+<li><a href="#orge054294">Use Cases</a></li>
+<li><a href="#org1cf226c">VLAN Standards</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org00e03b3" class="outline-2">
-<h2 id="org00e03b3">Virtual Local Area Networks</h2>
-<div class="outline-text-2" id="text-org00e03b3">
+<div id="outline-container-org1dd1873" class="outline-2">
+<h2 id="org1dd1873">Virtual Local Area Networks</h2>
+<div class="outline-text-2" id="text-org1dd1873">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PLANTUML</span><button class='copyBtn' name=btn_cf5ed90018a842b5bd32d3b66eeabad3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PLANTUML</span><button class='copyBtn' name=btn_3f08a0ec227045e48ed0372568f4252b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_cf5ed90018a842b5bd32d3b66eeabad3=document.querySelector('button[name=btn_cf5ed90018a842b5bd32d3b66eeabad3]');
-copyBtnbtn_cf5ed90018a842b5bd32d3b66eeabad3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`@startuml\ntitle VLAN Overview\n\npackage \"Network Infrastructure\" {\n  [Switch] as Switch\n  [Router] as Router\n}\n\npackage \"VLANs\" {\n  [VLAN 10: HR] as VLAN10\n  [VLAN 20: Finance] as VLAN20\n  [VLAN 30: IT] as VLAN30\n  [VLAN 40: Guests] as VLAN40\n}\n\nSwitch -down-> VLAN10 : VLAN Tag 10\nSwitch -down-> VLAN20 : VLAN Tag 20\nSwitch -down-> VLAN30 : VLAN Tag 30\nSwitch -down-> VLAN40 : VLAN Tag 40\n\nVLAN10 -down-> Router : Routed Traffic\nVLAN20 -down-> Router : Routed Traffic\nVLAN30 -down-> Router : Routed Traffic\nVLAN40 -down-> Router : Routed Traffic\n\nRouter -right-> [Internet] : External Traffic\n\n@enduml\n`);copyBtnbtn_cf5ed90018a842b5bd32d3b66eeabad3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cf5ed90018a842b5bd32d3b66eeabad3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3f08a0ec227045e48ed0372568f4252b=document.querySelector('button[name=btn_3f08a0ec227045e48ed0372568f4252b]');
+copyBtnbtn_3f08a0ec227045e48ed0372568f4252b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`@startuml\ntitle VLAN Overview\n\npackage \"Network Infrastructure\" {\n  [Switch] as Switch\n  [Router] as Router\n}\n\npackage \"VLANs\" {\n  [VLAN 10: HR] as VLAN10\n  [VLAN 20: Finance] as VLAN20\n  [VLAN 30: IT] as VLAN30\n  [VLAN 40: Guests] as VLAN40\n}\n\nSwitch -down-> VLAN10 : VLAN Tag 10\nSwitch -down-> VLAN20 : VLAN Tag 20\nSwitch -down-> VLAN30 : VLAN Tag 30\nSwitch -down-> VLAN40 : VLAN Tag 40\n\nVLAN10 -down-> Router : Routed Traffic\nVLAN20 -down-> Router : Routed Traffic\nVLAN30 -down-> Router : Routed Traffic\nVLAN40 -down-> Router : Routed Traffic\n\nRouter -right-> [Internet] : External Traffic\n\n@enduml\n`);copyBtnbtn_3f08a0ec227045e48ed0372568f4252b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3f08a0ec227045e48ed0372568f4252b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -926,18 +944,18 @@ Router -right-&gt; [Internet] : External Traffic
 </pre>
 </div></div>
 </div>
-<div id="outline-container-orgfcd2d20" class="outline-3">
-<h3 id="orgfcd2d20">Overview</h3>
-<div class="outline-text-3" id="text-orgfcd2d20">
+<div id="outline-container-orgaf4a300" class="outline-3">
+<h3 id="orgaf4a300">Overview</h3>
+<div class="outline-text-3" id="text-orgaf4a300">
 <p>
 VLANs (Virtual Local Area Networks) are logical divisions of a physical network. They allow network administrators to segment a network into smaller, isolated broadcast domains without requiring physical changes to the network infrastructure. VLANs provide increased security, improved performance, and better network management by logically grouping devices and separating traffic based on criteria such as function, department, or application.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orga1c33ac" class="outline-2">
-<h2 id="orga1c33ac">Benefits of VLANs</h2>
-<div class="outline-text-2" id="text-orga1c33ac">
+<div id="outline-container-org127e96b" class="outline-2">
+<h2 id="org127e96b">Benefits of VLANs</h2>
+<div class="outline-text-2" id="text-org127e96b">
 <ul class="org-ul">
 <li>Enhanced security: VLANs can isolate sensitive data by separating it from other network traffic, reducing the risk of unauthorized access and potential attacks. By keeping different types of traffic in separate VLANs, you can enforce stricter security policies and control access more effectively.</li>
 <li>Improved performance: VLANs reduce the amount of broadcast traffic within each segment, which can decrease network congestion and enhance overall performance. By limiting broadcast domains to only those devices within the same VLAN, network efficiency is improved, and the impact of broadcast storms is minimized.</li>
@@ -946,9 +964,9 @@ VLANs (Virtual Local Area Networks) are logical divisions of a physical network.
 <li>Compliance: VLANs help organizations meet security and regulatory compliance requirements by isolating sensitive data and controlling traffic flow. This segmentation can be crucial for maintaining data privacy and adhering to industry standards or regulations.</li>
 </ul>
 </div>
-<div id="outline-container-org1e4d3e3" class="outline-3">
-<h3 id="org1e4d3e3">VLAN Configuration</h3>
-<div class="outline-text-3" id="text-org1e4d3e3">
+<div id="outline-container-org53471db" class="outline-3">
+<h3 id="org53471db">VLAN Configuration</h3>
+<div class="outline-text-3" id="text-org53471db">
 <ul class="org-ul">
 <li>VLAN Tags: VLANs use tagging to identify and segregate traffic. The IEEE 802.1Q standard is commonly used for VLAN tagging, where a VLAN tag is added to Ethernet frames to indicate which VLAN they belong to.</li>
 <li>Switch Configuration: VLANs are typically configured on network switches. Each Switch port can be assigned to a specific VLAN, and trunk ports can be used to carry traffic for multiple VLANs between switches.</li>
@@ -957,9 +975,9 @@ VLANs (Virtual Local Area Networks) are logical divisions of a physical network.
 </ul>
 </div>
 </div>
-<div id="outline-container-org8583302" class="outline-3">
-<h3 id="org8583302">Use Cases</h3>
-<div class="outline-text-3" id="text-org8583302">
+<div id="outline-container-orge054294" class="outline-3">
+<h3 id="orge054294">Use Cases</h3>
+<div class="outline-text-3" id="text-orge054294">
 <ul class="org-ul">
 <li>Departmental Segmentation: Different departments within an organization (e.g., HR, Finance, IT) can be placed in separate VLANs to ensure that each department's traffic is isolated from others.</li>
 <li>Guest Networks: VLANs can be used to create separate networks for guests or visitors, providing internet access while keeping them isolated from internal network resources.</li>
@@ -968,9 +986,9 @@ VLANs (Virtual Local Area Networks) are logical divisions of a physical network.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdf82626" class="outline-3">
-<h3 id="orgdf82626">VLAN Standards</h3>
-<div class="outline-text-3" id="text-orgdf82626">
+<div id="outline-container-org1cf226c" class="outline-3">
+<h3 id="org1cf226c">VLAN Standards</h3>
+<div class="outline-text-3" id="text-org1cf226c">
 <ul class="org-ul">
 <li>IEEE 802.1Q: The most widely used VLAN standard that defines the method for tagging Ethernet frames with VLAN information.</li>
 <li>IEEE 802.1ad: Also known as Q-in-Q, this standard allows for stacking VLAN tags to provide additional levels of segmentation.</li>
@@ -980,6 +998,20 @@ VLANs (Virtual Local Area Networks) are logical divisions of a physical network.
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -987,6 +1019,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

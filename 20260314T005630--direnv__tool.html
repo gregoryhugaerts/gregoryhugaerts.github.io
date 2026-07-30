@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Direnv</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3feade4">Installation</a></li>
-<li><a href="#orgdf2125b">Core Workflow</a></li>
-<li><a href="#orgb123a99">.envrc Reference</a>
+<li><a href="#org31971f5">Installation</a></li>
+<li><a href="#org2932d14">Core Workflow</a></li>
+<li><a href="#org3ccdb03">.envrc Reference</a>
 <ul>
-<li><a href="#org0fb504f">Environment Variables</a></li>
-<li><a href="#org2ff3599">Standard Library Functions</a></li>
-<li><a href="#orgf791434">Python Virtual Environments</a></li>
-<li><a href="#org4d667ab">Node.js</a></li>
+<li><a href="#org162ad54">Environment Variables</a></li>
+<li><a href="#org98da4f1">Standard Library Functions</a></li>
+<li><a href="#orgc991b8d">Python Virtual Environments</a></li>
+<li><a href="#orgbd2d6b4">Node.js</a></li>
 </ul>
 </li>
-<li><a href="#orgca86534">Inheritance</a></li>
-<li><a href="#org1e8a7b1">Secrets Management</a></li>
-<li><a href="#org4f20da1">Tips</a></li>
+<li><a href="#orgc0e21f4">Inheritance</a></li>
+<li><a href="#org00a8922">Secrets Management</a></li>
+<li><a href="#orgf77527c">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -897,15 +915,15 @@ before starting work.
 Related: <a href="20260206T060637--shell__concept.html">Shell</a>
          <a href="20260206T060518--bash-scripting__bash_linux.html">Bash Scripting</a>
 </p>
-<div id="outline-container-org3feade4" class="outline-2">
-<h2 id="org3feade4">Installation</h2>
-<div class="outline-text-2" id="text-org3feade4">
+<div id="outline-container-org31971f5" class="outline-2">
+<h2 id="org31971f5">Installation</h2>
+<div class="outline-text-2" id="text-org31971f5">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_78ae9c5e6e4e4259bc981a4047c5d54a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_329ae2c742aa46ab911b05da7665eab5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_78ae9c5e6e4e4259bc981a4047c5d54a=document.querySelector('button[name=btn_78ae9c5e6e4e4259bc981a4047c5d54a]');
-copyBtnbtn_78ae9c5e6e4e4259bc981a4047c5d54a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Nix (recommended)\nnix-env -i direnv\n\n# macOS\nbrew install direnv\n\n# Ubuntu / Debian\nsudo apt install direnv\n\n# Hook into shell — add to the END of shell rc file\n# Bash (~/.bashrc)\neval \"$(direnv hook bash)\"\n\n# Zsh (~/.zshrc)\neval \"$(direnv hook zsh)\"\n\n# Fish (~/.config/fish/config.fish)\ndirenv hook fish | source\n`);copyBtnbtn_78ae9c5e6e4e4259bc981a4047c5d54a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_78ae9c5e6e4e4259bc981a4047c5d54a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_329ae2c742aa46ab911b05da7665eab5=document.querySelector('button[name=btn_329ae2c742aa46ab911b05da7665eab5]');
+copyBtnbtn_329ae2c742aa46ab911b05da7665eab5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Nix (recommended)\nnix-env -i direnv\n\n# macOS\nbrew install direnv\n\n# Ubuntu / Debian\nsudo apt install direnv\n\n# Hook into shell — add to the END of shell rc file\n# Bash (~/.bashrc)\neval \"$(direnv hook bash)\"\n\n# Zsh (~/.zshrc)\neval \"$(direnv hook zsh)\"\n\n# Fish (~/.config/fish/config.fish)\ndirenv hook fish | source\n`);copyBtnbtn_329ae2c742aa46ab911b05da7665eab5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_329ae2c742aa46ab911b05da7665eab5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -931,15 +949,15 @@ let res = copyTextToClipboard(`# Nix (recommended)\nnix-env -i direnv\n\n# macOS
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgdf2125b" class="outline-2">
-<h2 id="orgdf2125b">Core Workflow</h2>
-<div class="outline-text-2" id="text-orgdf2125b">
+<div id="outline-container-org2932d14" class="outline-2">
+<h2 id="org2932d14">Core Workflow</h2>
+<div class="outline-text-2" id="text-org2932d14">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_259a1056ea3b4c8992187963370dcd8b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9f91022edfaf4826b96939a0e831baef>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_259a1056ea3b4c8992187963370dcd8b=document.querySelector('button[name=btn_259a1056ea3b4c8992187963370dcd8b]');
-copyBtnbtn_259a1056ea3b4c8992187963370dcd8b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Create an .envrc in your project\necho 'export FOO=bar' > .envrc\n\n# First time — must explicitly allow the file (security model)\ndirenv allow\n\n# Now entering the directory loads the vars automatically\ncd /path/to/project     # → direnv: loading .envrc\ncd ..                   # → direnv: unloading\n\n# Allow again after any edit to .envrc\ndirenv allow\n\n# Block a previously allowed directory\ndirenv deny\n\n# Show current env diff\ndirenv status\n`);copyBtnbtn_259a1056ea3b4c8992187963370dcd8b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_259a1056ea3b4c8992187963370dcd8b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9f91022edfaf4826b96939a0e831baef=document.querySelector('button[name=btn_9f91022edfaf4826b96939a0e831baef]');
+copyBtnbtn_9f91022edfaf4826b96939a0e831baef.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Create an .envrc in your project\necho 'export FOO=bar' > .envrc\n\n# First time — must explicitly allow the file (security model)\ndirenv allow\n\n# Now entering the directory loads the vars automatically\ncd /path/to/project     # → direnv: loading .envrc\ncd ..                   # → direnv: unloading\n\n# Allow again after any edit to .envrc\ndirenv allow\n\n# Block a previously allowed directory\ndirenv deny\n\n# Show current env diff\ndirenv status\n`);copyBtnbtn_9f91022edfaf4826b96939a0e831baef.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9f91022edfaf4826b96939a0e831baef.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -965,22 +983,22 @@ let res = copyTextToClipboard(`# Create an .envrc in your project\necho 'export 
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb123a99" class="outline-2">
-<h2 id="orgb123a99">.envrc Reference</h2>
-<div class="outline-text-2" id="text-orgb123a99">
+<div id="outline-container-org3ccdb03" class="outline-2">
+<h2 id="org3ccdb03">.envrc Reference</h2>
+<div class="outline-text-2" id="text-org3ccdb03">
 <p>
 Standard shell script — any valid shell command works.
 </p>
 </div>
-<div id="outline-container-org0fb504f" class="outline-3">
-<h3 id="org0fb504f">Environment Variables</h3>
-<div class="outline-text-3" id="text-org0fb504f">
+<div id="outline-container-org162ad54" class="outline-3">
+<h3 id="org162ad54">Environment Variables</h3>
+<div class="outline-text-3" id="text-org162ad54">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_47d70f0db7534797b936bee945f24602>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9ef98ddb054e40539743444dc09fe63a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_47d70f0db7534797b936bee945f24602=document.querySelector('button[name=btn_47d70f0db7534797b936bee945f24602]');
-copyBtnbtn_47d70f0db7534797b936bee945f24602.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`export DATABASE_URL=\"postgres://localhost:5432/mydb\"\nexport API_KEY=\"dev-key-not-for-production\"\nexport DEBUG=true\n`);copyBtnbtn_47d70f0db7534797b936bee945f24602.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_47d70f0db7534797b936bee945f24602.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9ef98ddb054e40539743444dc09fe63a=document.querySelector('button[name=btn_9ef98ddb054e40539743444dc09fe63a]');
+copyBtnbtn_9ef98ddb054e40539743444dc09fe63a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`export DATABASE_URL=\"postgres://localhost:5432/mydb\"\nexport API_KEY=\"dev-key-not-for-production\"\nexport DEBUG=true\n`);copyBtnbtn_9ef98ddb054e40539743444dc09fe63a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9ef98ddb054e40539743444dc09fe63a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -991,19 +1009,19 @@ let res = copyTextToClipboard(`export DATABASE_URL=\"postgres://localhost:5432/m
 </div></div>
 </div>
 </div>
-<div id="outline-container-org2ff3599" class="outline-3">
-<h3 id="org2ff3599">Standard Library Functions</h3>
-<div class="outline-text-3" id="text-org2ff3599">
+<div id="outline-container-org98da4f1" class="outline-3">
+<h3 id="org98da4f1">Standard Library Functions</h3>
+<div class="outline-text-3" id="text-org98da4f1">
 <p>
 Direnv ships with helper functions that are safer than raw exports:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b8a8af22151442ed9aeed64ff2159919>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1e04223053c3486d869f3489cf8ad540>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b8a8af22151442ed9aeed64ff2159919=document.querySelector('button[name=btn_b8a8af22151442ed9aeed64ff2159919]');
-copyBtnbtn_b8a8af22151442ed9aeed64ff2159919.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Add a directory to PATH (prepend)\nPATH_add bin\nPATH_add .venv/bin\n\n# Load a .env file (key=value format, no export needed)\ndotenv .env\ndotenv_if_exists .env.local    # only loads if file exists\n\n# Source another .envrc file\nsource_env ../shared/.envrc\n\n# Load parent .envrc files up the directory tree\nsource_up\n\n# Set a variable only if not already set\nexport PORT=\"${PORT:-8080}\"\n`);copyBtnbtn_b8a8af22151442ed9aeed64ff2159919.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b8a8af22151442ed9aeed64ff2159919.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1e04223053c3486d869f3489cf8ad540=document.querySelector('button[name=btn_1e04223053c3486d869f3489cf8ad540]');
+copyBtnbtn_1e04223053c3486d869f3489cf8ad540.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Add a directory to PATH (prepend)\nPATH_add bin\nPATH_add .venv/bin\n\n# Load a .env file (key=value format, no export needed)\ndotenv .env\ndotenv_if_exists .env.local    # only loads if file exists\n\n# Source another .envrc file\nsource_env ../shared/.envrc\n\n# Load parent .envrc files up the directory tree\nsource_up\n\n# Set a variable only if not already set\nexport PORT=\"${PORT:-8080}\"\n`);copyBtnbtn_1e04223053c3486d869f3489cf8ad540.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1e04223053c3486d869f3489cf8ad540.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1027,15 +1045,15 @@ dotenv_if_exists .env.local    <span style="color: var(--clr-comment-delimiter);
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgf791434" class="outline-3">
-<h3 id="orgf791434">Python Virtual Environments</h3>
-<div class="outline-text-3" id="text-orgf791434">
+<div id="outline-container-orgc991b8d" class="outline-3">
+<h3 id="orgc991b8d">Python Virtual Environments</h3>
+<div class="outline-text-3" id="text-orgc991b8d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_165267204f724b1b9bcd3ba12d255334>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_956ce9daebcf4ad9a143f50aef1dee37>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_165267204f724b1b9bcd3ba12d255334=document.querySelector('button[name=btn_165267204f724b1b9bcd3ba12d255334]');
-copyBtnbtn_165267204f724b1b9bcd3ba12d255334.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Auto-activate venv on cd\nlayout python3\n\n# Or point to an existing venv\nsource .venv/bin/activate\n`);copyBtnbtn_165267204f724b1b9bcd3ba12d255334.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_165267204f724b1b9bcd3ba12d255334.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_956ce9daebcf4ad9a143f50aef1dee37=document.querySelector('button[name=btn_956ce9daebcf4ad9a143f50aef1dee37]');
+copyBtnbtn_956ce9daebcf4ad9a143f50aef1dee37.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Auto-activate venv on cd\nlayout python3\n\n# Or point to an existing venv\nsource .venv/bin/activate\n`);copyBtnbtn_956ce9daebcf4ad9a143f50aef1dee37.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_956ce9daebcf4ad9a143f50aef1dee37.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1048,15 +1066,15 @@ let res = copyTextToClipboard(`# Auto-activate venv on cd\nlayout python3\n\n# O
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4d667ab" class="outline-3">
-<h3 id="org4d667ab">Node.js</h3>
-<div class="outline-text-3" id="text-org4d667ab">
+<div id="outline-container-orgbd2d6b4" class="outline-3">
+<h3 id="orgbd2d6b4">Node.js</h3>
+<div class="outline-text-3" id="text-orgbd2d6b4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2af71c6f58c54318aba99a1fcf5080a9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6cbb9eff9e494ad0975e89338160e09d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2af71c6f58c54318aba99a1fcf5080a9=document.querySelector('button[name=btn_2af71c6f58c54318aba99a1fcf5080a9]');
-copyBtnbtn_2af71c6f58c54318aba99a1fcf5080a9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Add local node_modules/.bin to PATH\nPATH_add node_modules/.bin\n\n# Use a specific Node version (with nvm)\nuse node 20\n`);copyBtnbtn_2af71c6f58c54318aba99a1fcf5080a9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2af71c6f58c54318aba99a1fcf5080a9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6cbb9eff9e494ad0975e89338160e09d=document.querySelector('button[name=btn_6cbb9eff9e494ad0975e89338160e09d]');
+copyBtnbtn_6cbb9eff9e494ad0975e89338160e09d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Add local node_modules/.bin to PATH\nPATH_add node_modules/.bin\n\n# Use a specific Node version (with nvm)\nuse node 20\n`);copyBtnbtn_6cbb9eff9e494ad0975e89338160e09d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6cbb9eff9e494ad0975e89338160e09d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1070,15 +1088,15 @@ let res = copyTextToClipboard(`# Add local node_modules/.bin to PATH\nPATH_add n
 </div>
 </div>
 </div>
-<div id="outline-container-orgca86534" class="outline-2">
-<h2 id="orgca86534">Inheritance</h2>
-<div class="outline-text-2" id="text-orgca86534">
+<div id="outline-container-orgc0e21f4" class="outline-2">
+<h2 id="orgc0e21f4">Inheritance</h2>
+<div class="outline-text-2" id="text-orgc0e21f4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b905438d00f1408e8b1ed14830b2f3b5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_05f069e90bfb49d5bcbdae639b870cb3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b905438d00f1408e8b1ed14830b2f3b5=document.querySelector('button[name=btn_b905438d00f1408e8b1ed14830b2f3b5]');
-copyBtnbtn_b905438d00f1408e8b1ed14830b2f3b5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`monorepo/\n  .envrc          ← shared config (DB URLs, shared secrets)\n  service-a/\n    .envrc        ← source_up + service-specific vars\n  service-b/\n    .envrc        ← source_up + service-specific vars\n`);copyBtnbtn_b905438d00f1408e8b1ed14830b2f3b5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b905438d00f1408e8b1ed14830b2f3b5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_05f069e90bfb49d5bcbdae639b870cb3=document.querySelector('button[name=btn_05f069e90bfb49d5bcbdae639b870cb3]');
+copyBtnbtn_05f069e90bfb49d5bcbdae639b870cb3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`monorepo/\n  .envrc          ← shared config (DB URLs, shared secrets)\n  service-a/\n    .envrc        ← source_up + service-specific vars\n  service-b/\n    .envrc        ← source_up + service-specific vars\n`);copyBtnbtn_05f069e90bfb49d5bcbdae639b870cb3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_05f069e90bfb49d5bcbdae639b870cb3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1092,11 +1110,11 @@ let res = copyTextToClipboard(`monorepo/\n  .envrc          ← shared config (D
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c4b252c14cc648958edbdd1cc149cf69>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c2cef33723c2496ba930b0a3d57b409f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c4b252c14cc648958edbdd1cc149cf69=document.querySelector('button[name=btn_c4b252c14cc648958edbdd1cc149cf69]');
-copyBtnbtn_c4b252c14cc648958edbdd1cc149cf69.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# In service-a/.envrc\nsource_up               # loads monorepo/.envrc first\nexport SERVICE=service-a\n`);copyBtnbtn_c4b252c14cc648958edbdd1cc149cf69.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c4b252c14cc648958edbdd1cc149cf69.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c2cef33723c2496ba930b0a3d57b409f=document.querySelector('button[name=btn_c2cef33723c2496ba930b0a3d57b409f]');
+copyBtnbtn_c2cef33723c2496ba930b0a3d57b409f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# In service-a/.envrc\nsource_up               # loads monorepo/.envrc first\nexport SERVICE=service-a\n`);copyBtnbtn_c2cef33723c2496ba930b0a3d57b409f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c2cef33723c2496ba930b0a3d57b409f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1107,9 +1125,9 @@ let res = copyTextToClipboard(`# In service-a/.envrc\nsource_up               # 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org1e8a7b1" class="outline-2">
-<h2 id="org1e8a7b1">Secrets Management</h2>
-<div class="outline-text-2" id="text-org1e8a7b1">
+<div id="outline-container-org00a8922" class="outline-2">
+<h2 id="org00a8922">Secrets Management</h2>
+<div class="outline-text-2" id="text-org00a8922">
 <p>
 Do not commit secrets directly in <code>.envrc</code> — add <code>.envrc</code> to
 <code>.gitignore</code> if it contains sensitive values, or keep a committed
@@ -1117,11 +1135,11 @@ Do not commit secrets directly in <code>.envrc</code> — add <code>.envrc</code
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_af98ac4f853149b9b405ddd0d6909387>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c4aefba352b54e6d9a1fd366058106e8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_af98ac4f853149b9b405ddd0d6909387=document.querySelector('button[name=btn_af98ac4f853149b9b405ddd0d6909387]');
-copyBtnbtn_af98ac4f853149b9b405ddd0d6909387.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# .envrc — gitignored, contains real secrets\nexport API_KEY=\"real-secret\"\n\n# .envrc.example — committed, documents required vars\nexport API_KEY=\"your-api-key-here\"\n`);copyBtnbtn_af98ac4f853149b9b405ddd0d6909387.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_af98ac4f853149b9b405ddd0d6909387.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c4aefba352b54e6d9a1fd366058106e8=document.querySelector('button[name=btn_c4aefba352b54e6d9a1fd366058106e8]');
+copyBtnbtn_c4aefba352b54e6d9a1fd366058106e8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# .envrc — gitignored, contains real secrets\nexport API_KEY=\"real-secret\"\n\n# .envrc.example — committed, documents required vars\nexport API_KEY=\"your-api-key-here\"\n`);copyBtnbtn_c4aefba352b54e6d9a1fd366058106e8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c4aefba352b54e6d9a1fd366058106e8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1138,11 +1156,11 @@ For team environments, integrate with a secrets manager:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_16d13f3f4ff044019b78aa729694c49e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5db7d8ca208d41eba1a382d9208ccb77>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_16d13f3f4ff044019b78aa729694c49e=document.querySelector('button[name=btn_16d13f3f4ff044019b78aa729694c49e]');
-copyBtnbtn_16d13f3f4ff044019b78aa729694c49e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# 1Password CLI\nexport SECRET=$(op read \"op://vault/item/field\")\n\n# Doppler\neval \"$(doppler secrets download --no-file --format docker)\"\n`);copyBtnbtn_16d13f3f4ff044019b78aa729694c49e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_16d13f3f4ff044019b78aa729694c49e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5db7d8ca208d41eba1a382d9208ccb77=document.querySelector('button[name=btn_5db7d8ca208d41eba1a382d9208ccb77]');
+copyBtnbtn_5db7d8ca208d41eba1a382d9208ccb77.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# 1Password CLI\nexport SECRET=$(op read \"op://vault/item/field\")\n\n# Doppler\neval \"$(doppler secrets download --no-file --format docker)\"\n`);copyBtnbtn_5db7d8ca208d41eba1a382d9208ccb77.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5db7d8ca208d41eba1a382d9208ccb77.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1155,9 +1173,9 @@ let res = copyTextToClipboard(`# 1Password CLI\nexport SECRET=$(op read \"op://v
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4f20da1" class="outline-2">
-<h2 id="org4f20da1">Tips</h2>
-<div class="outline-text-2" id="text-org4f20da1">
+<div id="outline-container-orgf77527c" class="outline-2">
+<h2 id="orgf77527c">Tips</h2>
+<div class="outline-text-2" id="text-orgf77527c">
 <ul class="org-ul">
 <li>Always run <code>direnv allow</code> after editing <code>.envrc</code> — direnv blocks
 the file after any change until re-authorised</li>
@@ -1177,6 +1195,20 @@ subtle issues</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1184,6 +1216,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

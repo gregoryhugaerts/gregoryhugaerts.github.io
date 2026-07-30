@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Functional Programming</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,39 +886,39 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6812276">Functional Programming</a>
+<li><a href="#org89538a1">Functional Programming</a>
 <ul>
-<li><a href="#orgd453ef1">Core Concepts</a>
+<li><a href="#orgb012e6c">Core Concepts</a>
 <ul>
-<li><a href="#orgfe5a131">Pure Functions</a></li>
-<li><a href="#orge2e6aee">Immutability</a></li>
-<li><a href="#org65b0e24">First-Class and Higher-Order Functions</a></li>
-<li><a href="#org4d3b2ef">Expressions over Statements</a></li>
+<li><a href="#org14a85e7">Pure Functions</a></li>
+<li><a href="#orgc9c3026">Immutability</a></li>
+<li><a href="#org32456c9">First-Class and Higher-Order Functions</a></li>
+<li><a href="#orgf5464a8">Expressions over Statements</a></li>
 </ul>
 </li>
-<li><a href="#orgfa0d926">Benefits of Functional Programming</a></li>
+<li><a href="#org28e5f55">Benefits of Functional Programming</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org6812276" class="outline-2">
-<h2 id="org6812276">Functional Programming</h2>
-<div class="outline-text-2" id="text-org6812276">
+<div id="outline-container-org89538a1" class="outline-2">
+<h2 id="org89538a1">Functional Programming</h2>
+<div class="outline-text-2" id="text-org89538a1">
 <p>
 Functional Programming (FP) is a Programming Paradigm where software is constructed by applying and composing functions. It is a declarative programming style, meaning it focuses on what to solve rather than how to solve it. The foundation of FP is rooted in lambda calculus and it treats computation as the evaluation of mathematical functions, avoiding changing-state and mutable data.
 </p>
 </div>
-<div id="outline-container-orgd453ef1" class="outline-3">
-<h3 id="orgd453ef1">Core Concepts</h3>
-<div class="outline-text-3" id="text-orgd453ef1">
+<div id="outline-container-orgb012e6c" class="outline-3">
+<h3 id="orgb012e6c">Core Concepts</h3>
+<div class="outline-text-3" id="text-orgb012e6c">
 <p>
 Functional programming is built upon a few fundamental principles that differentiate it from other paradigms.
 </p>
 </div>
-<div id="outline-container-orgfe5a131" class="outline-4">
-<h4 id="orgfe5a131">Pure Functions</h4>
-<div class="outline-text-4" id="text-orgfe5a131">
+<div id="outline-container-org14a85e7" class="outline-4">
+<h4 id="org14a85e7">Pure Functions</h4>
+<div class="outline-text-4" id="text-org14a85e7">
 <p>
 The core of functional programming is the concept of "Pure functions". A function is considered pure if it meets two criteria:
 </p>
@@ -911,17 +929,17 @@ The core of functional programming is the concept of "Pure functions". A functio
 </ul>
 </div>
 </div>
-<div id="outline-container-orge2e6aee" class="outline-4">
-<h4 id="orge2e6aee">Immutability</h4>
-<div class="outline-text-4" id="text-orge2e6aee">
+<div id="outline-container-orgc9c3026" class="outline-4">
+<h4 id="orgc9c3026">Immutability</h4>
+<div class="outline-text-4" id="text-orgc9c3026">
 <p>
 Immutability means that once a piece of data is created, it cannot be changed. If a change is needed, a new data structure is created with the updated value, leaving the original untouched. This approach prevents a whole class of bugs caused by unexpected changes to data and simplifies state management, especially in complex and concurrent applications.
 </p>
 </div>
 </div>
-<div id="outline-container-org65b0e24" class="outline-4">
-<h4 id="org65b0e24">First-Class and Higher-Order Functions</h4>
-<div class="outline-text-4" id="text-org65b0e24">
+<div id="outline-container-org32456c9" class="outline-4">
+<h4 id="org32456c9">First-Class and Higher-Order Functions</h4>
+<div class="outline-text-4" id="text-org32456c9">
 <p>
 In FP, functions are "first-class citizens," which means they are treated like any other value, such as a number or a string. They can be:
 </p>
@@ -937,18 +955,18 @@ Functions that take other functions as arguments or return them are called "high
 </p>
 </div>
 </div>
-<div id="outline-container-org4d3b2ef" class="outline-4">
-<h4 id="org4d3b2ef">Expressions over Statements</h4>
-<div class="outline-text-4" id="text-org4d3b2ef">
+<div id="outline-container-orgf5464a8" class="outline-4">
+<h4 id="orgf5464a8">Expressions over Statements</h4>
+<div class="outline-text-4" id="text-orgf5464a8">
 <p>
 Functional programming favors expressions over statements. An expression is a piece of code that evaluates to a value (e.g., <code>2 + 2</code>). A statement is a piece of code that performs an action (e.g., <code>x = 5</code>). FP focuses on building programs by composing expressions, which aligns with the goal of avoiding side effects.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfa0d926" class="outline-3">
-<h3 id="orgfa0d926">Benefits of Functional Programming</h3>
-<div class="outline-text-3" id="text-orgfa0d926">
+<div id="outline-container-org28e5f55" class="outline-3">
+<h3 id="org28e5f55">Benefits of Functional Programming</h3>
+<div class="outline-text-3" id="text-org28e5f55">
 <p>
 Adopting a functional style can lead to several advantages:
 </p>
@@ -964,6 +982,20 @@ Adopting a functional style can lead to several advantages:
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -971,6 +1003,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

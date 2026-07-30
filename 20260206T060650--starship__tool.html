@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Starship</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org66cc0ec">Installation</a>
+<li><a href="#org63dafb4">Installation</a>
 <ul>
-<li><a href="#orgbc607a9">Shell Hook</a></li>
+<li><a href="#org87a99aa">Shell Hook</a></li>
 </ul>
 </li>
-<li><a href="#orgfa69035">Configuration</a>
+<li><a href="#orgad2f579">Configuration</a>
 <ul>
-<li><a href="#org8da089e">Useful Modules</a></li>
-<li><a href="#org8c71321">Presets</a></li>
+<li><a href="#org95969d2">Useful Modules</a></li>
+<li><a href="#org96ba32a">Presets</a></li>
 </ul>
 </li>
-<li><a href="#org5c505bf">Tips</a></li>
+<li><a href="#org8ece141">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -894,15 +912,15 @@ for icons to render correctly.
 <p>
 Related: <a href="20260206T060520--bash__cli_tool.html">Bash</a>
 </p>
-<div id="outline-container-org66cc0ec" class="outline-2">
-<h2 id="org66cc0ec">Installation</h2>
-<div class="outline-text-2" id="text-org66cc0ec">
+<div id="outline-container-org63dafb4" class="outline-2">
+<h2 id="org63dafb4">Installation</h2>
+<div class="outline-text-2" id="text-org63dafb4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f13fe8d4b5094021898830064dad06ee>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7e739e701420419fa92b24b6dece2789>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f13fe8d4b5094021898830064dad06ee=document.querySelector('button[name=btn_f13fe8d4b5094021898830064dad06ee]');
-copyBtnbtn_f13fe8d4b5094021898830064dad06ee.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Universal installer (Linux / macOS)\ncurl -sS https://starship.rs/install.sh | sh\n\n# Nix\nnix-env -iA nixpkgs.starship\n\n# macOS\nbrew install starship\n\n# Windows (winget)\nwinget install --id Starship.Starship\n`);copyBtnbtn_f13fe8d4b5094021898830064dad06ee.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f13fe8d4b5094021898830064dad06ee.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7e739e701420419fa92b24b6dece2789=document.querySelector('button[name=btn_7e739e701420419fa92b24b6dece2789]');
+copyBtnbtn_7e739e701420419fa92b24b6dece2789.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Universal installer (Linux / macOS)\ncurl -sS https://starship.rs/install.sh | sh\n\n# Nix\nnix-env -iA nixpkgs.starship\n\n# macOS\nbrew install starship\n\n# Windows (winget)\nwinget install --id Starship.Starship\n`);copyBtnbtn_7e739e701420419fa92b24b6dece2789.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7e739e701420419fa92b24b6dece2789.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -920,19 +938,19 @@ let res = copyTextToClipboard(`# Universal installer (Linux / macOS)\ncurl -sS h
 </pre>
 </div></div>
 </div>
-<div id="outline-container-orgbc607a9" class="outline-3">
-<h3 id="orgbc607a9">Shell Hook</h3>
-<div class="outline-text-3" id="text-orgbc607a9">
+<div id="outline-container-org87a99aa" class="outline-3">
+<h3 id="org87a99aa">Shell Hook</h3>
+<div class="outline-text-3" id="text-org87a99aa">
 <p>
 Add to the end of your shell config:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_274358c8aa964e82a6b420b3bd1b3ec0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8ae3af6b2b11424d9f06d1a06ee0705e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_274358c8aa964e82a6b420b3bd1b3ec0=document.querySelector('button[name=btn_274358c8aa964e82a6b420b3bd1b3ec0]');
-copyBtnbtn_274358c8aa964e82a6b420b3bd1b3ec0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Bash (~/.bashrc)\neval \"$(starship init bash)\"\n\n# Zsh (~/.zshrc)\neval \"$(starship init zsh)\"\n\n# Fish (~/.config/fish/config.fish)\nstarship init fish | source\n\n# PowerShell (~\\Documents\\PowerShell\\Microsoft.PowerShell_profile.ps1)\nInvoke-Expression (&starship init powershell)\n`);copyBtnbtn_274358c8aa964e82a6b420b3bd1b3ec0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_274358c8aa964e82a6b420b3bd1b3ec0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8ae3af6b2b11424d9f06d1a06ee0705e=document.querySelector('button[name=btn_8ae3af6b2b11424d9f06d1a06ee0705e]');
+copyBtnbtn_8ae3af6b2b11424d9f06d1a06ee0705e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Bash (~/.bashrc)\neval \"$(starship init bash)\"\n\n# Zsh (~/.zshrc)\neval \"$(starship init zsh)\"\n\n# Fish (~/.config/fish/config.fish)\nstarship init fish | source\n\n# PowerShell (~\\Documents\\PowerShell\\Microsoft.PowerShell_profile.ps1)\nInvoke-Expression (&starship init powershell)\n`);copyBtnbtn_8ae3af6b2b11424d9f06d1a06ee0705e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8ae3af6b2b11424d9f06d1a06ee0705e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -952,19 +970,19 @@ let res = copyTextToClipboard(`# Bash (~/.bashrc)\neval \"$(starship init bash)\
 </div>
 </div>
 </div>
-<div id="outline-container-orgfa69035" class="outline-2">
-<h2 id="orgfa69035">Configuration</h2>
-<div class="outline-text-2" id="text-orgfa69035">
+<div id="outline-container-orgad2f579" class="outline-2">
+<h2 id="orgad2f579">Configuration</h2>
+<div class="outline-text-2" id="text-orgad2f579">
 <p>
 Config file: <code>~/.config/starship.toml</code>
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d9c4124a80f54522b62b22a859ef6166>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_47a624a951b146bebb59b754ec9b499f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d9c4124a80f54522b62b22a859ef6166=document.querySelector('button[name=btn_d9c4124a80f54522b62b22a859ef6166]');
-copyBtnbtn_d9c4124a80f54522b62b22a859ef6166.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Create config file\nmkdir -p ~/.config && touch ~/.config/starship.toml\n\n# Open for editing\n$EDITOR ~/.config/starship.toml\n`);copyBtnbtn_d9c4124a80f54522b62b22a859ef6166.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d9c4124a80f54522b62b22a859ef6166.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_47a624a951b146bebb59b754ec9b499f=document.querySelector('button[name=btn_47a624a951b146bebb59b754ec9b499f]');
+copyBtnbtn_47a624a951b146bebb59b754ec9b499f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Create config file\nmkdir -p ~/.config && touch ~/.config/starship.toml\n\n# Open for editing\n$EDITOR ~/.config/starship.toml\n`);copyBtnbtn_47a624a951b146bebb59b754ec9b499f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_47a624a951b146bebb59b754ec9b499f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -976,15 +994,15 @@ let res = copyTextToClipboard(`# Create config file\nmkdir -p ~/.config && touch
 </pre>
 </div></div>
 </div>
-<div id="outline-container-org8da089e" class="outline-3">
-<h3 id="org8da089e">Useful Modules</h3>
-<div class="outline-text-3" id="text-org8da089e">
+<div id="outline-container-org95969d2" class="outline-3">
+<h3 id="org95969d2">Useful Modules</h3>
+<div class="outline-text-3" id="text-org95969d2">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TOML</span><button class='copyBtn' name=btn_4401adf19bd64e7ba89e5a7826005589>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TOML</span><button class='copyBtn' name=btn_4022fcdff4e241fe8b332fa602ce512e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4401adf19bd64e7ba89e5a7826005589=document.querySelector('button[name=btn_4401adf19bd64e7ba89e5a7826005589]');
-copyBtnbtn_4401adf19bd64e7ba89e5a7826005589.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# ~/.config/starship.toml\n\n# Prompt format — reorder or remove modules\nformat = \"\"\"\n$username\\\n$hostname\\\n$directory\\\n$git_branch\\\n$git_status\\\n$python\\\n$rust\\\n$nodejs\\\n$cmd_duration\\\n$line_break\\\n$character\"\"\"\n\n[directory]\ntruncation_length = 3         # show last 3 path segments\ntruncate_to_repo = true       # truncate to git root\n\n[git_branch]\nsymbol = \" \"\n\n[git_status]\nconflicted = \"⚡\"\nahead = \"⇡${count}\"\nbehind = \"⇣${count}\"\ndiverged = \"⇕⇡${ahead_count}⇣${behind_count}\"\nmodified = \"!\"\nuntracked = \"?\"\nstaged = \"+\"\n\n[python]\nsymbol = \" \"\ndetect_extensions = [\"py\"]\n\n[cmd_duration]\nmin_time = 2_000              # show duration if command took > 2s\nformat = \"took [$duration]($style) \"\n\n[character]\nsuccess_symbol = \"[❯](green)\"\nerror_symbol = \"[❯](red)\"    # red on non-zero exit code\n`);copyBtnbtn_4401adf19bd64e7ba89e5a7826005589.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4401adf19bd64e7ba89e5a7826005589.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4022fcdff4e241fe8b332fa602ce512e=document.querySelector('button[name=btn_4022fcdff4e241fe8b332fa602ce512e]');
+copyBtnbtn_4022fcdff4e241fe8b332fa602ce512e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# ~/.config/starship.toml\n\n# Prompt format — reorder or remove modules\nformat = \"\"\"\n$username\\\n$hostname\\\n$directory\\\n$git_branch\\\n$git_status\\\n$python\\\n$rust\\\n$nodejs\\\n$cmd_duration\\\n$line_break\\\n$character\"\"\"\n\n[directory]\ntruncation_length = 3         # show last 3 path segments\ntruncate_to_repo = true       # truncate to git root\n\n[git_branch]\nsymbol = \" \"\n\n[git_status]\nconflicted = \"⚡\"\nahead = \"⇡${count}\"\nbehind = \"⇣${count}\"\ndiverged = \"⇕⇡${ahead_count}⇣${behind_count}\"\nmodified = \"!\"\nuntracked = \"?\"\nstaged = \"+\"\n\n[python]\nsymbol = \" \"\ndetect_extensions = [\"py\"]\n\n[cmd_duration]\nmin_time = 2_000              # show duration if command took > 2s\nformat = \"took [$duration]($style) \"\n\n[character]\nsuccess_symbol = \"[❯](green)\"\nerror_symbol = \"[❯](red)\"    # red on non-zero exit code\n`);copyBtnbtn_4022fcdff4e241fe8b332fa602ce512e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4022fcdff4e241fe8b332fa602ce512e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1035,15 +1053,15 @@ $character"""</span>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org8c71321" class="outline-3">
-<h3 id="org8c71321">Presets</h3>
-<div class="outline-text-3" id="text-org8c71321">
+<div id="outline-container-org96ba32a" class="outline-3">
+<h3 id="org96ba32a">Presets</h3>
+<div class="outline-text-3" id="text-org96ba32a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_216793229fe64b76bea44d29a8c6cae7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c55d5d3fc5d34e8c8d5b203c9f79ae28>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_216793229fe64b76bea44d29a8c6cae7=document.querySelector('button[name=btn_216793229fe64b76bea44d29a8c6cae7]');
-copyBtnbtn_216793229fe64b76bea44d29a8c6cae7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Apply a community preset (overwrites existing config)\nstarship preset nerd-font-symbols -o ~/.config/starship.toml\nstarship preset no-nerd-font -o ~/.config/starship.toml\nstarship preset gruvbox-rainbow -o ~/.config/starship.toml\n\n# List available presets\nstarship preset --list\n`);copyBtnbtn_216793229fe64b76bea44d29a8c6cae7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_216793229fe64b76bea44d29a8c6cae7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c55d5d3fc5d34e8c8d5b203c9f79ae28=document.querySelector('button[name=btn_c55d5d3fc5d34e8c8d5b203c9f79ae28]');
+copyBtnbtn_c55d5d3fc5d34e8c8d5b203c9f79ae28.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Apply a community preset (overwrites existing config)\nstarship preset nerd-font-symbols -o ~/.config/starship.toml\nstarship preset no-nerd-font -o ~/.config/starship.toml\nstarship preset gruvbox-rainbow -o ~/.config/starship.toml\n\n# List available presets\nstarship preset --list\n`);copyBtnbtn_c55d5d3fc5d34e8c8d5b203c9f79ae28.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c55d5d3fc5d34e8c8d5b203c9f79ae28.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1059,9 +1077,9 @@ starship preset gruvbox-rainbow -o ~/.config/starship.toml
 </div>
 </div>
 </div>
-<div id="outline-container-org5c505bf" class="outline-2">
-<h2 id="org5c505bf">Tips</h2>
-<div class="outline-text-2" id="text-org5c505bf">
+<div id="outline-container-org8ece141" class="outline-2">
+<h2 id="org8ece141">Tips</h2>
+<div class="outline-text-2" id="text-org8ece141">
 <ul class="org-ul">
 <li>Nerd Fonts are required for most icons — install one and set
 it as your terminal font before configuring icon modules</li>
@@ -1079,6 +1097,20 @@ useful if the prompt feels slow</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1086,6 +1118,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

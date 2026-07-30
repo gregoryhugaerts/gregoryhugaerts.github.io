@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CSS Box Model</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1950fa6">The Four Layers</a>
+<li><a href="#org9ecdaa9">The Four Layers</a>
 <ul>
-<li><a href="#orgda967ed">Margin collapsing</a></li>
+<li><a href="#org96f8565">Margin collapsing</a></li>
 </ul>
 </li>
-<li><a href="#org70e77fa">box-sizing</a>
+<li><a href="#org9090b98">box-sizing</a>
 <ul>
-<li><a href="#orga2cb571">content-box (default)</a></li>
-<li><a href="#org0850025">border-box (modern best practice)</a></li>
+<li><a href="#orgd8e9f8f">content-box (default)</a></li>
+<li><a href="#org165d7f1">border-box (modern best practice)</a></li>
 </ul>
 </li>
-<li><a href="#orgb0baeef">Common Properties</a></li>
-<li><a href="#orgaff37ff">Tips</a></li>
+<li><a href="#org14af018">Common Properties</a></li>
+<li><a href="#orge88b6ad">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -893,19 +911,19 @@ Every HTML element is rendered as a rectangular box composed of
 four concentric layers. Understanding the box model is the
 foundation of controlling spacing, sizing, and layout in CSS.
 </p>
-<div id="outline-container-org1950fa6" class="outline-2">
-<h2 id="org1950fa6">The Four Layers</h2>
-<div class="outline-text-2" id="text-org1950fa6">
+<div id="outline-container-org9ecdaa9" class="outline-2">
+<h2 id="org9ecdaa9">The Four Layers</h2>
+<div class="outline-text-2" id="text-org9ecdaa9">
 <p>
 From innermost to outermost:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f8385d3a8672414ab16710d291929ebb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e97738d17f524308b5ffcd8fdbf0c587>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f8385d3a8672414ab16710d291929ebb=document.querySelector('button[name=btn_f8385d3a8672414ab16710d291929ebb]');
-copyBtnbtn_f8385d3a8672414ab16710d291929ebb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`┌──────────────────────────────┐\n│           margin             │\n│  ┌────────────────────────┐  │\n│  │         border         │  │\n│  │  ┌──────────────────┐  │  │\n│  │  │     padding      │  │  │\n│  │  │  ┌────────────┐  │  │  │\n│  │  │  │  content   │  │  │  │\n│  │  │  └────────────┘  │  │  │\n│  │  └──────────────────┘  │  │\n│  └────────────────────────┘  │\n└──────────────────────────────┘\n`);copyBtnbtn_f8385d3a8672414ab16710d291929ebb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f8385d3a8672414ab16710d291929ebb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e97738d17f524308b5ffcd8fdbf0c587=document.querySelector('button[name=btn_e97738d17f524308b5ffcd8fdbf0c587]');
+copyBtnbtn_e97738d17f524308b5ffcd8fdbf0c587.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`┌──────────────────────────────┐\n│           margin             │\n│  ┌────────────────────────┐  │\n│  │         border         │  │\n│  │  ┌──────────────────┐  │  │\n│  │  │     padding      │  │  │\n│  │  │  ┌────────────┐  │  │  │\n│  │  │  │  content   │  │  │  │\n│  │  │  └────────────┘  │  │  │\n│  │  └──────────────────┘  │  │\n│  └────────────────────────┘  │\n└──────────────────────────────┘\n`);copyBtnbtn_e97738d17f524308b5ffcd8fdbf0c587.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e97738d17f524308b5ffcd8fdbf0c587.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -975,9 +993,9 @@ let res = copyTextToClipboard(`┌───────────────�
 </tbody>
 </table>
 </div>
-<div id="outline-container-orgda967ed" class="outline-3">
-<h3 id="orgda967ed">Margin collapsing</h3>
-<div class="outline-text-3" id="text-orgda967ed">
+<div id="outline-container-org96f8565" class="outline-3">
+<h3 id="org96f8565">Margin collapsing</h3>
+<div class="outline-text-3" id="text-org96f8565">
 <p>
 Vertical margins between adjacent block elements collapse to
 whichever is larger — they do not add together. Horizontal
@@ -985,11 +1003,11 @@ margins never collapse.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_9f591177389b4c3eb0186b608c1a7e20>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_52e748531fb94492b6159c50cf9b4dee>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9f591177389b4c3eb0186b608c1a7e20=document.querySelector('button[name=btn_9f591177389b4c3eb0186b608c1a7e20]');
-copyBtnbtn_9f591177389b4c3eb0186b608c1a7e20.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`/* Adjacent elements — gap between them is 20px, not 30px */\n.top    { margin-bottom: 20px; }\n.bottom { margin-top: 10px; }\n`);copyBtnbtn_9f591177389b4c3eb0186b608c1a7e20.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9f591177389b4c3eb0186b608c1a7e20.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_52e748531fb94492b6159c50cf9b4dee=document.querySelector('button[name=btn_52e748531fb94492b6159c50cf9b4dee]');
+copyBtnbtn_52e748531fb94492b6159c50cf9b4dee.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`/* Adjacent elements — gap between them is 20px, not 30px */\n.top    { margin-bottom: 20px; }\n.bottom { margin-top: 10px; }\n`);copyBtnbtn_52e748531fb94492b6159c50cf9b4dee.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_52e748531fb94492b6159c50cf9b4dee.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1001,27 +1019,27 @@ let res = copyTextToClipboard(`/* Adjacent elements — gap between them is 20px
 </div>
 </div>
 </div>
-<div id="outline-container-org70e77fa" class="outline-2">
-<h2 id="org70e77fa">box-sizing</h2>
-<div class="outline-text-2" id="text-org70e77fa">
+<div id="outline-container-org9090b98" class="outline-2">
+<h2 id="org9090b98">box-sizing</h2>
+<div class="outline-text-2" id="text-org9090b98">
 <p>
 Controls what <code>width</code> and <code>height</code> actually measure.
 </p>
 </div>
-<div id="outline-container-orga2cb571" class="outline-3">
-<h3 id="orga2cb571">content-box (default)</h3>
-<div class="outline-text-3" id="text-orga2cb571">
+<div id="outline-container-orgd8e9f8f" class="outline-3">
+<h3 id="orgd8e9f8f">content-box (default)</h3>
+<div class="outline-text-3" id="text-orgd8e9f8f">
 <p>
 <code>width</code> and <code>height</code> apply to the content area only. Adding
 padding or border increases the total rendered size.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_deeb9bbefdc148c081bbbe43e9379d7b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9e04366876584c89a277ea802684362f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_deeb9bbefdc148c081bbbe43e9379d7b=document.querySelector('button[name=btn_deeb9bbefdc148c081bbbe43e9379d7b]');
-copyBtnbtn_deeb9bbefdc148c081bbbe43e9379d7b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Total width = width + padding-left + padding-right + border-left + border-right\n`);copyBtnbtn_deeb9bbefdc148c081bbbe43e9379d7b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_deeb9bbefdc148c081bbbe43e9379d7b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9e04366876584c89a277ea802684362f=document.querySelector('button[name=btn_9e04366876584c89a277ea802684362f]');
+copyBtnbtn_9e04366876584c89a277ea802684362f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Total width = width + padding-left + padding-right + border-left + border-right\n`);copyBtnbtn_9e04366876584c89a277ea802684362f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9e04366876584c89a277ea802684362f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1030,9 +1048,9 @@ let res = copyTextToClipboard(`Total width = width + padding-left + padding-righ
 </div></div>
 </div>
 </div>
-<div id="outline-container-org0850025" class="outline-3">
-<h3 id="org0850025">border-box (modern best practice)</h3>
-<div class="outline-text-3" id="text-org0850025">
+<div id="outline-container-org165d7f1" class="outline-3">
+<h3 id="org165d7f1">border-box (modern best practice)</h3>
+<div class="outline-text-3" id="text-org165d7f1">
 <p>
 <code>width</code> and <code>height</code> include content + padding + border. The
 overall size stays as specified; padding and border eat into
@@ -1040,11 +1058,11 @@ the content area instead.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ddd29221b6e640e888c5d5184cb0f7d6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2aa9f12f2c6743c1bdf5867245061098>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ddd29221b6e640e888c5d5184cb0f7d6=document.querySelector('button[name=btn_ddd29221b6e640e888c5d5184cb0f7d6]');
-copyBtnbtn_ddd29221b6e640e888c5d5184cb0f7d6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Total width = width (padding and border included)\nOnly margin is added outside this.\n`);copyBtnbtn_ddd29221b6e640e888c5d5184cb0f7d6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ddd29221b6e640e888c5d5184cb0f7d6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2aa9f12f2c6743c1bdf5867245061098=document.querySelector('button[name=btn_2aa9f12f2c6743c1bdf5867245061098]');
+copyBtnbtn_2aa9f12f2c6743c1bdf5867245061098.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Total width = width (padding and border included)\nOnly margin is added outside this.\n`);copyBtnbtn_2aa9f12f2c6743c1bdf5867245061098.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2aa9f12f2c6743c1bdf5867245061098.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1058,11 +1076,11 @@ Apply globally — almost universal in modern CSS:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_44cb5dbdc3264eeb84c232c9c7d8cd9b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_cd0a58fcab0c4a23892e38329e8fca29>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_44cb5dbdc3264eeb84c232c9c7d8cd9b=document.querySelector('button[name=btn_44cb5dbdc3264eeb84c232c9c7d8cd9b]');
-copyBtnbtn_44cb5dbdc3264eeb84c232c9c7d8cd9b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`html {\n  box-sizing: border-box;\n}\n\n*, *::before, *::after {\n  box-sizing: inherit;\n}\n`);copyBtnbtn_44cb5dbdc3264eeb84c232c9c7d8cd9b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_44cb5dbdc3264eeb84c232c9c7d8cd9b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cd0a58fcab0c4a23892e38329e8fca29=document.querySelector('button[name=btn_cd0a58fcab0c4a23892e38329e8fca29]');
+copyBtnbtn_cd0a58fcab0c4a23892e38329e8fca29.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`html {\n  box-sizing: border-box;\n}\n\n*, *::before, *::after {\n  box-sizing: inherit;\n}\n`);copyBtnbtn_cd0a58fcab0c4a23892e38329e8fca29.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cd0a58fcab0c4a23892e38329e8fca29.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1078,15 +1096,15 @@ let res = copyTextToClipboard(`html {\n  box-sizing: border-box;\n}\n\n*, *::bef
 </div>
 </div>
 </div>
-<div id="outline-container-orgb0baeef" class="outline-2">
-<h2 id="orgb0baeef">Common Properties</h2>
-<div class="outline-text-2" id="text-orgb0baeef">
+<div id="outline-container-org14af018" class="outline-2">
+<h2 id="org14af018">Common Properties</h2>
+<div class="outline-text-2" id="text-org14af018">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_03a5323d7c5540339d35a3369048becf>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_6455d4f112a74d41b12019c39e11f8bf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_03a5323d7c5540339d35a3369048becf=document.querySelector('button[name=btn_03a5323d7c5540339d35a3369048becf]');
-copyBtnbtn_03a5323d7c5540339d35a3369048becf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`.element {\n  /* Content */\n  width: 300px;\n  height: 200px;\n\n  /* Padding — shorthand: top right bottom left */\n  padding: 16px 24px 16px 24px;\n  padding: 16px 24px;       /* top/bottom  left/right */\n  padding: 16px;            /* all sides */\n\n  /* Border */\n  border: 1px solid #ccc;\n  border-top: 2px dashed red;\n  border-radius: 8px;\n\n  /* Margin */\n  margin: 0 auto;           /* center horizontally */\n  margin-top: 24px;\n}\n`);copyBtnbtn_03a5323d7c5540339d35a3369048becf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_03a5323d7c5540339d35a3369048becf.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6455d4f112a74d41b12019c39e11f8bf=document.querySelector('button[name=btn_6455d4f112a74d41b12019c39e11f8bf]');
+copyBtnbtn_6455d4f112a74d41b12019c39e11f8bf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`.element {\n  /* Content */\n  width: 300px;\n  height: 200px;\n\n  /* Padding — shorthand: top right bottom left */\n  padding: 16px 24px 16px 24px;\n  padding: 16px 24px;       /* top/bottom  left/right */\n  padding: 16px;            /* all sides */\n\n  /* Border */\n  border: 1px solid #ccc;\n  border-top: 2px dashed red;\n  border-radius: 8px;\n\n  /* Margin */\n  margin: 0 auto;           /* center horizontally */\n  margin-top: 24px;\n}\n`);copyBtnbtn_6455d4f112a74d41b12019c39e11f8bf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6455d4f112a74d41b12019c39e11f8bf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1113,9 +1131,9 @@ let res = copyTextToClipboard(`.element {\n  /* Content */\n  width: 300px;\n  h
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgaff37ff" class="outline-2">
-<h2 id="orgaff37ff">Tips</h2>
-<div class="outline-text-2" id="text-orgaff37ff">
+<div id="outline-container-orge88b6ad" class="outline-2">
+<h2 id="orge88b6ad">Tips</h2>
+<div class="outline-text-2" id="text-orge88b6ad">
 <ul class="org-ul">
 <li>Apply <code>box-sizing: border-box</code> globally on every project —
 it makes width percentages predictable regardless of padding</li>
@@ -1133,6 +1151,20 @@ grid containers</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1140,6 +1172,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

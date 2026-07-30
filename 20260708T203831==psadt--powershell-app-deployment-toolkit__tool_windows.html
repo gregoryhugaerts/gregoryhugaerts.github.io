@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Powershell App Deployment Toolkit</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,23 +886,23 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd542cf6">Installation</a></li>
-<li><a href="#orgc6c0bdb">Folder Structure</a></li>
-<li><a href="#org60b5ce7">Deployment Phases</a></li>
-<li><a href="#org365e215">Deploy-Application.ps1 Structure</a></li>
-<li><a href="#org8a463b8">Key Functions</a>
+<li><a href="#org6fcc797">Installation</a></li>
+<li><a href="#org43d9d3c">Folder Structure</a></li>
+<li><a href="#org24cf139">Deployment Phases</a></li>
+<li><a href="#orgda9169d">Deploy-Application.ps1 Structure</a></li>
+<li><a href="#orgd4b2a4c">Key Functions</a>
 <ul>
-<li><a href="#orgd94d05b">Installation</a></li>
-<li><a href="#orgaed1896">User interaction</a></li>
-<li><a href="#org74bb1c7">File and registry operations</a></li>
-<li><a href="#orgb57c6f5">Detection and conditions</a></li>
+<li><a href="#orgce2a006">Installation</a></li>
+<li><a href="#orga13308c">User interaction</a></li>
+<li><a href="#org0c7ed33">File and registry operations</a></li>
+<li><a href="#org1b0d0b6">Detection and conditions</a></li>
 </ul>
 </li>
-<li><a href="#orgeb3d667">Deployment Modes</a></li>
-<li><a href="#org657cd22">Integration with Intune</a></li>
-<li><a href="#org0c077a5">Logging</a></li>
-<li><a href="#org4d0405f">Exit Codes</a></li>
-<li><a href="#orgbe2790d">Tips</a></li>
+<li><a href="#org3bdcb2b">Deployment Modes</a></li>
+<li><a href="#org49a91ea">Integration with Intune</a></li>
+<li><a href="#orgfd14660">Logging</a></li>
+<li><a href="#orgfd01c4a">Exit Codes</a></li>
+<li><a href="#org5c91291">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -906,36 +924,36 @@ GitHub: <a href="https://github.com/PSAppDeployToolkit/PSAppDeployToolkit">https
 Related: <a href="20260314T005652--powershell__tool.html">PowerShell</a>
          <a href="Microsoft Intune.html">Microsoft Intune</a>
 </p>
-<div id="outline-container-orgd542cf6" class="outline-2">
-<h2 id="orgd542cf6">Installation</h2>
-<div class="outline-text-2" id="text-orgd542cf6">
+<div id="outline-container-org6fcc797" class="outline-2">
+<h2 id="org6fcc797">Installation</h2>
+<div class="outline-text-2" id="text-org6fcc797">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_36bd9810f3084133905eba4e72460c78>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_1afc45872bac4f8cbf67410b8362baa3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_36bd9810f3084133905eba4e72460c78=document.querySelector('button[name=btn_36bd9810f3084133905eba4e72460c78]');
-copyBtnbtn_36bd9810f3084133905eba4e72460c78.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# From PowerShell Gallery (recommended)\nInstall-Module -Name PSAppDeployToolkit -Scope CurrentUser\n\n# Or download the zip from GitHub releases and extract\n# https://github.com/PSAppDeployToolkit/PSAppDeployToolkit/releases\n`);copyBtnbtn_36bd9810f3084133905eba4e72460c78.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_36bd9810f3084133905eba4e72460c78.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1afc45872bac4f8cbf67410b8362baa3=document.querySelector('button[name=btn_1afc45872bac4f8cbf67410b8362baa3]');
+copyBtnbtn_1afc45872bac4f8cbf67410b8362baa3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# From PowerShell Gallery (recommended)\nInstall-Module -Name PSAppDeployToolkit -Scope CurrentUser\n\n# Or download the zip from GitHub releases and extract\n# https://github.com/PSAppDeployToolkit/PSAppDeployToolkit/releases\n`);copyBtnbtn_1afc45872bac4f8cbf67410b8362baa3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1afc45872bac4f8cbf67410b8362baa3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">From PowerShell Gallery (recommended)
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Install-Module</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Name</span> PSAppDeployToolkit <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Scope</span> CurrentUser
+<pre class="src src-powershell"># From PowerShell Gallery (recommended)
+Install-Module -Name PSAppDeployToolkit -Scope CurrentUser
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Or download the zip from GitHub releases and extract
-</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">https://github.com/PSAppDeployToolkit/PSAppDeployToolkit/releases</span>
+# Or download the zip from GitHub releases and extract
+# https://github.com/PSAppDeployToolkit/PSAppDeployToolkit/releases
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgc6c0bdb" class="outline-2">
-<h2 id="orgc6c0bdb">Folder Structure</h2>
-<div class="outline-text-2" id="text-orgc6c0bdb">
+<div id="outline-container-org43d9d3c" class="outline-2">
+<h2 id="org43d9d3c">Folder Structure</h2>
+<div class="outline-text-2" id="text-org43d9d3c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_96e4c19089944f4dbd4bd18105d9c97c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_7f57f3e54c484ca79da9d66d93cfa7d4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_96e4c19089944f4dbd4bd18105d9c97c=document.querySelector('button[name=btn_96e4c19089944f4dbd4bd18105d9c97c]');
-copyBtnbtn_96e4c19089944f4dbd4bd18105d9c97c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`MyApp-1.0\\\n├── Deploy-Application.ps1      ← your deployment script\n├── Deploy-Application.exe      ← launcher (runs as SYSTEM)\n├── AppDeployToolkit\\           ← toolkit files (don't edit)\n│   ├── PSAppDeployToolkit\\     ← PowerShell module\n│   └── AppDeployToolkitConfig.psd1\n└── Files\\                      ← your installer files go here\n    ├── setup.msi\n    └── setup.exe\n`);copyBtnbtn_96e4c19089944f4dbd4bd18105d9c97c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_96e4c19089944f4dbd4bd18105d9c97c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7f57f3e54c484ca79da9d66d93cfa7d4=document.querySelector('button[name=btn_7f57f3e54c484ca79da9d66d93cfa7d4]');
+copyBtnbtn_7f57f3e54c484ca79da9d66d93cfa7d4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`MyApp-1.0\\\n├── Deploy-Application.ps1      ← your deployment script\n├── Deploy-Application.exe      ← launcher (runs as SYSTEM)\n├── AppDeployToolkit\\           ← toolkit files (don't edit)\n│   ├── PSAppDeployToolkit\\     ← PowerShell module\n│   └── AppDeployToolkitConfig.psd1\n└── Files\\                      ← your installer files go here\n    ├── setup.msi\n    └── setup.exe\n`);copyBtnbtn_7f57f3e54c484ca79da9d66d93cfa7d4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7f57f3e54c484ca79da9d66d93cfa7d4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -952,9 +970,9 @@ let res = copyTextToClipboard(`MyApp-1.0\\\n├── Deploy-Application.ps1    
 </div></div>
 </div>
 </div>
-<div id="outline-container-org60b5ce7" class="outline-2">
-<h2 id="org60b5ce7">Deployment Phases</h2>
-<div class="outline-text-2" id="text-org60b5ce7">
+<div id="outline-container-org24cf139" class="outline-2">
+<h2 id="org24cf139">Deployment Phases</h2>
+<div class="outline-text-2" id="text-org24cf139">
 <p>
 Every PSADT deployment follows three phases:
 </p>
@@ -1002,162 +1020,162 @@ Same three phases apply to Uninstallation and Repair.
 </p>
 </div>
 </div>
-<div id="outline-container-org365e215" class="outline-2">
-<h2 id="org365e215">Deploy-Application.ps1 Structure</h2>
-<div class="outline-text-2" id="text-org365e215">
+<div id="outline-container-orgda9169d" class="outline-2">
+<h2 id="orgda9169d">Deploy-Application.ps1 Structure</h2>
+<div class="outline-text-2" id="text-orgda9169d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_afeba3200c18414a9296463ad5c67d50>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_be79eb420ec346c7a4310d35db52c33f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_afeba3200c18414a9296463ad5c67d50=document.querySelector('button[name=btn_afeba3200c18414a9296463ad5c67d50]');
-copyBtnbtn_afeba3200c18414a9296463ad5c67d50.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`$adtSession = @{\n    AppName    = 'Mozilla Firefox'\n    AppVersion = '126.0'\n    AppVendor  = 'Mozilla'\n    DeploymentType = 'Install'   # Install | Uninstall | Repair\n}\n\n# Open the session\nOpen-ADTSession -SessionState $ExecutionContext.SessionState @adtSession\n\n##*===============================================\n##* PRE-INSTALLATION\n##*===============================================\n\n# Prompt user to close Firefox before installing\nShow-ADTInstallationWelcome -CloseProcesses 'firefox' -AllowDefer -DeferTimes 3\n\n##*===============================================\n##* INSTALLATION\n##*===============================================\n\n# Install MSI\nStart-ADTMsiProcess -Action 'Install' -FilePath 'Firefox Setup 126.0.msi' \`\n    -AdditionalArguments '/QB-'\n\n# Or install EXE\nStart-Process -FilePath 'Files\\setup.exe' -ArgumentList '/S' -Wait\n\n##*===============================================\n##* POST-INSTALLATION\n##*===============================================\n\n# Set a registry key\nSet-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp' -Name 'Installed' -Value '1'\n\n# Close the session\nClose-ADTSession\n`);copyBtnbtn_afeba3200c18414a9296463ad5c67d50.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_afeba3200c18414a9296463ad5c67d50.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_be79eb420ec346c7a4310d35db52c33f=document.querySelector('button[name=btn_be79eb420ec346c7a4310d35db52c33f]');
+copyBtnbtn_be79eb420ec346c7a4310d35db52c33f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`$adtSession = @{\n    AppName    = 'Mozilla Firefox'\n    AppVersion = '126.0'\n    AppVendor  = 'Mozilla'\n    DeploymentType = 'Install'   # Install | Uninstall | Repair\n}\n\n# Open the session\nOpen-ADTSession -SessionState $ExecutionContext.SessionState @adtSession\n\n##*===============================================\n##* PRE-INSTALLATION\n##*===============================================\n\n# Prompt user to close Firefox before installing\nShow-ADTInstallationWelcome -CloseProcesses 'firefox' -AllowDefer -DeferTimes 3\n\n##*===============================================\n##* INSTALLATION\n##*===============================================\n\n# Install MSI\nStart-ADTMsiProcess -Action 'Install' -FilePath 'Firefox Setup 126.0.msi' \`\n    -AdditionalArguments '/QB-'\n\n# Or install EXE\nStart-Process -FilePath 'Files\\setup.exe' -ArgumentList '/S' -Wait\n\n##*===============================================\n##* POST-INSTALLATION\n##*===============================================\n\n# Set a registry key\nSet-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp' -Name 'Installed' -Value '1'\n\n# Close the session\nClose-ADTSession\n`);copyBtnbtn_be79eb420ec346c7a4310d35db52c33f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_be79eb420ec346c7a4310d35db52c33f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-variable); background-color: var(--bg-variable);">$adtSession</span> = @{
-    AppName    = <span style="color: var(--clr-string); background-color: var(--bg-string);">'Mozilla Firefox'</span>
-    AppVersion = <span style="color: var(--clr-string); background-color: var(--bg-string);">'126.0'</span>
-    AppVendor  = <span style="color: var(--clr-string); background-color: var(--bg-string);">'Mozilla'</span>
-    DeploymentType = <span style="color: var(--clr-string); background-color: var(--bg-string);">'Install'</span>   <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># Install | Uninstall | Repair
-</span>}
+<pre class="src src-powershell">$adtSession = @{
+    AppName    = 'Mozilla Firefox'
+    AppVersion = '126.0'
+    AppVendor  = 'Mozilla'
+    DeploymentType = 'Install'   # Install | Uninstall | Repair
+}
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Open the session
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Open-ADTSession</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-SessionState</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">$ExecutionContext</span>.SessionState @adtSession
+# Open the session
+Open-ADTSession -SessionState $ExecutionContext.SessionState @adtSession
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">##</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">*===============================================
-</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">##</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">* PRE-INSTALLATION
-</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">##</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">*===============================================
-</span>
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Prompt user to close Firefox before installing
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Show-ADTInstallationWelcome</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-CloseProcesses</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'firefox'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-AllowDefer</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-DeferTimes</span> 3
+##*===============================================
+##* PRE-INSTALLATION
+##*===============================================
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">##</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">*===============================================
-</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">##</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">* INSTALLATION
-</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">##</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">*===============================================
-</span>
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Install MSI
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Start-ADTMsiProcess</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Action</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Install'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-FilePath</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Firefox Setup 126.0.msi'</span> `
-    <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-AdditionalArguments</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'/QB-'</span>
+# Prompt user to close Firefox before installing
+Show-ADTInstallationWelcome -CloseProcesses 'firefox' -AllowDefer -DeferTimes 3
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Or install EXE
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Start-Process</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-FilePath</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Files\setup.exe'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-ArgumentList</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'/S'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Wait</span>
+##*===============================================
+##* INSTALLATION
+##*===============================================
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">##</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">*===============================================
-</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">##</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">* POST-INSTALLATION
-</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">##</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">*===============================================
-</span>
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Set a registry key
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Set-ADTRegistryKey</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Key</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'HKLM:\Software\MyApp'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Name</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Installed'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Value</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'1'</span>
+# Install MSI
+Start-ADTMsiProcess -Action 'Install' -FilePath 'Firefox Setup 126.0.msi' `
+    -AdditionalArguments '/QB-'
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Close the session
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Close-ADTSession</span>
+# Or install EXE
+Start-Process -FilePath 'Files\setup.exe' -ArgumentList '/S' -Wait
+
+##*===============================================
+##* POST-INSTALLATION
+##*===============================================
+
+# Set a registry key
+Set-ADTRegistryKey -Key 'HKLM:\Software\MyApp' -Name 'Installed' -Value '1'
+
+# Close the session
+Close-ADTSession
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org8a463b8" class="outline-2">
-<h2 id="org8a463b8">Key Functions</h2>
-<div class="outline-text-2" id="text-org8a463b8">
+<div id="outline-container-orgd4b2a4c" class="outline-2">
+<h2 id="orgd4b2a4c">Key Functions</h2>
+<div class="outline-text-2" id="text-orgd4b2a4c">
 </div>
-<div id="outline-container-orgd94d05b" class="outline-3">
-<h3 id="orgd94d05b">Installation</h3>
-<div class="outline-text-3" id="text-orgd94d05b">
+<div id="outline-container-orgce2a006" class="outline-3">
+<h3 id="orgce2a006">Installation</h3>
+<div class="outline-text-3" id="text-orgce2a006">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_4ab785e14fd4409a936cb856161e6207>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_3f20addef3a44f92abe7f843c159d0b0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4ab785e14fd4409a936cb856161e6207=document.querySelector('button[name=btn_4ab785e14fd4409a936cb856161e6207]');
-copyBtnbtn_4ab785e14fd4409a936cb856161e6207.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# MSI install / uninstall\nStart-ADTMsiProcess -Action 'Install' -FilePath 'app.msi'\nStart-ADTMsiProcess -Action 'Uninstall' -FilePath 'app.msi'\nStart-ADTMsiProcess -Action 'Uninstall' -ProductCode '{GUID}'\n\n# Run any executable\nStart-Process -FilePath 'Files\\setup.exe' -ArgumentList '/silent' -Wait\n`);copyBtnbtn_4ab785e14fd4409a936cb856161e6207.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4ab785e14fd4409a936cb856161e6207.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3f20addef3a44f92abe7f843c159d0b0=document.querySelector('button[name=btn_3f20addef3a44f92abe7f843c159d0b0]');
+copyBtnbtn_3f20addef3a44f92abe7f843c159d0b0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# MSI install / uninstall\nStart-ADTMsiProcess -Action 'Install' -FilePath 'app.msi'\nStart-ADTMsiProcess -Action 'Uninstall' -FilePath 'app.msi'\nStart-ADTMsiProcess -Action 'Uninstall' -ProductCode '{GUID}'\n\n# Run any executable\nStart-Process -FilePath 'Files\\setup.exe' -ArgumentList '/silent' -Wait\n`);copyBtnbtn_3f20addef3a44f92abe7f843c159d0b0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3f20addef3a44f92abe7f843c159d0b0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">MSI install / uninstall
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Start-ADTMsiProcess</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Action</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Install'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-FilePath</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'app.msi'</span>
-<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Start-ADTMsiProcess</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Action</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Uninstall'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-FilePath</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'app.msi'</span>
-<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Start-ADTMsiProcess</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Action</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Uninstall'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-ProductCode</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'{GUID}'</span>
+<pre class="src src-powershell"># MSI install / uninstall
+Start-ADTMsiProcess -Action 'Install' -FilePath 'app.msi'
+Start-ADTMsiProcess -Action 'Uninstall' -FilePath 'app.msi'
+Start-ADTMsiProcess -Action 'Uninstall' -ProductCode '{GUID}'
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Run any executable
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Start-Process</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-FilePath</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Files\setup.exe'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-ArgumentList</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'/silent'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Wait</span>
+# Run any executable
+Start-Process -FilePath 'Files\setup.exe' -ArgumentList '/silent' -Wait
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgaed1896" class="outline-3">
-<h3 id="orgaed1896">User interaction</h3>
-<div class="outline-text-3" id="text-orgaed1896">
+<div id="outline-container-orga13308c" class="outline-3">
+<h3 id="orga13308c">User interaction</h3>
+<div class="outline-text-3" id="text-orga13308c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_b9be27d047bb4a6b97da7108a4208368>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_36d5070a4dc44b1d947502ff45d54eb6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b9be27d047bb4a6b97da7108a4208368=document.querySelector('button[name=btn_b9be27d047bb4a6b97da7108a4208368]');
-copyBtnbtn_b9be27d047bb4a6b97da7108a4208368.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Prompt user to close apps (with optional deferral)\nShow-ADTInstallationWelcome -CloseProcesses 'word','excel' -AllowDefer -DeferTimes 3\n\n# Show progress bar\nShow-ADTInstallationProgress -StatusMessage 'Installing Firefox...'\n\n# Show completion\nShow-ADTInstallationPrompt -Message 'Installation complete.' -ButtonRightText 'OK'\n\n# Prompt restart\nShow-ADTInstallationRestartPrompt -CountdownSeconds 120\n`);copyBtnbtn_b9be27d047bb4a6b97da7108a4208368.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b9be27d047bb4a6b97da7108a4208368.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_36d5070a4dc44b1d947502ff45d54eb6=document.querySelector('button[name=btn_36d5070a4dc44b1d947502ff45d54eb6]');
+copyBtnbtn_36d5070a4dc44b1d947502ff45d54eb6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Prompt user to close apps (with optional deferral)\nShow-ADTInstallationWelcome -CloseProcesses 'word','excel' -AllowDefer -DeferTimes 3\n\n# Show progress bar\nShow-ADTInstallationProgress -StatusMessage 'Installing Firefox...'\n\n# Show completion\nShow-ADTInstallationPrompt -Message 'Installation complete.' -ButtonRightText 'OK'\n\n# Prompt restart\nShow-ADTInstallationRestartPrompt -CountdownSeconds 120\n`);copyBtnbtn_36d5070a4dc44b1d947502ff45d54eb6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_36d5070a4dc44b1d947502ff45d54eb6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Prompt user to close apps (with optional deferral)
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Show-ADTInstallationWelcome</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-CloseProcesses</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'word'</span>,<span style="color: var(--clr-string); background-color: var(--bg-string);">'excel'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-AllowDefer</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-DeferTimes</span> 3
+<pre class="src src-powershell"># Prompt user to close apps (with optional deferral)
+Show-ADTInstallationWelcome -CloseProcesses 'word','excel' -AllowDefer -DeferTimes 3
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Show progress bar
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Show-ADTInstallationProgress</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-StatusMessage</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Installing Firefox...'</span>
+# Show progress bar
+Show-ADTInstallationProgress -StatusMessage 'Installing Firefox...'
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Show completion
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Show-ADTInstallationPrompt</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Message</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Installation complete.'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-ButtonRightText</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'OK'</span>
+# Show completion
+Show-ADTInstallationPrompt -Message 'Installation complete.' -ButtonRightText 'OK'
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Prompt restart
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Show-ADTInstallationRestartPrompt</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-CountdownSeconds</span> 120
+# Prompt restart
+Show-ADTInstallationRestartPrompt -CountdownSeconds 120
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org74bb1c7" class="outline-3">
-<h3 id="org74bb1c7">File and registry operations</h3>
-<div class="outline-text-3" id="text-org74bb1c7">
+<div id="outline-container-org0c7ed33" class="outline-3">
+<h3 id="org0c7ed33">File and registry operations</h3>
+<div class="outline-text-3" id="text-org0c7ed33">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_ab826009956f46d5944efb10582cc132>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_72bca0bc5a654dc2a902b920462816ff>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ab826009956f46d5944efb10582cc132=document.querySelector('button[name=btn_ab826009956f46d5944efb10582cc132]');
-copyBtnbtn_ab826009956f46d5944efb10582cc132.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Copy files\nCopy-ADTFile -Path 'Files\\config.ini' -Destination \"$env:ProgramFiles\\MyApp\\\"\n\n# Registry\nSet-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp' -Name 'Setting' -Value 'Value'\nRemove-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp'\nGet-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp' -Value 'Setting'\n`);copyBtnbtn_ab826009956f46d5944efb10582cc132.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ab826009956f46d5944efb10582cc132.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_72bca0bc5a654dc2a902b920462816ff=document.querySelector('button[name=btn_72bca0bc5a654dc2a902b920462816ff]');
+copyBtnbtn_72bca0bc5a654dc2a902b920462816ff.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Copy files\nCopy-ADTFile -Path 'Files\\config.ini' -Destination \"$env:ProgramFiles\\MyApp\\\"\n\n# Registry\nSet-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp' -Name 'Setting' -Value 'Value'\nRemove-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp'\nGet-ADTRegistryKey -Key 'HKLM:\\Software\\MyApp' -Value 'Setting'\n`);copyBtnbtn_72bca0bc5a654dc2a902b920462816ff.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_72bca0bc5a654dc2a902b920462816ff.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Copy files
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Copy-ADTFile</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Path</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Files\config.ini'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Destination</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"$env:ProgramFiles\MyApp\"</span>
+<pre class="src src-powershell"># Copy files
+Copy-ADTFile -Path 'Files\config.ini' -Destination "$env:ProgramFiles\MyApp\"
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Registry
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Set-ADTRegistryKey</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Key</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'HKLM:\Software\MyApp'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Name</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Setting'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Value</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Value'</span>
-<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Remove-ADTRegistryKey</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Key</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'HKLM:\Software\MyApp'</span>
-<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-ADTRegistryKey</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Key</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'HKLM:\Software\MyApp'</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Value</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Setting'</span>
+# Registry
+Set-ADTRegistryKey -Key 'HKLM:\Software\MyApp' -Name 'Setting' -Value 'Value'
+Remove-ADTRegistryKey -Key 'HKLM:\Software\MyApp'
+Get-ADTRegistryKey -Key 'HKLM:\Software\MyApp' -Value 'Setting'
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb57c6f5" class="outline-3">
-<h3 id="orgb57c6f5">Detection and conditions</h3>
-<div class="outline-text-3" id="text-orgb57c6f5">
+<div id="outline-container-org1b0d0b6" class="outline-3">
+<h3 id="org1b0d0b6">Detection and conditions</h3>
+<div class="outline-text-3" id="text-org1b0d0b6">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_ec71867a76984899877affcb05d15c5e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_6469c2875bb245f1a6823ebccf0d44f9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ec71867a76984899877affcb05d15c5e=document.querySelector('button[name=btn_ec71867a76984899877affcb05d15c5e]');
-copyBtnbtn_ec71867a76984899877affcb05d15c5e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Check if application is already installed\n$installed = Get-ADTApplication -Name 'Firefox'\nif ($installed) { Close-ADTSession -ExitCode 0 }   # already installed, exit cleanly\n\n# Get free disk space\n$freeDisk = Get-ADTFreeDiskSpace -Drive 'C:'\n`);copyBtnbtn_ec71867a76984899877affcb05d15c5e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ec71867a76984899877affcb05d15c5e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6469c2875bb245f1a6823ebccf0d44f9=document.querySelector('button[name=btn_6469c2875bb245f1a6823ebccf0d44f9]');
+copyBtnbtn_6469c2875bb245f1a6823ebccf0d44f9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Check if application is already installed\n$installed = Get-ADTApplication -Name 'Firefox'\nif ($installed) { Close-ADTSession -ExitCode 0 }   # already installed, exit cleanly\n\n# Get free disk space\n$freeDisk = Get-ADTFreeDiskSpace -Drive 'C:'\n`);copyBtnbtn_6469c2875bb245f1a6823ebccf0d44f9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6469c2875bb245f1a6823ebccf0d44f9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Check if application is already installed
-</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">$installed</span> = <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-ADTApplication</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Name</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'Firefox'</span>
-<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (<span style="color: var(--clr-variable); background-color: var(--bg-variable);">$installed</span>) { <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Close-ADTSession</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-ExitCode</span> 0 }   <span style="color: var(--clr-comment); background-color: var(--bg-comment);"># already installed, exit cleanly
-</span>
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Get free disk space
-</span><span style="color: var(--clr-variable); background-color: var(--bg-variable);">$freeDisk</span> = <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-ADTFreeDiskSpace</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Drive</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'C:'</span>
+<pre class="src src-powershell"># Check if application is already installed
+$installed = Get-ADTApplication -Name 'Firefox'
+if ($installed) { Close-ADTSession -ExitCode 0 }   # already installed, exit cleanly
+
+# Get free disk space
+$freeDisk = Get-ADTFreeDiskSpace -Drive 'C:'
 </pre>
 </div></div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgeb3d667" class="outline-2">
-<h2 id="orgeb3d667">Deployment Modes</h2>
-<div class="outline-text-2" id="text-orgeb3d667">
+<div id="outline-container-org3bdcb2b" class="outline-2">
+<h2 id="org3bdcb2b">Deployment Modes</h2>
+<div class="outline-text-2" id="text-org3bdcb2b">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1203,33 +1221,33 @@ let res = copyTextToClipboard(`# Check if application is already installed\n$ins
 </table>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_132826bad42047cc908ea8d56e31b16f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_b339e68777154c94a27a81bf37eb7352>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_132826bad42047cc908ea8d56e31b16f=document.querySelector('button[name=btn_132826bad42047cc908ea8d56e31b16f]');
-copyBtnbtn_132826bad42047cc908ea8d56e31b16f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Override mode at runtime\nDeploy-Application.exe -DeploymentType Install -DeployMode Silent\n`);copyBtnbtn_132826bad42047cc908ea8d56e31b16f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_132826bad42047cc908ea8d56e31b16f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b339e68777154c94a27a81bf37eb7352=document.querySelector('button[name=btn_b339e68777154c94a27a81bf37eb7352]');
+copyBtnbtn_b339e68777154c94a27a81bf37eb7352.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Override mode at runtime\nDeploy-Application.exe -DeploymentType Install -DeployMode Silent\n`);copyBtnbtn_b339e68777154c94a27a81bf37eb7352.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b339e68777154c94a27a81bf37eb7352.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Override mode at runtime
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Deploy-Application</span>.exe <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-DeploymentType</span> Install <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-DeployMode</span> Silent
+<pre class="src src-powershell"># Override mode at runtime
+Deploy-Application.exe -DeploymentType Install -DeployMode Silent
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org657cd22" class="outline-2">
-<h2 id="org657cd22">Integration with Intune</h2>
-<div class="outline-text-2" id="text-org657cd22">
+<div id="outline-container-org49a91ea" class="outline-2">
+<h2 id="org49a91ea">Integration with Intune</h2>
+<div class="outline-text-2" id="text-org49a91ea">
 <p>
 No longer requires ServiceUI to display UI from SYSTEM context — v4 uses a client-server architecture where UI runs in the user session and logic runs as SYSTEM.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9dfa3b6f185b41ed8d1a0ea19976c4e1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ae39a1f62af34536b92ca9dea7312424>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9dfa3b6f185b41ed8d1a0ea19976c4e1=document.querySelector('button[name=btn_9dfa3b6f185b41ed8d1a0ea19976c4e1]');
-copyBtnbtn_9dfa3b6f185b41ed8d1a0ea19976c4e1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Intune Win32 app settings:\nInstall command:   Deploy-Application.exe -DeploymentType Install\nUninstall command: Deploy-Application.exe -DeploymentType Uninstall\nDetection rule:    Registry key or file set during Post-installation\n`);copyBtnbtn_9dfa3b6f185b41ed8d1a0ea19976c4e1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9dfa3b6f185b41ed8d1a0ea19976c4e1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ae39a1f62af34536b92ca9dea7312424=document.querySelector('button[name=btn_ae39a1f62af34536b92ca9dea7312424]');
+copyBtnbtn_ae39a1f62af34536b92ca9dea7312424.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Intune Win32 app settings:\nInstall command:   Deploy-Application.exe -DeploymentType Install\nUninstall command: Deploy-Application.exe -DeploymentType Uninstall\nDetection rule:    Registry key or file set during Post-installation\n`);copyBtnbtn_ae39a1f62af34536b92ca9dea7312424.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ae39a1f62af34536b92ca9dea7312424.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1245,19 +1263,19 @@ Package with the <code>IntuneWinAppUtil.exe</code> tool to create a <code>.intun
 </p>
 </div>
 </div>
-<div id="outline-container-org0c077a5" class="outline-2">
-<h2 id="org0c077a5">Logging</h2>
-<div class="outline-text-2" id="text-org0c077a5">
+<div id="outline-container-orgfd14660" class="outline-2">
+<h2 id="orgfd14660">Logging</h2>
+<div class="outline-text-2" id="text-orgfd14660">
 <p>
 PSADT provides extensive logging of both toolkit functions and MSI installation/uninstallation.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_135addc02c8b45bd92b2af85417eda03>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e159656dc77c4136bc80e3ae1e414f38>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_135addc02c8b45bd92b2af85417eda03=document.querySelector('button[name=btn_135addc02c8b45bd92b2af85417eda03]');
-copyBtnbtn_135addc02c8b45bd92b2af85417eda03.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Default log location: C:\\Windows\\Logs\\Software\\\nLog filename:         AppName_DeploymentType_DateTime.log\n\nLogs capture:\n— Every function called\n— MSI verbose output\n— Exit codes\n— User interaction choices (deferred, accepted, etc.)\n`);copyBtnbtn_135addc02c8b45bd92b2af85417eda03.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_135addc02c8b45bd92b2af85417eda03.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e159656dc77c4136bc80e3ae1e414f38=document.querySelector('button[name=btn_e159656dc77c4136bc80e3ae1e414f38]');
+copyBtnbtn_e159656dc77c4136bc80e3ae1e414f38.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Default log location: C:\\Windows\\Logs\\Software\\\nLog filename:         AppName_DeploymentType_DateTime.log\n\nLogs capture:\n— Every function called\n— MSI verbose output\n— Exit codes\n— User interaction choices (deferred, accepted, etc.)\n`);copyBtnbtn_e159656dc77c4136bc80e3ae1e414f38.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e159656dc77c4136bc80e3ae1e414f38.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1273,9 +1291,9 @@ Logs capture:
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4d0405f" class="outline-2">
-<h2 id="org4d0405f">Exit Codes</h2>
-<div class="outline-text-2" id="text-org4d0405f">
+<div id="outline-container-orgfd01c4a" class="outline-2">
+<h2 id="orgfd01c4a">Exit Codes</h2>
+<div class="outline-text-2" id="text-orgfd01c4a">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1329,9 +1347,9 @@ Logs capture:
 </table>
 </div>
 </div>
-<div id="outline-container-orgbe2790d" class="outline-2">
-<h2 id="orgbe2790d">Tips</h2>
-<div class="outline-text-2" id="text-orgbe2790d">
+<div id="outline-container-org5c91291" class="outline-2">
+<h2 id="org5c91291">Tips</h2>
+<div class="outline-text-2" id="text-org5c91291">
 <ul class="org-ul">
 <li>Always test locally before deploying via Intune or SCCM —
 run <code>Deploy-Application.exe -DeploymentType Install</code> manually
@@ -1350,6 +1368,20 @@ for a GUI browser of all available functions and their parameters</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1357,6 +1389,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

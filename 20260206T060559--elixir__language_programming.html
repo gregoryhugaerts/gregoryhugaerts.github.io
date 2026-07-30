@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elixir</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge93d742">Core Features</a>
+<li><a href="#org843604f">Core Features</a>
 <ul>
-<li><a href="#org8358127">Immutability</a></li>
-<li><a href="#orgae0a756">Pattern Matching</a></li>
-<li><a href="#org55ca703">Concurrency — Processes and the Actor Model</a></li>
-<li><a href="#org1d8628a">Fault Tolerance — Supervisors</a></li>
-<li><a href="#org029fc2f">Pipe Operator</a></li>
-<li><a href="#org716399b">Macros</a></li>
+<li><a href="#org9af6155">Immutability</a></li>
+<li><a href="#orgd9ac20b">Pattern Matching</a></li>
+<li><a href="#org9ff6ec2">Concurrency — Processes and the Actor Model</a></li>
+<li><a href="#org3a33b1b">Fault Tolerance — Supervisors</a></li>
+<li><a href="#org819b824">Pipe Operator</a></li>
+<li><a href="#org99601df">Macros</a></li>
 </ul>
 </li>
-<li><a href="#org580f06d">Syntax Quick Reference</a></li>
-<li><a href="#org0a43548">Mix — Build Tool</a></li>
-<li><a href="#orgf65f6db">Tips</a></li>
+<li><a href="#org4079138">Syntax Quick Reference</a></li>
+<li><a href="#orgd2fb1e8">Mix — Build Tool</a></li>
+<li><a href="#org886eb78">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -902,13 +920,13 @@ Related: <a href="20260206T060603--erlang__erlang_language_programming.html">Erl
          <a href="20260206T060623--pattern-matching__concept_programming.html">Pattern Matching</a>
          <a href="20260206T060616--metaprogramming__concept_programming.html">Metaprogramming</a>
 </p>
-<div id="outline-container-orge93d742" class="outline-2">
-<h2 id="orge93d742">Core Features</h2>
-<div class="outline-text-2" id="text-orge93d742">
+<div id="outline-container-org843604f" class="outline-2">
+<h2 id="org843604f">Core Features</h2>
+<div class="outline-text-2" id="text-org843604f">
 </div>
-<div id="outline-container-org8358127" class="outline-3">
-<h3 id="org8358127">Immutability</h3>
-<div class="outline-text-3" id="text-org8358127">
+<div id="outline-container-org9af6155" class="outline-3">
+<h3 id="org9af6155">Immutability</h3>
+<div class="outline-text-3" id="text-org9af6155">
 <p>
 Data structures cannot be mutated in place — operations return
 new values. Eliminates shared mutable state bugs in concurrent
@@ -916,20 +934,20 @@ code. See <a href="20260206T060610--immutability__concept_programming.html">Immu
 </p>
 </div>
 </div>
-<div id="outline-container-orgae0a756" class="outline-3">
-<h3 id="orgae0a756">Pattern Matching</h3>
-<div class="outline-text-3" id="text-orgae0a756">
+<div id="outline-container-orgd9ac20b" class="outline-3">
+<h3 id="orgd9ac20b">Pattern Matching</h3>
+<div class="outline-text-3" id="text-orgd9ac20b">
 <p>
 <code>=</code> matches and destructures simultaneously. Used in function
 heads, case expressions, and with blocks.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_58984caef3de41e49dda5944a0d073d0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_22a175a8535d4dfa8a03722a82848a1b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_58984caef3de41e49dda5944a0d073d0=document.querySelector('button[name=btn_58984caef3de41e49dda5944a0d073d0]');
-copyBtnbtn_58984caef3de41e49dda5944a0d073d0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Basic match\n{:ok, value} = {:ok, 42}\n# value == 42\n\n# Function clauses via pattern matching\ndefmodule Greeter do\n  def greet(:english), do: \"Hello\"\n  def greet(:dutch),   do: \"Hallo\"\n  def greet(_),        do: \"Hi\"\nend\n\n# Case expression\ncase response do\n  {:ok, result}    -> \"Success: #{result}\"\n  {:error, reason} -> \"Error: #{reason}\"\nend\n`);copyBtnbtn_58984caef3de41e49dda5944a0d073d0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_58984caef3de41e49dda5944a0d073d0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_22a175a8535d4dfa8a03722a82848a1b=document.querySelector('button[name=btn_22a175a8535d4dfa8a03722a82848a1b]');
+copyBtnbtn_22a175a8535d4dfa8a03722a82848a1b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Basic match\n{:ok, value} = {:ok, 42}\n# value == 42\n\n# Function clauses via pattern matching\ndefmodule Greeter do\n  def greet(:english), do: \"Hello\"\n  def greet(:dutch),   do: \"Hallo\"\n  def greet(_),        do: \"Hi\"\nend\n\n# Case expression\ncase response do\n  {:ok, result}    -> \"Success: #{result}\"\n  {:error, reason} -> \"Error: #{reason}\"\nend\n`);copyBtnbtn_22a175a8535d4dfa8a03722a82848a1b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_22a175a8535d4dfa8a03722a82848a1b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -953,9 +971,9 @@ end
 </div></div>
 </div>
 </div>
-<div id="outline-container-org55ca703" class="outline-3">
-<h3 id="org55ca703">Concurrency — Processes and the Actor Model</h3>
-<div class="outline-text-3" id="text-org55ca703">
+<div id="outline-container-org9ff6ec2" class="outline-3">
+<h3 id="org9ff6ec2">Concurrency — Processes and the Actor Model</h3>
+<div class="outline-text-3" id="text-org9ff6ec2">
 <p>
 Elixir processes are lightweight (not OS threads) — hundreds of
 thousands can run concurrently. Processes communicate by message
@@ -963,11 +981,11 @@ passing; they share no memory. See <a href="20260206T060507--actor-model__concep
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_34d4e4bdc42b4d169ebff2baef4b254f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_c85fac1d75f1407faf73be583d998392>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_34d4e4bdc42b4d169ebff2baef4b254f=document.querySelector('button[name=btn_34d4e4bdc42b4d169ebff2baef4b254f]');
-copyBtnbtn_34d4e4bdc42b4d169ebff2baef4b254f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Spawn a process\npid = spawn(fn -> IO.puts(\"Hello from a process\") end)\n\n# Send a message\nsend(pid, {:greet, \"Alice\"})\n\n# Receive a message\nreceive do\n  {:greet, name} -> IO.puts(\"Hello, #{name}\")\n  _other         -> IO.puts(\"Unknown message\")\nafter\n  5000 -> IO.puts(\"Timeout\")\nend\n`);copyBtnbtn_34d4e4bdc42b4d169ebff2baef4b254f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_34d4e4bdc42b4d169ebff2baef4b254f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c85fac1d75f1407faf73be583d998392=document.querySelector('button[name=btn_c85fac1d75f1407faf73be583d998392]');
+copyBtnbtn_c85fac1d75f1407faf73be583d998392.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Spawn a process\npid = spawn(fn -> IO.puts(\"Hello from a process\") end)\n\n# Send a message\nsend(pid, {:greet, \"Alice\"})\n\n# Receive a message\nreceive do\n  {:greet, name} -> IO.puts(\"Hello, #{name}\")\n  _other         -> IO.puts(\"Unknown message\")\nafter\n  5000 -> IO.puts(\"Timeout\")\nend\n`);copyBtnbtn_c85fac1d75f1407faf73be583d998392.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c85fac1d75f1407faf73be583d998392.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -988,9 +1006,9 @@ end
 </div></div>
 </div>
 </div>
-<div id="outline-container-org1d8628a" class="outline-3">
-<h3 id="org1d8628a">Fault Tolerance — Supervisors</h3>
-<div class="outline-text-3" id="text-org1d8628a">
+<div id="outline-container-org3a33b1b" class="outline-3">
+<h3 id="org3a33b1b">Fault Tolerance — Supervisors</h3>
+<div class="outline-text-3" id="text-org3a33b1b">
 <p>
 "Let it crash" — processes are expected to fail; supervisors
 restart them in a clean state. Fault isolation prevents one
@@ -998,11 +1016,11 @@ failed process from cascading.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_22b4087171c44ffcbc83a3c0fd1d2edd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_6c35a8b9af8d49959178df548a581e10>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_22b4087171c44ffcbc83a3c0fd1d2edd=document.querySelector('button[name=btn_22b4087171c44ffcbc83a3c0fd1d2edd]');
-copyBtnbtn_22b4087171c44ffcbc83a3c0fd1d2edd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`defmodule MyApp.Application do\n  use Application\n\n  def start(_type, _args) do\n    children = [\n      MyApp.Worker,               # supervised worker process\n      {MyApp.Server, port: 4000}  # with arguments\n    ]\n\n    opts = [strategy: :one_for_one, name: MyApp.Supervisor]\n    Supervisor.start_link(children, opts)\n  end\nend\n`);copyBtnbtn_22b4087171c44ffcbc83a3c0fd1d2edd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_22b4087171c44ffcbc83a3c0fd1d2edd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6c35a8b9af8d49959178df548a581e10=document.querySelector('button[name=btn_6c35a8b9af8d49959178df548a581e10]');
+copyBtnbtn_6c35a8b9af8d49959178df548a581e10.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`defmodule MyApp.Application do\n  use Application\n\n  def start(_type, _args) do\n    children = [\n      MyApp.Worker,               # supervised worker process\n      {MyApp.Server, port: 4000}  # with arguments\n    ]\n\n    opts = [strategy: :one_for_one, name: MyApp.Supervisor]\n    Supervisor.start_link(children, opts)\n  end\nend\n`);copyBtnbtn_6c35a8b9af8d49959178df548a581e10.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6c35a8b9af8d49959178df548a581e10.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1032,20 +1050,20 @@ Strategies:
 </ul>
 </div>
 </div>
-<div id="outline-container-org029fc2f" class="outline-3">
-<h3 id="org029fc2f">Pipe Operator</h3>
-<div class="outline-text-3" id="text-org029fc2f">
+<div id="outline-container-org819b824" class="outline-3">
+<h3 id="org819b824">Pipe Operator</h3>
+<div class="outline-text-3" id="text-org819b824">
 <p>
 Chains function calls linearly — value flows left to right as
 the first argument of each function:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_a3b3ddd7f7fe40c3aafd5633b8868a73>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_8d2352fd29b54886926c705591e3c8e6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a3b3ddd7f7fe40c3aafd5633b8868a73=document.querySelector('button[name=btn_a3b3ddd7f7fe40c3aafd5633b8868a73]');
-copyBtnbtn_a3b3ddd7f7fe40c3aafd5633b8868a73.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Without pipe (nested)\nString.downcase(String.trim(\"  Hello World  \"))\n\n# With pipe (linear)\n\"  Hello World  \"\n|> String.trim()\n|> String.downcase()\n|> String.split(\" \")\n# => [\"hello\", \"world\"]\n`);copyBtnbtn_a3b3ddd7f7fe40c3aafd5633b8868a73.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a3b3ddd7f7fe40c3aafd5633b8868a73.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8d2352fd29b54886926c705591e3c8e6=document.querySelector('button[name=btn_8d2352fd29b54886926c705591e3c8e6]');
+copyBtnbtn_8d2352fd29b54886926c705591e3c8e6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Without pipe (nested)\nString.downcase(String.trim(\"  Hello World  \"))\n\n# With pipe (linear)\n\"  Hello World  \"\n|> String.trim()\n|> String.downcase()\n|> String.split(\" \")\n# => [\"hello\", \"world\"]\n`);copyBtnbtn_8d2352fd29b54886926c705591e3c8e6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8d2352fd29b54886926c705591e3c8e6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1062,20 +1080,20 @@ String.downcase(String.trim("  Hello World  "))
 </div></div>
 </div>
 </div>
-<div id="outline-container-org716399b" class="outline-3">
-<h3 id="org716399b">Macros</h3>
-<div class="outline-text-3" id="text-org716399b">
+<div id="outline-container-org99601df" class="outline-3">
+<h3 id="org99601df">Macros</h3>
+<div class="outline-text-3" id="text-org99601df">
 <p>
 Compile-time metaprogramming — macros receive AST and return
 transformed AST. Used to build DSLs (Phoenix Router, Ecto queries).
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_cc75305f5a8e4a4890b4242f37d31978>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_5db0c1f3ad4c4c1e9c0632115e271788>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_cc75305f5a8e4a4890b4242f37d31978=document.querySelector('button[name=btn_cc75305f5a8e4a4890b4242f37d31978]');
-copyBtnbtn_cc75305f5a8e4a4890b4242f37d31978.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`defmacro unless(condition, do: body) do\n  quote do\n    if !unquote(condition), do: unquote(body)\n  end\nend\n`);copyBtnbtn_cc75305f5a8e4a4890b4242f37d31978.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cc75305f5a8e4a4890b4242f37d31978.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5db0c1f3ad4c4c1e9c0632115e271788=document.querySelector('button[name=btn_5db0c1f3ad4c4c1e9c0632115e271788]');
+copyBtnbtn_5db0c1f3ad4c4c1e9c0632115e271788.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`defmacro unless(condition, do: body) do\n  quote do\n    if !unquote(condition), do: unquote(body)\n  end\nend\n`);copyBtnbtn_5db0c1f3ad4c4c1e9c0632115e271788.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5db0c1f3ad4c4c1e9c0632115e271788.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1089,15 +1107,15 @@ end
 </div>
 </div>
 </div>
-<div id="outline-container-org580f06d" class="outline-2">
-<h2 id="org580f06d">Syntax Quick Reference</h2>
-<div class="outline-text-2" id="text-org580f06d">
+<div id="outline-container-org4079138" class="outline-2">
+<h2 id="org4079138">Syntax Quick Reference</h2>
+<div class="outline-text-2" id="text-org4079138">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_d19076efd184493aa7dfdb3fe10a4401>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_3486169ff20142d9bbc4032bebb3ad60>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d19076efd184493aa7dfdb3fe10a4401=document.querySelector('button[name=btn_d19076efd184493aa7dfdb3fe10a4401]');
-copyBtnbtn_d19076efd184493aa7dfdb3fe10a4401.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Variables\nname = \"Alice\"\n\n# Atoms (symbols)\n:ok\n:error\n\n# Tuples\n{:ok, 42}\n{:error, \"not found\"}\n\n# Lists (linked)\n[1, 2, 3]\n[head | tail] = [1, 2, 3]   # head = 1, tail = [2, 3]\n\n# Maps\nuser = %{name: \"Alice\", age: 30}\nuser.name           # => \"Alice\"\nuser[:name]         # => \"Alice\"\n%{user | age: 31}   # update — returns new map\n\n# Strings (UTF-8 binaries)\n\"Hello, #{name}\"    # interpolation\n\n# Anonymous functions\ndouble = fn x -> x * 2 end\ndouble.(5)          # => 10\n\n# Named function shorthand\ndouble = &(&1 * 2)\ndouble.(5)          # => 10\n\n# Modules and functions\ndefmodule Math do\n  def square(x), do: x * x\n  defp private_fn, do: :secret   # defp = private\nend\n\n# Conditionals\nif condition, do: a, else: b\nunless condition, do: a\n\ncond do\n  x > 10 -> \"big\"\n  x > 5  -> \"medium\"\n  true   -> \"small\"\nend\n`);copyBtnbtn_d19076efd184493aa7dfdb3fe10a4401.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d19076efd184493aa7dfdb3fe10a4401.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3486169ff20142d9bbc4032bebb3ad60=document.querySelector('button[name=btn_3486169ff20142d9bbc4032bebb3ad60]');
+copyBtnbtn_3486169ff20142d9bbc4032bebb3ad60.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Variables\nname = \"Alice\"\n\n# Atoms (symbols)\n:ok\n:error\n\n# Tuples\n{:ok, 42}\n{:error, \"not found\"}\n\n# Lists (linked)\n[1, 2, 3]\n[head | tail] = [1, 2, 3]   # head = 1, tail = [2, 3]\n\n# Maps\nuser = %{name: \"Alice\", age: 30}\nuser.name           # => \"Alice\"\nuser[:name]         # => \"Alice\"\n%{user | age: 31}   # update — returns new map\n\n# Strings (UTF-8 binaries)\n\"Hello, #{name}\"    # interpolation\n\n# Anonymous functions\ndouble = fn x -> x * 2 end\ndouble.(5)          # => 10\n\n# Named function shorthand\ndouble = &(&1 * 2)\ndouble.(5)          # => 10\n\n# Modules and functions\ndefmodule Math do\n  def square(x), do: x * x\n  defp private_fn, do: :secret   # defp = private\nend\n\n# Conditionals\nif condition, do: a, else: b\nunless condition, do: a\n\ncond do\n  x > 10 -> \"big\"\n  x > 5  -> \"medium\"\n  true   -> \"small\"\nend\n`);copyBtnbtn_3486169ff20142d9bbc4032bebb3ad60.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3486169ff20142d9bbc4032bebb3ad60.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1152,15 +1170,15 @@ end
 </div></div>
 </div>
 </div>
-<div id="outline-container-org0a43548" class="outline-2">
-<h2 id="org0a43548">Mix — Build Tool</h2>
-<div class="outline-text-2" id="text-org0a43548">
+<div id="outline-container-orgd2fb1e8" class="outline-2">
+<h2 id="orgd2fb1e8">Mix — Build Tool</h2>
+<div class="outline-text-2" id="text-orgd2fb1e8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0a92d1cb1f214e549d763fd96ef5a316>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0d89428bed244fe7aa0ca2ef3ca9aeed>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0a92d1cb1f214e549d763fd96ef5a316=document.querySelector('button[name=btn_0a92d1cb1f214e549d763fd96ef5a316]');
-copyBtnbtn_0a92d1cb1f214e549d763fd96ef5a316.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Create a new project\nmix new my_app\nmix new my_app --sup   # with supervisor (recommended)\n\n# Install dependencies\nmix deps.get\n\n# Compile\nmix compile\n\n# Run tests\nmix test\nmix test test/my_test.exs   # specific file\n\n# Interactive shell with project loaded\niex -S mix\n\n# Run the application\nmix run --no-halt\n\n# Format code\nmix format\n\n# Hex package manager\nmix hex.search phoenix\n`);copyBtnbtn_0a92d1cb1f214e549d763fd96ef5a316.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0a92d1cb1f214e549d763fd96ef5a316.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0d89428bed244fe7aa0ca2ef3ca9aeed=document.querySelector('button[name=btn_0d89428bed244fe7aa0ca2ef3ca9aeed]');
+copyBtnbtn_0d89428bed244fe7aa0ca2ef3ca9aeed.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Create a new project\nmix new my_app\nmix new my_app --sup   # with supervisor (recommended)\n\n# Install dependencies\nmix deps.get\n\n# Compile\nmix compile\n\n# Run tests\nmix test\nmix test test/my_test.exs   # specific file\n\n# Interactive shell with project loaded\niex -S mix\n\n# Run the application\nmix run --no-halt\n\n# Format code\nmix format\n\n# Hex package manager\nmix hex.search phoenix\n`);copyBtnbtn_0d89428bed244fe7aa0ca2ef3ca9aeed.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0d89428bed244fe7aa0ca2ef3ca9aeed.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1193,9 +1211,9 @@ mix test test/my_test.exs   <span style="color: var(--clr-comment-delimiter); ba
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgf65f6db" class="outline-2">
-<h2 id="orgf65f6db">Tips</h2>
-<div class="outline-text-2" id="text-orgf65f6db">
+<div id="outline-container-org886eb78" class="outline-2">
+<h2 id="org886eb78">Tips</h2>
+<div class="outline-text-2" id="text-org886eb78">
 <ul class="org-ul">
 <li>Pattern matching is the primary control flow mechanism — reach
 for it before reaching for if/else</li>
@@ -1211,6 +1229,20 @@ expected failure cases</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1218,6 +1250,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

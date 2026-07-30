@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Active_Directory</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,54 +886,53 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org143630e">Active Directory</a>
+<li><a href="#orgc220dc0">Active Directory</a>
 <ul>
-<li><a href="#org4aa8d82">Description</a></li>
-<li><a href="#org4a53a1c">Core Concepts</a>
+<li><a href="#orgaac30d8">Description</a></li>
+<li><a href="#org5f06f26">Core Concepts</a>
 <ul>
-<li><a href="#org5ce4e14">Domain</a></li>
-<li><a href="#orgd02246a">Domain Controller (DC)</a></li>
-<li><a href="#org0f93dc2">Forest &amp; Tree</a></li>
-<li><a href="#orgc706f97">Organisational Unit (OU)</a></li>
-<li><a href="#orgacc625f">Objects</a></li>
-<li><a href="#org971f359">Schema</a></li>
+<li><a href="#org855bbc4">Domain</a></li>
+<li><a href="#orgf2652fc">Domain Controller (DC)</a></li>
+<li><a href="#org9a15510">Forest &amp; Tree</a></li>
+<li><a href="#org3fcb4ac">Organisational Unit (OU)</a></li>
+<li><a href="#org734a015">Objects</a></li>
+<li><a href="#org9d57239">Schema</a></li>
 </ul>
 </li>
-<li><a href="#orgb9c5433">Authentication Protocols</a>
+<li><a href="#org538160b">Authentication Protocols</a>
 <ul>
-<li><a href="#org0aeaf39">Kerberos</a></li>
-<li><a href="#orgc574171">NTLM</a></li>
+<li><a href="#orgd58a8ee">Kerberos</a></li>
+<li><a href="#org0bc95c1">NTLM</a></li>
 </ul>
 </li>
-<li><a href="#orgd104659">Group Policy</a></li>
-<li><a href="#orgde3b8b0">Trusts</a></li>
-<li><a href="#org62b7afa">Common Attack Vectors</a></li>
-<li><a href="#org038892e">Defensive Measures</a></li>
-<li><a href="#org3905ede">Tools</a>
+<li><a href="#orgd0cabc2">Group Policy</a></li>
+<li><a href="#org396f568">Trusts</a></li>
+<li><a href="#org7b953e3">Common Attack Vectors</a></li>
+<li><a href="#orga952794">Defensive Measures</a></li>
+<li><a href="#orgb25182e">Tools</a>
 <ul>
-<li><a href="#org69a2033">Enumeration</a></li>
-<li><a href="#org691a3d9">Exploitation</a></li>
-<li><a href="#orgccaedda">Defence &amp; Monitoring</a></li>
+<li><a href="#org28ab8b7">Enumeration</a></li>
+<li><a href="#org9363b29">Exploitation</a></li>
+<li><a href="#org0556b6d">Defence &amp; Monitoring</a></li>
 </ul>
 </li>
-<li><a href="#org0c525df">Key Event Is to Monitor</a></li>
-<li><a href="#org1ee92c7">Learning Resources</a></li>
+<li><a href="#org4fa184a">Key Event Is to Monitor</a></li>
+<li><a href="#orgdaaee19">Learning Resources</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<dl class="org-dl">
-<dt>related</dt><dd></dd>
-<dt>related</dt><dd></dd>
-</dl>
-<div id="outline-container-org143630e" class="outline-2">
-<h2 id="org143630e">Active Directory</h2>
-<div class="outline-text-2" id="text-org143630e">
+<p>
+Related: <a href="20260314T005638--networking__moc_networking.html">Networking</a>
+</p>
+<div id="outline-container-orgc220dc0" class="outline-2">
+<h2 id="orgc220dc0">Active Directory</h2>
+<div class="outline-text-2" id="text-orgc220dc0">
 </div>
-<div id="outline-container-org4aa8d82" class="outline-3">
-<h3 id="org4aa8d82">Description</h3>
-<div class="outline-text-3" id="text-org4aa8d82">
+<div id="outline-container-orgaac30d8" class="outline-3">
+<h3 id="orgaac30d8">Description</h3>
+<div class="outline-text-3" id="text-orgaac30d8">
 <p>
 Active Directory is the backbone of most enterprise Windows environments. It stores information about objects on a network — users, computers, groups, and policies — and makes this information available to administrators and users. Understanding AD is essential for both defence and attack, as it is a primary target in real-world intrusions.
 </p>
@@ -923,21 +940,21 @@ Active Directory is the backbone of most enterprise Windows environments. It sto
 <hr />
 </div>
 </div>
-<div id="outline-container-org4a53a1c" class="outline-3">
-<h3 id="org4a53a1c">Core Concepts</h3>
-<div class="outline-text-3" id="text-org4a53a1c">
+<div id="outline-container-org5f06f26" class="outline-3">
+<h3 id="org5f06f26">Core Concepts</h3>
+<div class="outline-text-3" id="text-org5f06f26">
 </div>
-<div id="outline-container-org5ce4e14" class="outline-4">
-<h4 id="org5ce4e14">Domain</h4>
-<div class="outline-text-4" id="text-org5ce4e14">
+<div id="outline-container-org855bbc4" class="outline-4">
+<h4 id="org855bbc4">Domain</h4>
+<div class="outline-text-4" id="text-org855bbc4">
 <p>
 A <b>domain</b> is the fundamental administrative unit in AD. It is a logical grouping of objects (users, computers, printers) that share the same AD database. A domain is identified by a DNS name (e.g., <code>corp.example.com</code>).
 </p>
 </div>
 </div>
-<div id="outline-container-orgd02246a" class="outline-4">
-<h4 id="orgd02246a">Domain Controller (DC)</h4>
-<div class="outline-text-4" id="text-orgd02246a">
+<div id="outline-container-orgf2652fc" class="outline-4">
+<h4 id="orgf2652fc">Domain Controller (DC)</h4>
+<div class="outline-text-4" id="text-orgf2652fc">
 <p>
 A <b>Domain Controller</b> is a server that runs AD Domain Services (AD DS). It is responsible for:
 </p>
@@ -952,26 +969,26 @@ Every domain must have at least one DC. Compromise of a DC typically means full 
 </p>
 </div>
 </div>
-<div id="outline-container-org0f93dc2" class="outline-4">
-<h4 id="org0f93dc2">Forest &amp; Tree</h4>
-<div class="outline-text-4" id="text-org0f93dc2">
+<div id="outline-container-org9a15510" class="outline-4">
+<h4 id="org9a15510">Forest &amp; Tree</h4>
+<div class="outline-text-4" id="text-org9a15510">
 <ul class="org-ul">
 <li><b>Tree:</b> One or more domains sharing a contiguous DNS namespace and a trust relationship (e.g., <code>corp.example.com</code> and <code>dev.corp.example.com</code>).</li>
 <li><b>Forest:</b> The top-level container. A collection of one or more trees sharing a common schema and global catalogue. The forest is the ultimate security boundary in AD.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc706f97" class="outline-4">
-<h4 id="orgc706f97">Organisational Unit (OU)</h4>
-<div class="outline-text-4" id="text-orgc706f97">
+<div id="outline-container-org3fcb4ac" class="outline-4">
+<h4 id="org3fcb4ac">Organisational Unit (OU)</h4>
+<div class="outline-text-4" id="text-org3fcb4ac">
 <p>
 An <b>OU</b> is a container within a domain used to organise objects and delegate administrative control. Group Policy Objects (GPOs) are typically linked at the OU level.
 </p>
 </div>
 </div>
-<div id="outline-container-orgacc625f" class="outline-4">
-<h4 id="orgacc625f">Objects</h4>
-<div class="outline-text-4" id="text-orgacc625f">
+<div id="outline-container-org734a015" class="outline-4">
+<h4 id="org734a015">Objects</h4>
+<div class="outline-text-4" id="text-org734a015">
 <p>
 Every entity in AD is an <b>object</b>. Key object types:
 </p>
@@ -983,9 +1000,9 @@ Every entity in AD is an <b>object</b>. Key object types:
 </ul>
 </div>
 </div>
-<div id="outline-container-org971f359" class="outline-4">
-<h4 id="org971f359">Schema</h4>
-<div class="outline-text-4" id="text-org971f359">
+<div id="outline-container-org9d57239" class="outline-4">
+<h4 id="org9d57239">Schema</h4>
+<div class="outline-text-4" id="text-org9d57239">
 <p>
 The <b>schema</b> defines every object type and attribute that can exist in the forest. It is forest-wide and changes to it replicate to all DCs.
 </p>
@@ -994,13 +1011,13 @@ The <b>schema</b> defines every object type and attribute that can exist in the 
 </div>
 </div>
 </div>
-<div id="outline-container-orgb9c5433" class="outline-3">
-<h3 id="orgb9c5433">Authentication Protocols</h3>
-<div class="outline-text-3" id="text-orgb9c5433">
+<div id="outline-container-org538160b" class="outline-3">
+<h3 id="org538160b">Authentication Protocols</h3>
+<div class="outline-text-3" id="text-org538160b">
 </div>
-<div id="outline-container-org0aeaf39" class="outline-4">
-<h4 id="org0aeaf39">Kerberos</h4>
-<div class="outline-text-4" id="text-org0aeaf39">
+<div id="outline-container-orgd58a8ee" class="outline-4">
+<h4 id="orgd58a8ee">Kerberos</h4>
+<div class="outline-text-4" id="text-orgd58a8ee">
 <p>
 The default authentication protocol for modern AD environments. Key components:
 </p>
@@ -1016,9 +1033,9 @@ The flow: User authenticates → receives TGT → presents TGT to request a TGS 
 </p>
 </div>
 </div>
-<div id="outline-container-orgc574171" class="outline-4">
-<h4 id="orgc574171">NTLM</h4>
-<div class="outline-text-4" id="text-orgc574171">
+<div id="outline-container-org0bc95c1" class="outline-4">
+<h4 id="org0bc95c1">NTLM</h4>
+<div class="outline-text-4" id="text-org0bc95c1">
 <p>
 An older challenge-response authentication protocol. Still used in some environments as a fallback. Considered weaker than Kerberos and a common attack target.
 </p>
@@ -1027,9 +1044,9 @@ An older challenge-response authentication protocol. Still used in some environm
 </div>
 </div>
 </div>
-<div id="outline-container-orgd104659" class="outline-3">
-<h3 id="orgd104659">Group Policy</h3>
-<div class="outline-text-3" id="text-orgd104659">
+<div id="outline-container-orgd0cabc2" class="outline-3">
+<h3 id="orgd0cabc2">Group Policy</h3>
+<div class="outline-text-3" id="text-orgd0cabc2">
 <p>
 <b>Group Policy Objects (GPOs)</b> are collections of settings applied to users and computers within a domain. They are linked to Sites, Domains, or OUs and enforced by the DC. GPOs control everything from password policies to software deployment and desktop restrictions.
 </p>
@@ -1037,9 +1054,9 @@ An older challenge-response authentication protocol. Still used in some environm
 <hr />
 </div>
 </div>
-<div id="outline-container-orgde3b8b0" class="outline-3">
-<h3 id="orgde3b8b0">Trusts</h3>
-<div class="outline-text-3" id="text-orgde3b8b0">
+<div id="outline-container-org396f568" class="outline-3">
+<h3 id="org396f568">Trusts</h3>
+<div class="outline-text-3" id="text-org396f568">
 <p>
 A <b>trust</b> is a relationship between two domains or forests that allows users in one domain to access resources in another. Trusts can be:
 </p>
@@ -1055,9 +1072,9 @@ Misconfigured trusts are a common lateral movement path.
 <hr />
 </div>
 </div>
-<div id="outline-container-org62b7afa" class="outline-3">
-<h3 id="org62b7afa">Common Attack Vectors</h3>
-<div class="outline-text-3" id="text-org62b7afa">
+<div id="outline-container-org7b953e3" class="outline-3">
+<h3 id="org7b953e3">Common Attack Vectors</h3>
+<div class="outline-text-3" id="text-org7b953e3">
 <p>
 AD is a primary target in most enterprise intrusions. Common techniques include:
 </p>
@@ -1077,9 +1094,9 @@ AD is a primary target in most enterprise intrusions. Common techniques include:
 <hr />
 </div>
 </div>
-<div id="outline-container-org038892e" class="outline-3">
-<h3 id="org038892e">Defensive Measures</h3>
-<div class="outline-text-3" id="text-org038892e">
+<div id="outline-container-orga952794" class="outline-3">
+<h3 id="orga952794">Defensive Measures</h3>
+<div class="outline-text-3" id="text-orga952794">
 <ul class="org-ul">
 <li>Enforce the <b>Principle of Least Privilege</b> for all accounts</li>
 <li>Audit and restrict <b>privileged groups</b> (Domain Admins, Enterprise Admins)</li>
@@ -1094,48 +1111,47 @@ AD is a primary target in most enterprise intrusions. Common techniques include:
 <hr />
 </div>
 </div>
-<div id="outline-container-org3905ede" class="outline-3">
-<h3 id="org3905ede">Tools</h3>
-<div class="outline-text-3" id="text-org3905ede">
+<div id="outline-container-orgb25182e" class="outline-3">
+<h3 id="orgb25182e">Tools</h3>
+<div class="outline-text-3" id="text-orgb25182e">
 </div>
-<div id="outline-container-org69a2033" class="outline-4">
-<h4 id="org69a2033">Enumeration</h4>
-<div class="outline-text-4" id="text-org69a2033">
+<div id="outline-container-org28ab8b7" class="outline-4">
+<h4 id="org28ab8b7">Enumeration</h4>
+<div class="outline-text-4" id="text-org28ab8b7">
 <ul class="org-ul">
 <li><code>ldapsearch</code> — Query AD via LDAP from Linux</li>
-<li><code>BloodHound</code> / <code>SharpHound</code> — Graph-based AD attack path mapping</li>
+<li><a href="20260213T071359--bloodhound__cybersecurity_tool.html">BloodHound</a> / <code>SharpHound</code> — Graph-based AD attack path mapping</li>
 <li><code>PowerView</code> — PowerShell AD enumeration (part of PowerSploit)</li>
 <li><code>ADExplorer</code> — Sysinternals tool for browsing AD objects</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org691a3d9" class="outline-4">
-<h4 id="org691a3d9">Exploitation</h4>
-<div class="outline-text-4" id="text-org691a3d9">
+<div id="outline-container-org9363b29" class="outline-4">
+<h4 id="org9363b29">Exploitation</h4>
+<div class="outline-text-4" id="text-org9363b29">
 <ul class="org-ul">
-<li><code>Mimikatz</code> — Credential extraction, Pass-the-Hash, Golden/Silver Ticket attacks</li>
+<li><a href="20260314T005731--mimikatz__cybersecurity_tool.html"><code>Mimikatz</code></a> — Credential extraction, Pass-the-Hash, Golden/Silver Ticket attacks</li>
 <li><code>Impacket</code> — Python toolkit for Kerberoasting, DCSync, SMB attacks</li>
 <li><code>Rubeus</code> — Kerberos attack and abuse toolkit</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgccaedda" class="outline-4">
-<h4 id="orgccaedda">Defence &amp; Monitoring</h4>
-<div class="outline-text-4" id="text-orgccaedda">
+<div id="outline-container-org0556b6d" class="outline-4">
+<h4 id="org0556b6d">Defence &amp; Monitoring</h4>
+<div class="outline-text-4" id="text-org0556b6d">
 <ul class="org-ul">
 <li><code>Microsoft Defender for Identity</code></li>
-<li><code>PingCastle</code> — AD health and security auditing</li>
-<li></li>
-<li></li>
+<li><a href="20260213T111756--pingcastle__cybersecurity_tool.html">PingCastle</a> — AD health and security auditing</li>
+<li><a href="20260314T005749==siem--security-information-and-event-management__concept_cybersecurity.html">Security Information and Event Management</a></li>
+<li><a href="20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows event logs</a></li>
 </ul>
-
 <hr />
 </div>
 </div>
 </div>
-<div id="outline-container-org0c525df" class="outline-3">
-<h3 id="org0c525df">Key Event Is to Monitor</h3>
-<div class="outline-text-3" id="text-org0c525df">
+<div id="outline-container-org4fa184a" class="outline-3">
+<h3 id="org4fa184a">Key Event Is to Monitor</h3>
+<div class="outline-text-3" id="text-org4fa184a">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1206,9 +1222,9 @@ AD is a primary target in most enterprise intrusions. Common techniques include:
 <hr />
 </div>
 </div>
-<div id="outline-container-org1ee92c7" class="outline-3">
-<h3 id="org1ee92c7">Learning Resources</h3>
-<div class="outline-text-3" id="text-org1ee92c7">
+<div id="outline-container-orgdaaee19" class="outline-3">
+<h3 id="orgdaaee19">Learning Resources</h3>
+<div class="outline-text-3" id="text-orgdaaee19">
 <ul class="org-ul">
 <li>TryHackMe — Active Directory Basics room</li>
 <li>TryHackMe — Attacking Kerberos room</li>
@@ -1221,6 +1237,20 @@ AD is a primary target in most enterprise intrusions. Common techniques include:
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1228,6 +1258,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

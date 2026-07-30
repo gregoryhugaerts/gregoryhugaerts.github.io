@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Seatbelt</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,10 +886,10 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org12a667a">Key Enumeration Categories</a></li>
-<li><a href="#orgd59b818">Running Seatbelt</a></li>
-<li><a href="#org37f49ae">Operational Security (OpSec)</a></li>
-<li><a href="#orgdd42d60">Tips</a></li>
+<li><a href="#orgda5e127">Key Enumeration Categories</a></li>
+<li><a href="#org93fb5ea">Running Seatbelt</a></li>
+<li><a href="#org6ef1bf8">Operational Security (OpSec)</a></li>
+<li><a href="#org617dc89">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -890,9 +908,9 @@ Related: <a href="20260314T005758--windows-privilege-escalation__concept_cyberse
          <a href="20260314T005741--privesccheck__cybersecurity_tool.html">PrivescCheck</a>
          <a href="20260718T114426--windows-privilege-escalation-tools-—-comparison__comparison_cybersecurity_pentesting_reference.html">Windows Privilege Escalation Tools — Comparison</a>
 </p>
-<div id="outline-container-org12a667a" class="outline-2">
-<h2 id="org12a667a">Key Enumeration Categories</h2>
-<div class="outline-text-2" id="text-org12a667a">
+<div id="outline-container-orgda5e127" class="outline-2">
+<h2 id="orgda5e127">Key Enumeration Categories</h2>
+<div class="outline-text-2" id="text-orgda5e127">
 <p>
 Seatbelt organizes collection into named commands rather than one
 flat report:
@@ -949,29 +967,29 @@ flat report:
 </table>
 </div>
 </div>
-<div id="outline-container-orgd59b818" class="outline-2">
-<h2 id="orgd59b818">Running Seatbelt</h2>
-<div class="outline-text-2" id="text-orgd59b818">
+<div id="outline-container-org93fb5ea" class="outline-2">
+<h2 id="org93fb5ea">Running Seatbelt</h2>
+<div class="outline-text-2" id="text-org93fb5ea">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_f33df8cdb9cc4ccab705095d0ac63d40>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_485e1494b99a4bb2aa8b1b2b735eb7b1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f33df8cdb9cc4ccab705095d0ac63d40=document.querySelector('button[name=btn_f33df8cdb9cc4ccab705095d0ac63d40]');
-copyBtnbtn_f33df8cdb9cc4ccab705095d0ac63d40.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Full non-destructive sweep — everything below in one pass\n.\\Seatbelt.exe -group=all\n\n# Targeted collection — run only what you actually need\n.\\Seatbelt.exe AntiVirus PowerShellSettings TokenPrivileges\n\n# System-focused subset\n.\\Seatbelt.exe -group=system\n\n# User-focused subset (credentials, recent files, browser data)\n.\\Seatbelt.exe -group=user\n`);copyBtnbtn_f33df8cdb9cc4ccab705095d0ac63d40.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f33df8cdb9cc4ccab705095d0ac63d40.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_485e1494b99a4bb2aa8b1b2b735eb7b1=document.querySelector('button[name=btn_485e1494b99a4bb2aa8b1b2b735eb7b1]');
+copyBtnbtn_485e1494b99a4bb2aa8b1b2b735eb7b1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Full non-destructive sweep — everything below in one pass\n.\\Seatbelt.exe -group=all\n\n# Targeted collection — run only what you actually need\n.\\Seatbelt.exe AntiVirus PowerShellSettings TokenPrivileges\n\n# System-focused subset\n.\\Seatbelt.exe -group=system\n\n# User-focused subset (credentials, recent files, browser data)\n.\\Seatbelt.exe -group=user\n`);copyBtnbtn_485e1494b99a4bb2aa8b1b2b735eb7b1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_485e1494b99a4bb2aa8b1b2b735eb7b1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Full non-destructive sweep &#8212; everything below in one pass
-</span>.\Seatbelt.exe <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-group</span>=all
+<pre class="src src-powershell"># Full non-destructive sweep — everything below in one pass
+.\Seatbelt.exe -group=all
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Targeted collection &#8212; run only what you actually need
-</span>.\Seatbelt.exe AntiVirus PowerShellSettings TokenPrivileges
+# Targeted collection — run only what you actually need
+.\Seatbelt.exe AntiVirus PowerShellSettings TokenPrivileges
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">System-focused subset
-</span>.\Seatbelt.exe <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-group</span>=system
+# System-focused subset
+.\Seatbelt.exe -group=system
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">User-focused subset (credentials, recent files, browser data)
-</span>.\Seatbelt.exe <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-group</span>=user
+# User-focused subset (credentials, recent files, browser data)
+.\Seatbelt.exe -group=user
 </pre>
 </div></div>
 
@@ -983,9 +1001,9 @@ to a full WinPEAS-style sweep.
 </p>
 </div>
 </div>
-<div id="outline-container-org37f49ae" class="outline-2">
-<h2 id="org37f49ae">Operational Security (OpSec)</h2>
-<div class="outline-text-2" id="text-org37f49ae">
+<div id="outline-container-org6ef1bf8" class="outline-2">
+<h2 id="org6ef1bf8">Operational Security (OpSec)</h2>
+<div class="outline-text-2" id="text-org6ef1bf8">
 <p>
 Seatbelt is written in C#, which is what makes it valuable beyond
 just its output: it can be executed reflectively in memory (e.g.
@@ -996,23 +1014,23 @@ compared to dropping and running a compiled binary.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_46d497f543474ac7892373a10baaaa50>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_cfce1556cccc47c9ba515d10ed1afa97>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_46d497f543474ac7892373a10baaaa50=document.querySelector('button[name=btn_46d497f543474ac7892373a10baaaa50]');
-copyBtnbtn_46d497f543474ac7892373a10baaaa50.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Example: in-memory execution via Cobalt Strike\nexecute-assembly /path/to/Seatbelt.exe -group=system\n`);copyBtnbtn_46d497f543474ac7892373a10baaaa50.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_46d497f543474ac7892373a10baaaa50.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cfce1556cccc47c9ba515d10ed1afa97=document.querySelector('button[name=btn_cfce1556cccc47c9ba515d10ed1afa97]');
+copyBtnbtn_cfce1556cccc47c9ba515d10ed1afa97.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Example: in-memory execution via Cobalt Strike\nexecute-assembly /path/to/Seatbelt.exe -group=system\n`);copyBtnbtn_cfce1556cccc47c9ba515d10ed1afa97.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cfce1556cccc47c9ba515d10ed1afa97.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Example: in-memory execution via Cobalt Strike
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">execute-assembly</span> /path/to/Seatbelt.exe <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-group</span>=system
+<pre class="src src-powershell"># Example: in-memory execution via Cobalt Strike
+execute-assembly /path/to/Seatbelt.exe -group=system
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgdd42d60" class="outline-2">
-<h2 id="orgdd42d60">Tips</h2>
-<div class="outline-text-2" id="text-orgdd42d60">
+<div id="outline-container-org617dc89" class="outline-2">
+<h2 id="org617dc89">Tips</h2>
+<div class="outline-text-2" id="text-org617dc89">
 <ul class="org-ul">
 <li>Default to targeted commands over <code>-group=all</code> — faster, smaller
 output, and less time spent running on a box you may not want to
@@ -1033,6 +1051,20 @@ better first pass</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1040,6 +1072,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

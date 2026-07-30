@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Enums in Python</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,39 +886,39 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org89a0195">Enums in Python</a>
+<li><a href="#orgd227d22">Enums in Python</a>
 <ul>
-<li><a href="#org6793464">Basic Usage</a>
+<li><a href="#orga66557c">Basic Usage</a>
 <ul>
-<li><a href="#org9f376e7">Accessing Enum Members</a></li>
-<li><a href="#org1d9168d">Accessing a Member</a></li>
-<li><a href="#org219494a">Comparing Members</a></li>
-<li><a href="#org9d0f8d9">Accessing name and Value</a></li>
+<li><a href="#org2820a8c">Accessing Enum Members</a></li>
+<li><a href="#org5f75d40">Accessing a Member</a></li>
+<li><a href="#orgc12bc50">Comparing Members</a></li>
+<li><a href="#org7315442">Accessing name and Value</a></li>
 </ul>
 </li>
-<li><a href="#orgf380ef5">Key Features and Benefits</a></li>
+<li><a href="#org7f86fd9">Key Features and Benefits</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org89a0195" class="outline-2">
-<h2 id="org89a0195">Enums in Python</h2>
-<div class="outline-text-2" id="text-org89a0195">
+<div id="outline-container-orgd227d22" class="outline-2">
+<h2 id="orgd227d22">Enums in Python</h2>
+<div class="outline-text-2" id="text-orgd227d22">
 </div>
-<div id="outline-container-org6793464" class="outline-3">
-<h3 id="org6793464">Basic Usage</h3>
-<div class="outline-text-3" id="text-org6793464">
+<div id="outline-container-orga66557c" class="outline-3">
+<h3 id="orga66557c">Basic Usage</h3>
+<div class="outline-text-3" id="text-orga66557c">
 <p>
 To define an enum, you create a class that inherits from enum.Enum. The members are defined as class attributes.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_d47232fcd06f440393d0b148be143822>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_9643993249cf4a8ca7836e8579d9f767>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d47232fcd06f440393d0b148be143822=document.querySelector('button[name=btn_d47232fcd06f440393d0b148be143822]');
-copyBtnbtn_d47232fcd06f440393d0b148be143822.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`from enum import Enum\n\nclass Color(Enum):\n    RED = 1\n    GREEN = 2\n    BLUE = 3\n`);copyBtnbtn_d47232fcd06f440393d0b148be143822.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d47232fcd06f440393d0b148be143822.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9643993249cf4a8ca7836e8579d9f767=document.querySelector('button[name=btn_9643993249cf4a8ca7836e8579d9f767]');
+copyBtnbtn_9643993249cf4a8ca7836e8579d9f767.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`from enum import Enum\n\nclass Color(Enum):\n    RED = 1\n    GREEN = 2\n    BLUE = 3\n`);copyBtnbtn_9643993249cf4a8ca7836e8579d9f767.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9643993249cf4a8ca7836e8579d9f767.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -913,23 +931,23 @@ let res = copyTextToClipboard(`from enum import Enum\n\nclass Color(Enum):\n    
 </pre>
 </div></div>
 </div>
-<div id="outline-container-org9f376e7" class="outline-4">
-<h4 id="org9f376e7">Accessing Enum Members</h4>
-<div class="outline-text-4" id="text-org9f376e7">
+<div id="outline-container-org2820a8c" class="outline-4">
+<h4 id="org2820a8c">Accessing Enum Members</h4>
+<div class="outline-text-4" id="text-org2820a8c">
 <p>
 You can access enum members by their names. Each member has name and value properties.
 </p>
 </div>
 </div>
-<div id="outline-container-org1d9168d" class="outline-4">
-<h4 id="org1d9168d">Accessing a Member</h4>
-<div class="outline-text-4" id="text-org1d9168d">
+<div id="outline-container-org5f75d40" class="outline-4">
+<h4 id="org5f75d40">Accessing a Member</h4>
+<div class="outline-text-4" id="text-org5f75d40">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_e972f0d63f204fcd96bb81d083b8da6c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_1787976a022d4a65aa425028f93fb627>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e972f0d63f204fcd96bb81d083b8da6c=document.querySelector('button[name=btn_e972f0d63f204fcd96bb81d083b8da6c]');
-copyBtnbtn_e972f0d63f204fcd96bb81d083b8da6c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`current_color = Color.GREEN\`\n`);copyBtnbtn_e972f0d63f204fcd96bb81d083b8da6c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e972f0d63f204fcd96bb81d083b8da6c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1787976a022d4a65aa425028f93fb627=document.querySelector('button[name=btn_1787976a022d4a65aa425028f93fb627]');
+copyBtnbtn_1787976a022d4a65aa425028f93fb627.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`current_color = Color.GREEN\`\n`);copyBtnbtn_1787976a022d4a65aa425028f93fb627.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1787976a022d4a65aa425028f93fb627.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -938,15 +956,15 @@ let res = copyTextToClipboard(`current_color = Color.GREEN\`\n`);copyBtnbtn_e972
 </div></div>
 </div>
 </div>
-<div id="outline-container-org219494a" class="outline-4">
-<h4 id="org219494a">Comparing Members</h4>
-<div class="outline-text-4" id="text-org219494a">
+<div id="outline-container-orgc12bc50" class="outline-4">
+<h4 id="orgc12bc50">Comparing Members</h4>
+<div class="outline-text-4" id="text-orgc12bc50">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_a5149aa7ff554baaa4dafa259a9fe82c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_281139c2fc1e43c686aa33dcb1c845d2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a5149aa7ff554baaa4dafa259a9fe82c=document.querySelector('button[name=btn_a5149aa7ff554baaa4dafa259a9fe82c]');
-copyBtnbtn_a5149aa7ff554baaa4dafa259a9fe82c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`if current_color is Color.GREEN:\n    print(\"The color is green.\") # Output: The color is green.\n`);copyBtnbtn_a5149aa7ff554baaa4dafa259a9fe82c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a5149aa7ff554baaa4dafa259a9fe82c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_281139c2fc1e43c686aa33dcb1c845d2=document.querySelector('button[name=btn_281139c2fc1e43c686aa33dcb1c845d2]');
+copyBtnbtn_281139c2fc1e43c686aa33dcb1c845d2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`if current_color is Color.GREEN:\n    print(\"The color is green.\") # Output: The color is green.\n`);copyBtnbtn_281139c2fc1e43c686aa33dcb1c845d2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_281139c2fc1e43c686aa33dcb1c845d2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -956,15 +974,15 @@ let res = copyTextToClipboard(`if current_color is Color.GREEN:\n    print(\"The
 </div></div>
 </div>
 </div>
-<div id="outline-container-org9d0f8d9" class="outline-4">
-<h4 id="org9d0f8d9">Accessing name and Value</h4>
-<div class="outline-text-4" id="text-org9d0f8d9">
+<div id="outline-container-org7315442" class="outline-4">
+<h4 id="org7315442">Accessing name and Value</h4>
+<div class="outline-text-4" id="text-org7315442">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_b595331c41cc4ad6af83971dd4f3dbbe>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_291f99823f6c4b1bb42813467badfd52>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b595331c41cc4ad6af83971dd4f3dbbe=document.querySelector('button[name=btn_b595331c41cc4ad6af83971dd4f3dbbe]');
-copyBtnbtn_b595331c41cc4ad6af83971dd4f3dbbe.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`print(f\"Name: {current_color.name}\")   # Output: Name: GREEN\nprint(f\"Value: {current_color.value}\") # Output: Value: 2\n`);copyBtnbtn_b595331c41cc4ad6af83971dd4f3dbbe.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b595331c41cc4ad6af83971dd4f3dbbe.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_291f99823f6c4b1bb42813467badfd52=document.querySelector('button[name=btn_291f99823f6c4b1bb42813467badfd52]');
+copyBtnbtn_291f99823f6c4b1bb42813467badfd52.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`print(f\"Name: {current_color.name}\")   # Output: Name: GREEN\nprint(f\"Value: {current_color.value}\") # Output: Value: 2\n`);copyBtnbtn_291f99823f6c4b1bb42813467badfd52.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_291f99823f6c4b1bb42813467badfd52.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -975,9 +993,9 @@ let res = copyTextToClipboard(`print(f\"Name: {current_color.name}\")   # Output
 </div>
 </div>
 </div>
-<div id="outline-container-orgf380ef5" class="outline-3">
-<h3 id="orgf380ef5">Key Features and Benefits</h3>
-<div class="outline-text-3" id="text-orgf380ef5">
+<div id="outline-container-org7f86fd9" class="outline-3">
+<h3 id="org7f86fd9">Key Features and Benefits</h3>
+<div class="outline-text-3" id="text-org7f86fd9">
 <ul class="org-ul">
 <li>Readability: Using Color.RED is much clearer and less error-prone than using a raw integer like 1.</li>
 <li>Maintainability: If the underlying value needs to change, you only need to update it in the enum definition.</li>
@@ -985,11 +1003,11 @@ let res = copyTextToClipboard(`print(f\"Name: {current_color.name}\")   # Output
 </ul>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_3f7dee51397e43fd8638b45f5377bec5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_4cdd664e3b3547bbbc4f0b4ba9e78563>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3f7dee51397e43fd8638b45f5377bec5=document.querySelector('button[name=btn_3f7dee51397e43fd8638b45f5377bec5]');
-copyBtnbtn_3f7dee51397e43fd8638b45f5377bec5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`def set_background(color: Color):\n    # function implementation...\n    pass\n\nset_background(Color.BLUE) # Valid\n# set_background(4) # Invalid, a static type checker would flag this\n`);copyBtnbtn_3f7dee51397e43fd8638b45f5377bec5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3f7dee51397e43fd8638b45f5377bec5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4cdd664e3b3547bbbc4f0b4ba9e78563=document.querySelector('button[name=btn_4cdd664e3b3547bbbc4f0b4ba9e78563]');
+copyBtnbtn_4cdd664e3b3547bbbc4f0b4ba9e78563.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`def set_background(color: Color):\n    # function implementation...\n    pass\n\nset_background(Color.BLUE) # Valid\n# set_background(4) # Invalid, a static type checker would flag this\n`);copyBtnbtn_4cdd664e3b3547bbbc4f0b4ba9e78563.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4cdd664e3b3547bbbc4f0b4ba9e78563.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1007,11 +1025,11 @@ set_background(Color.BLUE) <span style="color: var(--clr-comment-delimiter); bac
 </ul>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_1321f8f25b314d4db020276f97d8ae67>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_b09b4162cf1044628d5e414b95be6447>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1321f8f25b314d4db020276f97d8ae67=document.querySelector('button[name=btn_1321f8f25b314d4db020276f97d8ae67]');
-copyBtnbtn_1321f8f25b314d4db020276f97d8ae67.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`for color in Color:\n    print(color)\n# Output:\n# Color.RED\n# Color.GREEN\n# Color.BLUE\n`);copyBtnbtn_1321f8f25b314d4db020276f97d8ae67.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1321f8f25b314d4db020276f97d8ae67.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b09b4162cf1044628d5e414b95be6447=document.querySelector('button[name=btn_b09b4162cf1044628d5e414b95be6447]');
+copyBtnbtn_b09b4162cf1044628d5e414b95be6447.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`for color in Color:\n    print(color)\n# Output:\n# Color.RED\n# Color.GREEN\n# Color.BLUE\n`);copyBtnbtn_b09b4162cf1044628d5e414b95be6447.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b09b4162cf1044628d5e414b95be6447.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1033,11 +1051,11 @@ The enum module also provides an auto() helper to automatically assign integer v
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_77fc1f5a6ac4434b9a0ff00667b5bc01>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_982fea6466e54a34b980162cc70bb7e7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_77fc1f5a6ac4434b9a0ff00667b5bc01=document.querySelector('button[name=btn_77fc1f5a6ac4434b9a0ff00667b5bc01]');
-copyBtnbtn_77fc1f5a6ac4434b9a0ff00667b5bc01.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`from enum import Enum, auto\n\nclass State(Enum):\n    PENDING = auto()   # Value will be 1\n    RUNNING = auto()   # Value will be 2\n    COMPLETED = auto() # Value will be 3\n`);copyBtnbtn_77fc1f5a6ac4434b9a0ff00667b5bc01.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_77fc1f5a6ac4434b9a0ff00667b5bc01.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_982fea6466e54a34b980162cc70bb7e7=document.querySelector('button[name=btn_982fea6466e54a34b980162cc70bb7e7]');
+copyBtnbtn_982fea6466e54a34b980162cc70bb7e7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`from enum import Enum, auto\n\nclass State(Enum):\n    PENDING = auto()   # Value will be 1\n    RUNNING = auto()   # Value will be 2\n    COMPLETED = auto() # Value will be 3\n`);copyBtnbtn_982fea6466e54a34b980162cc70bb7e7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_982fea6466e54a34b980162cc70bb7e7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1054,6 +1072,20 @@ let res = copyTextToClipboard(`from enum import Enum, auto\n\nclass State(Enum):
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1061,6 +1093,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

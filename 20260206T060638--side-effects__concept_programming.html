@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Side Effects</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,16 +886,16 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0712e23">What Counts as a Side Effect</a></li>
-<li><a href="#orga397b31">Why They Are a Concern</a>
+<li><a href="#orge18d9b1">What Counts as a Side Effect</a></li>
+<li><a href="#org60bd045">Why They Are a Concern</a>
 <ul>
-<li><a href="#orgaffd13e">Hard to test</a></li>
-<li><a href="#orgeef2f7c">Spooky action at a distance</a></li>
-<li><a href="#org329a72b">Concurrency hazards</a></li>
+<li><a href="#org48314af">Hard to test</a></li>
+<li><a href="#orgc4aefa4">Spooky action at a distance</a></li>
+<li><a href="#org11ec2ec">Concurrency hazards</a></li>
 </ul>
 </li>
-<li><a href="#org540e9a6">Managing Side Effects</a></li>
-<li><a href="#orga17afea">Tips</a></li>
+<li><a href="#org116b653">Managing Side Effects</a></li>
+<li><a href="#org6dd1f5f">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -895,15 +913,15 @@ Related: <a href="20260206T060606--functional-programming__concept_programming.h
          <a href="20260314T005654--pure-function__concept_programming.html">Pure Functions</a>
          <a href="20260206T060610--immutability__concept_programming.html">Immutability</a>
 </p>
-<div id="outline-container-org0712e23" class="outline-2">
-<h2 id="org0712e23">What Counts as a Side Effect</h2>
-<div class="outline-text-2" id="text-org0712e23">
+<div id="outline-container-orge18d9b1" class="outline-2">
+<h2 id="orge18d9b1">What Counts as a Side Effect</h2>
+<div class="outline-text-2" id="text-orge18d9b1">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_54134b58256941ffb55e645e704a9743>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_1191c74e4cf14d16954cf168f5192266>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_54134b58256941ffb55e645e704a9743=document.querySelector('button[name=btn_54134b58256941ffb55e645e704a9743]');
-copyBtnbtn_54134b58256941ffb55e645e704a9743.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Modifying a global variable\ntotal = 0\ndef add_to_total(x):\n    global total\n    total += x           # side effect: modifies external state\n\n# Mutating an argument\ndef append_item(lst, item):\n    lst.append(item)     # side effect: mutates the caller's list\n\n# I/O\ndef log(message):\n    print(message)       # side effect: writes to stdout\n\ndef save(data, path):\n    with open(path, \"w\") as f:\n        f.write(data)    # side effect: writes to disk\n\n# Database write\ndef create_user(name):\n    db.insert(\"users\", {\"name\": name})   # side effect: external state change\n\n# Network call\ndef notify(url, payload):\n    requests.post(url, json=payload)     # side effect: external system call\n`);copyBtnbtn_54134b58256941ffb55e645e704a9743.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_54134b58256941ffb55e645e704a9743.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1191c74e4cf14d16954cf168f5192266=document.querySelector('button[name=btn_1191c74e4cf14d16954cf168f5192266]');
+copyBtnbtn_1191c74e4cf14d16954cf168f5192266.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Modifying a global variable\ntotal = 0\ndef add_to_total(x):\n    global total\n    total += x           # side effect: modifies external state\n\n# Mutating an argument\ndef append_item(lst, item):\n    lst.append(item)     # side effect: mutates the caller's list\n\n# I/O\ndef log(message):\n    print(message)       # side effect: writes to stdout\n\ndef save(data, path):\n    with open(path, \"w\") as f:\n        f.write(data)    # side effect: writes to disk\n\n# Database write\ndef create_user(name):\n    db.insert(\"users\", {\"name\": name})   # side effect: external state change\n\n# Network call\ndef notify(url, payload):\n    requests.post(url, json=payload)     # side effect: external system call\n`);copyBtnbtn_1191c74e4cf14d16954cf168f5192266.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1191c74e4cf14d16954cf168f5192266.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -936,13 +954,13 @@ let res = copyTextToClipboard(`# Modifying a global variable\ntotal = 0\ndef add
 </div></div>
 </div>
 </div>
-<div id="outline-container-orga397b31" class="outline-2">
-<h2 id="orga397b31">Why They Are a Concern</h2>
-<div class="outline-text-2" id="text-orga397b31">
+<div id="outline-container-org60bd045" class="outline-2">
+<h2 id="org60bd045">Why They Are a Concern</h2>
+<div class="outline-text-2" id="text-org60bd045">
 </div>
-<div id="outline-container-orgaffd13e" class="outline-3">
-<h3 id="orgaffd13e">Hard to test</h3>
-<div class="outline-text-3" id="text-orgaffd13e">
+<div id="outline-container-org48314af" class="outline-3">
+<h3 id="org48314af">Hard to test</h3>
+<div class="outline-text-3" id="text-org48314af">
 <p>
 A function with side effects requires setup and teardown —
 mocking databases, patching globals, capturing stdout. A pure
@@ -950,11 +968,11 @@ function requires only inputs and assertions:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_1b27b1bcaab2423cb424e1dde2abc895>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_1822c3b885004272a6081eb52dbdf3eb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1b27b1bcaab2423cb424e1dde2abc895=document.querySelector('button[name=btn_1b27b1bcaab2423cb424e1dde2abc895]');
-copyBtnbtn_1b27b1bcaab2423cb424e1dde2abc895.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Hard to test — depends on and modifies global\ndef process():\n    global result\n    result = compute_something()\n\n# Easy to test — all inputs explicit, no external state\ndef process(data):\n    return compute_something(data)\n`);copyBtnbtn_1b27b1bcaab2423cb424e1dde2abc895.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1b27b1bcaab2423cb424e1dde2abc895.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1822c3b885004272a6081eb52dbdf3eb=document.querySelector('button[name=btn_1822c3b885004272a6081eb52dbdf3eb]');
+copyBtnbtn_1822c3b885004272a6081eb52dbdf3eb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Hard to test — depends on and modifies global\ndef process():\n    global result\n    result = compute_something()\n\n# Easy to test — all inputs explicit, no external state\ndef process(data):\n    return compute_something(data)\n`);copyBtnbtn_1822c3b885004272a6081eb52dbdf3eb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1822c3b885004272a6081eb52dbdf3eb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -970,9 +988,9 @@ let res = copyTextToClipboard(`# Hard to test — depends on and modifies global
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgeef2f7c" class="outline-3">
-<h3 id="orgeef2f7c">Spooky action at a distance</h3>
-<div class="outline-text-3" id="text-orgeef2f7c">
+<div id="outline-container-orgc4aefa4" class="outline-3">
+<h3 id="orgc4aefa4">Spooky action at a distance</h3>
+<div class="outline-text-3" id="text-orgc4aefa4">
 <p>
 A change in one function unexpectedly breaks another because
 both share mutable state. The bug in B is caused by A, but
@@ -980,11 +998,11 @@ A and B appear unrelated:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_23f033619ca34e20a4f36a5830939a22>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_c728cb7bc8d342eca4b363e124c86ead>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_23f033619ca34e20a4f36a5830939a22=document.querySelector('button[name=btn_23f033619ca34e20a4f36a5830939a22]');
-copyBtnbtn_23f033619ca34e20a4f36a5830939a22.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`shared_list = [1, 2, 3]\n\ndef function_a():\n    shared_list.append(4)    # mutates shared state\n\ndef function_b():\n    return sum(shared_list)  # result depends on whether A ran first\n`);copyBtnbtn_23f033619ca34e20a4f36a5830939a22.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_23f033619ca34e20a4f36a5830939a22.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c728cb7bc8d342eca4b363e124c86ead=document.querySelector('button[name=btn_c728cb7bc8d342eca4b363e124c86ead]');
+copyBtnbtn_c728cb7bc8d342eca4b363e124c86ead.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`shared_list = [1, 2, 3]\n\ndef function_a():\n    shared_list.append(4)    # mutates shared state\n\ndef function_b():\n    return sum(shared_list)  # result depends on whether A ran first\n`);copyBtnbtn_c728cb7bc8d342eca4b363e124c86ead.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c728cb7bc8d342eca4b363e124c86ead.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -999,20 +1017,20 @@ let res = copyTextToClipboard(`shared_list = [1, 2, 3]\n\ndef function_a():\n   
 </div></div>
 </div>
 </div>
-<div id="outline-container-org329a72b" class="outline-3">
-<h3 id="org329a72b">Concurrency hazards</h3>
-<div class="outline-text-3" id="text-org329a72b">
+<div id="outline-container-org11ec2ec" class="outline-3">
+<h3 id="org11ec2ec">Concurrency hazards</h3>
+<div class="outline-text-3" id="text-org11ec2ec">
 <p>
 Side effects on shared state cause race conditions when
 functions run in parallel:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_e1f15f05ef594e638a048cbae9cacba9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_213dba0b7f624e98a1dd692e7e226b93>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e1f15f05ef594e638a048cbae9cacba9=document.querySelector('button[name=btn_e1f15f05ef594e638a048cbae9cacba9]');
-copyBtnbtn_e1f15f05ef594e638a048cbae9cacba9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import threading\n\ncounter = 0\n\ndef increment():\n    global counter\n    counter += 1   # read-modify-write — not atomic, race condition\n\nthreads = [threading.Thread(target=increment) for _ in range(100)]\n# counter may not be 100 after all threads finish\n`);copyBtnbtn_e1f15f05ef594e638a048cbae9cacba9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e1f15f05ef594e638a048cbae9cacba9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_213dba0b7f624e98a1dd692e7e226b93=document.querySelector('button[name=btn_213dba0b7f624e98a1dd692e7e226b93]');
+copyBtnbtn_213dba0b7f624e98a1dd692e7e226b93.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import threading\n\ncounter = 0\n\ndef increment():\n    global counter\n    counter += 1   # read-modify-write — not atomic, race condition\n\nthreads = [threading.Thread(target=increment) for _ in range(100)]\n# counter may not be 100 after all threads finish\n`);copyBtnbtn_213dba0b7f624e98a1dd692e7e226b93.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_213dba0b7f624e98a1dd692e7e226b93.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1031,20 +1049,20 @@ let res = copyTextToClipboard(`import threading\n\ncounter = 0\n\ndef increment(
 </div>
 </div>
 </div>
-<div id="outline-container-org540e9a6" class="outline-2">
-<h2 id="org540e9a6">Managing Side Effects</h2>
-<div class="outline-text-2" id="text-org540e9a6">
+<div id="outline-container-org116b653" class="outline-2">
+<h2 id="org116b653">Managing Side Effects</h2>
+<div class="outline-text-2" id="text-org116b653">
 <p>
 The practical goal is not to eliminate side effects — programs
 must eventually do I/O — but to isolate them:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_f59735d7b1254f4297ace54957d16e9a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_5c59f594c18848df96161307dbeee3b2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f59735d7b1254f4297ace54957d16e9a=document.querySelector('button[name=btn_f59735d7b1254f4297ace54957d16e9a]');
-copyBtnbtn_f59735d7b1254f4297ace54957d16e9a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Push side effects to the edges; keep core logic pure\n\n# Pure core — easy to test, reason about, parallelise\ndef calculate_total(items: list[dict]) -> float:\n    return sum(item[\"price\"] * item[\"quantity\"] for item in items)\n\n# Side effect isolated at the boundary\ndef process_order(order_id: int) -> None:\n    items = db.fetch_order_items(order_id)   # side effect: I/O\n    total = calculate_total(items)           # pure\n    db.save_total(order_id, total)           # side effect: I/O\n`);copyBtnbtn_f59735d7b1254f4297ace54957d16e9a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f59735d7b1254f4297ace54957d16e9a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5c59f594c18848df96161307dbeee3b2=document.querySelector('button[name=btn_5c59f594c18848df96161307dbeee3b2]');
+copyBtnbtn_5c59f594c18848df96161307dbeee3b2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Push side effects to the edges; keep core logic pure\n\n# Pure core — easy to test, reason about, parallelise\ndef calculate_total(items: list[dict]) -> float:\n    return sum(item[\"price\"] * item[\"quantity\"] for item in items)\n\n# Side effect isolated at the boundary\ndef process_order(order_id: int) -> None:\n    items = db.fetch_order_items(order_id)   # side effect: I/O\n    total = calculate_total(items)           # pure\n    db.save_total(order_id, total)           # side effect: I/O\n`);copyBtnbtn_5c59f594c18848df96161307dbeee3b2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5c59f594c18848df96161307dbeee3b2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1063,9 +1081,9 @@ let res = copyTextToClipboard(`# Push side effects to the edges; keep core logic
 </div></div>
 </div>
 </div>
-<div id="outline-container-orga17afea" class="outline-2">
-<h2 id="orga17afea">Tips</h2>
-<div class="outline-text-2" id="text-orga17afea">
+<div id="outline-container-org6dd1f5f" class="outline-2">
+<h2 id="org6dd1f5f">Tips</h2>
+<div class="outline-text-2" id="text-org6dd1f5f">
 <ul class="org-ul">
 <li>Mutation of arguments is a particularly surprising side effect
 — callers rarely expect their data to change; prefer returning
@@ -1084,6 +1102,20 @@ logic and not worry about testing it</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1091,6 +1123,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spanning Tree Protocol</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org640b681">Spanning Tree Protocol</a></li>
-<li><a href="#org3335c47">Diagram</a></li>
-<li><a href="#orgb7b0ce7">Key Functions</a></li>
-<li><a href="#orgda85e95">STP States</a></li>
-<li><a href="#orgb276202">Types of Spanning Tree Protocols</a></li>
-<li><a href="#org6228be5">Benefits of STP</a></li>
-<li><a href="#orgc69c927">Limitations of STP</a></li>
+<li><a href="#org8133224">Spanning Tree Protocol</a></li>
+<li><a href="#orga78896b">Diagram</a></li>
+<li><a href="#org0d4c230">Key Functions</a></li>
+<li><a href="#orgf39ac95">STP States</a></li>
+<li><a href="#org214dace">Types of Spanning Tree Protocols</a></li>
+<li><a href="#org8111c06">Benefits of STP</a></li>
+<li><a href="#org7ab22e2">Limitations of STP</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org640b681" class="outline-2">
-<h2 id="org640b681">Spanning Tree Protocol</h2>
-<div class="outline-text-2" id="text-org640b681">
+<div id="outline-container-org8133224" class="outline-2">
+<h2 id="org8133224">Spanning Tree Protocol</h2>
+<div class="outline-text-2" id="text-org8133224">
 <p>
 The Spanning Tree Protocol (STP) is a network protocol used to prevent loops in Ethernet networks by ensuring that there is only one active path between two network devices. When a loop is detected, STP automatically disables redundant links, ensuring a loop-free and efficient network structure.
 </p>
@@ -890,15 +908,15 @@ It operates at the Data Link Layer
 </p>
 </div>
 </div>
-<div id="outline-container-org3335c47" class="outline-2">
-<h2 id="org3335c47">Diagram</h2>
-<div class="outline-text-2" id="text-org3335c47">
+<div id="outline-container-orga78896b" class="outline-2">
+<h2 id="orga78896b">Diagram</h2>
+<div class="outline-text-2" id="text-orga78896b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PLANTUML-SVG</span><button class='copyBtn' name=btn_b94c032c0cef4377803d5692e452f070>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PLANTUML-SVG</span><button class='copyBtn' name=btn_022e202d15fe4674a3d6c64782afbe8b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b94c032c0cef4377803d5692e452f070=document.querySelector('button[name=btn_b94c032c0cef4377803d5692e452f070]');
-copyBtnbtn_b94c032c0cef4377803d5692e452f070.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`@startuml\ntitle Spanning Tree Protocol (STP)\n[Switch 1] as Switch1\n[Switch 2] as Switch2\n[Switch 3] as Switch3\n[Switch 4] as Switch4\nSwitch1 - Switch2 : Forwarding\nSwitch1 - Switch3 : Forwarding\nSwitch2 - Switch4 : Forwarding\nSwitch3 - Switch4 : Blocked (Redundant Link)\n@enduml\n`);copyBtnbtn_b94c032c0cef4377803d5692e452f070.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b94c032c0cef4377803d5692e452f070.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_022e202d15fe4674a3d6c64782afbe8b=document.querySelector('button[name=btn_022e202d15fe4674a3d6c64782afbe8b]');
+copyBtnbtn_022e202d15fe4674a3d6c64782afbe8b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`@startuml\ntitle Spanning Tree Protocol (STP)\n[Switch 1] as Switch1\n[Switch 2] as Switch2\n[Switch 3] as Switch3\n[Switch 4] as Switch4\nSwitch1 - Switch2 : Forwarding\nSwitch1 - Switch3 : Forwarding\nSwitch2 - Switch4 : Forwarding\nSwitch3 - Switch4 : Blocked (Redundant Link)\n@enduml\n`);copyBtnbtn_022e202d15fe4674a3d6c64782afbe8b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_022e202d15fe4674a3d6c64782afbe8b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -917,21 +935,21 @@ Switch3 - Switch4 : Blocked (Redundant Link)
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb7b0ce7" class="outline-2">
-<h2 id="orgb7b0ce7">Key Functions</h2>
-<div class="outline-text-2" id="text-orgb7b0ce7">
+<div id="outline-container-org0d4c230" class="outline-2">
+<h2 id="org0d4c230">Key Functions</h2>
+<div class="outline-text-2" id="text-org0d4c230">
 <ul class="org-ul">
 <li><b>Loop Prevention</b>: STP ensures that redundant paths in a network are disabled to avoid broadcast storms and network congestion.</li>
-<li><b>Root Bridge Selection</b>: The protocol selects a single (called the root bridge) as the central point for managing the active topology.</li>
+<li><b>Root Bridge Selection</b>: The protocol selects a single <a href="20260214T083523--switch__networking.html">Switch</a> (called the root bridge) as the central point for managing the active topology.</li>
 <li><b>Path Cost Calculation</b>: STP calculates the most efficient path to the root bridge for each switch in the network, based on path cost, and designates it as the active link.</li>
 <li><b>Redundant Link Blocking</b>: Links that are not part of the shortest path to the root bridge are placed in a "blocking" state to prevent loops.</li>
 <li><b>Dynamic Reconfiguration</b>: In case the active path fails, STP automatically reconfigures the network to enable redundant links, ensuring minimal downtime.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgda85e95" class="outline-2">
-<h2 id="orgda85e95">STP States</h2>
-<div class="outline-text-2" id="text-orgda85e95">
+<div id="outline-container-orgf39ac95" class="outline-2">
+<h2 id="orgf39ac95">STP States</h2>
+<div class="outline-text-2" id="text-orgf39ac95">
 <ul class="org-ul">
 <li>Switch ports in STP transition through several states to ensure loop-free operation:
 <ul class="org-ul">
@@ -944,9 +962,9 @@ Switch3 - Switch4 : Blocked (Redundant Link)
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb276202" class="outline-2">
-<h2 id="orgb276202">Types of Spanning Tree Protocols</h2>
-<div class="outline-text-2" id="text-orgb276202">
+<div id="outline-container-org214dace" class="outline-2">
+<h2 id="org214dace">Types of Spanning Tree Protocols</h2>
+<div class="outline-text-2" id="text-org214dace">
 <ul class="org-ul">
 <li><b>STP (802.1D)</b>: The original Spanning Tree Protocol standard.</li>
 <li><b>Rapid Spanning Tree Protocol (RSTP - 802.1w)</b>: An improvement over STP, providing faster convergence and recovery from network changes.</li>
@@ -954,9 +972,9 @@ Switch3 - Switch4 : Blocked (Redundant Link)
 </ul>
 </div>
 </div>
-<div id="outline-container-org6228be5" class="outline-2">
-<h2 id="org6228be5">Benefits of STP</h2>
-<div class="outline-text-2" id="text-org6228be5">
+<div id="outline-container-org8111c06" class="outline-2">
+<h2 id="org8111c06">Benefits of STP</h2>
+<div class="outline-text-2" id="text-org8111c06">
 <ul class="org-ul">
 <li><b>Prevents Network Loops</b>: Ensures stable network operation by blocking redundant paths.</li>
 <li><b>Automatic Path Recovery</b>: Automatically reroutes traffic if the primary link fails, maintaining network availability.</li>
@@ -964,9 +982,9 @@ Switch3 - Switch4 : Blocked (Redundant Link)
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc69c927" class="outline-2">
-<h2 id="orgc69c927">Limitations of STP</h2>
-<div class="outline-text-2" id="text-orgc69c927">
+<div id="outline-container-org7ab22e2" class="outline-2">
+<h2 id="org7ab22e2">Limitations of STP</h2>
+<div class="outline-text-2" id="text-org7ab22e2">
 <ul class="org-ul">
 <li><b>Convergence Time</b>: STP takes time to converge when changes occur, especially in the original 802.1D version, potentially leading to temporary network outages.</li>
 <li><b>Single Root Bridge</b>: The root bridge becomes a single point of failure; if it fails, re-election takes time.</li>
@@ -975,6 +993,20 @@ Switch3 - Switch4 : Blocked (Redundant Link)
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -982,6 +1014,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

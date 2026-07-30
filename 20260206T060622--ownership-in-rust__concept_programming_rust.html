@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ownership in Rust</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,33 +886,33 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org77701bb">Ownership in Rust</a>
+<li><a href="#org58641f0">Ownership in Rust</a>
 <ul>
-<li><a href="#org9ab65e5">Core Rules of Ownership</a></li>
-<li><a href="#org9220686">How Ownership Works in Practice</a>
+<li><a href="#org418de21">Core Rules of Ownership</a></li>
+<li><a href="#orga17c370">How Ownership Works in Practice</a>
 <ul>
-<li><a href="#orgff25716">. Variables and Scope</a></li>
-<li><a href="#orgbefb274">2. Move Semantics (Ownership Transfer)</a></li>
-<li><a href="#org239f4ff">3. Copy Semantics (for <code>Copy</code> Types)</a></li>
-<li><a href="#org77d9d7b">4. Ownership with Functions</a></li>
+<li><a href="#orgd63c816">. Variables and Scope</a></li>
+<li><a href="#org2dd6c94">2. Move Semantics (Ownership Transfer)</a></li>
+<li><a href="#orgabd4dcb">3. Copy Semantics (for <code>Copy</code> Types)</a></li>
+<li><a href="#org35cd329">4. Ownership with Functions</a></li>
 </ul>
 </li>
-<li><a href="#org14894b4">Why Ownership is Important</a></li>
+<li><a href="#orgddeaad7">Why Ownership is Important</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org77701bb" class="outline-2">
-<h2 id="org77701bb">Ownership in Rust</h2>
-<div class="outline-text-2" id="text-org77701bb">
+<div id="outline-container-org58641f0" class="outline-2">
+<h2 id="org58641f0">Ownership in Rust</h2>
+<div class="outline-text-2" id="text-org58641f0">
 <p>
 Ownership is Rust's most unique and fundamental concept, central to its promise of <b>memory safety without a garbage collector</b>. It's a set of rules that govern how a program manages memory, enforced by the compiler at compile time. By adhering to these rules, Rust eliminates entire classes of bugs like double-free errors, use-after-free, and data races in concurrent programming.
 </p>
 </div>
-<div id="outline-container-org9ab65e5" class="outline-3">
-<h3 id="org9ab65e5">Core Rules of Ownership</h3>
-<div class="outline-text-3" id="text-org9ab65e5">
+<div id="outline-container-org418de21" class="outline-3">
+<h3 id="org418de21">Core Rules of Ownership</h3>
+<div class="outline-text-3" id="text-org418de21">
 <ol class="org-ol">
 <li><b>Each value in Rust has an owner.</b> When you declare a variable and assign a value, that variable is the owner of the value.</li>
 
@@ -904,18 +922,18 @@ Ownership is Rust's most unique and fundamental concept, central to its promise 
 </ol>
 </div>
 </div>
-<div id="outline-container-org9220686" class="outline-3">
-<h3 id="org9220686">How Ownership Works in Practice</h3>
-<div class="outline-text-3" id="text-org9220686">
+<div id="outline-container-orga17c370" class="outline-3">
+<h3 id="orga17c370">How Ownership Works in Practice</h3>
+<div class="outline-text-3" id="text-orga17c370">
 </div>
-<div id="outline-container-orgff25716" class="outline-4">
-<h4 id="orgff25716">. Variables and Scope</h4>
-<div class="outline-text-4" id="text-orgff25716">
+<div id="outline-container-orgd63c816" class="outline-4">
+<h4 id="orgd63c816">. Variables and Scope</h4>
+<div class="outline-text-4" id="text-orgd63c816">
 <p>
 The range within a program for which an item is valid. In Rust, values are valid from the point they are declared until the end of their current scope (typically defined by curly braces <code>{}</code>).
 </p>
 
-<pre class="example" id="org45efd8c">
+<pre class="example" id="org3ec2031">
 ```rust
 { // s is not valid here, it's not yet declared
     let s = String::from("hello"); // s is valid from this point onward
@@ -926,9 +944,9 @@ The range within a program for which an item is valid. In Rust, values are valid
 </pre>
 </div>
 </div>
-<div id="outline-container-orgbefb274" class="outline-4">
-<h4 id="orgbefb274">2. Move Semantics (Ownership Transfer)</h4>
-<div class="outline-text-4" id="text-orgbefb274">
+<div id="outline-container-org2dd6c94" class="outline-4">
+<h4 id="org2dd6c94">2. Move Semantics (Ownership Transfer)</h4>
+<div class="outline-text-4" id="text-org2dd6c94">
 <ul class="org-ul">
 <li>When you assign a value from one variable to another, or pass a value to a function, Rust's default behavior for types that implement the <code>Drop</code> trait (like <code>String</code>, <code>Vec&lt;T&gt;</code>) is a <b>move</b>.</li>
 
@@ -937,11 +955,11 @@ A move means ownership is <i>transferred</i> to the new variable/function, and t
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_ee488fe85b1f48c797713545f569d8fd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_adcfc1faed4d481a9e5bd6188b8d4f73>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ee488fe85b1f48c797713545f569d8fd=document.querySelector('button[name=btn_ee488fe85b1f48c797713545f569d8fd]');
-copyBtnbtn_ee488fe85b1f48c797713545f569d8fd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let s1 = String::from(\"hello\");\nlet s2 = s1; // Ownership of \"hello\" is moved from s1 to s2.\n             // s1 is now invalid and cannot be used.\n\n// println!(\"{}\", s1); // This would cause a compile-time error!\n\nprintln!(\"{}\", s2); // This is fine.\n`);copyBtnbtn_ee488fe85b1f48c797713545f569d8fd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ee488fe85b1f48c797713545f569d8fd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_adcfc1faed4d481a9e5bd6188b8d4f73=document.querySelector('button[name=btn_adcfc1faed4d481a9e5bd6188b8d4f73]');
+copyBtnbtn_adcfc1faed4d481a9e5bd6188b8d4f73.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let s1 = String::from(\"hello\");\nlet s2 = s1; // Ownership of \"hello\" is moved from s1 to s2.\n             // s1 is now invalid and cannot be used.\n\n// println!(\"{}\", s1); // This would cause a compile-time error!\n\nprintln!(\"{}\", s2); // This is fine.\n`);copyBtnbtn_adcfc1faed4d481a9e5bd6188b8d4f73.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_adcfc1faed4d481a9e5bd6188b8d4f73.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -957,9 +975,9 @@ println!("{}", s2); // This is fine.
 </ul>
 </div>
 </div>
-<div id="outline-container-org239f4ff" class="outline-4">
-<h4 id="org239f4ff">3. Copy Semantics (for <code>Copy</code> Types)</h4>
-<div class="outline-text-4" id="text-org239f4ff">
+<div id="outline-container-orgabd4dcb" class="outline-4">
+<h4 id="orgabd4dcb">3. Copy Semantics (for <code>Copy</code> Types)</h4>
+<div class="outline-text-4" id="text-orgabd4dcb">
 <ul class="org-ul">
 <li>For certain simple types that have a known size at compile time and don't have special <code>drop</code> logic (e.g., integers, booleans, floating-point numbers, characters, tuples of <code>Copy</code> types), Rust performs a <b>copy</b> instead of a move. These types implement the <code>Copy</code> trait.</li>
 
@@ -968,11 +986,11 @@ When a copy occurs, both variables are valid.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_59ef96a8e24444b18a27cb777953e481>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_0bdae0e0f55942e19d31c981df01423f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_59ef96a8e24444b18a27cb777953e481=document.querySelector('button[name=btn_59ef96a8e24444b18a27cb777953e481]');
-copyBtnbtn_59ef96a8e24444b18a27cb777953e481.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let x = 5;\nlet y = x; // 5 is copied. Both x and y are valid.\n\nprintln!(\"x = {}, y = {}\", x, y); // Output: x = 5, y = 5\n`);copyBtnbtn_59ef96a8e24444b18a27cb777953e481.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_59ef96a8e24444b18a27cb777953e481.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0bdae0e0f55942e19d31c981df01423f=document.querySelector('button[name=btn_0bdae0e0f55942e19d31c981df01423f]');
+copyBtnbtn_0bdae0e0f55942e19d31c981df01423f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let x = 5;\nlet y = x; // 5 is copied. Both x and y are valid.\n\nprintln!(\"x = {}, y = {}\", x, y); // Output: x = 5, y = 5\n`);copyBtnbtn_0bdae0e0f55942e19d31c981df01423f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0bdae0e0f55942e19d31c981df01423f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -985,9 +1003,9 @@ println!("x = {}, y = {}", x, y); // Output: x = 5, y = 5
 </ul>
 </div>
 </div>
-<div id="outline-container-org77d9d7b" class="outline-4">
-<h4 id="org77d9d7b">4. Ownership with Functions</h4>
-<div class="outline-text-4" id="text-org77d9d7b">
+<div id="outline-container-org35cd329" class="outline-4">
+<h4 id="org35cd329">4. Ownership with Functions</h4>
+<div class="outline-text-4" id="text-org35cd329">
 <ul class="org-ul">
 <li>Passing a value to a function works like assignment: it moves ownership.</li>
 
@@ -996,11 +1014,11 @@ Returning a value from a function also moves ownership.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_37da3d893bcd48bab9778744254e2458>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_f487152f29654c728ef2a7a23f225aac>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_37da3d893bcd48bab9778744254e2458=document.querySelector('button[name=btn_37da3d893bcd48bab9778744254e2458]');
-copyBtnbtn_37da3d893bcd48bab9778744254e2458.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`fn takes_ownership(some_string: String) { // some_string comes into scope\n    println!(\"{}\", some_string);\n} // some_string goes out of scope and \`drop\` is called.\n\nfn makes_copy(some_integer: i32) { // some_integer comes into scope\n    println!(\"{}\", some_integer);\n} // some_integer goes out of scope. Nothing special happens as it's Copy.\n\nlet s = String::from(\"world\");\ntakes_ownership(s); // s's value moves into the function.\n                    // s is now invalid.\n\n// println!(\"{}\", s); // Compile-time error!\n\nlet x = 5;\nmakes_copy(x); // x's value copies into the function.\n               // x is still valid.\n\nprintln!(\"{}\", x); // This is fine.\n`);copyBtnbtn_37da3d893bcd48bab9778744254e2458.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_37da3d893bcd48bab9778744254e2458.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f487152f29654c728ef2a7a23f225aac=document.querySelector('button[name=btn_f487152f29654c728ef2a7a23f225aac]');
+copyBtnbtn_f487152f29654c728ef2a7a23f225aac.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`fn takes_ownership(some_string: String) { // some_string comes into scope\n    println!(\"{}\", some_string);\n} // some_string goes out of scope and \`drop\` is called.\n\nfn makes_copy(some_integer: i32) { // some_integer comes into scope\n    println!(\"{}\", some_integer);\n} // some_integer goes out of scope. Nothing special happens as it's Copy.\n\nlet s = String::from(\"world\");\ntakes_ownership(s); // s's value moves into the function.\n                    // s is now invalid.\n\n// println!(\"{}\", s); // Compile-time error!\n\nlet x = 5;\nmakes_copy(x); // x's value copies into the function.\n               // x is still valid.\n\nprintln!(\"{}\", x); // This is fine.\n`);copyBtnbtn_f487152f29654c728ef2a7a23f225aac.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f487152f29654c728ef2a7a23f225aac.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1029,9 +1047,9 @@ println!("{}", x); // This is fine.
 </div>
 </div>
 </div>
-<div id="outline-container-org14894b4" class="outline-3">
-<h3 id="org14894b4">Why Ownership is Important</h3>
-<div class="outline-text-3" id="text-org14894b4">
+<div id="outline-container-orgddeaad7" class="outline-3">
+<h3 id="orgddeaad7">Why Ownership is Important</h3>
+<div class="outline-text-3" id="text-orgddeaad7">
 <ul class="org-ul">
 <li><b>Memory Safety:</b> It's the primary mechanism Rust uses to guarantee memory safety without a garbage collector. By enforcing a single owner and automatic dropping, it prevents issues like use-after-free.</li>
 <li><b>Concurrency Safety:</b> When combined with Rust's <b>borrowing</b> rules (specifically, having only one mutable reference or multiple immutable references at a time), ownership prevents data races, making concurrent programming "fearless."</li>
@@ -1043,6 +1061,20 @@ println!("{}", x); // This is fine.
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1050,6 +1082,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

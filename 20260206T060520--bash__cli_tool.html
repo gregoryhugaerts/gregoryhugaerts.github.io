@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bash</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,14 +886,14 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org58e2ead">Command Categories</a></li>
-<li><a href="#orgff0a769">Quick Reference</a>
+<li><a href="#org7f8b6d9">Command Categories</a></li>
+<li><a href="#org0c28661">Quick Reference</a>
 <ul>
-<li><a href="#orgce7bfd8">Redirection</a></li>
-<li><a href="#org4413be7">Pipes</a></li>
-<li><a href="#org56f5620">Command Substitution</a></li>
-<li><a href="#org0785d68">Useful Shortcuts</a></li>
-<li><a href="#orgb0819bd">Debugging Scripts</a></li>
+<li><a href="#orgc484ef5">Redirection</a></li>
+<li><a href="#orgae9bfb0">Pipes</a></li>
+<li><a href="#orgae38f20">Command Substitution</a></li>
+<li><a href="#orgb8974cd">Useful Shortcuts</a></li>
+<li><a href="#orgd0631c3">Debugging Scripts</a></li>
 </ul>
 </li>
 </ul>
@@ -896,9 +914,9 @@ Related: <a href="20260206T060515--bash-file-manipulation-commands__bash_linux.h
          <a href="20260206T060519--bash-text-processing-commands__bash_linux.html">Bash Text Processing Commands</a>
          <a href="20260206T060633==regex--regular-expressions__concept_programming.html">Regular Expressions</a>
 </p>
-<div id="outline-container-org58e2ead" class="outline-2">
-<h2 id="org58e2ead">Command Categories</h2>
-<div class="outline-text-2" id="text-org58e2ead">
+<div id="outline-container-org7f8b6d9" class="outline-2">
+<h2 id="org7f8b6d9">Command Categories</h2>
+<div class="outline-text-2" id="text-org7f8b6d9">
 <ul class="org-ul">
 <li><a href="20260206T060516--bash-navigation-commands__bash_linux.html">Bash Navigation Commands</a> — <code>cd</code>, <code>ls</code>, <code>pwd</code>, <code>find</code></li>
 <li><a href="20260206T060515--bash-file-manipulation-commands__bash_linux.html">Bash File Manipulation Commands</a> — <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>chmod</code>, <code>chown</code></li>
@@ -908,19 +926,19 @@ Related: <a href="20260206T060515--bash-file-manipulation-commands__bash_linux.h
 </ul>
 </div>
 </div>
-<div id="outline-container-orgff0a769" class="outline-2">
-<h2 id="orgff0a769">Quick Reference</h2>
-<div class="outline-text-2" id="text-orgff0a769">
+<div id="outline-container-org0c28661" class="outline-2">
+<h2 id="org0c28661">Quick Reference</h2>
+<div class="outline-text-2" id="text-org0c28661">
 </div>
-<div id="outline-container-orgce7bfd8" class="outline-3">
-<h3 id="orgce7bfd8">Redirection</h3>
-<div class="outline-text-3" id="text-orgce7bfd8">
+<div id="outline-container-orgc484ef5" class="outline-3">
+<h3 id="orgc484ef5">Redirection</h3>
+<div class="outline-text-3" id="text-orgc484ef5">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c5ff230bca2a4ddca4a2a6a8383d2834>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b1d407d0742a4155b520b4f621667fed>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c5ff230bca2a4ddca4a2a6a8383d2834=document.querySelector('button[name=btn_c5ff230bca2a4ddca4a2a6a8383d2834]');
-copyBtnbtn_c5ff230bca2a4ddca4a2a6a8383d2834.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`command > file          # stdout to file (overwrite)\ncommand >> file         # stdout to file (append)\ncommand 2> error.log    # stderr to file\ncommand 2>&1            # redirect stderr to stdout\ncommand > /dev/null 2>&1  # suppress all output\ncommand < file          # stdin from file\n`);copyBtnbtn_c5ff230bca2a4ddca4a2a6a8383d2834.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c5ff230bca2a4ddca4a2a6a8383d2834.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b1d407d0742a4155b520b4f621667fed=document.querySelector('button[name=btn_b1d407d0742a4155b520b4f621667fed]');
+copyBtnbtn_b1d407d0742a4155b520b4f621667fed.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`command > file          # stdout to file (overwrite)\ncommand >> file         # stdout to file (append)\ncommand 2> error.log    # stderr to file\ncommand 2>&1            # redirect stderr to stdout\ncommand > /dev/null 2>&1  # suppress all output\ncommand < file          # stdin from file\n`);copyBtnbtn_b1d407d0742a4155b520b4f621667fed.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b1d407d0742a4155b520b4f621667fed.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -934,15 +952,15 @@ let res = copyTextToClipboard(`command > file          # stdout to file (overwri
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4413be7" class="outline-3">
-<h3 id="org4413be7">Pipes</h3>
-<div class="outline-text-3" id="text-org4413be7">
+<div id="outline-container-orgae9bfb0" class="outline-3">
+<h3 id="orgae9bfb0">Pipes</h3>
+<div class="outline-text-3" id="text-orgae9bfb0">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0973181c9c314aa1bda31732ce92dd64>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4003af569a804f5c8babb3d390a93d0f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0973181c9c314aa1bda31732ce92dd64=document.querySelector('button[name=btn_0973181c9c314aa1bda31732ce92dd64]');
-copyBtnbtn_0973181c9c314aa1bda31732ce92dd64.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`command1 | command2           # pipe stdout to next command\ncommand1 | tee file           # pipe and also write to file\ncommand1 | command2 | command3  # chain\n`);copyBtnbtn_0973181c9c314aa1bda31732ce92dd64.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0973181c9c314aa1bda31732ce92dd64.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4003af569a804f5c8babb3d390a93d0f=document.querySelector('button[name=btn_4003af569a804f5c8babb3d390a93d0f]');
+copyBtnbtn_4003af569a804f5c8babb3d390a93d0f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`command1 | command2           # pipe stdout to next command\ncommand1 | tee file           # pipe and also write to file\ncommand1 | command2 | command3  # chain\n`);copyBtnbtn_4003af569a804f5c8babb3d390a93d0f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4003af569a804f5c8babb3d390a93d0f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -953,15 +971,15 @@ let res = copyTextToClipboard(`command1 | command2           # pipe stdout to ne
 </div></div>
 </div>
 </div>
-<div id="outline-container-org56f5620" class="outline-3">
-<h3 id="org56f5620">Command Substitution</h3>
-<div class="outline-text-3" id="text-org56f5620">
+<div id="outline-container-orgae38f20" class="outline-3">
+<h3 id="orgae38f20">Command Substitution</h3>
+<div class="outline-text-3" id="text-orgae38f20">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5c0ed487261f485486bf6b7fb8cddb4e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ae4f4c7646ff4a5b80ab362bbc8813f9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5c0ed487261f485486bf6b7fb8cddb4e=document.querySelector('button[name=btn_5c0ed487261f485486bf6b7fb8cddb4e]');
-copyBtnbtn_5c0ed487261f485486bf6b7fb8cddb4e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`result=$(command)             # capture output as variable\necho \"Hostname: $(hostname)\"\nfiles=$(find . -name \"*.py\")\n`);copyBtnbtn_5c0ed487261f485486bf6b7fb8cddb4e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5c0ed487261f485486bf6b7fb8cddb4e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ae4f4c7646ff4a5b80ab362bbc8813f9=document.querySelector('button[name=btn_ae4f4c7646ff4a5b80ab362bbc8813f9]');
+copyBtnbtn_ae4f4c7646ff4a5b80ab362bbc8813f9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`result=$(command)             # capture output as variable\necho \"Hostname: $(hostname)\"\nfiles=$(find . -name \"*.py\")\n`);copyBtnbtn_ae4f4c7646ff4a5b80ab362bbc8813f9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ae4f4c7646ff4a5b80ab362bbc8813f9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -972,9 +990,9 @@ let res = copyTextToClipboard(`result=$(command)             # capture output as
 </div></div>
 </div>
 </div>
-<div id="outline-container-org0785d68" class="outline-3">
-<h3 id="org0785d68">Useful Shortcuts</h3>
-<div class="outline-text-3" id="text-org0785d68">
+<div id="outline-container-orgb8974cd" class="outline-3">
+<h3 id="orgb8974cd">Useful Shortcuts</h3>
+<div class="outline-text-3" id="text-orgb8974cd">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1028,15 +1046,15 @@ let res = copyTextToClipboard(`result=$(command)             # capture output as
 </table>
 </div>
 </div>
-<div id="outline-container-orgb0819bd" class="outline-3">
-<h3 id="orgb0819bd">Debugging Scripts</h3>
-<div class="outline-text-3" id="text-orgb0819bd">
+<div id="outline-container-orgd0631c3" class="outline-3">
+<h3 id="orgd0631c3">Debugging Scripts</h3>
+<div class="outline-text-3" id="text-orgd0631c3">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a729223fff9746dfb43da8b6087a1a82>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_355082d2ecf64fbf8f428c948523d965>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a729223fff9746dfb43da8b6087a1a82=document.querySelector('button[name=btn_a729223fff9746dfb43da8b6087a1a82]');
-copyBtnbtn_a729223fff9746dfb43da8b6087a1a82.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`bash -x script.sh             # trace execution (print each command)\nset -x                        # enable trace inside script\nset -e                        # exit on any error\nset -u                        # treat unset variables as errors\nset -euo pipefail             # common safe combination\n`);copyBtnbtn_a729223fff9746dfb43da8b6087a1a82.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a729223fff9746dfb43da8b6087a1a82.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_355082d2ecf64fbf8f428c948523d965=document.querySelector('button[name=btn_355082d2ecf64fbf8f428c948523d965]');
+copyBtnbtn_355082d2ecf64fbf8f428c948523d965.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`bash -x script.sh             # trace execution (print each command)\nset -x                        # enable trace inside script\nset -e                        # exit on any error\nset -u                        # treat unset variables as errors\nset -euo pipefail             # common safe combination\n`);copyBtnbtn_355082d2ecf64fbf8f428c948523d965.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_355082d2ecf64fbf8f428c948523d965.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1052,6 +1070,20 @@ let res = copyTextToClipboard(`bash -x script.sh             # trace execution (
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1059,6 +1091,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

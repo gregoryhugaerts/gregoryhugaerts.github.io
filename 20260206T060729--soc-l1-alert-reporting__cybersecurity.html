@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SOC L1 Alert Reporting</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,26 +886,26 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge2e21ba">Report Structure</a>
+<li><a href="#org7a9dc4e">Report Structure</a>
 <ul>
-<li><a href="#orgb843e4a">Incident Summary</a></li>
-<li><a href="#org56a22f0">Alert Detail</a></li>
-<li><a href="#org863e2ef">Initial Assessment</a></li>
-<li><a href="#org88f3670">Recommended Actions (for L2/L3)</a></li>
+<li><a href="#orgc9ab05d">Incident Summary</a></li>
+<li><a href="#org23c738d">Alert Detail</a></li>
+<li><a href="#org225aa9d">Initial Assessment</a></li>
+<li><a href="#org9256e07">Recommended Actions (for L2/L3)</a></li>
 </ul>
 </li>
-<li><a href="#org4517bb0">Escalation</a>
+<li><a href="#org32b906c">Escalation</a>
 <ul>
-<li><a href="#orgdde8e38">When to Escalate</a></li>
-<li><a href="#orgd177e7a">Escalation Procedure</a></li>
+<li><a href="#org531b6e4">When to Escalate</a></li>
+<li><a href="#org4a435f4">Escalation Procedure</a></li>
 </ul>
 </li>
-<li><a href="#org59ec55a">Alert Funnel</a>
+<li><a href="#org8b00c47">Alert Funnel</a>
 <ul>
-<li><a href="#org3cf9c8c">Reducing Noise</a></li>
+<li><a href="#org55bc4c2">Reducing Noise</a></li>
 </ul>
 </li>
-<li><a href="#orgfa12b8c">Tips</a></li>
+<li><a href="#orga2f550f">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -903,9 +921,9 @@ Related: <a href="20260206T060727--soc-l1-alert-triage__concept_cybersecurity.ht
          <a href="20260206T060659--incident-response__concept_cybersecurity.html">Incident Response</a>
          <a href="20260314T005749==siem--security-information-and-event-management__concept_cybersecurity.html">SIEM</a>
 </p>
-<div id="outline-container-orge2e21ba" class="outline-2">
-<h2 id="orge2e21ba">Report Structure</h2>
-<div class="outline-text-2" id="text-orge2e21ba">
+<div id="outline-container-org7a9dc4e" class="outline-2">
+<h2 id="org7a9dc4e">Report Structure</h2>
+<div class="outline-text-2" id="text-org7a9dc4e">
 <p>
 Every L1 alert report should answer the 5 Ws and H:
 </p>
@@ -957,15 +975,15 @@ Every L1 alert report should answer the 5 Ws and H:
 </tbody>
 </table>
 </div>
-<div id="outline-container-orgb843e4a" class="outline-3">
-<h3 id="orgb843e4a">Incident Summary</h3>
-<div class="outline-text-3" id="text-orgb843e4a">
+<div id="outline-container-orgc9ab05d" class="outline-3">
+<h3 id="orgc9ab05d">Incident Summary</h3>
+<div class="outline-text-3" id="text-orgc9ab05d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_0ed02b3fd2454df4bdd945b7b159d6cc>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_161fe40f8a1f44b19da35d8da3439318>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0ed02b3fd2454df4bdd945b7b159d6cc=document.querySelector('button[name=btn_0ed02b3fd2454df4bdd945b7b159d6cc]');
-copyBtnbtn_0ed02b3fd2454df4bdd945b7b159d6cc.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Title:            Brief descriptive title\n                  e.g. \"Potential brute-force attack on AD domain controller\"\nDetected:         Timestamp\nDetection source: Tool that generated the alert (SIEM, EDR, IDS)\nAffected assets:  Systems, users, or applications involved\nSeverity:         Critical / High / Medium / Low\nStatus:           Open / In Progress / Escalated / Closed\n`);copyBtnbtn_0ed02b3fd2454df4bdd945b7b159d6cc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0ed02b3fd2454df4bdd945b7b159d6cc.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_161fe40f8a1f44b19da35d8da3439318=document.querySelector('button[name=btn_161fe40f8a1f44b19da35d8da3439318]');
+copyBtnbtn_161fe40f8a1f44b19da35d8da3439318.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Title:            Brief descriptive title\n                  e.g. \"Potential brute-force attack on AD domain controller\"\nDetected:         Timestamp\nDetection source: Tool that generated the alert (SIEM, EDR, IDS)\nAffected assets:  Systems, users, or applications involved\nSeverity:         Critical / High / Medium / Low\nStatus:           Open / In Progress / Escalated / Closed\n`);copyBtnbtn_161fe40f8a1f44b19da35d8da3439318.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_161fe40f8a1f44b19da35d8da3439318.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -980,15 +998,15 @@ Status:           Open / In Progress / Escalated / Closed
 </div></div>
 </div>
 </div>
-<div id="outline-container-org56a22f0" class="outline-3">
-<h3 id="org56a22f0">Alert Detail</h3>
-<div class="outline-text-3" id="text-org56a22f0">
+<div id="outline-container-org23c738d" class="outline-3">
+<h3 id="org23c738d">Alert Detail</h3>
+<div class="outline-text-3" id="text-org23c738d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_a6b5b01b9a82498a8f75320a4e1c5340>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e63540078a5d4684b660210d6dc92a82>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a6b5b01b9a82498a8f75320a4e1c5340=document.querySelector('button[name=btn_a6b5b01b9a82498a8f75320a4e1c5340]');
-copyBtnbtn_a6b5b01b9a82498a8f75320a4e1c5340.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Raw logs/evidence:  Relevant log snippets or forensic artefacts\nObserved behaviour: Description of suspicious activity\nIOCs:               IPs, domains, hashes, filenames identified\nAnalysis performed: Steps taken during investigation\n`);copyBtnbtn_a6b5b01b9a82498a8f75320a4e1c5340.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a6b5b01b9a82498a8f75320a4e1c5340.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e63540078a5d4684b660210d6dc92a82=document.querySelector('button[name=btn_e63540078a5d4684b660210d6dc92a82]');
+copyBtnbtn_e63540078a5d4684b660210d6dc92a82.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Raw logs/evidence:  Relevant log snippets or forensic artefacts\nObserved behaviour: Description of suspicious activity\nIOCs:               IPs, domains, hashes, filenames identified\nAnalysis performed: Steps taken during investigation\n`);copyBtnbtn_e63540078a5d4684b660210d6dc92a82.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e63540078a5d4684b660210d6dc92a82.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1000,15 +1018,15 @@ Analysis performed: Steps taken during investigation
 </div></div>
 </div>
 </div>
-<div id="outline-container-org863e2ef" class="outline-3">
-<h3 id="org863e2ef">Initial Assessment</h3>
-<div class="outline-text-3" id="text-org863e2ef">
+<div id="outline-container-org225aa9d" class="outline-3">
+<h3 id="org225aa9d">Initial Assessment</h3>
+<div class="outline-text-3" id="text-org225aa9d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_16116bee89f84b62ad473bf3b8c38a40>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_4b0d20357d9248c986bf0e5fa7c6cc5b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_16116bee89f84b62ad473bf3b8c38a40=document.querySelector('button[name=btn_16116bee89f84b62ad473bf3b8c38a40]');
-copyBtnbtn_16116bee89f84b62ad473bf3b8c38a40.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Preliminary impact:      Business impact or data compromise risk\nAffected users/depts:    Who may be affected\n`);copyBtnbtn_16116bee89f84b62ad473bf3b8c38a40.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_16116bee89f84b62ad473bf3b8c38a40.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4b0d20357d9248c986bf0e5fa7c6cc5b=document.querySelector('button[name=btn_4b0d20357d9248c986bf0e5fa7c6cc5b]');
+copyBtnbtn_4b0d20357d9248c986bf0e5fa7c6cc5b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Preliminary impact:      Business impact or data compromise risk\nAffected users/depts:    Who may be affected\n`);copyBtnbtn_4b0d20357d9248c986bf0e5fa7c6cc5b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4b0d20357d9248c986bf0e5fa7c6cc5b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1018,15 +1036,15 @@ Affected users/depts:    Who may be affected
 </div></div>
 </div>
 </div>
-<div id="outline-container-org88f3670" class="outline-3">
-<h3 id="org88f3670">Recommended Actions (for L2/L3)</h3>
-<div class="outline-text-3" id="text-org88f3670">
+<div id="outline-container-org9256e07" class="outline-3">
+<h3 id="org9256e07">Recommended Actions (for L2/L3)</h3>
+<div class="outline-text-3" id="text-org9256e07">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_4971796d16494774bbdc919475305fb0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9ec68a42bcd5480288f963c5b991c180>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4971796d16494774bbdc919475305fb0=document.querySelector('button[name=btn_4971796d16494774bbdc919475305fb0]');
-copyBtnbtn_4971796d16494774bbdc919475305fb0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Immediate mitigations:       Actions already taken (IP block, isolation)\nFurther investigation needed: Specific questions for L2/L3\n`);copyBtnbtn_4971796d16494774bbdc919475305fb0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4971796d16494774bbdc919475305fb0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9ec68a42bcd5480288f963c5b991c180=document.querySelector('button[name=btn_9ec68a42bcd5480288f963c5b991c180]');
+copyBtnbtn_9ec68a42bcd5480288f963c5b991c180.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Immediate mitigations:       Actions already taken (IP block, isolation)\nFurther investigation needed: Specific questions for L2/L3\n`);copyBtnbtn_9ec68a42bcd5480288f963c5b991c180.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9ec68a42bcd5480288f963c5b991c180.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1037,13 +1055,13 @@ Further investigation needed: Specific questions for L2/L3
 </div>
 </div>
 </div>
-<div id="outline-container-org4517bb0" class="outline-2">
-<h2 id="org4517bb0">Escalation</h2>
-<div class="outline-text-2" id="text-org4517bb0">
+<div id="outline-container-org32b906c" class="outline-2">
+<h2 id="org32b906c">Escalation</h2>
+<div class="outline-text-2" id="text-org32b906c">
 </div>
-<div id="outline-container-orgdde8e38" class="outline-3">
-<h3 id="orgdde8e38">When to Escalate</h3>
-<div class="outline-text-3" id="text-orgdde8e38">
+<div id="outline-container-org531b6e4" class="outline-3">
+<h3 id="org531b6e4">When to Escalate</h3>
+<div class="outline-text-3" id="text-org531b6e4">
 <ul class="org-ul">
 <li>Any Critical or High severity alert</li>
 <li>Alert not resolved or understood within ~30 minutes</li>
@@ -1052,15 +1070,15 @@ Further investigation needed: Specific questions for L2/L3
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd177e7a" class="outline-3">
-<h3 id="orgd177e7a">Escalation Procedure</h3>
-<div class="outline-text-3" id="text-orgd177e7a">
+<div id="outline-container-org4a435f4" class="outline-3">
+<h3 id="org4a435f4">Escalation Procedure</h3>
+<div class="outline-text-3" id="text-org4a435f4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_1200349602314a979e907717ddc29beb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_de3362f84d794ac7b37d2b670a934d07>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1200349602314a979e907717ddc29beb=document.querySelector('button[name=btn_1200349602314a979e907717ddc29beb]');
-copyBtnbtn_1200349602314a979e907717ddc29beb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Complete L1 report — all sections filled with available information\n2. Notify L2/L3 lead via agreed channel (Teams, email, ticketing system)\n3. Update ticket ownership — clear handover in the system\n4. Verbal briefing — concise summary of key findings and immediate concerns\n`);copyBtnbtn_1200349602314a979e907717ddc29beb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1200349602314a979e907717ddc29beb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_de3362f84d794ac7b37d2b670a934d07=document.querySelector('button[name=btn_de3362f84d794ac7b37d2b670a934d07]');
+copyBtnbtn_de3362f84d794ac7b37d2b670a934d07.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Complete L1 report — all sections filled with available information\n2. Notify L2/L3 lead via agreed channel (Teams, email, ticketing system)\n3. Update ticket ownership — clear handover in the system\n4. Verbal briefing — concise summary of key findings and immediate concerns\n`);copyBtnbtn_de3362f84d794ac7b37d2b670a934d07.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_de3362f84d794ac7b37d2b670a934d07.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1073,19 +1091,19 @@ let res = copyTextToClipboard(`1. Complete L1 report — all sections filled wit
 </div>
 </div>
 </div>
-<div id="outline-container-org59ec55a" class="outline-2">
-<h2 id="org59ec55a">Alert Funnel</h2>
-<div class="outline-text-2" id="text-org59ec55a">
+<div id="outline-container-org8b00c47" class="outline-2">
+<h2 id="org8b00c47">Alert Funnel</h2>
+<div class="outline-text-2" id="text-org8b00c47">
 <p>
 How raw log data becomes an escalated incident:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9670ff94f990443690a98ecbc64619d5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_14a539db047849f89604e2ead4340c6a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9670ff94f990443690a98ecbc64619d5=document.querySelector('button[name=btn_9670ff94f990443690a98ecbc64619d5]');
-copyBtnbtn_9670ff94f990443690a98ecbc64619d5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Raw data collection\n    ↓\nNormalisation and enrichment (threat intel, asset criticality)\n    ↓\nCorrelation and aggregation (SIEM rules, ML, behavioural analytics)\n    ↓\nAlert generation\n    ↓\nL1 triage — classify, filter false positives, close or escalate\n    ↓\nL2/L3 investigation — genuine alerts requiring deeper analysis\n    ↓\nIncident response — confirmed incidents: contain, eradicate, recover\n`);copyBtnbtn_9670ff94f990443690a98ecbc64619d5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9670ff94f990443690a98ecbc64619d5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_14a539db047849f89604e2ead4340c6a=document.querySelector('button[name=btn_14a539db047849f89604e2ead4340c6a]');
+copyBtnbtn_14a539db047849f89604e2ead4340c6a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Raw data collection\n    ↓\nNormalisation and enrichment (threat intel, asset criticality)\n    ↓\nCorrelation and aggregation (SIEM rules, ML, behavioural analytics)\n    ↓\nAlert generation\n    ↓\nL1 triage — classify, filter false positives, close or escalate\n    ↓\nL2/L3 investigation — genuine alerts requiring deeper analysis\n    ↓\nIncident response — confirmed incidents: contain, eradicate, recover\n`);copyBtnbtn_14a539db047849f89604e2ead4340c6a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_14a539db047849f89604e2ead4340c6a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1105,9 +1123,9 @@ Incident response &#8212; confirmed incidents: contain, eradicate, recover
 </pre>
 </div></div>
 </div>
-<div id="outline-container-org3cf9c8c" class="outline-3">
-<h3 id="org3cf9c8c">Reducing Noise</h3>
-<div class="outline-text-3" id="text-org3cf9c8c">
+<div id="outline-container-org55bc4c2" class="outline-3">
+<h3 id="org55bc4c2">Reducing Noise</h3>
+<div class="outline-text-3" id="text-org55bc4c2">
 <ul class="org-ul">
 <li><b>Rule tuning</b> — regularly review alert rules to reduce false positives</li>
 <li><b>Threat intelligence</b> — contextualise alerts against known IOCs and TTPs</li>
@@ -1118,9 +1136,9 @@ to improve rules over time</li>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfa12b8c" class="outline-2">
-<h2 id="orgfa12b8c">Tips</h2>
-<div class="outline-text-2" id="text-orgfa12b8c">
+<div id="outline-container-orga2f550f" class="outline-2">
+<h2 id="orga2f550f">Tips</h2>
+<div class="outline-text-2" id="text-orga2f550f">
 <ul class="org-ul">
 <li>Fill the report as you investigate — do not leave it to the end;
 notes taken during analysis are more accurate than reconstruction</li>
@@ -1133,6 +1151,20 @@ less costly than a missed incident</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1140,6 +1172,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

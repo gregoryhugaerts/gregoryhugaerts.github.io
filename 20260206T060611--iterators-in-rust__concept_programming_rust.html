@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Iterators in Rust</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,38 +886,38 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9ce8d8c">Iterators in Rust</a>
+<li><a href="#orgf3208a6">Iterators in Rust</a>
 <ul>
-<li><a href="#orgf183679">Core Concepts</a></li>
-<li><a href="#orgbafc47a">Iterator Adaptors (Transforming Iterators)</a></li>
-<li><a href="#orge2491c7">Consuming Adaptors (Executing the Iteration)</a></li>
-<li><a href="#orgbe61eee">Why Iterators Are Important in Rust</a></li>
+<li><a href="#orge4e014c">Core Concepts</a></li>
+<li><a href="#orgf4486e0">Iterator Adaptors (Transforming Iterators)</a></li>
+<li><a href="#org88c151b">Consuming Adaptors (Executing the Iteration)</a></li>
+<li><a href="#orgef21be2">Why Iterators Are Important in Rust</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9ce8d8c" class="outline-2">
-<h2 id="org9ce8d8c">Iterators in Rust</h2>
-<div class="outline-text-2" id="text-org9ce8d8c">
+<div id="outline-container-orgf3208a6" class="outline-2">
+<h2 id="orgf3208a6">Iterators in Rust</h2>
+<div class="outline-text-2" id="text-orgf3208a6">
 <p>
 In Rust, <b>iterators</b> are a powerful and efficient way to process sequences of data. They provide a standardized, lazy, and often zero-cost abstraction for working with collections (like <code>Vec</code>, <code>HashMap</code>, <code>String</code>) and other sequences. Iterators are central to Rust's idiomatic style, promoting Functional Programming patterns and highly optimized code.
 </p>
 </div>
-<div id="outline-container-orgf183679" class="outline-3">
-<h3 id="orgf183679">Core Concepts</h3>
-<div class="outline-text-3" id="text-orgf183679">
+<div id="outline-container-orge4e014c" class="outline-3">
+<h3 id="orge4e014c">Core Concepts</h3>
+<div class="outline-text-3" id="text-orge4e014c">
 <ul class="org-ul">
 <li><p>
 <b>The <code>Iterator</code> Trait:</b> The heart of Rust's iterator system is the <code>Iterator</code> trait, defined in the standard library. Any type that wants to be an iterator must implement this trait.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_5b4e4e2a50f74a5b917258da8d819817>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_5cb5ac08e5054c4196735f61d05166a2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5b4e4e2a50f74a5b917258da8d819817=document.querySelector('button[name=btn_5b4e4e2a50f74a5b917258da8d819817]');
-copyBtnbtn_5b4e4e2a50f74a5b917258da8d819817.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`pub trait Iterator {\n    type Item; // Associated type: the type of the items produced by the iterator\n\n    // The core method: attempts to return the next item.\n    // Returns \`Some(item)\` if there's an item, \`None\` if the iteration is complete.\n    fn next(&mut self) -> Option<Self::Item>;\n\n    // Many other default methods are provided on the trait (e.g., map, filter, collect, for_each)\n    // that use \`next\` internally and provide convenient transformations.\n}\n`);copyBtnbtn_5b4e4e2a50f74a5b917258da8d819817.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5b4e4e2a50f74a5b917258da8d819817.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5cb5ac08e5054c4196735f61d05166a2=document.querySelector('button[name=btn_5cb5ac08e5054c4196735f61d05166a2]');
+copyBtnbtn_5cb5ac08e5054c4196735f61d05166a2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`pub trait Iterator {\n    type Item; // Associated type: the type of the items produced by the iterator\n\n    // The core method: attempts to return the next item.\n    // Returns \`Some(item)\` if there's an item, \`None\` if the iteration is complete.\n    fn next(&mut self) -> Option<Self::Item>;\n\n    // Many other default methods are provided on the trait (e.g., map, filter, collect, for_each)\n    // that use \`next\` internally and provide convenient transformations.\n}\n`);copyBtnbtn_5cb5ac08e5054c4196735f61d05166a2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5cb5ac08e5054c4196735f61d05166a2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -928,11 +946,11 @@ let res = copyTextToClipboard(`pub trait Iterator {\n    type Item; // Associate
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_b8cd64f09cd94082a9efd301b443c916>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_e0dfd5d3333b444090f5fe024186040b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b8cd64f09cd94082a9efd301b443c916=document.querySelector('button[name=btn_b8cd64f09cd94082a9efd301b443c916]');
-copyBtnbtn_b8cd64f09cd94082a9efd301b443c916.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let v = vec![1, 2, 3];\nlet iter = v.iter(); // yields &i32\n`);copyBtnbtn_b8cd64f09cd94082a9efd301b443c916.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b8cd64f09cd94082a9efd301b443c916.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e0dfd5d3333b444090f5fe024186040b=document.querySelector('button[name=btn_e0dfd5d3333b444090f5fe024186040b]');
+copyBtnbtn_e0dfd5d3333b444090f5fe024186040b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let v = vec![1, 2, 3];\nlet iter = v.iter(); // yields &i32\n`);copyBtnbtn_e0dfd5d3333b444090f5fe024186040b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e0dfd5d3333b444090f5fe024186040b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -946,11 +964,11 @@ let iter = v.iter(); // yields &amp;i32
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_d4ae697765b349bdb74f1aa44961fed2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_2d67d100e78f4150a6b49c8e31dfcfdd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d4ae697765b349bdb74f1aa44961fed2=document.querySelector('button[name=btn_d4ae697765b349bdb74f1aa44961fed2]');
-copyBtnbtn_d4ae697765b349bdb74f1aa44961fed2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let mut v = vec![1, 2, 3];\nlet iter_mut = v.iter_mut(); // yields &mut i32\n`);copyBtnbtn_d4ae697765b349bdb74f1aa44961fed2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d4ae697765b349bdb74f1aa44961fed2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2d67d100e78f4150a6b49c8e31dfcfdd=document.querySelector('button[name=btn_2d67d100e78f4150a6b49c8e31dfcfdd]');
+copyBtnbtn_2d67d100e78f4150a6b49c8e31dfcfdd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let mut v = vec![1, 2, 3];\nlet iter_mut = v.iter_mut(); // yields &mut i32\n`);copyBtnbtn_2d67d100e78f4150a6b49c8e31dfcfdd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2d67d100e78f4150a6b49c8e31dfcfdd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -964,11 +982,11 @@ let iter_mut = v.iter_mut(); // yields &amp;mut i32
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_ba3b49de26324247aafce6f96ced02e4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_85d945939fe7478f9b18d44bc18ee230>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ba3b49de26324247aafce6f96ced02e4=document.querySelector('button[name=btn_ba3b49de26324247aafce6f96ced02e4]');
-copyBtnbtn_ba3b49de26324247aafce6f96ced02e4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let v = vec![1, 2, 3];\nlet into_iter = v.into_iter(); // yields i32, consumes v\n`);copyBtnbtn_ba3b49de26324247aafce6f96ced02e4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ba3b49de26324247aafce6f96ced02e4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_85d945939fe7478f9b18d44bc18ee230=document.querySelector('button[name=btn_85d945939fe7478f9b18d44bc18ee230]');
+copyBtnbtn_85d945939fe7478f9b18d44bc18ee230.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let v = vec![1, 2, 3];\nlet into_iter = v.into_iter(); // yields i32, consumes v\n`);copyBtnbtn_85d945939fe7478f9b18d44bc18ee230.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_85d945939fe7478f9b18d44bc18ee230.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -980,9 +998,9 @@ let into_iter = v.into_iter(); // yields i32, consumes v
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbafc47a" class="outline-3">
-<h3 id="orgbafc47a">Iterator Adaptors (Transforming Iterators)</h3>
-<div class="outline-text-3" id="text-orgbafc47a">
+<div id="outline-container-orgf4486e0" class="outline-3">
+<h3 id="orgf4486e0">Iterator Adaptors (Transforming Iterators)</h3>
+<div class="outline-text-3" id="text-orgf4486e0">
 <p>
 Iterator adaptors are methods defined on the <code>Iterator</code> trait that consume one iterator and produce another, transformed iterator. They are lazy.
 </p>
@@ -993,11 +1011,11 @@ Iterator adaptors are methods defined on the <code>Iterator</code> trait that co
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_7c965117dc8e487c874937693f20b017>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_03ef4ea89df34f39b3a9d9b766f192b4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7c965117dc8e487c874937693f20b017=document.querySelector('button[name=btn_7c965117dc8e487c874937693f20b017]');
-copyBtnbtn_7c965117dc8e487c874937693f20b017.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let numbers = vec![1, 2, 3];\nlet doubled: Vec<i32> = numbers.iter().map(|x| x * 2).collect(); // [2, 4, 6]\n`);copyBtnbtn_7c965117dc8e487c874937693f20b017.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7c965117dc8e487c874937693f20b017.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_03ef4ea89df34f39b3a9d9b766f192b4=document.querySelector('button[name=btn_03ef4ea89df34f39b3a9d9b766f192b4]');
+copyBtnbtn_03ef4ea89df34f39b3a9d9b766f192b4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let numbers = vec![1, 2, 3];\nlet doubled: Vec<i32> = numbers.iter().map(|x| x * 2).collect(); // [2, 4, 6]\n`);copyBtnbtn_03ef4ea89df34f39b3a9d9b766f192b4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_03ef4ea89df34f39b3a9d9b766f192b4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1011,11 +1029,11 @@ let doubled: Vec&lt;i32&gt; = numbers.iter().map(|x| x * 2).collect(); // [2, 4,
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_923aeea4c5194bc4bca9994bbce8ce61>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_1a2e0634a54b43d6b3f33dde246293ab>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_923aeea4c5194bc4bca9994bbce8ce61=document.querySelector('button[name=btn_923aeea4c5194bc4bca9994bbce8ce61]');
-copyBtnbtn_923aeea4c5194bc4bca9994bbce8ce61.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let numbers = vec![1, 2, 3, 4, 5];\nlet evens: Vec<i32> = numbers.iter().filter(|&&x| x % 2 == 0).cloned().collect(); // [2, 4]\n// Note: filter on \`&i32\`, so we dereference twice \`&&x\` and then clone to get owned i32s.\n`);copyBtnbtn_923aeea4c5194bc4bca9994bbce8ce61.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_923aeea4c5194bc4bca9994bbce8ce61.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1a2e0634a54b43d6b3f33dde246293ab=document.querySelector('button[name=btn_1a2e0634a54b43d6b3f33dde246293ab]');
+copyBtnbtn_1a2e0634a54b43d6b3f33dde246293ab.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let numbers = vec![1, 2, 3, 4, 5];\nlet evens: Vec<i32> = numbers.iter().filter(|&&x| x % 2 == 0).cloned().collect(); // [2, 4]\n// Note: filter on \`&i32\`, so we dereference twice \`&&x\` and then clone to get owned i32s.\n`);copyBtnbtn_1a2e0634a54b43d6b3f33dde246293ab.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1a2e0634a54b43d6b3f33dde246293ab.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1030,11 +1048,11 @@ let evens: Vec&lt;i32&gt; = numbers.iter().filter(|&amp;&amp;x| x % 2 == 0).clon
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_dec4c16001c141988325cbf251e3f1dd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_fd4c80742cd84688a952263015e3396f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_dec4c16001c141988325cbf251e3f1dd=document.querySelector('button[name=btn_dec4c16001c141988325cbf251e3f1dd]');
-copyBtnbtn_dec4c16001c141988325cbf251e3f1dd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let a = [1, 2, 3];\nlet b = ['a', 'b', 'c'];\nfor (num, char) in a.iter().zip(b.iter()) {\n    println!(\"{}: {}\", num, char);\n}\n`);copyBtnbtn_dec4c16001c141988325cbf251e3f1dd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dec4c16001c141988325cbf251e3f1dd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_fd4c80742cd84688a952263015e3396f=document.querySelector('button[name=btn_fd4c80742cd84688a952263015e3396f]');
+copyBtnbtn_fd4c80742cd84688a952263015e3396f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let a = [1, 2, 3];\nlet b = ['a', 'b', 'c'];\nfor (num, char) in a.iter().zip(b.iter()) {\n    println!(\"{}: {}\", num, char);\n}\n`);copyBtnbtn_fd4c80742cd84688a952263015e3396f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fd4c80742cd84688a952263015e3396f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1051,11 +1069,11 @@ for (num, char) in a.iter().zip(b.iter()) {
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_b7e2dc842af34ac8b00200a7511fe535>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_2719486596fb4d01abb33a628079eefc>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b7e2dc842af34ac8b00200a7511fe535=document.querySelector('button[name=btn_b7e2dc842af34ac8b00200a7511fe535]');
-copyBtnbtn_b7e2dc842af34ac8b00200a7511fe535.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let words = vec![\"hello\", \"world\"];\nlet chars: Vec<char> = words.into_iter().flat_map(|s| s.chars()).collect(); // ['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd']\n`);copyBtnbtn_b7e2dc842af34ac8b00200a7511fe535.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b7e2dc842af34ac8b00200a7511fe535.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2719486596fb4d01abb33a628079eefc=document.querySelector('button[name=btn_2719486596fb4d01abb33a628079eefc]');
+copyBtnbtn_2719486596fb4d01abb33a628079eefc.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let words = vec![\"hello\", \"world\"];\nlet chars: Vec<char> = words.into_iter().flat_map(|s| s.chars()).collect(); // ['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd']\n`);copyBtnbtn_2719486596fb4d01abb33a628079eefc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2719486596fb4d01abb33a628079eefc.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1068,9 +1086,9 @@ let chars: Vec&lt;char&gt; = words.into_iter().flat_map(|s| s.chars()).collect()
 </ul>
 </div>
 </div>
-<div id="outline-container-orge2491c7" class="outline-3">
-<h3 id="orge2491c7">Consuming Adaptors (Executing the Iteration)</h3>
-<div class="outline-text-3" id="text-orge2491c7">
+<div id="outline-container-org88c151b" class="outline-3">
+<h3 id="org88c151b">Consuming Adaptors (Executing the Iteration)</h3>
+<div class="outline-text-3" id="text-org88c151b">
 <p>
 Consuming adaptors are methods that consume the iterator (by calling <code>next()</code> repeatedly) and produce a final result. They trigger the lazy evaluation.
 </p>
@@ -1081,11 +1099,11 @@ Consuming adaptors are methods that consume the iterator (by calling <code>next(
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_f879ed6bdd024581afaa0351fb051635>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_a8b29a94a4484d0db7cdd5a2912f415b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f879ed6bdd024581afaa0351fb051635=document.querySelector('button[name=btn_f879ed6bdd024581afaa0351fb051635]');
-copyBtnbtn_f879ed6bdd024581afaa0351fb051635.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let s = \"hello world\";\nlet chars: Vec<char> = s.chars().collect();\n`);copyBtnbtn_f879ed6bdd024581afaa0351fb051635.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f879ed6bdd024581afaa0351fb051635.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a8b29a94a4484d0db7cdd5a2912f415b=document.querySelector('button[name=btn_a8b29a94a4484d0db7cdd5a2912f415b]');
+copyBtnbtn_a8b29a94a4484d0db7cdd5a2912f415b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let s = \"hello world\";\nlet chars: Vec<char> = s.chars().collect();\n`);copyBtnbtn_a8b29a94a4484d0db7cdd5a2912f415b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a8b29a94a4484d0db7cdd5a2912f415b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1099,11 +1117,11 @@ let chars: Vec&lt;char&gt; = s.chars().collect();
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_f1dd72e6e2c34821b8332b94aa2a1ab9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_aee0a436947d4f31ac915bf65f513723>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f1dd72e6e2c34821b8332b94aa2a1ab9=document.querySelector('button[name=btn_f1dd72e6e2c34821b8332b94aa2a1ab9]');
-copyBtnbtn_f1dd72e6e2c34821b8332b94aa2a1ab9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let numbers = vec![1, 2, 3];\nnumbers.iter().for_each(|x| println!(\"{}\", x));\n`);copyBtnbtn_f1dd72e6e2c34821b8332b94aa2a1ab9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f1dd72e6e2c34821b8332b94aa2a1ab9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_aee0a436947d4f31ac915bf65f513723=document.querySelector('button[name=btn_aee0a436947d4f31ac915bf65f513723]');
+copyBtnbtn_aee0a436947d4f31ac915bf65f513723.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let numbers = vec![1, 2, 3];\nnumbers.iter().for_each(|x| println!(\"{}\", x));\n`);copyBtnbtn_aee0a436947d4f31ac915bf65f513723.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aee0a436947d4f31ac915bf65f513723.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1117,11 +1135,11 @@ numbers.iter().for_each(|x| println!("{}", x));
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_5a25f2624a2a41848623fb1582d4d75d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_4bb9feed682747159ba679c9c56367e3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5a25f2624a2a41848623fb1582d4d75d=document.querySelector('button[name=btn_5a25f2624a2a41848623fb1582d4d75d]');
-copyBtnbtn_5a25f2624a2a41848623fb1582d4d75d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let numbers = vec![1, 2, 3, 4];\nlet total: i32 = numbers.iter().sum(); // 10\n`);copyBtnbtn_5a25f2624a2a41848623fb1582d4d75d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5a25f2624a2a41848623fb1582d4d75d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4bb9feed682747159ba679c9c56367e3=document.querySelector('button[name=btn_4bb9feed682747159ba679c9c56367e3]');
+copyBtnbtn_4bb9feed682747159ba679c9c56367e3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let numbers = vec![1, 2, 3, 4];\nlet total: i32 = numbers.iter().sum(); // 10\n`);copyBtnbtn_4bb9feed682747159ba679c9c56367e3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4bb9feed682747159ba679c9c56367e3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1140,9 +1158,9 @@ let total: i32 = numbers.iter().sum(); // 10
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbe61eee" class="outline-3">
-<h3 id="orgbe61eee">Why Iterators Are Important in Rust</h3>
-<div class="outline-text-3" id="text-orgbe61eee">
+<div id="outline-container-orgef21be2" class="outline-3">
+<h3 id="orgef21be2">Why Iterators Are Important in Rust</h3>
+<div class="outline-text-3" id="text-orgef21be2">
 <ul class="org-ul">
 <li><b>Performance:</b> Due to lazy evaluation and compiler optimizations (often "zero-cost abstractions"), Rust iterators can be as fast as, or even faster than, hand-written loops. The compiler can often unroll loops and optimize the chain of adaptor calls.</li>
 <li><b>Readability and Expressiveness:</b> They promote a functional style, making code more concise and easier to understand, especially for complex data transformations.</li>
@@ -1155,6 +1173,20 @@ let total: i32 = numbers.iter().sum(); // 10
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1162,6 +1194,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

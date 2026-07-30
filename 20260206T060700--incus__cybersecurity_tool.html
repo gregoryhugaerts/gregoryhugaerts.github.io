@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Incus</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,21 +886,21 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org78cab92">Installation</a></li>
-<li><a href="#org88fdce6">Instances</a>
+<li><a href="#org4bc5601">Installation</a></li>
+<li><a href="#org00a902d">Instances</a>
 <ul>
-<li><a href="#org978238b">Containers</a></li>
-<li><a href="#org53f2a64">Virtual Machines</a></li>
+<li><a href="#orgfa83db7">Containers</a></li>
+<li><a href="#orgc197d8f">Virtual Machines</a></li>
 </ul>
 </li>
-<li><a href="#orgbeac567">Images</a></li>
-<li><a href="#orgdd61b6c">Configuration</a></li>
-<li><a href="#org826458a">Snapshots</a></li>
-<li><a href="#orgea0103d">File Transfer</a></li>
-<li><a href="#orgd98b3f1">Profiles</a></li>
-<li><a href="#orgd80b77b">Networking</a></li>
-<li><a href="#org66dcb7e">Security Relevance</a></li>
-<li><a href="#orgfd9d789">Tips</a></li>
+<li><a href="#org35548bc">Images</a></li>
+<li><a href="#org06f667a">Configuration</a></li>
+<li><a href="#org0eb24c9">Snapshots</a></li>
+<li><a href="#org002d69f">File Transfer</a></li>
+<li><a href="#org17ef088">Profiles</a></li>
+<li><a href="#org6eff3f4">Networking</a></li>
+<li><a href="#org5404ca2">Security Relevance</a></li>
+<li><a href="#org920edcd">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -903,15 +921,15 @@ Related: <a href="20260206T060615--linux-containers__concept.html">Linux Contain
          <a href="20260314T005620--container-escape__concept_cybersecurity_technique.html">Container Escape</a>
          <a href="20260206T060536--docker__tool.html">Docker</a>
 </p>
-<div id="outline-container-org78cab92" class="outline-2">
-<h2 id="org78cab92">Installation</h2>
-<div class="outline-text-2" id="text-org78cab92">
+<div id="outline-container-org4bc5601" class="outline-2">
+<h2 id="org4bc5601">Installation</h2>
+<div class="outline-text-2" id="text-org4bc5601">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f9de21f5ec2e42d0a1c00e855a8052d1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4582d87f21e545a7a7530deee7939fec>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f9de21f5ec2e42d0a1c00e855a8052d1=document.querySelector('button[name=btn_f9de21f5ec2e42d0a1c00e855a8052d1]');
-copyBtnbtn_f9de21f5ec2e42d0a1c00e855a8052d1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Install via snap (recommended — latest version)\nsnap install incus\n\n# Or native package (Debian/Ubuntu)\napt install incus\n\n# Initialise (interactive setup — storage pool, network bridge)\nincus admin init\n\n# Minimal non-interactive init for a lab\nincus admin init --minimal\n`);copyBtnbtn_f9de21f5ec2e42d0a1c00e855a8052d1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f9de21f5ec2e42d0a1c00e855a8052d1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4582d87f21e545a7a7530deee7939fec=document.querySelector('button[name=btn_4582d87f21e545a7a7530deee7939fec]');
+copyBtnbtn_4582d87f21e545a7a7530deee7939fec.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Install via snap (recommended — latest version)\nsnap install incus\n\n# Or native package (Debian/Ubuntu)\napt install incus\n\n# Initialise (interactive setup — storage pool, network bridge)\nincus admin init\n\n# Minimal non-interactive init for a lab\nincus admin init --minimal\n`);copyBtnbtn_4582d87f21e545a7a7530deee7939fec.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4582d87f21e545a7a7530deee7939fec.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -930,19 +948,19 @@ let res = copyTextToClipboard(`# Install via snap (recommended — latest versio
 </div></div>
 </div>
 </div>
-<div id="outline-container-org88fdce6" class="outline-2">
-<h2 id="org88fdce6">Instances</h2>
-<div class="outline-text-2" id="text-org88fdce6">
+<div id="outline-container-org00a902d" class="outline-2">
+<h2 id="org00a902d">Instances</h2>
+<div class="outline-text-2" id="text-org00a902d">
 </div>
-<div id="outline-container-org978238b" class="outline-3">
-<h3 id="org978238b">Containers</h3>
-<div class="outline-text-3" id="text-org978238b">
+<div id="outline-container-orgfa83db7" class="outline-3">
+<h3 id="orgfa83db7">Containers</h3>
+<div class="outline-text-3" id="text-orgfa83db7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_aee082a2de624577bec4cbaaf0e90778>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0ecebaad11fd431990a478631f5f53d1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_aee082a2de624577bec4cbaaf0e90778=document.querySelector('button[name=btn_aee082a2de624577bec4cbaaf0e90778]');
-copyBtnbtn_aee082a2de624577bec4cbaaf0e90778.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Launch a container from an image\nincus launch images:ubuntu/22.04 mycontainer\nincus launch images:debian/12 debian-test\n\n# List running instances\nincus list\n\n# Shell into container\nincus exec mycontainer -- bash\nincus exec mycontainer -- /bin/sh\n\n# Run a single command\nincus exec mycontainer -- apt update\n\n# Stop / start / restart\nincus stop mycontainer\nincus start mycontainer\nincus restart mycontainer\n\n# Delete\nincus delete mycontainer\nincus delete mycontainer --force   # force delete while running\n`);copyBtnbtn_aee082a2de624577bec4cbaaf0e90778.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aee082a2de624577bec4cbaaf0e90778.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0ecebaad11fd431990a478631f5f53d1=document.querySelector('button[name=btn_0ecebaad11fd431990a478631f5f53d1]');
+copyBtnbtn_0ecebaad11fd431990a478631f5f53d1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Launch a container from an image\nincus launch images:ubuntu/22.04 mycontainer\nincus launch images:debian/12 debian-test\n\n# List running instances\nincus list\n\n# Shell into container\nincus exec mycontainer -- bash\nincus exec mycontainer -- /bin/sh\n\n# Run a single command\nincus exec mycontainer -- apt update\n\n# Stop / start / restart\nincus stop mycontainer\nincus start mycontainer\nincus restart mycontainer\n\n# Delete\nincus delete mycontainer\nincus delete mycontainer --force   # force delete while running\n`);copyBtnbtn_0ecebaad11fd431990a478631f5f53d1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0ecebaad11fd431990a478631f5f53d1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -972,15 +990,15 @@ incus delete mycontainer --force   <span style="color: var(--clr-comment-delimit
 </div></div>
 </div>
 </div>
-<div id="outline-container-org53f2a64" class="outline-3">
-<h3 id="org53f2a64">Virtual Machines</h3>
-<div class="outline-text-3" id="text-org53f2a64">
+<div id="outline-container-orgc197d8f" class="outline-3">
+<h3 id="orgc197d8f">Virtual Machines</h3>
+<div class="outline-text-3" id="text-orgc197d8f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b5699b3f01a048a5b1c749429e8d15f5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_94d4da01138d4e51b4c2c1deb7044aba>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b5699b3f01a048a5b1c749429e8d15f5=document.querySelector('button[name=btn_b5699b3f01a048a5b1c749429e8d15f5]');
-copyBtnbtn_b5699b3f01a048a5b1c749429e8d15f5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Launch a VM (requires --vm flag)\nincus launch images:ubuntu/22.04 myvm --vm\n\n# Connect to VM console\nincus console myvm\n\n# Connect via VGA console (if GUI needed)\nincus console myvm --type=vga\n`);copyBtnbtn_b5699b3f01a048a5b1c749429e8d15f5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b5699b3f01a048a5b1c749429e8d15f5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_94d4da01138d4e51b4c2c1deb7044aba=document.querySelector('button[name=btn_94d4da01138d4e51b4c2c1deb7044aba]');
+copyBtnbtn_94d4da01138d4e51b4c2c1deb7044aba.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Launch a VM (requires --vm flag)\nincus launch images:ubuntu/22.04 myvm --vm\n\n# Connect to VM console\nincus console myvm\n\n# Connect via VGA console (if GUI needed)\nincus console myvm --type=vga\n`);copyBtnbtn_94d4da01138d4e51b4c2c1deb7044aba.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_94d4da01138d4e51b4c2c1deb7044aba.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -997,15 +1015,15 @@ let res = copyTextToClipboard(`# Launch a VM (requires --vm flag)\nincus launch 
 </div>
 </div>
 </div>
-<div id="outline-container-orgbeac567" class="outline-2">
-<h2 id="orgbeac567">Images</h2>
-<div class="outline-text-2" id="text-orgbeac567">
+<div id="outline-container-org35548bc" class="outline-2">
+<h2 id="org35548bc">Images</h2>
+<div class="outline-text-2" id="text-org35548bc">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_530dc466f9234509abc362728ad97234>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2e297cc9950941bcbc8965c02c15967f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_530dc466f9234509abc362728ad97234=document.querySelector('button[name=btn_530dc466f9234509abc362728ad97234]');
-copyBtnbtn_530dc466f9234509abc362728ad97234.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List available remote images (common remotes: ubuntu, images)\nincus image list ubuntu:\nincus image list images: | grep debian\n\n# List locally cached images\nincus image list\n\n# Pull an image without launching\nincus image copy images:ubuntu/22.04 local:\nincus image copy images:ubuntu/22.04 local: --alias ubuntu-22\n\n# Remove local image\nincus image delete ubuntu-22\n`);copyBtnbtn_530dc466f9234509abc362728ad97234.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_530dc466f9234509abc362728ad97234.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2e297cc9950941bcbc8965c02c15967f=document.querySelector('button[name=btn_2e297cc9950941bcbc8965c02c15967f]');
+copyBtnbtn_2e297cc9950941bcbc8965c02c15967f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List available remote images (common remotes: ubuntu, images)\nincus image list ubuntu:\nincus image list images: | grep debian\n\n# List locally cached images\nincus image list\n\n# Pull an image without launching\nincus image copy images:ubuntu/22.04 local:\nincus image copy images:ubuntu/22.04 local: --alias ubuntu-22\n\n# Remove local image\nincus image delete ubuntu-22\n`);copyBtnbtn_2e297cc9950941bcbc8965c02c15967f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2e297cc9950941bcbc8965c02c15967f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1026,15 +1044,15 @@ incus image copy images:ubuntu/22.04 local: --alias ubuntu-22
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgdd61b6c" class="outline-2">
-<h2 id="orgdd61b6c">Configuration</h2>
-<div class="outline-text-2" id="text-orgdd61b6c">
+<div id="outline-container-org06f667a" class="outline-2">
+<h2 id="org06f667a">Configuration</h2>
+<div class="outline-text-2" id="text-org06f667a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6ed3a83a704c4532bd22e238c3ca2015>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6f9509c8dc9741a7b75a3103cd2405a5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6ed3a83a704c4532bd22e238c3ca2015=document.querySelector('button[name=btn_6ed3a83a704c4532bd22e238c3ca2015]');
-copyBtnbtn_6ed3a83a704c4532bd22e238c3ca2015.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Show instance config\nincus config show mycontainer\n\n# Set resource limits\nincus config set mycontainer limits.cpu 2\nincus config set mycontainer limits.memory 2GB\n\n# Set environment variable\nincus config set mycontainer environment.MY_VAR \"value\"\n\n# Mount a host directory into a container\nincus config device add mycontainer hostdir disk \\\n  source=/home/user/shared \\\n  path=/mnt/shared\n\n# Expose a port (NAT from host to container)\nincus config device add mycontainer myport proxy \\\n  listen=tcp:0.0.0.0:8080 \\\n  connect=tcp:127.0.0.1:80\n`);copyBtnbtn_6ed3a83a704c4532bd22e238c3ca2015.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6ed3a83a704c4532bd22e238c3ca2015.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6f9509c8dc9741a7b75a3103cd2405a5=document.querySelector('button[name=btn_6f9509c8dc9741a7b75a3103cd2405a5]');
+copyBtnbtn_6f9509c8dc9741a7b75a3103cd2405a5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Show instance config\nincus config show mycontainer\n\n# Set resource limits\nincus config set mycontainer limits.cpu 2\nincus config set mycontainer limits.memory 2GB\n\n# Set environment variable\nincus config set mycontainer environment.MY_VAR \"value\"\n\n# Mount a host directory into a container\nincus config device add mycontainer hostdir disk \\\n  source=/home/user/shared \\\n  path=/mnt/shared\n\n# Expose a port (NAT from host to container)\nincus config device add mycontainer myport proxy \\\n  listen=tcp:0.0.0.0:8080 \\\n  connect=tcp:127.0.0.1:80\n`);copyBtnbtn_6f9509c8dc9741a7b75a3103cd2405a5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6f9509c8dc9741a7b75a3103cd2405a5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1061,15 +1079,15 @@ incus config set mycontainer limits.memory 2GB
 </div></div>
 </div>
 </div>
-<div id="outline-container-org826458a" class="outline-2">
-<h2 id="org826458a">Snapshots</h2>
-<div class="outline-text-2" id="text-org826458a">
+<div id="outline-container-org0eb24c9" class="outline-2">
+<h2 id="org0eb24c9">Snapshots</h2>
+<div class="outline-text-2" id="text-org0eb24c9">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b4af4962e5424e1084c53e66d289b6e0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b7395079b9bf4eb48d6ec4d982d1dee8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b4af4962e5424e1084c53e66d289b6e0=document.querySelector('button[name=btn_b4af4962e5424e1084c53e66d289b6e0]');
-copyBtnbtn_b4af4962e5424e1084c53e66d289b6e0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Create snapshot\nincus snapshot create mycontainer snap01\n\n# List snapshots\nincus snapshot list mycontainer\n\n# Restore snapshot\nincus snapshot restore mycontainer snap01\n\n# Delete snapshot\nincus snapshot delete mycontainer snap01\n`);copyBtnbtn_b4af4962e5424e1084c53e66d289b6e0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b4af4962e5424e1084c53e66d289b6e0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b7395079b9bf4eb48d6ec4d982d1dee8=document.querySelector('button[name=btn_b7395079b9bf4eb48d6ec4d982d1dee8]');
+copyBtnbtn_b7395079b9bf4eb48d6ec4d982d1dee8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Create snapshot\nincus snapshot create mycontainer snap01\n\n# List snapshots\nincus snapshot list mycontainer\n\n# Restore snapshot\nincus snapshot restore mycontainer snap01\n\n# Delete snapshot\nincus snapshot delete mycontainer snap01\n`);copyBtnbtn_b7395079b9bf4eb48d6ec4d982d1dee8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b7395079b9bf4eb48d6ec4d982d1dee8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1088,15 +1106,15 @@ let res = copyTextToClipboard(`# Create snapshot\nincus snapshot create mycontai
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgea0103d" class="outline-2">
-<h2 id="orgea0103d">File Transfer</h2>
-<div class="outline-text-2" id="text-orgea0103d">
+<div id="outline-container-org002d69f" class="outline-2">
+<h2 id="org002d69f">File Transfer</h2>
+<div class="outline-text-2" id="text-org002d69f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_cb84fd29142c45c1ad59736fa5fc6d64>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_47308bb7e3ae4fe89c6f32b508e8bca9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_cb84fd29142c45c1ad59736fa5fc6d64=document.querySelector('button[name=btn_cb84fd29142c45c1ad59736fa5fc6d64]');
-copyBtnbtn_cb84fd29142c45c1ad59736fa5fc6d64.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Copy file into container\nincus file push localfile.txt mycontainer/tmp/localfile.txt\n\n# Copy file out of container\nincus file pull mycontainer/etc/passwd /tmp/passwd\n\n# Edit a file directly inside a container\nincus file edit mycontainer/etc/hosts\n`);copyBtnbtn_cb84fd29142c45c1ad59736fa5fc6d64.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cb84fd29142c45c1ad59736fa5fc6d64.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_47308bb7e3ae4fe89c6f32b508e8bca9=document.querySelector('button[name=btn_47308bb7e3ae4fe89c6f32b508e8bca9]');
+copyBtnbtn_47308bb7e3ae4fe89c6f32b508e8bca9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Copy file into container\nincus file push localfile.txt mycontainer/tmp/localfile.txt\n\n# Copy file out of container\nincus file pull mycontainer/etc/passwd /tmp/passwd\n\n# Edit a file directly inside a container\nincus file edit mycontainer/etc/hosts\n`);copyBtnbtn_47308bb7e3ae4fe89c6f32b508e8bca9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_47308bb7e3ae4fe89c6f32b508e8bca9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1112,20 +1130,20 @@ let res = copyTextToClipboard(`# Copy file into container\nincus file push local
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgd98b3f1" class="outline-2">
-<h2 id="orgd98b3f1">Profiles</h2>
-<div class="outline-text-2" id="text-orgd98b3f1">
+<div id="outline-container-org17ef088" class="outline-2">
+<h2 id="org17ef088">Profiles</h2>
+<div class="outline-text-2" id="text-org17ef088">
 <p>
 Profiles let you define reusable configuration — apply a profile
 to multiple instances to share settings.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7bf7441d224b46698d99b828b9419d1a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b48fb68fc04848aaae6373bb991ea73c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7bf7441d224b46698d99b828b9419d1a=document.querySelector('button[name=btn_7bf7441d224b46698d99b828b9419d1a]');
-copyBtnbtn_7bf7441d224b46698d99b828b9419d1a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List profiles\nincus profile list\n\n# Show default profile\nincus profile show default\n\n# Create a profile\nincus profile create labprofile\n\n# Edit a profile\nincus profile edit labprofile\n\n# Apply a profile to an instance\nincus launch images:ubuntu/22.04 mycontainer --profile default --profile labprofile\n`);copyBtnbtn_7bf7441d224b46698d99b828b9419d1a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7bf7441d224b46698d99b828b9419d1a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b48fb68fc04848aaae6373bb991ea73c=document.querySelector('button[name=btn_b48fb68fc04848aaae6373bb991ea73c]');
+copyBtnbtn_b48fb68fc04848aaae6373bb991ea73c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List profiles\nincus profile list\n\n# Show default profile\nincus profile show default\n\n# Create a profile\nincus profile create labprofile\n\n# Edit a profile\nincus profile edit labprofile\n\n# Apply a profile to an instance\nincus launch images:ubuntu/22.04 mycontainer --profile default --profile labprofile\n`);copyBtnbtn_b48fb68fc04848aaae6373bb991ea73c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b48fb68fc04848aaae6373bb991ea73c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1147,15 +1165,15 @@ let res = copyTextToClipboard(`# List profiles\nincus profile list\n\n# Show def
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgd80b77b" class="outline-2">
-<h2 id="orgd80b77b">Networking</h2>
-<div class="outline-text-2" id="text-orgd80b77b">
+<div id="outline-container-org6eff3f4" class="outline-2">
+<h2 id="org6eff3f4">Networking</h2>
+<div class="outline-text-2" id="text-org6eff3f4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bb3d4821d60343068e3bef13039e4288>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_aebcca38b57244c3a2ed524215f86dab>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bb3d4821d60343068e3bef13039e4288=document.querySelector('button[name=btn_bb3d4821d60343068e3bef13039e4288]');
-copyBtnbtn_bb3d4821d60343068e3bef13039e4288.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List networks\nincus network list\n\n# Show bridge details\nincus network show incusbr0\n\n# Create a new isolated network (no external access)\nincus network create labnet --type=bridge\nincus network set labnet ipv4.nat false\n\n# Attach container to a specific network\nincus config device add mycontainer eth1 nic \\\n  network=labnet \\\n  name=eth1\n`);copyBtnbtn_bb3d4821d60343068e3bef13039e4288.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bb3d4821d60343068e3bef13039e4288.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_aebcca38b57244c3a2ed524215f86dab=document.querySelector('button[name=btn_aebcca38b57244c3a2ed524215f86dab]');
+copyBtnbtn_aebcca38b57244c3a2ed524215f86dab.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List networks\nincus network list\n\n# Show bridge details\nincus network show incusbr0\n\n# Create a new isolated network (no external access)\nincus network create labnet --type=bridge\nincus network set labnet ipv4.nat false\n\n# Attach container to a specific network\nincus config device add mycontainer eth1 nic \\\n  network=labnet \\\n  name=eth1\n`);copyBtnbtn_aebcca38b57244c3a2ed524215f86dab.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aebcca38b57244c3a2ed524215f86dab.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1177,9 +1195,9 @@ incus network set labnet ipv4.nat false
 </div></div>
 </div>
 </div>
-<div id="outline-container-org66dcb7e" class="outline-2">
-<h2 id="org66dcb7e">Security Relevance</h2>
-<div class="outline-text-2" id="text-org66dcb7e">
+<div id="outline-container-org5404ca2" class="outline-2">
+<h2 id="org5404ca2">Security Relevance</h2>
+<div class="outline-text-2" id="text-org5404ca2">
 <p>
 Incus containers share the host kernel — a container escape
 vulnerability allows an attacker who compromises a container to
@@ -1187,11 +1205,11 @@ reach the host. See <a href="20260314T005620--container-escape__concept_cybersec
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a44f823acd5947c0a354e5b1480875eb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d0036fd83c6d4bc499a671e8b8453cef>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a44f823acd5947c0a354e5b1480875eb=document.querySelector('button[name=btn_a44f823acd5947c0a354e5b1480875eb]');
-copyBtnbtn_a44f823acd5947c0a354e5b1480875eb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Check if running in a container (from inside)\ncat /proc/1/environ | grep -i container\nsystemd-detect-virt\n\n# Privileged containers are higher risk\n# Check: incus config show <container> | grep security.privileged\n`);copyBtnbtn_a44f823acd5947c0a354e5b1480875eb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a44f823acd5947c0a354e5b1480875eb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d0036fd83c6d4bc499a671e8b8453cef=document.querySelector('button[name=btn_d0036fd83c6d4bc499a671e8b8453cef]');
+copyBtnbtn_d0036fd83c6d4bc499a671e8b8453cef.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Check if running in a container (from inside)\ncat /proc/1/environ | grep -i container\nsystemd-detect-virt\n\n# Privileged containers are higher risk\n# Check: incus config show <container> | grep security.privileged\n`);copyBtnbtn_d0036fd83c6d4bc499a671e8b8453cef.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d0036fd83c6d4bc499a671e8b8453cef.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1205,9 +1223,9 @@ systemd-detect-virt
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgfd9d789" class="outline-2">
-<h2 id="orgfd9d789">Tips</h2>
-<div class="outline-text-2" id="text-orgfd9d789">
+<div id="outline-container-org920edcd" class="outline-2">
+<h2 id="org920edcd">Tips</h2>
+<div class="outline-text-2" id="text-org920edcd">
 <ul class="org-ul">
 <li>Incus is the maintained fork of LXD — prefer it over LXD for
 new deployments; LXD is now a Canonical commercial product</li>
@@ -1226,6 +1244,20 @@ standard lab workflow — much faster than rebuilding from image</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1233,6 +1265,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Phishing</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,28 +886,28 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfafae1c">1. Types</a></li>
-<li><a href="#orgdeae4b9">2. Common Pretext Tactics</a></li>
-<li><a href="#org6a8a0e8">3. Email Authentication Standards</a>
+<li><a href="#org23318d7">1. Types</a></li>
+<li><a href="#org8cc6769">2. Common Pretext Tactics</a></li>
+<li><a href="#org9b4561f">3. Email Authentication Standards</a>
 <ul>
-<li><a href="#org32ce6b4">SPF (Sender Policy Framework)</a></li>
-<li><a href="#orgaec7493">DKIM (DomainKeys Identified Mail)</a></li>
-<li><a href="#org69d387d">DMARC (Domain-based Message Authentication, Reporting, and Conformance)</a></li>
+<li><a href="#org397b7f4">SPF (Sender Policy Framework)</a></li>
+<li><a href="#orgb7e17e6">DKIM (DomainKeys Identified Mail)</a></li>
+<li><a href="#org7699cae">DMARC (Domain-based Message Authentication, Reporting, and Conformance)</a></li>
 </ul>
 </li>
-<li><a href="#org368a09e">4. Header Analysis Methodology</a>
+<li><a href="#org61314a2">4. Header Analysis Methodology</a>
 <ul>
-<li><a href="#org5beea83">Locating Full Headers</a></li>
-<li><a href="#org5ebf156">Key Headers to Check</a></li>
-<li><a href="#org6cfb92c">Authentication-Results Header</a></li>
-<li><a href="#org01e8951">Reading the Received Chain</a></li>
-<li><a href="#org76df2cf">From / Reply-To Mismatch</a></li>
+<li><a href="#orge38e098">Locating Full Headers</a></li>
+<li><a href="#org81d5c22">Key Headers to Check</a></li>
+<li><a href="#org55b213a">Authentication-Results Header</a></li>
+<li><a href="#org2f14c30">Reading the Received Chain</a></li>
+<li><a href="#orgc302538">From / Reply-To Mismatch</a></li>
 </ul>
 </li>
-<li><a href="#org9d9007e">5. Link and Attachment Triage</a></li>
-<li><a href="#orge1e1c46">6. Escalation Considerations</a></li>
-<li><a href="#org134ac46">7. Prevention and Organisational Controls</a></li>
-<li><a href="#orga6e0e40">Tips</a></li>
+<li><a href="#org5d198d1">5. Link and Attachment Triage</a></li>
+<li><a href="#orgf334c4c">6. Escalation Considerations</a></li>
+<li><a href="#orgc5aff85">7. Prevention and Organisational Controls</a></li>
+<li><a href="#orgdfb4aa3">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -909,9 +927,9 @@ Related: <a href="20260206T060453--cybercrime__concept_cybersecurity.html">Cyber
          <a href="20260214T083426--phishtool__cybersecurity_tool.html">Phishtool</a>
          <a href="20260614T002700--file-upload-vulnerabilities__cybersecurity_pentesting_technique.html">File Upload Vulnerabilities</a>
 </p>
-<div id="outline-container-orgfafae1c" class="outline-2">
-<h2 id="orgfafae1c">1. Types</h2>
-<div class="outline-text-2" id="text-orgfafae1c">
+<div id="outline-container-org23318d7" class="outline-2">
+<h2 id="org23318d7">1. Types</h2>
+<div class="outline-text-2" id="text-org23318d7">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -975,9 +993,9 @@ Related: <a href="20260206T060453--cybercrime__concept_cybersecurity.html">Cyber
 </table>
 </div>
 </div>
-<div id="outline-container-orgdeae4b9" class="outline-2">
-<h2 id="orgdeae4b9">2. Common Pretext Tactics</h2>
-<div class="outline-text-2" id="text-orgdeae4b9">
+<div id="outline-container-org8cc6769" class="outline-2">
+<h2 id="org8cc6769">2. Common Pretext Tactics</h2>
+<div class="outline-text-2" id="text-org8cc6769">
 <ul class="org-ul">
 <li><b>Urgency</b> — "your account will be suspended in 24 hours"</li>
 <li><b>Authority</b> — impersonating IT, finance, or executive leadership</li>
@@ -987,17 +1005,17 @@ Related: <a href="20260206T060453--cybercrime__concept_cybersecurity.html">Cyber
 </ul>
 </div>
 </div>
-<div id="outline-container-org6a8a0e8" class="outline-2">
-<h2 id="org6a8a0e8">3. Email Authentication Standards</h2>
-<div class="outline-text-2" id="text-org6a8a0e8">
+<div id="outline-container-org9b4561f" class="outline-2">
+<h2 id="org9b4561f">3. Email Authentication Standards</h2>
+<div class="outline-text-2" id="text-org9b4561f">
 <p>
 The technical controls that detect spoofed sender domains — core
 to assessing whether a reported email's claimed sender is genuine.
 </p>
 </div>
-<div id="outline-container-org32ce6b4" class="outline-3">
-<h3 id="org32ce6b4">SPF (Sender Policy Framework)</h3>
-<div class="outline-text-3" id="text-org32ce6b4">
+<div id="outline-container-org397b7f4" class="outline-3">
+<h3 id="org397b7f4">SPF (Sender Policy Framework)</h3>
+<div class="outline-text-3" id="text-org397b7f4">
 <p>
 A DNS TXT record listing which mail servers are authorised to send
 email for a domain. The receiving server checks whether the
@@ -1005,11 +1023,11 @@ sending IP is in that list.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b8f4e059c9194d9d9b8b1c641002739d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d19ce51319934508aeaeffc87da84237>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b8f4e059c9194d9d9b8b1c641002739d=document.querySelector('button[name=btn_b8f4e059c9194d9d9b8b1c641002739d]');
-copyBtnbtn_b8f4e059c9194d9d9b8b1c641002739d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Example SPF record for example.com\nv=spf1 include:_spf.google.com include:mailgun.org ~all\n`);copyBtnbtn_b8f4e059c9194d9d9b8b1c641002739d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b8f4e059c9194d9d9b8b1c641002739d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d19ce51319934508aeaeffc87da84237=document.querySelector('button[name=btn_d19ce51319934508aeaeffc87da84237]');
+copyBtnbtn_d19ce51319934508aeaeffc87da84237.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Example SPF record for example.com\nv=spf1 include:_spf.google.com include:mailgun.org ~all\n`);copyBtnbtn_d19ce51319934508aeaeffc87da84237.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d19ce51319934508aeaeffc87da84237.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1027,9 +1045,9 @@ the visible header.
 </p>
 </div>
 </div>
-<div id="outline-container-orgaec7493" class="outline-3">
-<h3 id="orgaec7493">DKIM (DomainKeys Identified Mail)</h3>
-<div class="outline-text-3" id="text-orgaec7493">
+<div id="outline-container-orgb7e17e6" class="outline-3">
+<h3 id="orgb7e17e6">DKIM (DomainKeys Identified Mail)</h3>
+<div class="outline-text-3" id="text-orgb7e17e6">
 <p>
 Adds a cryptographic signature to outgoing mail, generated with
 the sending domain's private key. The receiving server retrieves
@@ -1054,9 +1072,9 @@ content (tampering) or the domain never signed the message at all.
 </p>
 </div>
 </div>
-<div id="outline-container-org69d387d" class="outline-3">
-<h3 id="org69d387d">DMARC (Domain-based Message Authentication, Reporting, and Conformance)</h3>
-<div class="outline-text-3" id="text-org69d387d">
+<div id="outline-container-org7699cae" class="outline-3">
+<h3 id="org7699cae">DMARC (Domain-based Message Authentication, Reporting, and Conformance)</h3>
+<div class="outline-text-3" id="text-org7699cae">
 <p>
 Builds on SPF and DKIM. A DNS record specifying what the
 receiving server should do if a message fails both checks, and
@@ -1065,11 +1083,11 @@ closing the gap SPF alone leaves open.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ce8e9d9612bd4cae98d17788047518d5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2dbf57736c414d24b13151c7dcb1d0be>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ce8e9d9612bd4cae98d17788047518d5=document.querySelector('button[name=btn_ce8e9d9612bd4cae98d17788047518d5]');
-copyBtnbtn_ce8e9d9612bd4cae98d17788047518d5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Example DMARC record\nv=DMARC1; p=reject; rua=mailto:dmarc-reports@example.com; pct=100\n`);copyBtnbtn_ce8e9d9612bd4cae98d17788047518d5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ce8e9d9612bd4cae98d17788047518d5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2dbf57736c414d24b13151c7dcb1d0be=document.querySelector('button[name=btn_2dbf57736c414d24b13151c7dcb1d0be]');
+copyBtnbtn_2dbf57736c414d24b13151c7dcb1d0be.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Example DMARC record\nv=DMARC1; p=reject; rua=mailto:dmarc-reports@example.com; pct=100\n`);copyBtnbtn_2dbf57736c414d24b13151c7dcb1d0be.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2dbf57736c414d24b13151c7dcb1d0be.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1119,24 +1137,24 @@ evidence of spoofing.
 </div>
 </div>
 </div>
-<div id="outline-container-org368a09e" class="outline-2">
-<h2 id="org368a09e">4. Header Analysis Methodology</h2>
-<div class="outline-text-2" id="text-org368a09e">
+<div id="outline-container-org61314a2" class="outline-2">
+<h2 id="org61314a2">4. Header Analysis Methodology</h2>
+<div class="outline-text-2" id="text-org61314a2">
 <p>
 When triaging a reported email, the headers reveal what the
 visible content cannot — actual sending infrastructure, whether
 authentication passed, and the true path the message took.
 </p>
 </div>
-<div id="outline-container-org5beea83" class="outline-3">
-<h3 id="org5beea83">Locating Full Headers</h3>
-<div class="outline-text-3" id="text-org5beea83">
+<div id="outline-container-orge38e098" class="outline-3">
+<h3 id="orge38e098">Locating Full Headers</h3>
+<div class="outline-text-3" id="text-orge38e098">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_82caa4164d5d4c018fa42c4eb6613e45>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2e3d7197618140bdb5190143d2d4ee50>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_82caa4164d5d4c018fa42c4eb6613e45=document.querySelector('button[name=btn_82caa4164d5d4c018fa42c4eb6613e45]');
-copyBtnbtn_82caa4164d5d4c018fa42c4eb6613e45.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Outlook: Open message → File → Properties → Internet headers\nOutlook (new): ... menu → View → View message source\nGmail: Open message → ⋮ → Show original\nPhishtool: Upload .eml/.msg — parses headers automatically\n`);copyBtnbtn_82caa4164d5d4c018fa42c4eb6613e45.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_82caa4164d5d4c018fa42c4eb6613e45.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2e3d7197618140bdb5190143d2d4ee50=document.querySelector('button[name=btn_2e3d7197618140bdb5190143d2d4ee50]');
+copyBtnbtn_2e3d7197618140bdb5190143d2d4ee50.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Outlook: Open message → File → Properties → Internet headers\nOutlook (new): ... menu → View → View message source\nGmail: Open message → ⋮ → Show original\nPhishtool: Upload .eml/.msg — parses headers automatically\n`);copyBtnbtn_2e3d7197618140bdb5190143d2d4ee50.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2e3d7197618140bdb5190143d2d4ee50.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1148,15 +1166,15 @@ Phishtool: Upload .eml/.msg &#8212; parses headers automatically
 </div></div>
 </div>
 </div>
-<div id="outline-container-org5ebf156" class="outline-3">
-<h3 id="org5ebf156">Key Headers to Check</h3>
-<div class="outline-text-3" id="text-org5ebf156">
+<div id="outline-container-org81d5c22" class="outline-3">
+<h3 id="org81d5c22">Key Headers to Check</h3>
+<div class="outline-text-3" id="text-org81d5c22">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_932f409bfd14467b89b1b9c6dbcf6c06>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_acb36a4ca3384f2d88a48c4451a94780>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_932f409bfd14467b89b1b9c6dbcf6c06=document.querySelector('button[name=btn_932f409bfd14467b89b1b9c6dbcf6c06]');
-copyBtnbtn_932f409bfd14467b89b1b9c6dbcf6c06.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`From:              — visible sender (easily spoofed, do not trust alone)\nReply-To:          — where replies actually go; mismatch with From is a red flag\nReturn-Path:       — actual envelope sender, used for SPF check\nReceived:          — chain of mail servers the message passed through, bottom to top\nAuthentication-Results: — SPF, DKIM, DMARC pass/fail summary in one place\nMessage-ID:        — unique identifier; check domain matches claimed sender\nX-Originating-IP:  — sometimes present, reveals the originating client IP\n`);copyBtnbtn_932f409bfd14467b89b1b9c6dbcf6c06.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_932f409bfd14467b89b1b9c6dbcf6c06.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_acb36a4ca3384f2d88a48c4451a94780=document.querySelector('button[name=btn_acb36a4ca3384f2d88a48c4451a94780]');
+copyBtnbtn_acb36a4ca3384f2d88a48c4451a94780.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`From:              — visible sender (easily spoofed, do not trust alone)\nReply-To:          — where replies actually go; mismatch with From is a red flag\nReturn-Path:       — actual envelope sender, used for SPF check\nReceived:          — chain of mail servers the message passed through, bottom to top\nAuthentication-Results: — SPF, DKIM, DMARC pass/fail summary in one place\nMessage-ID:        — unique identifier; check domain matches claimed sender\nX-Originating-IP:  — sometimes present, reveals the originating client IP\n`);copyBtnbtn_acb36a4ca3384f2d88a48c4451a94780.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_acb36a4ca3384f2d88a48c4451a94780.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1171,20 +1189,20 @@ X-Originating-IP:  &#8212; sometimes present, reveals the originating client IP
 </div></div>
 </div>
 </div>
-<div id="outline-container-org6cfb92c" class="outline-3">
-<h3 id="org6cfb92c">Authentication-Results Header</h3>
-<div class="outline-text-3" id="text-org6cfb92c">
+<div id="outline-container-org55b213a" class="outline-3">
+<h3 id="org55b213a">Authentication-Results Header</h3>
+<div class="outline-text-3" id="text-org55b213a">
 <p>
 The fastest way to assess legitimacy — most mail gateways add this
 header summarising all three checks:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2f0d251110574937875daefd98260524>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_0d90dc3de47c49f1aea99a2cf5b6d383>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2f0d251110574937875daefd98260524=document.querySelector('button[name=btn_2f0d251110574937875daefd98260524]');
-copyBtnbtn_2f0d251110574937875daefd98260524.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Authentication-Results: mx.example.com;\n  spf=pass smtp.mailfrom=sender.com;\n  dkim=pass header.d=sender.com;\n  dmarc=pass header.from=sender.com\n`);copyBtnbtn_2f0d251110574937875daefd98260524.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2f0d251110574937875daefd98260524.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0d90dc3de47c49f1aea99a2cf5b6d383=document.querySelector('button[name=btn_0d90dc3de47c49f1aea99a2cf5b6d383]');
+copyBtnbtn_0d90dc3de47c49f1aea99a2cf5b6d383.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Authentication-Results: mx.example.com;\n  spf=pass smtp.mailfrom=sender.com;\n  dkim=pass header.d=sender.com;\n  dmarc=pass header.from=sender.com\n`);copyBtnbtn_0d90dc3de47c49f1aea99a2cf5b6d383.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0d90dc3de47c49f1aea99a2cf5b6d383.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1202,9 +1220,9 @@ visible <code>From</code> address the user saw.
 </p>
 </div>
 </div>
-<div id="outline-container-org01e8951" class="outline-3">
-<h3 id="org01e8951">Reading the Received Chain</h3>
-<div class="outline-text-3" id="text-org01e8951">
+<div id="outline-container-org2f14c30" class="outline-3">
+<h3 id="org2f14c30">Reading the Received Chain</h3>
+<div class="outline-text-3" id="text-org2f14c30">
 <p>
 Read <code>Received</code> headers bottom-to-top — the bottom entry is
 closest to the original sender, the top is the last hop before
@@ -1212,11 +1230,11 @@ your mail server.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_60a55d0264bb4c989291639574379732>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_4d3b7feba249475fb52161e8d13d0277>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_60a55d0264bb4c989291639574379732=document.querySelector('button[name=btn_60a55d0264bb4c989291639574379732]');
-copyBtnbtn_60a55d0264bb4c989291639574379732.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Received: from mail.example.com (mail.example.com [203.0.113.5])\n  by mx.target.com; Mon, 15 Dec 2025 10:30:00 +0000\nReceived: from [192.168.1.50] (unknown [198.51.100.20])\n  by mail.example.com; Mon, 15 Dec 2025 10:29:55 +0000\n`);copyBtnbtn_60a55d0264bb4c989291639574379732.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_60a55d0264bb4c989291639574379732.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4d3b7feba249475fb52161e8d13d0277=document.querySelector('button[name=btn_4d3b7feba249475fb52161e8d13d0277]');
+copyBtnbtn_4d3b7feba249475fb52161e8d13d0277.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Received: from mail.example.com (mail.example.com [203.0.113.5])\n  by mx.target.com; Mon, 15 Dec 2025 10:30:00 +0000\nReceived: from [192.168.1.50] (unknown [198.51.100.20])\n  by mail.example.com; Mon, 15 Dec 2025 10:29:55 +0000\n`);copyBtnbtn_4d3b7feba249475fb52161e8d13d0277.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4d3b7feba249475fb52161e8d13d0277.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1235,9 +1253,9 @@ residential or VPS IP range is a strong indicator.
 </p>
 </div>
 </div>
-<div id="outline-container-org76df2cf" class="outline-3">
-<h3 id="org76df2cf">From / Reply-To Mismatch</h3>
-<div class="outline-text-3" id="text-org76df2cf">
+<div id="outline-container-orgc302538" class="outline-3">
+<h3 id="orgc302538">From / Reply-To Mismatch</h3>
+<div class="outline-text-3" id="text-orgc302538">
 <p>
 A common and easy-to-spot pattern: the visible <code>From</code> claims a
 trusted domain, but <code>Reply-To</code> points elsewhere — replies (and
@@ -1247,9 +1265,9 @@ claimed sender.
 </div>
 </div>
 </div>
-<div id="outline-container-org9d9007e" class="outline-2">
-<h2 id="org9d9007e">5. Link and Attachment Triage</h2>
-<div class="outline-text-2" id="text-org9d9007e">
+<div id="outline-container-org5d198d1" class="outline-2">
+<h2 id="org5d198d1">5. Link and Attachment Triage</h2>
+<div class="outline-text-2" id="text-org5d198d1">
 <ul class="org-ul">
 <li><b>Hover, don't click</b> — check the actual destination URL before
 interacting; displayed text and <code>href</code> target frequently differ</li>
@@ -1268,9 +1286,9 @@ attempt once opened</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge1e1c46" class="outline-2">
-<h2 id="orge1e1c46">6. Escalation Considerations</h2>
-<div class="outline-text-2" id="text-orge1e1c46">
+<div id="outline-container-orgf334c4c" class="outline-2">
+<h2 id="orgf334c4c">6. Escalation Considerations</h2>
+<div class="outline-text-2" id="text-orgf334c4c">
 <p>
 When an internal team (rather than a SOC) handles phishing
 triage directly, the questions to answer for each report are:
@@ -1290,9 +1308,9 @@ incident — see <a href="20260616T220417--windows-client-dfir__concept_cybersec
 </ul>
 </div>
 </div>
-<div id="outline-container-org134ac46" class="outline-2">
-<h2 id="org134ac46">7. Prevention and Organisational Controls</h2>
-<div class="outline-text-2" id="text-org134ac46">
+<div id="outline-container-orgc5aff85" class="outline-2">
+<h2 id="orgc5aff85">7. Prevention and Organisational Controls</h2>
+<div class="outline-text-2" id="text-orgc5aff85">
 <ul class="org-ul">
 <li><b>MFA</b> — limits the impact of credential theft even if phishing
 succeeds; see <a href="20260212T064723==mfa--multi-factor-authentication__concept_cybersecurity.html">Multi-Factor Authentication</a></li>
@@ -1307,9 +1325,9 @@ organisation's own reported emails</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga6e0e40" class="outline-2">
-<h2 id="orga6e0e40">Tips</h2>
-<div class="outline-text-2" id="text-orga6e0e40">
+<div id="outline-container-orgdfb4aa3" class="outline-2">
+<h2 id="orgdfb4aa3">Tips</h2>
+<div class="outline-text-2" id="text-orgdfb4aa3">
 <ul class="org-ul">
 <li>SPF/DKIM/DMARC passing does not guarantee a benign email — it
 only confirms the claimed domain actually sent it; a
@@ -1329,6 +1347,20 @@ much lower priority than one where credentials were entered</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1336,6 +1368,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

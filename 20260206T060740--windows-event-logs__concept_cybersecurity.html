@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Windows event logs</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,35 +886,35 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org04d4969">Windows Event Logs</a>
+<li><a href="#orgb1e346e">Windows Event Logs</a>
 <ul>
-<li><a href="#org421eb07">Accessing Event Logs</a></li>
-<li><a href="#orgce32b92">Key Event Log Categories</a></li>
-<li><a href="#orgcb084c4">Important Event Is for SOC Analysts</a>
+<li><a href="#org248a426">Accessing Event Logs</a></li>
+<li><a href="#orgf456a8b">Key Event Log Categories</a></li>
+<li><a href="#org9b8f70d">Important Event Is for SOC Analysts</a>
 <ul>
-<li><a href="#org53fe81b">Logon / Logoff Events</a></li>
-<li><a href="#org793df47">Account Management</a></li>
-<li><a href="#org7c7168d">Process &amp; Service Monitoring</a></li>
-<li><a href="#org2c2ecf9">Object Access &amp; Policy Changes</a></li>
-<li><a href="#org2e8ac0a">Evasion &amp; Defense Tampering</a></li>
+<li><a href="#orgc32bd51">Logon / Logoff Events</a></li>
+<li><a href="#orgbd26115">Account Management</a></li>
+<li><a href="#org0f614be">Process &amp; Service Monitoring</a></li>
+<li><a href="#org1a364a6">Object Access &amp; Policy Changes</a></li>
+<li><a href="#org2abd7f0">Evasion &amp; Defense Tampering</a></li>
 </ul>
 </li>
-<li><a href="#org78332b5">Centralized Logging and SIEM</a></li>
+<li><a href="#orgc0e3f87">Centralized Logging and SIEM</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org04d4969" class="outline-2">
-<h2 id="org04d4969">Windows Event Logs</h2>
-<div class="outline-text-2" id="text-org04d4969">
+<div id="outline-container-orgb1e346e" class="outline-2">
+<h2 id="orgb1e346e">Windows Event Logs</h2>
+<div class="outline-text-2" id="text-orgb1e346e">
 <p>
 Windows Event Logs are records of significant activities or errors that occur on a Windows Operating System. For a Security Operations Center (SOC) analyst, these logs are a primary source of information for detecting, investigating, and responding to security incidents. Proper analysis allows an analyst to trace user actions, identify malicious processes, and uncover persistence mechanisms.
 </p>
 </div>
-<div id="outline-container-org421eb07" class="outline-3">
-<h3 id="org421eb07">Accessing Event Logs</h3>
-<div class="outline-text-3" id="text-org421eb07">
+<div id="outline-container-org248a426" class="outline-3">
+<h3 id="org248a426">Accessing Event Logs</h3>
+<div class="outline-text-3" id="text-org248a426">
 <p>
 Event logs can be accessed through several methods:
 </p>
@@ -909,9 +927,9 @@ Event logs can be accessed through several methods:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgce32b92" class="outline-3">
-<h3 id="orgce32b92">Key Event Log Categories</h3>
-<div class="outline-text-3" id="text-orgce32b92">
+<div id="outline-container-orgf456a8b" class="outline-3">
+<h3 id="orgf456a8b">Key Event Log Categories</h3>
+<div class="outline-text-3" id="text-orgf456a8b">
 <p>
 Windows organizes logs into several categories. The most important for security analysis are:
 </p>
@@ -921,20 +939,20 @@ Windows organizes logs into several categories. The most important for security 
 <li><b>System:</b> Records events logged by the Operating System and its components, like driver failures or system startup/shutdown.</li>
 <li><b>Application:</b> Contains events logged by software applications. Developers decide what events their applications log.</li>
 <li><b>PowerShell:</b> Logs command-line activity, including script block logging which can reveal the content of executed scripts. Event ID 4104 is particularly useful for this.</li>
-<li><b>Sysmon:</b> A supplementary service from the <a href="Sysinternals Suite.html#sysinternals-suite">Sysinternals Suite</a> that provides much more detailed logging about process creation, network connections, and file changes. Logs are found in <code>Applications &amp; Services -&gt; Microsoft -&gt; Windows -&gt; Sysmon -&gt; Operational</code>.</li>
+<li><b>Sysmon:</b> A supplementary service from the <a href="20260213T111009--sysinternals-suite__cybersecurity_tool.html">Sysinternals Suite</a> that provides much more detailed logging about process creation, network connections, and file changes. Logs are found in <code>Applications &amp; Services -&gt; Microsoft -&gt; Windows -&gt; Sysmon -&gt; Operational</code>.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcb084c4" class="outline-3">
-<h3 id="orgcb084c4">Important Event Is for SOC Analysts</h3>
-<div class="outline-text-3" id="text-orgcb084c4">
+<div id="outline-container-org9b8f70d" class="outline-3">
+<h3 id="org9b8f70d">Important Event Is for SOC Analysts</h3>
+<div class="outline-text-3" id="text-org9b8f70d">
 <p>
 Monitoring specific Event IDs is crucial for identifying suspicious activity. A single critical event or an abnormal pattern of events can signal a threat.
 </p>
 </div>
-<div id="outline-container-org53fe81b" class="outline-4">
-<h4 id="org53fe81b">Logon / Logoff Events</h4>
-<div class="outline-text-4" id="text-org53fe81b">
+<div id="outline-container-orgc32bd51" class="outline-4">
+<h4 id="orgc32bd51">Logon / Logoff Events</h4>
+<div class="outline-text-4" id="text-orgc32bd51">
 <ul class="org-ul">
 <li><b>4624:</b> Successful account logon. Important to monitor for unusual times, locations, and logon types (e.g., Type 10 for RDP, Type 3 for network).</li>
 <li><b>4625:</b> Failed account logon. A spike in these events can indicate a brute-force attack.</li>
@@ -944,9 +962,9 @@ Monitoring specific Event IDs is crucial for identifying suspicious activity. A 
 </ul>
 </div>
 </div>
-<div id="outline-container-org793df47" class="outline-4">
-<h4 id="org793df47">Account Management</h4>
-<div class="outline-text-4" id="text-org793df47">
+<div id="outline-container-orgbd26115" class="outline-4">
+<h4 id="orgbd26115">Account Management</h4>
+<div class="outline-text-4" id="text-orgbd26115">
 <ul class="org-ul">
 <li><b>4720:</b> A user account was created. Unexpected account creation is a major red flag.</li>
 <li><b>4722:</b> A user account was enabled.</li>
@@ -957,18 +975,18 @@ Monitoring specific Event IDs is crucial for identifying suspicious activity. A 
 </ul>
 </div>
 </div>
-<div id="outline-container-org7c7168d" class="outline-4">
-<h4 id="org7c7168d">Process &amp; Service Monitoring</h4>
-<div class="outline-text-4" id="text-org7c7168d">
+<div id="outline-container-org0f614be" class="outline-4">
+<h4 id="org0f614be">Process &amp; Service Monitoring</h4>
+<div class="outline-text-4" id="text-org0f614be">
 <ul class="org-ul">
 <li><b>4688:</b> A new process has been created. Enabling command-line auditing for this event provides deep visibility into what is running on a system.</li>
 <li><b>7045 / 4697:</b> A new service was installed. A common Persistence technique for attackers.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2c2ecf9" class="outline-4">
-<h4 id="org2c2ecf9">Object Access &amp; Policy Changes</h4>
-<div class="outline-text-4" id="text-org2c2ecf9">
+<div id="outline-container-org1a364a6" class="outline-4">
+<h4 id="org1a364a6">Object Access &amp; Policy Changes</h4>
+<div class="outline-text-4" id="text-org1a364a6">
 <ul class="org-ul">
 <li><b>4663:</b> An attempt was made to access an object (e.g., a file or folder). Useful for tracking access to sensitive data.</li>
 <li><b>5140:</b> A network share object was accessed.</li>
@@ -976,9 +994,9 @@ Monitoring specific Event IDs is crucial for identifying suspicious activity. A 
 </ul>
 </div>
 </div>
-<div id="outline-container-org2e8ac0a" class="outline-4">
-<h4 id="org2e8ac0a">Evasion &amp; Defense Tampering</h4>
-<div class="outline-text-4" id="text-org2e8ac0a">
+<div id="outline-container-org2abd7f0" class="outline-4">
+<h4 id="org2abd7f0">Evasion &amp; Defense Tampering</h4>
+<div class="outline-text-4" id="text-org2abd7f0">
 <ul class="org-ul">
 <li><b>1102:</b> The audit log was cleared. This is a classic sign of an attacker trying to cover their tracks.</li>
 <li><b>1116 / 1117:</b> Windows Defender detects malware or takes protective action.</li>
@@ -986,9 +1004,9 @@ Monitoring specific Event IDs is crucial for identifying suspicious activity. A 
 </div>
 </div>
 </div>
-<div id="outline-container-org78332b5" class="outline-3">
-<h3 id="org78332b5">Centralized Logging and SIEM</h3>
-<div class="outline-text-3" id="text-org78332b5">
+<div id="outline-container-orgc0e3f87" class="outline-3">
+<h3 id="orgc0e3f87">Centralized Logging and SIEM</h3>
+<div class="outline-text-3" id="text-orgc0e3f87">
 <p>
 In any enterprise environment, managing logs on individual machines is impractical. <b>Windows Event Forwarding (WEF)</b> is a native capability used to send specified event logs from client machines (sources) to a central <b>Windows Event Collector (WEC)</b> server. From the WEC, logs can be ingested by a <b>Security Information and Event Management (SIEM)</b> platform like Splunk, ELK, or Microsoft Sentinel for correlation, alerting, and long-term storage. This centralized approach is fundamental to the operations of a modern SOC.
 </p>
@@ -997,6 +1015,20 @@ In any enterprise environment, managing logs on individual machines is impractic
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1004,6 +1036,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

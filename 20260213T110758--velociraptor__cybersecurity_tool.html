@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>velociraptor</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,34 +886,34 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc6e26c6">Velociraptor</a>
+<li><a href="#org69e170d">Velociraptor</a>
 <ul>
-<li><a href="#org6353ae8">Description</a>
+<li><a href="#org93a3ba1">Description</a>
 <ul>
-<li><a href="#orgd116a47">VQL (Velociraptor Query Language)</a></li>
-<li><a href="#org8c3dadc">Architecture</a></li>
+<li><a href="#org1f7efc5">VQL (Velociraptor Query Language)</a></li>
+<li><a href="#org7bd561d">Architecture</a></li>
 </ul>
 </li>
-<li><a href="#orgf689e14">Examples</a></li>
+<li><a href="#org1f6a282">Examples</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc6e26c6" class="outline-2">
-<h2 id="orgc6e26c6">Velociraptor</h2>
-<div class="outline-text-2" id="text-orgc6e26c6">
+<div id="outline-container-org69e170d" class="outline-2">
+<h2 id="org69e170d">Velociraptor</h2>
+<div class="outline-text-2" id="text-org69e170d">
 </div>
-<div id="outline-container-org6353ae8" class="outline-3">
-<h3 id="org6353ae8">Description</h3>
-<div class="outline-text-3" id="text-org6353ae8">
+<div id="outline-container-org93a3ba1" class="outline-3">
+<h3 id="org93a3ba1">Description</h3>
+<div class="outline-text-3" id="text-org93a3ba1">
 <p>
 <b>Velociraptor</b> is a modern DFIR tool that goes beyond simple logging and focuses on <b>endpoint visibility</b> at scale. It uses a pull-based architecture where a central server sends structured queries to deployed agents (clients) across the network. This architecture allows security analysts and incident responders to hunt for complex threats and gather forensic evidence quickly and efficiently, even in large enterprise environments.
 </p>
 </div>
-<div id="outline-container-orgd116a47" class="outline-4">
-<h4 id="orgd116a47">VQL (Velociraptor Query Language)</h4>
-<div class="outline-text-4" id="text-orgd116a47">
+<div id="outline-container-org1f7efc5" class="outline-4">
+<h4 id="org1f7efc5">VQL (Velociraptor Query Language)</h4>
+<div class="outline-text-4" id="text-org1f7efc5">
 <p>
 The core of Velociraptor is the <b>Velociraptor Query Language (VQL)</b>. VQL is a declarative query language that allows analysts to express <i>what</i> data they want to collect, rather than <i>how</i> to collect it.
 </p>
@@ -906,9 +924,9 @@ The core of Velociraptor is the <b>Velociraptor Query Language (VQL)</b>. VQL is
 </ul>
 </div>
 </div>
-<div id="outline-container-org8c3dadc" class="outline-4">
-<h4 id="org8c3dadc">Architecture</h4>
-<div class="outline-text-4" id="text-org8c3dadc">
+<div id="outline-container-org7bd561d" class="outline-4">
+<h4 id="org7bd561d">Architecture</h4>
+<div class="outline-text-4" id="text-org7bd561d">
 <p>
 Velociraptor typically runs as a lightweight, persistent agent on endpoints. The server-client model enables:
 </p>
@@ -920,20 +938,20 @@ Velociraptor typically runs as a lightweight, persistent agent on endpoints. The
 </div>
 </div>
 </div>
-<div id="outline-container-orgf689e14" class="outline-3">
-<h3 id="orgf689e14">Examples</h3>
-<div class="outline-text-3" id="text-orgf689e14">
+<div id="outline-container-org1f6a282" class="outline-3">
+<h3 id="org1f6a282">Examples</h3>
+<div class="outline-text-3" id="text-org1f6a282">
 <ul class="org-ul">
 <li><p>
 <b>Remote Log Collection (VQL Example):</b> Instead of manually logging into hundreds of machines to check the last few entries of an event log, an analyst can use a single VQL query to gather the data simultaneously:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>VQL</span><button class='copyBtn' name=btn_34fff10a02b84b68a65cb89c8cf50730>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>VQL</span><button class='copyBtn' name=btn_bb5293880e03403d9004d65e5237110a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_34fff10a02b84b68a65cb89c8cf50730=document.querySelector('button[name=btn_34fff10a02b84b68a65cb89c8cf50730]');
-copyBtnbtn_34fff10a02b84b68a65cb89c8cf50730.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# VQL query to collect the last 10 entries from the Windows Security Event Log\nSELECT *\nFROM wmi_event_logs(log=\"Security\")\nORDER BY Timestamp DESC\nLIMIT 10\n`);copyBtnbtn_34fff10a02b84b68a65cb89c8cf50730.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_34fff10a02b84b68a65cb89c8cf50730.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bb5293880e03403d9004d65e5237110a=document.querySelector('button[name=btn_bb5293880e03403d9004d65e5237110a]');
+copyBtnbtn_bb5293880e03403d9004d65e5237110a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# VQL query to collect the last 10 entries from the Windows Security Event Log\nSELECT *\nFROM wmi_event_logs(log=\"Security\")\nORDER BY Timestamp DESC\nLIMIT 10\n`);copyBtnbtn_bb5293880e03403d9004d65e5237110a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bb5293880e03403d9004d65e5237110a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -964,6 +982,20 @@ The results from all endpoints are then aggregated on the server for immediate a
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -971,6 +1003,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

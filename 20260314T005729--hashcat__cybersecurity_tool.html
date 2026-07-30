@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Hashcat</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,23 +886,23 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org961f143">Attack Modes</a></li>
-<li><a href="#org60813ed">Common Hash Modes (<code>-m</code>)</a></li>
-<li><a href="#org823709c">Core Flags</a></li>
-<li><a href="#org7d744c2">Common Workflows</a>
+<li><a href="#orga467eb6">Attack Modes</a></li>
+<li><a href="#orgbe3fda8">Common Hash Modes (<code>-m</code>)</a></li>
+<li><a href="#org852be93">Core Flags</a></li>
+<li><a href="#orgb080edf">Common Workflows</a>
 <ul>
-<li><a href="#org5920c60">Dictionary Attack</a></li>
-<li><a href="#orgb55f4a8">Dictionary + Rules</a></li>
-<li><a href="#org759bd06">Mask Attack (Brute-Force)</a></li>
-<li><a href="#org70f6176">NTLM Hashes (from secretsdump / Mimikatz)</a></li>
-<li><a href="#org0126761">Kerberoasting (TGS-REP)</a></li>
-<li><a href="#orgbddf234">AS-REP Roasting</a></li>
-<li><a href="#orga5e79e8">JWT Secret Brute Force</a></li>
-<li><a href="#orgaf9ed13">Show Cracked Results</a></li>
+<li><a href="#orgf0e8327">Dictionary Attack</a></li>
+<li><a href="#orgb0239ef">Dictionary + Rules</a></li>
+<li><a href="#orgcb7c764">Mask Attack (Brute-Force)</a></li>
+<li><a href="#org3ba9262">NTLM Hashes (from secretsdump / Mimikatz)</a></li>
+<li><a href="#org0d36b13">Kerberoasting (TGS-REP)</a></li>
+<li><a href="#orgce05872">AS-REP Roasting</a></li>
+<li><a href="#org1d9d7e1">JWT Secret Brute Force</a></li>
+<li><a href="#orgece6d73">Show Cracked Results</a></li>
 </ul>
 </li>
-<li><a href="#org2ceace7">Mask Character Sets</a></li>
-<li><a href="#org8cb5e47">Tips</a></li>
+<li><a href="#org6101d36">Mask Character Sets</a></li>
+<li><a href="#org09da529">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -904,9 +922,9 @@ Related: <a href="20260611T064004--password-cracking-methodology__cybersecurity_
          <a href="20260314T005734--mask-attack__cybersecurity_technique.html">Mask Attack</a>
          <a href="20260617T103400--jwt-tool__cybersecurity_tool.html">jwt<sub>tool</sub></a>
 </p>
-<div id="outline-container-org961f143" class="outline-2">
-<h2 id="org961f143">Attack Modes</h2>
-<div class="outline-text-2" id="text-org961f143">
+<div id="outline-container-orga467eb6" class="outline-2">
+<h2 id="orga467eb6">Attack Modes</h2>
+<div class="outline-text-2" id="text-orga467eb6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -964,9 +982,9 @@ Related: <a href="20260611T064004--password-cracking-methodology__cybersecurity_
 </table>
 </div>
 </div>
-<div id="outline-container-org60813ed" class="outline-2">
-<h2 id="org60813ed">Common Hash Modes (<code>-m</code>)</h2>
-<div class="outline-text-2" id="text-org60813ed">
+<div id="outline-container-orgbe3fda8" class="outline-2">
+<h2 id="orgbe3fda8">Common Hash Modes (<code>-m</code>)</h2>
+<div class="outline-text-2" id="text-orgbe3fda8">
 <p>
 The mode number must match the hash type exactly — wrong mode
 means zero cracks with no error explaining why.
@@ -1050,11 +1068,11 @@ means zero cracks with no error explaining why.
 </table>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_edaaf412d59446e78975be0589bf425e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b1970fd1662f476bb14f335e32e97e48>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_edaaf412d59446e78975be0589bf425e=document.querySelector('button[name=btn_edaaf412d59446e78975be0589bf425e]');
-copyBtnbtn_edaaf412d59446e78975be0589bf425e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Identify a hash's likely mode if unsure\nhashcat --example-hashes | grep -B2 -i \"<pattern from your hash>\"\nhashid '<hash>'\n`);copyBtnbtn_edaaf412d59446e78975be0589bf425e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_edaaf412d59446e78975be0589bf425e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b1970fd1662f476bb14f335e32e97e48=document.querySelector('button[name=btn_b1970fd1662f476bb14f335e32e97e48]');
+copyBtnbtn_b1970fd1662f476bb14f335e32e97e48.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Identify a hash's likely mode if unsure\nhashcat --example-hashes | grep -B2 -i \"<pattern from your hash>\"\nhashid '<hash>'\n`);copyBtnbtn_b1970fd1662f476bb14f335e32e97e48.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b1970fd1662f476bb14f335e32e97e48.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1065,9 +1083,9 @@ hashid <span style="color: var(--clr-string); background-color: var(--bg-string)
 </div></div>
 </div>
 </div>
-<div id="outline-container-org823709c" class="outline-2">
-<h2 id="org823709c">Core Flags</h2>
-<div class="outline-text-2" id="text-org823709c">
+<div id="outline-container-org852be93" class="outline-2">
+<h2 id="org852be93">Core Flags</h2>
+<div class="outline-text-2" id="text-org852be93">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1126,19 +1144,19 @@ hashid <span style="color: var(--clr-string); background-color: var(--bg-string)
 </table>
 </div>
 </div>
-<div id="outline-container-org7d744c2" class="outline-2">
-<h2 id="org7d744c2">Common Workflows</h2>
-<div class="outline-text-2" id="text-org7d744c2">
+<div id="outline-container-orgb080edf" class="outline-2">
+<h2 id="orgb080edf">Common Workflows</h2>
+<div class="outline-text-2" id="text-orgb080edf">
 </div>
-<div id="outline-container-org5920c60" class="outline-3">
-<h3 id="org5920c60">Dictionary Attack</h3>
-<div class="outline-text-3" id="text-org5920c60">
+<div id="outline-container-orgf0e8327" class="outline-3">
+<h3 id="orgf0e8327">Dictionary Attack</h3>
+<div class="outline-text-3" id="text-orgf0e8327">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_920d3b7a416045be92392b91b43a8aeb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f7a9350dc29f4f4b88ed001f4f6044c9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_920d3b7a416045be92392b91b43a8aeb=document.querySelector('button[name=btn_920d3b7a416045be92392b91b43a8aeb]');
-copyBtnbtn_920d3b7a416045be92392b91b43a8aeb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`hashcat -m 0 -a 0 hash.txt /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_920d3b7a416045be92392b91b43a8aeb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_920d3b7a416045be92392b91b43a8aeb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f7a9350dc29f4f4b88ed001f4f6044c9=document.querySelector('button[name=btn_f7a9350dc29f4f4b88ed001f4f6044c9]');
+copyBtnbtn_f7a9350dc29f4f4b88ed001f4f6044c9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`hashcat -m 0 -a 0 hash.txt /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_f7a9350dc29f4f4b88ed001f4f6044c9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f7a9350dc29f4f4b88ed001f4f6044c9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1147,15 +1165,15 @@ let res = copyTextToClipboard(`hashcat -m 0 -a 0 hash.txt /usr/share/wordlists/r
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb55f4a8" class="outline-3">
-<h3 id="orgb55f4a8">Dictionary + Rules</h3>
-<div class="outline-text-3" id="text-orgb55f4a8">
+<div id="outline-container-orgb0239ef" class="outline-3">
+<h3 id="orgb0239ef">Dictionary + Rules</h3>
+<div class="outline-text-3" id="text-orgb0239ef">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6a2b9e898ecc4cfbb58d530d2b571e1f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9bac54854d7e40ebb39ec6bbe73b2fe7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6a2b9e898ecc4cfbb58d530d2b571e1f=document.querySelector('button[name=btn_6a2b9e898ecc4cfbb58d530d2b571e1f]');
-copyBtnbtn_6a2b9e898ecc4cfbb58d530d2b571e1f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`hashcat -m 1000 -a 0 hash.txt /usr/share/wordlists/rockyou.txt \\\n  -r /usr/share/hashcat/rules/best64.rule\n`);copyBtnbtn_6a2b9e898ecc4cfbb58d530d2b571e1f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6a2b9e898ecc4cfbb58d530d2b571e1f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9bac54854d7e40ebb39ec6bbe73b2fe7=document.querySelector('button[name=btn_9bac54854d7e40ebb39ec6bbe73b2fe7]');
+copyBtnbtn_9bac54854d7e40ebb39ec6bbe73b2fe7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`hashcat -m 1000 -a 0 hash.txt /usr/share/wordlists/rockyou.txt \\\n  -r /usr/share/hashcat/rules/best64.rule\n`);copyBtnbtn_9bac54854d7e40ebb39ec6bbe73b2fe7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9bac54854d7e40ebb39ec6bbe73b2fe7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1165,15 +1183,15 @@ let res = copyTextToClipboard(`hashcat -m 1000 -a 0 hash.txt /usr/share/wordlist
 </div></div>
 </div>
 </div>
-<div id="outline-container-org759bd06" class="outline-3">
-<h3 id="org759bd06">Mask Attack (Brute-Force)</h3>
-<div class="outline-text-3" id="text-org759bd06">
+<div id="outline-container-orgcb7c764" class="outline-3">
+<h3 id="orgcb7c764">Mask Attack (Brute-Force)</h3>
+<div class="outline-text-3" id="text-orgcb7c764">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6433431e6d2b4e7d8cd32fb98ebeed39>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f2946e8e92b74dbe8901833c146dca6d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6433431e6d2b4e7d8cd32fb98ebeed39=document.querySelector('button[name=btn_6433431e6d2b4e7d8cd32fb98ebeed39]');
-copyBtnbtn_6433431e6d2b4e7d8cd32fb98ebeed39.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# All 4-digit PINs\nhashcat -m 0 -a 3 hash.txt ?d?d?d?d\n\n# 8 chars: 4 lowercase + 4 digits\nhashcat -m 1000 -a 3 hash.txt ?l?l?l?l?d?d?d?d\n`);copyBtnbtn_6433431e6d2b4e7d8cd32fb98ebeed39.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6433431e6d2b4e7d8cd32fb98ebeed39.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f2946e8e92b74dbe8901833c146dca6d=document.querySelector('button[name=btn_f2946e8e92b74dbe8901833c146dca6d]');
+copyBtnbtn_f2946e8e92b74dbe8901833c146dca6d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# All 4-digit PINs\nhashcat -m 0 -a 3 hash.txt ?d?d?d?d\n\n# 8 chars: 4 lowercase + 4 digits\nhashcat -m 1000 -a 3 hash.txt ?l?l?l?l?d?d?d?d\n`);copyBtnbtn_f2946e8e92b74dbe8901833c146dca6d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f2946e8e92b74dbe8901833c146dca6d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1186,15 +1204,15 @@ let res = copyTextToClipboard(`# All 4-digit PINs\nhashcat -m 0 -a 3 hash.txt ?d
 </div></div>
 </div>
 </div>
-<div id="outline-container-org70f6176" class="outline-3">
-<h3 id="org70f6176">NTLM Hashes (from secretsdump / Mimikatz)</h3>
-<div class="outline-text-3" id="text-org70f6176">
+<div id="outline-container-org3ba9262" class="outline-3">
+<h3 id="org3ba9262">NTLM Hashes (from secretsdump / Mimikatz)</h3>
+<div class="outline-text-3" id="text-org3ba9262">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8e69c6c9d0f3447fa26f8a07cf44ff7c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_23a8a73aa4984a9e9043f63681fdcbcd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8e69c6c9d0f3447fa26f8a07cf44ff7c=document.querySelector('button[name=btn_8e69c6c9d0f3447fa26f8a07cf44ff7c]');
-copyBtnbtn_8e69c6c9d0f3447fa26f8a07cf44ff7c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`hashcat -m 1000 -a 0 ntlm_hashes.txt /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_8e69c6c9d0f3447fa26f8a07cf44ff7c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8e69c6c9d0f3447fa26f8a07cf44ff7c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_23a8a73aa4984a9e9043f63681fdcbcd=document.querySelector('button[name=btn_23a8a73aa4984a9e9043f63681fdcbcd]');
+copyBtnbtn_23a8a73aa4984a9e9043f63681fdcbcd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`hashcat -m 1000 -a 0 ntlm_hashes.txt /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_23a8a73aa4984a9e9043f63681fdcbcd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_23a8a73aa4984a9e9043f63681fdcbcd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1203,15 +1221,15 @@ let res = copyTextToClipboard(`hashcat -m 1000 -a 0 ntlm_hashes.txt /usr/share/w
 </div></div>
 </div>
 </div>
-<div id="outline-container-org0126761" class="outline-3">
-<h3 id="org0126761">Kerberoasting (TGS-REP)</h3>
-<div class="outline-text-3" id="text-org0126761">
+<div id="outline-container-org0d36b13" class="outline-3">
+<h3 id="org0d36b13">Kerberoasting (TGS-REP)</h3>
+<div class="outline-text-3" id="text-org0d36b13">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2cb620c750c94f388b5ef5ffa9840570>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_521862ee8f074017b3ba3742baf0b1b1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2cb620c750c94f388b5ef5ffa9840570=document.querySelector('button[name=btn_2cb620c750c94f388b5ef5ffa9840570]');
-copyBtnbtn_2cb620c750c94f388b5ef5ffa9840570.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Hash format from GetUserSPNs.py / Rubeus\nhashcat -m 13100 -a 0 kerberoast.txt /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_2cb620c750c94f388b5ef5ffa9840570.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2cb620c750c94f388b5ef5ffa9840570.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_521862ee8f074017b3ba3742baf0b1b1=document.querySelector('button[name=btn_521862ee8f074017b3ba3742baf0b1b1]');
+copyBtnbtn_521862ee8f074017b3ba3742baf0b1b1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Hash format from GetUserSPNs.py / Rubeus\nhashcat -m 13100 -a 0 kerberoast.txt /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_521862ee8f074017b3ba3742baf0b1b1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_521862ee8f074017b3ba3742baf0b1b1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1221,15 +1239,15 @@ let res = copyTextToClipboard(`# Hash format from GetUserSPNs.py / Rubeus\nhashc
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgbddf234" class="outline-3">
-<h3 id="orgbddf234">AS-REP Roasting</h3>
-<div class="outline-text-3" id="text-orgbddf234">
+<div id="outline-container-orgce05872" class="outline-3">
+<h3 id="orgce05872">AS-REP Roasting</h3>
+<div class="outline-text-3" id="text-orgce05872">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c5e6f7b1b55f46f58b02eff69ebd6cb0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_26cdee7d64bb47aba0650ab93f475720>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c5e6f7b1b55f46f58b02eff69ebd6cb0=document.querySelector('button[name=btn_c5e6f7b1b55f46f58b02eff69ebd6cb0]');
-copyBtnbtn_c5e6f7b1b55f46f58b02eff69ebd6cb0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`hashcat -m 18200 -a 0 asrep.txt /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_c5e6f7b1b55f46f58b02eff69ebd6cb0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c5e6f7b1b55f46f58b02eff69ebd6cb0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_26cdee7d64bb47aba0650ab93f475720=document.querySelector('button[name=btn_26cdee7d64bb47aba0650ab93f475720]');
+copyBtnbtn_26cdee7d64bb47aba0650ab93f475720.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`hashcat -m 18200 -a 0 asrep.txt /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_26cdee7d64bb47aba0650ab93f475720.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_26cdee7d64bb47aba0650ab93f475720.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1238,15 +1256,15 @@ let res = copyTextToClipboard(`hashcat -m 18200 -a 0 asrep.txt /usr/share/wordli
 </div></div>
 </div>
 </div>
-<div id="outline-container-orga5e79e8" class="outline-3">
-<h3 id="orga5e79e8">JWT Secret Brute Force</h3>
-<div class="outline-text-3" id="text-orga5e79e8">
+<div id="outline-container-org1d9d7e1" class="outline-3">
+<h3 id="org1d9d7e1">JWT Secret Brute Force</h3>
+<div class="outline-text-3" id="text-org1d9d7e1">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_26c6aef00ac140fb9d7bc3b3c78b659e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_82e8ff5f6c68463fac7bf14ab485c900>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_26c6aef00ac140fb9d7bc3b3c78b659e=document.querySelector('button[name=btn_26c6aef00ac140fb9d7bc3b3c78b659e]');
-copyBtnbtn_26c6aef00ac140fb9d7bc3b3c78b659e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Matches jwt_tool's -C crack mode but runs on GPU\nhashcat -m 16500 -a 0 jwt.txt /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_26c6aef00ac140fb9d7bc3b3c78b659e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_26c6aef00ac140fb9d7bc3b3c78b659e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_82e8ff5f6c68463fac7bf14ab485c900=document.querySelector('button[name=btn_82e8ff5f6c68463fac7bf14ab485c900]');
+copyBtnbtn_82e8ff5f6c68463fac7bf14ab485c900.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Matches jwt_tool's -C crack mode but runs on GPU\nhashcat -m 16500 -a 0 jwt.txt /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_82e8ff5f6c68463fac7bf14ab485c900.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_82e8ff5f6c68463fac7bf14ab485c900.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1256,27 +1274,27 @@ let res = copyTextToClipboard(`# Matches jwt_tool's -C crack mode but runs on GP
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgaf9ed13" class="outline-3">
-<h3 id="orgaf9ed13">Show Cracked Results</h3>
-<div class="outline-text-3" id="text-orgaf9ed13">
+<div id="outline-container-orgece6d73" class="outline-3">
+<h3 id="orgece6d73">Show Cracked Results</h3>
+<div class="outline-text-3" id="text-orgece6d73">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1ea24806583f491598392ffa6525d16d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4468513755714e0186b9c3cf8101ed43>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1ea24806583f491598392ffa6525d16d=document.querySelector('button[name=btn_1ea24806583f491598392ffa6525d16d]');
-copyBtnbtn_1ea24806583f491598392ffa6525d16d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`hashcat -m 1000 hash.txt --show\n`);copyBtnbtn_1ea24806583f491598392ffa6525d16d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1ea24806583f491598392ffa6525d16d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4468513755714e0186b9c3cf8101ed43=document.querySelector('button[name=btn_4468513755714e0186b9c3cf8101ed43]');
+copyBtnbtn_4468513755714e0186b9c3cf8101ed43.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`hashcat -a0 -m5600 hash.txt /usr/share/wordlists/seclists/Passwords/Common-Credentials/darkweb2017_top-10000.txt\n`);copyBtnbtn_4468513755714e0186b9c3cf8101ed43.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4468513755714e0186b9c3cf8101ed43.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-shell">hashcat -m 1000 hash.txt --show
+<pre class="src src-shell">hashcat -a0 -m5600 hash.txt /usr/share/wordlists/seclists/Passwords/Common-Credentials/darkweb2017_top-10000.txt
 </pre>
 </div></div>
 </div>
 </div>
 </div>
-<div id="outline-container-org2ceace7" class="outline-2">
-<h2 id="org2ceace7">Mask Character Sets</h2>
-<div class="outline-text-2" id="text-org2ceace7">
+<div id="outline-container-org6101d36" class="outline-2">
+<h2 id="org6101d36">Mask Character Sets</h2>
+<div class="outline-text-2" id="text-org6101d36">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1320,9 +1338,9 @@ let res = copyTextToClipboard(`hashcat -m 1000 hash.txt --show\n`);copyBtnbtn_1e
 </table>
 </div>
 </div>
-<div id="outline-container-org8cb5e47" class="outline-2">
-<h2 id="org8cb5e47">Tips</h2>
-<div class="outline-text-2" id="text-org8cb5e47">
+<div id="outline-container-org09da529" class="outline-2">
+<h2 id="org09da529">Tips</h2>
+<div class="outline-text-2" id="text-org09da529">
 <ul class="org-ul">
 <li>Results persist in <code>~/.hashcat/hashcat.potfile</code> — always run
 <code>--show</code> after a session to read previously cracked hashes without
@@ -1348,6 +1366,20 @@ unresponsive — expected behaviour, not a crash</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1355,6 +1387,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

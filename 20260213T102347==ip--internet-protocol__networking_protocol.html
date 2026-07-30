@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Internet Protocol</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,15 +886,15 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8993cf7">Versions</a></li>
-<li><a href="#org081dc9d">IPv4 Header Fields</a>
+<li><a href="#org60c4678">Versions</a></li>
+<li><a href="#org4c5d4ff">IPv4 Header Fields</a>
 <ul>
-<li><a href="#org5dca3ef">TTL</a></li>
+<li><a href="#org1def0b0">TTL</a></li>
 </ul>
 </li>
-<li><a href="#orgd69a304">Routing</a></li>
-<li><a href="#orgc7cee9a">Fragmentation</a></li>
-<li><a href="#orgd9f0362">Security Relevance</a></li>
+<li><a href="#orgbe75140">Routing</a></li>
+<li><a href="#orgebff436">Fragmentation</a></li>
+<li><a href="#org049cdb9">Security Relevance</a></li>
 </ul>
 </div>
 </div>
@@ -894,9 +912,9 @@ Related: <a href="20260214T084008--ip-address__concept_networking.html">IP Addre
          <a href="20260314T005635==icmp--internet-control-message-protocol__networking_protocol.html">ICMP</a>
          <a href="20260314T005638--networking__moc_networking.html">Networking MOC</a>
 </p>
-<div id="outline-container-org8993cf7" class="outline-2">
-<h2 id="org8993cf7">Versions</h2>
-<div class="outline-text-2" id="text-org8993cf7">
+<div id="outline-container-org60c4678" class="outline-2">
+<h2 id="org60c4678">Versions</h2>
+<div class="outline-text-2" id="text-org60c4678">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -939,9 +957,9 @@ See <a href="20260214T084008--ip-address__concept_networking.html">IP Address</a
 </p>
 </div>
 </div>
-<div id="outline-container-org081dc9d" class="outline-2">
-<h2 id="org081dc9d">IPv4 Header Fields</h2>
-<div class="outline-text-2" id="text-org081dc9d">
+<div id="outline-container-org4c5d4ff" class="outline-2">
+<h2 id="org4c5d4ff">IPv4 Header Fields</h2>
+<div class="outline-text-2" id="text-org4c5d4ff">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1034,9 +1052,9 @@ See <a href="20260214T084008--ip-address__concept_networking.html">IP Address</a
 </tbody>
 </table>
 </div>
-<div id="outline-container-org5dca3ef" class="outline-3">
-<h3 id="org5dca3ef">TTL</h3>
-<div class="outline-text-3" id="text-org5dca3ef">
+<div id="outline-container-org1def0b0" class="outline-3">
+<h3 id="org1def0b0">TTL</h3>
+<div class="outline-text-3" id="text-org1def0b0">
 <p>
 Time To Live is decremented by 1 at each router hop. When it
 reaches 0, the packet is dropped and an ICMP Time Exceeded
@@ -1051,9 +1069,9 @@ via TTL.
 </div>
 </div>
 </div>
-<div id="outline-container-orgd69a304" class="outline-2">
-<h2 id="orgd69a304">Routing</h2>
-<div class="outline-text-2" id="text-orgd69a304">
+<div id="outline-container-orgbe75140" class="outline-2">
+<h2 id="orgbe75140">Routing</h2>
+<div class="outline-text-2" id="text-orgbe75140">
 <p>
 Routers maintain routing tables mapping destination networks
 to next-hop addresses. Routing protocols automate table
@@ -1105,9 +1123,9 @@ population:
 </table>
 </div>
 </div>
-<div id="outline-container-orgc7cee9a" class="outline-2">
-<h2 id="orgc7cee9a">Fragmentation</h2>
-<div class="outline-text-2" id="text-orgc7cee9a">
+<div id="outline-container-orgebff436" class="outline-2">
+<h2 id="orgebff436">Fragmentation</h2>
+<div class="outline-text-2" id="text-orgebff436">
 <p>
 When a packet exceeds the MTU (Maximum Transmission Unit) of
 a link, IP fragments it. Each fragment has the same
@@ -1117,15 +1135,15 @@ fragmentation is the sender's responsibility.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd9f0362" class="outline-2">
-<h2 id="orgd9f0362">Security Relevance</h2>
-<div class="outline-text-2" id="text-orgd9f0362">
+<div id="outline-container-org049cdb9" class="outline-2">
+<h2 id="org049cdb9">Security Relevance</h2>
+<div class="outline-text-2" id="text-org049cdb9">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_8e65275bfad44fe38cd2a82f3f60d710>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_4ab937acc8a840118d34c5b74a51302e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8e65275bfad44fe38cd2a82f3f60d710=document.querySelector('button[name=btn_8e65275bfad44fe38cd2a82f3f60d710]');
-copyBtnbtn_8e65275bfad44fe38cd2a82f3f60d710.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— IP spoofing: source address is not verified by IP itself —\n  an attacker can set any source IP. Ingress filtering (BCP38)\n  at ISPs mitigates this.\n\n— TTL fingerprinting: default TTL reveals OS (64=Linux, 128=Windows)\n  See: Ping note\n\n— Fragmentation attacks: overlapping fragments can confuse\n  stateful inspection devices or IDS/IPS\n\n— Protocol field: useful in firewall rules and packet filters —\n  block ICMP (1), allow TCP (6) and UDP (17) as needed\n`);copyBtnbtn_8e65275bfad44fe38cd2a82f3f60d710.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8e65275bfad44fe38cd2a82f3f60d710.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4ab937acc8a840118d34c5b74a51302e=document.querySelector('button[name=btn_4ab937acc8a840118d34c5b74a51302e]');
+copyBtnbtn_4ab937acc8a840118d34c5b74a51302e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— IP spoofing: source address is not verified by IP itself —\n  an attacker can set any source IP. Ingress filtering (BCP38)\n  at ISPs mitigates this.\n\n— TTL fingerprinting: default TTL reveals OS (64=Linux, 128=Windows)\n  See: Ping note\n\n— Fragmentation attacks: overlapping fragments can confuse\n  stateful inspection devices or IDS/IPS\n\n— Protocol field: useful in firewall rules and packet filters —\n  block ICMP (1), allow TCP (6) and UDP (17) as needed\n`);copyBtnbtn_4ab937acc8a840118d34c5b74a51302e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4ab937acc8a840118d34c5b74a51302e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1147,6 +1165,20 @@ let res = copyTextToClipboard(`— IP spoofing: source address is not verified b
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1154,6 +1186,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

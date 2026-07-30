@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tactics, Techniques, and Procedures</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,91 +886,213 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org020f477">Tactics, Techniques, and Procedures</a>
-<ul>
-<li><a href="#orgb03acde">Tactics</a></li>
-<li><a href="#orgdc82d7d">Techniques</a></li>
-<li><a href="#org994a163">Procedures</a></li>
-<li><a href="#org40ee6ca">Importance of TTPs</a></li>
-</ul>
-</li>
+<li><a href="#orgbefda69">The Three Levels — Broad to Specific</a></li>
+<li><a href="#org5274f63">Tactics</a></li>
+<li><a href="#org93f80e9">Techniques</a></li>
+<li><a href="#org4069c47">Procedures</a></li>
+<li><a href="#org165d207">Worked Example — Same Tactic, Different Levels</a></li>
+<li><a href="#orgc4332a7">Importance of TTPs</a></li>
+<li><a href="#org1ba953d">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org020f477" class="outline-2">
-<h2 id="org020f477">Tactics, Techniques, and Procedures</h2>
-<div class="outline-text-2" id="text-org020f477">
 <p>
-Tactics, Techniques, and Procedures (TTPs) are the methods employed by threat actors to achieve their objectives. They describe the specific actions and methods used in cyberattacks, such as , exploitation, and command and control.
+Tactics, Techniques, and Procedures (TTPs) are the methods employed
+by threat actors to achieve their objectives — describing the
+specific actions used across a cyberattack, from initial exploitation
+through command and control. TTPs form the vocabulary MITRE ATT&amp;CK
+is built on, and sit at the top of the
+<a href="20260327T192843--pyramid-of-pain__cybersecurity_model.html">Pyramid of Pain</a> — the hardest thing
+for an adversary to change, and therefore the most durable thing to
+detect against.
 </p>
-</div>
-<div id="outline-container-orgb03acde" class="outline-3">
-<h3 id="orgb03acde">Tactics</h3>
-<div class="outline-text-3" id="text-orgb03acde">
+
 <p>
-Tactics represent the overall approach or strategy employed by an attacker. Examples include:
+Related: <a href="20260206T060705--mitre-attck__cybersecurity_model.html">MITRE ATT&amp;CK</a>
+         <a href="20260327T192843--pyramid-of-pain__cybersecurity_model.html">Pyramid of Pain</a>
+         <a href="20260212T065441==ioc--indicators-of-compromise__concept_cybersecurity.html">Indicators of Compromise</a>
+         <a href="20260206T060447--cyber-kill-chain__cybersecurity_model.html">Cyber Kill Chain</a>
+         <a href="20260314T005754--threat-intelligence__concept_cybersecurity.html">Threat Intelligence</a>
+</p>
+<div id="outline-container-orgbefda69" class="outline-2">
+<h2 id="orgbefda69">The Three Levels — Broad to Specific</h2>
+<div class="outline-text-2" id="text-orgbefda69">
+<p>
+TTPs describe attacker behavior at decreasing levels of
+abstraction, each answering a different question:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Level</th>
+<th scope="col" class="org-left">Question answered</th>
+<th scope="col" class="org-left">Granularity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Tactic</td>
+<td class="org-left"><b>Why</b> — the objective</td>
+<td class="org-left">Broadest</td>
+</tr>
+
+<tr>
+<td class="org-left">Technique</td>
+<td class="org-left"><b>How</b> — the general method</td>
+<td class="org-left">Middle</td>
+</tr>
+
+<tr>
+<td class="org-left">Procedure</td>
+<td class="org-left"><b>Exactly how</b> — the specific implementation</td>
+<td class="org-left">Most specific</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org5274f63" class="outline-2">
+<h2 id="org5274f63">Tactics</h2>
+<div class="outline-text-2" id="text-org5274f63">
+<p>
+Tactics represent the overall approach or strategy employed by an
+attacker — the <b>why</b>. Examples include:
 </p>
 
 <ul class="org-ul">
 <li>Exploitation</li>
-<li><a href="Command and Control Server.html#command-and-control-server">Command and Control Server</a> (C&amp;C)</li>
-<li><a href="Data Exfiltration.html#data-exfiltration">Data Exfiltration</a></li>
-<li><a href="Persistence.html#persistence">Persistence</a></li>
+<li><a href="20260314T003332--command-and-control-server__concept_cybersecurity.html">Command and Control Server</a> (C&amp;C)</li>
+<li><a href="20260206T060458--data-exfiltration__concept_cybersecurity.html">Data Exfiltration</a></li>
+<li><a href="20260206T060723--persistence__concept_cybersecurity.html">Persistence</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdc82d7d" class="outline-3">
-<h3 id="orgdc82d7d">Techniques</h3>
-<div class="outline-text-3" id="text-orgdc82d7d">
+<div id="outline-container-org93f80e9" class="outline-2">
+<h2 id="org93f80e9">Techniques</h2>
+<div class="outline-text-2" id="text-org93f80e9">
 <p>
-Techniques are the specific methods used to carry out a particular tactic. Examples include:
+Techniques are the specific methods used to carry out a particular
+tactic — the <b>how</b>. Examples include:
 </p>
 
 <ul class="org-ul">
-<li><a href="Phishing.html#phishing">Phishing</a></li>
-<li>Spear <a href="Phishing.html#phishing">Phishing</a></li>
+<li><a href="20260214T083350--phishing__concept_cybersecurity_technique.html">Phishing</a></li>
+<li>Spear Phishing</li>
 <li>Whaling</li>
 <li>Social engineering</li>
 <li>Exploiting vulnerabilities</li>
-<li><a href="Malware.html#malware">Malware</a></li>
+<li><a href="20260206T060714--malware__concept_cybersecurity.html">Malware</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org994a163" class="outline-3">
-<h3 id="org994a163">Procedures</h3>
-<div class="outline-text-3" id="text-org994a163">
+<div id="outline-container-org4069c47" class="outline-2">
+<h2 id="org4069c47">Procedures</h2>
+<div class="outline-text-2" id="text-org4069c47">
 <p>
-Procedures are the specific steps taken by an attacker to execute a particular technique. Examples include:
+Procedures are the specific, granular steps a <b>particular</b> threat
+actor takes to execute a technique — the exact implementation detail
+that lets defenders fingerprint one group's activity from another's,
+even when two groups use the same broad technique. Examples include:
 </p>
 
 <ul class="org-ul">
-<li>Steps involved in a <a href="Phishing.html#phishing">Phishing</a> attack, such as crafting a convincing email, delivering the email, and handling responses.</li>
-<li>Steps involved in exploiting a specific vulnerability, such as identifying the vulnerability, crafting an exploit, and executing the exploit.</li>
-<li>Steps involved in establishing a command and control channel, such as setting up a server, configuring the botnet, and communicating with infected systems.</li>
+<li>Steps involved in a <a href="20260214T083350--phishing__concept_cybersecurity_technique.html">Phishing</a> attack,
+such as crafting a convincing email, delivering the email, and
+handling responses</li>
+<li>Steps involved in exploiting a specific vulnerability, such as
+identifying the vulnerability, crafting an exploit, and executing
+the exploit</li>
+<li>Steps involved in establishing a command and control channel,
+such as setting up a server, configuring the botnet, and
+communicating with infected systems</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org40ee6ca" class="outline-3">
-<h3 id="org40ee6ca">Importance of TTPs</h3>
-<div class="outline-text-3" id="text-org40ee6ca">
+<div id="outline-container-org165d207" class="outline-2">
+<h2 id="org165d207">Worked Example — Same Tactic, Different Levels</h2>
+<div class="outline-text-2" id="text-org165d207">
+<p>
+To make the abstraction concrete: two different threat actors might
+share a tactic (Initial Access) and even a technique (Phishing),
+but differ entirely at the procedure level — one sends a PDF with
+an embedded macro, another sends a link to a credential-harvesting
+clone site with a specific, recognizable page layout. Defenders who
+only track at the tactic/technique level miss this distinction;
+defenders tracking procedures can attribute an intrusion to a
+specific known actor based on these implementation details alone.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc4332a7" class="outline-2">
+<h2 id="orgc4332a7">Importance of TTPs</h2>
+<div class="outline-text-2" id="text-orgc4332a7">
 <p>
 Understanding TTPs is crucial for:
 </p>
 
 <ul class="org-ul">
-<li></li>
-
-<li></li>
-
-<li>Threat hunting: Actively searching for evidence of malicious activity within an organization's systems.</li>
-<li>Security operations: Developing and implementing effective security controls to mitigate the risks associated with specific TTPs.</li>
-<li>Cybersecurity training: Educating employees about common TTPs used by attackers to help them recognize and avoid threats.</li>
+<li>Detection engineering: Building detections at the technique/
+procedure level survives an attacker's IOC rotation, unlike
+signature-based detection tied to specific hashes or IPs — see
+Pyramid of Pain for why this matters more than low-level indicators</li>
+<li>Attribution: Procedure-level detail is often specific enough to
+link an intrusion to a known threat actor or group, since exact
+implementation habits tend to persist even as infrastructure and
+tools change</li>
+<li>Threat hunting: Actively searching for evidence of malicious
+activity within an organization's systems</li>
+<li>Security operations: Developing and implementing effective
+security controls to mitigate the risks associated with specific
+TTPs</li>
+<li>Cybersecurity training: Educating employees about common TTPs
+used by attackers to help them recognize and avoid threats</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1ba953d" class="outline-2">
+<h2 id="org1ba953d">Tips</h2>
+<div class="outline-text-2" id="text-org1ba953d">
+<ul class="org-ul">
+<li>When writing up a pentest finding, describing your own technique
+and procedure explicitly (not just naming the vulnerability
+class) gives the reader something they can actually build a
+detection against — this is the same principle MITRE D3FEND
+formalizes for translating an ATT&amp;CK technique into a specific
+countermeasure</li>
+<li>Don't confuse "tactic" in the TTP sense with general strategy
+language — in this framework it specifically means the
+<b>objective</b> of an action (Initial Access, Persistence,
+Exfiltration), matching MITRE ATT&amp;CK's own tactic categories
+exactly</li>
 </ul>
 </div>
 </div>
 </div>
-</div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -960,6 +1100,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

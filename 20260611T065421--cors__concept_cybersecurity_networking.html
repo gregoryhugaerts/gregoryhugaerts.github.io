@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CORS</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,16 +886,16 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga1ffcd3">Same-Origin Policy</a></li>
-<li><a href="#org4176cd4">How It Works</a>
+<li><a href="#org4c4c216">Same-Origin Policy</a></li>
+<li><a href="#org7ad2196">How It Works</a>
 <ul>
-<li><a href="#orgca3047a">Simple Requests</a></li>
-<li><a href="#org82ea11e">Preflight Requests</a></li>
+<li><a href="#orgc4d0120">Simple Requests</a></li>
+<li><a href="#org1a026b4">Preflight Requests</a></li>
 </ul>
 </li>
-<li><a href="#org52343c4">Key Headers</a></li>
-<li><a href="#orgc4ab73e">Credentials</a></li>
-<li><a href="#org79f3aa8">Tips</a></li>
+<li><a href="#org5f84fbf">Key Headers</a></li>
+<li><a href="#orgd6fb93d">Credentials</a></li>
+<li><a href="#orgdd50fe9">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -892,9 +910,9 @@ Related: <a href="20260611T070147--cors-misconfigurations__cybersecurity_pentest
          <a href="20260213T071848==csrf--cross-site-request-forgery__cybersecurity_technique.html">CSRF</a>
          <a href="20260207T065314--cross-site-scripting__cybersecurity_technique.html">XSS</a>
 </p>
-<div id="outline-container-orga1ffcd3" class="outline-2">
-<h2 id="orga1ffcd3">Same-Origin Policy</h2>
-<div class="outline-text-2" id="text-orga1ffcd3">
+<div id="outline-container-org4c4c216" class="outline-2">
+<h2 id="org4c4c216">Same-Origin Policy</h2>
+<div class="outline-text-2" id="text-org4c4c216">
 <p>
 Browsers enforce the Same-Origin Policy by default — a page at
 <code>https://target.com</code> cannot read responses from <code>https://api.target.com</code>
@@ -903,13 +921,13 @@ explicitly relax this restriction for trusted origins.
 </p>
 </div>
 </div>
-<div id="outline-container-org4176cd4" class="outline-2">
-<h2 id="org4176cd4">How It Works</h2>
-<div class="outline-text-2" id="text-org4176cd4">
+<div id="outline-container-org7ad2196" class="outline-2">
+<h2 id="org7ad2196">How It Works</h2>
+<div class="outline-text-2" id="text-org7ad2196">
 </div>
-<div id="outline-container-orgca3047a" class="outline-3">
-<h3 id="orgca3047a">Simple Requests</h3>
-<div class="outline-text-3" id="text-orgca3047a">
+<div id="outline-container-orgc4d0120" class="outline-3">
+<h3 id="orgc4d0120">Simple Requests</h3>
+<div class="outline-text-3" id="text-orgc4d0120">
 <p>
 For simple requests (GET, POST with certain content types), the
 browser automatically includes an <code>Origin</code> header. The server
@@ -917,7 +935,7 @@ responds with <code>Access-Control-Allow-Origin</code> indicating which origins
 are permitted to read the response.
 </p>
 
-<pre class="example" id="orgdba732a">
+<pre class="example" id="orga76e81c">
 Request:
 Origin: https://app.target.com
 
@@ -927,16 +945,16 @@ Access-Control-Allow-Credentials: true
 </pre>
 </div>
 </div>
-<div id="outline-container-org82ea11e" class="outline-3">
-<h3 id="org82ea11e">Preflight Requests</h3>
-<div class="outline-text-3" id="text-org82ea11e">
+<div id="outline-container-org1a026b4" class="outline-3">
+<h3 id="org1a026b4">Preflight Requests</h3>
+<div class="outline-text-3" id="text-org1a026b4">
 <p>
 For complex requests (PUT, DELETE, custom headers, JSON body), the
 browser first sends an OPTIONS preflight request to check whether
 the actual request is permitted.
 </p>
 
-<pre class="example" id="org7611178">
+<pre class="example" id="orgf11929d">
 OPTIONS /api/data HTTP/1.1
 Origin: https://app.target.com
 Access-Control-Request-Method: DELETE
@@ -950,9 +968,9 @@ Access-Control-Allow-Headers: Authorization
 </div>
 </div>
 </div>
-<div id="outline-container-org52343c4" class="outline-2">
-<h2 id="org52343c4">Key Headers</h2>
-<div class="outline-text-2" id="text-org52343c4">
+<div id="outline-container-org5f84fbf" class="outline-2">
+<h2 id="org5f84fbf">Key Headers</h2>
+<div class="outline-text-2" id="text-org5f84fbf">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1016,9 +1034,9 @@ Access-Control-Allow-Headers: Authorization
 </table>
 </div>
 </div>
-<div id="outline-container-orgc4ab73e" class="outline-2">
-<h2 id="orgc4ab73e">Credentials</h2>
-<div class="outline-text-2" id="text-orgc4ab73e">
+<div id="outline-container-orgd6fb93d" class="outline-2">
+<h2 id="orgd6fb93d">Credentials</h2>
+<div class="outline-text-2" id="text-orgd6fb93d">
 <p>
 By default, cross-origin requests do not include cookies or auth
 headers. To include them, both the request and the server response
@@ -1036,9 +1054,9 @@ be a wildcard (<code>*</code>) — it must specify an explicit origin.
 </p>
 </div>
 </div>
-<div id="outline-container-org79f3aa8" class="outline-2">
-<h2 id="org79f3aa8">Tips</h2>
-<div class="outline-text-2" id="text-org79f3aa8">
+<div id="outline-container-orgdd50fe9" class="outline-2">
+<h2 id="orgdd50fe9">Tips</h2>
+<div class="outline-text-2" id="text-orgdd50fe9">
 <ul class="org-ul">
 <li>CORS is enforced by the browser — it does not protect against
 direct server requests with curl or Burp Suite</li>
@@ -1051,6 +1069,20 @@ on the server, not the client</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1058,6 +1090,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

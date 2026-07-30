@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Berkeley Packet Filter</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,34 +886,34 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5d51805">Berkeley Packet Filter</a>
+<li><a href="#orgc37fcd9">Berkeley Packet Filter</a>
 <ul>
-<li><a href="#org8cf9472">Core Concepts</a></li>
-<li><a href="#org65f8cd1">Structure of BPF Filter Expressions</a>
+<li><a href="#orgf084db9">Core Concepts</a></li>
+<li><a href="#org4d60a3d">Structure of BPF Filter Expressions</a>
 <ul>
-<li><a href="#org94db4bf">Primitives</a></li>
-<li><a href="#orgf17e4a9">Logical Operators</a></li>
-<li><a href="#org259b6ba">Examples</a></li>
+<li><a href="#org91a0e0a">Primitives</a></li>
+<li><a href="#orgc2c4b37">Logical Operators</a></li>
+<li><a href="#orgc6a80ad">Examples</a></li>
 </ul>
 </li>
-<li><a href="#org040b53f">Use Cases</a></li>
-<li><a href="#org9a95b94">Advantages</a></li>
-<li><a href="#orgddba325">Limitations</a></li>
+<li><a href="#org8dd71e4">Use Cases</a></li>
+<li><a href="#orgfa6c8ea">Advantages</a></li>
+<li><a href="#orgb6416de">Limitations</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5d51805" class="outline-2">
-<h2 id="org5d51805">Berkeley Packet Filter</h2>
-<div class="outline-text-2" id="text-org5d51805">
+<div id="outline-container-orgc37fcd9" class="outline-2">
+<h2 id="orgc37fcd9">Berkeley Packet Filter</h2>
+<div class="outline-text-2" id="text-orgc37fcd9">
 <p>
 The Berkeley Packet Filter (BPF) is a powerful and efficient mechanism for filtering raw network packets at the data link layer of the network stack in various Unix-like operating systems (including Linux and macOS). It allows user-space programs to capture only the network traffic they are interested in, significantly reducing overhead and improving performance compared to receiving all packets and filtering in the application.
 </p>
 </div>
-<div id="outline-container-org8cf9472" class="outline-3">
-<h3 id="org8cf9472">Core Concepts</h3>
-<div class="outline-text-3" id="text-org8cf9472">
+<div id="outline-container-orgf084db9" class="outline-3">
+<h3 id="orgf084db9">Core Concepts</h3>
+<div class="outline-text-3" id="text-orgf084db9">
 <ul class="org-ul">
 <li><b>Virtual Machine:</b> BPF operates as a small, in-kernel virtual machine. Filter expressions are compiled into bytecode that is executed by this VM for each incoming packet.</li>
 <li><b>Filter Expression:</b> A human-readable string that describes the criteria for matching packets. This expression is then translated into BPF bytecode.</li>
@@ -906,16 +924,16 @@ The Berkeley Packet Filter (BPF) is a powerful and efficient mechanism for filte
 </ul>
 </div>
 </div>
-<div id="outline-container-org65f8cd1" class="outline-3">
-<h3 id="org65f8cd1">Structure of BPF Filter Expressions</h3>
-<div class="outline-text-3" id="text-org65f8cd1">
+<div id="outline-container-org4d60a3d" class="outline-3">
+<h3 id="org4d60a3d">Structure of BPF Filter Expressions</h3>
+<div class="outline-text-3" id="text-org4d60a3d">
 <p>
 BPF filter expressions typically consist of one or more primitives combined using logical operators.
 </p>
 </div>
-<div id="outline-container-org94db4bf" class="outline-4">
-<h4 id="org94db4bf">Primitives</h4>
-<div class="outline-text-4" id="text-org94db4bf">
+<div id="outline-container-org91a0e0a" class="outline-4">
+<h4 id="org91a0e0a">Primitives</h4>
+<div class="outline-text-4" id="text-org91a0e0a">
 <p>
 Primitives specify a particular field or attribute of a packet to examine. Common primitives include:
 </p>
@@ -935,9 +953,9 @@ Primitives specify a particular field or attribute of a packet to examine. Commo
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf17e4a9" class="outline-4">
-<h4 id="orgf17e4a9">Logical Operators</h4>
-<div class="outline-text-4" id="text-orgf17e4a9">
+<div id="outline-container-orgc2c4b37" class="outline-4">
+<h4 id="orgc2c4b37">Logical Operators</h4>
+<div class="outline-text-4" id="text-orgc2c4b37">
 <p>
 Primitives can be combined using the following logical operators:
 </p>
@@ -949,9 +967,9 @@ Primitives can be combined using the following logical operators:
 </ul>
 </div>
 </div>
-<div id="outline-container-org259b6ba" class="outline-4">
-<h4 id="org259b6ba">Examples</h4>
-<div class="outline-text-4" id="text-org259b6ba">
+<div id="outline-container-orgc6a80ad" class="outline-4">
+<h4 id="orgc6a80ad">Examples</h4>
+<div class="outline-text-4" id="text-orgc6a80ad">
 <ul class="org-ul">
 <li><b>Capture all traffic to or from host 192.168.1.100:</b></li>
 </ul>
@@ -1018,9 +1036,9 @@ icmp
 </div>
 </div>
 </div>
-<div id="outline-container-org040b53f" class="outline-3">
-<h3 id="org040b53f">Use Cases</h3>
-<div class="outline-text-3" id="text-org040b53f">
+<div id="outline-container-org8dd71e4" class="outline-3">
+<h3 id="org8dd71e4">Use Cases</h3>
+<div class="outline-text-3" id="text-org8dd71e4">
 <p>
 BPF filters are used extensively in various Networking tools:
 </p>
@@ -1034,9 +1052,9 @@ BPF filters are used extensively in various Networking tools:
 </ul>
 </div>
 </div>
-<div id="outline-container-org9a95b94" class="outline-3">
-<h3 id="org9a95b94">Advantages</h3>
-<div class="outline-text-3" id="text-org9a95b94">
+<div id="outline-container-orgfa6c8ea" class="outline-3">
+<h3 id="orgfa6c8ea">Advantages</h3>
+<div class="outline-text-3" id="text-orgfa6c8ea">
 <ul class="org-ul">
 <li><b>Kernel-Level Efficiency:</b> Filtering in the kernel significantly reduces overhead.</li>
 <li><b>Flexibility:</b> The filter expression language allows for complex matching criteria.</li>
@@ -1044,9 +1062,9 @@ BPF filters are used extensively in various Networking tools:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgddba325" class="outline-3">
-<h3 id="orgddba325">Limitations</h3>
-<div class="outline-text-3" id="text-orgddba325">
+<div id="outline-container-orgb6416de" class="outline-3">
+<h3 id="orgb6416de">Limitations</h3>
+<div class="outline-text-3" id="text-orgb6416de">
 <ul class="org-ul">
 <li><b>Limited to Packet Headers (Mostly):</b> While eBPF allows for more complex operations and access to packet data, traditional BPF primarily operates on packet headers. Deep packet inspection often requires passing packets to user space.</li>
 <li><b>Expression Complexity:</b> Writing complex BPF filters can be challenging.</li>
@@ -1057,6 +1075,20 @@ BPF filters are used extensively in various Networking tools:
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1064,6 +1096,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

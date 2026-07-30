@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Regular expressions</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,35 +886,35 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfb52493">Regular Expressions</a>
+<li><a href="#org8052328">Regular Expressions</a>
 <ul>
-<li><a href="#orgb4f0c83">Common Use Cases</a></li>
-<li><a href="#org380ff43">Core Concepts</a>
+<li><a href="#org43b09ef">Common Use Cases</a></li>
+<li><a href="#org89852f1">Core Concepts</a>
 <ul>
-<li><a href="#orgaafb054">Literals and Metacharacters</a></li>
-<li><a href="#org836f6d7">Character Classes (or Character Sets)</a></li>
-<li><a href="#orgfd641f3">Quantifiers</a></li>
-<li><a href="#org9a3494e">Anchors</a></li>
-<li><a href="#org1541830">Grouping and Alternation</a></li>
+<li><a href="#org3e5ff60">Literals and Metacharacters</a></li>
+<li><a href="#orgbaa194f">Character Classes (or Character Sets)</a></li>
+<li><a href="#org347014b">Quantifiers</a></li>
+<li><a href="#org3e1ec47">Anchors</a></li>
+<li><a href="#orgad57d1d">Grouping and Alternation</a></li>
 </ul>
 </li>
-<li><a href="#org8aca022">Modifiers</a></li>
-<li><a href="#orgb7a9b2d">Examples</a></li>
+<li><a href="#orgbae7acb">Modifiers</a></li>
+<li><a href="#orgb82b1ba">Examples</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfb52493" class="outline-2">
-<h2 id="orgfb52493">Regular Expressions</h2>
-<div class="outline-text-2" id="text-orgfb52493">
+<div id="outline-container-org8052328" class="outline-2">
+<h2 id="org8052328">Regular Expressions</h2>
+<div class="outline-text-2" id="text-org8052328">
 <p>
 A <b>regular expression</b> (often shortened to <b>regex</b> or <b>regexp</b>) is a sequence of characters that specifies a search pattern. They are a powerful tool for inspecting and manipulating text.
 </p>
 </div>
-<div id="outline-container-orgb4f0c83" class="outline-3">
-<h3 id="orgb4f0c83">Common Use Cases</h3>
-<div class="outline-text-3" id="text-orgb4f0c83">
+<div id="outline-container-org43b09ef" class="outline-3">
+<h3 id="org43b09ef">Common Use Cases</h3>
+<div class="outline-text-3" id="text-org43b09ef">
 <ul class="org-ul">
 <li><b>Data Validation</b>: Checking if input text, like emails, passwords, or phone numbers, conforms to a specific format.</li>
 <li><b>Search and Replace</b>: Finding specific patterns of text in a string or document and replacing them with something else.</li>
@@ -905,22 +923,22 @@ A <b>regular expression</b> (often shortened to <b>regex</b> or <b>regexp</b>) i
 </ul>
 </div>
 </div>
-<div id="outline-container-org380ff43" class="outline-3">
-<h3 id="org380ff43">Core Concepts</h3>
-<div class="outline-text-3" id="text-org380ff43">
+<div id="outline-container-org89852f1" class="outline-3">
+<h3 id="org89852f1">Core Concepts</h3>
+<div class="outline-text-3" id="text-org89852f1">
 </div>
-<div id="outline-container-orgaafb054" class="outline-4">
-<h4 id="orgaafb054">Literals and Metacharacters</h4>
-<div class="outline-text-4" id="text-orgaafb054">
+<div id="outline-container-org3e5ff60" class="outline-4">
+<h4 id="org3e5ff60">Literals and Metacharacters</h4>
+<div class="outline-text-4" id="text-org3e5ff60">
 <ul class="org-ul">
 <li><b>Literals</b>: Most characters (e.g., <code>a</code>, <code>b</code>, <code>1</code>, <code>2</code>) are literals and match themselves. The regex <code>cat</code> matches the string "cat".</li>
 <li><b>Metacharacters</b>: Special characters that have a unique meaning in the regex engine. The most common are: <code>.</code>, <code>*</code>, <code>+</code>, <code>?</code>, <code>^</code>, <code>$</code>, <code>[</code>, <code>]</code>, <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>|</code>, <code>\</code>. To match a metacharacter literally, you must escape it with a backslash (<code>\</code>), e.g., <code>\.</code> matches a literal period.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org836f6d7" class="outline-4">
-<h4 id="org836f6d7">Character Classes (or Character Sets)</h4>
-<div class="outline-text-4" id="text-org836f6d7">
+<div id="outline-container-orgbaa194f" class="outline-4">
+<h4 id="orgbaa194f">Character Classes (or Character Sets)</h4>
+<div class="outline-text-4" id="text-orgbaa194f">
 <p>
 They specify a set of characters you wish to match.
 </p>
@@ -936,9 +954,9 @@ They specify a set of characters you wish to match.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfd641f3" class="outline-4">
-<h4 id="orgfd641f3">Quantifiers</h4>
-<div class="outline-text-4" id="text-orgfd641f3">
+<div id="outline-container-org347014b" class="outline-4">
+<h4 id="org347014b">Quantifiers</h4>
+<div class="outline-text-4" id="text-org347014b">
 <p>
 Quantifiers specify how many times the preceding character or group should be matched.
 </p>
@@ -953,9 +971,9 @@ Quantifiers specify how many times the preceding character or group should be ma
 </ul>
 </div>
 </div>
-<div id="outline-container-org9a3494e" class="outline-4">
-<h4 id="org9a3494e">Anchors</h4>
-<div class="outline-text-4" id="text-org9a3494e">
+<div id="outline-container-org3e1ec47" class="outline-4">
+<h4 id="org3e1ec47">Anchors</h4>
+<div class="outline-text-4" id="text-org3e1ec47">
 <p>
 Anchors don't match characters, but rather positions in the string.
 </p>
@@ -967,9 +985,9 @@ Anchors don't match characters, but rather positions in the string.
 </ul>
 </div>
 </div>
-<div id="outline-container-org1541830" class="outline-4">
-<h4 id="org1541830">Grouping and Alternation</h4>
-<div class="outline-text-4" id="text-org1541830">
+<div id="outline-container-orgad57d1d" class="outline-4">
+<h4 id="orgad57d1d">Grouping and Alternation</h4>
+<div class="outline-text-4" id="text-orgad57d1d">
 <ul class="org-ul">
 <li><code>()</code>: Groups multiple characters together. Quantifiers can then be applied to the whole group. e.g., <code>(ab)+</code> matches "ab", "abab", "ababab", etc. Groups also "capture" the matched content for later use.</li>
 <li><code>|</code>: Acts as an OR operator. <code>cat|dog</code> matches either "cat" or "dog".</li>
@@ -977,9 +995,9 @@ Anchors don't match characters, but rather positions in the string.
 </div>
 </div>
 </div>
-<div id="outline-container-org8aca022" class="outline-3">
-<h3 id="org8aca022">Modifiers</h3>
-<div class="outline-text-3" id="text-org8aca022">
+<div id="outline-container-orgbae7acb" class="outline-3">
+<h3 id="orgbae7acb">Modifiers</h3>
+<div class="outline-text-3" id="text-orgbae7acb">
 <p>
 Modifiers (or flags) can be added to a regex to change its behavior. Common modifiers include:
 </p>
@@ -991,9 +1009,9 @@ Modifiers (or flags) can be added to a regex to change its behavior. Common modi
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb7a9b2d" class="outline-3">
-<h3 id="orgb7a9b2d">Examples</h3>
-<div class="outline-text-3" id="text-orgb7a9b2d">
+<div id="outline-container-orgb82b1ba" class="outline-3">
+<h3 id="orgb82b1ba">Examples</h3>
+<div class="outline-text-3" id="text-orgb82b1ba">
 <ul class="org-ul">
 <li><b>Email Validation</b>: <code>^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$</code></li>
 <li><b>Date (YYYY-MM-DD)</b>: <code>^\d{4}-\d{2}-\d{2}$</code></li>
@@ -1004,6 +1022,20 @@ Modifiers (or flags) can be added to a regex to change its behavior. Common modi
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1011,6 +1043,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

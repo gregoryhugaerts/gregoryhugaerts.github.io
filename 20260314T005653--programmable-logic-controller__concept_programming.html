@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Programmable Logic Controller</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org66741e9">Programmable Logic Controller</a>
+<li><a href="#orgfddda6b">Programmable Logic Controller</a>
 <ul>
-<li><a href="#orga32622a">Description</a>
+<li><a href="#org80e50ea">Description</a>
 <ul>
-<li><a href="#org3a1d2ae">How a PLC Operates: The Scan Cycle</a></li>
-<li><a href="#org8237fa4">Programming Languages</a></li>
-<li><a href="#org4e9ee9c">Security Perspective</a></li>
+<li><a href="#orgf965f40">How a PLC Operates: The Scan Cycle</a></li>
+<li><a href="#org0782f24">Programming Languages</a></li>
+<li><a href="#org6221a1f">Security Perspective</a></li>
 </ul>
 </li>
-<li><a href="#org2d79641">Examples</a>
+<li><a href="#org06416ed">Examples</a>
 <ul>
-<li><a href="#org10ae293">1. Basic Industrial Logic</a></li>
-<li><a href="#orgbb3d21b">2. Interaction via Network (Python)</a></li>
+<li><a href="#orgf60909e">1. Basic Industrial Logic</a></li>
+<li><a href="#orgdc3b5a2">2. Interaction via Network (Python)</a></li>
 </ul>
 </li>
 </ul>
@@ -893,20 +911,20 @@ Related: <a href="20260314T005710==ics--industrial-control-systems__concept.html
          <a href="20260314T005640==scada--supervisory-control-and-data-acquisition__concept_networking.html">SCADA</a>
          <a href="20260314T005637--modbus__networking_protocol.html">Modbus</a>
 </p>
-<div id="outline-container-org66741e9" class="outline-2">
-<h2 id="org66741e9">Programmable Logic Controller</h2>
-<div class="outline-text-2" id="text-org66741e9">
+<div id="outline-container-orgfddda6b" class="outline-2">
+<h2 id="orgfddda6b">Programmable Logic Controller</h2>
+<div class="outline-text-2" id="text-orgfddda6b">
 </div>
-<div id="outline-container-orga32622a" class="outline-3">
-<h3 id="orga32622a">Description</h3>
-<div class="outline-text-3" id="text-orga32622a">
+<div id="outline-container-org80e50ea" class="outline-3">
+<h3 id="org80e50ea">Description</h3>
+<div class="outline-text-3" id="text-org80e50ea">
 <p>
 PLCs are the "brains" of the factory floor. Unlike a standard desktop computer, a PLC is built to survive harsh industrial environments characterized by extreme temperatures, electrical noise, vibration, and humidity. They are a core component of <b>ICS</b>.
 </p>
 </div>
-<div id="outline-container-org3a1d2ae" class="outline-4">
-<h4 id="org3a1d2ae">How a PLC Operates: The Scan Cycle</h4>
-<div class="outline-text-4" id="text-org3a1d2ae">
+<div id="outline-container-orgf965f40" class="outline-4">
+<h4 id="orgf965f40">How a PLC Operates: The Scan Cycle</h4>
+<div class="outline-text-4" id="text-orgf965f40">
 <p>
 A PLC functions in a continuous loop known as the <b>Scan Cycle</b>, which typically happens in milliseconds:
 </p>
@@ -919,17 +937,17 @@ A PLC functions in a continuous loop known as the <b>Scan Cycle</b>, which typic
 </ol>
 </div>
 </div>
-<div id="outline-container-org8237fa4" class="outline-4">
-<h4 id="org8237fa4">Programming Languages</h4>
-<div class="outline-text-4" id="text-org8237fa4">
+<div id="outline-container-org0782f24" class="outline-4">
+<h4 id="org0782f24">Programming Languages</h4>
+<div class="outline-text-4" id="text-org0782f24">
 <p>
 While there are several languages used (defined by the IEC 61131-3 standard), the most common is <b>Ladder Logic (LD)</b>. It was designed to mimic the physical relay logic diagrams that electricians used before PLCs existed, making it intuitive for maintenance personnel.
 </p>
 </div>
 </div>
-<div id="outline-container-org4e9ee9c" class="outline-4">
-<h4 id="org4e9ee9c">Security Perspective</h4>
-<div class="outline-text-4" id="text-org4e9ee9c">
+<div id="outline-container-org6221a1f" class="outline-4">
+<h4 id="org6221a1f">Security Perspective</h4>
+<div class="outline-text-4" id="text-org6221a1f">
 <p>
 In the context of Cyber Security, PLCs are critical targets. Because they directly control physical hardware, compromising a PLC can lead to physical destruction. Historically, PLCs lacked authentication; if you could "talk" to the PLC via its protocol (like Modbus), you could rewrite its logic or stop its process entirely.
 </p>
@@ -938,31 +956,31 @@ In the context of Cyber Security, PLCs are critical targets. Because they direct
 </div>
 </div>
 </div>
-<div id="outline-container-org2d79641" class="outline-3">
-<h3 id="org2d79641">Examples</h3>
-<div class="outline-text-3" id="text-org2d79641">
+<div id="outline-container-org06416ed" class="outline-3">
+<h3 id="org06416ed">Examples</h3>
+<div class="outline-text-3" id="text-org06416ed">
 </div>
-<div id="outline-container-org10ae293" class="outline-4">
-<h4 id="org10ae293">1. Basic Industrial Logic</h4>
-<div class="outline-text-4" id="text-org10ae293">
+<div id="outline-container-orgf60909e" class="outline-4">
+<h4 id="orgf60909e">1. Basic Industrial Logic</h4>
+<div class="outline-text-4" id="text-orgf60909e">
 <p>
 <b>Scenario:</b> A conveyor belt should only move if the "Start" button is pressed AND the "Emergency Stop" is NOT active. * <b>Input 1:</b> Start Button (Normally Open) * <b>Input 2:</b> E-Stop (Normally Closed) * <b>Output:</b> Conveyor Motor * <b>Logic:</b> <code>IF (Start =</code> 1) AND (E-Stop <code>= 1) THEN Motor = 1</code>
 </p>
 </div>
 </div>
-<div id="outline-container-orgbb3d21b" class="outline-4">
-<h4 id="orgbb3d21b">2. Interaction via Network (Python)</h4>
-<div class="outline-text-4" id="text-orgbb3d21b">
+<div id="outline-container-orgdc3b5a2" class="outline-4">
+<h4 id="orgdc3b5a2">2. Interaction via Network (Python)</h4>
+<div class="outline-text-4" id="text-orgdc3b5a2">
 <p>
 Attackers or testers use libraries like <code>pymodbus</code> or <code>cppo</code> to interact with PLCs. If a PLC is improperly exposed to the network, an unauthorized user could force an output.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_f7d4d1caa6da4c878ccafacedf372d16>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_52ff4318ac9c46fabb9356c1562a81ea>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f7d4d1caa6da4c878ccafacedf372d16=document.querySelector('button[name=btn_f7d4d1caa6da4c878ccafacedf372d16]');
-copyBtnbtn_f7d4d1caa6da4c878ccafacedf372d16.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`from pymodbus.client import ModbusTcpClient\n\n# Connect to the PLC\nclient = ModbusTcpClient('192.168.1.10')\n\n# Force Coil (Output) #5 to be ON, potentially starting a motor\nclient.write_coil(5, True)\n\nclient.close()\n`);copyBtnbtn_f7d4d1caa6da4c878ccafacedf372d16.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f7d4d1caa6da4c878ccafacedf372d16.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_52ff4318ac9c46fabb9356c1562a81ea=document.querySelector('button[name=btn_52ff4318ac9c46fabb9356c1562a81ea]');
+copyBtnbtn_52ff4318ac9c46fabb9356c1562a81ea.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`from pymodbus.client import ModbusTcpClient\n\n# Connect to the PLC\nclient = ModbusTcpClient('192.168.1.10')\n\n# Force Coil (Output) #5 to be ON, potentially starting a motor\nclient.write_coil(5, True)\n\nclient.close()\n`);copyBtnbtn_52ff4318ac9c46fabb9356c1562a81ea.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_52ff4318ac9c46fabb9356c1562a81ea.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -983,6 +1001,20 @@ client.close()
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -990,6 +1022,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

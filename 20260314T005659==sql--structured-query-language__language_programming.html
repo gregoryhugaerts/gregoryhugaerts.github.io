@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Structured Query Language</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,20 +886,20 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org76e0f64">DDL — Data Definition Language</a></li>
-<li><a href="#org40afeb7">DML — Data Manipulation Language</a></li>
-<li><a href="#org1a49bce">DQL — Queries</a>
+<li><a href="#org951f9ed">DDL — Data Definition Language</a></li>
+<li><a href="#org70090b9">DML — Data Manipulation Language</a></li>
+<li><a href="#orgd9de15e">DQL — Queries</a>
 <ul>
-<li><a href="#orgf4d92b7">Basic SELECT</a></li>
-<li><a href="#org4603381">Joins</a></li>
-<li><a href="#org54de8b1">Aggregation</a></li>
-<li><a href="#orgdabc4db">Subqueries</a></li>
+<li><a href="#org44ea8ea">Basic SELECT</a></li>
+<li><a href="#org0bfa92d">Joins</a></li>
+<li><a href="#orgcd5a91c">Aggregation</a></li>
+<li><a href="#org6932386">Subqueries</a></li>
 </ul>
 </li>
-<li><a href="#org7ef04c9">DCL — Data Control Language</a></li>
-<li><a href="#org92a6580">Useful Administrative Queries</a></li>
-<li><a href="#org3c2159f">Information Schema</a></li>
-<li><a href="#org9db38b5">Tips</a></li>
+<li><a href="#org1cd07c9">DCL — Data Control Language</a></li>
+<li><a href="#org87b3a03">Useful Administrative Queries</a></li>
+<li><a href="#orgc093432">Information Schema</a></li>
+<li><a href="#orgc16e8ee">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -896,19 +914,19 @@ is prerequisite to understanding SQL injection.
 Related: <a href="20260206T060531--database__concept.html">Database</a>
          <a href="20260206T060728--sql-injection__cybersecurity_technique.html">SQL Injection</a>
 </p>
-<div id="outline-container-org76e0f64" class="outline-2">
-<h2 id="org76e0f64">DDL — Data Definition Language</h2>
-<div class="outline-text-2" id="text-org76e0f64">
+<div id="outline-container-org951f9ed" class="outline-2">
+<h2 id="org951f9ed">DDL — Data Definition Language</h2>
+<div class="outline-text-2" id="text-org951f9ed">
 <p>
 Defines and modifies database structure.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_0794072c6b56479cb3d69948906333bb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_c61f45f2ff104ac6b7dc32e3c85600ca>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0794072c6b56479cb3d69948906333bb=document.querySelector('button[name=btn_0794072c6b56479cb3d69948906333bb]');
-copyBtnbtn_0794072c6b56479cb3d69948906333bb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`-- Create table\nCREATE TABLE users (\n    id       INT PRIMARY KEY AUTO_INCREMENT,\n    username VARCHAR(50) NOT NULL UNIQUE,\n    email    VARCHAR(255),\n    role     VARCHAR(20) DEFAULT 'user',\n    created  DATETIME DEFAULT CURRENT_TIMESTAMP\n);\n\n-- Add column\nALTER TABLE users ADD COLUMN password_hash VARCHAR(255);\n\n-- Create index\nCREATE INDEX idx_username ON users(username);\n\n-- Delete table\nDROP TABLE users;\n`);copyBtnbtn_0794072c6b56479cb3d69948906333bb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0794072c6b56479cb3d69948906333bb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c61f45f2ff104ac6b7dc32e3c85600ca=document.querySelector('button[name=btn_c61f45f2ff104ac6b7dc32e3c85600ca]');
+copyBtnbtn_c61f45f2ff104ac6b7dc32e3c85600ca.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`-- Create table\nCREATE TABLE users (\n    id       INT PRIMARY KEY AUTO_INCREMENT,\n    username VARCHAR(50) NOT NULL UNIQUE,\n    email    VARCHAR(255),\n    role     VARCHAR(20) DEFAULT 'user',\n    created  DATETIME DEFAULT CURRENT_TIMESTAMP\n);\n\n-- Add column\nALTER TABLE users ADD COLUMN password_hash VARCHAR(255);\n\n-- Create index\nCREATE INDEX idx_username ON users(username);\n\n-- Delete table\nDROP TABLE users;\n`);copyBtnbtn_c61f45f2ff104ac6b7dc32e3c85600ca.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c61f45f2ff104ac6b7dc32e3c85600ca.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -933,19 +951,19 @@ let res = copyTextToClipboard(`-- Create table\nCREATE TABLE users (\n    id    
 </div></div>
 </div>
 </div>
-<div id="outline-container-org40afeb7" class="outline-2">
-<h2 id="org40afeb7">DML — Data Manipulation Language</h2>
-<div class="outline-text-2" id="text-org40afeb7">
+<div id="outline-container-org70090b9" class="outline-2">
+<h2 id="org70090b9">DML — Data Manipulation Language</h2>
+<div class="outline-text-2" id="text-org70090b9">
 <p>
 Inserts, updates, and deletes data.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_d8f4db354e9d44018b122b815d9b9c35>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_4fa64cb761c14b289cfd8e978e6bd83a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d8f4db354e9d44018b122b815d9b9c35=document.querySelector('button[name=btn_d8f4db354e9d44018b122b815d9b9c35]');
-copyBtnbtn_d8f4db354e9d44018b122b815d9b9c35.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`-- Insert\nINSERT INTO users (username, email, role)\nVALUES ('alice', 'alice@example.com', 'admin');\n\n-- Update\nUPDATE users SET role = 'user' WHERE id = 5;\n\n-- Delete\nDELETE FROM users WHERE id = 5;\n\n-- Upsert (MySQL)\nINSERT INTO users (id, username) VALUES (1, 'alice')\nON DUPLICATE KEY UPDATE username = 'alice';\n`);copyBtnbtn_d8f4db354e9d44018b122b815d9b9c35.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d8f4db354e9d44018b122b815d9b9c35.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4fa64cb761c14b289cfd8e978e6bd83a=document.querySelector('button[name=btn_4fa64cb761c14b289cfd8e978e6bd83a]');
+copyBtnbtn_4fa64cb761c14b289cfd8e978e6bd83a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`-- Insert\nINSERT INTO users (username, email, role)\nVALUES ('alice', 'alice@example.com', 'admin');\n\n-- Update\nUPDATE users SET role = 'user' WHERE id = 5;\n\n-- Delete\nDELETE FROM users WHERE id = 5;\n\n-- Upsert (MySQL)\nINSERT INTO users (id, username) VALUES (1, 'alice')\nON DUPLICATE KEY UPDATE username = 'alice';\n`);copyBtnbtn_4fa64cb761c14b289cfd8e978e6bd83a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4fa64cb761c14b289cfd8e978e6bd83a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -966,19 +984,19 @@ let res = copyTextToClipboard(`-- Insert\nINSERT INTO users (username, email, ro
 </div></div>
 </div>
 </div>
-<div id="outline-container-org1a49bce" class="outline-2">
-<h2 id="org1a49bce">DQL — Queries</h2>
-<div class="outline-text-2" id="text-org1a49bce">
+<div id="outline-container-orgd9de15e" class="outline-2">
+<h2 id="orgd9de15e">DQL — Queries</h2>
+<div class="outline-text-2" id="text-orgd9de15e">
 </div>
-<div id="outline-container-orgf4d92b7" class="outline-3">
-<h3 id="orgf4d92b7">Basic SELECT</h3>
-<div class="outline-text-3" id="text-orgf4d92b7">
+<div id="outline-container-org44ea8ea" class="outline-3">
+<h3 id="org44ea8ea">Basic SELECT</h3>
+<div class="outline-text-3" id="text-org44ea8ea">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_6373c2fb1283449288f7ce67f1de63c1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_04b15d9da7db4313aa02da10e9c3aae8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6373c2fb1283449288f7ce67f1de63c1=document.querySelector('button[name=btn_6373c2fb1283449288f7ce67f1de63c1]');
-copyBtnbtn_6373c2fb1283449288f7ce67f1de63c1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`-- All columns\nSELECT * FROM users;\n\n-- Specific columns\nSELECT username, email FROM users;\n\n-- Filter\nSELECT * FROM users WHERE role = 'admin';\n\n-- Multiple conditions\nSELECT * FROM users WHERE role = 'admin' AND created > '2025-01-01';\n\n-- Pattern match\nSELECT * FROM users WHERE username LIKE 'a%';\n\n-- Sort\nSELECT * FROM users ORDER BY created DESC;\n\n-- Limit\nSELECT * FROM users LIMIT 10 OFFSET 20;\n\n-- Distinct values\nSELECT DISTINCT role FROM users;\n`);copyBtnbtn_6373c2fb1283449288f7ce67f1de63c1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6373c2fb1283449288f7ce67f1de63c1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_04b15d9da7db4313aa02da10e9c3aae8=document.querySelector('button[name=btn_04b15d9da7db4313aa02da10e9c3aae8]');
+copyBtnbtn_04b15d9da7db4313aa02da10e9c3aae8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`-- All columns\nSELECT * FROM users;\n\n-- Specific columns\nSELECT username, email FROM users;\n\n-- Filter\nSELECT * FROM users WHERE role = 'admin';\n\n-- Multiple conditions\nSELECT * FROM users WHERE role = 'admin' AND created > '2025-01-01';\n\n-- Pattern match\nSELECT * FROM users WHERE username LIKE 'a%';\n\n-- Sort\nSELECT * FROM users ORDER BY created DESC;\n\n-- Limit\nSELECT * FROM users LIMIT 10 OFFSET 20;\n\n-- Distinct values\nSELECT DISTINCT role FROM users;\n`);copyBtnbtn_04b15d9da7db4313aa02da10e9c3aae8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_04b15d9da7db4313aa02da10e9c3aae8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1009,15 +1027,15 @@ let res = copyTextToClipboard(`-- All columns\nSELECT * FROM users;\n\n-- Specif
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4603381" class="outline-3">
-<h3 id="org4603381">Joins</h3>
-<div class="outline-text-3" id="text-org4603381">
+<div id="outline-container-org0bfa92d" class="outline-3">
+<h3 id="org0bfa92d">Joins</h3>
+<div class="outline-text-3" id="text-org0bfa92d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_756120f82af44703ae595efc00e95ef5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_7e1ab9941de54f7abda7703825ec3398>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_756120f82af44703ae595efc00e95ef5=document.querySelector('button[name=btn_756120f82af44703ae595efc00e95ef5]');
-copyBtnbtn_756120f82af44703ae595efc00e95ef5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`-- INNER JOIN — only matching rows in both tables\nSELECT u.username, o.total\nFROM users u\nINNER JOIN orders o ON u.id = o.user_id;\n\n-- LEFT JOIN — all rows from left, matched rows from right (NULL if no match)\nSELECT u.username, o.total\nFROM users u\nLEFT JOIN orders o ON u.id = o.user_id;\n\n-- Multiple joins\nSELECT u.username, o.total, p.name AS product\nFROM users u\nINNER JOIN orders o ON u.id = o.user_id\nINNER JOIN products p ON o.product_id = p.id;\n`);copyBtnbtn_756120f82af44703ae595efc00e95ef5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_756120f82af44703ae595efc00e95ef5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7e1ab9941de54f7abda7703825ec3398=document.querySelector('button[name=btn_7e1ab9941de54f7abda7703825ec3398]');
+copyBtnbtn_7e1ab9941de54f7abda7703825ec3398.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`-- INNER JOIN — only matching rows in both tables\nSELECT u.username, o.total\nFROM users u\nINNER JOIN orders o ON u.id = o.user_id;\n\n-- LEFT JOIN — all rows from left, matched rows from right (NULL if no match)\nSELECT u.username, o.total\nFROM users u\nLEFT JOIN orders o ON u.id = o.user_id;\n\n-- Multiple joins\nSELECT u.username, o.total, p.name AS product\nFROM users u\nINNER JOIN orders o ON u.id = o.user_id\nINNER JOIN products p ON o.product_id = p.id;\n`);copyBtnbtn_7e1ab9941de54f7abda7703825ec3398.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7e1ab9941de54f7abda7703825ec3398.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1040,15 +1058,15 @@ let res = copyTextToClipboard(`-- INNER JOIN — only matching rows in both tabl
 </div></div>
 </div>
 </div>
-<div id="outline-container-org54de8b1" class="outline-3">
-<h3 id="org54de8b1">Aggregation</h3>
-<div class="outline-text-3" id="text-org54de8b1">
+<div id="outline-container-orgcd5a91c" class="outline-3">
+<h3 id="orgcd5a91c">Aggregation</h3>
+<div class="outline-text-3" id="text-orgcd5a91c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_c54ae18d1f40482ca148e4d79564e215>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_e79a307546e14df19e82d8a868c6be7b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c54ae18d1f40482ca148e4d79564e215=document.querySelector('button[name=btn_c54ae18d1f40482ca148e4d79564e215]');
-copyBtnbtn_c54ae18d1f40482ca148e4d79564e215.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`-- Count\nSELECT COUNT(*) FROM users;\nSELECT COUNT(*) FROM users WHERE role = 'admin';\n\n-- Sum, average, min, max\nSELECT SUM(total), AVG(total), MIN(total), MAX(total) FROM orders;\n\n-- Group by\nSELECT role, COUNT(*) AS count FROM users GROUP BY role;\n\n-- Having (filter on aggregated values)\nSELECT role, COUNT(*) AS count\nFROM users\nGROUP BY role\nHAVING COUNT(*) > 5;\n`);copyBtnbtn_c54ae18d1f40482ca148e4d79564e215.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c54ae18d1f40482ca148e4d79564e215.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e79a307546e14df19e82d8a868c6be7b=document.querySelector('button[name=btn_e79a307546e14df19e82d8a868c6be7b]');
+copyBtnbtn_e79a307546e14df19e82d8a868c6be7b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`-- Count\nSELECT COUNT(*) FROM users;\nSELECT COUNT(*) FROM users WHERE role = 'admin';\n\n-- Sum, average, min, max\nSELECT SUM(total), AVG(total), MIN(total), MAX(total) FROM orders;\n\n-- Group by\nSELECT role, COUNT(*) AS count FROM users GROUP BY role;\n\n-- Having (filter on aggregated values)\nSELECT role, COUNT(*) AS count\nFROM users\nGROUP BY role\nHAVING COUNT(*) > 5;\n`);copyBtnbtn_e79a307546e14df19e82d8a868c6be7b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e79a307546e14df19e82d8a868c6be7b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1071,15 +1089,15 @@ let res = copyTextToClipboard(`-- Count\nSELECT COUNT(*) FROM users;\nSELECT COU
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgdabc4db" class="outline-3">
-<h3 id="orgdabc4db">Subqueries</h3>
-<div class="outline-text-3" id="text-orgdabc4db">
+<div id="outline-container-org6932386" class="outline-3">
+<h3 id="org6932386">Subqueries</h3>
+<div class="outline-text-3" id="text-org6932386">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_594f6ec0835b408f9f5ca59f3d35fff2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_40fe37ef90784977b20c0418dd4ac91c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_594f6ec0835b408f9f5ca59f3d35fff2=document.querySelector('button[name=btn_594f6ec0835b408f9f5ca59f3d35fff2]');
-copyBtnbtn_594f6ec0835b408f9f5ca59f3d35fff2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`-- In WHERE clause\nSELECT username FROM users\nWHERE id IN (SELECT user_id FROM orders WHERE total > 100);\n\n-- As derived table\nSELECT u.username, order_counts.total_orders\nFROM users u\nJOIN (\n    SELECT user_id, COUNT(*) AS total_orders FROM orders GROUP BY user_id\n) AS order_counts ON u.id = order_counts.user_id;\n`);copyBtnbtn_594f6ec0835b408f9f5ca59f3d35fff2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_594f6ec0835b408f9f5ca59f3d35fff2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_40fe37ef90784977b20c0418dd4ac91c=document.querySelector('button[name=btn_40fe37ef90784977b20c0418dd4ac91c]');
+copyBtnbtn_40fe37ef90784977b20c0418dd4ac91c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`-- In WHERE clause\nSELECT username FROM users\nWHERE id IN (SELECT user_id FROM orders WHERE total > 100);\n\n-- As derived table\nSELECT u.username, order_counts.total_orders\nFROM users u\nJOIN (\n    SELECT user_id, COUNT(*) AS total_orders FROM orders GROUP BY user_id\n) AS order_counts ON u.id = order_counts.user_id;\n`);copyBtnbtn_40fe37ef90784977b20c0418dd4ac91c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_40fe37ef90784977b20c0418dd4ac91c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1098,15 +1116,15 @@ let res = copyTextToClipboard(`-- In WHERE clause\nSELECT username FROM users\nW
 </div>
 </div>
 </div>
-<div id="outline-container-org7ef04c9" class="outline-2">
-<h2 id="org7ef04c9">DCL — Data Control Language</h2>
-<div class="outline-text-2" id="text-org7ef04c9">
+<div id="outline-container-org1cd07c9" class="outline-2">
+<h2 id="org1cd07c9">DCL — Data Control Language</h2>
+<div class="outline-text-2" id="text-org1cd07c9">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_dccd43d8d469437582b0e2ff9f1d8870>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_053d4cebe3fe48edbac9b3d489b4ed14>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_dccd43d8d469437582b0e2ff9f1d8870=document.querySelector('button[name=btn_dccd43d8d469437582b0e2ff9f1d8870]');
-copyBtnbtn_dccd43d8d469437582b0e2ff9f1d8870.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`-- Grant permissions\nGRANT SELECT, INSERT ON database.users TO 'appuser'@'localhost';\n\n-- Grant all on a database\nGRANT ALL PRIVILEGES ON mydb.* TO 'admin'@'%';\n\n-- Revoke\nREVOKE INSERT ON database.users FROM 'appuser'@'localhost';\n\n-- Show current user's permissions\nSHOW GRANTS;\n`);copyBtnbtn_dccd43d8d469437582b0e2ff9f1d8870.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dccd43d8d469437582b0e2ff9f1d8870.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_053d4cebe3fe48edbac9b3d489b4ed14=document.querySelector('button[name=btn_053d4cebe3fe48edbac9b3d489b4ed14]');
+copyBtnbtn_053d4cebe3fe48edbac9b3d489b4ed14.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`-- Grant permissions\nGRANT SELECT, INSERT ON database.users TO 'appuser'@'localhost';\n\n-- Grant all on a database\nGRANT ALL PRIVILEGES ON mydb.* TO 'admin'@'%';\n\n-- Revoke\nREVOKE INSERT ON database.users FROM 'appuser'@'localhost';\n\n-- Show current user's permissions\nSHOW GRANTS;\n`);copyBtnbtn_053d4cebe3fe48edbac9b3d489b4ed14.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_053d4cebe3fe48edbac9b3d489b4ed14.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1125,15 +1143,15 @@ let res = copyTextToClipboard(`-- Grant permissions\nGRANT SELECT, INSERT ON dat
 </div></div>
 </div>
 </div>
-<div id="outline-container-org92a6580" class="outline-2">
-<h2 id="org92a6580">Useful Administrative Queries</h2>
-<div class="outline-text-2" id="text-org92a6580">
+<div id="outline-container-org87b3a03" class="outline-2">
+<h2 id="org87b3a03">Useful Administrative Queries</h2>
+<div class="outline-text-2" id="text-org87b3a03">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_8a18bb71d62d427db74fb41d21ddc9ad>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_f092f26235c04454b63534c455247fe9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8a18bb71d62d427db74fb41d21ddc9ad=document.querySelector('button[name=btn_8a18bb71d62d427db74fb41d21ddc9ad]');
-copyBtnbtn_8a18bb71d62d427db74fb41d21ddc9ad.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`-- List all databases\nSHOW DATABASES;                          -- MySQL\nSELECT datname FROM pg_database;         -- PostgreSQL\n\n-- List all tables\nSHOW TABLES;                             -- MySQL\nSELECT table_name FROM information_schema.tables\nWHERE table_schema = 'public';           -- PostgreSQL\n\n-- Describe table structure\nDESCRIBE users;                          -- MySQL\n\\d users                                 -- PostgreSQL\n\n-- List all users (MySQL)\nSELECT user, host FROM mysql.user;\n\n-- Current database\nSELECT DATABASE();                       -- MySQL\nSELECT current_database();               -- PostgreSQL\n\n-- Version\nSELECT VERSION();\n`);copyBtnbtn_8a18bb71d62d427db74fb41d21ddc9ad.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8a18bb71d62d427db74fb41d21ddc9ad.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f092f26235c04454b63534c455247fe9=document.querySelector('button[name=btn_f092f26235c04454b63534c455247fe9]');
+copyBtnbtn_f092f26235c04454b63534c455247fe9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`-- List all databases\nSHOW DATABASES;                          -- MySQL\nSELECT datname FROM pg_database;         -- PostgreSQL\n\n-- List all tables\nSHOW TABLES;                             -- MySQL\nSELECT table_name FROM information_schema.tables\nWHERE table_schema = 'public';           -- PostgreSQL\n\n-- Describe table structure\nDESCRIBE users;                          -- MySQL\n\\d users                                 -- PostgreSQL\n\n-- List all users (MySQL)\nSELECT user, host FROM mysql.user;\n\n-- Current database\nSELECT DATABASE();                       -- MySQL\nSELECT current_database();               -- PostgreSQL\n\n-- Version\nSELECT VERSION();\n`);copyBtnbtn_f092f26235c04454b63534c455247fe9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f092f26235c04454b63534c455247fe9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1163,9 +1181,9 @@ let res = copyTextToClipboard(`-- List all databases\nSHOW DATABASES;           
 </div></div>
 </div>
 </div>
-<div id="outline-container-org3c2159f" class="outline-2">
-<h2 id="org3c2159f">Information Schema</h2>
-<div class="outline-text-2" id="text-org3c2159f">
+<div id="outline-container-orgc093432" class="outline-2">
+<h2 id="orgc093432">Information Schema</h2>
+<div class="outline-text-2" id="text-orgc093432">
 <p>
 Useful during SQL injection enumeration — the information<sub>schema</sub>
 database exists in MySQL, PostgreSQL, and MSSQL and contains
@@ -1173,11 +1191,11 @@ metadata about all tables, columns, and databases.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_c0774ee20ea643669f58c40b204c3356>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_7d25e0ad6ec64efcae2dec599311b31c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c0774ee20ea643669f58c40b204c3356=document.querySelector('button[name=btn_c0774ee20ea643669f58c40b204c3356]');
-copyBtnbtn_c0774ee20ea643669f58c40b204c3356.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`-- List all tables across all databases\nSELECT table_schema, table_name\nFROM information_schema.tables\nWHERE table_type = 'BASE TABLE';\n\n-- List all columns in a specific table\nSELECT column_name, data_type\nFROM information_schema.columns\nWHERE table_name = 'users';\n\n-- Find tables containing a specific column name\nSELECT table_name\nFROM information_schema.columns\nWHERE column_name LIKE '%password%';\n`);copyBtnbtn_c0774ee20ea643669f58c40b204c3356.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c0774ee20ea643669f58c40b204c3356.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7d25e0ad6ec64efcae2dec599311b31c=document.querySelector('button[name=btn_7d25e0ad6ec64efcae2dec599311b31c]');
+copyBtnbtn_7d25e0ad6ec64efcae2dec599311b31c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`-- List all tables across all databases\nSELECT table_schema, table_name\nFROM information_schema.tables\nWHERE table_type = 'BASE TABLE';\n\n-- List all columns in a specific table\nSELECT column_name, data_type\nFROM information_schema.columns\nWHERE table_name = 'users';\n\n-- Find tables containing a specific column name\nSELECT table_name\nFROM information_schema.columns\nWHERE column_name LIKE '%password%';\n`);copyBtnbtn_7d25e0ad6ec64efcae2dec599311b31c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7d25e0ad6ec64efcae2dec599311b31c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1203,9 +1221,9 @@ See <a href="20260206T060728--sql-injection__cybersecurity_technique.html">SQL I
 </p>
 </div>
 </div>
-<div id="outline-container-org9db38b5" class="outline-2">
-<h2 id="org9db38b5">Tips</h2>
-<div class="outline-text-2" id="text-org9db38b5">
+<div id="outline-container-orgc16e8ee" class="outline-2">
+<h2 id="orgc16e8ee">Tips</h2>
+<div class="outline-text-2" id="text-orgc16e8ee">
 <ul class="org-ul">
 <li><code>LIMIT 1</code> is commonly appended in SQL injection payloads to
 prevent errors from multi-row returns — understanding why
@@ -1223,6 +1241,20 @@ tells you where credentials and sensitive data live</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1230,6 +1262,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

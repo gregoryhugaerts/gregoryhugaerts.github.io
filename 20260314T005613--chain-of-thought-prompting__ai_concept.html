@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Chain-of-thought Prompting</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -892,6 +892,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -900,18 +918,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgac22b9b">Chain-of-thought Prompting</a>
+<li><a href="#org4442d72">Chain-of-thought Prompting</a>
 <ul>
-<li><a href="#orga052cbf">Description</a>
+<li><a href="#org494546d">Description</a>
 <ul>
-<li><a href="#orgb3707e5">How it Works</a></li>
-<li><a href="#orgb9eb663">Purpose and Benefits</a></li>
+<li><a href="#orga3dda53">How it Works</a></li>
+<li><a href="#org9af9fff">Purpose and Benefits</a></li>
 </ul>
 </li>
-<li><a href="#org36bcda6">Examples</a>
+<li><a href="#orgcdb7ad8">Examples</a>
 <ul>
-<li><a href="#org7879519">. Zero-shot CoT (Implicit Instruction)</a></li>
-<li><a href="#orgcd4adb7">2. Few-shot CoT (Explicit Example)</a></li>
+<li><a href="#orga32bb9a">. Zero-shot CoT (Implicit Instruction)</a></li>
+<li><a href="#org236bacf">2. Few-shot CoT (Explicit Example)</a></li>
 </ul>
 </li>
 </ul>
@@ -919,20 +937,20 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-orgac22b9b" class="outline-2">
-<h2 id="orgac22b9b">Chain-of-thought Prompting</h2>
-<div class="outline-text-2" id="text-orgac22b9b">
+<div id="outline-container-org4442d72" class="outline-2">
+<h2 id="org4442d72">Chain-of-thought Prompting</h2>
+<div class="outline-text-2" id="text-org4442d72">
 </div>
-<div id="outline-container-orga052cbf" class="outline-3">
-<h3 id="orga052cbf">Description</h3>
-<div class="outline-text-3" id="text-orga052cbf">
+<div id="outline-container-org494546d" class="outline-3">
+<h3 id="org494546d">Description</h3>
+<div class="outline-text-3" id="text-org494546d">
 <p>
 <b>Chain-of-thought (CoT) prompting</b> is a prompt engineering strategy used to significantly improve the ability of Large Language Models (LLMs) to handle tasks that require <b>multi-step reasoning</b>, such as arithmetic, symbolic manipulation, and commonsense reasoning.
 </p>
 </div>
-<div id="outline-container-orgb3707e5" class="outline-4">
-<h4 id="orgb3707e5">How it Works</h4>
-<div class="outline-text-4" id="text-orgb3707e5">
+<div id="outline-container-orga3dda53" class="outline-4">
+<h4 id="orga3dda53">How it Works</h4>
+<div class="outline-text-4" id="text-orga3dda53">
 <p>
 CoT prompting guides the LLM to <b>break down the problem</b> into a sequence of simpler, logical steps, effectively converting a difficult, single-step problem into a series of easier, intermediate steps.
 </p>
@@ -944,9 +962,9 @@ CoT prompting guides the LLM to <b>break down the problem</b> into a sequence of
 </ol>
 </div>
 </div>
-<div id="outline-container-orgb9eb663" class="outline-4">
-<h4 id="orgb9eb663">Purpose and Benefits</h4>
-<div class="outline-text-4" id="text-orgb9eb663">
+<div id="outline-container-org9af9fff" class="outline-4">
+<h4 id="org9af9fff">Purpose and Benefits</h4>
+<div class="outline-text-4" id="text-org9af9fff">
 <ul class="org-ul">
 <li><b>Improved Accuracy:</b> By forcing the model to articulate its logic, CoT prompting dramatically improves performance on complex reasoning tasks compared to standard prompting, especially in arithmetic and logical deduction.</li>
 <li><b>Transparency and Auditing:</b> The intermediate steps provide an <b>audit trail</b>, making the model's logic transparent. This allows users to trace the reasoning, verify its soundness, and easily identify where the model may have made a mistake.</li>
@@ -957,13 +975,13 @@ CoT prompting guides the LLM to <b>break down the problem</b> into a sequence of
 </div>
 </div>
 </div>
-<div id="outline-container-org36bcda6" class="outline-3">
-<h3 id="org36bcda6">Examples</h3>
-<div class="outline-text-3" id="text-org36bcda6">
+<div id="outline-container-orgcdb7ad8" class="outline-3">
+<h3 id="orgcdb7ad8">Examples</h3>
+<div class="outline-text-3" id="text-orgcdb7ad8">
 </div>
-<div id="outline-container-org7879519" class="outline-4">
-<h4 id="org7879519">. Zero-shot CoT (Implicit Instruction)</h4>
-<div class="outline-text-4" id="text-org7879519">
+<div id="outline-container-orga32bb9a" class="outline-4">
+<h4 id="orga32bb9a">. Zero-shot CoT (Implicit Instruction)</h4>
+<div class="outline-text-4" id="text-orga32bb9a">
 <p>
 This method involves simply appending a phrase to trigger the step-by-step reasoning.
 </p>
@@ -991,9 +1009,9 @@ This method involves simply appending a phrase to trigger the step-by-step reaso
 </table>
 </div>
 </div>
-<div id="outline-container-orgcd4adb7" class="outline-4">
-<h4 id="orgcd4adb7">2. Few-shot CoT (Explicit Example)</h4>
-<div class="outline-text-4" id="text-orgcd4adb7">
+<div id="outline-container-org236bacf" class="outline-4">
+<h4 id="org236bacf">2. Few-shot CoT (Explicit Example)</h4>
+<div class="outline-text-4" id="text-org236bacf">
 <p>
 This involves providing one or more examples where the problem is solved using the full reasoning chain, which teaches the model the desired format and logic.
 </p>
@@ -1025,6 +1043,20 @@ This involves providing one or more examples where the problem is solved using t
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1032,6 +1064,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

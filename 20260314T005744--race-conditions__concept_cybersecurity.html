@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Race Conditions</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,22 +886,22 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgabd69e8">Race Conditions</a>
+<li><a href="#org107213a">Race Conditions</a>
 <ul>
-<li><a href="#org6f91e33">Characteristics</a></li>
-<li><a href="#org6e1247d">Real-World Vulnerabilities (CVEs)</a></li>
-<li><a href="#org33cebbe">Categories of Race Condition Attacks</a>
+<li><a href="#org07bb4bf">Characteristics</a></li>
+<li><a href="#org777bf00">Real-World Vulnerabilities (CVEs)</a></li>
+<li><a href="#org19da497">Categories of Race Condition Attacks</a>
 <ul>
-<li><a href="#org634b1c2">Time-of-Check to Time-of-Use (TOCTOU) Attacks</a></li>
-<li><a href="#orgee7d094">File System Race Conditions</a></li>
-<li><a href="#org723e306">Web Application Race Conditions</a></li>
-<li><a href="#org395e0b3">Memory Race Conditions</a></li>
-<li><a href="#org9760c6d">Database Race Conditions</a></li>
-<li><a href="#orgc541ad3">Multithreading Race Conditions</a></li>
-<li><a href="#org94d9aaa">Network Race Conditions</a></li>
-<li><a href="#orgd79600a">Process Race Conditions</a></li>
-<li><a href="#org83fee9e">Security Race Conditions</a></li>
-<li><a href="#org83c9e70">Hardware Race Conditions</a></li>
+<li><a href="#org03cb9e1">Time-of-Check to Time-of-Use (TOCTOU) Attacks</a></li>
+<li><a href="#orgf860daa">File System Race Conditions</a></li>
+<li><a href="#org304a218">Web Application Race Conditions</a></li>
+<li><a href="#orgabcc52c">Memory Race Conditions</a></li>
+<li><a href="#org3dbf206">Database Race Conditions</a></li>
+<li><a href="#orgde74e87">Multithreading Race Conditions</a></li>
+<li><a href="#org41508e6">Network Race Conditions</a></li>
+<li><a href="#orgc828038">Process Race Conditions</a></li>
+<li><a href="#org0084f8d">Security Race Conditions</a></li>
+<li><a href="#org9e78c3a">Hardware Race Conditions</a></li>
 </ul>
 </li>
 </ul>
@@ -891,16 +909,16 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-orgabd69e8" class="outline-2">
-<h2 id="orgabd69e8">Race Conditions</h2>
-<div class="outline-text-2" id="text-orgabd69e8">
+<div id="outline-container-org107213a" class="outline-2">
+<h2 id="org107213a">Race Conditions</h2>
+<div class="outline-text-2" id="text-org107213a">
 <p>
 Race conditions in cybersecurity represent a critical vulnerability where the behavior of a system hinges on the timing or sequence of events. Attackers exploit the small windows of time between concurrent operations to manipulate the system's intended execution flow, leading to unauthorized access, data corruption, denial of service, or other malicious outcomes. These vulnerabilities are particularly prevalent in systems that manage multiple processes or threads simultaneously without proper synchronization mechanisms.
 </p>
 </div>
-<div id="outline-container-org6f91e33" class="outline-3">
-<h3 id="org6f91e33">Characteristics</h3>
-<div class="outline-text-3" id="text-org6f91e33">
+<div id="outline-container-org07bb4bf" class="outline-3">
+<h3 id="org07bb4bf">Characteristics</h3>
+<div class="outline-text-3" id="text-org07bb4bf">
 <ul class="org-ul">
 <li><b>Timing Dependent</b>: The vulnerability arises from the precise timing of events. The order in which operations are executed is critical.</li>
 <li><b>Concurrency</b>: Occur in systems where multiple processes, threads, or operations are running simultaneously.</li>
@@ -909,9 +927,9 @@ Race conditions in cybersecurity represent a critical vulnerability where the be
 </ul>
 </div>
 </div>
-<div id="outline-container-org6e1247d" class="outline-3">
-<h3 id="org6e1247d">Real-World Vulnerabilities (CVEs)</h3>
-<div class="outline-text-3" id="text-org6e1247d">
+<div id="outline-container-org777bf00" class="outline-3">
+<h3 id="org777bf00">Real-World Vulnerabilities (CVEs)</h3>
+<div class="outline-text-3" id="text-org777bf00">
 <ul class="org-ul">
 <li><b>Juniper Networks Junos OS (CVE-2020-1667)</b>: A race condition in the system's packet processing allowed attackers to send specially crafted packets, causing a Denial of Service (DoS) due to system instability.</li>
 <li><b>TIBCO Software Inc. (CVE-2018-18808)</b>: A flaw in the domain management component enabled users with domain save privileges to escalate to superuser access. The race condition arose from a timing window in a concurrent code sequence requiring exclusive access to a shared resource.</li>
@@ -922,88 +940,88 @@ Race conditions in cybersecurity represent a critical vulnerability where the be
 </ul>
 </div>
 </div>
-<div id="outline-container-org33cebbe" class="outline-3">
-<h3 id="org33cebbe">Categories of Race Condition Attacks</h3>
-<div class="outline-text-3" id="text-org33cebbe">
+<div id="outline-container-org19da497" class="outline-3">
+<h3 id="org19da497">Categories of Race Condition Attacks</h3>
+<div class="outline-text-3" id="text-org19da497">
 <p>
 Race conditions can manifest in various parts of a system:
 </p>
 </div>
-<div id="outline-container-org634b1c2" class="outline-4">
-<h4 id="org634b1c2">Time-of-Check to Time-of-Use (TOCTOU) Attacks</h4>
-<div class="outline-text-4" id="text-org634b1c2">
+<div id="outline-container-org03cb9e1" class="outline-4">
+<h4 id="org03cb9e1">Time-of-Check to Time-of-Use (TOCTOU) Attacks</h4>
+<div class="outline-text-4" id="text-org03cb9e1">
 <p>
 These exploit the gap between when a resource's state is checked and when it is used. An attacker can alter the resource's state in this intervening period to achieve a malicious outcome.
 </p>
 </div>
 </div>
-<div id="outline-container-orgee7d094" class="outline-4">
-<h4 id="orgee7d094">File System Race Conditions</h4>
-<div class="outline-text-4" id="text-orgee7d094">
+<div id="outline-container-orgf860daa" class="outline-4">
+<h4 id="orgf860daa">File System Race Conditions</h4>
+<div class="outline-text-4" id="text-orgf860daa">
 <p>
 Occur when multiple processes simultaneously try to access and modify the same file.
 </p>
 </div>
 </div>
-<div id="outline-container-org723e306" class="outline-4">
-<h4 id="org723e306">Web Application Race Conditions</h4>
-<div class="outline-text-4" id="text-org723e306">
+<div id="outline-container-org304a218" class="outline-4">
+<h4 id="org304a218">Web Application Race Conditions</h4>
+<div class="outline-text-4" id="text-org304a218">
 <p>
 A significant threat where attackers can manipulate data flow, bypass authentication, execute unauthorized transactions, or gain control over the application or server.
 </p>
 </div>
 </div>
-<div id="outline-container-org395e0b3" class="outline-4">
-<h4 id="org395e0b3">Memory Race Conditions</h4>
-<div class="outline-text-4" id="text-org395e0b3">
+<div id="outline-container-orgabcc52c" class="outline-4">
+<h4 id="orgabcc52c">Memory Race Conditions</h4>
+<div class="outline-text-4" id="text-orgabcc52c">
 <p>
 Arise when multiple threads attempt to access and modify the same memory region concurrently. Attackers can exploit these to manipulate data, execute arbitrary code, or compromise system integrity.
 </p>
 </div>
 </div>
-<div id="outline-container-org9760c6d" class="outline-4">
-<h4 id="org9760c6d">Database Race Conditions</h4>
-<div class="outline-text-4" id="text-org9760c6d">
+<div id="outline-container-org3dbf206" class="outline-4">
+<h4 id="org3dbf206">Database Race Conditions</h4>
+<div class="outline-text-4" id="text-org3dbf206">
 <p>
 Involve simultaneous access and modification of shared database resources, which can lead to data corruption or inconsistencies.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc541ad3" class="outline-4">
-<h4 id="orgc541ad3">Multithreading Race Conditions</h4>
-<div class="outline-text-4" id="text-orgc541ad3">
+<div id="outline-container-orgde74e87" class="outline-4">
+<h4 id="orgde74e87">Multithreading Race Conditions</h4>
+<div class="outline-text-4" id="text-orgde74e87">
 <p>
 In multithreaded applications, these vulnerabilities allow attackers to manipulate the sequence of events, disrupt intended behavior, or gain unauthorized access to resources.
 </p>
 </div>
 </div>
-<div id="outline-container-org94d9aaa" class="outline-4">
-<h4 id="org94d9aaa">Network Race Conditions</h4>
-<div class="outline-text-4" id="text-org94d9aaa">
+<div id="outline-container-org41508e6" class="outline-4">
+<h4 id="org41508e6">Network Race Conditions</h4>
+<div class="outline-text-4" id="text-org41508e6">
 <p>
 Involve the timing of network communications and can be exploited to interfere with data transmission or control.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd79600a" class="outline-4">
-<h4 id="orgd79600a">Process Race Conditions</h4>
-<div class="outline-text-4" id="text-orgd79600a">
+<div id="outline-container-orgc828038" class="outline-4">
+<h4 id="orgc828038">Process Race Conditions</h4>
+<div class="outline-text-4" id="text-orgc828038">
 <p>
 Occur when the timing of multiple processes interacting with shared resources leads to exploitable vulnerabilities.
 </p>
 </div>
 </div>
-<div id="outline-container-org83fee9e" class="outline-4">
-<h4 id="org83fee9e">Security Race Conditions</h4>
-<div class="outline-text-4" id="text-org83fee9e">
+<div id="outline-container-org0084f8d" class="outline-4">
+<h4 id="org0084f8d">Security Race Conditions</h4>
+<div class="outline-text-4" id="text-org0084f8d">
 <p>
 Specifically target security mechanisms, allowing attackers to bypass controls or escalate privileges.
 </p>
 </div>
 </div>
-<div id="outline-container-org83c9e70" class="outline-4">
-<h4 id="org83c9e70">Hardware Race Conditions</h4>
-<div class="outline-text-4" id="text-org83c9e70">
+<div id="outline-container-org9e78c3a" class="outline-4">
+<h4 id="org9e78c3a">Hardware Race Conditions</h4>
+<div class="outline-text-4" id="text-org9e78c3a">
 <p>
 These are less common but can occur in hardware systems where concurrent operations are not properly synchronized.
 </p>
@@ -1013,6 +1031,20 @@ These are less common but can occur in hardware systems where concurrent operati
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1020,6 +1052,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

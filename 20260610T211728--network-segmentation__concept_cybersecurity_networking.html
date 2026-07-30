@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Network Segmentation</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,16 +886,16 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf4e3d6f">Overview</a></li>
-<li><a href="#org290addf">Approaches</a>
+<li><a href="#orge9fe275">Overview</a></li>
+<li><a href="#orgb53ce5a">Approaches</a>
 <ul>
-<li><a href="#orgff0e824">VLANs</a></li>
-<li><a href="#org8e8a844">Firewalls and ACLs</a></li>
-<li><a href="#orgb7d6aaa">Micro-segmentation</a></li>
-<li><a href="#org2640dde">DMZ</a></li>
+<li><a href="#org4dc6ea1">VLANs</a></li>
+<li><a href="#org530eff7">Firewalls and ACLs</a></li>
+<li><a href="#org1b25231">Micro-segmentation</a></li>
+<li><a href="#org2479627">DMZ</a></li>
 </ul>
 </li>
-<li><a href="#orgabb0984">Relevance to Pentesting</a></li>
+<li><a href="#orgac2978c">Relevance to Pentesting</a></li>
 </ul>
 </div>
 </div>
@@ -887,9 +905,9 @@ blast radius of a breach and control traffic flow between zones.  A
 foundational control in the <a href="20260327T192400--zero-trust-model__concept_cybersecurity.html">Zero Trust Model</a>, directly addressing
 <a href="20260314T005713--lateral-movement__concept_cybersecurity.html">Lateral movement</a> by enforcing boundaries between hosts and services.
 </p>
-<div id="outline-container-orgf4e3d6f" class="outline-2">
-<h2 id="orgf4e3d6f">Overview</h2>
-<div class="outline-text-2" id="text-orgf4e3d6f">
+<div id="outline-container-orge9fe275" class="outline-2">
+<h2 id="orge9fe275">Overview</h2>
+<div class="outline-text-2" id="text-orge9fe275">
 <p>
 Traditional flat networks grant implicit trust between all hosts — a
 foothold anywhere gives access everywhere. Segmentation breaks this by
@@ -905,13 +923,13 @@ infrastructure.
 </p>
 </div>
 </div>
-<div id="outline-container-org290addf" class="outline-2">
-<h2 id="org290addf">Approaches</h2>
-<div class="outline-text-2" id="text-org290addf">
+<div id="outline-container-orgb53ce5a" class="outline-2">
+<h2 id="orgb53ce5a">Approaches</h2>
+<div class="outline-text-2" id="text-orgb53ce5a">
 </div>
-<div id="outline-container-orgff0e824" class="outline-3">
-<h3 id="orgff0e824">VLANs</h3>
-<div class="outline-text-3" id="text-orgff0e824">
+<div id="outline-container-org4dc6ea1" class="outline-3">
+<h3 id="org4dc6ea1">VLANs</h3>
+<div class="outline-text-3" id="text-org4dc6ea1">
 <p>
 <a href="20260213T103802--virtual-local-area-networks__concept_networking.html">Virtual LANs</a> divide a physical network into logical segments at
 layer 2. Common in on-premises environments. Traffic between VLANs
@@ -920,9 +938,9 @@ be applied.
 </p>
 </div>
 </div>
-<div id="outline-container-org8e8a844" class="outline-3">
-<h3 id="org8e8a844">Firewalls and ACLs</h3>
-<div class="outline-text-3" id="text-org8e8a844">
+<div id="outline-container-org530eff7" class="outline-3">
+<h3 id="org530eff7">Firewalls and ACLs</h3>
+<div class="outline-text-3" id="text-org530eff7">
 <p>
 Enforce which segments can communicate and on which ports. East-west
 rules — between internal segments — are as important as north-south
@@ -930,9 +948,9 @@ rules between internal and external networks.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb7d6aaa" class="outline-3">
-<h3 id="orgb7d6aaa">Micro-segmentation</h3>
-<div class="outline-text-3" id="text-orgb7d6aaa">
+<div id="outline-container-org1b25231" class="outline-3">
+<h3 id="org1b25231">Micro-segmentation</h3>
+<div class="outline-text-3" id="text-org1b25231">
 <p>
 Fine-grained segmentation applied at the workload level rather than
 the network level. Each host or application is isolated individually.
@@ -941,9 +959,9 @@ defined networking or host-based firewalls.
 </p>
 </div>
 </div>
-<div id="outline-container-org2640dde" class="outline-3">
-<h3 id="org2640dde">DMZ</h3>
-<div class="outline-text-3" id="text-org2640dde">
+<div id="outline-container-org2479627" class="outline-3">
+<h3 id="org2479627">DMZ</h3>
+<div class="outline-text-3" id="text-org2479627">
 <p>
 A demilitarised zone places internet-facing services in an isolated
 segment separate from internal infrastructure. Compromise of a DMZ
@@ -952,9 +970,9 @@ host does not grant access to internal systems.
 </div>
 </div>
 </div>
-<div id="outline-container-orgabb0984" class="outline-2">
-<h2 id="orgabb0984">Relevance to Pentesting</h2>
-<div class="outline-text-2" id="text-orgabb0984">
+<div id="outline-container-orgac2978c" class="outline-2">
+<h2 id="orgac2978c">Relevance to Pentesting</h2>
+<div class="outline-text-2" id="text-orgac2978c">
 <p>
 Poor segmentation is one of the most common findings in CTF and real
 engagements. Things to look for:
@@ -976,6 +994,20 @@ environment.
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -983,6 +1015,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

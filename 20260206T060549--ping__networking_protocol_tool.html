@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ping</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,11 +886,11 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgaac080d">Usage</a></li>
-<li><a href="#orgf1e1a1d">Reading Output</a></li>
-<li><a href="#orgeebc194">TTL OS Fingerprinting</a></li>
-<li><a href="#org6a24f2b">Security Relevance</a></li>
-<li><a href="#org678d8ce">Tips</a></li>
+<li><a href="#org684b7df">Usage</a></li>
+<li><a href="#org83af427">Reading Output</a></li>
+<li><a href="#org76c1b3c">TTL OS Fingerprinting</a></li>
+<li><a href="#orgb3925ba">Security Relevance</a></li>
+<li><a href="#org15fbcaa">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -889,15 +907,15 @@ Related: <a href="20260314T005635==icmp--internet-control-message-protocol__netw
          <a href="20260206T060718--network-discovery__concept_cybersecurity.html">Network Discovery</a>
          <a href="20260326T200820--nmap__cybersecurity_tool.html">Nmap</a>
 </p>
-<div id="outline-container-orgaac080d" class="outline-2">
-<h2 id="orgaac080d">Usage</h2>
-<div class="outline-text-2" id="text-orgaac080d">
+<div id="outline-container-org684b7df" class="outline-2">
+<h2 id="org684b7df">Usage</h2>
+<div class="outline-text-2" id="text-org684b7df">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5e41ddc51ecc44bd94656a85043a2ad6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_96b197b55bd2499da9861442013e990f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5e41ddc51ecc44bd94656a85043a2ad6=document.querySelector('button[name=btn_5e41ddc51ecc44bd94656a85043a2ad6]');
-copyBtnbtn_5e41ddc51ecc44bd94656a85043a2ad6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Basic ping\nping $IP\n\n# Send a fixed number of packets then stop (Linux)\nping -c 4 $IP\n\n# Send a fixed number of packets (Windows)\nping -n 4 $IP\n\n# Set packet size (bytes)\nping -s 1000 $IP\n\n# Set interval between packets (seconds, default 1)\nping -i 0.2 $IP        # faster — 5 packets per second\n\n# Flood ping — maximum speed, requires root (use carefully)\nping -f $IP\n\n# Set TTL\nping -t 64 $IP         # Windows: sets TTL\nping --ttl 64 $IP      # Linux\n\n# Continuous ping (Windows default behaviour)\nping -t $IP\n\n# IPv6\nping6 $IP\nping -6 $IP\n`);copyBtnbtn_5e41ddc51ecc44bd94656a85043a2ad6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5e41ddc51ecc44bd94656a85043a2ad6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_96b197b55bd2499da9861442013e990f=document.querySelector('button[name=btn_96b197b55bd2499da9861442013e990f]');
+copyBtnbtn_96b197b55bd2499da9861442013e990f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Basic ping\nping $IP\n\n# Send a fixed number of packets then stop (Linux)\nping -c 4 $IP\n\n# Send a fixed number of packets (Windows)\nping -n 4 $IP\n\n# Set packet size (bytes)\nping -s 1000 $IP\n\n# Set interval between packets (seconds, default 1)\nping -i 0.2 $IP        # faster — 5 packets per second\n\n# Flood ping — maximum speed, requires root (use carefully)\nping -f $IP\n\n# Set TTL\nping -t 64 $IP         # Windows: sets TTL\nping --ttl 64 $IP      # Linux\n\n# Continuous ping (Windows default behaviour)\nping -t $IP\n\n# IPv6\nping6 $IP\nping -6 $IP\n`);copyBtnbtn_96b197b55bd2499da9861442013e990f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_96b197b55bd2499da9861442013e990f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -933,15 +951,15 @@ ping -6 $<span style="color: var(--clr-variable); background-color: var(--bg-var
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgf1e1a1d" class="outline-2">
-<h2 id="orgf1e1a1d">Reading Output</h2>
-<div class="outline-text-2" id="text-orgf1e1a1d">
+<div id="outline-container-org83af427" class="outline-2">
+<h2 id="org83af427">Reading Output</h2>
+<div class="outline-text-2" id="text-org83af427">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_6d95dd4fd5464b22a279f10944e114dd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_8124daa6df614f0a90bc96778e8a1b74>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6d95dd4fd5464b22a279f10944e114dd=document.querySelector('button[name=btn_6d95dd4fd5464b22a279f10944e114dd]');
-copyBtnbtn_6d95dd4fd5464b22a279f10944e114dd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.\n64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=0.432 ms\n64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=0.418 ms\n\n--- 192.168.1.1 ping statistics ---\n2 packets transmitted, 2 received, 0% packet loss, time 1001ms\nrtt min/avg/max/mdev = 0.418/0.425/0.432/0.007 ms\n`);copyBtnbtn_6d95dd4fd5464b22a279f10944e114dd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6d95dd4fd5464b22a279f10944e114dd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8124daa6df614f0a90bc96778e8a1b74=document.querySelector('button[name=btn_8124daa6df614f0a90bc96778e8a1b74]');
+copyBtnbtn_8124daa6df614f0a90bc96778e8a1b74.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.\n64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=0.432 ms\n64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=0.418 ms\n\n--- 192.168.1.1 ping statistics ---\n2 packets transmitted, 2 received, 0% packet loss, time 1001ms\nrtt min/avg/max/mdev = 0.418/0.425/0.432/0.007 ms\n`);copyBtnbtn_8124daa6df614f0a90bc96778e8a1b74.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8124daa6df614f0a90bc96778e8a1b74.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -993,9 +1011,9 @@ rtt min/avg/max/mdev = 0.418/0.425/0.432/0.007 ms
 </table>
 </div>
 </div>
-<div id="outline-container-orgeebc194" class="outline-2">
-<h2 id="orgeebc194">TTL OS Fingerprinting</h2>
-<div class="outline-text-2" id="text-orgeebc194">
+<div id="outline-container-org76c1b3c" class="outline-2">
+<h2 id="org76c1b3c">TTL OS Fingerprinting</h2>
+<div class="outline-text-2" id="text-org76c1b3c">
 <p>
 Default TTL values differ by OS — visible in ping replies:
 </p>
@@ -1038,15 +1056,15 @@ to estimate the original value.
 </p>
 </div>
 </div>
-<div id="outline-container-org6a24f2b" class="outline-2">
-<h2 id="org6a24f2b">Security Relevance</h2>
-<div class="outline-text-2" id="text-org6a24f2b">
+<div id="outline-container-orgb3925ba" class="outline-2">
+<h2 id="orgb3925ba">Security Relevance</h2>
+<div class="outline-text-2" id="text-orgb3925ba">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ac0991a449514895a3facf969771607f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4ccc691e87d949418c7d40657d759926>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ac0991a449514895a3facf969771607f=document.querySelector('button[name=btn_ac0991a449514895a3facf969771607f]');
-copyBtnbtn_ac0991a449514895a3facf969771607f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Host discovery — ping sweep of a subnet\n# Linux\nfor i in $(seq 1 254); do ping -c 1 -W 1 192.168.1.$i & done | grep \"bytes from\"\n\n# More reliable with fping\nfping -a -g 192.168.1.0/24 2>/dev/null\n\n# Nmap ICMP ping sweep\nnmap -sn -PE 192.168.1.0/24\n\n# Check if ICMP is blocked (host may still be up)\n# A timeout does not guarantee the host is down — firewalls often block ping\n# Use nmap -Pn to skip host discovery when ICMP is filtered\nnmap -Pn $IP\n`);copyBtnbtn_ac0991a449514895a3facf969771607f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ac0991a449514895a3facf969771607f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4ccc691e87d949418c7d40657d759926=document.querySelector('button[name=btn_4ccc691e87d949418c7d40657d759926]');
+copyBtnbtn_4ccc691e87d949418c7d40657d759926.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Host discovery — ping sweep of a subnet\n# Linux\nfor i in $(seq 1 254); do ping -c 1 -W 1 192.168.1.$i & done | grep \"bytes from\"\n\n# More reliable with fping\nfping -a -g 192.168.1.0/24 2>/dev/null\n\n# Nmap ICMP ping sweep\nnmap -sn -PE 192.168.1.0/24\n\n# Check if ICMP is blocked (host may still be up)\n# A timeout does not guarantee the host is down — firewalls often block ping\n# Use nmap -Pn to skip host discovery when ICMP is filtered\nnmap -Pn $IP\n`);copyBtnbtn_4ccc691e87d949418c7d40657d759926.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4ccc691e87d949418c7d40657d759926.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1073,9 +1091,9 @@ Ping being blocked or filtered is common — on TryHackMe rooms
 </p>
 </div>
 </div>
-<div id="outline-container-org678d8ce" class="outline-2">
-<h2 id="org678d8ce">Tips</h2>
-<div class="outline-text-2" id="text-org678d8ce">
+<div id="outline-container-org15fbcaa" class="outline-2">
+<h2 id="org15fbcaa">Tips</h2>
+<div class="outline-text-2" id="text-org15fbcaa">
 <ul class="org-ul">
 <li><code>ping -c 4</code> is the standard quick reachability check on Linux —
 stops automatically rather than running until Ctrl+C</li>
@@ -1090,6 +1108,20 @@ technique when active scanning is not appropriate</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1097,6 +1129,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

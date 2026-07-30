@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Privilege Escalation</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,21 +886,125 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf7899a6">Privilege Escalation</a></li>
+<li><a href="#orga8fb340">Vertical vs Horizontal</a></li>
+<li><a href="#org9f9bee8">Why It Matters in a Pentest</a></li>
+<li><a href="#orgf19c80a">General Approach</a></li>
+<li><a href="#orged290c5">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf7899a6" class="outline-2">
-<h2 id="orgf7899a6">Privilege Escalation</h2>
-<div class="outline-text-2" id="text-orgf7899a6">
 <p>
-
-
+Privilege escalation is the process of gaining higher-level
+permissions on a system than initially granted — moving from a
+low-privileged foothold (a standard user, a webshell running as a
+service account) to a more privileged context, typically
+administrator/root, or from one user's access to another's.
 </p>
+
+<p>
+Related: <a href="20260314T005718--linux-privilege-escalation__concept_cybersecurity.html">Linux Privilege Escalation</a>
+         <a href="20260314T005758--windows-privilege-escalation__concept_cybersecurity.html">Windows Privilege Escalation</a>
+         <a href="20260214T085940--post-exploitation__concept_cybersecurity.html">Post Exploitation</a>
+         [[Denote query for ‘20260718T113500’]]
+         [[Denote query for ‘20260718T113501’]]
+         <a href="20260314T005728--gtfobins__cybersecurity_tool.html">GTFOBins</a>
+</p>
+<div id="outline-container-orga8fb340" class="outline-2">
+<h2 id="orga8fb340">Vertical vs Horizontal</h2>
+<div class="outline-text-2" id="text-orga8fb340">
+<p>
+The two directions privilege escalation can take, worth
+distinguishing clearly since they're classified differently on the
+exam:
+</p>
+
+<ul class="org-ul">
+<li><b>Vertical (privilege escalation, strictly speaking):</b> Moving from
+a lower privilege level to a higher one — standard user to root/
+admin. This is what most people mean by "privesc" and what this
+note and its linked OS-specific notes cover.</li>
+<li><b>Horizontal:</b> Moving between accounts of similar privilege level —
+accessing another standard user's data or session without elevating
+overall privilege. This overlaps with <a href="20260207T065343==idor--insecure-direct-object-references__cybersecurity_technique.html">IDOR</a> and <a href="20260621T180112==bola--broken-object-level-authorisation__cybersecurity_pentesting_technique.html">BOLA</a> territory rather
+than classic privesc, and should generally be classified as those
+instead when the finding is really "access to another user's
+resources," not "gained higher privilege."</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9f9bee8" class="outline-2">
+<h2 id="org9f9bee8">Why It Matters in a Pentest</h2>
+<div class="outline-text-2" id="text-org9f9bee8">
+<p>
+Initial access rarely lands you at the target privilege level
+directly — a web application exploit typically gives you a
+low-privileged service account (<code>www-data</code>, <code>IIS APPPOOL</code>), not
+root or Domain Admin. Privilege escalation is the bridge between
+"I have a foothold" and "I have meaningful access" — and on PT1
+specifically, most rooms require at least one privesc step to reach
+the final flag, not just the initial exploit.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf19c80a" class="outline-2">
+<h2 id="orgf19c80a">General Approach</h2>
+<div class="outline-text-2" id="text-orgf19c80a">
+<p>
+Regardless of OS, privilege escalation follows the same basic
+pattern:
+</p>
+
+<ol class="org-ol">
+<li><b>Enumerate</b> — gather information about the system: running
+processes, installed software, permissions, configuration</li>
+<li><b>Identify</b> — find a specific misconfiguration, vulnerability, or
+credential that provides a path to higher privilege</li>
+<li><b>Exploit</b> — actually leverage the identified path</li>
+</ol>
+
+<p>
+The OS-specific notes below cover what to actually look for at each
+step, and the comparison notes cover which automated tool to reach
+for first.
+</p>
+</div>
+</div>
+<div id="outline-container-orged290c5" class="outline-2">
+<h2 id="orged290c5">Tips</h2>
+<div class="outline-text-2" id="text-orged290c5">
+<ul class="org-ul">
+<li>Don't skip manual verification of an automated tool's output — a
+finding flagged by LinPEAS/WinPEAS is a lead, not a confirmed
+exploit; verify it actually works before reporting it as a finding</li>
+<li>If automated enumeration comes back clean, that's a signal to look
+at what's specific to <b>this</b> application/service running with elevated
+privileges, not just generic OS misconfigurations — see the
+OS-specific notes for what "specific to this target" usually means
+in practice</li>
+<li>Classify carefully: a horizontal move (accessing another user's data
+at the same privilege level) is a different finding category from
+vertical escalation — don't lump them together in a report just
+because both involve "gaining access to something you shouldn't
+have"</li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -890,6 +1012,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

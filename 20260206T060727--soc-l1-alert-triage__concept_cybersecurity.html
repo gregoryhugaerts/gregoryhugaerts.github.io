@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SOC L1 Alert Triage</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,23 +886,31 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfb54b74">SOC LAlert Triage</a>
-<ul>
-<li><a href="#orga8052f9">Common Properties</a></li>
-<li><a href="#orge93c8be">Prioritization</a></li>
-<li><a href="#org3f72b7b">Investigation</a></li>
-</ul>
-</li>
+<li><a href="#org5cb6446">Common Properties</a></li>
+<li><a href="#org0443099">Prioritization</a></li>
+<li><a href="#orgc9f3897">Investigation</a></li>
+<li><a href="#org4222bca">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfb54b74" class="outline-2">
-<h2 id="orgfb54b74">SOC LAlert Triage</h2>
-<div class="outline-text-2" id="text-orgfb54b74">
-</div>
-<div id="outline-container-orga8052f9" class="outline-3">
-<h3 id="orga8052f9">Common Properties</h3>
-<div class="outline-text-3" id="text-orga8052f9">
+<p>
+L1 SOC analysts are the first line of review for security alerts —
+this note covers the properties examined, how alerts get
+prioritized, and the initial investigation steps before an alert is
+either closed as a false positive or escalated.
+</p>
+
+<p>
+Related: <a href="20260206T060729--soc-l1-alert-reporting__cybersecurity.html">SOC L1 Alert Reporting</a>
+         <a href="20260212T065441==ioc--indicators-of-compromise__concept_cybersecurity.html">Indicators of Compromise</a>
+         <a href="20260206T060705--mitre-attck__cybersecurity_model.html">MITRE ATT&amp;CK</a>
+         <a href="20260212T065424--vulnerability-priority-rating__concept_cybersecurity.html">Vulnerability Priority Rating</a>
+         <a href="20260314T005749==siem--security-information-and-event-management__concept_cybersecurity.html">SIEM</a>
+         <a href="20260206T060659--incident-response__concept_cybersecurity.html">Incident Response</a>
+</p>
+<div id="outline-container-org5cb6446" class="outline-2">
+<h2 id="org5cb6446">Common Properties</h2>
+<div class="outline-text-2" id="text-org5cb6446">
 <p>
 When triaging an alert, L1 SOC analysts typically examine the following common properties:
 </p>
@@ -903,9 +929,9 @@ When triaging an alert, L1 SOC analysts typically examine the following common p
 </ul>
 </div>
 </div>
-<div id="outline-container-orge93c8be" class="outline-3">
-<h3 id="orge93c8be">Prioritization</h3>
-<div class="outline-text-3" id="text-orge93c8be">
+<div id="outline-container-org0443099" class="outline-2">
+<h2 id="org0443099">Prioritization</h2>
+<div class="outline-text-2" id="text-org0443099">
 <p>
 Effective alert prioritization is key to managing the workload and focusing on the most critical threats. L1 analysts prioritize alerts based on:
 </p>
@@ -924,9 +950,9 @@ Effective alert prioritization is key to managing the workload and focusing on t
 </ol>
 </div>
 </div>
-<div id="outline-container-org3f72b7b" class="outline-3">
-<h3 id="org3f72b7b">Investigation</h3>
-<div class="outline-text-3" id="text-org3f72b7b">
+<div id="outline-container-orgc9f3897" class="outline-2">
+<h2 id="orgc9f3897">Investigation</h2>
+<div class="outline-text-2" id="text-orgc9f3897">
 <p>
 The investigation phase involves gathering more information to determine the true nature of the alert. L1 SOC analysts perform initial investigations by:
 </p>
@@ -946,13 +972,49 @@ The investigation phase involves gathering more information to determine the tru
 </ol>
 
 <p>
-If the L1 analyst confirms a legitimate threat, they will escalate the incident to an L2 analyst or incident response team with a clear summary of their findings and recommended next steps, often following the guidelines outlined in <a href="SoC L1 alert reporting.html#soc-l1-alert-reporting">SoC L1 Alert Reporting</a>.
+If the L1 analyst confirms a legitimate threat, they will escalate the incident to an L2 analyst or incident response team with a clear summary of their findings and recommended next steps, often following the guidelines outlined in <a href="20260206T060729--soc-l1-alert-reporting__cybersecurity.html">SOC L1 Alert Reporting</a>.
 </p>
 </div>
+</div>
+<div id="outline-container-org4222bca" class="outline-2">
+<h2 id="org4222bca">Tips</h2>
+<div class="outline-text-2" id="text-org4222bca">
+<ul class="org-ul">
+<li>Validating the alert is not a rubber-stamp step — a significant
+portion of L1 time should go here, since a well-tuned SOC still
+produces false positives at meaningful volume, and passing those
+upstream wastes L2 time and erodes trust in triage quality</li>
+<li>Correlate before escalating: a single alert in isolation often
+looks more or less severe than it actually is once you check
+whether it's part of a pattern (same source, same user, same
+technique repeated) — see Indicators of Compromise for what's
+worth tracking across alerts, not just within one</li>
+<li>Given your team's actual scope (release-decision review rather
+than general triage), this note's process still applies
+conceptually to Phished-flagged mail review — validating,
+gathering context, and documenting before a release/deny decision
+mirrors this same triage logic even though the pipeline and
+escalation path differ; see Phishing Release Decision Review for
+the adapted version</li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -960,6 +1022,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

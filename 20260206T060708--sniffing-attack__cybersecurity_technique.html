@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sniffing Attack</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0891725">Passive vs Active</a></li>
-<li><a href="#org94c0eaf">Active Techniques</a>
+<li><a href="#org45d7f22">Passive vs Active</a></li>
+<li><a href="#org09c60a3">Active Techniques</a>
 <ul>
-<li><a href="#org1c395cf">ARP Poisoning / ARP Spoofing</a></li>
-<li><a href="#orge33177f">MAC Flooding</a></li>
-<li><a href="#org1308b63">DNS Spoofing</a></li>
+<li><a href="#org2f3c884">ARP Poisoning / ARP Spoofing</a></li>
+<li><a href="#orgb5bcab1">MAC Flooding</a></li>
+<li><a href="#orgbfc92ca">DNS Spoofing</a></li>
 </ul>
 </li>
-<li><a href="#orgee2377e">Capture Tools</a></li>
-<li><a href="#org7f21f80">What Gets Captured</a></li>
-<li><a href="#orgd831067">Detection</a></li>
-<li><a href="#orgefb9e7f">Mitigations</a></li>
-<li><a href="#org2cd15c3">Tips</a></li>
+<li><a href="#orgd3860bc">Capture Tools</a></li>
+<li><a href="#org11eba7f">What Gets Captured</a></li>
+<li><a href="#org7ab2f91">Detection</a></li>
+<li><a href="#org9d6a439">Mitigations</a></li>
+<li><a href="#org559aba5">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -898,9 +916,9 @@ Related: <a href="20260213T072232--arp-poisoning__cybersecurity_technique.html">
          <a href="20260213T104035--network-traffic-analysis__concept_cybersecurity.html">Network Traffic Analysis</a>
          <a href="20260214T083523--switch__networking.html">Switch</a>
 </p>
-<div id="outline-container-org0891725" class="outline-2">
-<h2 id="org0891725">Passive vs Active</h2>
-<div class="outline-text-2" id="text-org0891725">
+<div id="outline-container-org45d7f22" class="outline-2">
+<h2 id="org45d7f22">Passive vs Active</h2>
+<div class="outline-text-2" id="text-org45d7f22">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -946,13 +964,13 @@ Related: <a href="20260213T072232--arp-poisoning__cybersecurity_technique.html">
 </table>
 </div>
 </div>
-<div id="outline-container-org94c0eaf" class="outline-2">
-<h2 id="org94c0eaf">Active Techniques</h2>
-<div class="outline-text-2" id="text-org94c0eaf">
+<div id="outline-container-org09c60a3" class="outline-2">
+<h2 id="org09c60a3">Active Techniques</h2>
+<div class="outline-text-2" id="text-org09c60a3">
 </div>
-<div id="outline-container-org1c395cf" class="outline-3">
-<h3 id="org1c395cf">ARP Poisoning / ARP Spoofing</h3>
-<div class="outline-text-3" id="text-org1c395cf">
+<div id="outline-container-org2f3c884" class="outline-3">
+<h3 id="org2f3c884">ARP Poisoning / ARP Spoofing</h3>
+<div class="outline-text-3" id="text-org2f3c884">
 <p>
 Sends forged ARP replies associating the attacker's MAC with
 the gateway's IP. Traffic from victims intended for the gateway
@@ -960,11 +978,11 @@ flows through the attacker instead. See <a href="20260213T072232--arp-poisoning_
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bdbbf0e3707e4ce398869de201789cd3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_319ae0c8e5534f059f958e6d3bebd1a1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bdbbf0e3707e4ce398869de201789cd3=document.querySelector('button[name=btn_bdbbf0e3707e4ce398869de201789cd3]');
-copyBtnbtn_bdbbf0e3707e4ce398869de201789cd3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Ettercap — ARP poisoning between victim and gateway\nettercap -T -M arp:remote /$VICTIM_IP// /$GATEWAY_IP//\n\n# arpspoof (dsniff package)\necho 1 > /proc/sys/net/ipv4/ip_forward   # enable forwarding\narpspoof -i eth0 -t $VICTIM_IP $GATEWAY_IP\narpspoof -i eth0 -t $GATEWAY_IP $VICTIM_IP\n`);copyBtnbtn_bdbbf0e3707e4ce398869de201789cd3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bdbbf0e3707e4ce398869de201789cd3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_319ae0c8e5534f059f958e6d3bebd1a1=document.querySelector('button[name=btn_319ae0c8e5534f059f958e6d3bebd1a1]');
+copyBtnbtn_319ae0c8e5534f059f958e6d3bebd1a1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Ettercap — ARP poisoning between victim and gateway\nettercap -T -M arp:remote /$VICTIM_IP// /$GATEWAY_IP//\n\n# arpspoof (dsniff package)\necho 1 > /proc/sys/net/ipv4/ip_forward   # enable forwarding\narpspoof -i eth0 -t $VICTIM_IP $GATEWAY_IP\narpspoof -i eth0 -t $GATEWAY_IP $VICTIM_IP\n`);copyBtnbtn_319ae0c8e5534f059f958e6d3bebd1a1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_319ae0c8e5534f059f958e6d3bebd1a1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -979,9 +997,9 @@ arpspoof -i eth0 -t $<span style="color: var(--clr-variable); background-color: 
 </div></div>
 </div>
 </div>
-<div id="outline-container-orge33177f" class="outline-3">
-<h3 id="orge33177f">MAC Flooding</h3>
-<div class="outline-text-3" id="text-orge33177f">
+<div id="outline-container-orgb5bcab1" class="outline-3">
+<h3 id="orgb5bcab1">MAC Flooding</h3>
+<div class="outline-text-3" id="text-orgb5bcab1">
 <p>
 Floods the switch CAM table with random MAC addresses until it
 overflows. The switch degrades to hub behaviour — broadcasting
@@ -989,11 +1007,11 @@ all traffic to all ports. See <a href="20260214T083523--switch__networking.html"
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d08a0a784a4d4e40b031881a669286fa>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1d3550d5f7b34803b2658dbf1780812b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d08a0a784a4d4e40b031881a669286fa=document.querySelector('button[name=btn_d08a0a784a4d4e40b031881a669286fa]');
-copyBtnbtn_d08a0a784a4d4e40b031881a669286fa.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# macof (dsniff package)\nmacof -i eth0\n`);copyBtnbtn_d08a0a784a4d4e40b031881a669286fa.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d08a0a784a4d4e40b031881a669286fa.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1d3550d5f7b34803b2658dbf1780812b=document.querySelector('button[name=btn_1d3550d5f7b34803b2658dbf1780812b]');
+copyBtnbtn_1d3550d5f7b34803b2658dbf1780812b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# macof (dsniff package)\nmacof -i eth0\n`);copyBtnbtn_1d3550d5f7b34803b2658dbf1780812b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1d3550d5f7b34803b2658dbf1780812b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1003,9 +1021,9 @@ let res = copyTextToClipboard(`# macof (dsniff package)\nmacof -i eth0\n`);copyB
 </div></div>
 </div>
 </div>
-<div id="outline-container-org1308b63" class="outline-3">
-<h3 id="org1308b63">DNS Spoofing</h3>
-<div class="outline-text-3" id="text-org1308b63">
+<div id="outline-container-orgbfc92ca" class="outline-3">
+<h3 id="orgbfc92ca">DNS Spoofing</h3>
+<div class="outline-text-3" id="text-orgbfc92ca">
 <p>
 Injects forged DNS responses to redirect a victim's domain
 lookups to attacker-controlled IPs. Often chained after ARP
@@ -1014,15 +1032,15 @@ poisoning — intercept DNS queries and reply with false records.
 </div>
 </div>
 </div>
-<div id="outline-container-orgee2377e" class="outline-2">
-<h2 id="orgee2377e">Capture Tools</h2>
-<div class="outline-text-2" id="text-orgee2377e">
+<div id="outline-container-orgd3860bc" class="outline-2">
+<h2 id="orgd3860bc">Capture Tools</h2>
+<div class="outline-text-2" id="text-orgd3860bc">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5e04b0fa13db4d5287ad0f92da645e35>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e21102ecb74944b8a929eeb1a7ae986b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5e04b0fa13db4d5287ad0f92da645e35=document.querySelector('button[name=btn_5e04b0fa13db4d5287ad0f92da645e35]');
-copyBtnbtn_5e04b0fa13db4d5287ad0f92da645e35.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Wireshark — GUI capture and analysis\n# Set interface to promiscuous mode in capture settings\n\n# tcpdump — command line\ntcpdump -i eth0                          # capture all traffic\ntcpdump -i eth0 -w capture.pcap          # write to file\ntcpdump -i eth0 host 192.168.1.10        # filter by host\ntcpdump -i eth0 port 80                  # filter by port\ntcpdump -i eth0 not port 22              # exclude SSH\n\n# Read a capture file\ntcpdump -r capture.pcap\ntcpdump -r capture.pcap -A | grep -i password   # look for cleartext creds\n`);copyBtnbtn_5e04b0fa13db4d5287ad0f92da645e35.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5e04b0fa13db4d5287ad0f92da645e35.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e21102ecb74944b8a929eeb1a7ae986b=document.querySelector('button[name=btn_e21102ecb74944b8a929eeb1a7ae986b]');
+copyBtnbtn_e21102ecb74944b8a929eeb1a7ae986b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Wireshark — GUI capture and analysis\n# Set interface to promiscuous mode in capture settings\n\n# tcpdump — command line\ntcpdump -i eth0                          # capture all traffic\ntcpdump -i eth0 -w capture.pcap          # write to file\ntcpdump -i eth0 host 192.168.1.10        # filter by host\ntcpdump -i eth0 port 80                  # filter by port\ntcpdump -i eth0 not port 22              # exclude SSH\n\n# Read a capture file\ntcpdump -r capture.pcap\ntcpdump -r capture.pcap -A | grep -i password   # look for cleartext creds\n`);copyBtnbtn_e21102ecb74944b8a929eeb1a7ae986b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e21102ecb74944b8a929eeb1a7ae986b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1043,19 +1061,19 @@ tcpdump -r capture.pcap -A | grep -i password   <span style="color: var(--clr-co
 </div></div>
 </div>
 </div>
-<div id="outline-container-org7f21f80" class="outline-2">
-<h2 id="org7f21f80">What Gets Captured</h2>
-<div class="outline-text-2" id="text-org7f21f80">
+<div id="outline-container-org11eba7f" class="outline-2">
+<h2 id="org11eba7f">What Gets Captured</h2>
+<div class="outline-text-2" id="text-org11eba7f">
 <p>
 On an unencrypted network, sniffing can recover:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e51239f408fc4ed587db9ceb1d34d00a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_88a5561ce486428f8705a2e7a4f6fef3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e51239f408fc4ed587db9ceb1d34d00a=document.querySelector('button[name=btn_e51239f408fc4ed587db9ceb1d34d00a]');
-copyBtnbtn_e51239f408fc4ed587db9ceb1d34d00a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— HTTP credentials (POST bodies, Basic Auth headers)\n— FTP/Telnet/POP3 credentials (cleartext protocols)\n— Email contents over unencrypted SMTP/IMAP\n— Session cookies (allowing session hijacking)\n— DNS queries (reveals browsing activity even over HTTPS)\n— NTLM hashes over SMB (crackable or relay attack)\n— Kerberos tickets\n`);copyBtnbtn_e51239f408fc4ed587db9ceb1d34d00a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e51239f408fc4ed587db9ceb1d34d00a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_88a5561ce486428f8705a2e7a4f6fef3=document.querySelector('button[name=btn_88a5561ce486428f8705a2e7a4f6fef3]');
+copyBtnbtn_88a5561ce486428f8705a2e7a4f6fef3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— HTTP credentials (POST bodies, Basic Auth headers)\n— FTP/Telnet/POP3 credentials (cleartext protocols)\n— Email contents over unencrypted SMTP/IMAP\n— Session cookies (allowing session hijacking)\n— DNS queries (reveals browsing activity even over HTTPS)\n— NTLM hashes over SMB (crackable or relay attack)\n— Kerberos tickets\n`);copyBtnbtn_88a5561ce486428f8705a2e7a4f6fef3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_88a5561ce486428f8705a2e7a4f6fef3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1070,15 +1088,15 @@ let res = copyTextToClipboard(`— HTTP credentials (POST bodies, Basic Auth hea
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgd831067" class="outline-2">
-<h2 id="orgd831067">Detection</h2>
-<div class="outline-text-2" id="text-orgd831067">
+<div id="outline-container-org7ab2f91" class="outline-2">
+<h2 id="org7ab2f91">Detection</h2>
+<div class="outline-text-2" id="text-org7ab2f91">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d4a4140c52c4404ba4df821556a2e9ea>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f1f487f938f940f2985315c92869f285>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d4a4140c52c4404ba4df821556a2e9ea=document.querySelector('button[name=btn_d4a4140c52c4404ba4df821556a2e9ea]');
-copyBtnbtn_d4a4140c52c4404ba4df821556a2e9ea.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Detect hosts in promiscuous mode (sends gratuitous ARP)\nnmap --script sniffer-detect $SUBNET\n\n# Detect ARP poisoning\narp -a                           # check ARP table for duplicate MACs\narping $GATEWAY_IP               # compare responses\n\n# Wireshark — detect duplicate IPs\n# Filter: arp.duplicate-address-detected\n`);copyBtnbtn_d4a4140c52c4404ba4df821556a2e9ea.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d4a4140c52c4404ba4df821556a2e9ea.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f1f487f938f940f2985315c92869f285=document.querySelector('button[name=btn_f1f487f938f940f2985315c92869f285]');
+copyBtnbtn_f1f487f938f940f2985315c92869f285.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Detect hosts in promiscuous mode (sends gratuitous ARP)\nnmap --script sniffer-detect $SUBNET\n\n# Detect ARP poisoning\narp -a                           # check ARP table for duplicate MACs\narping $GATEWAY_IP               # compare responses\n\n# Wireshark — detect duplicate IPs\n# Filter: arp.duplicate-address-detected\n`);copyBtnbtn_f1f487f938f940f2985315c92869f285.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f1f487f938f940f2985315c92869f285.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1095,9 +1113,9 @@ let res = copyTextToClipboard(`# Detect hosts in promiscuous mode (sends gratuit
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgefb9e7f" class="outline-2">
-<h2 id="orgefb9e7f">Mitigations</h2>
-<div class="outline-text-2" id="text-orgefb9e7f">
+<div id="outline-container-org9d6a439" class="outline-2">
+<h2 id="org9d6a439">Mitigations</h2>
+<div class="outline-text-2" id="text-org9d6a439">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1151,9 +1169,9 @@ let res = copyTextToClipboard(`# Detect hosts in promiscuous mode (sends gratuit
 </table>
 </div>
 </div>
-<div id="outline-container-org2cd15c3" class="outline-2">
-<h2 id="org2cd15c3">Tips</h2>
-<div class="outline-text-2" id="text-org2cd15c3">
+<div id="outline-container-org559aba5" class="outline-2">
+<h2 id="org559aba5">Tips</h2>
+<div class="outline-text-2" id="text-org559aba5">
 <ul class="org-ul">
 <li>Cleartext protocols (HTTP, FTP, Telnet, POP3, SMTP without
 STARTTLS) are the primary target — flag any in use as High
@@ -1171,6 +1189,20 @@ internal assessments</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1178,6 +1210,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

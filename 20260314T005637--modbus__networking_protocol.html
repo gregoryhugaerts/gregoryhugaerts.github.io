@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Modbus</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8242498">Modbus</a>
+<li><a href="#org4020814">Modbus</a>
 <ul>
-<li><a href="#orgf8ffde2">Description</a>
+<li><a href="#orgeda9acf">Description</a>
 <ul>
-<li><a href="#orgff6c292">Protocol Variations</a></li>
-<li><a href="#org23ec8e9">DData Model and Addressing</a></li>
-<li><a href="#orgda83950">Security Considerations</a></li>
+<li><a href="#org3f090b7">Protocol Variations</a></li>
+<li><a href="#org37dfb40">DData Model and Addressing</a></li>
+<li><a href="#orgb687848">Security Considerations</a></li>
 </ul>
 </li>
-<li><a href="#org0bf7710">Examples</a>
+<li><a href="#org4a9a6d3">Examples</a>
 <ul>
-<li><a href="#orgb50a0cb">1. Reading a Temperature Sensor (Request/Response)</a></li>
-<li><a href="#orgd11cb1d">2. Scanning for Modbus Devices</a></li>
+<li><a href="#org68b8020">1. Reading a Temperature Sensor (Request/Response)</a></li>
+<li><a href="#org01bb22a">2. Scanning for Modbus Devices</a></li>
 </ul>
 </li>
 </ul>
@@ -893,20 +911,20 @@ Related: <a href="20260314T005710==ics--industrial-control-systems__concept.html
          <a href="20260314T005653--programmable-logic-controller__concept_programming.html">Programmable Logic Controller</a>
          <a href="20260314T005640==scada--supervisory-control-and-data-acquisition__concept_networking.html">SCADA</a>
 </p>
-<div id="outline-container-org8242498" class="outline-2">
-<h2 id="org8242498">Modbus</h2>
-<div class="outline-text-2" id="text-org8242498">
+<div id="outline-container-org4020814" class="outline-2">
+<h2 id="org4020814">Modbus</h2>
+<div class="outline-text-2" id="text-org4020814">
 </div>
-<div id="outline-container-orgf8ffde2" class="outline-3">
-<h3 id="orgf8ffde2">Description</h3>
-<div class="outline-text-3" id="text-orgf8ffde2">
+<div id="outline-container-orgeda9acf" class="outline-3">
+<h3 id="orgeda9acf">Description</h3>
+<div class="outline-text-3" id="text-orgeda9acf">
 <p>
 Created in 1979 by Modicon (now Schneider Electric), <b>Modbus</b> has become a "de facto" standard in <b>Operational Technology (OT)</b> due to its simplicity and royalty-free nature. It operates at <b>Layer 7</b> of the OSI model and is primarily used to move data between control devices and data collection systems.
 </p>
 </div>
-<div id="outline-container-orgff6c292" class="outline-4">
-<h4 id="orgff6c292">Protocol Variations</h4>
-<div class="outline-text-4" id="text-orgff6c292">
+<div id="outline-container-org3f090b7" class="outline-4">
+<h4 id="org3f090b7">Protocol Variations</h4>
+<div class="outline-text-4" id="text-org3f090b7">
 <p>
 Modbus exists in three primary formats depending on the transmission medium:
 </p>
@@ -918,9 +936,9 @@ Modbus exists in three primary formats depending on the transmission medium:
 </ol>
 </div>
 </div>
-<div id="outline-container-org23ec8e9" class="outline-4">
-<h4 id="org23ec8e9">DData Model and Addressing</h4>
-<div class="outline-text-4" id="text-org23ec8e9">
+<div id="outline-container-org37dfb40" class="outline-4">
+<h4 id="org37dfb40">DData Model and Addressing</h4>
+<div class="outline-text-4" id="text-org37dfb40">
 <p>
 Modbus organizes data into four primary tables based on the type of data and the access permissions:
 </p>
@@ -970,9 +988,9 @@ Modbus organizes data into four primary tables based on the type of data and the
 </table>
 </div>
 </div>
-<div id="outline-container-orgda83950" class="outline-4">
-<h4 id="orgda83950">Security Considerations</h4>
-<div class="outline-text-4" id="text-orgda83950">
+<div id="outline-container-orgb687848" class="outline-4">
+<h4 id="orgb687848">Security Considerations</h4>
+<div class="outline-text-4" id="text-orgb687848">
 <p>
 The primary challenge with standard Modbus is that it was designed before cybersecurity was a concern for industrial plants.
 </p>
@@ -987,13 +1005,13 @@ The primary challenge with standard Modbus is that it was designed before cybers
 </div>
 </div>
 </div>
-<div id="outline-container-org0bf7710" class="outline-3">
-<h3 id="org0bf7710">Examples</h3>
-<div class="outline-text-3" id="text-org0bf7710">
+<div id="outline-container-org4a9a6d3" class="outline-3">
+<h3 id="org4a9a6d3">Examples</h3>
+<div class="outline-text-3" id="text-org4a9a6d3">
 </div>
-<div id="outline-container-orgb50a0cb" class="outline-4">
-<h4 id="orgb50a0cb">1. Reading a Temperature Sensor (Request/Response)</h4>
-<div class="outline-text-4" id="text-orgb50a0cb">
+<div id="outline-container-org68b8020" class="outline-4">
+<h4 id="org68b8020">1. Reading a Temperature Sensor (Request/Response)</h4>
+<div class="outline-text-4" id="text-org68b8020">
 <p>
 A SCADA system (Client) wants to read the current temperature from a PLC (Server) at address 1.
 </p>
@@ -1003,19 +1021,19 @@ A SCADA system (Client) wants to read the current temperature from a PLC (Server
 </p>
 </div>
 </div>
-<div id="outline-container-orgd11cb1d" class="outline-4">
-<h4 id="orgd11cb1d">2. Scanning for Modbus Devices</h4>
-<div class="outline-text-4" id="text-orgd11cb1d">
+<div id="outline-container-org01bb22a" class="outline-4">
+<h4 id="org01bb22a">2. Scanning for Modbus Devices</h4>
+<div class="outline-text-4" id="text-org01bb22a">
 <p>
 Penetration testers and security researchers use <code>nmap</code> to identify Modbus-enabled devices during an audit.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_cb300e9d10fc42ab91025fe9a5663ace>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_5e558b9af0ee4981b1b0cfc7ea94ec77>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_cb300e9d10fc42ab91025fe9a5663ace=document.querySelector('button[name=btn_cb300e9d10fc42ab91025fe9a5663ace]');
-copyBtnbtn_cb300e9d10fc42ab91025fe9a5663ace.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Scan a network range for the default Modbus port and identify the device ID\nnmap -p 502 --script modbus-discover 192.168.1.0/24\n`);copyBtnbtn_cb300e9d10fc42ab91025fe9a5663ace.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cb300e9d10fc42ab91025fe9a5663ace.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5e558b9af0ee4981b1b0cfc7ea94ec77=document.querySelector('button[name=btn_5e558b9af0ee4981b1b0cfc7ea94ec77]');
+copyBtnbtn_5e558b9af0ee4981b1b0cfc7ea94ec77.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Scan a network range for the default Modbus port and identify the device ID\nnmap -p 502 --script modbus-discover 192.168.1.0/24\n`);copyBtnbtn_5e558b9af0ee4981b1b0cfc7ea94ec77.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5e558b9af0ee4981b1b0cfc7ea94ec77.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1029,6 +1047,20 @@ let res = copyTextToClipboard(`# Scan a network range for the default Modbus por
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1036,6 +1068,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

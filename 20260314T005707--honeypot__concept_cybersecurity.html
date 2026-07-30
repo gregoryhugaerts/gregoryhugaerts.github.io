@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Honeypot</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,13 +886,13 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7e2a032">Types</a></li>
-<li><a href="#org670302f">Honeytokens</a></li>
-<li><a href="#org8c6c69d">Low-Interaction Honeypots</a></li>
-<li><a href="#orgeee6856">Production Use</a></li>
-<li><a href="#orgd66ca5c">What Honeypots Capture</a></li>
-<li><a href="#org0d7eecd">Limitations</a></li>
-<li><a href="#org72c97ca">Tips</a></li>
+<li><a href="#org5cd8da0">Types</a></li>
+<li><a href="#orgdcf1096">Honeytokens</a></li>
+<li><a href="#org7be458e">Low-Interaction Honeypots</a></li>
+<li><a href="#org5f2bf07">Production Use</a></li>
+<li><a href="#orgea95710">What Honeypots Capture</a></li>
+<li><a href="#org0b0dc21">Limitations</a></li>
+<li><a href="#orgf5ed747">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -891,9 +909,9 @@ Related: <a href="20260212T065441==ioc--indicators-of-compromise__concept_cybers
          <a href="20260213T072318--intrusion-detection-system__concept_cybersecurity.html">Intrusion Detection System</a>
          <a href="20260206T060659--incident-response__concept_cybersecurity.html">Incident Response</a>
 </p>
-<div id="outline-container-org7e2a032" class="outline-2">
-<h2 id="org7e2a032">Types</h2>
-<div class="outline-text-2" id="text-org7e2a032">
+<div id="outline-container-org5cd8da0" class="outline-2">
+<h2 id="org5cd8da0">Types</h2>
+<div class="outline-text-2" id="text-org5cd8da0">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -951,20 +969,20 @@ Related: <a href="20260212T065441==ioc--indicators-of-compromise__concept_cybers
 </table>
 </div>
 </div>
-<div id="outline-container-org670302f" class="outline-2">
-<h2 id="org670302f">Honeytokens</h2>
-<div class="outline-text-2" id="text-org670302f">
+<div id="outline-container-orgdcf1096" class="outline-2">
+<h2 id="orgdcf1096">Honeytokens</h2>
+<div class="outline-text-2" id="text-orgdcf1096">
 <p>
 The most practical form for most organisations — plant fake
 credentials or files and alert when they are used.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_5d2913ab11934f9d9bc5134710f27f98>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_67b4eada161c4291beb058d7ea5567d6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5d2913ab11934f9d9bc5134710f27f98=document.querySelector('button[name=btn_5d2913ab11934f9d9bc5134710f27f98]');
-copyBtnbtn_5d2913ab11934f9d9bc5134710f27f98.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Common honeytoken types:\n— Fake AWS/Azure API keys in a public GitHub repo — alerts when accessed\n— Fake credentials in a password manager or config file\n— Fake admin account — alert on any login attempt\n— Canary files in sensitive directories — alert on access\n— Fake database records with unique values — detects exfiltration\n\nTools: canarytokens.org — free, generates URLs, documents, AWS\n       keys, DNS tokens; fires a webhook or email on use\n`);copyBtnbtn_5d2913ab11934f9d9bc5134710f27f98.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5d2913ab11934f9d9bc5134710f27f98.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_67b4eada161c4291beb058d7ea5567d6=document.querySelector('button[name=btn_67b4eada161c4291beb058d7ea5567d6]');
+copyBtnbtn_67b4eada161c4291beb058d7ea5567d6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Common honeytoken types:\n— Fake AWS/Azure API keys in a public GitHub repo — alerts when accessed\n— Fake credentials in a password manager or config file\n— Fake admin account — alert on any login attempt\n— Canary files in sensitive directories — alert on access\n— Fake database records with unique values — detects exfiltration\n\nTools: canarytokens.org — free, generates URLs, documents, AWS\n       keys, DNS tokens; fires a webhook or email on use\n`);copyBtnbtn_67b4eada161c4291beb058d7ea5567d6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_67b4eada161c4291beb058d7ea5567d6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -981,20 +999,20 @@ Tools: canarytokens.org &#8212; free, generates URLs, documents, AWS
 </div></div>
 </div>
 </div>
-<div id="outline-container-org8c6c69d" class="outline-2">
-<h2 id="org8c6c69d">Low-Interaction Honeypots</h2>
-<div class="outline-text-2" id="text-org8c6c69d">
+<div id="outline-container-org7be458e" class="outline-2">
+<h2 id="org7be458e">Low-Interaction Honeypots</h2>
+<div class="outline-text-2" id="text-org7be458e">
 <p>
 Simulate services without a full OS. Fast to deploy, lower risk
 if compromised, but attackers may detect them.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_22c3a838c8fd48a5a3da8042c84cbf18>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ba7daa3cfd1540588499c6e5451c0cbe>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_22c3a838c8fd48a5a3da8042c84cbf18=document.querySelector('button[name=btn_22c3a838c8fd48a5a3da8042c84cbf18]');
-copyBtnbtn_22c3a838c8fd48a5a3da8042c84cbf18.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Honeyd — simulates multiple hosts and services\n# OpenSSH honeypot (log credentials used by brute-force bots)\npip install cowrie --break-system-packages\n\n# Cowrie — SSH/Telnet honeypot, logs sessions and credentials\ndocker run -p 2222:2222 cowrie/cowrie\n`);copyBtnbtn_22c3a838c8fd48a5a3da8042c84cbf18.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_22c3a838c8fd48a5a3da8042c84cbf18.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ba7daa3cfd1540588499c6e5451c0cbe=document.querySelector('button[name=btn_ba7daa3cfd1540588499c6e5451c0cbe]');
+copyBtnbtn_ba7daa3cfd1540588499c6e5451c0cbe.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Honeyd — simulates multiple hosts and services\n# OpenSSH honeypot (log credentials used by brute-force bots)\npip install cowrie --break-system-packages\n\n# Cowrie — SSH/Telnet honeypot, logs sessions and credentials\ndocker run -p 2222:2222 cowrie/cowrie\n`);copyBtnbtn_ba7daa3cfd1540588499c6e5451c0cbe.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ba7daa3cfd1540588499c6e5451c0cbe.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1008,9 +1026,9 @@ let res = copyTextToClipboard(`# Honeyd — simulates multiple hosts and service
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgeee6856" class="outline-2">
-<h2 id="orgeee6856">Production Use</h2>
-<div class="outline-text-2" id="text-orgeee6856">
+<div id="outline-container-org5f2bf07" class="outline-2">
+<h2 id="org5f2bf07">Production Use</h2>
+<div class="outline-text-2" id="text-org5f2bf07">
 <p>
 Placing honeypots inside your own network means any interaction
 is immediately suspicious — no legitimate user or system should
@@ -1018,11 +1036,11 @@ be touching them:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_aac672233f8f47c18397ea077b4f4b32>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d55d376c5fc04779b00241132f0f95c4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_aac672233f8f47c18397ea077b4f4b32=document.querySelector('button[name=btn_aac672233f8f47c18397ea077b4f4b32]');
-copyBtnbtn_aac672233f8f47c18397ea077b4f4b32.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Useful placements:\n— A \"server\" that no real services depend on — any connection is anomalous\n— Fake admin shares on a Windows network — detects SMB enumeration\n— A DNS name that nothing legitimate resolves — alert on any query\n— A database account that nothing uses — alert on any authentication\n— Open port on an internal host that nothing listens on — detects scanning\n`);copyBtnbtn_aac672233f8f47c18397ea077b4f4b32.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aac672233f8f47c18397ea077b4f4b32.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d55d376c5fc04779b00241132f0f95c4=document.querySelector('button[name=btn_d55d376c5fc04779b00241132f0f95c4]');
+copyBtnbtn_d55d376c5fc04779b00241132f0f95c4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Useful placements:\n— A \"server\" that no real services depend on — any connection is anomalous\n— Fake admin shares on a Windows network — detects SMB enumeration\n— A DNS name that nothing legitimate resolves — alert on any query\n— A database account that nothing uses — alert on any authentication\n— Open port on an internal host that nothing listens on — detects scanning\n`);copyBtnbtn_d55d376c5fc04779b00241132f0f95c4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d55d376c5fc04779b00241132f0f95c4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1036,9 +1054,9 @@ let res = copyTextToClipboard(`Useful placements:\n— A \"server\" that no real
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgd66ca5c" class="outline-2">
-<h2 id="orgd66ca5c">What Honeypots Capture</h2>
-<div class="outline-text-2" id="text-orgd66ca5c">
+<div id="outline-container-orgea95710" class="outline-2">
+<h2 id="orgea95710">What Honeypots Capture</h2>
+<div class="outline-text-2" id="text-orgea95710">
 <p>
 High-interaction and honeynet deployments reveal:
 </p>
@@ -1052,9 +1070,9 @@ High-interaction and honeynet deployments reveal:
 </ul>
 </div>
 </div>
-<div id="outline-container-org0d7eecd" class="outline-2">
-<h2 id="org0d7eecd">Limitations</h2>
-<div class="outline-text-2" id="text-org0d7eecd">
+<div id="outline-container-org0b0dc21" class="outline-2">
+<h2 id="org0b0dc21">Limitations</h2>
+<div class="outline-text-2" id="text-org0b0dc21">
 <ul class="org-ul">
 <li>Attackers aware of honeypots may deliberately avoid anomalous
 systems — sophisticated threat actors fingerprint environments</li>
@@ -1067,9 +1085,9 @@ not a substitute for full network monitoring</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org72c97ca" class="outline-2">
-<h2 id="org72c97ca">Tips</h2>
-<div class="outline-text-2" id="text-org72c97ca">
+<div id="outline-container-orgf5ed747" class="outline-2">
+<h2 id="orgf5ed747">Tips</h2>
+<div class="outline-text-2" id="text-orgf5ed747">
 <ul class="org-ul">
 <li>Honeytokens via canarytokens.org are the fastest to deploy
 and highest signal-to-noise ratio — start there</li>
@@ -1087,6 +1105,20 @@ is being used</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1094,6 +1126,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

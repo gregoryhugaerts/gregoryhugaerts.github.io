@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>java</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7cced60">Core Syntax</a></li>
-<li><a href="#org57efc41">Type System</a></li>
-<li><a href="#orga9194d3">Classes and Objects</a>
+<li><a href="#orged486f6">Core Syntax</a></li>
+<li><a href="#org60c2d14">Type System</a></li>
+<li><a href="#orgfed2ac1">Classes and Objects</a>
 <ul>
-<li><a href="#org43dd05c">Inheritance and Interfaces</a></li>
+<li><a href="#org1f67186">Inheritance and Interfaces</a></li>
 </ul>
 </li>
-<li><a href="#org42e9a08">Collections</a></li>
-<li><a href="#org62cb05c">Exception Handling</a></li>
-<li><a href="#org7cafb86">Build Tools</a></li>
-<li><a href="#orgb03e7a4">Security-Relevant Notes</a></li>
-<li><a href="#orgb7bd85b">Tips</a></li>
+<li><a href="#org172dd09">Collections</a></li>
+<li><a href="#org04a47b8">Exception Handling</a></li>
+<li><a href="#org3bcfe9e">Build Tools</a></li>
+<li><a href="#orgbde2e56">Security-Relevant Notes</a></li>
+<li><a href="#orgf1fe2d4">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -898,15 +916,15 @@ Related: <a href="20260206T060645--type-system__concept_programming.html">Type S
          <a href="20260624T213806==ssti--server-side-template-injection__cybersecurity_pentesting_technique.html">Server-Side Template Injection</a>
          <a href="20260213T110116--metasploit__cybersecurity_tool.html">Metasploit</a>
 </p>
-<div id="outline-container-org7cced60" class="outline-2">
-<h2 id="org7cced60">Core Syntax</h2>
-<div class="outline-text-2" id="text-org7cced60">
+<div id="outline-container-orged486f6" class="outline-2">
+<h2 id="orged486f6">Core Syntax</h2>
+<div class="outline-text-2" id="text-orged486f6">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVA</span><button class='copyBtn' name=btn_ea2d7222da4c4ab695d66c19e485c8a8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVA</span><button class='copyBtn' name=btn_b6939982364a4f718da1607f81bd0218>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ea2d7222da4c4ab695d66c19e485c8a8=document.querySelector('button[name=btn_ea2d7222da4c4ab695d66c19e485c8a8]');
-copyBtnbtn_ea2d7222da4c4ab695d66c19e485c8a8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, world\");\n    }\n}\n`);copyBtnbtn_ea2d7222da4c4ab695d66c19e485c8a8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ea2d7222da4c4ab695d66c19e485c8a8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b6939982364a4f718da1607f81bd0218=document.querySelector('button[name=btn_b6939982364a4f718da1607f81bd0218]');
+copyBtnbtn_b6939982364a4f718da1607f81bd0218.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, world\");\n    }\n}\n`);copyBtnbtn_b6939982364a4f718da1607f81bd0218.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b6939982364a4f718da1607f81bd0218.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -925,11 +943,11 @@ separate steps:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ca44a4d18eb94674a6862822566e34d6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_af96702a57474aa697278a34f0353813>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ca44a4d18eb94674a6862822566e34d6=document.querySelector('button[name=btn_ca44a4d18eb94674a6862822566e34d6]');
-copyBtnbtn_ca44a4d18eb94674a6862822566e34d6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`javac Main.java   # compiles to Main.class (bytecode)\njava Main          # runs it on the JVM\n`);copyBtnbtn_ca44a4d18eb94674a6862822566e34d6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ca44a4d18eb94674a6862822566e34d6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_af96702a57474aa697278a34f0353813=document.querySelector('button[name=btn_af96702a57474aa697278a34f0353813]');
+copyBtnbtn_af96702a57474aa697278a34f0353813.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`javac Main.java   # compiles to Main.class (bytecode)\njava Main          # runs it on the JVM\n`);copyBtnbtn_af96702a57474aa697278a34f0353813.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_af96702a57474aa697278a34f0353813.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -939,20 +957,20 @@ let res = copyTextToClipboard(`javac Main.java   # compiles to Main.class (bytec
 </div></div>
 </div>
 </div>
-<div id="outline-container-org57efc41" class="outline-2">
-<h2 id="org57efc41">Type System</h2>
-<div class="outline-text-2" id="text-org57efc41">
+<div id="outline-container-org60c2d14" class="outline-2">
+<h2 id="org60c2d14">Type System</h2>
+<div class="outline-text-2" id="text-org60c2d14">
 <p>
 Statically typed — every variable's type is fixed at declaration
 and checked at compile time.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVA</span><button class='copyBtn' name=btn_ae73cdf31ea44d2b8563feb79279b87c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVA</span><button class='copyBtn' name=btn_09806786417045e3adeb15a82ecea47c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ae73cdf31ea44d2b8563feb79279b87c=document.querySelector('button[name=btn_ae73cdf31ea44d2b8563feb79279b87c]');
-copyBtnbtn_ae73cdf31ea44d2b8563feb79279b87c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`int x = 5;                    // primitive\nString name = \"Greg\";         // reference type (object)\ndouble price = 19.99;\nboolean isActive = true;\n\n// Primitives have wrapper/object equivalents\nInteger boxedX = 5;           // autoboxing\nint unboxedX = boxedX;        // auto-unboxing\n`);copyBtnbtn_ae73cdf31ea44d2b8563feb79279b87c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ae73cdf31ea44d2b8563feb79279b87c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_09806786417045e3adeb15a82ecea47c=document.querySelector('button[name=btn_09806786417045e3adeb15a82ecea47c]');
+copyBtnbtn_09806786417045e3adeb15a82ecea47c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`int x = 5;                    // primitive\nString name = \"Greg\";         // reference type (object)\ndouble price = 19.99;\nboolean isActive = true;\n\n// Primitives have wrapper/object equivalents\nInteger boxedX = 5;           // autoboxing\nint unboxedX = boxedX;        // auto-unboxing\n`);copyBtnbtn_09806786417045e3adeb15a82ecea47c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_09806786417045e3adeb15a82ecea47c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1016,15 +1034,15 @@ support primitives directly).
 </p>
 </div>
 </div>
-<div id="outline-container-orga9194d3" class="outline-2">
-<h2 id="orga9194d3">Classes and Objects</h2>
-<div class="outline-text-2" id="text-orga9194d3">
+<div id="outline-container-orgfed2ac1" class="outline-2">
+<h2 id="orgfed2ac1">Classes and Objects</h2>
+<div class="outline-text-2" id="text-orgfed2ac1">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVA</span><button class='copyBtn' name=btn_4be471729f2045c7aa6a5922b2e4f76c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVA</span><button class='copyBtn' name=btn_3119fd18e8674eadb597706e93154b0e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4be471729f2045c7aa6a5922b2e4f76c=document.querySelector('button[name=btn_4be471729f2045c7aa6a5922b2e4f76c]');
-copyBtnbtn_4be471729f2045c7aa6a5922b2e4f76c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`public class User {\n    private String name;\n    private int age;\n\n    // Constructor\n    public User(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n\n    // Getter/setter — Java convention, no native properties\n    public String getName() {\n        return name;\n    }\n\n    public void setName(String name) {\n        this.name = name;\n    }\n}\n\n// Usage\nUser u = new User(\"Greg\", 30);\nSystem.out.println(u.getName());\n`);copyBtnbtn_4be471729f2045c7aa6a5922b2e4f76c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4be471729f2045c7aa6a5922b2e4f76c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3119fd18e8674eadb597706e93154b0e=document.querySelector('button[name=btn_3119fd18e8674eadb597706e93154b0e]');
+copyBtnbtn_3119fd18e8674eadb597706e93154b0e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`public class User {\n    private String name;\n    private int age;\n\n    // Constructor\n    public User(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n\n    // Getter/setter — Java convention, no native properties\n    public String getName() {\n        return name;\n    }\n\n    public void setName(String name) {\n        this.name = name;\n    }\n}\n\n// Usage\nUser u = new User(\"Greg\", 30);\nSystem.out.println(u.getName());\n`);copyBtnbtn_3119fd18e8674eadb597706e93154b0e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3119fd18e8674eadb597706e93154b0e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1054,15 +1072,15 @@ System.out.println(u.getName());
 </pre>
 </div></div>
 </div>
-<div id="outline-container-org43dd05c" class="outline-3">
-<h3 id="org43dd05c">Inheritance and Interfaces</h3>
-<div class="outline-text-3" id="text-org43dd05c">
+<div id="outline-container-org1f67186" class="outline-3">
+<h3 id="org1f67186">Inheritance and Interfaces</h3>
+<div class="outline-text-3" id="text-org1f67186">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVA</span><button class='copyBtn' name=btn_e26362bef4734ea6852dd8cf9559b810>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVA</span><button class='copyBtn' name=btn_dc9b1d363f5d4124b17ecec58136d3f5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e26362bef4734ea6852dd8cf9559b810=document.querySelector('button[name=btn_e26362bef4734ea6852dd8cf9559b810]');
-copyBtnbtn_e26362bef4734ea6852dd8cf9559b810.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`interface Greetable {\n    String greet();  // interface methods are implicitly abstract\n}\n\nclass Person implements Greetable {\n    private String name;\n\n    public Person(String name) {\n        this.name = name;\n    }\n\n    @Override\n    public String greet() {\n        return \"Hello, \" + name;\n    }\n}\n\n// Single inheritance via extends, multiple interfaces via implements\nclass Employee extends Person {\n    public Employee(String name) {\n        super(name);  // call parent constructor\n    }\n}\n`);copyBtnbtn_e26362bef4734ea6852dd8cf9559b810.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e26362bef4734ea6852dd8cf9559b810.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_dc9b1d363f5d4124b17ecec58136d3f5=document.querySelector('button[name=btn_dc9b1d363f5d4124b17ecec58136d3f5]');
+copyBtnbtn_dc9b1d363f5d4124b17ecec58136d3f5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`interface Greetable {\n    String greet();  // interface methods are implicitly abstract\n}\n\nclass Person implements Greetable {\n    private String name;\n\n    public Person(String name) {\n        this.name = name;\n    }\n\n    @Override\n    public String greet() {\n        return \"Hello, \" + name;\n    }\n}\n\n// Single inheritance via extends, multiple interfaces via implements\nclass Employee extends Person {\n    public Employee(String name) {\n        super(name);  // call parent constructor\n    }\n}\n`);copyBtnbtn_dc9b1d363f5d4124b17ecec58136d3f5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dc9b1d363f5d4124b17ecec58136d3f5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1100,15 +1118,15 @@ multiple inheritance or traits.
 </div>
 </div>
 </div>
-<div id="outline-container-org42e9a08" class="outline-2">
-<h2 id="org42e9a08">Collections</h2>
-<div class="outline-text-2" id="text-org42e9a08">
+<div id="outline-container-org172dd09" class="outline-2">
+<h2 id="org172dd09">Collections</h2>
+<div class="outline-text-2" id="text-org172dd09">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVA</span><button class='copyBtn' name=btn_53de285e24af444d93fb83c5a5049e55>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVA</span><button class='copyBtn' name=btn_81c92b6122f44a2cbe303c94edca5f99>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_53de285e24af444d93fb83c5a5049e55=document.querySelector('button[name=btn_53de285e24af444d93fb83c5a5049e55]');
-copyBtnbtn_53de285e24af444d93fb83c5a5049e55.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import java.util.*;\n\nList<String> names = new ArrayList<>();\nnames.add(\"Alice\");\nnames.add(\"Bob\");\n\nMap<String, Integer> ages = new HashMap<>();\nages.put(\"Alice\", 30);\nint aliceAge = ages.get(\"Alice\");\n\nSet<String> uniqueNames = new HashSet<>();\nuniqueNames.add(\"Alice\");\nuniqueNames.add(\"Alice\");  // no-op, already present\n`);copyBtnbtn_53de285e24af444d93fb83c5a5049e55.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_53de285e24af444d93fb83c5a5049e55.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_81c92b6122f44a2cbe303c94edca5f99=document.querySelector('button[name=btn_81c92b6122f44a2cbe303c94edca5f99]');
+copyBtnbtn_81c92b6122f44a2cbe303c94edca5f99.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import java.util.*;\n\nList<String> names = new ArrayList<>();\nnames.add(\"Alice\");\nnames.add(\"Bob\");\n\nMap<String, Integer> ages = new HashMap<>();\nages.put(\"Alice\", 30);\nint aliceAge = ages.get(\"Alice\");\n\nSet<String> uniqueNames = new HashSet<>();\nuniqueNames.add(\"Alice\");\nuniqueNames.add(\"Alice\");  // no-op, already present\n`);copyBtnbtn_81c92b6122f44a2cbe303c94edca5f99.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_81c92b6122f44a2cbe303c94edca5f99.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1134,15 +1152,15 @@ compile time — a <code>List&lt;String&gt;</code> can't accept an <code>Integer
 </p>
 </div>
 </div>
-<div id="outline-container-org62cb05c" class="outline-2">
-<h2 id="org62cb05c">Exception Handling</h2>
-<div class="outline-text-2" id="text-org62cb05c">
+<div id="outline-container-org04a47b8" class="outline-2">
+<h2 id="org04a47b8">Exception Handling</h2>
+<div class="outline-text-2" id="text-org04a47b8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JAVA</span><button class='copyBtn' name=btn_5b463a9896b2460a915d39f4c1491cc8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JAVA</span><button class='copyBtn' name=btn_272e2d0e1be944a08e408bbdd9273709>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5b463a9896b2460a915d39f4c1491cc8=document.querySelector('button[name=btn_5b463a9896b2460a915d39f4c1491cc8]');
-copyBtnbtn_5b463a9896b2460a915d39f4c1491cc8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`try {\n    int result = 10 / 0;\n} catch (ArithmeticException e) {\n    System.out.println(\"Error: \" + e.getMessage());\n} finally {\n    System.out.println(\"Always runs\");\n}\n\n// Checked exceptions must be declared or caught\npublic void readFile() throws IOException {\n    // ...\n}\n`);copyBtnbtn_5b463a9896b2460a915d39f4c1491cc8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5b463a9896b2460a915d39f4c1491cc8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_272e2d0e1be944a08e408bbdd9273709=document.querySelector('button[name=btn_272e2d0e1be944a08e408bbdd9273709]');
+copyBtnbtn_272e2d0e1be944a08e408bbdd9273709.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`try {\n    int result = 10 / 0;\n} catch (ArithmeticException e) {\n    System.out.println(\"Error: \" + e.getMessage());\n} finally {\n    System.out.println(\"Always runs\");\n}\n\n// Checked exceptions must be declared or caught\npublic void readFile() throws IOException {\n    // ...\n}\n`);copyBtnbtn_272e2d0e1be944a08e408bbdd9273709.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_272e2d0e1be944a08e408bbdd9273709.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1168,9 +1186,9 @@ specific distinction most other languages don't enforce.
 </p>
 </div>
 </div>
-<div id="outline-container-org7cafb86" class="outline-2">
-<h2 id="org7cafb86">Build Tools</h2>
-<div class="outline-text-2" id="text-org7cafb86">
+<div id="outline-container-org3bcfe9e" class="outline-2">
+<h2 id="org3bcfe9e">Build Tools</h2>
+<div class="outline-text-2" id="text-org3bcfe9e">
 <p>
 Two dominant build systems — you'll encounter both in the wild:
 </p>
@@ -1208,11 +1226,11 @@ Two dominant build systems — you'll encounter both in the wild:
 </table>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_59fdb0565d064917a3949fb0b3a5b809>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0de7c680f6174e3fadc3922e84a24e90>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_59fdb0565d064917a3949fb0b3a5b809=document.querySelector('button[name=btn_59fdb0565d064917a3949fb0b3a5b809]');
-copyBtnbtn_59fdb0565d064917a3949fb0b3a5b809.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`mvn compile          # Maven build\nmvn test              # Maven run tests\ngradle build           # Gradle build\n`);copyBtnbtn_59fdb0565d064917a3949fb0b3a5b809.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_59fdb0565d064917a3949fb0b3a5b809.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0de7c680f6174e3fadc3922e84a24e90=document.querySelector('button[name=btn_0de7c680f6174e3fadc3922e84a24e90]');
+copyBtnbtn_0de7c680f6174e3fadc3922e84a24e90.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`mvn compile          # Maven build\nmvn test              # Maven run tests\ngradle build           # Gradle build\n`);copyBtnbtn_0de7c680f6174e3fadc3922e84a24e90.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0de7c680f6174e3fadc3922e84a24e90.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1223,9 +1241,9 @@ let res = copyTextToClipboard(`mvn compile          # Maven build\nmvn test     
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb03e7a4" class="outline-2">
-<h2 id="orgb03e7a4">Security-Relevant Notes</h2>
-<div class="outline-text-2" id="text-orgb03e7a4">
+<div id="outline-container-orgbde2e56" class="outline-2">
+<h2 id="orgbde2e56">Security-Relevant Notes</h2>
+<div class="outline-text-2" id="text-orgbde2e56">
 <p>
 Given your pentest context specifically:
 </p>
@@ -1247,9 +1265,9 @@ own CVE history worth checking during recon</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb7bd85b" class="outline-2">
-<h2 id="orgb7bd85b">Tips</h2>
-<div class="outline-text-2" id="text-orgb7bd85b">
+<div id="outline-container-orgf1fe2d4" class="outline-2">
+<h2 id="orgf1fe2d4">Tips</h2>
+<div class="outline-text-2" id="text-orgf1fe2d4">
 <ul class="org-ul">
 <li>Java's verbosity (getters/setters, explicit types) is a genuine
 trade-off for compile-time safety — don't fight the convention,
@@ -1270,6 +1288,20 @@ depend on exact library versions being present</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1277,6 +1309,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

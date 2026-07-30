@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Biba Model</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,58 +886,62 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb4ba75e">Biba Model</a>
+<li><a href="#org851a62b">Biba Model</a>
 <ul>
-<li><a href="#org0c221a9">Core Concept</a></li>
-<li><a href="#org99a138d">Key Goal</a></li>
-<li><a href="#org0a90065">Core Properties (The Rules)</a>
+<li><a href="#orga769caa">Core Concept</a></li>
+<li><a href="#org72fbb66">Key Goal</a></li>
+<li><a href="#org7f12afe">Core Properties (The Rules)</a>
 <ul>
-<li><a href="#org7eeade3">The Simple Integrity Property (No Read own)</a></li>
-<li><a href="#org8b049fa">The * (Star) Integrity Property (No Write Up)</a></li>
+<li><a href="#org6df722f">The Simple Integrity Property (No Read own)</a></li>
+<li><a href="#org0234579">The * (Star) Integrity Property (No Write Up)</a></li>
 </ul>
 </li>
-<li><a href="#orge6eb029">Analogy: The Quality Control System</a></li>
-<li><a href="#orge0f75f0">Relationship to Bell-La Padula</a></li>
-<li><a href="#org85b3740">Limitations</a></li>
+<li><a href="#orga8299de">Analogy: The Quality Control System</a></li>
+<li><a href="#org9d72414">Relationship to Bell-La Padula</a></li>
+<li><a href="#orgb203189">Limitations</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<dl class="org-dl">
-<dt>related</dt><dd></dd>
-<dt>related</dt><dd></dd>
-</dl>
-<div id="outline-container-orgb4ba75e" class="outline-2">
-<h2 id="orgb4ba75e">Biba Model</h2>
-<div class="outline-text-2" id="text-orgb4ba75e">
-</div>
-<div id="outline-container-org0c221a9" class="outline-3">
-<h3 id="org0c221a9">Core Concept</h3>
-<div class="outline-text-3" id="text-org0c221a9">
 <p>
-The Biba Model is a formal state-machine security model designed to enforce data integrity. It aims to prevent data from being corrupted or modified by unauthorized entities or processes. Unlike the <a href="Bell-La Padula Model.html">Bell-La Padula Model</a> which focuses on Confidentiality, the Biba Model prioritizes maintaining the trustworthiness and accuracy of information.
+Related: <a href="20260327T192518--bell-la-padula-model__cybersecurity_model.html">Bell-La Padula Model</a>
+</p>
+<div id="outline-container-org851a62b" class="outline-2">
+<h2 id="org851a62b">Biba Model</h2>
+<div class="outline-text-2" id="text-org851a62b">
+</div>
+<div id="outline-container-orga769caa" class="outline-3">
+<h3 id="orga769caa">Core Concept</h3>
+<div class="outline-text-3" id="text-orga769caa">
+<p>
+The Biba Model is a formal state-machine security model designed to
+enforce data integrity. It aims to prevent data from being corrupted
+or modified by unauthorized entities or processes. Unlike the <a href="../../../Org/20260327T192518--bell-la-padula-model__cybersecurity_model.html">Bell-La
+Padula Model</a> which focuses on Confidentiality, the Biba Model
+prioritizes maintaining the trustworthiness and accuracy of
+information.
 </p>
 </div>
 </div>
-<div id="outline-container-org99a138d" class="outline-3">
-<h3 id="org99a138d">Key Goal</h3>
-<div class="outline-text-3" id="text-org99a138d">
+<div id="outline-container-org72fbb66" class="outline-3">
+<h3 id="org72fbb66">Key Goal</h3>
+<div class="outline-text-3" id="text-org72fbb66">
 <p>
 To prevent information from flowing from a lower integrity level to a higher integrity level. This essentially means preventing less trusted information from corrupting more trusted information.
 </p>
 </div>
 </div>
-<div id="outline-container-org0a90065" class="outline-3">
-<h3 id="org0a90065">Core Properties (The Rules)</h3>
-<div class="outline-text-3" id="text-org0a90065">
+<div id="outline-container-org7f12afe" class="outline-3">
+<h3 id="org7f12afe">Core Properties (The Rules)</h3>
+<div class="outline-text-3" id="text-org7f12afe">
 <p>
 The Biba Model defines two primary mandatory access control properties:
 </p>
 </div>
-<div id="outline-container-org7eeade3" class="outline-4">
-<h4 id="org7eeade3">The Simple Integrity Property (No Read own)</h4>
-<div class="outline-text-4" id="text-org7eeade3">
+<div id="outline-container-org6df722f" class="outline-4">
+<h4 id="org6df722f">The Simple Integrity Property (No Read own)</h4>
+<div class="outline-text-4" id="text-org6df722f">
 <ul class="org-ul">
 <li><b>Rule</b>: A subject (user or process) at a specific integrity level cannot read data from an object (file, resource) that has a lower integrity level.</li>
 <li><b>Example</b>: A highly trusted payroll system (high integrity) cannot read salary data directly from an unverified external spreadsheet (low integrity) to prevent potentially corrupted data from entering the system.</li>
@@ -927,9 +949,9 @@ The Biba Model defines two primary mandatory access control properties:
 </ul>
 </div>
 </div>
-<div id="outline-container-org8b049fa" class="outline-4">
-<h4 id="org8b049fa">The * (Star) Integrity Property (No Write Up)</h4>
-<div class="outline-text-4" id="text-org8b049fa">
+<div id="outline-container-org0234579" class="outline-4">
+<h4 id="org0234579">The * (Star) Integrity Property (No Write Up)</h4>
+<div class="outline-text-4" id="text-org0234579">
 <ul class="org-ul">
 <li><b>Rule</b>: A subject at a specific integrity level cannot write information to an object that has a higher integrity level.</li>
 <li><b>Example</b>: A user editing an experimental software module (low integrity) cannot directly modify the core, production-ready system code (high integrity). Changes must go through a rigorous review process (which would effectively operate at a higher integrity level).</li>
@@ -938,9 +960,9 @@ The Biba Model defines two primary mandatory access control properties:
 </div>
 </div>
 </div>
-<div id="outline-container-orge6eb029" class="outline-3">
-<h3 id="orge6eb029">Analogy: The Quality Control System</h3>
-<div class="outline-text-3" id="text-orge6eb029">
+<div id="outline-container-orga8299de" class="outline-3">
+<h3 id="orga8299de">Analogy: The Quality Control System</h3>
+<div class="outline-text-3" id="text-orga8299de">
 <p>
 Imagine a factory with different stages of production, each representing an integrity level:
 </p>
@@ -951,11 +973,11 @@ Imagine a factory with different stages of production, each representing an inte
 </ul>
 </div>
 </div>
-<div id="outline-container-orge0f75f0" class="outline-3">
-<h3 id="orge0f75f0">Relationship to Bell-La Padula</h3>
-<div class="outline-text-3" id="text-orge0f75f0">
+<div id="outline-container-org9d72414" class="outline-3">
+<h3 id="org9d72414">Relationship to Bell-La Padula</h3>
+<div class="outline-text-3" id="text-org9d72414">
 <p>
-The Biba Model is often considered the conceptual opposite of the <a href="Bell-La Padula Model.html">Bell-La Padula Model</a>:
+The Biba Model is often considered the conceptual opposite of the <a href="20260327T192518--bell-la-padula-model__cybersecurity_model.html">Bell-La Padula Model</a>:
 </p>
 
 <ul class="org-ul">
@@ -964,9 +986,9 @@ The Biba Model is often considered the conceptual opposite of the <a href="Bell-
 </ul>
 </div>
 </div>
-<div id="outline-container-org85b3740" class="outline-3">
-<h3 id="org85b3740">Limitations</h3>
-<div class="outline-text-3" id="text-org85b3740">
+<div id="outline-container-orgb203189" class="outline-3">
+<h3 id="orgb203189">Limitations</h3>
+<div class="outline-text-3" id="text-orgb203189">
 <ul class="org-ul">
 <li><b>Exclusivity to Integrity</b>: While excellent for Integrity, the Biba Model does not address Confidentiality or Availability. Implementing it alone may inadvertently create confidentiality issues.</li>
 <li><b>Strictness</b>: Its rigid rules can be overly restrictive in dynamic or collaborative environments where subjects might legitimately need to interact with data of different integrity levels (e.g., an analyst needing to examine potentially corrupted log files).</li>
@@ -977,6 +999,20 @@ The Biba Model is often considered the conceptual opposite of the <a href="Bell-
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -984,6 +1020,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

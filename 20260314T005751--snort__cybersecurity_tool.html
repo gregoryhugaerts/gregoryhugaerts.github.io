@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Snort</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,16 +886,16 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgddb66df">Snort</a>
+<li><a href="#org377fc16">Snort</a>
 <ul>
-<li><a href="#org7bd166b">Core Features</a></li>
-<li><a href="#org49f7889">Use Cases</a></li>
-<li><a href="#org1c2b695">Snort Rule Structure</a>
+<li><a href="#org8f3d7da">Core Features</a></li>
+<li><a href="#orgdab4d7a">Use Cases</a></li>
+<li><a href="#org89d851c">Snort Rule Structure</a>
 <ul>
-<li><a href="#orgb1a990c">Rule Header</a></li>
-<li><a href="#org47f7c72">Rule Options</a></li>
-<li><a href="#org6198f2a">Putting it Together</a></li>
-<li><a href="#org2300dbf">Key Considerations</a></li>
+<li><a href="#org15a7ca4">Rule Header</a></li>
+<li><a href="#orgf7ea92c">Rule Options</a></li>
+<li><a href="#org5e90cb4">Putting it Together</a></li>
+<li><a href="#orgd765c0f">Key Considerations</a></li>
 </ul>
 </li>
 </ul>
@@ -885,16 +903,16 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-orgddb66df" class="outline-2">
-<h2 id="orgddb66df">Snort</h2>
-<div class="outline-text-2" id="text-orgddb66df">
+<div id="outline-container-org377fc16" class="outline-2">
+<h2 id="org377fc16">Snort</h2>
+<div class="outline-text-2" id="text-org377fc16">
 <p>
 Snort is an open-source network intrusion detection and prevention system (IDS/IPS) that analyzes network traffic for malicious activity. It can be used to detect a variety of attacks, including network scans, buffer overflows, stealth port scans, and Operating System fingerprinting attempts.
 </p>
 </div>
-<div id="outline-container-org7bd166b" class="outline-3">
-<h3 id="org7bd166b">Core Features</h3>
-<div class="outline-text-3" id="text-org7bd166b">
+<div id="outline-container-org8f3d7da" class="outline-3">
+<h3 id="org8f3d7da">Core Features</h3>
+<div class="outline-text-3" id="text-org8f3d7da">
 <ul class="org-ul">
 <li>Packet sniffing: Captures network traffic for analysis.</li>
 <li>Signature-based detection: Identifies known attack patterns.</li>
@@ -905,9 +923,9 @@ Snort is an open-source network intrusion detection and prevention system (IDS/I
 </ul>
 </div>
 </div>
-<div id="outline-container-org49f7889" class="outline-3">
-<h3 id="org49f7889">Use Cases</h3>
-<div class="outline-text-3" id="text-org49f7889">
+<div id="outline-container-orgdab4d7a" class="outline-3">
+<h3 id="orgdab4d7a">Use Cases</h3>
+<div class="outline-text-3" id="text-orgdab4d7a">
 <ul class="org-ul">
 <li>Intrusion detection: Identifies and logs malicious activity.</li>
 <li>Intrusion prevention: Blocks malicious traffic in real time.</li>
@@ -917,16 +935,16 @@ Snort is an open-source network intrusion detection and prevention system (IDS/I
 </ul>
 </div>
 </div>
-<div id="outline-container-org1c2b695" class="outline-3">
-<h3 id="org1c2b695">Snort Rule Structure</h3>
-<div class="outline-text-3" id="text-org1c2b695">
+<div id="outline-container-org89d851c" class="outline-3">
+<h3 id="org89d851c">Snort Rule Structure</h3>
+<div class="outline-text-3" id="text-org89d851c">
 <p>
 Snort rules are text-based and define how the Snort engine should analyze network traffic. They consist of two main parts: the rule header and the rule options.
 </p>
 </div>
-<div id="outline-container-orgb1a990c" class="outline-4">
-<h4 id="orgb1a990c">Rule Header</h4>
-<div class="outline-text-4" id="text-orgb1a990c">
+<div id="outline-container-org15a7ca4" class="outline-4">
+<h4 id="org15a7ca4">Rule Header</h4>
+<div class="outline-text-4" id="text-org15a7ca4">
 <p>
 The rule header specifies the basic characteristics of the traffic to be examined. It includes:
 </p>
@@ -940,9 +958,9 @@ The rule header specifies the basic characteristics of the traffic to be examine
 </ul>
 </div>
 </div>
-<div id="outline-container-org47f7c72" class="outline-4">
-<h4 id="org47f7c72">Rule Options</h4>
-<div class="outline-text-4" id="text-org47f7c72">
+<div id="outline-container-orgf7ea92c" class="outline-4">
+<h4 id="orgf7ea92c">Rule Options</h4>
+<div class="outline-text-4" id="text-orgf7ea92c">
 <p>
 The rule options section provides more detailed criteria for matching traffic. Options are enclosed in parentheses <code>()</code> and separated by semicolons <code>;</code>. Common options include:
 </p>
@@ -963,17 +981,17 @@ The rule options section provides more detailed criteria for matching traffic. O
 </ul>
 </div>
 </div>
-<div id="outline-container-org6198f2a" class="outline-4">
-<h4 id="org6198f2a">Putting it Together</h4>
-<div class="outline-text-4" id="text-org6198f2a">
+<div id="outline-container-org5e90cb4" class="outline-4">
+<h4 id="org5e90cb4">Putting it Together</h4>
+<div class="outline-text-4" id="text-org5e90cb4">
 <p>
 A complete Snort rule combines the header and options:
 </p>
 </div>
 </div>
-<div id="outline-container-org2300dbf" class="outline-4">
-<h4 id="org2300dbf">Key Considerations</h4>
-<div class="outline-text-4" id="text-org2300dbf">
+<div id="outline-container-orgd765c0f" class="outline-4">
+<h4 id="orgd765c0f">Key Considerations</h4>
+<div class="outline-text-4" id="text-orgd765c0f">
 <ul class="org-ul">
 <li><b>Rule Order:</b> Snort processes rules in order. More specific rules should generally come before more general ones.</li>
 <li><b>Performance:</b> Complex rules, especially those with PCREs, can impact Snort's performance.</li>
@@ -986,6 +1004,20 @@ A complete Snort rule combines the header and options:
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -993,6 +1025,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

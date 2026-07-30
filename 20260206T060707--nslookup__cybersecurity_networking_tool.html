@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>nslookup</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,15 +886,15 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2e78539">Nslookup</a>
+<li><a href="#orgd7c0c23">Nslookup</a>
 <ul>
-<li><a href="#orga96c4ec">Description</a></li>
-<li><a href="#orgf4c1502">Examples</a>
+<li><a href="#orge5114f9">Description</a></li>
+<li><a href="#orgc0daa3a">Examples</a>
 <ul>
-<li><a href="#orgcbcb2e1">Basic Domain Name Lookup</a></li>
-<li><a href="#org01bcbc6">Reverse NS Lookup</a></li>
-<li><a href="#org2873525">Query for Specific Record Types</a></li>
-<li><a href="#org4d763da">Using a Specific NS Server</a></li>
+<li><a href="#orge771b92">Basic Domain Name Lookup</a></li>
+<li><a href="#orgfb958ba">Reverse NS Lookup</a></li>
+<li><a href="#orga2f586f">Query for Specific Record Types</a></li>
+<li><a href="#orgba1ae99">Using a Specific NS Server</a></li>
 </ul>
 </li>
 </ul>
@@ -884,13 +902,13 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-org2e78539" class="outline-2">
-<h2 id="org2e78539">Nslookup</h2>
-<div class="outline-text-2" id="text-org2e78539">
+<div id="outline-container-orgd7c0c23" class="outline-2">
+<h2 id="orgd7c0c23">Nslookup</h2>
+<div class="outline-text-2" id="text-orgd7c0c23">
 </div>
-<div id="outline-container-orga96c4ec" class="outline-3">
-<h3 id="orga96c4ec">Description</h3>
-<div class="outline-text-3" id="text-orga96c4ec">
+<div id="outline-container-orge5114f9" class="outline-3">
+<h3 id="orge5114f9">Description</h3>
+<div class="outline-text-3" id="text-orge5114f9">
 <p>
 <code>nslookup</code>, which stands for "name server lookup", is a network administration utility available for Windows, macOS, and Linux. It is used for querying the Domain Name System (DNS) to map domain names to IP addresses and vice versa. This functionality is essential for diagnosing DNS resolution problems and gathering information about a domain's configuration.
 </p>
@@ -909,23 +927,23 @@ While still widely used, <code>nslookup</code> is sometimes considered a legacy 
 </p>
 </div>
 </div>
-<div id="outline-container-orgf4c1502" class="outline-3">
-<h3 id="orgf4c1502">Examples</h3>
-<div class="outline-text-3" id="text-orgf4c1502">
+<div id="outline-container-orgc0daa3a" class="outline-3">
+<h3 id="orgc0daa3a">Examples</h3>
+<div class="outline-text-3" id="text-orgc0daa3a">
 </div>
-<div id="outline-container-orgcbcb2e1" class="outline-4">
-<h4 id="orgcbcb2e1">Basic Domain Name Lookup</h4>
-<div class="outline-text-4" id="text-orgcbcb2e1">
+<div id="outline-container-orge771b92" class="outline-4">
+<h4 id="orge771b92">Basic Domain Name Lookup</h4>
+<div class="outline-text-4" id="text-orge771b92">
 <p>
 To find the IP address(es) associated with a domain name.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_23f8f0ea8b8b43f3be4c78b2e5e50e8c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_6eb3cd8d81f843678d14dbebcbab0a37>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_23f8f0ea8b8b43f3be4c78b2e5e50e8c=document.querySelector('button[name=btn_23f8f0ea8b8b43f3be4c78b2e5e50e8c]');
-copyBtnbtn_23f8f0ea8b8b43f3be4c78b2e5e50e8c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`nslookup google.com\n`);copyBtnbtn_23f8f0ea8b8b43f3be4c78b2e5e50e8c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_23f8f0ea8b8b43f3be4c78b2e5e50e8c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6eb3cd8d81f843678d14dbebcbab0a37=document.querySelector('button[name=btn_6eb3cd8d81f843678d14dbebcbab0a37]');
+copyBtnbtn_6eb3cd8d81f843678d14dbebcbab0a37.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`nslookup google.com\n`);copyBtnbtn_6eb3cd8d81f843678d14dbebcbab0a37.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6eb3cd8d81f843678d14dbebcbab0a37.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -934,19 +952,19 @@ let res = copyTextToClipboard(`nslookup google.com\n`);copyBtnbtn_23f8f0ea8b8b43
 </div></div>
 </div>
 </div>
-<div id="outline-container-org01bcbc6" class="outline-4">
-<h4 id="org01bcbc6">Reverse NS Lookup</h4>
-<div class="outline-text-4" id="text-org01bcbc6">
+<div id="outline-container-orgfb958ba" class="outline-4">
+<h4 id="orgfb958ba">Reverse NS Lookup</h4>
+<div class="outline-text-4" id="text-orgfb958ba">
 <p>
 To find the domain name associated with an IP address.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_e95cec0b8b4b4053bc0867b6435dc978>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_c70a1625d5c44c8199972ea3613eb6b6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e95cec0b8b4b4053bc0867b6435dc978=document.querySelector('button[name=btn_e95cec0b8b4b4053bc0867b6435dc978]');
-copyBtnbtn_e95cec0b8b4b4053bc0867b6435dc978.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`nslookup 8.8.8.8\n`);copyBtnbtn_e95cec0b8b4b4053bc0867b6435dc978.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e95cec0b8b4b4053bc0867b6435dc978.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c70a1625d5c44c8199972ea3613eb6b6=document.querySelector('button[name=btn_c70a1625d5c44c8199972ea3613eb6b6]');
+copyBtnbtn_c70a1625d5c44c8199972ea3613eb6b6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`nslookup 8.8.8.8\n`);copyBtnbtn_c70a1625d5c44c8199972ea3613eb6b6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c70a1625d5c44c8199972ea3613eb6b6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -955,9 +973,9 @@ let res = copyTextToClipboard(`nslookup 8.8.8.8\n`);copyBtnbtn_e95cec0b8b4b4053b
 </div></div>
 </div>
 </div>
-<div id="outline-container-org2873525" class="outline-4">
-<h4 id="org2873525">Query for Specific Record Types</h4>
-<div class="outline-text-4" id="text-org2873525">
+<div id="outline-container-orga2f586f" class="outline-4">
+<h4 id="orga2f586f">Query for Specific Record Types</h4>
+<div class="outline-text-4" id="text-orga2f586f">
 <p>
 You can query for different types of DNS records using the <code>-type</code> (or <code>-query</code>) option.
 </p>
@@ -968,11 +986,11 @@ You can query for different types of DNS records using the <code>-type</code> (o
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_bf74347f449d4e3c82809665bae3320d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_d975b6f33e704383b5cd3ae76cf3be35>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bf74347f449d4e3c82809665bae3320d=document.querySelector('button[name=btn_bf74347f449d4e3c82809665bae3320d]');
-copyBtnbtn_bf74347f449d4e3c82809665bae3320d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`nslookup -type=A google.com\n`);copyBtnbtn_bf74347f449d4e3c82809665bae3320d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bf74347f449d4e3c82809665bae3320d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d975b6f33e704383b5cd3ae76cf3be35=document.querySelector('button[name=btn_d975b6f33e704383b5cd3ae76cf3be35]');
+copyBtnbtn_d975b6f33e704383b5cd3ae76cf3be35.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`nslookup -type=A google.com\n`);copyBtnbtn_d975b6f33e704383b5cd3ae76cf3be35.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d975b6f33e704383b5cd3ae76cf3be35.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -985,11 +1003,11 @@ let res = copyTextToClipboard(`nslookup -type=A google.com\n`);copyBtnbtn_bf7434
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_cd2ac82800ee434bae130afbc4995479>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_b9e6d67373ba4e9993623ebc759506be>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_cd2ac82800ee434bae130afbc4995479=document.querySelector('button[name=btn_cd2ac82800ee434bae130afbc4995479]');
-copyBtnbtn_cd2ac82800ee434bae130afbc4995479.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`nslookup -type=AAAA google.com\n`);copyBtnbtn_cd2ac82800ee434bae130afbc4995479.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cd2ac82800ee434bae130afbc4995479.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b9e6d67373ba4e9993623ebc759506be=document.querySelector('button[name=btn_b9e6d67373ba4e9993623ebc759506be]');
+copyBtnbtn_b9e6d67373ba4e9993623ebc759506be.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`nslookup -type=AAAA google.com\n`);copyBtnbtn_b9e6d67373ba4e9993623ebc759506be.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b9e6d67373ba4e9993623ebc759506be.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1002,11 +1020,11 @@ let res = copyTextToClipboard(`nslookup -type=AAAA google.com\n`);copyBtnbtn_cd2
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_bbc223ae94ca4e9083e24654d92efe39>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_9b19946e5e52486ab107adadd36e2147>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bbc223ae94ca4e9083e24654d92efe39=document.querySelector('button[name=btn_bbc223ae94ca4e9083e24654d92efe39]');
-copyBtnbtn_bbc223ae94ca4e9083e24654d92efe39.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`nslookup -type=MX google.com\n`);copyBtnbtn_bbc223ae94ca4e9083e24654d92efe39.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bbc223ae94ca4e9083e24654d92efe39.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9b19946e5e52486ab107adadd36e2147=document.querySelector('button[name=btn_9b19946e5e52486ab107adadd36e2147]');
+copyBtnbtn_9b19946e5e52486ab107adadd36e2147.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`nslookup -type=MX google.com\n`);copyBtnbtn_9b19946e5e52486ab107adadd36e2147.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9b19946e5e52486ab107adadd36e2147.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1019,11 +1037,11 @@ let res = copyTextToClipboard(`nslookup -type=MX google.com\n`);copyBtnbtn_bbc22
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_89277ec7140548aab4afe2a04f333913>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_c7d1d8fb9cfc424082c6529d1d8ba42e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_89277ec7140548aab4afe2a04f333913=document.querySelector('button[name=btn_89277ec7140548aab4afe2a04f333913]');
-copyBtnbtn_89277ec7140548aab4afe2a04f333913.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`nslookup -type=NS google.com\n`);copyBtnbtn_89277ec7140548aab4afe2a04f333913.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_89277ec7140548aab4afe2a04f333913.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c7d1d8fb9cfc424082c6529d1d8ba42e=document.querySelector('button[name=btn_c7d1d8fb9cfc424082c6529d1d8ba42e]');
+copyBtnbtn_c7d1d8fb9cfc424082c6529d1d8ba42e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`nslookup -type=NS google.com\n`);copyBtnbtn_c7d1d8fb9cfc424082c6529d1d8ba42e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c7d1d8fb9cfc424082c6529d1d8ba42e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1036,11 +1054,11 @@ let res = copyTextToClipboard(`nslookup -type=NS google.com\n`);copyBtnbtn_89277
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_a0b98f160de546c9adf1c6cd42ea7c56>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_b7c01d547fae491e9d236efd3edc1712>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a0b98f160de546c9adf1c6cd42ea7c56=document.querySelector('button[name=btn_a0b98f160de546c9adf1c6cd42ea7c56]');
-copyBtnbtn_a0b98f160de546c9adf1c6cd42ea7c56.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`nslookup -type=SOA google.com\n`);copyBtnbtn_a0b98f160de546c9adf1c6cd42ea7c56.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a0b98f160de546c9adf1c6cd42ea7c56.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b7c01d547fae491e9d236efd3edc1712=document.querySelector('button[name=btn_b7c01d547fae491e9d236efd3edc1712]');
+copyBtnbtn_b7c01d547fae491e9d236efd3edc1712.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`nslookup -type=SOA google.com\n`);copyBtnbtn_b7c01d547fae491e9d236efd3edc1712.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b7c01d547fae491e9d236efd3edc1712.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1050,19 +1068,19 @@ let res = copyTextToClipboard(`nslookup -type=SOA google.com\n`);copyBtnbtn_a0b9
 </ul>
 </div>
 </div>
-<div id="outline-container-org4d763da" class="outline-4">
-<h4 id="org4d763da">Using a Specific NS Server</h4>
-<div class="outline-text-4" id="text-org4d763da">
+<div id="outline-container-orgba1ae99" class="outline-4">
+<h4 id="orgba1ae99">Using a Specific NS Server</h4>
+<div class="outline-text-4" id="text-orgba1ae99">
 <p>
 By default, <code>nslookup</code> uses the system's configured DNS server. You can specify a different one.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_166eddaf70f74ed38d1eb181a0feca8d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_6967b651a6d6495fa9399862ecb4915a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_166eddaf70f74ed38d1eb181a0feca8d=document.querySelector('button[name=btn_166eddaf70f74ed38d1eb181a0feca8d]');
-copyBtnbtn_166eddaf70f74ed38d1eb181a0feca8d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`nslookup google.com 1.1.1.1\n`);copyBtnbtn_166eddaf70f74ed38d1eb181a0feca8d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_166eddaf70f74ed38d1eb181a0feca8d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6967b651a6d6495fa9399862ecb4915a=document.querySelector('button[name=btn_6967b651a6d6495fa9399862ecb4915a]');
+copyBtnbtn_6967b651a6d6495fa9399862ecb4915a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`nslookup google.com 1.1.1.1\n`);copyBtnbtn_6967b651a6d6495fa9399862ecb4915a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6967b651a6d6495fa9399862ecb4915a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1075,6 +1093,20 @@ let res = copyTextToClipboard(`nslookup google.com 1.1.1.1\n`);copyBtnbtn_166edd
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1082,6 +1114,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

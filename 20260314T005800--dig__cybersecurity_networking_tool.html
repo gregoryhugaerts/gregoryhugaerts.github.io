@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>dig</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,17 +886,17 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org024a12a">Dig</a>
+<li><a href="#orgcb52ddd">Dig</a>
 <ul>
-<li><a href="#org9cd3b7a">Description</a></li>
-<li><a href="#orgbca1418">Examples</a>
+<li><a href="#org8d4349f">Description</a></li>
+<li><a href="#org54611c2">Examples</a>
 <ul>
-<li><a href="#org1535740">Basic NS Lookup</a></li>
-<li><a href="#org0c41037">Short Answer Only</a></li>
-<li><a href="#orgd802790">Query Specific Record Types</a></li>
-<li><a href="#org6f1daeb">Query a Specific NS Server</a></li>
-<li><a href="#orgbfad702">Reverse NS Lookup</a></li>
-<li><a href="#org4bca484">Trace NS Path</a></li>
+<li><a href="#org7586b44">Basic NS Lookup</a></li>
+<li><a href="#orgf42f2b7">Short Answer Only</a></li>
+<li><a href="#org2b0bc1a">Query Specific Record Types</a></li>
+<li><a href="#org267caf3">Query a Specific NS Server</a></li>
+<li><a href="#org7d7c24f">Reverse NS Lookup</a></li>
+<li><a href="#org81ccc1b">Trace NS Path</a></li>
 </ul>
 </li>
 </ul>
@@ -886,13 +904,13 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-org024a12a" class="outline-2">
-<h2 id="org024a12a">Dig</h2>
-<div class="outline-text-2" id="text-org024a12a">
+<div id="outline-container-orgcb52ddd" class="outline-2">
+<h2 id="orgcb52ddd">Dig</h2>
+<div class="outline-text-2" id="text-orgcb52ddd">
 </div>
-<div id="outline-container-org9cd3b7a" class="outline-3">
-<h3 id="org9cd3b7a">Description</h3>
-<div class="outline-text-3" id="text-org9cd3b7a">
+<div id="outline-container-org8d4349f" class="outline-3">
+<h3 id="org8d4349f">Description</h3>
+<div class="outline-text-3" id="text-org8d4349f">
 <p>
 <code>dig</code> is a flexible tool for interrogating DNS name servers. It performs DNS lookups and displays the answers that are returned from the name server(s) that were queried. Most DNS administrators use <code>dig</code> to troubleshoot DNS problems because of its flexibility, ease of use and clarity of output.
 </p>
@@ -912,23 +930,23 @@ The basic syntax is:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbca1418" class="outline-3">
-<h3 id="orgbca1418">Examples</h3>
-<div class="outline-text-3" id="text-orgbca1418">
+<div id="outline-container-org54611c2" class="outline-3">
+<h3 id="org54611c2">Examples</h3>
+<div class="outline-text-3" id="text-org54611c2">
 </div>
-<div id="outline-container-org1535740" class="outline-4">
-<h4 id="org1535740">Basic NS Lookup</h4>
-<div class="outline-text-4" id="text-org1535740">
+<div id="outline-container-org7586b44" class="outline-4">
+<h4 id="org7586b44">Basic NS Lookup</h4>
+<div class="outline-text-4" id="text-org7586b44">
 <p>
 Find the IP address (A record) for a domain.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_dd2640b1dbdd40d2a9ffccdae0251e97>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_0dc1ae013529488099c220dfefba7410>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_dd2640b1dbdd40d2a9ffccdae0251e97=document.querySelector('button[name=btn_dd2640b1dbdd40d2a9ffccdae0251e97]');
-copyBtnbtn_dd2640b1dbdd40d2a9ffccdae0251e97.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`dig example.com\n`);copyBtnbtn_dd2640b1dbdd40d2a9ffccdae0251e97.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dd2640b1dbdd40d2a9ffccdae0251e97.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0dc1ae013529488099c220dfefba7410=document.querySelector('button[name=btn_0dc1ae013529488099c220dfefba7410]');
+copyBtnbtn_0dc1ae013529488099c220dfefba7410.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`dig example.com\n`);copyBtnbtn_0dc1ae013529488099c220dfefba7410.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0dc1ae013529488099c220dfefba7410.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -937,19 +955,19 @@ let res = copyTextToClipboard(`dig example.com\n`);copyBtnbtn_dd2640b1dbdd40d2a9
 </div></div>
 </div>
 </div>
-<div id="outline-container-org0c41037" class="outline-4">
-<h4 id="org0c41037">Short Answer Only</h4>
-<div class="outline-text-4" id="text-org0c41037">
+<div id="outline-container-orgf42f2b7" class="outline-4">
+<h4 id="orgf42f2b7">Short Answer Only</h4>
+<div class="outline-text-4" id="text-orgf42f2b7">
 <p>
 Display only the IP address.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_7e07feb59e2a42da864fbb8c7eb7d380>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_0c7306144a224ec5bd3e6feeb5e7aea7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7e07feb59e2a42da864fbb8c7eb7d380=document.querySelector('button[name=btn_7e07feb59e2a42da864fbb8c7eb7d380]');
-copyBtnbtn_7e07feb59e2a42da864fbb8c7eb7d380.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`dig example.com +short\n`);copyBtnbtn_7e07feb59e2a42da864fbb8c7eb7d380.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7e07feb59e2a42da864fbb8c7eb7d380.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0c7306144a224ec5bd3e6feeb5e7aea7=document.querySelector('button[name=btn_0c7306144a224ec5bd3e6feeb5e7aea7]');
+copyBtnbtn_0c7306144a224ec5bd3e6feeb5e7aea7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`dig example.com +short\n`);copyBtnbtn_0c7306144a224ec5bd3e6feeb5e7aea7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0c7306144a224ec5bd3e6feeb5e7aea7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -958,20 +976,20 @@ let res = copyTextToClipboard(`dig example.com +short\n`);copyBtnbtn_7e07feb59e2
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgd802790" class="outline-4">
-<h4 id="orgd802790">Query Specific Record Types</h4>
-<div class="outline-text-4" id="text-orgd802790">
+<div id="outline-container-org2b0bc1a" class="outline-4">
+<h4 id="org2b0bc1a">Query Specific Record Types</h4>
+<div class="outline-text-4" id="text-org2b0bc1a">
 <ul class="org-ul">
 <li><p>
 <b>MX (Mail Exchange) Records:</b>
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_fc5f6213ff534acbaf666fb22e751616>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_d2086cb1c5b94a558bb67ad08f43ccfa>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fc5f6213ff534acbaf666fb22e751616=document.querySelector('button[name=btn_fc5f6213ff534acbaf666fb22e751616]');
-copyBtnbtn_fc5f6213ff534acbaf666fb22e751616.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`dig example.com MX\n`);copyBtnbtn_fc5f6213ff534acbaf666fb22e751616.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fc5f6213ff534acbaf666fb22e751616.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d2086cb1c5b94a558bb67ad08f43ccfa=document.querySelector('button[name=btn_d2086cb1c5b94a558bb67ad08f43ccfa]');
+copyBtnbtn_d2086cb1c5b94a558bb67ad08f43ccfa.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`dig example.com MX\n`);copyBtnbtn_d2086cb1c5b94a558bb67ad08f43ccfa.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d2086cb1c5b94a558bb67ad08f43ccfa.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -984,11 +1002,11 @@ let res = copyTextToClipboard(`dig example.com MX\n`);copyBtnbtn_fc5f6213ff534ac
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_7037916082ea4e4888141178593e4b35>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_ff04d1ce79c4423f9b9bf64a094c3073>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7037916082ea4e4888141178593e4b35=document.querySelector('button[name=btn_7037916082ea4e4888141178593e4b35]');
-copyBtnbtn_7037916082ea4e4888141178593e4b35.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`dig example.com NS\n`);copyBtnbtn_7037916082ea4e4888141178593e4b35.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7037916082ea4e4888141178593e4b35.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ff04d1ce79c4423f9b9bf64a094c3073=document.querySelector('button[name=btn_ff04d1ce79c4423f9b9bf64a094c3073]');
+copyBtnbtn_ff04d1ce79c4423f9b9bf64a094c3073.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`dig example.com NS\n`);copyBtnbtn_ff04d1ce79c4423f9b9bf64a094c3073.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ff04d1ce79c4423f9b9bf64a094c3073.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -998,19 +1016,19 @@ let res = copyTextToClipboard(`dig example.com NS\n`);copyBtnbtn_7037916082ea4e4
 </ul>
 </div>
 </div>
-<div id="outline-container-org6f1daeb" class="outline-4">
-<h4 id="org6f1daeb">Query a Specific NS Server</h4>
-<div class="outline-text-4" id="text-org6f1daeb">
+<div id="outline-container-org267caf3" class="outline-4">
+<h4 id="org267caf3">Query a Specific NS Server</h4>
+<div class="outline-text-4" id="text-org267caf3">
 <p>
 Query Google's public DNS server.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_a8c73791f2054b129f3358a590f27725>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_2ced292be89f4e07b7e02efc2f54a9b3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a8c73791f2054b129f3358a590f27725=document.querySelector('button[name=btn_a8c73791f2054b129f3358a590f27725]');
-copyBtnbtn_a8c73791f2054b129f3358a590f27725.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`dig @8.8.8.8 example.com\n`);copyBtnbtn_a8c73791f2054b129f3358a590f27725.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a8c73791f2054b129f3358a590f27725.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2ced292be89f4e07b7e02efc2f54a9b3=document.querySelector('button[name=btn_2ced292be89f4e07b7e02efc2f54a9b3]');
+copyBtnbtn_2ced292be89f4e07b7e02efc2f54a9b3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`dig @8.8.8.8 example.com\n`);copyBtnbtn_2ced292be89f4e07b7e02efc2f54a9b3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2ced292be89f4e07b7e02efc2f54a9b3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1019,19 +1037,19 @@ let res = copyTextToClipboard(`dig @8.8.8.8 example.com\n`);copyBtnbtn_a8c73791f
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgbfad702" class="outline-4">
-<h4 id="orgbfad702">Reverse NS Lookup</h4>
-<div class="outline-text-4" id="text-orgbfad702">
+<div id="outline-container-org7d7c24f" class="outline-4">
+<h4 id="org7d7c24f">Reverse NS Lookup</h4>
+<div class="outline-text-4" id="text-org7d7c24f">
 <p>
 Find the domain name for an IP address.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_051ceb805588470fa786c6cbf42cc91f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_f3aefe6b5a9e4a39b9467ce829bfc34a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_051ceb805588470fa786c6cbf42cc91f=document.querySelector('button[name=btn_051ceb805588470fa786c6cbf42cc91f]');
-copyBtnbtn_051ceb805588470fa786c6cbf42cc91f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`dig -x 93.184.216.34\n`);copyBtnbtn_051ceb805588470fa786c6cbf42cc91f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_051ceb805588470fa786c6cbf42cc91f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f3aefe6b5a9e4a39b9467ce829bfc34a=document.querySelector('button[name=btn_f3aefe6b5a9e4a39b9467ce829bfc34a]');
+copyBtnbtn_f3aefe6b5a9e4a39b9467ce829bfc34a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`dig -x 93.184.216.34\n`);copyBtnbtn_f3aefe6b5a9e4a39b9467ce829bfc34a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f3aefe6b5a9e4a39b9467ce829bfc34a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1040,19 +1058,19 @@ let res = copyTextToClipboard(`dig -x 93.184.216.34\n`);copyBtnbtn_051ceb8055884
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4bca484" class="outline-4">
-<h4 id="org4bca484">Trace NS Path</h4>
-<div class="outline-text-4" id="text-org4bca484">
+<div id="outline-container-org81ccc1b" class="outline-4">
+<h4 id="org81ccc1b">Trace NS Path</h4>
+<div class="outline-text-4" id="text-org81ccc1b">
 <p>
 Trace the full delegation path from the root servers.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_684f3ae99f994d128dae294bb6dc4f2d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_4ef5118044224a959835e7a328c2edbf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_684f3ae99f994d128dae294bb6dc4f2d=document.querySelector('button[name=btn_684f3ae99f994d128dae294bb6dc4f2d]');
-copyBtnbtn_684f3ae99f994d128dae294bb6dc4f2d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`dig example.com +trace\n`);copyBtnbtn_684f3ae99f994d128dae294bb6dc4f2d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_684f3ae99f994d128dae294bb6dc4f2d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4ef5118044224a959835e7a328c2edbf=document.querySelector('button[name=btn_4ef5118044224a959835e7a328c2edbf]');
+copyBtnbtn_4ef5118044224a959835e7a328c2edbf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`dig example.com +trace\n`);copyBtnbtn_4ef5118044224a959835e7a328c2edbf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4ef5118044224a959835e7a328c2edbf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1065,6 +1083,20 @@ let res = copyTextToClipboard(`dig example.com +trace\n`);copyBtnbtn_684f3ae99f9
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1072,6 +1104,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

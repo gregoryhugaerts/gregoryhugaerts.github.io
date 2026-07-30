@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Botnet</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,24 +886,24 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge053b11">Infection Vectors</a></li>
-<li><a href="#org48240eb">C2 Architectures</a>
+<li><a href="#org969cda2">Infection Vectors</a></li>
+<li><a href="#orgb85c3ba">C2 Architectures</a>
 <ul>
-<li><a href="#org8c2684f">Centralised (IRC / HTTP)</a></li>
-<li><a href="#orgfe9ee52">Peer-to-Peer (P2P)</a></li>
-<li><a href="#orgd3084f2">Domain Generation Algorithm (DGA)</a></li>
+<li><a href="#org61631ef">Centralised (IRC / HTTP)</a></li>
+<li><a href="#orgaae7f4c">Peer-to-Peer (P2P)</a></li>
+<li><a href="#org5ccc983">Domain Generation Algorithm (DGA)</a></li>
 </ul>
 </li>
-<li><a href="#org220ed5a">Primary Uses</a></li>
-<li><a href="#orgf44e8cb">Detection Indicators</a>
+<li><a href="#org00476ae">Primary Uses</a></li>
+<li><a href="#org1d5ec61">Detection Indicators</a>
 <ul>
-<li><a href="#orga5509d5">Network-level</a></li>
-<li><a href="#org38a1e7f">Host-level</a></li>
-<li><a href="#org55fa447">RITA / Zeek detection</a></li>
+<li><a href="#org39406ec">Network-level</a></li>
+<li><a href="#org72f41fc">Host-level</a></li>
+<li><a href="#orgebfb553">RITA / Zeek detection</a></li>
 </ul>
 </li>
-<li><a href="#org52897a6">Takedown Methods</a></li>
-<li><a href="#org68475eb">Tips</a></li>
+<li><a href="#org94f2417">Takedown Methods</a></li>
+<li><a href="#org20ed1f9">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -905,9 +923,9 @@ Related: <a href="20260314T003332--command-and-control-server__concept_cybersecu
          <a href="20260314T005745--ransomware__concept_cybersecurity.html">Ransomware</a>
          <a href="20260206T060723--persistence__concept_cybersecurity.html">Persistence</a>
 </p>
-<div id="outline-container-orge053b11" class="outline-2">
-<h2 id="orge053b11">Infection Vectors</h2>
-<div class="outline-text-2" id="text-orge053b11">
+<div id="outline-container-org969cda2" class="outline-2">
+<h2 id="org969cda2">Infection Vectors</h2>
+<div class="outline-text-2" id="text-org969cda2">
 <p>
 Bots are recruited through standard malware delivery methods:
 </p>
@@ -921,17 +939,17 @@ Bots are recruited through standard malware delivery methods:
 </ul>
 </div>
 </div>
-<div id="outline-container-org48240eb" class="outline-2">
-<h2 id="org48240eb">C2 Architectures</h2>
-<div class="outline-text-2" id="text-org48240eb">
+<div id="outline-container-orgb85c3ba" class="outline-2">
+<h2 id="orgb85c3ba">C2 Architectures</h2>
+<div class="outline-text-2" id="text-orgb85c3ba">
 <p>
 The command and control channel determines how resilient and
 detectable a botnet is.
 </p>
 </div>
-<div id="outline-container-org8c2684f" class="outline-3">
-<h3 id="org8c2684f">Centralised (IRC / HTTP)</h3>
-<div class="outline-text-3" id="text-org8c2684f">
+<div id="outline-container-org61631ef" class="outline-3">
+<h3 id="org61631ef">Centralised (IRC / HTTP)</h3>
+<div class="outline-text-3" id="text-org61631ef">
 <p>
 Classic architecture. All bots connect to a single C2 server.
 Simple but fragile — takedown or blocking of the C2 server
@@ -939,11 +957,11 @@ disrupts the entire botnet.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_eb5deec8201c4b18b45547806e1cd58d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_6f81be87879f4818a1b3ee7d292ed3e9>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_eb5deec8201c4b18b45547806e1cd58d=document.querySelector('button[name=btn_eb5deec8201c4b18b45547806e1cd58d]');
-copyBtnbtn_eb5deec8201c4b18b45547806e1cd58d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Bot → C2 server ← Bot herder\nBot →\nBot →\n`);copyBtnbtn_eb5deec8201c4b18b45547806e1cd58d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_eb5deec8201c4b18b45547806e1cd58d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6f81be87879f4818a1b3ee7d292ed3e9=document.querySelector('button[name=btn_6f81be87879f4818a1b3ee7d292ed3e9]');
+copyBtnbtn_6f81be87879f4818a1b3ee7d292ed3e9.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Bot → C2 server ← Bot herder\nBot →\nBot →\n`);copyBtnbtn_6f81be87879f4818a1b3ee7d292ed3e9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6f81be87879f4818a1b3ee7d292ed3e9.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -959,9 +977,9 @@ original C2 channel — now largely replaced due to easy detection.
 </p>
 </div>
 </div>
-<div id="outline-container-orgfe9ee52" class="outline-3">
-<h3 id="orgfe9ee52">Peer-to-Peer (P2P)</h3>
-<div class="outline-text-3" id="text-orgfe9ee52">
+<div id="outline-container-orgaae7f4c" class="outline-3">
+<h3 id="orgaae7f4c">Peer-to-Peer (P2P)</h3>
+<div class="outline-text-3" id="text-orgaae7f4c">
 <p>
 No central server — bots relay commands through each other.
 Much more resilient: no single point of failure. Takedown
@@ -969,11 +987,11 @@ requires dismantling enough of the peer network.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_0a7f0439d2964a55b5919ce2f791b4d9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_526c6d8f2c4f4fab9699324d2b48b395>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0a7f0439d2964a55b5919ce2f791b4d9=document.querySelector('button[name=btn_0a7f0439d2964a55b5919ce2f791b4d9]');
-copyBtnbtn_0a7f0439d2964a55b5919ce2f791b4d9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Bot ↔ Bot ↔ Bot ↔ Bot\n ↕               ↕\nBot herder (connects to any bot)\n`);copyBtnbtn_0a7f0439d2964a55b5919ce2f791b4d9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0a7f0439d2964a55b5919ce2f791b4d9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_526c6d8f2c4f4fab9699324d2b48b395=document.querySelector('button[name=btn_526c6d8f2c4f4fab9699324d2b48b395]');
+copyBtnbtn_526c6d8f2c4f4fab9699324d2b48b395.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Bot ↔ Bot ↔ Bot ↔ Bot\n ↕               ↕\nBot herder (connects to any bot)\n`);copyBtnbtn_526c6d8f2c4f4fab9699324d2b48b395.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_526c6d8f2c4f4fab9699324d2b48b395.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -988,9 +1006,9 @@ Seen in: Conficker, ZeroAccess, GameOver Zeus
 </p>
 </div>
 </div>
-<div id="outline-container-orgd3084f2" class="outline-3">
-<h3 id="orgd3084f2">Domain Generation Algorithm (DGA)</h3>
-<div class="outline-text-3" id="text-orgd3084f2">
+<div id="outline-container-org5ccc983" class="outline-3">
+<h3 id="org5ccc983">Domain Generation Algorithm (DGA)</h3>
+<div class="outline-text-3" id="text-org5ccc983">
 <p>
 Bot and herder both run the same DGA — generating hundreds of
 potential C2 domain names per day from a shared seed (date,
@@ -999,11 +1017,11 @@ until it finds one that resolves. Defeats domain blocklisting.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_05eaaed20d5e46369673addd660882a1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_f5123d1dbd5847238a6dbe645a4fa45f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_05eaaed20d5e46369673addd660882a1=document.querySelector('button[name=btn_05eaaed20d5e46369673addd660882a1]');
-copyBtnbtn_05eaaed20d5e46369673addd660882a1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Simplified DGA example\nimport hashlib\nfrom datetime import date\n\ndef generate_domain(date_str, seed=\"botnet\"):\n    data = f\"{date_str}{seed}\".encode()\n    h = hashlib.md5(data).hexdigest()\n    return f\"{h[:12]}.com\"\n\ntoday = date.today().strftime(\"%Y%m%d\")\nprint(generate_domain(today))\n`);copyBtnbtn_05eaaed20d5e46369673addd660882a1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_05eaaed20d5e46369673addd660882a1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f5123d1dbd5847238a6dbe645a4fa45f=document.querySelector('button[name=btn_f5123d1dbd5847238a6dbe645a4fa45f]');
+copyBtnbtn_f5123d1dbd5847238a6dbe645a4fa45f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Simplified DGA example\nimport hashlib\nfrom datetime import date\n\ndef generate_domain(date_str, seed=\"botnet\"):\n    data = f\"{date_str}{seed}\".encode()\n    h = hashlib.md5(data).hexdigest()\n    return f\"{h[:12]}.com\"\n\ntoday = date.today().strftime(\"%Y%m%d\")\nprint(generate_domain(today))\n`);copyBtnbtn_f5123d1dbd5847238a6dbe645a4fa45f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f5123d1dbd5847238a6dbe645a4fa45f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1023,9 +1041,9 @@ let res = copyTextToClipboard(`# Simplified DGA example\nimport hashlib\nfrom da
 </div>
 </div>
 </div>
-<div id="outline-container-org220ed5a" class="outline-2">
-<h2 id="org220ed5a">Primary Uses</h2>
-<div class="outline-text-2" id="text-org220ed5a">
+<div id="outline-container-org00476ae" class="outline-2">
+<h2 id="org00476ae">Primary Uses</h2>
+<div class="outline-text-2" id="text-org00476ae">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1084,19 +1102,19 @@ let res = copyTextToClipboard(`# Simplified DGA example\nimport hashlib\nfrom da
 </table>
 </div>
 </div>
-<div id="outline-container-orgf44e8cb" class="outline-2">
-<h2 id="orgf44e8cb">Detection Indicators</h2>
-<div class="outline-text-2" id="text-orgf44e8cb">
+<div id="outline-container-org1d5ec61" class="outline-2">
+<h2 id="org1d5ec61">Detection Indicators</h2>
+<div class="outline-text-2" id="text-org1d5ec61">
 </div>
-<div id="outline-container-orga5509d5" class="outline-3">
-<h3 id="orga5509d5">Network-level</h3>
-<div class="outline-text-3" id="text-orga5509d5">
+<div id="outline-container-org39406ec" class="outline-3">
+<h3 id="org39406ec">Network-level</h3>
+<div class="outline-text-3" id="text-org39406ec">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_bb75f392c7a6412bac41cad5661322cd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9b4915d8fe4140ae99ad5c7ce886c81a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bb75f392c7a6412bac41cad5661322cd=document.querySelector('button[name=btn_bb75f392c7a6412bac41cad5661322cd]');
-copyBtnbtn_bb75f392c7a6412bac41cad5661322cd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— Beaconing: regular outbound connections at fixed intervals to the same destination\n— Unusual protocols or ports: IRC (6667), high-entropy DNS queries (DGA)\n— High DNS query rate to non-existent domains (DGA enumeration)\n— Outbound traffic to known-bad IPs/domains (threat intel feeds)\n— Large outbound data transfers (exfiltration)\n— SYN floods or UDP floods from internal hosts (DDoS participation)\n`);copyBtnbtn_bb75f392c7a6412bac41cad5661322cd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bb75f392c7a6412bac41cad5661322cd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9b4915d8fe4140ae99ad5c7ce886c81a=document.querySelector('button[name=btn_9b4915d8fe4140ae99ad5c7ce886c81a]');
+copyBtnbtn_9b4915d8fe4140ae99ad5c7ce886c81a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— Beaconing: regular outbound connections at fixed intervals to the same destination\n— Unusual protocols or ports: IRC (6667), high-entropy DNS queries (DGA)\n— High DNS query rate to non-existent domains (DGA enumeration)\n— Outbound traffic to known-bad IPs/domains (threat intel feeds)\n— Large outbound data transfers (exfiltration)\n— SYN floods or UDP floods from internal hosts (DDoS participation)\n`);copyBtnbtn_9b4915d8fe4140ae99ad5c7ce886c81a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9b4915d8fe4140ae99ad5c7ce886c81a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1110,15 +1128,15 @@ let res = copyTextToClipboard(`— Beaconing: regular outbound connections at fi
 </div></div>
 </div>
 </div>
-<div id="outline-container-org38a1e7f" class="outline-3">
-<h3 id="org38a1e7f">Host-level</h3>
-<div class="outline-text-3" id="text-org38a1e7f">
+<div id="outline-container-org72f41fc" class="outline-3">
+<h3 id="org72f41fc">Host-level</h3>
+<div class="outline-text-3" id="text-org72f41fc">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b9f1c5b332a34d75bb14b12b581eec78>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e8ba5914d8ce4d088072d8bd1d34e591>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b9f1c5b332a34d75bb14b12b581eec78=document.querySelector('button[name=btn_b9f1c5b332a34d75bb14b12b581eec78]');
-copyBtnbtn_b9f1c5b332a34d75bb14b12b581eec78.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— Unexpected persistence mechanisms (Run keys, scheduled tasks, services)\n— New processes spawned by browser or document applications\n— Process making network connections it shouldn't (Word.exe → outbound TCP)\n— High CPU usage with no user activity (cryptomining)\n— Lateral movement indicators (PsExec, WMI remote execution)\n`);copyBtnbtn_b9f1c5b332a34d75bb14b12b581eec78.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b9f1c5b332a34d75bb14b12b581eec78.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e8ba5914d8ce4d088072d8bd1d34e591=document.querySelector('button[name=btn_e8ba5914d8ce4d088072d8bd1d34e591]');
+copyBtnbtn_e8ba5914d8ce4d088072d8bd1d34e591.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— Unexpected persistence mechanisms (Run keys, scheduled tasks, services)\n— New processes spawned by browser or document applications\n— Process making network connections it shouldn't (Word.exe → outbound TCP)\n— High CPU usage with no user activity (cryptomining)\n— Lateral movement indicators (PsExec, WMI remote execution)\n`);copyBtnbtn_e8ba5914d8ce4d088072d8bd1d34e591.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e8ba5914d8ce4d088072d8bd1d34e591.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1131,15 +1149,15 @@ let res = copyTextToClipboard(`— Unexpected persistence mechanisms (Run keys, 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org55fa447" class="outline-3">
-<h3 id="org55fa447">RITA / Zeek detection</h3>
-<div class="outline-text-3" id="text-org55fa447">
+<div id="outline-container-orgebfb553" class="outline-3">
+<h3 id="orgebfb553">RITA / Zeek detection</h3>
+<div class="outline-text-3" id="text-orgebfb553">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ddc35dca99ca4132b44b9e45875d5500>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_1d6bd2d4241d41a5b686dd2e76dec6fb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ddc35dca99ca4132b44b9e45875d5500=document.querySelector('button[name=btn_ddc35dca99ca4132b44b9e45875d5500]');
-copyBtnbtn_ddc35dca99ca4132b44b9e45875d5500.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`RITA analyses Zeek logs specifically for beaconing patterns:\n— Long connections to the same external IP at regular intervals\n— High beacon score = high confidence of C2 beaconing\nSee: Command and Control Detection note\n`);copyBtnbtn_ddc35dca99ca4132b44b9e45875d5500.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ddc35dca99ca4132b44b9e45875d5500.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1d6bd2d4241d41a5b686dd2e76dec6fb=document.querySelector('button[name=btn_1d6bd2d4241d41a5b686dd2e76dec6fb]');
+copyBtnbtn_1d6bd2d4241d41a5b686dd2e76dec6fb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`RITA analyses Zeek logs specifically for beaconing patterns:\n— Long connections to the same external IP at regular intervals\n— High beacon score = high confidence of C2 beaconing\nSee: Command and Control Detection note\n`);copyBtnbtn_1d6bd2d4241d41a5b686dd2e76dec6fb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1d6bd2d4241d41a5b686dd2e76dec6fb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1152,9 +1170,9 @@ See: Command and Control Detection note
 </div>
 </div>
 </div>
-<div id="outline-container-org52897a6" class="outline-2">
-<h2 id="org52897a6">Takedown Methods</h2>
-<div class="outline-text-2" id="text-org52897a6">
+<div id="outline-container-org94f2417" class="outline-2">
+<h2 id="org94f2417">Takedown Methods</h2>
+<div class="outline-text-2" id="text-org94f2417">
 <p>
 Botnets are disrupted through a combination of:
 </p>
@@ -1176,9 +1194,9 @@ Conficker (ongoing, partial), Trickbot (2020)
 </p>
 </div>
 </div>
-<div id="outline-container-org68475eb" class="outline-2">
-<h2 id="org68475eb">Tips</h2>
-<div class="outline-text-2" id="text-org68475eb">
+<div id="outline-container-org20ed1f9" class="outline-2">
+<h2 id="org20ed1f9">Tips</h2>
+<div class="outline-text-2" id="text-org20ed1f9">
 <ul class="org-ul">
 <li>Beaconing detection is the most reliable network-level botnet
 indicator — look for periodic outbound connections with
@@ -1197,6 +1215,20 @@ cuts C2, it does not remove the malware from the host</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1204,6 +1236,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

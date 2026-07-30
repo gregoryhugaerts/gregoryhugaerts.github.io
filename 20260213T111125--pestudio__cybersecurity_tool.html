@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PeStudio</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,33 +886,33 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org41a839a">PeStudio</a>
+<li><a href="#org4f19d01">PeStudio</a>
 <ul>
-<li><a href="#org8d7b36b">Description</a>
+<li><a href="#orgdecb244">Description</a>
 <ul>
-<li><a href="#orgd5a68cf">Key Functions and Features</a></li>
+<li><a href="#org62317dc">Key Functions and Features</a></li>
 </ul>
 </li>
-<li><a href="#org624aed3">Examples</a></li>
+<li><a href="#orgbacd713">Examples</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org41a839a" class="outline-2">
-<h2 id="org41a839a">PeStudio</h2>
-<div class="outline-text-2" id="text-org41a839a">
+<div id="outline-container-org4f19d01" class="outline-2">
+<h2 id="org4f19d01">PeStudio</h2>
+<div class="outline-text-2" id="text-org4f19d01">
 </div>
-<div id="outline-container-org8d7b36b" class="outline-3">
-<h3 id="org8d7b36b">Description</h3>
-<div class="outline-text-3" id="text-org8d7b36b">
+<div id="outline-container-orgdecb244" class="outline-3">
+<h3 id="orgdecb244">Description</h3>
+<div class="outline-text-3" id="text-orgdecb244">
 <p>
 <b>PeStudio</b> is designed specifically for <b>Portable Executable (PE) files</b>, which include <code>.exe</code>, <code>.dll</code>, <code>.sys</code>, and other core Windows binary formats. It is a critical tool for <b>static malware analysis</b>, the process of examining a program's code and structure without running it, thus providing a safe first look at a potential threat.
 </p>
 </div>
-<div id="outline-container-orgd5a68cf" class="outline-4">
-<h4 id="orgd5a68cf">Key Functions and Features</h4>
-<div class="outline-text-4" id="text-orgd5a68cf">
+<div id="outline-container-org62317dc" class="outline-4">
+<h4 id="org62317dc">Key Functions and Features</h4>
+<div class="outline-text-4" id="text-org62317dc">
 <ul class="org-ul">
 <li><b>Indicator-Based Scoring:</b> PeStudio assigns a rating (similar to a threat score) based on various indicators of compromise (IOCs) and suspicious behaviors. It uses XML files (known as <b>XML Rulings</b>) that contain lists of known malicious attributes.</li>
 <li><b>Import/Export Analysis:</b> It lists all functions the binary <b>imports</b> from external DLLs (e.g., <code>CreateRemoteThread</code> or <code>URLDownloadToFileA</code>), which reveals the program's intended capabilities. It also lists functions it <b>exports</b>.</li>
@@ -905,9 +923,9 @@ pre {
 </div>
 </div>
 </div>
-<div id="outline-container-org624aed3" class="outline-3">
-<h3 id="org624aed3">Examples</h3>
-<div class="outline-text-3" id="text-org624aed3">
+<div id="outline-container-orgbacd713" class="outline-3">
+<h3 id="orgbacd713">Examples</h3>
+<div class="outline-text-3" id="text-orgbacd713">
 <ul class="org-ul">
 <li><b>Identifying Suspicious Imports:</b> If a file is supposed to be a simple text editor but PeStudio shows it imports functions related to network sockets (e.g., <code>WSAStartup</code>, <code>connect</code>), it's a strong indicator of <b>suspicious behavior</b> (likely command-and-control or data exfiltration).</li>
 
@@ -926,6 +944,20 @@ pre {
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -933,6 +965,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

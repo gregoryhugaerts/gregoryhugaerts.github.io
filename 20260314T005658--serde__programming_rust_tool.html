@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Serde</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,16 +886,16 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org279bc7a">Setup</a></li>
-<li><a href="#org5ed88e4">Basic Usage</a></li>
-<li><a href="#org583c698">Common Attributes</a>
+<li><a href="#org4c45be4">Setup</a></li>
+<li><a href="#org584e8dd">Basic Usage</a></li>
+<li><a href="#orgeecd36f">Common Attributes</a>
 <ul>
-<li><a href="#org8453cc8">Container-level attributes</a></li>
+<li><a href="#orgce0daa7">Container-level attributes</a></li>
 </ul>
 </li>
-<li><a href="#org4bcdf18">Enums</a></li>
-<li><a href="#org8d2ca54">Format Comparison</a></li>
-<li><a href="#org671b656">Tips</a></li>
+<li><a href="#orgd7fb1d5">Enums</a></li>
+<li><a href="#org396afaa">Format Comparison</a></li>
+<li><a href="#org7321144">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -895,15 +913,15 @@ Related: <a href="20260206T060643--structs-in-rust__concept_programming_rust.htm
          <a href="20260206T060602--enums-in-rust__concept_programming_rust.html">Enums in Rust</a>
 	 <a href="20260314T005657--rust__language_programming.html">Rust</a>
 </p>
-<div id="outline-container-org279bc7a" class="outline-2">
-<h2 id="org279bc7a">Setup</h2>
-<div class="outline-text-2" id="text-org279bc7a">
+<div id="outline-container-org4c45be4" class="outline-2">
+<h2 id="org4c45be4">Setup</h2>
+<div class="outline-text-2" id="text-org4c45be4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TOML</span><button class='copyBtn' name=btn_89348db8316148c4b3d477ed28a7a2ec>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TOML</span><button class='copyBtn' name=btn_9a6c02e9db8b476899d953c53a38c88e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_89348db8316148c4b3d477ed28a7a2ec=document.querySelector('button[name=btn_89348db8316148c4b3d477ed28a7a2ec]');
-copyBtnbtn_89348db8316148c4b3d477ed28a7a2ec.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Cargo.toml\n[dependencies]\nserde      = { version = \"1.0\", features = [\"derive\"] }\nserde_json = \"1.0\"\nserde_yaml = \"0.9\"   # if needed\nbincode    = \"1.3\"   # if needed\n`);copyBtnbtn_89348db8316148c4b3d477ed28a7a2ec.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_89348db8316148c4b3d477ed28a7a2ec.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9a6c02e9db8b476899d953c53a38c88e=document.querySelector('button[name=btn_9a6c02e9db8b476899d953c53a38c88e]');
+copyBtnbtn_9a6c02e9db8b476899d953c53a38c88e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Cargo.toml\n[dependencies]\nserde      = { version = \"1.0\", features = [\"derive\"] }\nserde_json = \"1.0\"\nserde_yaml = \"0.9\"   # if needed\nbincode    = \"1.3\"   # if needed\n`);copyBtnbtn_9a6c02e9db8b476899d953c53a38c88e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9a6c02e9db8b476899d953c53a38c88e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -917,15 +935,15 @@ let res = copyTextToClipboard(`# Cargo.toml\n[dependencies]\nserde      = { vers
 </div></div>
 </div>
 </div>
-<div id="outline-container-org5ed88e4" class="outline-2">
-<h2 id="org5ed88e4">Basic Usage</h2>
-<div class="outline-text-2" id="text-org5ed88e4">
+<div id="outline-container-org584e8dd" class="outline-2">
+<h2 id="org584e8dd">Basic Usage</h2>
+<div class="outline-text-2" id="text-org584e8dd">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_d568349b29f14c82bcf0522d007c0d73>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_c4ad9464b37d4593bfa840957c5c9fd8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d568349b29f14c82bcf0522d007c0d73=document.querySelector('button[name=btn_d568349b29f14c82bcf0522d007c0d73]');
-copyBtnbtn_d568349b29f14c82bcf0522d007c0d73.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use serde::{Deserialize, Serialize};\n\n#[derive(Serialize, Deserialize, Debug)]\nstruct User {\n    id:        u32,\n    username:  String,\n    is_active: bool,\n}\n\nfn main() {\n    let user = User { id: 1, username: \"alice\".to_string(), is_active: true };\n\n    // Serialize to JSON string\n    let json = serde_json::to_string_pretty(&user).unwrap();\n    println!(\"{}\", json);\n\n    // Deserialize from JSON string\n    let parsed: User = serde_json::from_str(&json).unwrap();\n    println!(\"{:?}\", parsed);\n\n    // Serialize/deserialize via file\n    let file = std::fs::File::create(\"user.json\").unwrap();\n    serde_json::to_writer_pretty(file, &user).unwrap();\n\n    let file = std::fs::File::open(\"user.json\").unwrap();\n    let from_file: User = serde_json::from_reader(file).unwrap();\n}\n`);copyBtnbtn_d568349b29f14c82bcf0522d007c0d73.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d568349b29f14c82bcf0522d007c0d73.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c4ad9464b37d4593bfa840957c5c9fd8=document.querySelector('button[name=btn_c4ad9464b37d4593bfa840957c5c9fd8]');
+copyBtnbtn_c4ad9464b37d4593bfa840957c5c9fd8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use serde::{Deserialize, Serialize};\n\n#[derive(Serialize, Deserialize, Debug)]\nstruct User {\n    id:        u32,\n    username:  String,\n    is_active: bool,\n}\n\nfn main() {\n    let user = User { id: 1, username: \"alice\".to_string(), is_active: true };\n\n    // Serialize to JSON string\n    let json = serde_json::to_string_pretty(&user).unwrap();\n    println!(\"{}\", json);\n\n    // Deserialize from JSON string\n    let parsed: User = serde_json::from_str(&json).unwrap();\n    println!(\"{:?}\", parsed);\n\n    // Serialize/deserialize via file\n    let file = std::fs::File::create(\"user.json\").unwrap();\n    serde_json::to_writer_pretty(file, &user).unwrap();\n\n    let file = std::fs::File::open(\"user.json\").unwrap();\n    let from_file: User = serde_json::from_reader(file).unwrap();\n}\n`);copyBtnbtn_c4ad9464b37d4593bfa840957c5c9fd8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c4ad9464b37d4593bfa840957c5c9fd8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -960,20 +978,20 @@ fn main() {
 </div></div>
 </div>
 </div>
-<div id="outline-container-org583c698" class="outline-2">
-<h2 id="org583c698">Common Attributes</h2>
-<div class="outline-text-2" id="text-org583c698">
+<div id="outline-container-orgeecd36f" class="outline-2">
+<h2 id="orgeecd36f">Common Attributes</h2>
+<div class="outline-text-2" id="text-orgeecd36f">
 <p>
 Serde attributes customise how fields and types are
 serialised/deserialised without changing the Rust type itself.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_d273ce8d33cc40e68942878f431cda0e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_6882ddffb58b49aea88209d1eefa04c6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d273ce8d33cc40e68942878f431cda0e=document.querySelector('button[name=btn_d273ce8d33cc40e68942878f431cda0e]');
-copyBtnbtn_d273ce8d33cc40e68942878f431cda0e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`#[derive(Serialize, Deserialize, Debug)]\nstruct Config {\n    // Rename the field in the serialised output\n    #[serde(rename = \"user_name\")]\n    username: String,\n\n    // Skip this field entirely during serialisation\n    #[serde(skip)]\n    internal_state: String,\n\n    // Skip if the value is the type's default (e.g. false, 0, \"\")\n    #[serde(skip_serializing_if = \"Option::is_none\")]\n    optional_field: Option<String>,\n\n    // Provide a default value if the field is absent during deserialisation\n    #[serde(default)]\n    enabled: bool,\n\n    // Use a custom default function\n    #[serde(default = \"default_port\")]\n    port: u16,\n}\n\nfn default_port() -> u16 { 8080 }\n`);copyBtnbtn_d273ce8d33cc40e68942878f431cda0e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d273ce8d33cc40e68942878f431cda0e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6882ddffb58b49aea88209d1eefa04c6=document.querySelector('button[name=btn_6882ddffb58b49aea88209d1eefa04c6]');
+copyBtnbtn_6882ddffb58b49aea88209d1eefa04c6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`#[derive(Serialize, Deserialize, Debug)]\nstruct Config {\n    // Rename the field in the serialised output\n    #[serde(rename = \"user_name\")]\n    username: String,\n\n    // Skip this field entirely during serialisation\n    #[serde(skip)]\n    internal_state: String,\n\n    // Skip if the value is the type's default (e.g. false, 0, \"\")\n    #[serde(skip_serializing_if = \"Option::is_none\")]\n    optional_field: Option<String>,\n\n    // Provide a default value if the field is absent during deserialisation\n    #[serde(default)]\n    enabled: bool,\n\n    // Use a custom default function\n    #[serde(default = \"default_port\")]\n    port: u16,\n}\n\nfn default_port() -> u16 { 8080 }\n`);copyBtnbtn_6882ddffb58b49aea88209d1eefa04c6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6882ddffb58b49aea88209d1eefa04c6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1004,15 +1022,15 @@ fn default_port() -&gt; u16 { 8080 }
 </pre>
 </div></div>
 </div>
-<div id="outline-container-org8453cc8" class="outline-3">
-<h3 id="org8453cc8">Container-level attributes</h3>
-<div class="outline-text-3" id="text-org8453cc8">
+<div id="outline-container-orgce0daa7" class="outline-3">
+<h3 id="orgce0daa7">Container-level attributes</h3>
+<div class="outline-text-3" id="text-orgce0daa7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_7c0cd75fc4f94fe0948104a1ad4c9f76>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_0bdd9477e87d44e685268495e7fb145f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7c0cd75fc4f94fe0948104a1ad4c9f76=document.querySelector('button[name=btn_7c0cd75fc4f94fe0948104a1ad4c9f76]');
-copyBtnbtn_7c0cd75fc4f94fe0948104a1ad4c9f76.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Rename all fields to camelCase (common for JSON APIs)\n#[derive(Serialize, Deserialize)]\n#[serde(rename_all = \"camelCase\")]\nstruct ApiResponse {\n    user_id:    u32,    // serialised as \"userId\"\n    first_name: String, // serialised as \"firstName\"\n}\n\n// Deny unknown fields during deserialisation\n#[derive(Deserialize)]\n#[serde(deny_unknown_fields)]\nstruct StrictConfig {\n    host: String,\n    port: u16,\n}\n\n// Flatten a nested struct into the parent\n#[derive(Serialize, Deserialize)]\nstruct Response {\n    status: u16,\n    #[serde(flatten)]\n    data: UserData,\n}\n`);copyBtnbtn_7c0cd75fc4f94fe0948104a1ad4c9f76.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7c0cd75fc4f94fe0948104a1ad4c9f76.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0bdd9477e87d44e685268495e7fb145f=document.querySelector('button[name=btn_0bdd9477e87d44e685268495e7fb145f]');
+copyBtnbtn_0bdd9477e87d44e685268495e7fb145f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Rename all fields to camelCase (common for JSON APIs)\n#[derive(Serialize, Deserialize)]\n#[serde(rename_all = \"camelCase\")]\nstruct ApiResponse {\n    user_id:    u32,    // serialised as \"userId\"\n    first_name: String, // serialised as \"firstName\"\n}\n\n// Deny unknown fields during deserialisation\n#[derive(Deserialize)]\n#[serde(deny_unknown_fields)]\nstruct StrictConfig {\n    host: String,\n    port: u16,\n}\n\n// Flatten a nested struct into the parent\n#[derive(Serialize, Deserialize)]\nstruct Response {\n    status: u16,\n    #[serde(flatten)]\n    data: UserData,\n}\n`);copyBtnbtn_0bdd9477e87d44e685268495e7fb145f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0bdd9477e87d44e685268495e7fb145f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1044,20 +1062,20 @@ struct Response {
 </div>
 </div>
 </div>
-<div id="outline-container-org4bcdf18" class="outline-2">
-<h2 id="org4bcdf18">Enums</h2>
-<div class="outline-text-2" id="text-org4bcdf18">
+<div id="outline-container-orgd7fb1d5" class="outline-2">
+<h2 id="orgd7fb1d5">Enums</h2>
+<div class="outline-text-2" id="text-orgd7fb1d5">
 <p>
 Serde has four representations for enums — the default
 (externally tagged) is most common for JSON:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_c3fd9b63c4364dac88b14272991b145f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_3d6a0cd3ca2041babb3f1880b45d89dd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c3fd9b63c4364dac88b14272991b145f=document.querySelector('button[name=btn_c3fd9b63c4364dac88b14272991b145f]');
-copyBtnbtn_c3fd9b63c4364dac88b14272991b145f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`#[derive(Serialize, Deserialize, Debug)]\n#[serde(tag = \"type\", content = \"data\")]  // adjacently tagged\nenum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n}\n\n// Adjacently tagged output:\n// {\"type\": \"Move\", \"data\": {\"x\": 10, \"y\": 20}}\n// vs externally tagged (default):\n// {\"Move\": {\"x\": 10, \"y\": 20}}\n// vs internally tagged:\n// {\"type\": \"Move\", \"x\": 10, \"y\": 20}\n// vs untagged:\n// {\"x\": 10, \"y\": 20}\n`);copyBtnbtn_c3fd9b63c4364dac88b14272991b145f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c3fd9b63c4364dac88b14272991b145f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3d6a0cd3ca2041babb3f1880b45d89dd=document.querySelector('button[name=btn_3d6a0cd3ca2041babb3f1880b45d89dd]');
+copyBtnbtn_3d6a0cd3ca2041babb3f1880b45d89dd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`#[derive(Serialize, Deserialize, Debug)]\n#[serde(tag = \"type\", content = \"data\")]  // adjacently tagged\nenum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n}\n\n// Adjacently tagged output:\n// {\"type\": \"Move\", \"data\": {\"x\": 10, \"y\": 20}}\n// vs externally tagged (default):\n// {\"Move\": {\"x\": 10, \"y\": 20}}\n// vs internally tagged:\n// {\"type\": \"Move\", \"x\": 10, \"y\": 20}\n// vs untagged:\n// {\"x\": 10, \"y\": 20}\n`);copyBtnbtn_3d6a0cd3ca2041babb3f1880b45d89dd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3d6a0cd3ca2041babb3f1880b45d89dd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1081,9 +1099,9 @@ enum Message {
 </div></div>
 </div>
 </div>
-<div id="outline-container-org8d2ca54" class="outline-2">
-<h2 id="org8d2ca54">Format Comparison</h2>
-<div class="outline-text-2" id="text-org8d2ca54">
+<div id="outline-container-org396afaa" class="outline-2">
+<h2 id="org396afaa">Format Comparison</h2>
+<div class="outline-text-2" id="text-org396afaa">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1141,9 +1159,9 @@ enum Message {
 </table>
 </div>
 </div>
-<div id="outline-container-org671b656" class="outline-2">
-<h2 id="org671b656">Tips</h2>
-<div class="outline-text-2" id="text-org671b656">
+<div id="outline-container-org7321144" class="outline-2">
+<h2 id="org7321144">Tips</h2>
+<div class="outline-text-2" id="text-org7321144">
 <ul class="org-ul">
 <li>Derive macros handle 90% of use cases — reach for custom
 <code>Serialize=/=Deserialize</code> implementations only when behaviour
@@ -1162,6 +1180,20 @@ errors should surface cleanly, not panic</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1169,6 +1201,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

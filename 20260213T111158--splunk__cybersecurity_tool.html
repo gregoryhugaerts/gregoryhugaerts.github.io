@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Splunk</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,25 +886,25 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd12201c">Architecture</a></li>
-<li><a href="#orgcd35405">Installation (Linux)</a></li>
-<li><a href="#org2ee6135">Universal Forwarder Deployment</a>
+<li><a href="#orgbef4629">Architecture</a></li>
+<li><a href="#org018b560">Installation (Linux)</a></li>
+<li><a href="#org3521757">Universal Forwarder Deployment</a>
 <ul>
-<li><a href="#org9712259">inputs.conf (forwarder configuration)</a></li>
+<li><a href="#org78869ad">inputs.conf (forwarder configuration)</a></li>
 </ul>
 </li>
-<li><a href="#orga727b4b">Core Configuration Files</a>
+<li><a href="#org5353af2">Core Configuration Files</a>
 <ul>
-<li><a href="#org4d62380">Creating a custom index</a></li>
+<li><a href="#org7220c3f">Creating a custom index</a></li>
 </ul>
 </li>
-<li><a href="#orgf49f9a0">SPL — Search Processing Language</a></li>
-<li><a href="#orgc115e36">Alerts</a></li>
-<li><a href="#org391c4ee">Dashboards</a></li>
-<li><a href="#org474c719">Splunk Apps for Security</a></li>
-<li><a href="#org06b7808">Useful CLI Commands</a></li>
-<li><a href="#org22ab575">Splunk Python SDK</a></li>
-<li><a href="#org5975fdf">Tips</a></li>
+<li><a href="#org6fec00a">SPL — Search Processing Language</a></li>
+<li><a href="#org796d134">Alerts</a></li>
+<li><a href="#org20a2f3d">Dashboards</a></li>
+<li><a href="#org6362f0a">Splunk Apps for Security</a></li>
+<li><a href="#org858e861">Useful CLI Commands</a></li>
+<li><a href="#org652f9b9">Splunk Python SDK</a></li>
+<li><a href="#orge80c80e">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -908,15 +926,15 @@ Related: <a href="20260206T060731--splunk-query-language__cybersecurity_language
          <a href="20260314T005749==siem--security-information-and-event-management__concept_cybersecurity.html">SIEM</a>
          <a href="20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a>
 </p>
-<div id="outline-container-orgd12201c" class="outline-2">
-<h2 id="orgd12201c">Architecture</h2>
-<div class="outline-text-2" id="text-orgd12201c">
+<div id="outline-container-orgbef4629" class="outline-2">
+<h2 id="orgbef4629">Architecture</h2>
+<div class="outline-text-2" id="text-orgbef4629">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9d1072c1020444928babf05ae6c1733e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c9c1bf97275c404f8d2637cb58317be1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9d1072c1020444928babf05ae6c1733e=document.querySelector('button[name=btn_9d1072c1020444928babf05ae6c1733e]');
-copyBtnbtn_9d1072c1020444928babf05ae6c1733e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Forwarder (on endpoints) → Indexer (stores data) → Search Head (query/UI)\n\nComponents:\n— Universal Forwarder: lightweight agent, collects and forwards logs\n— Heavy Forwarder: parses/filters data before forwarding\n— Indexer: receives, indexes, and stores data in indexes\n— Search Head: provides the web UI and search interface\n— Deployment Server: manages forwarder configuration at scale\n\nAll-in-one (single instance) is standard for small deployments\nand home lab — one process handles all roles.\n`);copyBtnbtn_9d1072c1020444928babf05ae6c1733e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9d1072c1020444928babf05ae6c1733e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c9c1bf97275c404f8d2637cb58317be1=document.querySelector('button[name=btn_c9c1bf97275c404f8d2637cb58317be1]');
+copyBtnbtn_c9c1bf97275c404f8d2637cb58317be1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Forwarder (on endpoints) → Indexer (stores data) → Search Head (query/UI)\n\nComponents:\n— Universal Forwarder: lightweight agent, collects and forwards logs\n— Heavy Forwarder: parses/filters data before forwarding\n— Indexer: receives, indexes, and stores data in indexes\n— Search Head: provides the web UI and search interface\n— Deployment Server: manages forwarder configuration at scale\n\nAll-in-one (single instance) is standard for small deployments\nand home lab — one process handles all roles.\n`);copyBtnbtn_c9c1bf97275c404f8d2637cb58317be1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c9c1bf97275c404f8d2637cb58317be1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -935,15 +953,15 @@ and home lab &#8212; one process handles all roles.
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgcd35405" class="outline-2">
-<h2 id="orgcd35405">Installation (Linux)</h2>
-<div class="outline-text-2" id="text-orgcd35405">
+<div id="outline-container-org018b560" class="outline-2">
+<h2 id="org018b560">Installation (Linux)</h2>
+<div class="outline-text-2" id="text-org018b560">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f02d0db8483f4720843353710a8f04f2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_db2f810dc8c64a74b72ffa914fd16048>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f02d0db8483f4720843353710a8f04f2=document.querySelector('button[name=btn_f02d0db8483f4720843353710a8f04f2]');
-copyBtnbtn_f02d0db8483f4720843353710a8f04f2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Download .deb or .rpm from https://www.splunk.com/en_us/download.html\n\n# Debian/Ubuntu\nsudo dpkg -i splunk-<version>-linux-<architecture>.deb\n\n# Start and accept license\nsudo /opt/splunk/bin/splunk start --accept-license\n\n# Enable on boot\nsudo /opt/splunk/bin/splunk enable boot-start\n\n# Access web UI\n# http://localhost:8000 (admin / password set on first start)\n`);copyBtnbtn_f02d0db8483f4720843353710a8f04f2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f02d0db8483f4720843353710a8f04f2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_db2f810dc8c64a74b72ffa914fd16048=document.querySelector('button[name=btn_db2f810dc8c64a74b72ffa914fd16048]');
+copyBtnbtn_db2f810dc8c64a74b72ffa914fd16048.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Download .deb or .rpm from https://www.splunk.com/en_us/download.html\n\n# Debian/Ubuntu\nsudo dpkg -i splunk-<version>-linux-<architecture>.deb\n\n# Start and accept license\nsudo /opt/splunk/bin/splunk start --accept-license\n\n# Enable on boot\nsudo /opt/splunk/bin/splunk enable boot-start\n\n# Access web UI\n# http://localhost:8000 (admin / password set on first start)\n`);copyBtnbtn_db2f810dc8c64a74b72ffa914fd16048.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_db2f810dc8c64a74b72ffa914fd16048.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -964,19 +982,19 @@ let res = copyTextToClipboard(`# Download .deb or .rpm from https://www.splunk.c
 </div></div>
 </div>
 </div>
-<div id="outline-container-org2ee6135" class="outline-2">
-<h2 id="org2ee6135">Universal Forwarder Deployment</h2>
-<div class="outline-text-2" id="text-org2ee6135">
+<div id="outline-container-org3521757" class="outline-2">
+<h2 id="org3521757">Universal Forwarder Deployment</h2>
+<div class="outline-text-2" id="text-org3521757">
 <p>
 Run on endpoints to ship logs to the indexer.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_719afdcf52c749238928a46323e56528>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f6c85a929e7d40f99fbe072d6086b5a3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_719afdcf52c749238928a46323e56528=document.querySelector('button[name=btn_719afdcf52c749238928a46323e56528]');
-copyBtnbtn_719afdcf52c749238928a46323e56528.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Install forwarder (separate package from full Splunk)\nsudo dpkg -i splunkforwarder-<version>-linux-amd64.deb\n\n# Configure the receiving indexer\nsudo /opt/splunkforwarder/bin/splunk add forward-server $INDEXER_IP:9997\n\n# Monitor a log file\nsudo /opt/splunkforwarder/bin/splunk add monitor /var/log/syslog\n\n# Monitor Windows Event Log (on Windows)\n# Set in inputs.conf or via Deployment Server\n\n# Start forwarder\nsudo /opt/splunkforwarder/bin/splunk start\n`);copyBtnbtn_719afdcf52c749238928a46323e56528.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_719afdcf52c749238928a46323e56528.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f6c85a929e7d40f99fbe072d6086b5a3=document.querySelector('button[name=btn_f6c85a929e7d40f99fbe072d6086b5a3]');
+copyBtnbtn_f6c85a929e7d40f99fbe072d6086b5a3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Install forwarder (separate package from full Splunk)\nsudo dpkg -i splunkforwarder-<version>-linux-amd64.deb\n\n# Configure the receiving indexer\nsudo /opt/splunkforwarder/bin/splunk add forward-server $INDEXER_IP:9997\n\n# Monitor a log file\nsudo /opt/splunkforwarder/bin/splunk add monitor /var/log/syslog\n\n# Monitor Windows Event Log (on Windows)\n# Set in inputs.conf or via Deployment Server\n\n# Start forwarder\nsudo /opt/splunkforwarder/bin/splunk start\n`);copyBtnbtn_f6c85a929e7d40f99fbe072d6086b5a3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f6c85a929e7d40f99fbe072d6086b5a3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -997,15 +1015,15 @@ let res = copyTextToClipboard(`# Install forwarder (separate package from full S
 </pre>
 </div></div>
 </div>
-<div id="outline-container-org9712259" class="outline-3">
-<h3 id="org9712259">inputs.conf (forwarder configuration)</h3>
-<div class="outline-text-3" id="text-org9712259">
+<div id="outline-container-org78869ad" class="outline-3">
+<h3 id="org78869ad">inputs.conf (forwarder configuration)</h3>
+<div class="outline-text-3" id="text-org78869ad">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>INI</span><button class='copyBtn' name=btn_b5c08f8608f5414b820219e353a7a35b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>INI</span><button class='copyBtn' name=btn_baf317e2eaef409eaca3afdbed9078d1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b5c08f8608f5414b820219e353a7a35b=document.querySelector('button[name=btn_b5c08f8608f5414b820219e353a7a35b]');
-copyBtnbtn_b5c08f8608f5414b820219e353a7a35b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# /opt/splunkforwarder/etc/system/local/inputs.conf\n\n# Monitor a log file\n[monitor:///var/log/auth.log]\nindex = linux_logs\nsourcetype = linux_secure\n\n# Monitor all files in a directory\n[monitor:///var/log/apache2/]\nindex = web\nsourcetype = access_combined\n\n# Windows Event Log (on Windows forwarder)\n[WinEventLog://Security]\nindex = wineventlog\ndisabled = false\n\n[WinEventLog://System]\nindex = wineventlog\ndisabled = false\n\n[WinEventLog://Microsoft-Windows-Sysmon/Operational]\nindex = sysmon\ndisabled = false\n`);copyBtnbtn_b5c08f8608f5414b820219e353a7a35b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b5c08f8608f5414b820219e353a7a35b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_baf317e2eaef409eaca3afdbed9078d1=document.querySelector('button[name=btn_baf317e2eaef409eaca3afdbed9078d1]');
+copyBtnbtn_baf317e2eaef409eaca3afdbed9078d1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# /opt/splunkforwarder/etc/system/local/inputs.conf\n\n# Monitor a log file\n[monitor:///var/log/auth.log]\nindex = linux_logs\nsourcetype = linux_secure\n\n# Monitor all files in a directory\n[monitor:///var/log/apache2/]\nindex = web\nsourcetype = access_combined\n\n# Windows Event Log (on Windows forwarder)\n[WinEventLog://Security]\nindex = wineventlog\ndisabled = false\n\n[WinEventLog://System]\nindex = wineventlog\ndisabled = false\n\n[WinEventLog://Microsoft-Windows-Sysmon/Operational]\nindex = sysmon\ndisabled = false\n`);copyBtnbtn_baf317e2eaef409eaca3afdbed9078d1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_baf317e2eaef409eaca3afdbed9078d1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1038,9 +1056,9 @@ disabled = false
 </div>
 </div>
 </div>
-<div id="outline-container-orga727b4b" class="outline-2">
-<h2 id="orga727b4b">Core Configuration Files</h2>
-<div class="outline-text-2" id="text-orga727b4b">
+<div id="outline-container-org5353af2" class="outline-2">
+<h2 id="org5353af2">Core Configuration Files</h2>
+<div class="outline-text-2" id="text-org5353af2">
 <p>
 All in <code>/opt/splunk/etc/system/local/</code> (or per-app in
 <code>/opt/splunk/etc/apps/&lt;appname&gt;/local/</code>):
@@ -1093,15 +1111,15 @@ All in <code>/opt/splunk/etc/system/local/</code> (or per-app in
 </tbody>
 </table>
 </div>
-<div id="outline-container-org4d62380" class="outline-3">
-<h3 id="org4d62380">Creating a custom index</h3>
-<div class="outline-text-3" id="text-org4d62380">
+<div id="outline-container-org7220c3f" class="outline-3">
+<h3 id="org7220c3f">Creating a custom index</h3>
+<div class="outline-text-3" id="text-org7220c3f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>INI</span><button class='copyBtn' name=btn_b33fe24021a94308aa624c3e16b7c079>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>INI</span><button class='copyBtn' name=btn_e7aa007c21ef461f986b9ecb1c9ca1c7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b33fe24021a94308aa624c3e16b7c079=document.querySelector('button[name=btn_b33fe24021a94308aa624c3e16b7c079]');
-copyBtnbtn_b33fe24021a94308aa624c3e16b7c079.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# /opt/splunk/etc/system/local/indexes.conf\n[my_security_index]\nhomePath   = $SPLUNK_DB/my_security_index/db\ncoldPath   = $SPLUNK_DB/my_security_index/colddb\nthawedPath = $SPLUNK_DB/my_security_index/thaweddb\nmaxDataSize = auto_high_volume\nmaxTotalDataSizeMB = 10240\n`);copyBtnbtn_b33fe24021a94308aa624c3e16b7c079.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b33fe24021a94308aa624c3e16b7c079.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e7aa007c21ef461f986b9ecb1c9ca1c7=document.querySelector('button[name=btn_e7aa007c21ef461f986b9ecb1c9ca1c7]');
+copyBtnbtn_e7aa007c21ef461f986b9ecb1c9ca1c7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# /opt/splunk/etc/system/local/indexes.conf\n[my_security_index]\nhomePath   = $SPLUNK_DB/my_security_index/db\ncoldPath   = $SPLUNK_DB/my_security_index/colddb\nthawedPath = $SPLUNK_DB/my_security_index/thaweddb\nmaxDataSize = auto_high_volume\nmaxTotalDataSizeMB = 10240\n`);copyBtnbtn_e7aa007c21ef461f986b9ecb1c9ca1c7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e7aa007c21ef461f986b9ecb1c9ca1c7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1117,20 +1135,20 @@ maxTotalDataSizeMB = 10240
 </div>
 </div>
 </div>
-<div id="outline-container-orgf49f9a0" class="outline-2">
-<h2 id="orgf49f9a0">SPL — Search Processing Language</h2>
-<div class="outline-text-2" id="text-orgf49f9a0">
+<div id="outline-container-org6fec00a" class="outline-2">
+<h2 id="org6fec00a">SPL — Search Processing Language</h2>
+<div class="outline-text-2" id="text-org6fec00a">
 <p>
 See <a href="20260206T060731--splunk-query-language__cybersecurity_language.html">Splunk Query Language</a> for full SPL reference. Quick
 examples for security work:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SPLUNK</span><button class='copyBtn' name=btn_a5d03adeef2a4ba2a5a030b22d68c7bc>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SPLUNK</span><button class='copyBtn' name=btn_382edfcd0e69444d9fe327dcd73a3cea>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a5d03adeef2a4ba2a5a030b22d68c7bc=document.querySelector('button[name=btn_a5d03adeef2a4ba2a5a030b22d68c7bc]');
-copyBtnbtn_a5d03adeef2a4ba2a5a030b22d68c7bc.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`| Search all indexes\nindex=* | head 20\n\n| Windows failed logons\nindex=wineventlog EventCode=4625\n| stats count by Account_Name, Source_Network_Address\n| sort -count\n\n| Brute force detection\nindex=wineventlog EventCode=4625\n| bucket _time span=5m\n| stats count by _time, Account_Name\n| where count > 10\n\n| Top sources by event volume\nindex=* | stats count by host, sourcetype | sort -count | head 20\n\n| Sysmon process creation\nindex=sysmon EventCode=1\n| table _time, ComputerName, ParentCommandLine, CommandLine, User\n\n| Search for PowerShell download cradles\nindex=sysmon EventCode=1 CommandLine=\"*DownloadString*\" OR CommandLine=\"*WebClient*\"\n| table _time, ComputerName, User, CommandLine\n`);copyBtnbtn_a5d03adeef2a4ba2a5a030b22d68c7bc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a5d03adeef2a4ba2a5a030b22d68c7bc.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_382edfcd0e69444d9fe327dcd73a3cea=document.querySelector('button[name=btn_382edfcd0e69444d9fe327dcd73a3cea]');
+copyBtnbtn_382edfcd0e69444d9fe327dcd73a3cea.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`| Search all indexes\nindex=* | head 20\n\n| Windows failed logons\nindex=wineventlog EventCode=4625\n| stats count by Account_Name, Source_Network_Address\n| sort -count\n\n| Brute force detection\nindex=wineventlog EventCode=4625\n| bucket _time span=5m\n| stats count by _time, Account_Name\n| where count > 10\n\n| Top sources by event volume\nindex=* | stats count by host, sourcetype | sort -count | head 20\n\n| Sysmon process creation\nindex=sysmon EventCode=1\n| table _time, ComputerName, ParentCommandLine, CommandLine, User\n\n| Search for PowerShell download cradles\nindex=sysmon EventCode=1 CommandLine=\"*DownloadString*\" OR CommandLine=\"*WebClient*\"\n| table _time, ComputerName, User, CommandLine\n`);copyBtnbtn_382edfcd0e69444d9fe327dcd73a3cea.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_382edfcd0e69444d9fe327dcd73a3cea.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1162,15 +1180,15 @@ index=sysmon EventCode=1 CommandLine="*DownloadString*" OR CommandLine="*WebClie
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgc115e36" class="outline-2">
-<h2 id="orgc115e36">Alerts</h2>
-<div class="outline-text-2" id="text-orgc115e36">
+<div id="outline-container-org796d134" class="outline-2">
+<h2 id="org796d134">Alerts</h2>
+<div class="outline-text-2" id="text-org796d134">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9776c59f9fb44495af37876202bb78b1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_121abb469ac8465d911e36eaa4a2d117>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9776c59f9fb44495af37876202bb78b1=document.querySelector('button[name=btn_9776c59f9fb44495af37876202bb78b1]');
-copyBtnbtn_9776c59f9fb44495af37876202bb78b1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Search → Save As → Alert\n— Schedule: run every N minutes/hours\n— Trigger conditions: number of results > 0\n— Actions: send email, run script, webhook (e.g. to Slack)\n\nAlert throttling: suppress duplicate alerts for a time window\n— prevents alert fatigue on noisy conditions\n`);copyBtnbtn_9776c59f9fb44495af37876202bb78b1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9776c59f9fb44495af37876202bb78b1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_121abb469ac8465d911e36eaa4a2d117=document.querySelector('button[name=btn_121abb469ac8465d911e36eaa4a2d117]');
+copyBtnbtn_121abb469ac8465d911e36eaa4a2d117.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Search → Save As → Alert\n— Schedule: run every N minutes/hours\n— Trigger conditions: number of results > 0\n— Actions: send email, run script, webhook (e.g. to Slack)\n\nAlert throttling: suppress duplicate alerts for a time window\n— prevents alert fatigue on noisy conditions\n`);copyBtnbtn_121abb469ac8465d911e36eaa4a2d117.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_121abb469ac8465d911e36eaa4a2d117.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1185,15 +1203,15 @@ Alert throttling: suppress duplicate alerts for a time window
 </div></div>
 </div>
 </div>
-<div id="outline-container-org391c4ee" class="outline-2">
-<h2 id="org391c4ee">Dashboards</h2>
-<div class="outline-text-2" id="text-org391c4ee">
+<div id="outline-container-org20a2f3d" class="outline-2">
+<h2 id="org20a2f3d">Dashboards</h2>
+<div class="outline-text-2" id="text-org20a2f3d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_57ffde394fb142eebbee12fcc62eafdb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d59744e49bc24627b698880a52f9723e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_57ffde394fb142eebbee12fcc62eafdb=document.querySelector('button[name=btn_57ffde394fb142eebbee12fcc62eafdb]');
-copyBtnbtn_57ffde394fb142eebbee12fcc62eafdb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Dashboards → Create New Dashboard\n— Add panels: search results, charts, single value, maps\n— Panels can share a time range control\n— Export as PDF or set up scheduled delivery\n\nUseful security dashboard panels:\n— Failed login count (sparkline trend)\n— Top source IPs for failed logins\n— Event volume by index over time\n— Sysmon process creation events by host\n`);copyBtnbtn_57ffde394fb142eebbee12fcc62eafdb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_57ffde394fb142eebbee12fcc62eafdb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d59744e49bc24627b698880a52f9723e=document.querySelector('button[name=btn_d59744e49bc24627b698880a52f9723e]');
+copyBtnbtn_d59744e49bc24627b698880a52f9723e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Dashboards → Create New Dashboard\n— Add panels: search results, charts, single value, maps\n— Panels can share a time range control\n— Export as PDF or set up scheduled delivery\n\nUseful security dashboard panels:\n— Failed login count (sparkline trend)\n— Top source IPs for failed logins\n— Event volume by index over time\n— Sysmon process creation events by host\n`);copyBtnbtn_d59744e49bc24627b698880a52f9723e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d59744e49bc24627b698880a52f9723e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1211,15 +1229,15 @@ Useful security dashboard panels:
 </div></div>
 </div>
 </div>
-<div id="outline-container-org474c719" class="outline-2">
-<h2 id="org474c719">Splunk Apps for Security</h2>
-<div class="outline-text-2" id="text-org474c719">
+<div id="outline-container-org6362f0a" class="outline-2">
+<h2 id="org6362f0a">Splunk Apps for Security</h2>
+<div class="outline-text-2" id="text-org6362f0a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_cc6509f6040344d194fe7f8f3326d1b3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f23247e1c1ee400d8d30a58e47182508>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_cc6509f6040344d194fe7f8f3326d1b3=document.querySelector('button[name=btn_cc6509f6040344d194fe7f8f3326d1b3]');
-copyBtnbtn_cc6509f6040344d194fe7f8f3326d1b3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Splunkbase (https://splunkbase.splunk.com) — official app marketplace\n\nKey security apps:\n— Splunk Security Essentials: pre-built detections and content\n— Splunk App for Windows Infrastructure: Windows log analysis\n— Splunk MITRE ATT&CK App: map detections to ATT&CK techniques\n— Lookup File Editor: manage lookup tables via UI\n`);copyBtnbtn_cc6509f6040344d194fe7f8f3326d1b3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cc6509f6040344d194fe7f8f3326d1b3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f23247e1c1ee400d8d30a58e47182508=document.querySelector('button[name=btn_f23247e1c1ee400d8d30a58e47182508]');
+copyBtnbtn_f23247e1c1ee400d8d30a58e47182508.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Splunkbase (https://splunkbase.splunk.com) — official app marketplace\n\nKey security apps:\n— Splunk Security Essentials: pre-built detections and content\n— Splunk App for Windows Infrastructure: Windows log analysis\n— Splunk MITRE ATT&CK App: map detections to ATT&CK techniques\n— Lookup File Editor: manage lookup tables via UI\n`);copyBtnbtn_f23247e1c1ee400d8d30a58e47182508.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f23247e1c1ee400d8d30a58e47182508.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1234,15 +1252,15 @@ Key security apps:
 </div></div>
 </div>
 </div>
-<div id="outline-container-org06b7808" class="outline-2">
-<h2 id="org06b7808">Useful CLI Commands</h2>
-<div class="outline-text-2" id="text-org06b7808">
+<div id="outline-container-org858e861" class="outline-2">
+<h2 id="org858e861">Useful CLI Commands</h2>
+<div class="outline-text-2" id="text-org858e861">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_29ff6e8c4f8e445aa8b4f0535218bb2f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2ae310f97dd0406599ec3c13f1d194ce>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_29ff6e8c4f8e445aa8b4f0535218bb2f=document.querySelector('button[name=btn_29ff6e8c4f8e445aa8b4f0535218bb2f]');
-copyBtnbtn_29ff6e8c4f8e445aa8b4f0535218bb2f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Start / stop / restart\nsudo /opt/splunk/bin/splunk start\nsudo /opt/splunk/bin/splunk stop\nsudo /opt/splunk/bin/splunk restart\n\n# Check status\nsudo /opt/splunk/bin/splunk status\n\n# Search from CLI\nsudo /opt/splunk/bin/splunk search \"index=* | head 10\" -auth admin:password\n\n# List indexes\nsudo /opt/splunk/bin/splunk list index\n\n# Show forwarder connections (on indexer)\nsudo /opt/splunk/bin/splunk list forward-server\n`);copyBtnbtn_29ff6e8c4f8e445aa8b4f0535218bb2f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_29ff6e8c4f8e445aa8b4f0535218bb2f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2ae310f97dd0406599ec3c13f1d194ce=document.querySelector('button[name=btn_2ae310f97dd0406599ec3c13f1d194ce]');
+copyBtnbtn_2ae310f97dd0406599ec3c13f1d194ce.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Start / stop / restart\nsudo /opt/splunk/bin/splunk start\nsudo /opt/splunk/bin/splunk stop\nsudo /opt/splunk/bin/splunk restart\n\n# Check status\nsudo /opt/splunk/bin/splunk status\n\n# Search from CLI\nsudo /opt/splunk/bin/splunk search \"index=* | head 10\" -auth admin:password\n\n# List indexes\nsudo /opt/splunk/bin/splunk list index\n\n# Show forwarder connections (on indexer)\nsudo /opt/splunk/bin/splunk list forward-server\n`);copyBtnbtn_2ae310f97dd0406599ec3c13f1d194ce.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2ae310f97dd0406599ec3c13f1d194ce.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1266,15 +1284,15 @@ sudo /opt/splunk/bin/splunk restart
 </div></div>
 </div>
 </div>
-<div id="outline-container-org22ab575" class="outline-2">
-<h2 id="org22ab575">Splunk Python SDK</h2>
-<div class="outline-text-2" id="text-org22ab575">
+<div id="outline-container-org652f9b9" class="outline-2">
+<h2 id="org652f9b9">Splunk Python SDK</h2>
+<div class="outline-text-2" id="text-org652f9b9">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_311d782d0731479eaf0f7305b4d95a5f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_b6e5af471edd4ed1a2a1591a5c085c0d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_311d782d0731479eaf0f7305b4d95a5f=document.querySelector('button[name=btn_311d782d0731479eaf0f7305b4d95a5f]');
-copyBtnbtn_311d782d0731479eaf0f7305b4d95a5f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import splunklib.client as client\n\n# Connect\nservice = client.connect(\n    host=\"localhost\",\n    port=8089,\n    username=\"admin\",\n    password=\"password\"\n)\n\n# Run a search\njob = service.jobs.create(\n    \"search index=wineventlog EventCode=4625 | stats count by Account_Name\",\n    exec_mode=\"blocking\"\n)\n\n# Get results\nimport splunklib.results as results\nfor result in results.JSONResultsReader(job.results(output_mode=\"json\")):\n    print(result)\n`);copyBtnbtn_311d782d0731479eaf0f7305b4d95a5f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_311d782d0731479eaf0f7305b4d95a5f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b6e5af471edd4ed1a2a1591a5c085c0d=document.querySelector('button[name=btn_b6e5af471edd4ed1a2a1591a5c085c0d]');
+copyBtnbtn_b6e5af471edd4ed1a2a1591a5c085c0d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import splunklib.client as client\n\n# Connect\nservice = client.connect(\n    host=\"localhost\",\n    port=8089,\n    username=\"admin\",\n    password=\"password\"\n)\n\n# Run a search\njob = service.jobs.create(\n    \"search index=wineventlog EventCode=4625 | stats count by Account_Name\",\n    exec_mode=\"blocking\"\n)\n\n# Get results\nimport splunklib.results as results\nfor result in results.JSONResultsReader(job.results(output_mode=\"json\")):\n    print(result)\n`);copyBtnbtn_b6e5af471edd4ed1a2a1591a5c085c0d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b6e5af471edd4ed1a2a1591a5c085c0d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1302,11 +1320,11 @@ let res = copyTextToClipboard(`import splunklib.client as client\n\n# Connect\ns
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_41c5b3002b2e49ff90ecb3a74d9f0c8a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_32cca1bac9074511b7a83fd10e28562a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_41c5b3002b2e49ff90ecb3a74d9f0c8a=document.querySelector('button[name=btn_41c5b3002b2e49ff90ecb3a74d9f0c8a]');
-copyBtnbtn_41c5b3002b2e49ff90ecb3a74d9f0c8a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`pip install splunk-sdk --break-system-packages\n`);copyBtnbtn_41c5b3002b2e49ff90ecb3a74d9f0c8a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_41c5b3002b2e49ff90ecb3a74d9f0c8a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_32cca1bac9074511b7a83fd10e28562a=document.querySelector('button[name=btn_32cca1bac9074511b7a83fd10e28562a]');
+copyBtnbtn_32cca1bac9074511b7a83fd10e28562a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`pip install splunk-sdk --break-system-packages\n`);copyBtnbtn_32cca1bac9074511b7a83fd10e28562a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_32cca1bac9074511b7a83fd10e28562a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1315,9 +1333,9 @@ let res = copyTextToClipboard(`pip install splunk-sdk --break-system-packages\n`
 </div></div>
 </div>
 </div>
-<div id="outline-container-org5975fdf" class="outline-2">
-<h2 id="org5975fdf">Tips</h2>
-<div class="outline-text-2" id="text-org5975fdf">
+<div id="outline-container-orge80c80e" class="outline-2">
+<h2 id="orge80c80e">Tips</h2>
+<div class="outline-text-2" id="text-orge80c80e">
 <ul class="org-ul">
 <li>Always use a dedicated index per data source type — mixing
 everything into the default index makes searching slower and
@@ -1338,6 +1356,20 @@ is deployed</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1345,6 +1377,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

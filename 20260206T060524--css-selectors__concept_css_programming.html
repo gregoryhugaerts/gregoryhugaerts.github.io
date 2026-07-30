@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CSS Selectors</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,14 +886,14 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge3536ef">Basic Selectors</a></li>
-<li><a href="#org31a9157">{ box-sizing: border-box; }</a></li>
-<li><a href="#org5a0b72f">Combinators</a></li>
-<li><a href="#org572659f">Pseudo-classes</a></li>
-<li><a href="#orga79b651">Pseudo-elements</a></li>
-<li><a href="#org16c0cbb">Grouping</a></li>
-<li><a href="#org1e171ae">Specificity</a></li>
-<li><a href="#orgaf0311a">Tips</a></li>
+<li><a href="#org7f436cf">Basic Selectors</a></li>
+<li><a href="#orgb289bbc">{ box-sizing: border-box; }</a></li>
+<li><a href="#orgadea08a">Combinators</a></li>
+<li><a href="#org1f64bd4">Pseudo-classes</a></li>
+<li><a href="#org464cd65">Pseudo-elements</a></li>
+<li><a href="#orgeaff175">Grouping</a></li>
+<li><a href="#orged496ab">Specificity</a></li>
+<li><a href="#orgceefa24">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -891,9 +909,9 @@ Related: <a href="20260206T060522--css-core-concepts__concept_css_programming.ht
          <a href="20260206T060523--css-layout__concept_css_programming.html">CSS Layout</a>
 	 <a href="20260314T005629==css--cascading-style-sheets__language_programming.html">css  Cascading Style Sheets</a>
 </p>
-<div id="outline-container-orge3536ef" class="outline-2">
-<h2 id="orge3536ef">Basic Selectors</h2>
-<div class="outline-text-2" id="text-orge3536ef">
+<div id="outline-container-org7f436cf" class="outline-2">
+<h2 id="org7f436cf">Basic Selectors</h2>
+<div class="outline-text-2" id="text-org7f436cf">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -960,9 +978,9 @@ p { color: blue; }
 </p>
 </div>
 </div>
-<div id="outline-container-org31a9157" class="outline-2">
-<h2 id="org31a9157">{ box-sizing: border-box; }</h2>
-<div class="outline-text-2" id="text-org31a9157">
+<div id="outline-container-orgb289bbc" class="outline-2">
+<h2 id="orgb289bbc">{ box-sizing: border-box; }</h2>
+<div class="outline-text-2" id="text-orgb289bbc">
 <p>
 <i>* Attribute selectors *</i>
 [type="text"] { border: 1px solid gray; }
@@ -973,15 +991,15 @@ a[href$=".pdf"] { color: red; }       <i>* href ends with .pdf *</i>
 </p>
 </div>
 </div>
-<div id="outline-container-org5a0b72f" class="outline-2">
-<h2 id="org5a0b72f">Combinators</h2>
-<div class="outline-text-2" id="text-org5a0b72f">
+<div id="outline-container-orgadea08a" class="outline-2">
+<h2 id="orgadea08a">Combinators</h2>
+<div class="outline-text-2" id="text-orgadea08a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_d786db32b4bf445a830706e3033e96c5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_7501327f034f4f0dae7bc47fbf94b75c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d786db32b4bf445a830706e3033e96c5=document.querySelector('button[name=btn_d786db32b4bf445a830706e3033e96c5]');
-copyBtnbtn_d786db32b4bf445a830706e3033e96c5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`/* Descendant — any level deep */\ndiv p { margin: 0; }\n\n/* Child — direct children only */\nul > li { list-style: square; }\n\n/* Adjacent sibling — immediately following */\nh2 + p { text-indent: 20px; }\n\n/* General sibling — any following sibling */\nh2 ~ p { border-top: 1px dashed; }\n`);copyBtnbtn_d786db32b4bf445a830706e3033e96c5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d786db32b4bf445a830706e3033e96c5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7501327f034f4f0dae7bc47fbf94b75c=document.querySelector('button[name=btn_7501327f034f4f0dae7bc47fbf94b75c]');
+copyBtnbtn_7501327f034f4f0dae7bc47fbf94b75c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`/* Descendant — any level deep */\ndiv p { margin: 0; }\n\n/* Child — direct children only */\nul > li { list-style: square; }\n\n/* Adjacent sibling — immediately following */\nh2 + p { text-indent: 20px; }\n\n/* General sibling — any following sibling */\nh2 ~ p { border-top: 1px dashed; }\n`);copyBtnbtn_7501327f034f4f0dae7bc47fbf94b75c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7501327f034f4f0dae7bc47fbf94b75c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1000,19 +1018,19 @@ let res = copyTextToClipboard(`/* Descendant — any level deep */\ndiv p { marg
 </div></div>
 </div>
 </div>
-<div id="outline-container-org572659f" class="outline-2">
-<h2 id="org572659f">Pseudo-classes</h2>
-<div class="outline-text-2" id="text-org572659f">
+<div id="outline-container-org1f64bd4" class="outline-2">
+<h2 id="org1f64bd4">Pseudo-classes</h2>
+<div class="outline-text-2" id="text-org1f64bd4">
 <p>
 State-based selectors — no extra HTML required:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_ba0f566438d243c98d92c0fd035add46>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_7331ea907c7d4be8805a5504cfe9626f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ba0f566438d243c98d92c0fd035add46=document.querySelector('button[name=btn_ba0f566438d243c98d92c0fd035add46]');
-copyBtnbtn_ba0f566438d243c98d92c0fd035add46.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`/* User interaction */\na:hover  { text-decoration: underline; }\na:visited { color: purple; }\nbutton:focus { outline: 2px solid blue; }\nbutton:active { transform: scale(0.98); }\n\n/* Form state */\ninput:disabled { opacity: 0.5; }\ninput:checked + label { font-weight: bold; }\n\n/* Structural */\nli:first-child { font-weight: bold; }\nli:last-child  { border-bottom: none; }\nli:nth-child(odd) { background: #f5f5f5; }\nli:nth-child(3n)  { color: red; }          /* every 3rd */\np:empty { display: none; }\n:root { --primary: #3498db; }              /* CSS custom properties */\n\n/* Negation */\nbutton:not(.disabled) { cursor: pointer; }\nli:not(:last-child) { border-bottom: 1px solid; }\n`);copyBtnbtn_ba0f566438d243c98d92c0fd035add46.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ba0f566438d243c98d92c0fd035add46.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7331ea907c7d4be8805a5504cfe9626f=document.querySelector('button[name=btn_7331ea907c7d4be8805a5504cfe9626f]');
+copyBtnbtn_7331ea907c7d4be8805a5504cfe9626f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`/* User interaction */\na:hover  { text-decoration: underline; }\na:visited { color: purple; }\nbutton:focus { outline: 2px solid blue; }\nbutton:active { transform: scale(0.98); }\n\n/* Form state */\ninput:disabled { opacity: 0.5; }\ninput:checked + label { font-weight: bold; }\n\n/* Structural */\nli:first-child { font-weight: bold; }\nli:last-child  { border-bottom: none; }\nli:nth-child(odd) { background: #f5f5f5; }\nli:nth-child(3n)  { color: red; }          /* every 3rd */\np:empty { display: none; }\n:root { --primary: #3498db; }              /* CSS custom properties */\n\n/* Negation */\nbutton:not(.disabled) { cursor: pointer; }\nli:not(:last-child) { border-bottom: 1px solid; }\n`);copyBtnbtn_7331ea907c7d4be8805a5504cfe9626f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7331ea907c7d4be8805a5504cfe9626f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1041,19 +1059,19 @@ let res = copyTextToClipboard(`/* User interaction */\na:hover  { text-decoratio
 </div></div>
 </div>
 </div>
-<div id="outline-container-orga79b651" class="outline-2">
-<h2 id="orga79b651">Pseudo-elements</h2>
-<div class="outline-text-2" id="text-orga79b651">
+<div id="outline-container-org464cd65" class="outline-2">
+<h2 id="org464cd65">Pseudo-elements</h2>
+<div class="outline-text-2" id="text-org464cd65">
 <p>
 Style a part of an element — always double colon (<code>::</code>):
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_399a8026c5b04677a926a245fe0c96c2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_06e3d19b484f40e7a1017ed88dd466a3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_399a8026c5b04677a926a245fe0c96c2=document.querySelector('button[name=btn_399a8026c5b04677a926a245fe0c96c2]');
-copyBtnbtn_399a8026c5b04677a926a245fe0c96c2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`/* Insert content */\n.required::after {\n    content: \" *\";\n    color: red;\n}\n\n.quote::before {\n    content: \"\\201C\";   /* \" */\n}\n\n/* Text selection highlight */\n::selection {\n    background: #3498db;\n    color: white;\n}\n\n/* Placeholder text */\ninput::placeholder { color: #aaa; }\n\n/* First line / first letter */\np::first-line   { font-variant: small-caps; }\np::first-letter { font-size: 2em; float: left; }\n`);copyBtnbtn_399a8026c5b04677a926a245fe0c96c2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_399a8026c5b04677a926a245fe0c96c2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_06e3d19b484f40e7a1017ed88dd466a3=document.querySelector('button[name=btn_06e3d19b484f40e7a1017ed88dd466a3]');
+copyBtnbtn_06e3d19b484f40e7a1017ed88dd466a3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`/* Insert content */\n.required::after {\n    content: \" *\";\n    color: red;\n}\n\n.quote::before {\n    content: \"\\201C\";   /* \" */\n}\n\n/* Text selection highlight */\n::selection {\n    background: #3498db;\n    color: white;\n}\n\n/* Placeholder text */\ninput::placeholder { color: #aaa; }\n\n/* First line / first letter */\np::first-line   { font-variant: small-caps; }\np::first-letter { font-size: 2em; float: left; }\n`);copyBtnbtn_06e3d19b484f40e7a1017ed88dd466a3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_06e3d19b484f40e7a1017ed88dd466a3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1083,15 +1101,15 @@ let res = copyTextToClipboard(`/* Insert content */\n.required::after {\n    con
 </div></div>
 </div>
 </div>
-<div id="outline-container-org16c0cbb" class="outline-2">
-<h2 id="org16c0cbb">Grouping</h2>
-<div class="outline-text-2" id="text-org16c0cbb">
+<div id="outline-container-orgeaff175" class="outline-2">
+<h2 id="orgeaff175">Grouping</h2>
+<div class="outline-text-2" id="text-orgeaff175">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_4769d2174f3a43b28d957477f7173794>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_06d60d6992744efabd1f38f9f6b04224>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4769d2174f3a43b28d957477f7173794=document.querySelector('button[name=btn_4769d2174f3a43b28d957477f7173794]');
-copyBtnbtn_4769d2174f3a43b28d957477f7173794.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`/* Same styles for multiple selectors */\nh1, h2, h3, h4 { font-family: sans-serif; }\n\n.card, .panel, .modal { border-radius: 8px; }\n`);copyBtnbtn_4769d2174f3a43b28d957477f7173794.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4769d2174f3a43b28d957477f7173794.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_06d60d6992744efabd1f38f9f6b04224=document.querySelector('button[name=btn_06d60d6992744efabd1f38f9f6b04224]');
+copyBtnbtn_06d60d6992744efabd1f38f9f6b04224.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`/* Same styles for multiple selectors */\nh1, h2, h3, h4 { font-family: sans-serif; }\n\n.card, .panel, .modal { border-radius: 8px; }\n`);copyBtnbtn_06d60d6992744efabd1f38f9f6b04224.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_06d60d6992744efabd1f38f9f6b04224.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1103,20 +1121,20 @@ let res = copyTextToClipboard(`/* Same styles for multiple selectors */\nh1, h2,
 </div></div>
 </div>
 </div>
-<div id="outline-container-org1e171ae" class="outline-2">
-<h2 id="org1e171ae">Specificity</h2>
-<div class="outline-text-2" id="text-org1e171ae">
+<div id="outline-container-orged496ab" class="outline-2">
+<h2 id="orged496ab">Specificity</h2>
+<div class="outline-text-2" id="text-orged496ab">
 <p>
 When rules conflict, specificity determines the winner.
 Calculated as <code>(ID, class/attr/pseudo-class, element/pseudo-element)</code>:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_fadc969889ed495eaff9393f015eb564>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_2e035f783f5f40929300a2e7e2bae8ec>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fadc969889ed495eaff9393f015eb564=document.querySelector('button[name=btn_fadc969889ed495eaff9393f015eb564]');
-copyBtnbtn_fadc969889ed495eaff9393f015eb564.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`p              /* (0,0,1) */\n.card          /* (0,1,0) */\n#nav           /* (1,0,0) */\n#nav .item p   /* (1,1,1) */\n`);copyBtnbtn_fadc969889ed495eaff9393f015eb564.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fadc969889ed495eaff9393f015eb564.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2e035f783f5f40929300a2e7e2bae8ec=document.querySelector('button[name=btn_2e035f783f5f40929300a2e7e2bae8ec]');
+copyBtnbtn_2e035f783f5f40929300a2e7e2bae8ec.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`p              /* (0,0,1) */\n.card          /* (0,1,0) */\n#nav           /* (1,0,0) */\n#nav .item p   /* (1,1,1) */\n`);copyBtnbtn_2e035f783f5f40929300a2e7e2bae8ec.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2e035f783f5f40929300a2e7e2bae8ec.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1133,9 +1151,9 @@ Higher specificity always wins regardless of source order.
 </p>
 </div>
 </div>
-<div id="outline-container-orgaf0311a" class="outline-2">
-<h2 id="orgaf0311a">Tips</h2>
-<div class="outline-text-2" id="text-orgaf0311a">
+<div id="outline-container-orgceefa24" class="outline-2">
+<h2 id="orgceefa24">Tips</h2>
+<div class="outline-text-2" id="text-orgceefa24">
 <ul class="org-ul">
 <li>Prefer class selectors over IDs for styling — IDs are very
 high specificity and make overriding difficult</li>
@@ -1150,6 +1168,20 @@ even if the content is empty</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1157,6 +1189,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

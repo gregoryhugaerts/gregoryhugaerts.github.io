@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PCAP</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,33 +886,34 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2c98b9b">PCAP</a>
-<ul>
-<li><a href="#orgd558aa4">Core Concepts</a></li>
-<li><a href="#org9ec74d4">How PCAP Capture Works</a></li>
-<li><a href="#org8409d48">Common Tools for Working with PCAP Files</a></li>
-<li><a href="#org54df23b">Use Cases</a></li>
-<li><a href="#org1d91237">Key Considerations</a></li>
-</ul>
-</li>
+<li><a href="#org6ee0092">Core Concepts</a></li>
+<li><a href="#org625530e">How PCAP Capture Works</a></li>
+<li><a href="#orgfe2b7db">Common Tools for Working with PCAP Files</a></li>
+<li><a href="#org93a8e1a">Capturing and Reading PCAP Files</a></li>
+<li><a href="#org1d63195">Capture Filters vs Display Filters</a></li>
+<li><a href="#org012d568">Use Cases</a></li>
+<li><a href="#org9f7b4e8">Key Considerations</a></li>
+<li><a href="#orgbf7ad62">Tips</a></li>
 </ul>
 </div>
 </div>
 <p>
-related: <a href="20260213T071400--wireshark__cybersecurity_tool.html">Wireshark</a>
+Related: <a href="20260213T071400--wireshark__cybersecurity_tool.html">Wireshark</a>
          <a href="20260213T103429--tshark__cybersecurity_tool.html">Tshark</a>
-	 <a href="20260206T060546--network-packet__concept_networking.html">Network Packet</a>
+         <a href="20260206T060546--network-packet__concept_networking.html">Network Packet</a>
+         <a href="20260212T065120==dfir--digital-forensics-and-incidence-response__concept_cybersecurity.html">DFIR</a>
 </p>
-<div id="outline-container-org2c98b9b" class="outline-2">
-<h2 id="org2c98b9b">PCAP</h2>
-<div class="outline-text-2" id="text-org2c98b9b">
+
 <p>
-PCAP (Packet CAPture) is a common file format used to store network packet data captured from a network interface. It's the standard format used by many network analysis tools like Wireshark and tcpdump. Understanding PCAP is fundamental for network analysis, security investigations, and troubleshooting.
+PCAP (Packet CAPture) is a common file format used to store network
+packet data captured from a network interface. It's the standard
+format used by many network analysis tools like Wireshark and
+tcpdump. Understanding PCAP is fundamental for network analysis,
+security investigations, and troubleshooting.
 </p>
-</div>
-<div id="outline-container-orgd558aa4" class="outline-3">
-<h3 id="orgd558aa4">Core Concepts</h3>
-<div class="outline-text-3" id="text-orgd558aa4">
+<div id="outline-container-org6ee0092" class="outline-2">
+<h2 id="org6ee0092">Core Concepts</h2>
+<div class="outline-text-2" id="text-org6ee0092">
 <ul class="org-ul">
 <li><b>Packet:</b> The fundamental unit of data transmitted over a network. It consists of a header containing source and destination information, protocol details, and the actual data (payload).</li>
 <li><b>Packet Capture:</b> The process of intercepting and recording network packets as they travel across a network interface. This can be done using software tools.</li>
@@ -910,9 +929,9 @@ PCAP (Packet CAPture) is a common file format used to store network packet data 
 </ul>
 </div>
 </div>
-<div id="outline-container-org9ec74d4" class="outline-3">
-<h3 id="org9ec74d4">How PCAP Capture Works</h3>
-<div class="outline-text-3" id="text-org9ec74d4">
+<div id="outline-container-org625530e" class="outline-2">
+<h2 id="org625530e">How PCAP Capture Works</h2>
+<div class="outline-text-2" id="text-org625530e">
 <ol class="org-ol">
 <li><b>Interface Selection:</b> The user specifies the network interface to capture traffic from (e.g., eth0, wlan0, en0).</li>
 <li><b>Promiscuous Mode (Often):</b> The network interface is often put into promiscuous mode, which allows it to capture all traffic passing through the network segment, not just traffic addressed to or from the capturing host.</li>
@@ -922,9 +941,9 @@ PCAP (Packet CAPture) is a common file format used to store network packet data 
 </ol>
 </div>
 </div>
-<div id="outline-container-org8409d48" class="outline-3">
-<h3 id="org8409d48">Common Tools for Working with PCAP Files</h3>
-<div class="outline-text-3" id="text-org8409d48">
+<div id="outline-container-orgfe2b7db" class="outline-2">
+<h2 id="orgfe2b7db">Common Tools for Working with PCAP Files</h2>
+<div class="outline-text-2" id="text-orgfe2b7db">
 <ul class="org-ul">
 <li><b>Wireshark:</b> A powerful and widely used GUI-based network protocol analyzer that can capture and analyze PCAP files in detail.</li>
 <li><b>tcpdump:</b> A command-line packet analyzer that can capture and display packet details. Often used for live capture and filtering.</li>
@@ -934,22 +953,82 @@ PCAP (Packet CAPture) is a common file format used to store network packet data 
 </ul>
 </div>
 </div>
-<div id="outline-container-org54df23b" class="outline-3">
-<h3 id="org54df23b">Use Cases</h3>
-<div class="outline-text-3" id="text-org54df23b">
+<div id="outline-container-org93a8e1a" class="outline-2">
+<h2 id="org93a8e1a">Capturing and Reading PCAP Files</h2>
+<div class="outline-text-2" id="text-org93a8e1a">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0a83524877d34462bb264e0975f6f70d>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_0a83524877d34462bb264e0975f6f70d=document.querySelector('button[name=btn_0a83524877d34462bb264e0975f6f70d]');
+copyBtnbtn_0a83524877d34462bb264e0975f6f70d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# tcpdump — capture live traffic to a file\ntcpdump -i eth0 -w capture.pcap\n\n# tcpdump — capture with a filter (only port 80 traffic)\ntcpdump -i eth0 -w capture.pcap port 80\n\n# tcpdump — read back a saved capture\ntcpdump -r capture.pcap\n\n# tshark — capture live traffic\ntshark -i eth0 -w capture.pcap\n\n# tshark — read a file with a display filter\ntshark -r capture.pcap -Y \"http.request\"\n\n# tshark — follow a TCP stream (useful for reconstructing a session)\ntshark -r capture.pcap -q -z follow,tcp,ascii,0\n`);copyBtnbtn_0a83524877d34462bb264e0975f6f70d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0a83524877d34462bb264e0975f6f70d.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">tcpdump &#8212; capture live traffic to a file
+</span>tcpdump -i eth0 -w capture.pcap
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">tcpdump &#8212; capture with a filter (only port 80 traffic)
+</span>tcpdump -i eth0 -w capture.pcap port 80
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">tcpdump &#8212; read back a saved capture
+</span>tcpdump -r capture.pcap
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">tshark &#8212; capture live traffic
+</span>tshark -i eth0 -w capture.pcap
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">tshark &#8212; read a file with a display filter
+</span>tshark -r capture.pcap -Y <span style="color: var(--clr-string); background-color: var(--bg-string);">"http.request"</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">tshark &#8212; follow a TCP stream (useful for reconstructing a session)
+</span>tshark -r capture.pcap -q -z follow,tcp,ascii,0
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org1d63195" class="outline-2">
+<h2 id="org1d63195">Capture Filters vs Display Filters</h2>
+<div class="outline-text-2" id="text-org1d63195">
+<p>
+A common point of confusion, worth being explicit about:
+</p>
+
+<ul class="org-ul">
+<li><b>Capture filters</b> (tcpdump/tshark <code>-i</code> with a filter, or
+Wireshark's capture filter field) use BPF syntax and are applied
+<b>while capturing</b> — traffic that doesn't match is never written
+to the file at all, so filtering here is permanent and can't be
+undone later.</li>
+<li><b>Display filters</b> (Wireshark's filter bar, tshark's <code>-Y</code> flag)
+are applied <b>after</b> capture, against a file that already contains
+everything — filtering here is non-destructive and can be changed
+or removed at any time.</li>
+</ul>
+
+<p>
+When in doubt during an active investigation, capture broadly with
+minimal capture filters and narrow down with display filters
+afterward — a too-aggressive capture filter can silently discard
+the packet you actually needed.
+</p>
+</div>
+</div>
+<div id="outline-container-org012d568" class="outline-2">
+<h2 id="org012d568">Use Cases</h2>
+<div class="outline-text-2" id="text-org012d568">
 <ul class="org-ul">
 <li><b>Network Troubleshooting:</b> Analyzing network communication to identify connectivity issues, latency problems, or errors.</li>
 <li><b>Security Analysis:</b> Investigating security incidents, detecting malicious traffic, and analyzing attack patterns.</li>
 <li><b>Malware Analysis:</b> Examining the network behavior of malware.</li>
 <li><b>Protocol Analysis:</b> Studying the implementation and behavior of network protocols.</li>
 <li><b>Performance Monitoring:</b> Understanding network traffic patterns and bandwidth utilization.</li>
-<li><b><a href="Forensics.html#forensics">Forensics</a>:</b> Collecting and analyzing network evidence for legal or investigative purposes.</li>
+<li><b><a href="20260212T065120==dfir--digital-forensics-and-incidence-response__concept_cybersecurity.html">DFIR</a>:</b> Collecting and analyzing network evidence for legal or investigative purposes.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org1d91237" class="outline-3">
-<h3 id="org1d91237">Key Considerations</h3>
-<div class="outline-text-3" id="text-org1d91237">
+<div id="outline-container-org9f7b4e8" class="outline-2">
+<h2 id="org9f7b4e8">Key Considerations</h2>
+<div class="outline-text-2" id="text-org9f7b4e8">
 <ul class="org-ul">
 <li><b>Capture Size and Duration:</b> Capturing too much traffic for too long can result in very large PCAP files, making analysis difficult. Use filters during capture when possible.</li>
 <li><b>Privacy Concerns:</b> PCAP files can contain sensitive information. Handle them with appropriate security measures and respect privacy regulations.</li>
@@ -960,9 +1039,40 @@ PCAP (Packet CAPture) is a common file format used to store network packet data 
 </ul>
 </div>
 </div>
+<div id="outline-container-orgbf7ad62" class="outline-2">
+<h2 id="orgbf7ad62">Tips</h2>
+<div class="outline-text-2" id="text-orgbf7ad62">
+<ul class="org-ul">
+<li>Always capture broadly and filter for display, not the other way
+around — a capture filter that's too narrow can't be un-applied
+after the fact, since the discarded packets are simply gone</li>
+<li>Following a TCP stream (Wireshark: right-click → Follow → TCP
+Stream; tshark: <code>-z follow,tcp,ascii,STREAM_INDEX</code>) is usually
+faster than reading packet-by-packet when trying to reconstruct
+what actually happened in a single conversation</li>
+<li>For large PCAP files, tshark's scriptability makes it the better
+choice over Wireshark's GUI when you need to extract something
+specific (e.g. all HTTP requests, all DNS queries) rather than
+browse interactively</li>
+</ul>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -970,6 +1080,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

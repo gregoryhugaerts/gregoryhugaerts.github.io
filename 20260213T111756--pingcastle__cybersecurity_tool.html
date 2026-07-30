@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PingCastle</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,11 +886,11 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org61fe229">Running a Scan</a></li>
-<li><a href="#org32e10ac">Risk Categories</a></li>
-<li><a href="#org089df2f">Targeted Scanners</a></li>
-<li><a href="#org867bd8f">Reading the Report</a></li>
-<li><a href="#orgce00efb">Tips</a></li>
+<li><a href="#org7b6fffa">Running a Scan</a></li>
+<li><a href="#org55444d5">Risk Categories</a></li>
+<li><a href="#org6322c74">Targeted Scanners</a></li>
+<li><a href="#orgbe1a7e4">Reading the Report</a></li>
+<li><a href="#org2586eea">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -892,20 +910,20 @@ Related: <a href="20260327T190647--active-directory__concept.html">Active Direct
          <a href="20260314T005711--kerberoasting__concept_cybersecurity_technique.html">Kerberoasting</a>
          <a href="20260611T061629--penetration-testing-methodology__concept_cybersecurity_moc_pentesting.html">Penetration Testing Methodology</a>
 </p>
-<div id="outline-container-org61fe229" class="outline-2">
-<h2 id="org61fe229">Running a Scan</h2>
-<div class="outline-text-2" id="text-org61fe229">
+<div id="outline-container-org7b6fffa" class="outline-2">
+<h2 id="org7b6fffa">Running a Scan</h2>
+<div class="outline-text-2" id="text-org7b6fffa">
 <p>
 Requires only a standard authenticated domain user — no elevated
 privileges needed for the default health check.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_85eb57de85494dc981104573e4fa6013>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_cd42a202f8724684ac43bb75e2f56aa1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_85eb57de85494dc981104573e4fa6013=document.querySelector('button[name=btn_85eb57de85494dc981104573e4fa6013]');
-copyBtnbtn_85eb57de85494dc981104573e4fa6013.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Interactive menu (prompts for domain/server)\nPingCastle.exe\n\n# Direct health check against a specific domain\nPingCastle.exe --healthcheck --server DOMAIN.LOCAL\n\n# Health check using current domain context\nPingCastle.exe --healthcheck\n`);copyBtnbtn_85eb57de85494dc981104573e4fa6013.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_85eb57de85494dc981104573e4fa6013.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cd42a202f8724684ac43bb75e2f56aa1=document.querySelector('button[name=btn_cd42a202f8724684ac43bb75e2f56aa1]');
+copyBtnbtn_cd42a202f8724684ac43bb75e2f56aa1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Interactive menu (prompts for domain/server)\nPingCastle.exe\n\n# Direct health check against a specific domain\nPingCastle.exe --healthcheck --server DOMAIN.LOCAL\n\n# Health check using current domain context\nPingCastle.exe --healthcheck\n`);copyBtnbtn_cd42a202f8724684ac43bb75e2f56aa1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cd42a202f8724684ac43bb75e2f56aa1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -926,9 +944,9 @@ directory — open it directly, no separate viewer required.
 </p>
 </div>
 </div>
-<div id="outline-container-org32e10ac" class="outline-2">
-<h2 id="org32e10ac">Risk Categories</h2>
-<div class="outline-text-2" id="text-org32e10ac">
+<div id="outline-container-org55444d5" class="outline-2">
+<h2 id="org55444d5">Risk Categories</h2>
+<div class="outline-text-2" id="text-org55444d5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -980,19 +998,19 @@ can flag the whole domain as high risk.
 </p>
 </div>
 </div>
-<div id="outline-container-org089df2f" class="outline-2">
-<h2 id="org089df2f">Targeted Scanners</h2>
-<div class="outline-text-2" id="text-org089df2f">
+<div id="outline-container-org6322c74" class="outline-2">
+<h2 id="org6322c74">Targeted Scanners</h2>
+<div class="outline-text-2" id="text-org6322c74">
 <p>
 For faster, more focused checks instead of the full health check:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bee6c74c60fc436b86039cecb335bee8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f52798a09a7746f4b90f7c8744470478>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bee6c74c60fc436b86039cecb335bee8=document.querySelector('button[name=btn_bee6c74c60fc436b86039cecb335bee8]');
-copyBtnbtn_bee6c74c60fc436b86039cecb335bee8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Find shares readable by Everyone/Authenticated Users\nPingCastle.exe --scanner smb_share --server DOMAIN.LOCAL\n\n# Find Kerberoastable accounts (SPN set on user accounts)\nPingCastle.exe --scanner spn --server DOMAIN.LOCAL\n\n# Check LAPS/BitLocker deployment coverage\nPingCastle.exe --scanner laps_bitlocker --server DOMAIN.LOCAL\n`);copyBtnbtn_bee6c74c60fc436b86039cecb335bee8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bee6c74c60fc436b86039cecb335bee8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f52798a09a7746f4b90f7c8744470478=document.querySelector('button[name=btn_f52798a09a7746f4b90f7c8744470478]');
+copyBtnbtn_f52798a09a7746f4b90f7c8744470478.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Find shares readable by Everyone/Authenticated Users\nPingCastle.exe --scanner smb_share --server DOMAIN.LOCAL\n\n# Find Kerberoastable accounts (SPN set on user accounts)\nPingCastle.exe --scanner spn --server DOMAIN.LOCAL\n\n# Check LAPS/BitLocker deployment coverage\nPingCastle.exe --scanner laps_bitlocker --server DOMAIN.LOCAL\n`);copyBtnbtn_f52798a09a7746f4b90f7c8744470478.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f52798a09a7746f4b90f7c8744470478.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1008,9 +1026,9 @@ let res = copyTextToClipboard(`# Find shares readable by Everyone/Authenticated 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org867bd8f" class="outline-2">
-<h2 id="org867bd8f">Reading the Report</h2>
-<div class="outline-text-2" id="text-org867bd8f">
+<div id="outline-container-orgbe1a7e4" class="outline-2">
+<h2 id="orgbe1a7e4">Reading the Report</h2>
+<div class="outline-text-2" id="text-orgbe1a7e4">
 <ul class="org-ul">
 <li>Executive summary at the top gives the overall score and maturity
 level (1–5, based on the ANSSI maturity model — lower is worse)</li>
@@ -1024,9 +1042,9 @@ manually</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgce00efb" class="outline-2">
-<h2 id="orgce00efb">Tips</h2>
-<div class="outline-text-2" id="text-orgce00efb">
+<div id="outline-container-org2586eea" class="outline-2">
+<h2 id="org2586eea">Tips</h2>
+<div class="outline-text-2" id="text-org2586eea">
 <ul class="org-ul">
 <li>Run this early in AD enumeration — it's fast, low-noise (read-
 only, standard user context), and gives a prioritised list of
@@ -1044,6 +1062,20 @@ DC itself</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1051,6 +1083,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

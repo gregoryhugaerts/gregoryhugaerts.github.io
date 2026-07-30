@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Classless Inter-Domain Routing</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,25 +886,25 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org49cf61a">Classless Inter-Domain Routing</a>
+<li><a href="#org27939c2">Classless Inter-Domain Routing</a>
 <ul>
-<li><a href="#orgbeb41f2">Overview</a></li>
-<li><a href="#org110be22">Key Concepts</a></li>
-<li><a href="#org2773ac1">CIR Notation</a></li>
-<li><a href="#org9f1c2e4">Benefits of CIR</a></li>
-<li><a href="#org08c81c7">Example</a></li>
+<li><a href="#orgb0cf14b">Overview</a></li>
+<li><a href="#orgd127afa">Key Concepts</a></li>
+<li><a href="#orge3fd745">CIR Notation</a></li>
+<li><a href="#org694aa91">Benefits of CIR</a></li>
+<li><a href="#org48aee56">Example</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org49cf61a" class="outline-2">
-<h2 id="org49cf61a">Classless Inter-Domain Routing</h2>
-<div class="outline-text-2" id="text-org49cf61a">
+<div id="outline-container-org27939c2" class="outline-2">
+<h2 id="org27939c2">Classless Inter-Domain Routing</h2>
+<div class="outline-text-2" id="text-org27939c2">
 </div>
-<div id="outline-container-orgbeb41f2" class="outline-3">
-<h3 id="orgbeb41f2">Overview</h3>
-<div class="outline-text-3" id="text-orgbeb41f2">
+<div id="outline-container-orgb0cf14b" class="outline-3">
+<h3 id="orgb0cf14b">Overview</h3>
+<div class="outline-text-3" id="text-orgb0cf14b">
 <p>
 CIDR is a method of allocating IP addresses that allows for more efficient use of IP address space compared to the traditional classful addressing system.
 </p>
@@ -896,18 +914,18 @@ It introduces the concept of a subnet mask, which determines the size of the net
 </p>
 </div>
 </div>
-<div id="outline-container-org110be22" class="outline-3">
-<h3 id="org110be22">Key Concepts</h3>
-<div class="outline-text-3" id="text-org110be22">
+<div id="outline-container-orgd127afa" class="outline-3">
+<h3 id="orgd127afa">Key Concepts</h3>
+<div class="outline-text-3" id="text-orgd127afa">
 <ul class="org-ul">
 <li>Network prefix: The number of bits in the subnet mask that are set to 1. This determines the size of the network.</li>
 <li>Host portion: The remaining bits in the subnet mask that are set to 0. This determines the number of hosts within a network.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2773ac1" class="outline-3">
-<h3 id="org2773ac1">CIR Notation</h3>
-<div class="outline-text-3" id="text-org2773ac1">
+<div id="outline-container-orge3fd745" class="outline-3">
+<h3 id="orge3fd745">CIR Notation</h3>
+<div class="outline-text-3" id="text-orge3fd745">
 <p>
 CIDR notation represents an IP address and its subnet mask in a single format.
 </p>
@@ -921,9 +939,9 @@ For example, <code>192.168.1.0/24</code> represents a network with a network pre
 </p>
 </div>
 </div>
-<div id="outline-container-org9f1c2e4" class="outline-3">
-<h3 id="org9f1c2e4">Benefits of CIR</h3>
-<div class="outline-text-3" id="text-org9f1c2e4">
+<div id="outline-container-org694aa91" class="outline-3">
+<h3 id="org694aa91">Benefits of CIR</h3>
+<div class="outline-text-3" id="text-org694aa91">
 <ul class="org-ul">
 <li>Efficient IP address allocation: CIDR allows for more flexible and efficient allocation of IP addresses, reducing the risk of address exhaustion.</li>
 <li>Variable-length subnet masking (VLSM): CIDR supports VLSM, which allows for the creation of subnets of different sizes within a larger network.</li>
@@ -931,9 +949,9 @@ For example, <code>192.168.1.0/24</code> represents a network with a network pre
 </ul>
 </div>
 </div>
-<div id="outline-container-org08c81c7" class="outline-3">
-<h3 id="org08c81c7">Example</h3>
-<div class="outline-text-3" id="text-org08c81c7">
+<div id="outline-container-org48aee56" class="outline-3">
+<h3 id="org48aee56">Example</h3>
+<div class="outline-text-3" id="text-org48aee56">
 <p>
 Consider the IP address <code>192.168.1.0</code> with a subnet mask of <code>255.255.255.0</code>.
 </p>
@@ -954,6 +972,20 @@ CIDR notation: <code>192.168.1.0/24</code>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -961,6 +993,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

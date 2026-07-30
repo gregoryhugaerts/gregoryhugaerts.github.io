@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Encryption</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,25 +886,25 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgcba1ab7">Symmetric Encryption</a>
+<li><a href="#org07a8332">Symmetric Encryption</a>
 <ul>
-<li><a href="#org64cfbda">Modes of operation</a></li>
+<li><a href="#org921cf8b">Modes of operation</a></li>
 </ul>
 </li>
-<li><a href="#org2e82836">Asymmetric Encryption</a>
+<li><a href="#org6cf17eb">Asymmetric Encryption</a>
 <ul>
-<li><a href="#org050ec40">Digital signatures</a></li>
+<li><a href="#orga54d7da">Digital signatures</a></li>
 </ul>
 </li>
-<li><a href="#org7de70f3">Hybrid Encryption</a></li>
-<li><a href="#org239a219">At Rest vs In Transit</a></li>
-<li><a href="#orgc72cef8">Security Relevance</a>
+<li><a href="#orgc02fb87">Hybrid Encryption</a></li>
+<li><a href="#orga79726f">At Rest vs In Transit</a></li>
+<li><a href="#orgf1d8564">Security Relevance</a>
 <ul>
-<li><a href="#org35410a2">Common weaknesses</a></li>
-<li><a href="#org4630fe0">Identifying encryption in use</a></li>
+<li><a href="#org949570c">Common weaknesses</a></li>
+<li><a href="#org22fa2ae">Identifying encryption in use</a></li>
 </ul>
 </li>
-<li><a href="#org134dbfb">Tips</a></li>
+<li><a href="#orgd1d2f41">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -901,12 +919,12 @@ is reversible by the intended recipient.
 Related: <a href="20260206T060446--cryptography__concept_cybersecurity_math.html">Cryptography</a>
          <a href="20260206T060656--hashing__concept_cybersecurity_programming.html">Hashing</a>
          <a href="20260314T005743--public-key-infrastructure__concept_cybersecurity.html">PKI</a>
-         <a href="20260210T195356--secure-sockets-layer__concept_cybersecurity_networking.html">TLS / SSL</a>
+         <a href="20260210T195356==ssl--secure-sockets-layer__concept_cybersecurity_networking.html">TLS / SSL</a>
          <a href="20260206T060506--elliptical-curves__math.html">Elliptic Curves</a>
 </p>
-<div id="outline-container-orgcba1ab7" class="outline-2">
-<h2 id="orgcba1ab7">Symmetric Encryption</h2>
-<div class="outline-text-2" id="text-orgcba1ab7">
+<div id="outline-container-org07a8332" class="outline-2">
+<h2 id="org07a8332">Symmetric Encryption</h2>
+<div class="outline-text-2" id="text-org07a8332">
 <p>
 The same key encrypts and decrypts. Fast and efficient for
 bulk data. The key distribution problem — how do two parties
@@ -964,9 +982,9 @@ limitation.
 </tbody>
 </table>
 </div>
-<div id="outline-container-org64cfbda" class="outline-3">
-<h3 id="org64cfbda">Modes of operation</h3>
-<div class="outline-text-3" id="text-org64cfbda">
+<div id="outline-container-org921cf8b" class="outline-3">
+<h3 id="org921cf8b">Modes of operation</h3>
+<div class="outline-text-3" id="text-org921cf8b">
 <p>
 The mode determines how AES processes data larger than one block
 (128 bits). Mode choice matters — ECB is insecure regardless
@@ -1023,11 +1041,11 @@ integrity in one operation — the standard for new systems.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_8796aeb6aa3d4bba8ba6e7b0d32f936c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_425b823b54484e08ad5ca22441e67a7a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8796aeb6aa3d4bba8ba6e7b0d32f936c=document.querySelector('button[name=btn_8796aeb6aa3d4bba8ba6e7b0d32f936c]');
-copyBtnbtn_8796aeb6aa3d4bba8ba6e7b0d32f936c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`from cryptography.hazmat.primitives.ciphers.aead import AESGCM\nimport os\n\nkey = AESGCM.generate_key(bit_length=256)\naesgcm = AESGCM(key)\nnonce = os.urandom(12)   # 96-bit nonce for GCM\n\nciphertext = aesgcm.encrypt(nonce, b\"plaintext data\", None)\nplaintext  = aesgcm.decrypt(nonce, ciphertext, None)\n`);copyBtnbtn_8796aeb6aa3d4bba8ba6e7b0d32f936c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8796aeb6aa3d4bba8ba6e7b0d32f936c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_425b823b54484e08ad5ca22441e67a7a=document.querySelector('button[name=btn_425b823b54484e08ad5ca22441e67a7a]');
+copyBtnbtn_425b823b54484e08ad5ca22441e67a7a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`from cryptography.hazmat.primitives.ciphers.aead import AESGCM\nimport os\n\nkey = AESGCM.generate_key(bit_length=256)\naesgcm = AESGCM(key)\nnonce = os.urandom(12)   # 96-bit nonce for GCM\n\nciphertext = aesgcm.encrypt(nonce, b\"plaintext data\", None)\nplaintext  = aesgcm.decrypt(nonce, ciphertext, None)\n`);copyBtnbtn_425b823b54484e08ad5ca22441e67a7a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_425b823b54484e08ad5ca22441e67a7a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1045,9 +1063,9 @@ let res = copyTextToClipboard(`from cryptography.hazmat.primitives.ciphers.aead 
 </div>
 </div>
 </div>
-<div id="outline-container-org2e82836" class="outline-2">
-<h2 id="org2e82836">Asymmetric Encryption</h2>
-<div class="outline-text-2" id="text-org2e82836">
+<div id="outline-container-org6cf17eb" class="outline-2">
+<h2 id="org6cf17eb">Asymmetric Encryption</h2>
+<div class="outline-text-2" id="text-org6cf17eb">
 <p>
 A mathematically linked key pair: a public key (shareable) and
 a private key (secret). Data encrypted with the public key can
@@ -1110,9 +1128,9 @@ encryption). This is how TLS works.
 See <a href="20260206T060506--elliptical-curves__math.html">Elliptic Curves</a> for the mathematical foundation.
 </p>
 </div>
-<div id="outline-container-org050ec40" class="outline-3">
-<h3 id="org050ec40">Digital signatures</h3>
-<div class="outline-text-3" id="text-org050ec40">
+<div id="outline-container-orga54d7da" class="outline-3">
+<h3 id="orga54d7da">Digital signatures</h3>
+<div class="outline-text-3" id="text-orga54d7da">
 <p>
 Signing uses the <b>private</b> key; verification uses the <b>public</b>
 key — the inverse of encryption. Provides authentication and
@@ -1120,11 +1138,11 @@ non-repudiation.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_19687819856e4419bf6732097f2364fd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_3f5d7ce71da048ce88a044ebfa9a0f1e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_19687819856e4419bf6732097f2364fd=document.querySelector('button[name=btn_19687819856e4419bf6732097f2364fd]');
-copyBtnbtn_19687819856e4419bf6732097f2364fd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Signing:      hash(data) → encrypt with private key → signature\nVerification: decrypt signature with public key → compare to hash(data)\n`);copyBtnbtn_19687819856e4419bf6732097f2364fd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_19687819856e4419bf6732097f2364fd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3f5d7ce71da048ce88a044ebfa9a0f1e=document.querySelector('button[name=btn_3f5d7ce71da048ce88a044ebfa9a0f1e]');
+copyBtnbtn_3f5d7ce71da048ce88a044ebfa9a0f1e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Signing:      hash(data) → encrypt with private key → signature\nVerification: decrypt signature with public key → compare to hash(data)\n`);copyBtnbtn_3f5d7ce71da048ce88a044ebfa9a0f1e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3f5d7ce71da048ce88a044ebfa9a0f1e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1135,19 +1153,19 @@ Verification: decrypt signature with public key &#8594; compare to hash(data)
 </div>
 </div>
 </div>
-<div id="outline-container-org7de70f3" class="outline-2">
-<h2 id="org7de70f3">Hybrid Encryption</h2>
-<div class="outline-text-2" id="text-org7de70f3">
+<div id="outline-container-orgc02fb87" class="outline-2">
+<h2 id="orgc02fb87">Hybrid Encryption</h2>
+<div class="outline-text-2" id="text-orgc02fb87">
 <p>
 The standard in practice — TLS, PGP, SSH all use this pattern:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_7918fe75c7e34f22b12f733bd1e2ea0b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_56bbb4c80f7c4a5bbe69f191eb7eb6f8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7918fe75c7e34f22b12f733bd1e2ea0b=document.querySelector('button[name=btn_7918fe75c7e34f22b12f733bd1e2ea0b]');
-copyBtnbtn_7918fe75c7e34f22b12f733bd1e2ea0b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Generate a random symmetric session key\n2. Encrypt the session key with the recipient's public key\n3. Encrypt all data with the session key (AES-GCM)\n4. Send: encrypted session key + encrypted data\n5. Recipient decrypts session key with private key\n6. Recipient decrypts data with session key\n`);copyBtnbtn_7918fe75c7e34f22b12f733bd1e2ea0b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7918fe75c7e34f22b12f733bd1e2ea0b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_56bbb4c80f7c4a5bbe69f191eb7eb6f8=document.querySelector('button[name=btn_56bbb4c80f7c4a5bbe69f191eb7eb6f8]');
+copyBtnbtn_56bbb4c80f7c4a5bbe69f191eb7eb6f8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Generate a random symmetric session key\n2. Encrypt the session key with the recipient's public key\n3. Encrypt all data with the session key (AES-GCM)\n4. Send: encrypted session key + encrypted data\n5. Recipient decrypts session key with private key\n6. Recipient decrypts data with session key\n`);copyBtnbtn_56bbb4c80f7c4a5bbe69f191eb7eb6f8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_56bbb4c80f7c4a5bbe69f191eb7eb6f8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1161,9 +1179,9 @@ let res = copyTextToClipboard(`1. Generate a random symmetric session key\n2. En
 </div></div>
 </div>
 </div>
-<div id="outline-container-org239a219" class="outline-2">
-<h2 id="org239a219">At Rest vs In Transit</h2>
-<div class="outline-text-2" id="text-org239a219">
+<div id="outline-container-orga79726f" class="outline-2">
+<h2 id="orga79726f">At Rest vs In Transit</h2>
+<div class="outline-text-2" id="text-orga79726f">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1203,19 +1221,19 @@ let res = copyTextToClipboard(`1. Generate a random symmetric session key\n2. En
 </table>
 </div>
 </div>
-<div id="outline-container-orgc72cef8" class="outline-2">
-<h2 id="orgc72cef8">Security Relevance</h2>
-<div class="outline-text-2" id="text-orgc72cef8">
+<div id="outline-container-orgf1d8564" class="outline-2">
+<h2 id="orgf1d8564">Security Relevance</h2>
+<div class="outline-text-2" id="text-orgf1d8564">
 </div>
-<div id="outline-container-org35410a2" class="outline-3">
-<h3 id="org35410a2">Common weaknesses</h3>
-<div class="outline-text-3" id="text-org35410a2">
+<div id="outline-container-org949570c" class="outline-3">
+<h3 id="org949570c">Common weaknesses</h3>
+<div class="outline-text-3" id="text-org949570c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_307b85d5674b4aef84b91856c5d3de32>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_33279d0e48b14035bc382bbdbc581c4d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_307b85d5674b4aef84b91856c5d3de32=document.querySelector('button[name=btn_307b85d5674b4aef84b91856c5d3de32]');
-copyBtnbtn_307b85d5674b4aef84b91856c5d3de32.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— Using weak algorithms (DES, RC4, MD5 for key derivation)\n— ECB mode — leaks block patterns\n— Short key lengths (RSA < 2048-bit)\n— Hardcoded keys in source code\n— Poor key management — keys stored alongside encrypted data\n— Not validating certificates — allows MITM despite encryption\n— Encrypting without integrity (non-AEAD modes) — malleable ciphertext\n`);copyBtnbtn_307b85d5674b4aef84b91856c5d3de32.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_307b85d5674b4aef84b91856c5d3de32.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_33279d0e48b14035bc382bbdbc581c4d=document.querySelector('button[name=btn_33279d0e48b14035bc382bbdbc581c4d]');
+copyBtnbtn_33279d0e48b14035bc382bbdbc581c4d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— Using weak algorithms (DES, RC4, MD5 for key derivation)\n— ECB mode — leaks block patterns\n— Short key lengths (RSA < 2048-bit)\n— Hardcoded keys in source code\n— Poor key management — keys stored alongside encrypted data\n— Not validating certificates — allows MITM despite encryption\n— Encrypting without integrity (non-AEAD modes) — malleable ciphertext\n`);copyBtnbtn_33279d0e48b14035bc382bbdbc581c4d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_33279d0e48b14035bc382bbdbc581c4d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1230,15 +1248,15 @@ let res = copyTextToClipboard(`— Using weak algorithms (DES, RC4, MD5 for key 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4630fe0" class="outline-3">
-<h3 id="org4630fe0">Identifying encryption in use</h3>
-<div class="outline-text-3" id="text-org4630fe0">
+<div id="outline-container-org22fa2ae" class="outline-3">
+<h3 id="org22fa2ae">Identifying encryption in use</h3>
+<div class="outline-text-3" id="text-org22fa2ae">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c58768069053426eb4c24406de4c30e0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9d460db8b3c041cf95250700c15de884>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c58768069053426eb4c24406de4c30e0=document.querySelector('button[name=btn_c58768069053426eb4c24406de4c30e0]');
-copyBtnbtn_c58768069053426eb4c24406de4c30e0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Check TLS cipher suite offered by a server\nnmap --script ssl-enum-ciphers -p 443 $TARGET\nsslscan $TARGET:443\ntestssl.sh https://$TARGET\n\n# Check certificate\nopenssl s_client -connect $TARGET:443 | openssl x509 -text | grep -E \"Subject:|Issuer:|Not After:|Public Key\"\n\n# Find hardcoded keys or base64 blobs\ngrep -r \"AES\\|BEGIN.*KEY\\|ENCRYPTED\\|password.*=\" /var/www/ 2>/dev/null\nstrings binary_file | grep -E \"[A-Za-z0-9+/]{32,}={0,2}\"\n`);copyBtnbtn_c58768069053426eb4c24406de4c30e0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c58768069053426eb4c24406de4c30e0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9d460db8b3c041cf95250700c15de884=document.querySelector('button[name=btn_9d460db8b3c041cf95250700c15de884]');
+copyBtnbtn_9d460db8b3c041cf95250700c15de884.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Check TLS cipher suite offered by a server\nnmap --script ssl-enum-ciphers -p 443 $TARGET\nsslscan $TARGET:443\ntestssl.sh https://$TARGET\n\n# Check certificate\nopenssl s_client -connect $TARGET:443 | openssl x509 -text | grep -E \"Subject:|Issuer:|Not After:|Public Key\"\n\n# Find hardcoded keys or base64 blobs\ngrep -r \"AES\\|BEGIN.*KEY\\|ENCRYPTED\\|password.*=\" /var/www/ 2>/dev/null\nstrings binary_file | grep -E \"[A-Za-z0-9+/]{32,}={0,2}\"\n`);copyBtnbtn_9d460db8b3c041cf95250700c15de884.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9d460db8b3c041cf95250700c15de884.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1258,9 +1276,9 @@ strings binary_file | grep -E <span style="color: var(--clr-string); background-
 </div>
 </div>
 </div>
-<div id="outline-container-org134dbfb" class="outline-2">
-<h2 id="org134dbfb">Tips</h2>
-<div class="outline-text-2" id="text-org134dbfb">
+<div id="outline-container-orgd1d2f41" class="outline-2">
+<h2 id="orgd1d2f41">Tips</h2>
+<div class="outline-text-2" id="text-orgd1d2f41">
 <ul class="org-ul">
 <li>Always use authenticated encryption (AES-GCM, ChaCha20-Poly1305)
 rather than encryption-only modes — unauthenticated ciphertext
@@ -1280,6 +1298,20 @@ implementing algorithms yourself</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1287,6 +1319,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

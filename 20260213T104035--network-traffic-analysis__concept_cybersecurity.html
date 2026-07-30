@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Network Traffic Analysis</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,50 +886,140 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf536ac2">Network Traffic Analysis</a>
-<ul>
-<li><a href="#org1484516">Key Features</a></li>
-<li><a href="#orgd1954ca">Use Cases</a></li>
-</ul>
-</li>
+<li><a href="#org0683798">Key Features</a></li>
+<li><a href="#org558716d">Practical Analysis Workflow</a></li>
+<li><a href="#org29e0be1">Common Anomaly Patterns Worth Recognizing</a></li>
+<li><a href="#org88dcc7f">Use Cases</a></li>
+<li><a href="#orge1447d7">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf536ac2" class="outline-2">
-<h2 id="orgf536ac2">Network Traffic Analysis</h2>
-<div class="outline-text-2" id="text-orgf536ac2">
 <p>
-Network Traffic Analysis (NTA) involves monitoring and examining network communication patterns to identify anomalies, security threats, and performance issues. It provides valuable insights into network behavior, enabling organizations to protect their systems and data.
+Network Traffic Analysis (NTA) involves monitoring and examining
+network communication patterns to identify anomalies, security
+threats, and performance issues. It provides valuable insights into
+network behavior, enabling organizations to protect their systems
+and data.
 </p>
-</div>
-<div id="outline-container-org1484516" class="outline-3">
-<h3 id="org1484516">Key Features</h3>
-<div class="outline-text-3" id="text-org1484516">
+
+<p>
+Related: <a href="20260206T060546--network-packet__concept_networking.html">Network Packet</a>
+         <a href="20260214T085313--network-protocols__moc_networking_protocol.html">Network Protocols</a>
+         <a href="20260206T060458--data-exfiltration__concept_cybersecurity.html">Data Exfiltration</a>
+         <a href="20260212T065120==dfir--digital-forensics-and-incidence-response__concept_cybersecurity.html">DFIR</a>
+         <a href="20260206T060720--pcap__concept_cybersecurity.html">PCAP</a>
+         <a href="20260213T071400--wireshark__cybersecurity_tool.html">Wireshark</a>
+         <a href="20260213T103429--tshark__cybersecurity_tool.html">Tshark</a>
+</p>
+<div id="outline-container-org0683798" class="outline-2">
+<h2 id="org0683798">Key Features</h2>
+<div class="outline-text-2" id="text-org0683798">
 <ul class="org-ul">
-<li>Packet capture: Collecting network <a href="Network Packet.html#network-packet">Network Packet</a>s for analysis.</li>
-<li>Protocol analysis: Examining <a href="Network Protocols.html#network-protocols">Network Protocols</a> for deviations and vulnerabilities.</li>
+<li>Packet capture: Collecting network <a href="20260206T060546--network-packet__concept_networking.html">Network Packet</a>s for analysis.</li>
+<li>Protocol analysis: Examining <a href="20260214T085313--network-protocols__moc_networking_protocol.html">Network Protocols</a> for deviations and vulnerabilities.</li>
 <li>Traffic pattern analysis: Identifying normal traffic patterns and detecting anomalies.</li>
-<li>Threat detection: Identifying malicious activities, such as malware, <a href="Data Exfiltration.html#data-exfiltration">Data Exfiltration</a>, or insider threats.</li>
+<li>Threat detection: Identifying malicious activities, such as malware, <a href="20260206T060458--data-exfiltration__concept_cybersecurity.html">Data Exfiltration</a>, or insider threats.</li>
 <li>Performance optimization: Identifying network bottlenecks and optimizing traffic flow.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd1954ca" class="outline-3">
-<h3 id="orgd1954ca">Use Cases</h3>
-<div class="outline-text-3" id="text-orgd1954ca">
-<ul class="org-ul">
-<li>Threat detection: Identifying and responding to cyber attacks in real-time.</li>
-<li></li>
+<div id="outline-container-org558716d" class="outline-2">
+<h2 id="org558716d">Practical Analysis Workflow</h2>
+<div class="outline-text-2" id="text-org558716d">
+<p>
+NTA in practice usually means working through a captured or live
+PCAP with a specific question in mind — see
+<a href="20260206T060720--pcap__concept_cybersecurity.html">PCAP</a> for capture mechanics and
+capture-vs-display filter distinction. The actual analysis workflow:
+</p>
 
-<li>Digital <a href="Forensics.html#forensics">Forensics</a>: Analyzing network traffic for legal or investigative purposes.</li>
-<li>Network performance optimization: Improving network efficiency and user experience.</li>
-<li></li>
+<ol class="org-ol">
+<li><b>Establish a baseline:</b> What does normal traffic on this network
+look like — protocols in use, typical volume, usual destinations</li>
+<li><b>Filter to the anomaly:</b> Narrow to the time window and
+hosts/protocols actually relevant to the investigation, rather
+than reviewing everything</li>
+<li><b>Follow the conversation:</b> Reconstruct the full exchange (see
+TCP stream following in the PCAP note) rather than reading
+individual packets in isolation</li>
+<li><b>Correlate across sources:</b> Cross-reference findings against
+other log sources (DNS logs, firewall logs, endpoint telemetry)
+for the full picture — traffic analysis alone rarely tells the
+complete story</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org29e0be1" class="outline-2">
+<h2 id="org29e0be1">Common Anomaly Patterns Worth Recognizing</h2>
+<div class="outline-text-2" id="text-org29e0be1">
+<ul class="org-ul">
+<li><b>Beaconing:</b> Regular, periodic connections to the same external
+destination at consistent intervals — classic C2 indicator,
+distinct from normal human-driven browsing traffic which is
+irregular</li>
+<li><b>Unusual data volume:</b> A host suddenly sending far more outbound
+data than its baseline suggests possible exfiltration</li>
+<li><b>Protocol on the wrong port:</b> Non-HTTP traffic on port 80/443, or
+any protocol running on a port that doesn't match its standard —
+often an evasion attempt against port-based firewall rules</li>
+<li><b>DNS anomalies:</b> High volume of NXDOMAIN responses (possible DGA
+malware), unusually long or high-entropy subdomain queries
+(possible DNS tunneling/exfiltration)</li>
+<li><b>Off-hours activity:</b> Traffic patterns that don't match the
+organization's normal working hours, particularly for
+internal-to-external connections</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org88dcc7f" class="outline-2">
+<h2 id="org88dcc7f">Use Cases</h2>
+<div class="outline-text-2" id="text-org88dcc7f">
+<ul class="org-ul">
+<li>Threat detection: Identifying and responding to cyber attacks in
+real-time.</li>
+<li>Incident scoping: Determining which hosts communicated with a
+known-malicious indicator, and when.</li>
+<li>Digital <a href="20260212T065120==dfir--digital-forensics-and-incidence-response__concept_cybersecurity.html">Forensics</a>: Analyzing network
+traffic for legal or investigative purposes.</li>
+<li>Network performance optimization: Improving network efficiency
+and user experience.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge1447d7" class="outline-2">
+<h2 id="orge1447d7">Tips</h2>
+<div class="outline-text-2" id="text-orge1447d7">
+<ul class="org-ul">
+<li>Don't start analysis by scrolling through raw packets — start
+with a specific question (what talked to this IP, when did this
+begin, what protocol is this) and filter toward the answer</li>
+<li>Beaconing is one of the most reliable indicators to look for
+first in a suspected-compromise scenario — consistent interval
+timing stands out clearly even in high-volume traffic once
+sorted by destination and time</li>
+<li>If a capture is too large to review manually, statistics views
+(Wireshark's Statistics menu, or <code>tshark -z conv,tcp</code> for
+conversation summaries) give a fast overview of top talkers and
+volume before diving into individual packets</li>
 </ul>
 </div>
 </div>
 </div>
-</div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -919,6 +1027,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

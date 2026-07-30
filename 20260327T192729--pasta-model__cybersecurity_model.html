@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Pasta model</title>
-<meta name="author" content="termux" />
+<title>PASTA Model</title>
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,49 +860,159 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
-<h1 class="title">Pasta model</h1>
+<h1 class="title">PASTA Model</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6589f9d">Process for Attack Simulation and Threat Analysis Model</a></li>
+<li><a href="#orga898d0e">The Seven Phases</a></li>
+<li><a href="#org55d2ba1">Why Seven Stages Instead of STRIDE's Six Categories</a></li>
+<li><a href="#org295253c">Pentest-Relevant Framing</a></li>
+<li><a href="#org0f64dbe">Tips</a></li>
 </ul>
 </div>
 </div>
-<dl class="org-dl">
-<dt>related</dt><dd></dd>
-</dl>
-<div id="outline-container-org6589f9d" class="outline-2">
-<h2 id="org6589f9d">Process for Attack Simulation and Threat Analysis Model</h2>
-<div class="outline-text-2" id="text-org6589f9d">
 <p>
-The PASTA (Process for Attack Simulation and Threat Analysis) model is a seven-step, risk-centric methodology for performing threat modeling. It aims to align business objectives with technical requirements and deliver a dynamic threat identification, enumeration, and scoring process.
+The PASTA (Process for Attack Simulation and Threat Analysis) model
+is a seven-step, risk-centric methodology for performing threat
+modeling. It aims to align business objectives with technical
+requirements and deliver a dynamic threat identification,
+enumeration, and scoring process — heavier and more formal than
+<a href="20260327T192607--stride-model__cybersecurity_model.html">STRIDE</a>, and better suited to an
+organization-wide exercise than a quick per-component review.
 </p>
 
 <p>
-Its phases include:
+Related: <a href="20260327T192607--stride-model__cybersecurity_model.html">STRIDE Model</a>
+         <a href="20260206T060500--defence-frameworks__cybersecurity_moc_model.html">Defence Frameworks</a>
+         <a href="20260207T070540==cvss--common-vulnerability-scoring-system__concept_cybersecurity.html">CVSS</a>
+         <a href="20260212T065424--vulnerability-priority-rating__concept_cybersecurity.html">Vulnerability Priority Rating</a>
 </p>
-
+<div id="outline-container-orga898d0e" class="outline-2">
+<h2 id="orga898d0e">The Seven Phases</h2>
+<div class="outline-text-2" id="text-orga898d0e">
 <ol class="org-ol">
-<li><b>Define Business Objective:</b> Establish the context and critical assets.</li>
-<li><b>Define Technical Scope:</b> Identify the systems, applications, and infrastructure involved.</li>
-<li><b>Application Deconstruction:</b> Understand the application's architecture, data flows, and components.</li>
-<li><b>Threat Analysis:</b> Identify potential threats relevant to the application and system.</li>
-<li><b>Vulnerability &amp; Weakness Analysis:</b> Discover vulnerabilities that could be exploited by identified threats.</li>
-<li><b>Attack Simulation:</b> Model potential attack paths to validate threats and vulnerabilities.</li>
-<li><b>Risk &amp; Impact Analysis:</b> Assess the likelihood and impact of successful attacks, prioritizing countermeasures based on business risk.</li>
+<li><b>Define Business Objectives:</b> Establish the context, critical
+assets, and what the business actually stands to lose — this is
+what makes PASTA risk-centric rather than purely technical from
+the start</li>
+<li><b>Define Technical Scope:</b> Identify the systems, applications,
+and infrastructure involved</li>
+<li><b>Application Decomposition:</b> Understand the application's
+architecture, data flows, and components — mapping out trust
+boundaries and where data moves between them</li>
+<li><b>Threat Analysis:</b> Identify potential threats relevant to the
+application and system, drawing on threat intelligence for
+realistic adversary behavior rather than a generic checklist</li>
+<li><b>Vulnerability &amp; Weakness Analysis:</b> Discover vulnerabilities
+that could be exploited by identified threats — this is where
+PASTA connects to concrete technical findings, similar in intent
+to a vulnerability scan or manual review</li>
+<li><b>Attack Simulation:</b> Model potential attack paths to validate
+threats and vulnerabilities — essentially a structured attack
+tree exercise, asking whether the theoretical threats from stage
+4 are actually achievable given the vulnerabilities found in
+stage 5</li>
+<li><b>Risk &amp; Impact Analysis:</b> Assess the likelihood and impact of
+successful attacks, prioritizing countermeasures based on
+business risk — feeding back into stage 1's business objectives
+to close the loop</li>
 </ol>
+</div>
+</div>
+<div id="outline-container-org55d2ba1" class="outline-2">
+<h2 id="org55d2ba1">Why Seven Stages Instead of STRIDE's Six Categories</h2>
+<div class="outline-text-2" id="text-org55d2ba1">
+<p>
+The structural difference matters, not just the step count:
+</p>
+
+<ul class="org-ul">
+<li>STRIDE gives you <b>categories</b> to check against a component — a
+checklist applied per system part</li>
+<li>PASTA gives you a <b>process</b> that runs start to finish across an
+entire application or organization, explicitly starting and
+ending with business risk rather than technical categories</li>
+</ul>
 
 <p>
-The PASTA model helps organizations understand potential attack vectors and develop robust security controls by focusing on the attacker's perspective and evaluating risks from a business standpoint.
+This is why PASTA is the heavier tool: stages 1 and 7 have no STRIDE
+equivalent at all — STRIDE never asks "what does this cost the
+business" before or after the technical analysis, PASTA is built
+around that question.
 </p>
+</div>
+</div>
+<div id="outline-container-org295253c" class="outline-2">
+<h2 id="org295253c">Pentest-Relevant Framing</h2>
+<div class="outline-text-2" id="text-org295253c">
+<p>
+PASTA itself isn't something you'd run during a timed exam room,
+but the underlying logic maps onto how a real engagement's
+reporting should work — a finding without business impact context
+(stage 1/7 thinking) is a weaker report than one that ties a
+technical vulnerability back to what it would actually cost the
+client. When writing severity/impact sections in a report, PASTA's
+framing (technical finding → simulated attack path → business risk)
+is a useful mental model even without running the full seven-stage
+process formally.
+</p>
+</div>
+</div>
+<div id="outline-container-org0f64dbe" class="outline-2">
+<h2 id="org0f64dbe">Tips</h2>
+<div class="outline-text-2" id="text-org0f64dbe">
+<ul class="org-ul">
+<li>Don't confuse PASTA's formality with it being "more thorough" in
+a way that makes STRIDE inferior — they solve different problems.
+STRIDE is faster and better for reviewing one specific design
+decision; reaching for PASTA on a single API endpoint is
+overkill in the other direction</li>
+<li>The business-risk framing (stages 1 and 7) is the part most
+worth internalizing even outside formal threat modeling — a
+pentest report that explains <b>why a finding matters to the
+business</b>, not just what the technical flaw is, is a stronger
+deliverable</li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -910,6 +1020,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

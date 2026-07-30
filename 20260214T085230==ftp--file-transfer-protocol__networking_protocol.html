@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>File Transfer Protocol</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdf4f582">File Transfer Protocol</a></li>
-<li><a href="#orga6468e5">Diagram</a></li>
-<li><a href="#org7cf9e62">Key Features</a></li>
-<li><a href="#org55982b2">FTP Commands</a></li>
-<li><a href="#org3ed0fc2">FTP Security Concerns</a></li>
-<li><a href="#orgfa802b1">FTP Alternatives</a></li>
+<li><a href="#org885258e">File Transfer Protocol</a></li>
+<li><a href="#org6950628">Diagram</a></li>
+<li><a href="#org096c2af">Key Features</a></li>
+<li><a href="#orgb020283">FTP Commands</a></li>
+<li><a href="#org8b5fe1d">FTP Security Concerns</a></li>
+<li><a href="#org3831822">FTP Alternatives</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdf4f582" class="outline-2">
-<h2 id="orgdf4f582">File Transfer Protocol</h2>
-<div class="outline-text-2" id="text-orgdf4f582">
+<div id="outline-container-org885258e" class="outline-2">
+<h2 id="org885258e">File Transfer Protocol</h2>
+<div class="outline-text-2" id="text-org885258e">
 <p>
 FTP (File Transfer Protocol) is a network protocol used for transferring
 </p>
@@ -897,15 +915,15 @@ for file sharing and distribution.
 </p>
 </div>
 </div>
-<div id="outline-container-orga6468e5" class="outline-2">
-<h2 id="orga6468e5">Diagram</h2>
-<div class="outline-text-2" id="text-orga6468e5">
+<div id="outline-container-org6950628" class="outline-2">
+<h2 id="org6950628">Diagram</h2>
+<div class="outline-text-2" id="text-org6950628">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PLANTUML</span><button class='copyBtn' name=btn_13f957a4415a43b894ea120b4e7c3f4d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PLANTUML</span><button class='copyBtn' name=btn_758ec7c452cc46d1a88ff23e43ca7800>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_13f957a4415a43b894ea120b4e7c3f4d=document.querySelector('button[name=btn_13f957a4415a43b894ea120b4e7c3f4d]');
-copyBtnbtn_13f957a4415a43b894ea120b4e7c3f4d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`@startuml\ntitle FTP Protocol\n\nparticipant Client\nparticipant Server\n\nactivate Client\n\nClient -> Server: Connect to Server (Port 21)\nactivate Server\n\nServer --> Client: Welcome Message, Server Information\nClient -> Server: User <username>\nServer --> Client: 331 User name okay, need password\nClient -> Server: Pass <password>\nServer --> Client: 230 User <username> logged in\n\nClient -> Server: List\nServer --> Client: 125 Data connection already open; transfer starting\nClient -> Server: Receive file listing\n\nClient -> Server: Retrieve <filename>\nServer --> Client: 150 File status okay; about to open data connection.\nServer --> Client: Open Data Connection (Port 20)\nClient -> Server: Receive file <filename>\n\nClient -> Server: Store <filename>\nClient -> Server: 150 File status okay; about to open data connection.\nClient -> Server: Open Data Connection (Port 20)\nClient -> Server: Send file <filename>\n\ndeactivate Server\ndeactivate Client\n\n@enduml\n`);copyBtnbtn_13f957a4415a43b894ea120b4e7c3f4d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_13f957a4415a43b894ea120b4e7c3f4d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_758ec7c452cc46d1a88ff23e43ca7800=document.querySelector('button[name=btn_758ec7c452cc46d1a88ff23e43ca7800]');
+copyBtnbtn_758ec7c452cc46d1a88ff23e43ca7800.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`@startuml\ntitle FTP Protocol\n\nparticipant Client\nparticipant Server\n\nactivate Client\n\nClient -> Server: Connect to Server (Port 21)\nactivate Server\n\nServer --> Client: Welcome Message, Server Information\nClient -> Server: User <username>\nServer --> Client: 331 User name okay, need password\nClient -> Server: Pass <password>\nServer --> Client: 230 User <username> logged in\n\nClient -> Server: List\nServer --> Client: 125 Data connection already open; transfer starting\nClient -> Server: Receive file listing\n\nClient -> Server: Retrieve <filename>\nServer --> Client: 150 File status okay; about to open data connection.\nServer --> Client: Open Data Connection (Port 20)\nClient -> Server: Receive file <filename>\n\nClient -> Server: Store <filename>\nClient -> Server: 150 File status okay; about to open data connection.\nClient -> Server: Open Data Connection (Port 20)\nClient -> Server: Send file <filename>\n\ndeactivate Server\ndeactivate Client\n\n@enduml\n`);copyBtnbtn_758ec7c452cc46d1a88ff23e43ca7800.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_758ec7c452cc46d1a88ff23e43ca7800.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -948,9 +966,9 @@ deactivate Client
 </div></div>
 </div>
 </div>
-<div id="outline-container-org7cf9e62" class="outline-2">
-<h2 id="org7cf9e62">Key Features</h2>
-<div class="outline-text-2" id="text-org7cf9e62">
+<div id="outline-container-org096c2af" class="outline-2">
+<h2 id="org096c2af">Key Features</h2>
+<div class="outline-text-2" id="text-org096c2af">
 <ul class="org-ul">
 <li>Client-server architecture: FTP operates on a client-server model, where a client (e.g., a web browser) connects to an FTP server to transfer files.</li>
 <li>Directory navigation: FTP allows users to navigate through directories on both the client and server sides.</li>
@@ -959,9 +977,9 @@ deactivate Client
 </ul>
 </div>
 </div>
-<div id="outline-container-org55982b2" class="outline-2">
-<h2 id="org55982b2">FTP Commands</h2>
-<div class="outline-text-2" id="text-org55982b2">
+<div id="outline-container-orgb020283" class="outline-2">
+<h2 id="orgb020283">FTP Commands</h2>
+<div class="outline-text-2" id="text-orgb020283">
 <p>
 FTP uses a command-line interface to interact with the server. Common
 </p>
@@ -983,21 +1001,21 @@ FTP commands include:
 </ul>
 </div>
 </div>
-<div id="outline-container-org3ed0fc2" class="outline-2">
-<h2 id="org3ed0fc2">FTP Security Concerns</h2>
-<div class="outline-text-2" id="text-org3ed0fc2">
+<div id="outline-container-org8b5fe1d" class="outline-2">
+<h2 id="org8b5fe1d">FTP Security Concerns</h2>
+<div class="outline-text-2" id="text-org8b5fe1d">
 <p>
 While FTP is a widely used protocol, it has some security vulnerabilities.
 </p>
 
 <p>
-To mitigate these risks, it is recommended to use secure FTP (SFTP) or FTPS (FTP over ), which encrypt data in transit.
+To mitigate these risks, it is recommended to use secure FTP (SFTP) or FTPS (FTP over <a href="20260210T195356==ssl--secure-sockets-layer__concept_cybersecurity_networking.html">Secure Sockets Layer</a>), which encrypt data in transit.
 </p>
 </div>
 </div>
-<div id="outline-container-orgfa802b1" class="outline-2">
-<h2 id="orgfa802b1">FTP Alternatives</h2>
-<div class="outline-text-2" id="text-orgfa802b1">
+<div id="outline-container-org3831822" class="outline-2">
+<h2 id="org3831822">FTP Alternatives</h2>
+<div class="outline-text-2" id="text-org3831822">
 <ul class="org-ul">
 <li>SFTP (Secure File Transfer Protocol): A more secure version of FTP that uses SSH for encryption.</li>
 <li>FTPS (FTP over SSL/TLS): Another secure version of FTP that uses SSL/TLS for encryption.</li>
@@ -1007,6 +1025,20 @@ To mitigate these risks, it is recommended to use secure FTP (SFTP) or FTPS (FTP
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1014,6 +1046,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

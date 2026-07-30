@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Kerberos</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3322c63">Kerberos</a>
+<li><a href="#orgb9835cb">Kerberos</a>
 <ul>
-<li><a href="#org2699b4b">Description</a>
+<li><a href="#orgd50315d">Description</a>
 <ul>
-<li><a href="#org6e65181">How Kerberos Works (The Three-Headed og)</a></li>
-<li><a href="#org052e37d">Key Security Features</a></li>
+<li><a href="#org11a5c16">How Kerberos Works (The Three-Headed og)</a></li>
+<li><a href="#org2ff511a">Key Security Features</a></li>
 </ul>
 </li>
-<li><a href="#org6bf0176">Examples</a>
+<li><a href="#orgf23ba44">Examples</a>
 <ul>
-<li><a href="#orge5846ef">. Verification and Troubleshooting (Windows)</a></li>
-<li><a href="#orga659546">2. Offensive Security (TGT Abuse)</a></li>
+<li><a href="#orgeb6c93c">. Verification and Troubleshooting (Windows)</a></li>
+<li><a href="#orgac4a714">2. Offensive Security (TGT Abuse)</a></li>
 </ul>
 </li>
 </ul>
@@ -887,20 +905,20 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-org3322c63" class="outline-2">
-<h2 id="org3322c63">Kerberos</h2>
-<div class="outline-text-2" id="text-org3322c63">
+<div id="outline-container-orgb9835cb" class="outline-2">
+<h2 id="orgb9835cb">Kerberos</h2>
+<div class="outline-text-2" id="text-orgb9835cb">
 </div>
-<div id="outline-container-org2699b4b" class="outline-3">
-<h3 id="org2699b4b">Description</h3>
-<div class="outline-text-3" id="text-org2699b4b">
+<div id="outline-container-orgd50315d" class="outline-3">
+<h3 id="orgd50315d">Description</h3>
+<div class="outline-text-3" id="text-orgd50315d">
 <p>
 <b>Kerberos</b> is a trusted third-party authentication service designed by MIT to provide secure communication over a non-secure network. It is the primary authentication mechanism used in large-scale enterprise environments, most notably in Microsoft <b>Active Directory (AD)</b>. The goal of Kerberos is to prevent the transmission of user passwords across the network for every service request, which significantly improves security.
 </p>
 </div>
-<div id="outline-container-org6e65181" class="outline-4">
-<h4 id="org6e65181">How Kerberos Works (The Three-Headed og)</h4>
-<div class="outline-text-4" id="text-org6e65181">
+<div id="outline-container-org11a5c16" class="outline-4">
+<h4 id="org11a5c16">How Kerberos Works (The Three-Headed og)</h4>
+<div class="outline-text-4" id="text-org11a5c16">
 <p>
 The name Kerberos is derived from the three-headed dog of Greek mythology because the protocol relies on three parties:
 </p>
@@ -922,9 +940,9 @@ The Kerberos process is a multi-step exchange of tickets, requiring three main s
 </ol>
 </div>
 </div>
-<div id="outline-container-org052e37d" class="outline-4">
-<h4 id="org052e37d">Key Security Features</h4>
-<div class="outline-text-4" id="text-org052e37d">
+<div id="outline-container-org2ff511a" class="outline-4">
+<h4 id="org2ff511a">Key Security Features</h4>
+<div class="outline-text-4" id="text-org2ff511a">
 <ul class="org-ul">
 <li><b>Single Sign-On (SSO):</b> Users only need to enter their password once during the initial AS exchange to receive the TGT. The TGT is then used to silently request Service Tickets for all subsequent resources.</li>
 <li><b>Symmetric Encryption:</b> All tickets are encrypted using secret keys known only to the KDC and the target entity (user or service), ensuring the tickets cannot be forged.</li>
@@ -935,26 +953,26 @@ The Kerberos process is a multi-step exchange of tickets, requiring three main s
 </div>
 </div>
 </div>
-<div id="outline-container-org6bf0176" class="outline-3">
-<h3 id="org6bf0176">Examples</h3>
-<div class="outline-text-3" id="text-org6bf0176">
+<div id="outline-container-orgf23ba44" class="outline-3">
+<h3 id="orgf23ba44">Examples</h3>
+<div class="outline-text-3" id="text-orgf23ba44">
 <p>
 Kerberos is a background protocol, meaning users rarely interact with its commands directly, but it underpins common administrative and offensive security actions.
 </p>
 </div>
-<div id="outline-container-orge5846ef" class="outline-4">
-<h4 id="orge5846ef">. Verification and Troubleshooting (Windows)</h4>
-<div class="outline-text-4" id="text-orge5846ef">
+<div id="outline-container-orgeb6c93c" class="outline-4">
+<h4 id="orgeb6c93c">. Verification and Troubleshooting (Windows)</h4>
+<div class="outline-text-4" id="text-orgeb6c93c">
 <p>
 While the tickets are usually managed automatically, administrators can view ticket information on a Windows machine.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_d8c0809046d042e7a6516351dfbc074b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_d6a3efc73d6a4e999745bb19f6deadc8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d8c0809046d042e7a6516351dfbc074b=document.querySelector('button[name=btn_d8c0809046d042e7a6516351dfbc074b]');
-copyBtnbtn_d8c0809046d042e7a6516351dfbc074b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Command to purge (delete) all currently cached Kerberos tickets\nklist purge\n\n# Command to list all Kerberos tickets currently held by the user\nklist\n`);copyBtnbtn_d8c0809046d042e7a6516351dfbc074b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d8c0809046d042e7a6516351dfbc074b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d6a3efc73d6a4e999745bb19f6deadc8=document.querySelector('button[name=btn_d6a3efc73d6a4e999745bb19f6deadc8]');
+copyBtnbtn_d6a3efc73d6a4e999745bb19f6deadc8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Command to purge (delete) all currently cached Kerberos tickets\nklist purge\n\n# Command to list all Kerberos tickets currently held by the user\nklist\n`);copyBtnbtn_d6a3efc73d6a4e999745bb19f6deadc8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d6a3efc73d6a4e999745bb19f6deadc8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -967,9 +985,9 @@ let res = copyTextToClipboard(`# Command to purge (delete) all currently cached 
 </div></div>
 </div>
 </div>
-<div id="outline-container-orga659546" class="outline-4">
-<h4 id="orga659546">2. Offensive Security (TGT Abuse)</h4>
-<div class="outline-text-4" id="text-orga659546">
+<div id="outline-container-orgac4a714" class="outline-4">
+<h4 id="orgac4a714">2. Offensive Security (TGT Abuse)</h4>
+<div class="outline-text-4" id="text-orgac4a714">
 <p>
 The protocol's reliance on tickets makes it a primary target for advanced persistent threats (APTs):
 </p>
@@ -985,6 +1003,20 @@ The protocol's reliance on tickets makes it a primary target for advanced persis
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -992,6 +1024,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Structs in Rust</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,41 +886,41 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd040da4">Structs in Rust</a>
+<li><a href="#org71b1c3c">Structs in Rust</a>
 <ul>
-<li><a href="#org836b17e">Types of Structs in Rust</a>
+<li><a href="#orge049085">Types of Structs in Rust</a>
 <ul>
-<li><a href="#orgd739454">. Classic Structs (Named-Field Structs)</a></li>
-<li><a href="#org5fc8363">2. Tuple Structs</a></li>
-<li><a href="#org1d59fc5">3. Unit-Like Structs</a></li>
+<li><a href="#orgecd32c5">. Classic Structs (Named-Field Structs)</a></li>
+<li><a href="#org9b5989e">2. Tuple Structs</a></li>
+<li><a href="#org775f2ba">3. Unit-Like Structs</a></li>
 </ul>
 </li>
-<li><a href="#org5f5f075"><code>impl</code> Blocks (Implementing Methods)</a></li>
-<li><a href="#orgfc24a10">Relationship with Traits</a></li>
-<li><a href="#orgeef4615">Memory Layout</a></li>
-<li><a href="#orge892b0a">When to Use Structs</a></li>
+<li><a href="#org68ff12d"><code>impl</code> Blocks (Implementing Methods)</a></li>
+<li><a href="#orgf51a1c3">Relationship with Traits</a></li>
+<li><a href="#orgc5d3244">Memory Layout</a></li>
+<li><a href="#org24c71ab">When to Use Structs</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd040da4" class="outline-2">
-<h2 id="orgd040da4">Structs in Rust</h2>
-<div class="outline-text-2" id="text-orgd040da4">
+<div id="outline-container-org71b1c3c" class="outline-2">
+<h2 id="org71b1c3c">Structs in Rust</h2>
+<div class="outline-text-2" id="text-org71b1c3c">
 <p>
 In Rust, <b>structs</b> (structures) are custom data types that allow you to group related pieces of data together. Unlike tuples, which group values without naming them, structs allow you to name each piece of data, making your code more organized, readable, and maintainable. Structs are a fundamental building block for creating more complex data structures and represent the "product type" in Functional Programming terms (an instance has <i>all</i> its defined fields).
 </p>
 </div>
-<div id="outline-container-org836b17e" class="outline-3">
-<h3 id="org836b17e">Types of Structs in Rust</h3>
-<div class="outline-text-3" id="text-org836b17e">
+<div id="outline-container-orge049085" class="outline-3">
+<h3 id="orge049085">Types of Structs in Rust</h3>
+<div class="outline-text-3" id="text-orge049085">
 <p>
 Rust offers three kinds of structs:
 </p>
 </div>
-<div id="outline-container-orgd739454" class="outline-4">
-<h4 id="orgd739454">. Classic Structs (Named-Field Structs)</h4>
-<div class="outline-text-4" id="text-orgd739454">
+<div id="outline-container-orgecd32c5" class="outline-4">
+<h4 id="orgecd32c5">. Classic Structs (Named-Field Structs)</h4>
+<div class="outline-text-4" id="text-orgecd32c5">
 <ul class="org-ul">
 <li><b>Description:</b> The most common type of struct, where each piece of data (called a "field") has a name and a type. This provides clear semantics and easy access to individual fields.</li>
 
@@ -911,11 +929,11 @@ Rust offers three kinds of structs:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_e43ef9d7d5c944b985e144ae526cfea7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_c67f028f35f14862934acfd3e7cf97fa>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e43ef9d7d5c944b985e144ae526cfea7=document.querySelector('button[name=btn_e43ef9d7d5c944b985e144ae526cfea7]');
-copyBtnbtn_e43ef9d7d5c944b985e144ae526cfea7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`struct User {\n    active: bool,\n    username: String,\n    email: String,\n    sign_in_count: u64,\n}\n`);copyBtnbtn_e43ef9d7d5c944b985e144ae526cfea7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e43ef9d7d5c944b985e144ae526cfea7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c67f028f35f14862934acfd3e7cf97fa=document.querySelector('button[name=btn_c67f028f35f14862934acfd3e7cf97fa]');
+copyBtnbtn_c67f028f35f14862934acfd3e7cf97fa.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`struct User {\n    active: bool,\n    username: String,\n    email: String,\n    sign_in_count: u64,\n}\n`);copyBtnbtn_c67f028f35f14862934acfd3e7cf97fa.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c67f028f35f14862934acfd3e7cf97fa.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -933,11 +951,11 @@ let res = copyTextToClipboard(`struct User {\n    active: bool,\n    username: S
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_f59015ba6cfe4b92841f4c767a9f1cfa>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_ed1fa6ce2d3149ef9b5bddc07a7d1cbc>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f59015ba6cfe4b92841f4c767a9f1cfa=document.querySelector('button[name=btn_f59015ba6cfe4b92841f4c767a9f1cfa]');
-copyBtnbtn_f59015ba6cfe4b92841f4c767a9f1cfa.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let user1 = User {\n    active: true,\n    username: String::from(\"alice123\"),\n    email: String::from(\"alice@example.com\"),\n    sign_in_count: 1,\n};\n`);copyBtnbtn_f59015ba6cfe4b92841f4c767a9f1cfa.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f59015ba6cfe4b92841f4c767a9f1cfa.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ed1fa6ce2d3149ef9b5bddc07a7d1cbc=document.querySelector('button[name=btn_ed1fa6ce2d3149ef9b5bddc07a7d1cbc]');
+copyBtnbtn_ed1fa6ce2d3149ef9b5bddc07a7d1cbc.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let user1 = User {\n    active: true,\n    username: String::from(\"alice123\"),\n    email: String::from(\"alice@example.com\"),\n    sign_in_count: 1,\n};\n`);copyBtnbtn_ed1fa6ce2d3149ef9b5bddc07a7d1cbc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ed1fa6ce2d3149ef9b5bddc07a7d1cbc.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -955,11 +973,11 @@ let res = copyTextToClipboard(`let user1 = User {\n    active: true,\n    userna
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_28bff62527ec4c1ca60828a1118dbb57>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_6b02b4bf81284346a0f7a373570d4fb6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_28bff62527ec4c1ca60828a1118dbb57=document.querySelector('button[name=btn_28bff62527ec4c1ca60828a1118dbb57]');
-copyBtnbtn_28bff62527ec4c1ca60828a1118dbb57.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`println!(\"Username: {}\", user1.username);\n`);copyBtnbtn_28bff62527ec4c1ca60828a1118dbb57.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_28bff62527ec4c1ca60828a1118dbb57.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6b02b4bf81284346a0f7a373570d4fb6=document.querySelector('button[name=btn_6b02b4bf81284346a0f7a373570d4fb6]');
+copyBtnbtn_6b02b4bf81284346a0f7a373570d4fb6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`println!(\"Username: {}\", user1.username);\n`);copyBtnbtn_6b02b4bf81284346a0f7a373570d4fb6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6b02b4bf81284346a0f7a373570d4fb6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -972,11 +990,11 @@ let res = copyTextToClipboard(`println!(\"Username: {}\", user1.username);\n`);c
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_886858a1025448fd85c011829ede7f94>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_278940bc632547b19c6c0e00677f7569>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_886858a1025448fd85c011829ede7f94=document.querySelector('button[name=btn_886858a1025448fd85c011829ede7f94]');
-copyBtnbtn_886858a1025448fd85c011829ede7f94.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let mut user2 = User { /* ... */ };\nuser2.email = String::from(\"bob@example.com\");\n`);copyBtnbtn_886858a1025448fd85c011829ede7f94.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_886858a1025448fd85c011829ede7f94.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_278940bc632547b19c6c0e00677f7569=document.querySelector('button[name=btn_278940bc632547b19c6c0e00677f7569]');
+copyBtnbtn_278940bc632547b19c6c0e00677f7569.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let mut user2 = User { /* ... */ };\nuser2.email = String::from(\"bob@example.com\");\n`);copyBtnbtn_278940bc632547b19c6c0e00677f7569.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_278940bc632547b19c6c0e00677f7569.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -990,11 +1008,11 @@ user2.email = String::from("bob@example.com");
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_78d0c1f2f9674bdb83421ea74128e2bc>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_03365932178c4f0bb02d497245a8e3c8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_78d0c1f2f9674bdb83421ea74128e2bc=document.querySelector('button[name=btn_78d0c1f2f9674bdb83421ea74128e2bc]');
-copyBtnbtn_78d0c1f2f9674bdb83421ea74128e2bc.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let username = String::from(\"charlie\");\nlet user3 = User {\n    username, // shorthand for username: username\n    active: true,\n    email: String::from(\"charlie@example.com\"),\n    sign_in_count: 1,\n};\n`);copyBtnbtn_78d0c1f2f9674bdb83421ea74128e2bc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_78d0c1f2f9674bdb83421ea74128e2bc.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_03365932178c4f0bb02d497245a8e3c8=document.querySelector('button[name=btn_03365932178c4f0bb02d497245a8e3c8]');
+copyBtnbtn_03365932178c4f0bb02d497245a8e3c8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let username = String::from(\"charlie\");\nlet user3 = User {\n    username, // shorthand for username: username\n    active: true,\n    email: String::from(\"charlie@example.com\"),\n    sign_in_count: 1,\n};\n`);copyBtnbtn_03365932178c4f0bb02d497245a8e3c8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_03365932178c4f0bb02d497245a8e3c8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1013,11 +1031,11 @@ let user3 = User {
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_58ca318ce93f4abf8357eaf8f5668ecd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_1a5d0e2a9f5e4cb2a0fbac55c85df6d4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_58ca318ce93f4abf8357eaf8f5668ecd=document.querySelector('button[name=btn_58ca318ce93f4abf8357eaf8f5668ecd]');
-copyBtnbtn_58ca318ce93f4abf8357eaf8f5668ecd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let user4 = User {\n    email: String::from(\"david@example.com\"),\n    ..user1 // Fills in remaining fields from user1\n};\n`);copyBtnbtn_58ca318ce93f4abf8357eaf8f5668ecd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_58ca318ce93f4abf8357eaf8f5668ecd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1a5d0e2a9f5e4cb2a0fbac55c85df6d4=document.querySelector('button[name=btn_1a5d0e2a9f5e4cb2a0fbac55c85df6d4]');
+copyBtnbtn_1a5d0e2a9f5e4cb2a0fbac55c85df6d4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let user4 = User {\n    email: String::from(\"david@example.com\"),\n    ..user1 // Fills in remaining fields from user1\n};\n`);copyBtnbtn_1a5d0e2a9f5e4cb2a0fbac55c85df6d4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1a5d0e2a9f5e4cb2a0fbac55c85df6d4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1030,9 +1048,9 @@ let res = copyTextToClipboard(`let user4 = User {\n    email: String::from(\"dav
 </ul>
 </div>
 </div>
-<div id="outline-container-org5fc8363" class="outline-4">
-<h4 id="org5fc8363">2. Tuple Structs</h4>
-<div class="outline-text-4" id="text-org5fc8363">
+<div id="outline-container-org9b5989e" class="outline-4">
+<h4 id="org9b5989e">2. Tuple Structs</h4>
+<div class="outline-text-4" id="text-org9b5989e">
 <ul class="org-ul">
 <li><b>Description:</b> Similar to regular tuples but with a name, giving semantic meaning to the collection of values. Fields are unnamed and accessed by index. Useful when you want to give a tuple a specific type name.</li>
 
@@ -1041,11 +1059,11 @@ let res = copyTextToClipboard(`let user4 = User {\n    email: String::from(\"dav
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_d892ae00b97949e29b4afa3fcac7f119>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_cd6fe02e0da84659a1e2bd97c97ba59f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d892ae00b97949e29b4afa3fcac7f119=document.querySelector('button[name=btn_d892ae00b97949e29b4afa3fcac7f119]');
-copyBtnbtn_d892ae00b97949e29b4afa3fcac7f119.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`struct Color(i32, i32, i32); // Represents an RGB color\nstruct Point(i32, i32, i32); // Represents a 3D point\n`);copyBtnbtn_d892ae00b97949e29b4afa3fcac7f119.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d892ae00b97949e29b4afa3fcac7f119.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cd6fe02e0da84659a1e2bd97c97ba59f=document.querySelector('button[name=btn_cd6fe02e0da84659a1e2bd97c97ba59f]');
+copyBtnbtn_cd6fe02e0da84659a1e2bd97c97ba59f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`struct Color(i32, i32, i32); // Represents an RGB color\nstruct Point(i32, i32, i32); // Represents a 3D point\n`);copyBtnbtn_cd6fe02e0da84659a1e2bd97c97ba59f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cd6fe02e0da84659a1e2bd97c97ba59f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1059,11 +1077,11 @@ struct Point(i32, i32, i32); // Represents a 3D point
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_34294447182146a4ae191845af28dbaf>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_7bb1b3715114436394dee08390b22afc>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_34294447182146a4ae191845af28dbaf=document.querySelector('button[name=btn_34294447182146a4ae191845af28dbaf]');
-copyBtnbtn_34294447182146a4ae191845af28dbaf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let black = Color(0, 0, 0);\nlet origin = Point(0, 0, 0);\n`);copyBtnbtn_34294447182146a4ae191845af28dbaf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_34294447182146a4ae191845af28dbaf.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7bb1b3715114436394dee08390b22afc=document.querySelector('button[name=btn_7bb1b3715114436394dee08390b22afc]');
+copyBtnbtn_7bb1b3715114436394dee08390b22afc.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let black = Color(0, 0, 0);\nlet origin = Point(0, 0, 0);\n`);copyBtnbtn_7bb1b3715114436394dee08390b22afc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7bb1b3715114436394dee08390b22afc.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1077,11 +1095,11 @@ let origin = Point(0, 0, 0);
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_728031845b9841829e45295d09bac6f9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_2c21a173d1e643d598e1ec41ac371fee>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_728031845b9841829e45295d09bac6f9=document.querySelector('button[name=btn_728031845b9841829e45295d09bac6f9]');
-copyBtnbtn_728031845b9841829e45295d09bac6f9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`println!(\"Black R: {}\", black.0);\n`);copyBtnbtn_728031845b9841829e45295d09bac6f9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_728031845b9841829e45295d09bac6f9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2c21a173d1e643d598e1ec41ac371fee=document.querySelector('button[name=btn_2c21a173d1e643d598e1ec41ac371fee]');
+copyBtnbtn_2c21a173d1e643d598e1ec41ac371fee.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`println!(\"Black R: {}\", black.0);\n`);copyBtnbtn_2c21a173d1e643d598e1ec41ac371fee.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2c21a173d1e643d598e1ec41ac371fee.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1093,9 +1111,9 @@ let res = copyTextToClipboard(`println!(\"Black R: {}\", black.0);\n`);copyBtnbt
 </ul>
 </div>
 </div>
-<div id="outline-container-org1d59fc5" class="outline-4">
-<h4 id="org1d59fc5">3. Unit-Like Structs</h4>
-<div class="outline-text-4" id="text-org1d59fc5">
+<div id="outline-container-org775f2ba" class="outline-4">
+<h4 id="org775f2ba">3. Unit-Like Structs</h4>
+<div class="outline-text-4" id="text-org775f2ba">
 <ul class="org-ul">
 <li><b>Description:</b> Structs that have no fields. They are primarily used when you need to implement a trait on some type but don't have any data to store in the type itself. They behave somewhat like an empty <code>()</code> tuple.</li>
 
@@ -1104,11 +1122,11 @@ let res = copyTextToClipboard(`println!(\"Black R: {}\", black.0);\n`);copyBtnbt
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_a7650b01772f4589ac6c22f7cbde18a2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_8443dea17a774dc191d529c88424c3c0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a7650b01772f4589ac6c22f7cbde18a2=document.querySelector('button[name=btn_a7650b01772f4589ac6c22f7cbde18a2]');
-copyBtnbtn_a7650b01772f4589ac6c22f7cbde18a2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`struct AlwaysEqual;\n`);copyBtnbtn_a7650b01772f4589ac6c22f7cbde18a2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a7650b01772f4589ac6c22f7cbde18a2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8443dea17a774dc191d529c88424c3c0=document.querySelector('button[name=btn_8443dea17a774dc191d529c88424c3c0]');
+copyBtnbtn_8443dea17a774dc191d529c88424c3c0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`struct AlwaysEqual;\n`);copyBtnbtn_8443dea17a774dc191d529c88424c3c0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8443dea17a774dc191d529c88424c3c0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1121,11 +1139,11 @@ let res = copyTextToClipboard(`struct AlwaysEqual;\n`);copyBtnbtn_a7650b01772f45
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_05e5b48174e844ccad5a9d0f691b216c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_28a5e16018cf47c2bec67f3336b3c79c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_05e5b48174e844ccad5a9d0f691b216c=document.querySelector('button[name=btn_05e5b48174e844ccad5a9d0f691b216c]');
-copyBtnbtn_05e5b48174e844ccad5a9d0f691b216c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let subject = AlwaysEqual;\n`);copyBtnbtn_05e5b48174e844ccad5a9d0f691b216c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_05e5b48174e844ccad5a9d0f691b216c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_28a5e16018cf47c2bec67f3336b3c79c=document.querySelector('button[name=btn_28a5e16018cf47c2bec67f3336b3c79c]');
+copyBtnbtn_28a5e16018cf47c2bec67f3336b3c79c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let subject = AlwaysEqual;\n`);copyBtnbtn_28a5e16018cf47c2bec67f3336b3c79c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_28a5e16018cf47c2bec67f3336b3c79c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1136,9 +1154,9 @@ let res = copyTextToClipboard(`let subject = AlwaysEqual;\n`);copyBtnbtn_05e5b48
 </div>
 </div>
 </div>
-<div id="outline-container-org5f5f075" class="outline-3">
-<h3 id="org5f5f075"><code>impl</code> Blocks (Implementing Methods)</h3>
-<div class="outline-text-3" id="text-org5f5f075">
+<div id="outline-container-org68ff12d" class="outline-3">
+<h3 id="org68ff12d"><code>impl</code> Blocks (Implementing Methods)</h3>
+<div class="outline-text-3" id="text-org68ff12d">
 <p>
 Structs often have associated functions and methods (functions that belong to the struct). These are defined in an <code>impl</code> (implementation) block.
 </p>
@@ -1149,11 +1167,11 @@ Structs often have associated functions and methods (functions that belong to th
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_db531d64a79c40cdbede746c86678927>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_a0a27d5613d942e8afe5ab8301c30b24>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_db531d64a79c40cdbede746c86678927=document.querySelector('button[name=btn_db531d64a79c40cdbede746c86678927]');
-copyBtnbtn_db531d64a79c40cdbede746c86678927.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`impl User {\n    // Method that takes an immutable reference to self\n    fn get_domain(&self) -> String {\n        self.email.split('@').nth(1).unwrap_or(\"\").to_string()\n    }\n\n    // Method that takes a mutable reference to self\n    fn increment_sign_in_count(&mut self) {\n        self.sign_in_count += 1;\n    }\n\n    // Method that takes ownership of self (consumes the struct)\n    fn into_username(self) -> String {\n        self.username\n    }\n}\n`);copyBtnbtn_db531d64a79c40cdbede746c86678927.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_db531d64a79c40cdbede746c86678927.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a0a27d5613d942e8afe5ab8301c30b24=document.querySelector('button[name=btn_a0a27d5613d942e8afe5ab8301c30b24]');
+copyBtnbtn_a0a27d5613d942e8afe5ab8301c30b24.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`impl User {\n    // Method that takes an immutable reference to self\n    fn get_domain(&self) -> String {\n        self.email.split('@').nth(1).unwrap_or(\"\").to_string()\n    }\n\n    // Method that takes a mutable reference to self\n    fn increment_sign_in_count(&mut self) {\n        self.sign_in_count += 1;\n    }\n\n    // Method that takes ownership of self (consumes the struct)\n    fn into_username(self) -> String {\n        self.username\n    }\n}\n`);copyBtnbtn_a0a27d5613d942e8afe5ab8301c30b24.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a0a27d5613d942e8afe5ab8301c30b24.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1181,11 +1199,11 @@ let res = copyTextToClipboard(`impl User {\n    // Method that takes an immutabl
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_a1f1bb47108749c1b3d4673ec8f9fc20>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_f01153fc079048c7b5b8f74ca30465f8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a1f1bb47108749c1b3d4673ec8f9fc20=document.querySelector('button[name=btn_a1f1bb47108749c1b3d4673ec8f9fc20]');
-copyBtnbtn_a1f1bb47108749c1b3d4673ec8f9fc20.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`impl User {\n    // Associated function (constructor)\n    fn new(username: String, email: String) -> User {\n        User {\n            active: true,\n            username,\n            email,\n            sign_in_count: 1,\n        }\n    }\n}\n\n// Call associated function:\nlet new_user = User::new(String::from(\"frank\"), String::from(\"frank@example.com\"));\n`);copyBtnbtn_a1f1bb47108749c1b3d4673ec8f9fc20.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a1f1bb47108749c1b3d4673ec8f9fc20.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f01153fc079048c7b5b8f74ca30465f8=document.querySelector('button[name=btn_f01153fc079048c7b5b8f74ca30465f8]');
+copyBtnbtn_f01153fc079048c7b5b8f74ca30465f8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`impl User {\n    // Associated function (constructor)\n    fn new(username: String, email: String) -> User {\n        User {\n            active: true,\n            username,\n            email,\n            sign_in_count: 1,\n        }\n    }\n}\n\n// Call associated function:\nlet new_user = User::new(String::from(\"frank\"), String::from(\"frank@example.com\"));\n`);copyBtnbtn_f01153fc079048c7b5b8f74ca30465f8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f01153fc079048c7b5b8f74ca30465f8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1208,25 +1226,25 @@ let new_user = User::new(String::from("frank"), String::from("frank@example.com"
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfc24a10" class="outline-3">
-<h3 id="orgfc24a10">Relationship with Traits</h3>
-<div class="outline-text-3" id="text-orgfc24a10">
+<div id="outline-container-orgf51a1c3" class="outline-3">
+<h3 id="orgf51a1c3">Relationship with Traits</h3>
+<div class="outline-text-3" id="text-orgf51a1c3">
 <p>
 Structs are the primary types that implement <b>traits</b>, enabling them to share behavior and participate in polymorphism. You use an <code>impl Trait for Struct</code> block to define how a specific struct adheres to a given trait's contract.
 </p>
 </div>
 </div>
-<div id="outline-container-orgeef4615" class="outline-3">
-<h3 id="orgeef4615">Memory Layout</h3>
-<div class="outline-text-3" id="text-orgeef4615">
+<div id="outline-container-orgc5d3244" class="outline-3">
+<h3 id="orgc5d3244">Memory Layout</h3>
+<div class="outline-text-3" id="text-orgc5d3244">
 <p>
 By default, Rust does not guarantee the specific memory layout of struct fields (<code>#[repr(Rust)]</code>). The compiler is free to reorder fields to optimize for size (by reducing padding) or alignment. If you need a specific memory layout (e.g., for FFI with C), you can use <code>#[repr(C)]</code> to force a C-compatible layout.
 </p>
 </div>
 </div>
-<div id="outline-container-orge892b0a" class="outline-3">
-<h3 id="orge892b0a">When to Use Structs</h3>
-<div class="outline-text-3" id="text-orge892b0a">
+<div id="outline-container-org24c71ab" class="outline-3">
+<h3 id="org24c71ab">When to Use Structs</h3>
+<div class="outline-text-3" id="text-org24c71ab">
 <ul class="org-ul">
 <li>When you have related data that you want to group together.</li>
 <li>When each piece of data has a clear, descriptive name.</li>
@@ -1238,6 +1256,20 @@ By default, Rust does not guarantee the specific memory layout of struct fields 
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1245,6 +1277,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

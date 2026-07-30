@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>John The Ripper</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,10 +886,10 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org147d8c0">Common Flags</a></li>
-<li><a href="#org83e128a">Format Conversion and Cracking</a></li>
-<li><a href="#org5bcc32f">Rules</a></li>
-<li><a href="#orgbae84b7">Tips</a></li>
+<li><a href="#orgd26dad0">Common Flags</a></li>
+<li><a href="#org3fb2f96">Format Conversion and Cracking</a></li>
+<li><a href="#org508bf55">Rules</a></li>
+<li><a href="#org004f1b6">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -887,9 +905,9 @@ Related: <a href="20260611T064004--password-cracking-methodology__cybersecurity_
          <a href="20260314T005729--hashcat__cybersecurity_tool.html">Hashcat</a>
          <a href="20260314T005622--dictionary-attack__concept_cybersecurity_technique.html">Dictionary Attack</a>
 </p>
-<div id="outline-container-org147d8c0" class="outline-2">
-<h2 id="org147d8c0">Common Flags</h2>
-<div class="outline-text-2" id="text-org147d8c0">
+<div id="outline-container-orgd26dad0" class="outline-2">
+<h2 id="orgd26dad0">Common Flags</h2>
+<div class="outline-text-2" id="text-orgd26dad0">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -933,15 +951,15 @@ Related: <a href="20260611T064004--password-cracking-methodology__cybersecurity_
 </table>
 </div>
 </div>
-<div id="outline-container-org83e128a" class="outline-2">
-<h2 id="org83e128a">Format Conversion and Cracking</h2>
-<div class="outline-text-2" id="text-org83e128a">
+<div id="outline-container-org3fb2f96" class="outline-2">
+<h2 id="org3fb2f96">Format Conversion and Cracking</h2>
+<div class="outline-text-2" id="text-org3fb2f96">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_149d7b0ac97142b3bd05ce8eb2930ad1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_54e5afe594e745e39d79ca7d2ba6d665>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_149d7b0ac97142b3bd05ce8eb2930ad1=document.querySelector('button[name=btn_149d7b0ac97142b3bd05ce8eb2930ad1]');
-copyBtnbtn_149d7b0ac97142b3bd05ce8eb2930ad1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Auto-detect format\njohn hash.txt --wordlist=/usr/share/wordlists/rockyou.txt\n\n# ZIP\nzip2john protected.zip > zip.hash\njohn zip.hash --wordlist=/usr/share/wordlists/rockyou.txt\n\n# PDF\npdf2john protected.pdf > pdf.hash\njohn pdf.hash --wordlist=/usr/share/wordlists/rockyou.txt\n\n# SSH private key\nssh2john id_rsa > ssh.hash\njohn ssh.hash --wordlist=/usr/share/wordlists/rockyou.txt\n\n# Linux shadow\nunshadow /etc/passwd /etc/shadow > combined.hash\njohn combined.hash --wordlist=/usr/share/wordlists/rockyou.txt\n\n# NTLM / Windows\njohn hash.txt --format=NT --wordlist=/usr/share/wordlists/rockyou.txt\n\n# Show results\njohn hash.txt --show\n`);copyBtnbtn_149d7b0ac97142b3bd05ce8eb2930ad1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_149d7b0ac97142b3bd05ce8eb2930ad1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_54e5afe594e745e39d79ca7d2ba6d665=document.querySelector('button[name=btn_54e5afe594e745e39d79ca7d2ba6d665]');
+copyBtnbtn_54e5afe594e745e39d79ca7d2ba6d665.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Auto-detect format\njohn hash.txt --wordlist=/usr/share/wordlists/rockyou.txt\n\n# ZIP\nzip2john protected.zip > zip.hash\njohn zip.hash --wordlist=/usr/share/wordlists/rockyou.txt\n\n# PDF\npdf2john protected.pdf > pdf.hash\njohn pdf.hash --wordlist=/usr/share/wordlists/rockyou.txt\n\n# SSH private key\nssh2john id_rsa > ssh.hash\njohn ssh.hash --wordlist=/usr/share/wordlists/rockyou.txt\n\n# Linux shadow\nunshadow /etc/passwd /etc/shadow > combined.hash\njohn combined.hash --wordlist=/usr/share/wordlists/rockyou.txt\n\n# NTLM / Windows\njohn hash.txt --format=NT --wordlist=/usr/share/wordlists/rockyou.txt\n\n# Show results\njohn hash.txt --show\n\n# stream passwords\nzcat /usr/share/wordlists/rockyou.txt.gz | john --stdin hash.txt\n`);copyBtnbtn_54e5afe594e745e39d79ca7d2ba6d665.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_54e5afe594e745e39d79ca7d2ba6d665.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -969,19 +987,22 @@ john combined.hash --wordlist=/usr/share/wordlists/rockyou.txt
 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Show results
 </span>john hash.txt --show
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">stream passwords
+</span>zcat /usr/share/wordlists/rockyou.txt.gz | john --stdin hash.txt
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org5bcc32f" class="outline-2">
-<h2 id="org5bcc32f">Rules</h2>
-<div class="outline-text-2" id="text-org5bcc32f">
+<div id="outline-container-org508bf55" class="outline-2">
+<h2 id="org508bf55">Rules</h2>
+<div class="outline-text-2" id="text-org508bf55">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_010560f730d34471bd3983a220402976>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a3d86fb974174d10bae68adc2f80690a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_010560f730d34471bd3983a220402976=document.querySelector('button[name=btn_010560f730d34471bd3983a220402976]');
-copyBtnbtn_010560f730d34471bd3983a220402976.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt --rules=best64\njohn hash.txt --wordlist=/usr/share/wordlists/rockyou.txt --rules=jumbo\n`);copyBtnbtn_010560f730d34471bd3983a220402976.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_010560f730d34471bd3983a220402976.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a3d86fb974174d10bae68adc2f80690a=document.querySelector('button[name=btn_a3d86fb974174d10bae68adc2f80690a]');
+copyBtnbtn_a3d86fb974174d10bae68adc2f80690a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt --rules=best64\njohn hash.txt --wordlist=/usr/share/wordlists/rockyou.txt --rules=jumbo\n`);copyBtnbtn_a3d86fb974174d10bae68adc2f80690a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a3d86fb974174d10bae68adc2f80690a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -991,9 +1012,9 @@ john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt --rules=jumbo
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgbae84b7" class="outline-2">
-<h2 id="orgbae84b7">Tips</h2>
-<div class="outline-text-2" id="text-orgbae84b7">
+<div id="outline-container-org004f1b6" class="outline-2">
+<h2 id="org004f1b6">Tips</h2>
+<div class="outline-text-2" id="text-org004f1b6">
 <ul class="org-ul">
 <li>Auto-detection fails on ambiguous formats — specify <code>--format</code>
 explicitly if john misidentifies the hash</li>
@@ -1007,6 +1028,20 @@ means the key is passphrase-protected and crackable</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1014,6 +1049,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

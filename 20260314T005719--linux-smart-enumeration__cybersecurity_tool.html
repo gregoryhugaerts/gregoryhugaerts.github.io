@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Linux Smart Enumeration</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,35 +886,39 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org86b85ab">Linux Smart Enumeration</a>
-<ul>
-<li><a href="#org03f6c3a">Description</a>
-<ul>
-<li><a href="#org015d08d">How LSE Works</a></li>
-<li><a href="#org4e96ca3">Output and Use</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="#org8210aaf">How LSE Works</a></li>
+<li><a href="#orgbac25e2">Running LSE</a></li>
+<li><a href="#org5ea8702">Output and Use</a></li>
+<li><a href="#org47801a8">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org86b85ab" class="outline-2">
-<h2 id="org86b85ab">Linux Smart Enumeration</h2>
-<div class="outline-text-2" id="text-org86b85ab">
-</div>
-<div id="outline-container-org03f6c3a" class="outline-3">
-<h3 id="org03f6c3a">Description</h3>
-<div class="outline-text-3" id="text-org03f6c3a">
 <p>
-<b>Linux Smart Enumeration (LSE)</b> is an automated tool used in the <b>Post Exploitation</b> phase of a cybersecurity assessment. After an attacker has gained initial low-privileged access to a Linux machine, running LSE is one of the first steps to rapidly discover how to gain <code>root</code> access.
+Linux Smart Enumeration (LSE) is an automated tool used in the
+<a href="20260214T085940--post-exploitation__concept_cybersecurity.html">Post Exploitation</a> phase of a
+cybersecurity assessment. After an attacker has gained initial
+low-privileged access to a Linux machine, running LSE is one of the
+first steps to rapidly discover how to gain <code>root</code> access. Its main
+differentiator from LinPEAS is tunable verbosity — you control how
+noisy and thorough the scan is, rather than getting one fixed level
+of output every time.
 </p>
-</div>
-<div id="outline-container-org015d08d" class="outline-4">
-<h4 id="org015d08d">How LSE Works</h4>
-<div class="outline-text-4" id="text-org015d08d">
+
 <p>
-LSE is written entirely in Bash, meaning it does not rely on external dependencies and can run on nearly any Linux distribution with minimal preparation. It works by executing a comprehensive series of checks against the local system, focusing on weaknesses that can be exploited for privilege escalation:
+Related: <a href="20260314T005718--linux-privilege-escalation__concept_cybersecurity.html">Linux Privilege Escalation</a>
+         <a href="20260314T005716--linpeas__cybersecurity_tool.html">LinPEAS</a>
+         <a href="20260314T005728--gtfobins__cybersecurity_tool.html">GTFOBins</a>
+         [[Denote query for ‘20260718T113500’]]
+</p>
+<div id="outline-container-org8210aaf" class="outline-2">
+<h2 id="org8210aaf">How LSE Works</h2>
+<div class="outline-text-2" id="text-org8210aaf">
+<p>
+LSE is written entirely in Bash, meaning it does not rely on
+external dependencies and can run on nearly any Linux distribution
+with minimal preparation. It works by executing a comprehensive
+series of checks against the local system, focusing on weaknesses
+that can be exploited for privilege escalation:
 </p>
 
 <ol class="org-ol">
@@ -905,7 +927,7 @@ LSE is written entirely in Bash, meaning it does not rely on external dependenci
 <li><b>Permissions and Configuration:</b> This is LSE's main focus. It searches for:
 <ul class="org-ul">
 <li><b>Writable files in sensitive locations</b> (e.g., cron jobs, system binaries).</li>
-<li><b>Misconfigured SUID/SGID binaries</b> (often cross-referenced with tools like <a href="gtfobins.html#gtfobins">GTFOBins</a>).</li>
+<li><b>Misconfigured SUID/SGID binaries</b> (often cross-referenced with tools like <a href="20260314T005728--gtfobins__cybersecurity_tool.html">GTFOBins</a>).</li>
 <li><b>Insecure file permissions</b> on <code>/etc/passwd</code> or <code>/etc/shadow</code>.</li>
 </ul></li>
 <li><b>Credential Discovery:</b> Searches for cleartext passwords and private keys stored in configuration files (e.g., SSH keys, database credentials in web application files).</li>
@@ -913,26 +935,103 @@ LSE is written entirely in Bash, meaning it does not rely on external dependenci
 </ol>
 </div>
 </div>
-<div id="outline-container-org4e96ca3" class="outline-4">
-<h4 id="org4e96ca3">Output and Use</h4>
-<div class="outline-text-4" id="text-org4e96ca3">
+<div id="outline-container-orgbac25e2" class="outline-2">
+<h2 id="orgbac25e2">Running LSE</h2>
+<div class="outline-text-2" id="text-orgbac25e2">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_abbf39cbfdc8456f89b72a09c91f9b05>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_abbf39cbfdc8456f89b72a09c91f9b05=document.querySelector('button[name=btn_abbf39cbfdc8456f89b72a09c91f9b05]');
+copyBtnbtn_abbf39cbfdc8456f89b72a09c91f9b05.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Level 0 — quickest, least noisy pass, high-confidence findings only\n./lse.sh -l 0\n\n# Level 1 — more thorough, default working level for most cases\n./lse.sh -l 1\n\n# Level 2 — deep, noisy scan; use when levels 0/1 come back empty\n./lse.sh -l 2\n\n# Save output to a file for later review, particularly useful over\n# a slow or unstable shell\n./lse.sh -l 1 -i | tee lse_output.txt\n\n# Select a specific check category rather than running everything\n./lse.sh -s   # section-select mode\n`);copyBtnbtn_abbf39cbfdc8456f89b72a09c91f9b05.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_abbf39cbfdc8456f89b72a09c91f9b05.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Level 0 &#8212; quickest, least noisy pass, high-confidence findings only
+</span>./lse.sh -l 0
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Level 1 &#8212; more thorough, default working level for most cases
+</span>./lse.sh -l 1
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Level 2 &#8212; deep, noisy scan; use when levels 0/1 come back empty
+</span>./lse.sh -l 2
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Save output to a file for later review, particularly useful over
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">a slow or unstable shell
+</span>./lse.sh -l 1 -i | tee lse_output.txt
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Select a specific check category rather than running everything
+</span>./lse.sh -s   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">section-select mode</span>
+</pre>
+</div></div>
+
 <p>
-LSE's output is structured and color-coded. Crucially, it uses <b>different levels</b> of enumeration (<code>-l 0</code> to <code>-l 3</code>) to control the verbosity and intrusiveness of the scan, allowing the user to choose between a fast, stealthy check and a deep, noisy scan.
+The <code>-i</code> flag suppresses color codes — worth using when piping
+output through a slow connection or into a file, since raw ANSI
+color codes can otherwise clutter a saved report.
+</p>
+</div>
+</div>
+<div id="outline-container-org5ea8702" class="outline-2">
+<h2 id="org5ea8702">Output and Use</h2>
+<div class="outline-text-2" id="text-org5ea8702">
+<p>
+LSE's output is structured and color-coded. It uses different
+levels of enumeration (<code>-l 0</code> to <code>-l 2</code>) to control the verbosity
+and intrusiveness of the scan, allowing the user to choose between
+a fast, stealthy check and a deep, noisy scan.
 </p>
 
+<p>
+The output provides a score or color-coded alert (often red for
+high-risk findings) next to each vulnerability found, immediately
+prioritizing the most viable path to
+<a href="20260314T005718--linux-privilege-escalation__concept_cybersecurity.html">Linux Privilege Escalation</a>.
+</p>
+
+<p>
+The script is a key aid in the local enumeration phase, bridging
+the gap between a low-privileged shell and finding the exploit
+necessary to gain a fully elevated session.
+</p>
+</div>
+</div>
+<div id="outline-container-org47801a8" class="outline-2">
+<h2 id="org47801a8">Tips</h2>
+<div class="outline-text-2" id="text-org47801a8">
 <ul class="org-ul">
-<li>The output provides a <b>score</b> or color-coded alert (often red for high-risk findings) next to each vulnerability found, immediately prioritizing the most viable path to <b>Linux Privilege Escalation</b>.</li>
+<li>Start at <code>-l 0</code> rather than defaulting to the deepest level — a
+quick high-confidence pass often finds the answer immediately,
+and escalating verbosity only when needed keeps output
+manageable and reduces noise on a slow shell</li>
+<li>See the Linux Privilege Escalation Tools comparison note for when
+to reach for LSE specifically over LinPEAS or LinEnum — the short
+version: LSE's tunable verbosity makes it the better choice when
+you want to start quiet and escalate only as needed, rather than
+getting a full dump immediately</li>
+<li>Cross-reference any SUID/SGID findings against
+<a href="20260314T005728--gtfobins__cybersecurity_tool.html">GTFOBins</a> immediately — LSE tells you
+a binary is misconfigured, GTFOBins tells you the actual command
+to exploit it</li>
 </ul>
-
-<p>
-The script is a key aid in the <b>local enumeration</b> phase, bridging the gap between a low-privileged shell and finding the exploit necessary to gain a fully elevated session.
-</p>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -940,6 +1039,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ReAct Prompting &amp; Context-Awareness</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8e6f404">ReAct Prompting &amp; Context-Awareness</a>
+<li><a href="#orgb641e0d">ReAct Prompting &amp; Context-Awareness</a>
 <ul>
-<li><a href="#org8f85a48">Description</a>
+<li><a href="#org05a5285">Description</a>
 <ul>
-<li><a href="#org6cff3a2">Core Mechanism (Reasoning and Acting)</a></li>
-<li><a href="#orgc2a70b9">Context-Awareness and Purpose</a></li>
+<li><a href="#org27fa357">Core Mechanism (Reasoning and Acting)</a></li>
+<li><a href="#orgb7f0063">Context-Awareness and Purpose</a></li>
 </ul>
 </li>
-<li><a href="#org8531d3c">Examples</a>
+<li><a href="#orgbb7ac08">Examples</a>
 <ul>
-<li><a href="#org4964586">Scenario: Factual Query Requiring a Search Tool</a></li>
-<li><a href="#org15edfe3">Scenario: Coding and ebugging</a></li>
+<li><a href="#orgc3274d0">Scenario: Factual Query Requiring a Search Tool</a></li>
+<li><a href="#org901a41e">Scenario: Coding and ebugging</a></li>
 </ul>
 </li>
 </ul>
@@ -887,20 +905,20 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-org8e6f404" class="outline-2">
-<h2 id="org8e6f404">ReAct Prompting &amp; Context-Awareness</h2>
-<div class="outline-text-2" id="text-org8e6f404">
+<div id="outline-container-orgb641e0d" class="outline-2">
+<h2 id="orgb641e0d">ReAct Prompting &amp; Context-Awareness</h2>
+<div class="outline-text-2" id="text-orgb641e0d">
 </div>
-<div id="outline-container-org8f85a48" class="outline-3">
-<h3 id="org8f85a48">Description</h3>
-<div class="outline-text-3" id="text-org8f85a48">
+<div id="outline-container-org05a5285" class="outline-3">
+<h3 id="org05a5285">Description</h3>
+<div class="outline-text-3" id="text-org05a5285">
 <p>
 <b>ReAct</b> is a prompt engineering framework designed to enable LLMs to solve complex, dynamic, and factual problems by integrating <b>reasoning</b> (to decide what to do) and <b>acting</b> (to execute a step or retrieve information)
 </p>
 </div>
-<div id="outline-container-org6cff3a2" class="outline-4">
-<h4 id="org6cff3a2">Core Mechanism (Reasoning and Acting)</h4>
-<div class="outline-text-4" id="text-org6cff3a2">
+<div id="outline-container-org27fa357" class="outline-4">
+<h4 id="org27fa357">Core Mechanism (Reasoning and Acting)</h4>
+<div class="outline-text-4" id="text-org27fa357">
 <p>
 The ReAct loop explicitly guides the LLM to alternate between three steps until a goal is achieved:
 </p>
@@ -916,9 +934,9 @@ The model uses the <b>Observation</b> to refine its next <b>Thought</b>, ensurin
 </p>
 </div>
 </div>
-<div id="outline-container-orgc2a70b9" class="outline-4">
-<h4 id="orgc2a70b9">Context-Awareness and Purpose</h4>
-<div class="outline-text-4" id="text-orgc2a70b9">
+<div id="outline-container-orgb7f0063" class="outline-4">
+<h4 id="orgb7f0063">Context-Awareness and Purpose</h4>
+<div class="outline-text-4" id="text-orgb7f0063">
 <p>
 ReAct significantly enhances the <b>context-awareness</b> of an LLM by:
 </p>
@@ -933,13 +951,13 @@ ReAct significantly enhances the <b>context-awareness</b> of an LLM by:
 </div>
 </div>
 </div>
-<div id="outline-container-org8531d3c" class="outline-3">
-<h3 id="org8531d3c">Examples</h3>
-<div class="outline-text-3" id="text-org8531d3c">
+<div id="outline-container-orgbb7ac08" class="outline-3">
+<h3 id="orgbb7ac08">Examples</h3>
+<div class="outline-text-3" id="text-orgbb7ac08">
 </div>
-<div id="outline-container-org4964586" class="outline-4">
-<h4 id="org4964586">Scenario: Factual Query Requiring a Search Tool</h4>
-<div class="outline-text-4" id="text-org4964586">
+<div id="outline-container-orgc3274d0" class="outline-4">
+<h4 id="orgc3274d0">Scenario: Factual Query Requiring a Search Tool</h4>
+<div class="outline-text-4" id="text-orgc3274d0">
 <p>
 The goal is to find the current age of a famous person. Since the person's current age changes daily, the LLM needs a search tool to get the current date and birth date.
 </p>
@@ -1019,9 +1037,9 @@ The goal is to find the current age of a famous person. Since the person's curre
 </table>
 </div>
 </div>
-<div id="outline-container-org15edfe3" class="outline-4">
-<h4 id="org15edfe3">Scenario: Coding and ebugging</h4>
-<div class="outline-text-4" id="text-org15edfe3">
+<div id="outline-container-org901a41e" class="outline-4">
+<h4 id="org901a41e">Scenario: Coding and ebugging</h4>
+<div class="outline-text-4" id="text-org901a41e">
 <p>
 A task requiring code execution and error handling.
 </p>
@@ -1081,6 +1099,20 @@ A task requiring code execution and error handling.
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1088,6 +1120,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

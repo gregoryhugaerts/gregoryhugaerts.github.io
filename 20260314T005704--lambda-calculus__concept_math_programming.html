@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lambda Calculus</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,12 +886,12 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf2820f8">Three Constructs</a></li>
-<li><a href="#org8c692b4">Beta Reduction</a></li>
-<li><a href="#org8a4d1ff">Church Encoding</a></li>
-<li><a href="#org67b14fc">Influence on Programming Languages</a></li>
-<li><a href="#org98e9e46">Currying</a></li>
-<li><a href="#orgf7f4874">Tips</a></li>
+<li><a href="#org14f1859">Three Constructs</a></li>
+<li><a href="#org71dde7a">Beta Reduction</a></li>
+<li><a href="#org494bbd9">Church Encoding</a></li>
+<li><a href="#org4b449b7">Influence on Programming Languages</a></li>
+<li><a href="#org0fe1609">Currying</a></li>
+<li><a href="#org6c21d7b">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -891,9 +909,9 @@ languages that support anonymous functions.
 Related: <a href="20260206T060606--functional-programming__concept_programming.html">Functional Programming</a>
          <a href="20260206T060559--elixir__language_programming.html">Elixir</a>
 </p>
-<div id="outline-container-orgf2820f8" class="outline-2">
-<h2 id="orgf2820f8">Three Constructs</h2>
-<div class="outline-text-2" id="text-orgf2820f8">
+<div id="outline-container-org14f1859" class="outline-2">
+<h2 id="org14f1859">Three Constructs</h2>
+<div class="outline-text-2" id="text-org14f1859">
 <p>
 Everything in lambda calculus is built from only three things:
 </p>
@@ -941,20 +959,20 @@ No types, no numbers, no booleans — just variables and functions.
 </p>
 </div>
 </div>
-<div id="outline-container-org8c692b4" class="outline-2">
-<h2 id="org8c692b4">Beta Reduction</h2>
-<div class="outline-text-2" id="text-org8c692b4">
+<div id="outline-container-org71dde7a" class="outline-2">
+<h2 id="org71dde7a">Beta Reduction</h2>
+<div class="outline-text-2" id="text-org71dde7a">
 <p>
 The computation rule: applying a function substitutes the
 argument for the parameter in the body.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_4daa74da36404113a7dd4f3147f535ba>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_bb13ba1ab1a24efa97cb42aabc839bcc>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4daa74da36404113a7dd4f3147f535ba=document.querySelector('button[name=btn_4daa74da36404113a7dd4f3147f535ba]');
-copyBtnbtn_4daa74da36404113a7dd4f3147f535ba.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`(λx.x) y            →  y          identity function\n(λx.x + 1) 5        →  5 + 1      (with arithmetic notation)\n(λx.λy.x) a b       →  a          constant function — ignores b\n`);copyBtnbtn_4daa74da36404113a7dd4f3147f535ba.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4daa74da36404113a7dd4f3147f535ba.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bb13ba1ab1a24efa97cb42aabc839bcc=document.querySelector('button[name=btn_bb13ba1ab1a24efa97cb42aabc839bcc]');
+copyBtnbtn_bb13ba1ab1a24efa97cb42aabc839bcc.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`(λx.x) y            →  y          identity function\n(λx.x + 1) 5        →  5 + 1      (with arithmetic notation)\n(λx.λy.x) a b       →  a          constant function — ignores b\n`);copyBtnbtn_bb13ba1ab1a24efa97cb42aabc839bcc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bb13ba1ab1a24efa97cb42aabc839bcc.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -970,9 +988,9 @@ only computation rule. All of computation reduces to this.
 </p>
 </div>
 </div>
-<div id="outline-container-org8a4d1ff" class="outline-2">
-<h2 id="org8a4d1ff">Church Encoding</h2>
-<div class="outline-text-2" id="text-org8a4d1ff">
+<div id="outline-container-org494bbd9" class="outline-2">
+<h2 id="org494bbd9">Church Encoding</h2>
+<div class="outline-text-2" id="text-org494bbd9">
 <p>
 Numbers, booleans, and data structures can all be represented
 as functions — demonstrating that functions alone are sufficient
@@ -980,11 +998,11 @@ for universal computation:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_6c0b238ee21c4bd4b447231c3b1e484d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_954891d9769c4b15ac07a7ec2b4d7bc3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6c0b238ee21c4bd4b447231c3b1e484d=document.querySelector('button[name=btn_6c0b238ee21c4bd4b447231c3b1e484d]');
-copyBtnbtn_6c0b238ee21c4bd4b447231c3b1e484d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Church numerals — a number n is \"apply f to x, n times\"\n0 = λf.λx.x\n1 = λf.λx.f x\n2 = λf.λx.f (f x)\n3 = λf.λx.f (f (f x))\n\n# Booleans\ntrue  = λx.λy.x    # select first argument\nfalse = λx.λy.y    # select second argument\n\n# if-then-else follows naturally:\nif b then t else e = b t e\n`);copyBtnbtn_6c0b238ee21c4bd4b447231c3b1e484d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6c0b238ee21c4bd4b447231c3b1e484d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_954891d9769c4b15ac07a7ec2b4d7bc3=document.querySelector('button[name=btn_954891d9769c4b15ac07a7ec2b4d7bc3]');
+copyBtnbtn_954891d9769c4b15ac07a7ec2b4d7bc3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Church numerals — a number n is \"apply f to x, n times\"\n0 = λf.λx.x\n1 = λf.λx.f x\n2 = λf.λx.f (f x)\n3 = λf.λx.f (f (f x))\n\n# Booleans\ntrue  = λx.λy.x    # select first argument\nfalse = λx.λy.y    # select second argument\n\n# if-then-else follows naturally:\nif b then t else e = b t e\n`);copyBtnbtn_954891d9769c4b15ac07a7ec2b4d7bc3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_954891d9769c4b15ac07a7ec2b4d7bc3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1004,15 +1022,15 @@ if b then t else e = b t e
 </div></div>
 </div>
 </div>
-<div id="outline-container-org67b14fc" class="outline-2">
-<h2 id="org67b14fc">Influence on Programming Languages</h2>
-<div class="outline-text-2" id="text-org67b14fc">
+<div id="outline-container-org4b449b7" class="outline-2">
+<h2 id="org4b449b7">Influence on Programming Languages</h2>
+<div class="outline-text-2" id="text-org4b449b7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_2689b3d719764aa88cdb1eb1a321d54f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_90a01fc0219746d282a3b709fde01bcb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2689b3d719764aa88cdb1eb1a321d54f=document.querySelector('button[name=btn_2689b3d719764aa88cdb1eb1a321d54f]');
-copyBtnbtn_2689b3d719764aa88cdb1eb1a321d54f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Python — lambda keyword directly from lambda calculus\ndouble = lambda x: x * 2\ndouble(5)   # 10\n\n# Equivalent to:\ndef double(x): return x * 2\n`);copyBtnbtn_2689b3d719764aa88cdb1eb1a321d54f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2689b3d719764aa88cdb1eb1a321d54f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_90a01fc0219746d282a3b709fde01bcb=document.querySelector('button[name=btn_90a01fc0219746d282a3b709fde01bcb]');
+copyBtnbtn_90a01fc0219746d282a3b709fde01bcb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Python — lambda keyword directly from lambda calculus\ndouble = lambda x: x * 2\ndouble(5)   # 10\n\n# Equivalent to:\ndef double(x): return x * 2\n`);copyBtnbtn_90a01fc0219746d282a3b709fde01bcb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_90a01fc0219746d282a3b709fde01bcb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1026,11 +1044,11 @@ double(5)   <span style="color: var(--clr-comment-delimiter); background-color: 
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>HASKELL</span><button class='copyBtn' name=btn_515ccbd9e77f4be88569323bcdf2d54c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>HASKELL</span><button class='copyBtn' name=btn_605a0296fb9645acb51641d47f5325de>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_515ccbd9e77f4be88569323bcdf2d54c=document.querySelector('button[name=btn_515ccbd9e77f4be88569323bcdf2d54c]');
-copyBtnbtn_515ccbd9e77f4be88569323bcdf2d54c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`-- Haskell — anonymous functions use lambda syntax\ndouble = \\x -> x * 2\n\n-- Partial application is lambda calculus currying made practical\nadd = \\x -> \\y -> x + y\nadd3 = add 3    -- a function waiting for the second argument\nadd3 5          -- 8\n`);copyBtnbtn_515ccbd9e77f4be88569323bcdf2d54c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_515ccbd9e77f4be88569323bcdf2d54c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_605a0296fb9645acb51641d47f5325de=document.querySelector('button[name=btn_605a0296fb9645acb51641d47f5325de]');
+copyBtnbtn_605a0296fb9645acb51641d47f5325de.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`-- Haskell — anonymous functions use lambda syntax\ndouble = \\x -> x * 2\n\n-- Partial application is lambda calculus currying made practical\nadd = \\x -> \\y -> x + y\nadd3 = add 3    -- a function waiting for the second argument\nadd3 5          -- 8\n`);copyBtnbtn_605a0296fb9645acb51641d47f5325de.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_605a0296fb9645acb51641d47f5325de.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1045,11 +1063,11 @@ add3 5          -- 8
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_f1c85d5637e34ab2acfa1adc1f8aef94>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_b57a97784fdb4c539bccd40bca9d1c6c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f1c85d5637e34ab2acfa1adc1f8aef94=document.querySelector('button[name=btn_f1c85d5637e34ab2acfa1adc1f8aef94]');
-copyBtnbtn_f1c85d5637e34ab2acfa1adc1f8aef94.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Elixir — anonymous functions\ndouble = fn x -> x * 2 end\ndouble.(5)   # 10\n`);copyBtnbtn_f1c85d5637e34ab2acfa1adc1f8aef94.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f1c85d5637e34ab2acfa1adc1f8aef94.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b57a97784fdb4c539bccd40bca9d1c6c=document.querySelector('button[name=btn_b57a97784fdb4c539bccd40bca9d1c6c]');
+copyBtnbtn_b57a97784fdb4c539bccd40bca9d1c6c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Elixir — anonymous functions\ndouble = fn x -> x * 2 end\ndouble.(5)   # 10\n`);copyBtnbtn_b57a97784fdb4c539bccd40bca9d1c6c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b57a97784fdb4c539bccd40bca9d1c6c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1060,9 +1078,9 @@ double.(5)   # 10
 </div></div>
 </div>
 </div>
-<div id="outline-container-org98e9e46" class="outline-2">
-<h2 id="org98e9e46">Currying</h2>
-<div class="outline-text-2" id="text-org98e9e46">
+<div id="outline-container-org0fe1609" class="outline-2">
+<h2 id="org0fe1609">Currying</h2>
+<div class="outline-text-2" id="text-org0fe1609">
 <p>
 Lambda calculus functions take exactly one argument. Multi-
 argument functions are expressed by returning functions —
@@ -1070,11 +1088,11 @@ a technique called currying (after Haskell Curry):
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_1f8090b2b0d945d78d7c1d2074528035>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d0aaaa01f75749fab1fcf56029cf4a31>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1f8090b2b0d945d78d7c1d2074528035=document.querySelector('button[name=btn_1f8090b2b0d945d78d7c1d2074528035]');
-copyBtnbtn_1f8090b2b0d945d78d7c1d2074528035.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`λx.λy.x + y   is a function that takes x\n               and returns a function that takes y\n               and returns x + y\n\n(λx.λy.x + y) 3       →  λy.3 + y    (partially applied)\n(λx.λy.x + y) 3 5     →  3 + 5 = 8\n`);copyBtnbtn_1f8090b2b0d945d78d7c1d2074528035.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1f8090b2b0d945d78d7c1d2074528035.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d0aaaa01f75749fab1fcf56029cf4a31=document.querySelector('button[name=btn_d0aaaa01f75749fab1fcf56029cf4a31]');
+copyBtnbtn_d0aaaa01f75749fab1fcf56029cf4a31.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`λx.λy.x + y   is a function that takes x\n               and returns a function that takes y\n               and returns x + y\n\n(λx.λy.x + y) 3       →  λy.3 + y    (partially applied)\n(λx.λy.x + y) 3 5     →  3 + 5 = 8\n`);copyBtnbtn_d0aaaa01f75749fab1fcf56029cf4a31.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d0aaaa01f75749fab1fcf56029cf4a31.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1093,9 +1111,9 @@ explicitly in Python via <code>functools.partial</code>.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf7f4874" class="outline-2">
-<h2 id="orgf7f4874">Tips</h2>
-<div class="outline-text-2" id="text-orgf7f4874">
+<div id="outline-container-org6c21d7b" class="outline-2">
+<h2 id="org6c21d7b">Tips</h2>
+<div class="outline-text-2" id="text-org6c21d7b">
 <ul class="org-ul">
 <li>The lambda keyword in Python, Rust, Haskell, and most other
 languages is a direct reference to lambda calculus —
@@ -1111,6 +1129,20 @@ code-as-data in Lisp and macros in Elixir</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1118,6 +1150,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

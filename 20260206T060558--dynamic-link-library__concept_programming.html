@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Dynamic-Link Library</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,26 +886,26 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3a33965">Dynamic-Link Library</a>
+<li><a href="#org2b571e0">Dynamic-Link Library</a>
 <ul>
-<li><a href="#orgd833bba">How LLs Work</a></li>
-<li><a href="#org2f43f47">Advantages of LLs</a></li>
-<li><a href="#orgf6865f6">Disadvantages and Problems</a></li>
+<li><a href="#org5354956">How LLs Work</a></li>
+<li><a href="#org323ab13">Advantages of LLs</a></li>
+<li><a href="#org656eca4">Disadvantages and Problems</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3a33965" class="outline-2">
-<h2 id="org3a33965">Dynamic-Link Library</h2>
-<div class="outline-text-2" id="text-org3a33965">
+<div id="outline-container-org2b571e0" class="outline-2">
+<h2 id="org2b571e0">Dynamic-Link Library</h2>
+<div class="outline-text-2" id="text-org2b571e0">
 <p>
 A <b>Dynamic-Link Library (DLL)</b> is a type of file in Microsoft Windows that contains code and data that can be used by multiple programs at the same time. This allows for code reuse and more efficient memory usage. DLLs are a form of shared library, similar to.so files in Linux/Unix.
 </p>
 </div>
-<div id="outline-container-orgd833bba" class="outline-3">
-<h3 id="orgd833bba">How LLs Work</h3>
-<div class="outline-text-3" id="text-orgd833bba">
+<div id="outline-container-org5354956" class="outline-3">
+<h3 id="org5354956">How LLs Work</h3>
+<div class="outline-text-3" id="text-org5354956">
 <p>
 Unlike a static library, where the code is copied into an application's executable file when it's compiled, a DLL is a separate file that is not linked until it is needed at runtime. This is called dynamic linking. When an application needs a function from a DLL, the Operating System loads the DLL into memory (if it's not already there) and makes the functions available to the program. This means multiple programs can share a single copy of a DLL in memory, saving resources.
 </p>
@@ -902,9 +920,9 @@ There are two main types of dynamic linking:
 </ul>
 </div>
 </div>
-<div id="outline-container-org2f43f47" class="outline-3">
-<h3 id="org2f43f47">Advantages of LLs</h3>
-<div class="outline-text-3" id="text-org2f43f47">
+<div id="outline-container-org323ab13" class="outline-3">
+<h3 id="org323ab13">Advantages of LLs</h3>
+<div class="outline-text-3" id="text-org323ab13">
 <ul class="org-ul">
 <li><b>Reduced Resource Usage:</b> DLLs reduce the duplication of code on disk and in memory, which can improve the performance of the entire system.</li>
 <li><b>Modular Architecture:</b> They promote the development of modular programs, where different functionalities are contained in separate components. This makes it easier to develop and maintain large, complex applications.</li>
@@ -912,9 +930,9 @@ There are two main types of dynamic linking:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf6865f6" class="outline-3">
-<h3 id="orgf6865f6">Disadvantages and Problems</h3>
-<div class="outline-text-3" id="text-orgf6865f6">
+<div id="outline-container-org656eca4" class="outline-3">
+<h3 id="org656eca4">Disadvantages and Problems</h3>
+<div class="outline-text-3" id="text-org656eca4">
 <ul class="org-ul">
 <li><b>Dependency Issues ("DLL Hell"):</b> The most significant problem with DLLs is what is known as "DLL Hell." This occurs when multiple applications require different versions of the same DLL. Installing a new program can overwrite a shared DLL with an incompatible version, causing other programs to fail.</li>
 <li><b>Application is Not Self-Contained:</b> An application that relies on DLLs is dependent on those separate files being present and correct. If a required DLL is missing or the wrong version, the application may not run.</li>
@@ -929,6 +947,20 @@ Modern versions of Windows have introduced mechanisms like Side-by-Side Assembly
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -936,6 +968,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

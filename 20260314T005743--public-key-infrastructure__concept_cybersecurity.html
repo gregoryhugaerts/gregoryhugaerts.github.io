@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Public key infrastructure</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,24 +886,24 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2124275">Public Key Infrastructure</a>
+<li><a href="#orge53db87">Public Key Infrastructure</a>
 <ul>
-<li><a href="#orgdcf7ced">Core Components</a></li>
-<li><a href="#org9e29f84">How PKI Works</a></li>
-<li><a href="#org0ff2d21">Benefits of PKI</a></li>
-<li><a href="#org7795fad">Challenges</a></li>
+<li><a href="#orgfe60fc6">Core Components</a></li>
+<li><a href="#orgf6b1f13">How PKI Works</a></li>
+<li><a href="#org4e3656c">Benefits of PKI</a></li>
+<li><a href="#org5835af0">Challenges</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2124275" class="outline-2">
-<h2 id="org2124275">Public Key Infrastructure</h2>
-<div class="outline-text-2" id="text-org2124275">
+<div id="outline-container-orge53db87" class="outline-2">
+<h2 id="orge53db87">Public Key Infrastructure</h2>
+<div class="outline-text-2" id="text-orge53db87">
 </div>
-<div id="outline-container-orgdcf7ced" class="outline-3">
-<h3 id="orgdcf7ced">Core Components</h3>
-<div class="outline-text-3" id="text-orgdcf7ced">
+<div id="outline-container-orgfe60fc6" class="outline-3">
+<h3 id="orgfe60fc6">Core Components</h3>
+<div class="outline-text-3" id="text-orgfe60fc6">
 <ul class="org-ul">
 <li><b>Certificate Authority (CA):</b> Issues and manages digital certificates.</li>
 <li><b>Registration Authority (RA):</b> Verifies user identities before issuing certificates.</li>
@@ -894,15 +912,15 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-org9e29f84" class="outline-3">
-<h3 id="org9e29f84">How PKI Works</h3>
-<div class="outline-text-3" id="text-org9e29f84">
+<div id="outline-container-orgf6b1f13" class="outline-3">
+<h3 id="orgf6b1f13">How PKI Works</h3>
+<div class="outline-text-3" id="text-orgf6b1f13">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PLANTUML-SVG</span><button class='copyBtn' name=btn_764e1a2ccb3b4d95aa100c281e321246>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PLANTUML-SVG</span><button class='copyBtn' name=btn_7d0b297990fe4b1d9b8a4c96e2af6c89>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_764e1a2ccb3b4d95aa100c281e321246=document.querySelector('button[name=btn_764e1a2ccb3b4d95aa100c281e321246]');
-copyBtnbtn_764e1a2ccb3b4d95aa100c281e321246.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`@startuml\nparticipant User\nparticipant \"Registration Authority (RA)\" as RA\nparticipant \"Certificate Authority (CA)\" as CA\n\nUser -> User: Generate Public/Private Key Pair\nUser -> RA: Certificate Request\nactivate RA\nRA -> RA: Verify User Identity\nRA -> CA: Submit Certificate Request\nactivate CA\nCA -> CA: Issue Digital Certificate\nCA --> RA: Digital Certificate\ndeactivate CA\nRA --> User: Digital Certificate\ndeactivate RA\nUser -> User: Use Certificate to Prove Identity/Encrypt Data\n@enduml\n`);copyBtnbtn_764e1a2ccb3b4d95aa100c281e321246.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_764e1a2ccb3b4d95aa100c281e321246.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7d0b297990fe4b1d9b8a4c96e2af6c89=document.querySelector('button[name=btn_7d0b297990fe4b1d9b8a4c96e2af6c89]');
+copyBtnbtn_7d0b297990fe4b1d9b8a4c96e2af6c89.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`@startuml\nparticipant User\nparticipant \"Registration Authority (RA)\" as RA\nparticipant \"Certificate Authority (CA)\" as CA\n\nUser -> User: Generate Public/Private Key Pair\nUser -> RA: Certificate Request\nactivate RA\nRA -> RA: Verify User Identity\nRA -> CA: Submit Certificate Request\nactivate CA\nCA -> CA: Issue Digital Certificate\nCA --> RA: Digital Certificate\ndeactivate CA\nRA --> User: Digital Certificate\ndeactivate RA\nUser -> User: Use Certificate to Prove Identity/Encrypt Data\n@enduml\n`);copyBtnbtn_7d0b297990fe4b1d9b8a4c96e2af6c89.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7d0b297990fe4b1d9b8a4c96e2af6c89.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -936,9 +954,9 @@ User -&gt; User: Use Certificate to Prove Identity/Encrypt Data
 </ol>
 </div>
 </div>
-<div id="outline-container-org0ff2d21" class="outline-3">
-<h3 id="org0ff2d21">Benefits of PKI</h3>
-<div class="outline-text-3" id="text-org0ff2d21">
+<div id="outline-container-org4e3656c" class="outline-3">
+<h3 id="org4e3656c">Benefits of PKI</h3>
+<div class="outline-text-3" id="text-org4e3656c">
 <ul class="org-ul">
 <li><b>Authentication:</b> Verifies the identity of individuals and devices.</li>
 <li><b>Data Integrity:</b> Ensures data has not been tampered with.</li>
@@ -947,9 +965,9 @@ User -&gt; User: Use Certificate to Prove Identity/Encrypt Data
 </ul>
 </div>
 </div>
-<div id="outline-container-org7795fad" class="outline-3">
-<h3 id="org7795fad">Challenges</h3>
-<div class="outline-text-3" id="text-org7795fad">
+<div id="outline-container-org5835af0" class="outline-3">
+<h3 id="org5835af0">Challenges</h3>
+<div class="outline-text-3" id="text-org5835af0">
 <ul class="org-ul">
 <li><b>Certificate management:</b> Requires careful handling of certificates and keys.</li>
 <li><b>Revocation:</b> Ensuring revoked certificates are updated in the CRL.</li>
@@ -960,6 +978,20 @@ User -&gt; User: Use Certificate to Prove Identity/Encrypt Data
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -967,6 +999,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

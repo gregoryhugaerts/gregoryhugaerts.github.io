@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>IP Address</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,23 +886,23 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8091a15">IPv4</a>
+<li><a href="#org2d91c08">IPv4</a>
 <ul>
-<li><a href="#orgfd534c5">Reserved and Special Ranges</a></li>
+<li><a href="#org5940ae6">Reserved and Special Ranges</a></li>
 </ul>
 </li>
-<li><a href="#org4e297c5">CIDR — Classless Inter-Domain Routing</a>
+<li><a href="#org82b1120">CIDR — Classless Inter-Domain Routing</a>
 <ul>
-<li><a href="#orgfbb8d6c">Quick subnet calculation</a></li>
+<li><a href="#org6667223">Quick subnet calculation</a></li>
 </ul>
 </li>
-<li><a href="#org35577fe">IPv6</a>
+<li><a href="#orgd5c067b">IPv6</a>
 <ul>
-<li><a href="#org0ee9c0d">Key IPv6 Address Types</a></li>
+<li><a href="#orgbc1d310">Key IPv6 Address Types</a></li>
 </ul>
 </li>
-<li><a href="#orgaa81225">Historical Class System (Obsolete)</a></li>
-<li><a href="#org63f263c">Security Relevance</a></li>
+<li><a href="#org637e25d">Historical Class System (Obsolete)</a></li>
+<li><a href="#org481ed40">Security Relevance</a></li>
 </ul>
 </div>
 </div>
@@ -902,9 +920,9 @@ Related: <a href="20260213T095239==cidr--classless-inter-domain-routing__concept
          <a href="20260206T060554--static-ip-adress__concept_networking.html">Static IP</a>
          <a href="20260206T060540--dynamic-ip-address__concept_networking.html">Dynamic IP</a>
 </p>
-<div id="outline-container-org8091a15" class="outline-2">
-<h2 id="org8091a15">IPv4</h2>
-<div class="outline-text-2" id="text-org8091a15">
+<div id="outline-container-org2d91c08" class="outline-2">
+<h2 id="org2d91c08">IPv4</h2>
+<div class="outline-text-2" id="text-org2d91c08">
 <p>
 32-bit addresses, written as four octets in dotted decimal:
 <code>192.168.1.100</code>
@@ -915,9 +933,9 @@ Total address space: 2³² = ~4.3 billion addresses — exhausted
 in practice; NAT extends the life of the available space.
 </p>
 </div>
-<div id="outline-container-orgfd534c5" class="outline-3">
-<h3 id="orgfd534c5">Reserved and Special Ranges</h3>
-<div class="outline-text-3" id="text-orgfd534c5">
+<div id="outline-container-org5940ae6" class="outline-3">
+<h3 id="org5940ae6">Reserved and Special Ranges</h3>
+<div class="outline-text-3" id="text-org5940ae6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -988,9 +1006,9 @@ cloud environments.
 </div>
 </div>
 </div>
-<div id="outline-container-org4e297c5" class="outline-2">
-<h2 id="org4e297c5">CIDR — Classless Inter-Domain Routing</h2>
-<div class="outline-text-2" id="text-org4e297c5">
+<div id="outline-container-org82b1120" class="outline-2">
+<h2 id="org82b1120">CIDR — Classless Inter-Domain Routing</h2>
+<div class="outline-text-2" id="text-org82b1120">
 <p>
 Replaces the old class-based system. An IP address and prefix
 length describe both the address and the network boundary:
@@ -1067,9 +1085,9 @@ bits identify hosts within that network.
 </tbody>
 </table>
 </div>
-<div id="outline-container-orgfbb8d6c" class="outline-3">
-<h3 id="orgfbb8d6c">Quick subnet calculation</h3>
-<div class="outline-text-3" id="text-orgfbb8d6c">
+<div id="outline-container-org6667223" class="outline-3">
+<h3 id="org6667223">Quick subnet calculation</h3>
+<div class="outline-text-3" id="text-org6667223">
 <p>
 For a /24: last octet is the host part — hosts are <code>.1</code> to <code>.254</code>,
 network address is <code>.0</code>, broadcast is <code>.255</code>.
@@ -1081,11 +1099,11 @@ network and broadcast = usable hosts.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_ae627286ec5f451bb028a5c78e247212>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_79d0faa3500a46c5862ad3775428729e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ae627286ec5f451bb028a5c78e247212=document.querySelector('button[name=btn_ae627286ec5f451bb028a5c78e247212]');
-copyBtnbtn_ae627286ec5f451bb028a5c78e247212.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import ipaddress\n\nnet = ipaddress.ip_network(\"192.168.1.0/24\", strict=False)\nprint(net.network_address)   # 192.168.1.0\nprint(net.broadcast_address) # 192.168.1.255\nprint(net.num_addresses)     # 256\nprint(list(net.hosts())[:3]) # first 3 usable hosts\n`);copyBtnbtn_ae627286ec5f451bb028a5c78e247212.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ae627286ec5f451bb028a5c78e247212.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_79d0faa3500a46c5862ad3775428729e=document.querySelector('button[name=btn_79d0faa3500a46c5862ad3775428729e]');
+copyBtnbtn_79d0faa3500a46c5862ad3775428729e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import ipaddress\n\nnet = ipaddress.ip_network(\"192.168.1.0/24\", strict=False)\nprint(net.network_address)   # 192.168.1.0\nprint(net.broadcast_address) # 192.168.1.255\nprint(net.num_addresses)     # 256\nprint(list(net.hosts())[:3]) # first 3 usable hosts\n`);copyBtnbtn_79d0faa3500a46c5862ad3775428729e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_79d0faa3500a46c5862ad3775428729e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1101,9 +1119,9 @@ let res = copyTextToClipboard(`import ipaddress\n\nnet = ipaddress.ip_network(\"
 </div>
 </div>
 </div>
-<div id="outline-container-org35577fe" class="outline-2">
-<h2 id="org35577fe">IPv6</h2>
-<div class="outline-text-2" id="text-org35577fe">
+<div id="outline-container-orgd5c067b" class="outline-2">
+<h2 id="orgd5c067b">IPv6</h2>
+<div class="outline-text-2" id="text-orgd5c067b">
 <p>
 128-bit addresses, written as eight groups of four hex digits
 separated by colons: <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>
@@ -1125,9 +1143,9 @@ Abbreviation rules:
 Total address space: 2¹²⁸ — effectively inexhaustible.
 </p>
 </div>
-<div id="outline-container-org0ee9c0d" class="outline-3">
-<h3 id="org0ee9c0d">Key IPv6 Address Types</h3>
-<div class="outline-text-3" id="text-org0ee9c0d">
+<div id="outline-container-orgbc1d310" class="outline-3">
+<h3 id="orgbc1d310">Key IPv6 Address Types</h3>
+<div class="outline-text-3" id="text-orgbc1d310">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1180,9 +1198,9 @@ Total address space: 2¹²⁸ — effectively inexhaustible.
 </div>
 </div>
 </div>
-<div id="outline-container-orgaa81225" class="outline-2">
-<h2 id="orgaa81225">Historical Class System (Obsolete)</h2>
-<div class="outline-text-2" id="text-orgaa81225">
+<div id="outline-container-org637e25d" class="outline-2">
+<h2 id="org637e25d">Historical Class System (Obsolete)</h2>
+<div class="outline-text-2" id="text-org637e25d">
 <p>
 Classful addressing was replaced by CIDR in 1993 but still
 appears in older documentation:
@@ -1251,15 +1269,15 @@ appears in older documentation:
 </p>
 </div>
 </div>
-<div id="outline-container-org63f263c" class="outline-2">
-<h2 id="org63f263c">Security Relevance</h2>
-<div class="outline-text-2" id="text-org63f263c">
+<div id="outline-container-org481ed40" class="outline-2">
+<h2 id="org481ed40">Security Relevance</h2>
+<div class="outline-text-2" id="text-org481ed40">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7aedc30ff76d446dad8e25c14d6de2e5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bb134385336a4de5b8c32e46c81dcc9d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7aedc30ff76d446dad8e25c14d6de2e5=document.querySelector('button[name=btn_7aedc30ff76d446dad8e25c14d6de2e5]');
-copyBtnbtn_7aedc30ff76d446dad8e25c14d6de2e5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Identify your IP and subnet\nip a\nipconfig /all   # Windows\n\n# Check whether an IP is private or public\npython3 -c \"import ipaddress; print(ipaddress.ip_address('10.0.0.1').is_private)\"\n\n# Subnet sweep (ping)\nnmap -sn 192.168.1.0/24\n\n# Quick subnet info\npython3 -c \"\nimport ipaddress\nn = ipaddress.ip_network('10.10.10.0/24', strict=False)\nprint(f'Network: {n.network_address}')\nprint(f'Broadcast: {n.broadcast_address}')\nprint(f'Hosts: {n.num_addresses - 2}')\n\"\n`);copyBtnbtn_7aedc30ff76d446dad8e25c14d6de2e5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7aedc30ff76d446dad8e25c14d6de2e5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bb134385336a4de5b8c32e46c81dcc9d=document.querySelector('button[name=btn_bb134385336a4de5b8c32e46c81dcc9d]');
+copyBtnbtn_bb134385336a4de5b8c32e46c81dcc9d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Identify your IP and subnet\nip a\nipconfig /all   # Windows\n\n# Check whether an IP is private or public\npython3 -c \"import ipaddress; print(ipaddress.ip_address('10.0.0.1').is_private)\"\n\n# Subnet sweep (ping)\nnmap -sn 192.168.1.0/24\n\n# Quick subnet info\npython3 -c \"\nimport ipaddress\nn = ipaddress.ip_network('10.10.10.0/24', strict=False)\nprint(f'Network: {n.network_address}')\nprint(f'Broadcast: {n.broadcast_address}')\nprint(f'Hosts: {n.num_addresses - 2}')\n\"\n`);copyBtnbtn_bb134385336a4de5b8c32e46c81dcc9d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bb134385336a4de5b8c32e46c81dcc9d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1297,6 +1315,20 @@ endpoint — critical SSRF target; see <a href="20260207T065427==ssrf--server-si
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1304,6 +1336,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

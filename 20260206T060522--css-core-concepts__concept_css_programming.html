@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CSS Core Concepts</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,26 +886,26 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7ab924c">CSS Core Concepts</a>
+<li><a href="#orgb0dabcc">CSS Core Concepts</a>
 <ul>
-<li><a href="#org06554d2">Cascade</a></li>
-<li><a href="#org33d44ca">Specificity</a></li>
-<li><a href="#org2aa8bf3">Inheritance</a></li>
+<li><a href="#orgbe572f1">Cascade</a></li>
+<li><a href="#org2010391">Specificity</a></li>
+<li><a href="#org5c0e399">Inheritance</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7ab924c" class="outline-2">
-<h2 id="org7ab924c">CSS Core Concepts</h2>
-<div class="outline-text-2" id="text-org7ab924c">
+<div id="outline-container-orgb0dabcc" class="outline-2">
+<h2 id="orgb0dabcc">CSS Core Concepts</h2>
+<div class="outline-text-2" id="text-orgb0dabcc">
 <p>
 The "C" in CSS stands for <b>Cascade</b>, and along with <b>Specificity</b> and <b>Inheritance</b>, these three core concepts define how CSS rules are applied to HTML elements and how conflicts are resolved. Understanding them is fundamental to predicting and controlling your web page's styling.
 </p>
 </div>
-<div id="outline-container-org06554d2" class="outline-3">
-<h3 id="org06554d2">Cascade</h3>
-<div class="outline-text-3" id="text-org06554d2">
+<div id="outline-container-orgbe572f1" class="outline-3">
+<h3 id="orgbe572f1">Cascade</h3>
+<div class="outline-text-3" id="text-orgbe572f1">
 <p>
 The Cascade is the algorithm that determines which CSS declaration (a <code>property: value;</code> pair) applies to an element when multiple rules try to style the same property on the same element. It's a hierarchical process that combines rules from various sources and resolves conflicts based on a defined order:
 </p>
@@ -917,9 +935,9 @@ The Cascade is the algorithm that determines which CSS declaration (a <code>prop
 </ul>
 </div>
 </div>
-<div id="outline-container-org33d44ca" class="outline-3">
-<h3 id="org33d44ca">Specificity</h3>
-<div class="outline-text-3" id="text-org33d44ca">
+<div id="outline-container-org2010391" class="outline-3">
+<h3 id="org2010391">Specificity</h3>
+<div class="outline-text-3" id="text-org2010391">
 <p>
 Specificity is a calculated score that determines which CSS rule's declaration takes precedence when multiple selectors target the same element for the same property. A higher specificity score wins.
 </p>
@@ -956,11 +974,11 @@ Specificity is calculated by counting different types of selectors:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_fb73cce6a3ec44fe832f745b37401c91>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>CSS</span><button class='copyBtn' name=btn_c2f2e91b55f044828037951330c80821>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fb73cce6a3ec44fe832f745b37401c91=document.querySelector('button[name=btn_fb73cce6a3ec44fe832f745b37401c91]');
-copyBtnbtn_fb73cce6a3ec44fe832f745b37401c91.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`/* Specificity: (0,0,0,1) */\np { color: red; }\n\n/* Specificity: (0,0,1,1) */\ndiv p.intro { color: blue; }\n\n/* Specificity: (0,1,0,1) */\n#header p { color: green; }\n\n/* Specificity: (0,0,2,0) */\n.card.featured { color: purple; }\n`);copyBtnbtn_fb73cce6a3ec44fe832f745b37401c91.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fb73cce6a3ec44fe832f745b37401c91.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c2f2e91b55f044828037951330c80821=document.querySelector('button[name=btn_c2f2e91b55f044828037951330c80821]');
+copyBtnbtn_c2f2e91b55f044828037951330c80821.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`/* Specificity: (0,0,0,1) */\np { color: red; }\n\n/* Specificity: (0,0,1,1) */\ndiv p.intro { color: blue; }\n\n/* Specificity: (0,1,0,1) */\n#header p { color: green; }\n\n/* Specificity: (0,0,2,0) */\n.card.featured { color: purple; }\n`);copyBtnbtn_c2f2e91b55f044828037951330c80821.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c2f2e91b55f044828037951330c80821.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -999,9 +1017,9 @@ Tie-breaking: If two rules have the exact same specificity score, the one that a
 </p>
 </div>
 </div>
-<div id="outline-container-org2aa8bf3" class="outline-3">
-<h3 id="org2aa8bf3">Inheritance</h3>
-<div class="outline-text-3" id="text-org2aa8bf3">
+<div id="outline-container-org5c0e399" class="outline-3">
+<h3 id="org5c0e399">Inheritance</h3>
+<div class="outline-text-3" id="text-org5c0e399">
 <p>
 Inheritance refers to the mechanism where certain CSS properties applied to a parent element are automatically passed down (inherited) by its child elements. This helps to prevent repetitive styling and maintain consistency.
 </p>
@@ -1031,6 +1049,20 @@ Inheritance refers to the mechanism where certain CSS properties applied to a pa
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1038,6 +1070,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

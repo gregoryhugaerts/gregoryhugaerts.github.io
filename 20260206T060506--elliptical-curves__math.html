@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elliptic Curves</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -892,6 +892,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -900,26 +918,26 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org21d9a24">The Curve</a></li>
-<li><a href="#orgaf6b4b0">Point Addition</a>
+<li><a href="#orgee7e43b">The Curve</a></li>
+<li><a href="#org7244667">Point Addition</a>
 <ul>
-<li><a href="#org339c427">Geometric interpretation (over the reals)</a></li>
-<li><a href="#orgae5e097">Identity element</a></li>
+<li><a href="#orgbcdeac1">Geometric interpretation (over the reals)</a></li>
+<li><a href="#orgd7a7b60">Identity element</a></li>
 </ul>
 </li>
-<li><a href="#org0f1c100">Scalar Multiplication</a></li>
-<li><a href="#orga90a4ae">The Discrete Logarithm Problem</a></li>
-<li><a href="#org516883e">Domain Parameters</a></li>
-<li><a href="#orgbe414b8">Named Curves in Practice</a></li>
-<li><a href="#org6d2d124">Cryptographic Schemes Using ECC</a>
+<li><a href="#org6903256">Scalar Multiplication</a></li>
+<li><a href="#org0bf275d">The Discrete Logarithm Problem</a></li>
+<li><a href="#org31b7759">Domain Parameters</a></li>
+<li><a href="#org8a3624b">Named Curves in Practice</a></li>
+<li><a href="#org892fd46">Cryptographic Schemes Using ECC</a>
 <ul>
-<li><a href="#org5ee9d9a">ECDH — Elliptic Curve Diffie-Hellman</a></li>
-<li><a href="#org6fa1946">ECDSA — Elliptic Curve Digital Signature Algorithm</a></li>
-<li><a href="#orgcfde804">EdDSA — Edwards-curve Digital Signature Algorithm</a></li>
+<li><a href="#org1ce7193">ECDH — Elliptic Curve Diffie-Hellman</a></li>
+<li><a href="#org9a07a8f">ECDSA — Elliptic Curve Digital Signature Algorithm</a></li>
+<li><a href="#orgc3f2bc0">EdDSA — Edwards-curve Digital Signature Algorithm</a></li>
 </ul>
 </li>
-<li><a href="#orga5abf0b">Security Relevance</a></li>
-<li><a href="#org587d7ad">Tips</a></li>
+<li><a href="#org4c9b03a">Security Relevance</a></li>
+<li><a href="#orgf5921e4">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -942,11 +960,11 @@ historical, not geometric.
 Related: <a href="20260206T060446--cryptography__concept_cybersecurity_math.html">Cryptography</a>
          <a href="20260206T060656--hashing__concept_cybersecurity_programming.html">Hashing</a>
          <a href="20260314T005743--public-key-infrastructure__concept_cybersecurity.html">PKI</a>
-         <a href="20260210T195356--secure-sockets-layer__concept_cybersecurity_networking.html">TLS / SSL</a>
+         <a href="20260210T195356==ssl--secure-sockets-layer__concept_cybersecurity_networking.html">TLS / SSL</a>
 </p>
-<div id="outline-container-org21d9a24" class="outline-2">
-<h2 id="org21d9a24">The Curve</h2>
-<div class="outline-text-2" id="text-org21d9a24">
+<div id="outline-container-orgee7e43b" class="outline-2">
+<h2 id="orgee7e43b">The Curve</h2>
+<div class="outline-text-2" id="text-orgee7e43b">
 <p>
 The standard short Weierstrass form over a prime field \(\mathbb{F}_p\):
 </p>
@@ -966,17 +984,17 @@ the equation modulo \(p\), plus a special "point at infinity"
 </p>
 </div>
 </div>
-<div id="outline-container-orgaf6b4b0" class="outline-2">
-<h2 id="orgaf6b4b0">Point Addition</h2>
-<div class="outline-text-2" id="text-orgaf6b4b0">
+<div id="outline-container-org7244667" class="outline-2">
+<h2 id="org7244667">Point Addition</h2>
+<div class="outline-text-2" id="text-org7244667">
 <p>
 The group operation on an elliptic curve is called <b>point
 addition</b>. Given points \(P\) and \(Q\) on the curve:
 </p>
 </div>
-<div id="outline-container-org339c427" class="outline-3">
-<h3 id="org339c427">Geometric interpretation (over the reals)</h3>
-<div class="outline-text-3" id="text-org339c427">
+<div id="outline-container-orgbcdeac1" class="outline-3">
+<h3 id="orgbcdeac1">Geometric interpretation (over the reals)</h3>
+<div class="outline-text-3" id="text-orgbcdeac1">
 <ol class="org-ol">
 <li>Draw a line through \(P\) and \(Q\)</li>
 <li>The line intersects the curve at a third point \(R'\)</li>
@@ -989,9 +1007,9 @@ instead of a line through two points.
 </p>
 </div>
 </div>
-<div id="outline-container-orgae5e097" class="outline-3">
-<h3 id="orgae5e097">Identity element</h3>
-<div class="outline-text-3" id="text-orgae5e097">
+<div id="outline-container-orgd7a7b60" class="outline-3">
+<h3 id="orgd7a7b60">Identity element</h3>
+<div class="outline-text-3" id="text-orgd7a7b60">
 <p>
 \(\mathcal{O}\) is the point at infinity. For any point \(P\):
 \[P + \mathcal{O} = P\]
@@ -1004,9 +1022,9 @@ Every point \(P = (x, y)\) has an inverse \(-P = (x, -y)\):
 </div>
 </div>
 </div>
-<div id="outline-container-org0f1c100" class="outline-2">
-<h2 id="org0f1c100">Scalar Multiplication</h2>
-<div class="outline-text-2" id="text-org0f1c100">
+<div id="outline-container-org6903256" class="outline-2">
+<h2 id="org6903256">Scalar Multiplication</h2>
+<div class="outline-text-2" id="text-org6903256">
 <p>
 The cryptographically critical operation. Given a point \(G\)
 and a scalar \(k\):
@@ -1022,11 +1040,11 @@ square-and-multiply):
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_2ca65f1a868d4c28819a850ffb369329>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_93cc4bdf56954eb2aeae72e32e121a2e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2ca65f1a868d4c28819a850ffb369329=document.querySelector('button[name=btn_2ca65f1a868d4c28819a850ffb369329]');
-copyBtnbtn_2ca65f1a868d4c28819a850ffb369329.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`def scalar_multiply(k, G):\n    result = INFINITY  # identity element\n    addend = G\n    while k:\n        if k & 1:\n            result = point_add(result, addend)\n        addend = point_add(addend, addend)  # double\n        k >>= 1\n    return result\n`);copyBtnbtn_2ca65f1a868d4c28819a850ffb369329.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2ca65f1a868d4c28819a850ffb369329.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_93cc4bdf56954eb2aeae72e32e121a2e=document.querySelector('button[name=btn_93cc4bdf56954eb2aeae72e32e121a2e]');
+copyBtnbtn_93cc4bdf56954eb2aeae72e32e121a2e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`def scalar_multiply(k, G):\n    result = INFINITY  # identity element\n    addend = G\n    while k:\n        if k & 1:\n            result = point_add(result, addend)\n        addend = point_add(addend, addend)  # double\n        k >>= 1\n    return result\n`);copyBtnbtn_93cc4bdf56954eb2aeae72e32e121a2e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_93cc4bdf56954eb2aeae72e32e121a2e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1043,9 +1061,9 @@ let res = copyTextToClipboard(`def scalar_multiply(k, G):\n    result = INFINITY
 </div></div>
 </div>
 </div>
-<div id="outline-container-orga90a4ae" class="outline-2">
-<h2 id="orga90a4ae">The Discrete Logarithm Problem</h2>
-<div class="outline-text-2" id="text-orga90a4ae">
+<div id="outline-container-org0bf275d" class="outline-2">
+<h2 id="org0bf275d">The Discrete Logarithm Problem</h2>
+<div class="outline-text-2" id="text-org0bf275d">
 <p>
 Given \(G\) and \(P = kG\), find \(k\).
 </p>
@@ -1065,9 +1083,9 @@ operations — computationally infeasible.
 </p>
 </div>
 </div>
-<div id="outline-container-org516883e" class="outline-2">
-<h2 id="org516883e">Domain Parameters</h2>
-<div class="outline-text-2" id="text-org516883e">
+<div id="outline-container-org31b7759" class="outline-2">
+<h2 id="org31b7759">Domain Parameters</h2>
+<div class="outline-text-2" id="text-org31b7759">
 <p>
 A curve is defined by a set of domain parameters:
 </p>
@@ -1115,9 +1133,9 @@ A curve is defined by a set of domain parameters:
 </table>
 </div>
 </div>
-<div id="outline-container-orgbe414b8" class="outline-2">
-<h2 id="orgbe414b8">Named Curves in Practice</h2>
-<div class="outline-text-2" id="text-orgbe414b8">
+<div id="outline-container-org8a3624b" class="outline-2">
+<h2 id="org8a3624b">Named Curves in Practice</h2>
+<div class="outline-text-2" id="text-org8a3624b">
 <p>
 These are standardised curves with pre-agreed domain parameters:
 </p>
@@ -1185,24 +1203,24 @@ over NIST curves.
 </p>
 </div>
 </div>
-<div id="outline-container-org6d2d124" class="outline-2">
-<h2 id="org6d2d124">Cryptographic Schemes Using ECC</h2>
-<div class="outline-text-2" id="text-org6d2d124">
+<div id="outline-container-org892fd46" class="outline-2">
+<h2 id="org892fd46">Cryptographic Schemes Using ECC</h2>
+<div class="outline-text-2" id="text-org892fd46">
 </div>
-<div id="outline-container-org5ee9d9a" class="outline-3">
-<h3 id="org5ee9d9a">ECDH — Elliptic Curve Diffie-Hellman</h3>
-<div class="outline-text-3" id="text-org5ee9d9a">
+<div id="outline-container-org1ce7193" class="outline-3">
+<h3 id="org1ce7193">ECDH — Elliptic Curve Diffie-Hellman</h3>
+<div class="outline-text-3" id="text-org1ce7193">
 <p>
 Key agreement: two parties derive a shared secret without
 transmitting it.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_0be4e86e2a984e5590dd973d510b16a4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_059eac7048d54c88a8b467fdce424ddd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0be4e86e2a984e5590dd973d510b16a4=document.querySelector('button[name=btn_0be4e86e2a984e5590dd973d510b16a4]');
-copyBtnbtn_0be4e86e2a984e5590dd973d510b16a4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Alice: private key a, public key A = aG\nBob:   private key b, public key B = bG\n\nShared secret: aB = a(bG) = ab·G = b(aG) = bA\nAlice computes: aB\nBob computes:   bA\nBoth arrive at the same point without knowing each other's\nprivate keys.\n`);copyBtnbtn_0be4e86e2a984e5590dd973d510b16a4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0be4e86e2a984e5590dd973d510b16a4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_059eac7048d54c88a8b467fdce424ddd=document.querySelector('button[name=btn_059eac7048d54c88a8b467fdce424ddd]');
+copyBtnbtn_059eac7048d54c88a8b467fdce424ddd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Alice: private key a, public key A = aG\nBob:   private key b, public key B = bG\n\nShared secret: aB = a(bG) = ab·G = b(aG) = bA\nAlice computes: aB\nBob computes:   bA\nBoth arrive at the same point without knowing each other's\nprivate keys.\n`);copyBtnbtn_059eac7048d54c88a8b467fdce424ddd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_059eac7048d54c88a8b467fdce424ddd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1218,18 +1236,18 @@ private keys.
 </div></div>
 </div>
 </div>
-<div id="outline-container-org6fa1946" class="outline-3">
-<h3 id="org6fa1946">ECDSA — Elliptic Curve Digital Signature Algorithm</h3>
-<div class="outline-text-3" id="text-org6fa1946">
+<div id="outline-container-org9a07a8f" class="outline-3">
+<h3 id="org9a07a8f">ECDSA — Elliptic Curve Digital Signature Algorithm</h3>
+<div class="outline-text-3" id="text-org9a07a8f">
 <p>
 Sign data with a private key; verify with the public key.
 Used in TLS certificates, code signing, JWT (ES256).
 </p>
 </div>
 </div>
-<div id="outline-container-orgcfde804" class="outline-3">
-<h3 id="orgcfde804">EdDSA — Edwards-curve Digital Signature Algorithm</h3>
-<div class="outline-text-3" id="text-orgcfde804">
+<div id="outline-container-orgc3f2bc0" class="outline-3">
+<h3 id="orgc3f2bc0">EdDSA — Edwards-curve Digital Signature Algorithm</h3>
+<div class="outline-text-3" id="text-orgc3f2bc0">
 <p>
 Signature scheme over twisted Edwards curves (Ed25519).
 Used in SSH keys, Signal protocol, age encryption.
@@ -1237,15 +1255,15 @@ Used in SSH keys, Signal protocol, age encryption.
 </div>
 </div>
 </div>
-<div id="outline-container-orga5abf0b" class="outline-2">
-<h2 id="orga5abf0b">Security Relevance</h2>
-<div class="outline-text-2" id="text-orga5abf0b">
+<div id="outline-container-org4c9b03a" class="outline-2">
+<h2 id="org4c9b03a">Security Relevance</h2>
+<div class="outline-text-2" id="text-org4c9b03a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6f441892f296479fa2a8d4b55a31a816>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_13b1fd0678fe46eba79aca817afa9e22>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6f441892f296479fa2a8d4b55a31a816=document.querySelector('button[name=btn_6f441892f296479fa2a8d4b55a31a816]');
-copyBtnbtn_6f441892f296479fa2a8d4b55a31a816.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Inspect a TLS certificate's curve\nopenssl s_client -connect target.com:443 | openssl x509 -text | grep -A2 \"Public Key\"\n\n# Check SSH host key type (Ed25519 = elliptic curve)\nssh-keygen -l -f /etc/ssh/ssh_host_ed25519_key.pub\n\n# Check JWT algorithm header (ES256 = ECDSA with P-256)\necho \"eyJ...\" | base64 -d | python3 -m json.tool\n\n# Weak curve usage is a finding — look for:\n# — secp112r1, secp128r1 (too small)\n# — Brainpool curves with implementation concerns\n# — Custom/non-standard curves (red flag)\n`);copyBtnbtn_6f441892f296479fa2a8d4b55a31a816.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6f441892f296479fa2a8d4b55a31a816.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_13b1fd0678fe46eba79aca817afa9e22=document.querySelector('button[name=btn_13b1fd0678fe46eba79aca817afa9e22]');
+copyBtnbtn_13b1fd0678fe46eba79aca817afa9e22.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Inspect a TLS certificate's curve\nopenssl s_client -connect target.com:443 | openssl x509 -text | grep -A2 \"Public Key\"\n\n# Check SSH host key type (Ed25519 = elliptic curve)\nssh-keygen -l -f /etc/ssh/ssh_host_ed25519_key.pub\n\n# Check JWT algorithm header (ES256 = ECDSA with P-256)\necho \"eyJ...\" | base64 -d | python3 -m json.tool\n\n# Weak curve usage is a finding — look for:\n# — secp112r1, secp128r1 (too small)\n# — Brainpool curves with implementation concerns\n# — Custom/non-standard curves (red flag)\n`);copyBtnbtn_13b1fd0678fe46eba79aca817afa9e22.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_13b1fd0678fe46eba79aca817afa9e22.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1266,9 +1284,9 @@ let res = copyTextToClipboard(`# Inspect a TLS certificate's curve\nopenssl s_cl
 </div></div>
 </div>
 </div>
-<div id="outline-container-org587d7ad" class="outline-2">
-<h2 id="org587d7ad">Tips</h2>
-<div class="outline-text-2" id="text-org587d7ad">
+<div id="outline-container-orgf5921e4" class="outline-2">
+<h2 id="orgf5921e4">Tips</h2>
+<div class="outline-text-2" id="text-orgf5921e4">
 <ul class="org-ul">
 <li>P-256 and Curve25519 are the two most commonly encountered
 curves in the wild — P-256 in legacy TLS and ECDSA
@@ -1285,6 +1303,20 @@ signature verification is properly implemented</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1292,6 +1324,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

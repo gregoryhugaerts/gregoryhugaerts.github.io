@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Web Application Firewall</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,29 +886,46 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org780c34c">Web Application Firewal</a>
-<ul>
-<li><a href="#org5a423b9">How a WAF Works</a></li>
-<li><a href="#orgaecbd61">Core Protections</a></li>
-<li><a href="#orgac759c0">WAF vs. Other Security Tools</a></li>
-<li><a href="#orgbdf6c53">Types of WAFs</a></li>
-</ul>
-</li>
+<li><a href="#org90c98e7">How a WAF Works</a></li>
+<li><a href="#org09efea8">Core Protections</a></li>
+<li><a href="#orge339a9c">WAF vs. Other Security Tools</a></li>
+<li><a href="#org5962138">Types of WAFs</a></li>
+<li><a href="#orgbdc24ed">Detecting a WAF (Pentest-Relevant)</a></li>
+<li><a href="#org2c051de">Bypass Techniques (Pentest-Relevant)</a></li>
+<li><a href="#orgeaeea01">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org780c34c" class="outline-2">
-<h2 id="org780c34c">Web Application Firewal</h2>
-<div class="outline-text-2" id="text-org780c34c">
 <p>
-A Web Application Firewall (WAF) is a specific type of that acts as a shield for web applications. As noted in <a href="Web Security.html#web-security">Web Security</a>, it is positioned in front of a web application to filter and monitor <a href="Hypertext Transfer Protocol.html#hypertext-transfer-protocol">Hypertext Transfer Protocol</a>/HTTPS traffic between the application and the internet. Its primary purpose is to protect against web-based attacks that traditional network firewalls are not equipped to handle.
+A Web Application Firewall (WAF) is a specific type of firewall
+that acts as a shield for web applications. As noted in
+<a href="20260206T060739--web-security__concept_cybersecurity.html">Web Security</a>, it is positioned in
+front of a web application to filter and monitor HTTP/HTTPS traffic
+between the application and the internet. Its primary purpose is to
+protect against web-based attacks that traditional network
+firewalls are not equipped to handle.
 </p>
-</div>
-<div id="outline-container-org5a423b9" class="outline-3">
-<h3 id="org5a423b9">How a WAF Works</h3>
-<div class="outline-text-3" id="text-org5a423b9">
+
 <p>
-Unlike a traditional that typically operates at the network (Layer 3) and transport (Layer 4) layers of the <a href="Open Systems Interconnection Model.html#open-systems-interconnection-model">Open Systems Interconnection Model</a>, a WAF operates at the application layer (Layer 7). This allows it to inspect the actual content of HTTP/HTTPS requests and responses, giving it a deep understanding of web traffic and enabling it to identify and block malicious payloads, code injections, and other application-specific threats.
+Related: <a href="20260206T060739--web-security__concept_cybersecurity.html">Web Security</a>
+         <a href="20260214T082006==owasp--open-worldwide-application-security-project__concept_cybersecurity.html">OWASP</a>
+         <a href="20260314T005723--pfsense__cybersecurity_networking_tool.html">pfSense</a>
+         <a href="20260314T005751--snort__cybersecurity_tool.html">Snort</a>
+         <a href="20260314T005752--suricata__cybersecurity_tool.html">Suricata</a>
+         <a href="20260326T201939--ffuf__cybersecurity_tool.html">ffuf</a>
+         <a href="20260613T201800--nikto__cybersecurity_tool.html">Nikto</a>
+</p>
+<div id="outline-container-org90c98e7" class="outline-2">
+<h2 id="org90c98e7">How a WAF Works</h2>
+<div class="outline-text-2" id="text-org90c98e7">
+<p>
+Unlike a traditional firewall that typically operates at the
+network (Layer 3) and transport (Layer 4) layers of the OSI Model,
+a WAF operates at the application layer (Layer 7). This allows it
+to inspect the actual content of HTTP/HTTPS requests and responses,
+giving it a deep understanding of web traffic and enabling it to
+identify and block malicious payloads, code injections, and other
+application-specific threats.
 </p>
 
 <p>
@@ -903,33 +938,57 @@ WAFs generally employ two main detection models:
 </ol>
 </div>
 </div>
-<div id="outline-container-orgaecbd61" class="outline-3">
-<h3 id="orgaecbd61">Core Protections</h3>
-<div class="outline-text-3" id="text-orgaecbd61">
+<div id="outline-container-org09efea8" class="outline-2">
+<h2 id="org09efea8">Core Protections</h2>
+<div class="outline-text-2" id="text-org09efea8">
 <p>
-A WAF is a critical component in defending against common web application attacks, many of which are outlined in the <a href="Web Security.html#web-security">Web Security</a> note and the <a href="OWASP Top 10.html#owasp-top-10">OWASP Top 10</a>. Key protections include:
+A WAF is a critical component in defending against common web
+application attacks, many of which are outlined in the
+<a href="20260206T060739--web-security__concept_cybersecurity.html">Web Security</a> note and the
+<a href="20260214T082006==owasp--open-worldwide-application-security-project__concept_cybersecurity.html">OWASP Top 10</a>. Key protections include:
 </p>
 
 <ul class="org-ul">
-<li><b>Injection Attacks:</b> Prevents attacks like <a href="SQL injection.html#sql-injection">SQL Injection</a> by inspecting request parameters for malicious SQL code.</li>
-<li><b><a href="Cross-Site Scripting.html#cross-site-scripting">Cross-Site Scripting</a> (XSS):</b> Filters and sanitizes user inputs and outputs to block the injection of malicious scripts that would otherwise execute in a user's browser.</li>
-<li><b><a href="Cross-Site Request Forgery.html#cross-site-request-forgery">Cross-Site Request Forgery</a> (CSRF):</b> Can help mitigate CSRF by inspecting requests for valid anti-CSRF tokens.</li>
-<li><b><a href="Denial of Service.html#denial-of-service">Denial of Service</a> (DoS):</b> Provides protection against application-layer DoS attacks by implementing rate limiting and blocking traffic from malicious sources.</li>
+<li><b>Injection Attacks:</b> Prevents attacks like
+<a href="20260206T060728--sql-injection__cybersecurity_technique.html">SQL Injection</a> by inspecting request
+parameters for malicious SQL code.</li>
+<li><b><a href="20260207T065314--cross-site-scripting__cybersecurity_technique.html">Cross-Site Scripting</a> (XSS):</b> Filters
+and sanitizes user inputs and outputs to block the injection of
+malicious scripts that would otherwise execute in a user's
+browser.</li>
+<li><b><a href="20260213T071848==csrf--cross-site-request-forgery__cybersecurity_technique.html">Cross-Site Request Forgery</a> (CSRF):</b>
+Can help mitigate CSRF by inspecting requests for valid anti-CSRF
+tokens.</li>
+<li><b><a href="20260213T072057--denial-of-service__concept_cybersecurity_technique.html">Denial of Service</a> (DoS):</b> Provides
+protection against application-layer DoS attacks by implementing
+rate limiting and blocking traffic from malicious sources.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgac759c0" class="outline-3">
-<h3 id="orgac759c0">WAF vs. Other Security Tools</h3>
-<div class="outline-text-3" id="text-orgac759c0">
+<div id="outline-container-orge339a9c" class="outline-2">
+<h2 id="orge339a9c">WAF vs. Other Security Tools</h2>
+<div class="outline-text-2" id="text-orge339a9c">
 <ul class="org-ul">
-<li><b>WAF vs. Traditional Firewall (<a href="pfSense.html#pfsense">pfSense</a>):</b> A traditional like pfSense controls access based on IP addresses and ports. It doesn't understand the HTTP protocol and cannot see the malicious payload within an allowed request. A WAF inspects the content of the web traffic itself.</li>
-<li><b>WAF vs. IDS/IPS (<a href="Snort.html#snort">Snort</a>, <a href="Suricata.html#suricata">Suricata</a>):</b> Intrusion Detection and Prevention Systems like Snort and Suricata monitor the entire network for a broad range of threats. While they can detect some web attacks, a WAF is specialized for web application protocols and provides more granular control and deeper inspection of HTTP/HTTPS traffic. They often work together in a layered security approach.</li>
+<li><b>WAF vs. Traditional Firewall
+(<a href="20260314T005723--pfsense__cybersecurity_networking_tool.html">pfSense</a>):</b> A traditional firewall
+like pfSense controls access based on IP addresses and ports. It
+doesn't understand the HTTP protocol and cannot see the malicious
+payload within an allowed request. A WAF inspects the content of
+the web traffic itself.</li>
+<li><b>WAF vs. IDS/IPS (<a href="20260314T005751--snort__cybersecurity_tool.html">Snort</a>,
+<a href="20260314T005752--suricata__cybersecurity_tool.html">Suricata</a>):</b> Intrusion Detection and
+Prevention Systems like Snort and Suricata monitor the entire
+network for a broad range of threats. While they can detect some
+web attacks, a WAF is specialized for web application protocols
+and provides more granular control and deeper inspection of
+HTTP/HTTPS traffic. They often work together in a layered
+security approach.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbdf6c53" class="outline-3">
-<h3 id="orgbdf6c53">Types of WAFs</h3>
-<div class="outline-text-3" id="text-orgbdf6c53">
+<div id="outline-container-org5962138" class="outline-2">
+<h2 id="org5962138">Types of WAFs</h2>
+<div class="outline-text-2" id="text-org5962138">
 <p>
 WAFs can be deployed in several ways:
 </p>
@@ -941,9 +1000,105 @@ WAFs can be deployed in several ways:
 </ul>
 </div>
 </div>
+<div id="outline-container-orgbdc24ed" class="outline-2">
+<h2 id="orgbdc24ed">Detecting a WAF (Pentest-Relevant)</h2>
+<div class="outline-text-2" id="text-orgbdc24ed">
+<p>
+Before attempting bypass techniques, confirm a WAF is actually
+present and identify which one:
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e383288fa3c6412e8609ea22b366fe85>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_e383288fa3c6412e8609ea22b366fe85=document.querySelector('button[name=btn_e383288fa3c6412e8609ea22b366fe85]');
+copyBtnbtn_e383288fa3c6412e8609ea22b366fe85.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# wafw00f — dedicated WAF fingerprinting tool\nwafw00f https://target.com\n\n# Manual indicators worth checking:\n# - Unusual response headers (X-Sucuri-ID, Server: cloudflare, etc.)\n# - A generic \"Request Blocked\" page for obviously malicious payloads\n# - Consistent, suspiciously fast 403s on payloads that should reach\n#   the application at all\n`);copyBtnbtn_e383288fa3c6412e8609ea22b366fe85.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e383288fa3c6412e8609ea22b366fe85.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">wafw00f &#8212; dedicated WAF fingerprinting tool
+</span>wafw00f https://target.com
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Manual indicators worth checking:
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">- Unusual response headers (X-Sucuri-ID, Server: cloudflare, etc.)
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">- A generic "Request Blocked" page for obviously malicious payloads
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">- Consistent, suspiciously fast 403s on payloads that should reach
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">#   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">the application at all</span>
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org2c051de" class="outline-2">
+<h2 id="org2c051de">Bypass Techniques (Pentest-Relevant)</h2>
+<div class="outline-text-2" id="text-org2c051de">
+<p>
+WAFs rely on pattern matching, which creates predictable gaps:
+</p>
+
+<ul class="org-ul">
+<li><b>Encoding/Obfuscation:</b> URL encoding, double encoding, case
+variation, or alternate syntax for the same payload can slip past
+a signature written for the literal/common form — e.g.
+<code>%53%45%4C%45%43%54</code> instead of <code>SELECT</code>, or mixed-case
+<code>SeLeCt</code></li>
+<li><b>Comment Injection:</b> Inserting SQL/JS comments mid-payload to
+break up a recognizable signature while preserving the parsed
+meaning: <code>SEL/**/ECT</code> in SQL contexts</li>
+<li><b>HTTP Parameter Pollution:</b> Sending the same parameter multiple
+times — some WAFs and backends parse this differently, and a WAF
+checking only the first instance can be bypassed by putting the
+payload in a later duplicate</li>
+<li><b>Alternate Request Methods/Encoding:</b> Switching between GET/POST,
+or using multipart form encoding instead of standard URL encoding,
+since WAF rule coverage is sometimes inconsistent across formats</li>
+<li><b>Fragmentation:</b> Splitting a payload across multiple parameters
+or request stages where a single-request signature can't
+correlate them together</li>
+</ul>
+
+<p>
+None of this is a substitute for testing — always confirm whether a
+bypass actually worked by checking if the payload had its intended
+effect on the application, not just whether the WAF failed to
+return a block page.
+</p>
+</div>
+</div>
+<div id="outline-container-orgeaeea01" class="outline-2">
+<h2 id="orgeaeea01">Tips</h2>
+<div class="outline-text-2" id="text-orgeaeea01">
+<ul class="org-ul">
+<li>On the exam, a WAF blocking your initial payload isn't a dead
+end — it's a signal to try encoding variations before assuming
+the underlying vulnerability doesn't exist</li>
+<li><code>ffuf</code> and <code>Nikto</code> scans can trigger aggressive WAF rate-limiting
+or IP blocks quickly — if a scan that should work suddenly starts
+returning uniform errors partway through, check whether you've
+been blocked before assuming a tool or target issue</li>
+<li>Confirming WAF presence early (via <code>wafw00f</code> or response header
+inspection) saves time — it tells you upfront whether unusual
+blocking behavior later is expected (WAF interference) or a sign
+something else is wrong</li>
+</ul>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -951,6 +1106,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

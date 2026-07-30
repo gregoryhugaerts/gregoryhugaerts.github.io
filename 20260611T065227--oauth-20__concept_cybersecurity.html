@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>OAuth 2.0</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,22 +886,22 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgbd23802">Flow Overview</a>
+<li><a href="#org02cdd0c">Flow Overview</a>
 <ul>
-<li><a href="#orgfced53b">Authorization Code Flow (most common)</a></li>
+<li><a href="#org5e30c3e">Authorization Code Flow (most common)</a></li>
 </ul>
 </li>
-<li><a href="#orgea77786">Common Vulnerabilities</a>
+<li><a href="#org464b926">Common Vulnerabilities</a>
 <ul>
-<li><a href="#org440b04c">Open Redirect via redirect<sub>uri</sub></a></li>
-<li><a href="#org7cc116e">Missing State Parameter (CSRF)</a></li>
-<li><a href="#orgb190164">Token Leakage via Referrer</a></li>
-<li><a href="#org085e000">Scope Manipulation</a></li>
-<li><a href="#org441ffde">Insecure Token Storage</a></li>
+<li><a href="#orged6def9">Open Redirect via redirect<sub>uri</sub></a></li>
+<li><a href="#org097e80e">Missing State Parameter (CSRF)</a></li>
+<li><a href="#org043cec1">Token Leakage via Referrer</a></li>
+<li><a href="#org37e7fcf">Scope Manipulation</a></li>
+<li><a href="#org56fd90c">Insecure Token Storage</a></li>
 </ul>
 </li>
-<li><a href="#orge03c193">Testing Checklist</a></li>
-<li><a href="#org1ef3ed7">Tips</a></li>
+<li><a href="#orgcba9e2f">Testing Checklist</a></li>
+<li><a href="#org1425363">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -900,13 +918,13 @@ Related: <a href="20260611T065009--api-testing-methodology__cybersecurity_pentes
          <a href="20260206T060442--authorization__concept_cybersecurity.html">Authorisation</a>
          <a href="20260212T064723==mfa--multi-factor-authentication__concept_cybersecurity.html">MFA</a>
 </p>
-<div id="outline-container-orgbd23802" class="outline-2">
-<h2 id="orgbd23802">Flow Overview</h2>
-<div class="outline-text-2" id="text-orgbd23802">
+<div id="outline-container-org02cdd0c" class="outline-2">
+<h2 id="org02cdd0c">Flow Overview</h2>
+<div class="outline-text-2" id="text-org02cdd0c">
 </div>
-<div id="outline-container-orgfced53b" class="outline-3">
-<h3 id="orgfced53b">Authorization Code Flow (most common)</h3>
-<div class="outline-text-3" id="text-orgfced53b">
+<div id="outline-container-org5e30c3e" class="outline-3">
+<h3 id="org5e30c3e">Authorization Code Flow (most common)</h3>
+<div class="outline-text-3" id="text-org5e30c3e">
 <ol class="org-ol">
 <li>User clicks "Login with X"</li>
 <li>App redirects to authorisation server with <code>client_id</code>,
@@ -919,19 +937,19 @@ Related: <a href="20260611T065009--api-testing-methodology__cybersecurity_pentes
 </div>
 </div>
 </div>
-<div id="outline-container-orgea77786" class="outline-2">
-<h2 id="orgea77786">Common Vulnerabilities</h2>
-<div class="outline-text-2" id="text-orgea77786">
+<div id="outline-container-org464b926" class="outline-2">
+<h2 id="org464b926">Common Vulnerabilities</h2>
+<div class="outline-text-2" id="text-org464b926">
 </div>
-<div id="outline-container-org440b04c" class="outline-3">
-<h3 id="org440b04c">Open Redirect via redirect<sub>uri</sub></h3>
-<div class="outline-text-3" id="text-org440b04c">
+<div id="outline-container-orged6def9" class="outline-3">
+<h3 id="orged6def9">Open Redirect via redirect<sub>uri</sub></h3>
+<div class="outline-text-3" id="text-orged6def9">
 <p>
 If <code>redirect_uri</code> is not strictly validated, redirect the
 authorisation code to an attacker-controlled server.
 </p>
 
-<pre class="example" id="org495ad56">
+<pre class="example" id="org2835797">
 https://auth.target.com/oauth/authorize
   ?client_id=abc
   &amp;redirect_uri=https://attacker.com/callback
@@ -942,7 +960,7 @@ https://auth.target.com/oauth/authorize
 <p>
 Variations to try:
 </p>
-<pre class="example" id="orgbd75959">
+<pre class="example" id="org28679c6">
 redirect_uri=https://attacker.com
 redirect_uri=https://target.com@attacker.com
 redirect_uri=https://target.com.attacker.com
@@ -950,9 +968,9 @@ redirect_uri=https://target.com/callback/../../../attacker
 </pre>
 </div>
 </div>
-<div id="outline-container-org7cc116e" class="outline-3">
-<h3 id="org7cc116e">Missing State Parameter (CSRF)</h3>
-<div class="outline-text-3" id="text-org7cc116e">
+<div id="outline-container-org097e80e" class="outline-3">
+<h3 id="org097e80e">Missing State Parameter (CSRF)</h3>
+<div class="outline-text-3" id="text-org097e80e">
 <p>
 The <code>state</code> parameter prevents CSRF attacks on the OAuth flow. If
 missing or not validated, force a victim to link their account to
@@ -967,9 +985,9 @@ OAuth identity</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgb190164" class="outline-3">
-<h3 id="orgb190164">Token Leakage via Referrer</h3>
-<div class="outline-text-3" id="text-orgb190164">
+<div id="outline-container-org043cec1" class="outline-3">
+<h3 id="org043cec1">Token Leakage via Referrer</h3>
+<div class="outline-text-3" id="text-org043cec1">
 <p>
 If the access token appears in the URL and the application loads
 external resources, the token leaks via the Referrer header.
@@ -978,27 +996,27 @@ external resources, the token leaks via the Referrer header.
 <p>
 Check for <code>access_token</code> in the URL fragment or query string:
 </p>
-<pre class="example" id="orgf304379">
+<pre class="example" id="orgbd46da8">
 https://target.com/callback#access_token=&lt;token&gt;
 </pre>
 </div>
 </div>
-<div id="outline-container-org085e000" class="outline-3">
-<h3 id="org085e000">Scope Manipulation</h3>
-<div class="outline-text-3" id="text-org085e000">
+<div id="outline-container-org37e7fcf" class="outline-3">
+<h3 id="org37e7fcf">Scope Manipulation</h3>
+<div class="outline-text-3" id="text-org37e7fcf">
 <p>
 Test whether requesting additional scopes beyond what is granted
 is enforced server-side.
 </p>
 
-<pre class="example" id="orgff12617">
+<pre class="example" id="org3c37d2d">
 scope=openid email profile admin
 </pre>
 </div>
 </div>
-<div id="outline-container-org441ffde" class="outline-3">
-<h3 id="org441ffde">Insecure Token Storage</h3>
-<div class="outline-text-3" id="text-org441ffde">
+<div id="outline-container-org56fd90c" class="outline-3">
+<h3 id="org56fd90c">Insecure Token Storage</h3>
+<div class="outline-text-3" id="text-org56fd90c">
 <p>
 Check where tokens are stored client-side:
 </p>
@@ -1011,9 +1029,9 @@ Check where tokens are stored client-side:
 </div>
 </div>
 </div>
-<div id="outline-container-orge03c193" class="outline-2">
-<h2 id="orge03c193">Testing Checklist</h2>
-<div class="outline-text-2" id="text-orge03c193">
+<div id="outline-container-orgcba9e2f" class="outline-2">
+<h2 id="orgcba9e2f">Testing Checklist</h2>
+<div class="outline-text-2" id="text-orgcba9e2f">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> Is <code>redirect_uri</code> strictly validated?</li>
 <li class="off"><code>[&#xa0;]</code> Is the <code>state</code> parameter present and validated?</li>
@@ -1025,9 +1043,9 @@ Check where tokens are stored client-side:
 </ul>
 </div>
 </div>
-<div id="outline-container-org1ef3ed7" class="outline-2">
-<h2 id="org1ef3ed7">Tips</h2>
-<div class="outline-text-2" id="text-org1ef3ed7">
+<div id="outline-container-org1425363" class="outline-2">
+<h2 id="org1425363">Tips</h2>
+<div class="outline-text-2" id="text-org1425363">
 <ul class="org-ul">
 <li>Start by mapping the full OAuth flow in Burp Suite before
 tampering with anything</li>
@@ -1042,6 +1060,20 @@ multiple controls simultaneously</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1049,6 +1081,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

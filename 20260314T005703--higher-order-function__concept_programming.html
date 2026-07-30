@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Higher-Order Functions</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgbcaff4a">First-Class Functions</a></li>
-<li><a href="#orge8d5267">Built-in Higher-Order Functions</a>
+<li><a href="#org2ac8a13">First-Class Functions</a></li>
+<li><a href="#org057051d">Built-in Higher-Order Functions</a>
 <ul>
-<li><a href="#orge129977">map, filter, reduce</a></li>
-<li><a href="#orgd7bf8d8">sorted with key</a></li>
+<li><a href="#org2b76f3c">map, filter, reduce</a></li>
+<li><a href="#org1310a6c">sorted with key</a></li>
 </ul>
 </li>
-<li><a href="#org191783a">Returning Functions</a></li>
-<li><a href="#orgc2297d0">Decorators</a></li>
-<li><a href="#org205e102">functools Utilities</a></li>
-<li><a href="#org5f38f89">Rust</a></li>
-<li><a href="#org201700e">Tips</a></li>
+<li><a href="#orge585f6c">Returning Functions</a></li>
+<li><a href="#orgf1dcf3b">Decorators</a></li>
+<li><a href="#orge911b7b">functools Utilities</a></li>
+<li><a href="#org384e4c3">Rust</a></li>
+<li><a href="#orgb400769">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -898,15 +916,15 @@ Related: <a href="20260206T060606--functional-programming__concept_programming.h
          <a href="20260206T060627--python-functions__concept_programming_python.html">Python Functions</a>
          <a href="20260206T060525--closures-in-rust__concept_programming_rust.html">Closures in Rust</a>
 </p>
-<div id="outline-container-orgbcaff4a" class="outline-2">
-<h2 id="orgbcaff4a">First-Class Functions</h2>
-<div class="outline-text-2" id="text-orgbcaff4a">
+<div id="outline-container-org2ac8a13" class="outline-2">
+<h2 id="org2ac8a13">First-Class Functions</h2>
+<div class="outline-text-2" id="text-org2ac8a13">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_7ef3ab83a63f4ef887a8fa78e38740a9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_8f624d8a7dfb4dd9bb2fb6f17e6f777f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7ef3ab83a63f4ef887a8fa78e38740a9=document.querySelector('button[name=btn_7ef3ab83a63f4ef887a8fa78e38740a9]');
-copyBtnbtn_7ef3ab83a63f4ef887a8fa78e38740a9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Functions can be assigned to variables\ndef double(x):\n    return x * 2\n\nfn = double\nfn(5)          # 10\n\n# Functions can be stored in data structures\nops = [double, str.upper, len]\nops[0](5)      # 10\n\n# Functions can be passed as arguments\ndef apply(func, value):\n    return func(value)\n\napply(double, 5)   # 10\napply(str.upper, \"hello\")   # \"HELLO\"\n`);copyBtnbtn_7ef3ab83a63f4ef887a8fa78e38740a9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7ef3ab83a63f4ef887a8fa78e38740a9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8f624d8a7dfb4dd9bb2fb6f17e6f777f=document.querySelector('button[name=btn_8f624d8a7dfb4dd9bb2fb6f17e6f777f]');
+copyBtnbtn_8f624d8a7dfb4dd9bb2fb6f17e6f777f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Functions can be assigned to variables\ndef double(x):\n    return x * 2\n\nfn = double\nfn(5)          # 10\n\n# Functions can be stored in data structures\nops = [double, str.upper, len]\nops[0](5)      # 10\n\n# Functions can be passed as arguments\ndef apply(func, value):\n    return func(value)\n\napply(double, 5)   # 10\napply(str.upper, \"hello\")   # \"HELLO\"\n`);copyBtnbtn_8f624d8a7dfb4dd9bb2fb6f17e6f777f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8f624d8a7dfb4dd9bb2fb6f17e6f777f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -931,19 +949,19 @@ ops[0](5)      <span style="color: var(--clr-comment-delimiter); background-colo
 </div></div>
 </div>
 </div>
-<div id="outline-container-orge8d5267" class="outline-2">
-<h2 id="orge8d5267">Built-in Higher-Order Functions</h2>
-<div class="outline-text-2" id="text-orge8d5267">
+<div id="outline-container-org057051d" class="outline-2">
+<h2 id="org057051d">Built-in Higher-Order Functions</h2>
+<div class="outline-text-2" id="text-org057051d">
 </div>
-<div id="outline-container-orge129977" class="outline-3">
-<h3 id="orge129977">map, filter, reduce</h3>
-<div class="outline-text-3" id="text-orge129977">
+<div id="outline-container-org2b76f3c" class="outline-3">
+<h3 id="org2b76f3c">map, filter, reduce</h3>
+<div class="outline-text-3" id="text-org2b76f3c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_cad193d8ec714760a9326c99d97d4717>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_344013c73a2d43f5a9ec9d7235e50dfe>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_cad193d8ec714760a9326c99d97d4717=document.querySelector('button[name=btn_cad193d8ec714760a9326c99d97d4717]');
-copyBtnbtn_cad193d8ec714760a9326c99d97d4717.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`from functools import reduce\n\nnumbers = [1, 2, 3, 4, 5]\n\n# map — apply function to every element\ndoubled = list(map(lambda x: x * 2, numbers))   # [2, 4, 6, 8, 10]\n\n# filter — keep elements where function returns True\nevens = list(filter(lambda x: x % 2 == 0, numbers))   # [2, 4]\n\n# reduce — fold sequence to a single value\ntotal = reduce(lambda acc, x: acc + x, numbers, 0)   # 15\n\n# List comprehensions are usually cleaner for map/filter\ndoubled = [x * 2 for x in numbers]\nevens   = [x for x in numbers if x % 2 == 0]\n`);copyBtnbtn_cad193d8ec714760a9326c99d97d4717.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cad193d8ec714760a9326c99d97d4717.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_344013c73a2d43f5a9ec9d7235e50dfe=document.querySelector('button[name=btn_344013c73a2d43f5a9ec9d7235e50dfe]');
+copyBtnbtn_344013c73a2d43f5a9ec9d7235e50dfe.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`from functools import reduce\n\nnumbers = [1, 2, 3, 4, 5]\n\n# map — apply function to every element\ndoubled = list(map(lambda x: x * 2, numbers))   # [2, 4, 6, 8, 10]\n\n# filter — keep elements where function returns True\nevens = list(filter(lambda x: x % 2 == 0, numbers))   # [2, 4]\n\n# reduce — fold sequence to a single value\ntotal = reduce(lambda acc, x: acc + x, numbers, 0)   # 15\n\n# List comprehensions are usually cleaner for map/filter\ndoubled = [x * 2 for x in numbers]\nevens   = [x for x in numbers if x % 2 == 0]\n`);copyBtnbtn_344013c73a2d43f5a9ec9d7235e50dfe.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_344013c73a2d43f5a9ec9d7235e50dfe.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -967,15 +985,15 @@ let res = copyTextToClipboard(`from functools import reduce\n\nnumbers = [1, 2, 
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgd7bf8d8" class="outline-3">
-<h3 id="orgd7bf8d8">sorted with key</h3>
-<div class="outline-text-3" id="text-orgd7bf8d8">
+<div id="outline-container-org1310a6c" class="outline-3">
+<h3 id="org1310a6c">sorted with key</h3>
+<div class="outline-text-3" id="text-org1310a6c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_37bd4b7ea19d407088eb1cfe22336ead>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_5c3c515c012a45a2b465b49f89b606d1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_37bd4b7ea19d407088eb1cfe22336ead=document.querySelector('button[name=btn_37bd4b7ea19d407088eb1cfe22336ead]');
-copyBtnbtn_37bd4b7ea19d407088eb1cfe22336ead.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`words = [\"banana\", \"apple\", \"fig\", \"cherry\"]\n\nsorted(words, key=len)                    # sort by length\nsorted(words, key=str.lower)              # case-insensitive sort\nsorted(people, key=lambda p: p.surname)   # sort by attribute\n`);copyBtnbtn_37bd4b7ea19d407088eb1cfe22336ead.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_37bd4b7ea19d407088eb1cfe22336ead.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5c3c515c012a45a2b465b49f89b606d1=document.querySelector('button[name=btn_5c3c515c012a45a2b465b49f89b606d1]');
+copyBtnbtn_5c3c515c012a45a2b465b49f89b606d1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`words = [\"banana\", \"apple\", \"fig\", \"cherry\"]\n\nsorted(words, key=len)                    # sort by length\nsorted(words, key=str.lower)              # case-insensitive sort\nsorted(people, key=lambda p: p.surname)   # sort by attribute\n`);copyBtnbtn_5c3c515c012a45a2b465b49f89b606d1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5c3c515c012a45a2b465b49f89b606d1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -989,15 +1007,15 @@ let res = copyTextToClipboard(`words = [\"banana\", \"apple\", \"fig\", \"cherry
 </div>
 </div>
 </div>
-<div id="outline-container-org191783a" class="outline-2">
-<h2 id="org191783a">Returning Functions</h2>
-<div class="outline-text-2" id="text-org191783a">
+<div id="outline-container-orge585f6c" class="outline-2">
+<h2 id="orge585f6c">Returning Functions</h2>
+<div class="outline-text-2" id="text-orge585f6c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_d245d37c2b4742af8372fb8b837d4d9b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_af44f717f7d543cdaca9964849e9d9fe>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d245d37c2b4742af8372fb8b837d4d9b=document.querySelector('button[name=btn_d245d37c2b4742af8372fb8b837d4d9b]');
-copyBtnbtn_d245d37c2b4742af8372fb8b837d4d9b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Function factory — returns a configured function\ndef make_multiplier(n):\n    def multiplier(x):\n        return x * n\n    return multiplier\n\ntriple = make_multiplier(3)\ntriple(5)   # 15\n\n# With lambda\ndef make_adder(n):\n    return lambda x: x + n\n\nadd10 = make_adder(10)\nadd10(5)   # 15\n`);copyBtnbtn_d245d37c2b4742af8372fb8b837d4d9b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d245d37c2b4742af8372fb8b837d4d9b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_af44f717f7d543cdaca9964849e9d9fe=document.querySelector('button[name=btn_af44f717f7d543cdaca9964849e9d9fe]');
+copyBtnbtn_af44f717f7d543cdaca9964849e9d9fe.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Function factory — returns a configured function\ndef make_multiplier(n):\n    def multiplier(x):\n        return x * n\n    return multiplier\n\ntriple = make_multiplier(3)\ntriple(5)   # 15\n\n# With lambda\ndef make_adder(n):\n    return lambda x: x + n\n\nadd10 = make_adder(10)\nadd10(5)   # 15\n`);copyBtnbtn_af44f717f7d543cdaca9964849e9d9fe.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_af44f717f7d543cdaca9964849e9d9fe.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1020,20 +1038,20 @@ add10(5)   <span style="color: var(--clr-comment-delimiter); background-color: v
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgc2297d0" class="outline-2">
-<h2 id="orgc2297d0">Decorators</h2>
-<div class="outline-text-2" id="text-orgc2297d0">
+<div id="outline-container-orgf1dcf3b" class="outline-2">
+<h2 id="orgf1dcf3b">Decorators</h2>
+<div class="outline-text-2" id="text-orgf1dcf3b">
 <p>
 Python decorators are higher-order functions that wrap another
 function to modify its behaviour:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_82206e434c7c425788d07f82d754df9d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_b00321b867cb4960a9339e9873b04635>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_82206e434c7c425788d07f82d754df9d=document.querySelector('button[name=btn_82206e434c7c425788d07f82d754df9d]');
-copyBtnbtn_82206e434c7c425788d07f82d754df9d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`def log_calls(func):\n    def wrapper(*args, **kwargs):\n        print(f\"Calling {func.__name__}\")\n        result = func(*args, **kwargs)\n        print(f\"Done: {result}\")\n        return result\n    return wrapper\n\n@log_calls\ndef add(a, b):\n    return a + b\n\n# Equivalent to: add = log_calls(add)\nadd(2, 3)   # prints \"Calling add\", then \"Done: 5\"\n`);copyBtnbtn_82206e434c7c425788d07f82d754df9d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_82206e434c7c425788d07f82d754df9d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b00321b867cb4960a9339e9873b04635=document.querySelector('button[name=btn_b00321b867cb4960a9339e9873b04635]');
+copyBtnbtn_b00321b867cb4960a9339e9873b04635.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`def log_calls(func):\n    def wrapper(*args, **kwargs):\n        print(f\"Calling {func.__name__}\")\n        result = func(*args, **kwargs)\n        print(f\"Done: {result}\")\n        return result\n    return wrapper\n\n@log_calls\ndef add(a, b):\n    return a + b\n\n# Equivalent to: add = log_calls(add)\nadd(2, 3)   # prints \"Calling add\", then \"Done: 5\"\n`);copyBtnbtn_b00321b867cb4960a9339e9873b04635.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b00321b867cb4960a9339e9873b04635.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1055,15 +1073,15 @@ let res = copyTextToClipboard(`def log_calls(func):\n    def wrapper(*args, **kw
 </div></div>
 </div>
 </div>
-<div id="outline-container-org205e102" class="outline-2">
-<h2 id="org205e102">functools Utilities</h2>
-<div class="outline-text-2" id="text-org205e102">
+<div id="outline-container-orge911b7b" class="outline-2">
+<h2 id="orge911b7b">functools Utilities</h2>
+<div class="outline-text-2" id="text-orge911b7b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_e2d944fd4dc5435b9febbf221f19f50a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_bb6b9c1bd28c489281812f94bc3b77aa>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e2d944fd4dc5435b9febbf221f19f50a=document.querySelector('button[name=btn_e2d944fd4dc5435b9febbf221f19f50a]');
-copyBtnbtn_e2d944fd4dc5435b9febbf221f19f50a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`from functools import partial, lru_cache, wraps\n\n# partial — pre-fill some arguments\nfrom functools import partial\n\ndef power(base, exp):\n    return base ** exp\n\nsquare = partial(power, exp=2)\ncube   = partial(power, exp=3)\nsquare(5)   # 25\n\n# lru_cache — memoise a function\n@lru_cache(maxsize=None)\ndef fibonacci(n):\n    if n <= 1: return n\n    return fibonacci(n-1) + fibonacci(n-2)\n\n# compose — chain functions (no built-in, but easy to write)\ndef compose(*funcs):\n    def composed(x):\n        for f in reversed(funcs):\n            x = f(x)\n        return x\n    return composed\n\nprocess = compose(str.strip, str.lower, str.title)\nprocess(\"  hello world  \")   # \"Hello World\"\n`);copyBtnbtn_e2d944fd4dc5435b9febbf221f19f50a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e2d944fd4dc5435b9febbf221f19f50a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bb6b9c1bd28c489281812f94bc3b77aa=document.querySelector('button[name=btn_bb6b9c1bd28c489281812f94bc3b77aa]');
+copyBtnbtn_bb6b9c1bd28c489281812f94bc3b77aa.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`from functools import partial, lru_cache, wraps\n\n# partial — pre-fill some arguments\nfrom functools import partial\n\ndef power(base, exp):\n    return base ** exp\n\nsquare = partial(power, exp=2)\ncube   = partial(power, exp=3)\nsquare(5)   # 25\n\n# lru_cache — memoise a function\n@lru_cache(maxsize=None)\ndef fibonacci(n):\n    if n <= 1: return n\n    return fibonacci(n-1) + fibonacci(n-2)\n\n# compose — chain functions (no built-in, but easy to write)\ndef compose(*funcs):\n    def composed(x):\n        for f in reversed(funcs):\n            x = f(x)\n        return x\n    return composed\n\nprocess = compose(str.strip, str.lower, str.title)\nprocess(\"  hello world  \")   # \"Hello World\"\n`);copyBtnbtn_bb6b9c1bd28c489281812f94bc3b77aa.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bb6b9c1bd28c489281812f94bc3b77aa.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1099,15 +1117,15 @@ process(<span style="color: var(--clr-string); background-color: var(--bg-string
 </div></div>
 </div>
 </div>
-<div id="outline-container-org5f38f89" class="outline-2">
-<h2 id="org5f38f89">Rust</h2>
-<div class="outline-text-2" id="text-org5f38f89">
+<div id="outline-container-org384e4c3" class="outline-2">
+<h2 id="org384e4c3">Rust</h2>
+<div class="outline-text-2" id="text-org384e4c3">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_44c9f7ca56444277b4fa58759eff8e7c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_5bca0dfb1b4a49e5b2df165bcdc14501>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_44c9f7ca56444277b4fa58759eff8e7c=document.querySelector('button[name=btn_44c9f7ca56444277b4fa58759eff8e7c]');
-copyBtnbtn_44c9f7ca56444277b4fa58759eff8e7c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Functions as arguments\nfn apply<F: Fn(i32) -> i32>(f: F, x: i32) -> i32 {\n    f(x)\n}\n\napply(|x| x * 2, 5)   // 10\n\n// Iterator methods take closures\nlet doubled: Vec<i32> = vec![1, 2, 3]\n    .iter()\n    .map(|x| x * 2)\n    .collect();\n\n// Returning a function\nfn make_adder(n: i32) -> impl Fn(i32) -> i32 {\n    move |x| x + n\n}\n`);copyBtnbtn_44c9f7ca56444277b4fa58759eff8e7c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_44c9f7ca56444277b4fa58759eff8e7c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5bca0dfb1b4a49e5b2df165bcdc14501=document.querySelector('button[name=btn_5bca0dfb1b4a49e5b2df165bcdc14501]');
+copyBtnbtn_5bca0dfb1b4a49e5b2df165bcdc14501.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Functions as arguments\nfn apply<F: Fn(i32) -> i32>(f: F, x: i32) -> i32 {\n    f(x)\n}\n\napply(|x| x * 2, 5)   // 10\n\n// Iterator methods take closures\nlet doubled: Vec<i32> = vec![1, 2, 3]\n    .iter()\n    .map(|x| x * 2)\n    .collect();\n\n// Returning a function\nfn make_adder(n: i32) -> impl Fn(i32) -> i32 {\n    move |x| x + n\n}\n`);copyBtnbtn_5bca0dfb1b4a49e5b2df165bcdc14501.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5bca0dfb1b4a49e5b2df165bcdc14501.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1132,9 +1150,9 @@ fn make_adder(n: i32) -&gt; impl Fn(i32) -&gt; i32 {
 </div></div>
 </div>
 </div>
-<div id="outline-container-org201700e" class="outline-2">
-<h2 id="org201700e">Tips</h2>
-<div class="outline-text-2" id="text-org201700e">
+<div id="outline-container-orgb400769" class="outline-2">
+<h2 id="orgb400769">Tips</h2>
+<div class="outline-text-2" id="text-orgb400769">
 <ul class="org-ul">
 <li>Prefer list comprehensions over <code>map=/=filter</code> in Python —
 they read more naturally and are often faster</li>
@@ -1151,6 +1169,20 @@ see <a href="20260206T060525--closures-in-rust__concept_programming_rust.html">C
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1158,6 +1190,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

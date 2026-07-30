@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nikto</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,10 +886,10 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org88afde1">Core Flags</a></li>
-<li><a href="#orga06e04c">Common Workflows</a></li>
-<li><a href="#orgfdfd61f">What Nikto Finds</a></li>
-<li><a href="#org8496747">Tips</a></li>
+<li><a href="#orgbc32fdf">Core Flags</a></li>
+<li><a href="#org55e10f4">Common Workflows</a></li>
+<li><a href="#orgf0b2eb1">What Nikto Finds</a></li>
+<li><a href="#org144fed7">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -888,9 +906,9 @@ Related: <a href="20260611T064753--web-application-testing-methodology__cybersec
          <a href="20260326T200820--nmap__cybersecurity_tool.html">Nmap</a>
          <a href="20260613T235746--http-security-headers__cybersecurity_pentesting_technique.html">HTTP Security Headers</a>
 </p>
-<div id="outline-container-org88afde1" class="outline-2">
-<h2 id="org88afde1">Core Flags</h2>
-<div class="outline-text-2" id="text-org88afde1">
+<div id="outline-container-orgbc32fdf" class="outline-2">
+<h2 id="orgbc32fdf">Core Flags</h2>
+<div class="outline-text-2" id="text-orgbc32fdf">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -959,15 +977,15 @@ Related: <a href="20260611T064753--web-application-testing-methodology__cybersec
 </table>
 </div>
 </div>
-<div id="outline-container-orga06e04c" class="outline-2">
-<h2 id="orga06e04c">Common Workflows</h2>
-<div class="outline-text-2" id="text-orga06e04c">
+<div id="outline-container-org55e10f4" class="outline-2">
+<h2 id="org55e10f4">Common Workflows</h2>
+<div class="outline-text-2" id="text-org55e10f4">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_faadc341bd9f47bb8b40469b8afc3774>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a06b252cf4c64e6385a04d17918a208c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_faadc341bd9f47bb8b40469b8afc3774=document.querySelector('button[name=btn_faadc341bd9f47bb8b40469b8afc3774]');
-copyBtnbtn_faadc341bd9f47bb8b40469b8afc3774.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Basic scan\nnikto -h http://$IP\n\n# HTTPS target\nnikto -h https://$IP -ssl\n\n# Custom port\nnikto -h http://$IP -p 8080\n\n# Save output\nnikto -h http://$IP -o nikto.txt -Format txt\nnikto -h http://$IP -o nikto.html -Format htm\n\n# Route through Burp for review\nnikto -h http://$IP -useproxy http://127.0.0.1:8080\n\n# Specific tuning — select test categories\nnikto -h http://$IP -Tuning 1,2,3\n# 1=Interesting files, 2=Misconfiguration, 3=Info disclosure\n# 4=Injection, 6=Denial of Service, 9=Remote file retrieval\n`);copyBtnbtn_faadc341bd9f47bb8b40469b8afc3774.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_faadc341bd9f47bb8b40469b8afc3774.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a06b252cf4c64e6385a04d17918a208c=document.querySelector('button[name=btn_a06b252cf4c64e6385a04d17918a208c]');
+copyBtnbtn_a06b252cf4c64e6385a04d17918a208c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Basic scan\nnikto -h http://$IP\n\n# HTTPS target\nnikto -h https://$IP -ssl\n\n# Custom port\nnikto -h http://$IP -p 8080\n\n# Save output\nnikto -h http://$IP -o nikto.txt -Format txt\nnikto -h http://$IP -o nikto.html -Format htm\n\n# Route through Burp for review\nnikto -h http://$IP -useproxy http://127.0.0.1:8080\n\n# Specific tuning — select test categories\nnikto -h http://$IP -Tuning 1,2,3\n# 1=Interesting files, 2=Misconfiguration, 3=Info disclosure\n# 4=Injection, 6=Denial of Service, 9=Remote file retrieval\n`);copyBtnbtn_a06b252cf4c64e6385a04d17918a208c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a06b252cf4c64e6385a04d17918a208c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -995,9 +1013,9 @@ nikto -h http://$<span style="color: var(--clr-variable); background-color: var(
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgfdfd61f" class="outline-2">
-<h2 id="orgfdfd61f">What Nikto Finds</h2>
-<div class="outline-text-2" id="text-orgfdfd61f">
+<div id="outline-container-orgf0b2eb1" class="outline-2">
+<h2 id="orgf0b2eb1">What Nikto Finds</h2>
+<div class="outline-text-2" id="text-orgf0b2eb1">
 <ul class="org-ul">
 <li>Default files and directories (<code>robots.txt</code>, <code>.git/</code>, <code>backup/</code>)</li>
 <li>Outdated server software and versions</li>
@@ -1008,9 +1026,9 @@ nikto -h http://$<span style="color: var(--clr-variable); background-color: var(
 </ul>
 </div>
 </div>
-<div id="outline-container-org8496747" class="outline-2">
-<h2 id="org8496747">Tips</h2>
-<div class="outline-text-2" id="text-org8496747">
+<div id="outline-container-org144fed7" class="outline-2">
+<h2 id="org144fed7">Tips</h2>
+<div class="outline-text-2" id="text-org144fed7">
 <ul class="org-ul">
 <li>Run Nikto early alongside other enumeration — it is slow but
 automated; let it run in background while doing manual testing</li>
@@ -1026,6 +1044,20 @@ inline scanning</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1033,6 +1065,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

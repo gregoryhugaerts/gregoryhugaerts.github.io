@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>gobuster</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,16 +886,16 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org31c2b60">Modes</a></li>
-<li><a href="#org8117ef5">Core Flags</a></li>
-<li><a href="#orgb4c2157">Common Workflows</a>
+<li><a href="#orgb67d25e">Modes</a></li>
+<li><a href="#org7c8d123">Core Flags</a></li>
+<li><a href="#org4bd462d">Common Workflows</a>
 <ul>
-<li><a href="#org842ba95">Directory Enumeration</a></li>
-<li><a href="#org532e9e2">DNS Subdomain Enumeration</a></li>
-<li><a href="#org9a885a3">Virtual Host Enumeration</a></li>
+<li><a href="#org1743fbf">Directory Enumeration</a></li>
+<li><a href="#org1e645ca">DNS Subdomain Enumeration</a></li>
+<li><a href="#org9398eca">Virtual Host Enumeration</a></li>
 </ul>
 </li>
-<li><a href="#orga629a9d">Tips</a></li>
+<li><a href="#orga5c7c6e">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -896,9 +914,9 @@ Related: <a href="20260611T064645--feroxbuster__cybersecurity_tool.html">Feroxbu
          <a href="20260206T060732--subdomain-enumeration__cybersecurity_technique.html">Subdomain Enumeration</a>
          <a href="20260611T064753--web-application-testing-methodology__cybersecurity_pentesting_technique.html">Web Application Testing Methodology</a>
 </p>
-<div id="outline-container-org31c2b60" class="outline-2">
-<h2 id="org31c2b60">Modes</h2>
-<div class="outline-text-2" id="text-org31c2b60">
+<div id="outline-container-orgb67d25e" class="outline-2">
+<h2 id="orgb67d25e">Modes</h2>
+<div class="outline-text-2" id="text-orgb67d25e">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -937,9 +955,9 @@ Related: <a href="20260611T064645--feroxbuster__cybersecurity_tool.html">Feroxbu
 </table>
 </div>
 </div>
-<div id="outline-container-org8117ef5" class="outline-2">
-<h2 id="org8117ef5">Core Flags</h2>
-<div class="outline-text-2" id="text-org8117ef5">
+<div id="outline-container-org7c8d123" class="outline-2">
+<h2 id="org7c8d123">Core Flags</h2>
+<div class="outline-text-2" id="text-org7c8d123">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1018,19 +1036,19 @@ Related: <a href="20260611T064645--feroxbuster__cybersecurity_tool.html">Feroxbu
 </table>
 </div>
 </div>
-<div id="outline-container-orgb4c2157" class="outline-2">
-<h2 id="orgb4c2157">Common Workflows</h2>
-<div class="outline-text-2" id="text-orgb4c2157">
+<div id="outline-container-org4bd462d" class="outline-2">
+<h2 id="org4bd462d">Common Workflows</h2>
+<div class="outline-text-2" id="text-org4bd462d">
 </div>
-<div id="outline-container-org842ba95" class="outline-3">
-<h3 id="org842ba95">Directory Enumeration</h3>
-<div class="outline-text-3" id="text-org842ba95">
+<div id="outline-container-org1743fbf" class="outline-3">
+<h3 id="org1743fbf">Directory Enumeration</h3>
+<div class="outline-text-3" id="text-org1743fbf">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0cc0296ae81643aa9d1fa864bdd0e9cd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_34245ff830634e509183a00da84a69de>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0cc0296ae81643aa9d1fa864bdd0e9cd=document.querySelector('button[name=btn_0cc0296ae81643aa9d1fa864bdd0e9cd]');
-copyBtnbtn_0cc0296ae81643aa9d1fa864bdd0e9cd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`gobuster dir -u http://$IP \\\n  -w /usr/share/seclists/Discovery/Web-Content/common.txt \\\n  -x php,html,txt \\\n  -b 404,403 \\\n  -o gobuster_dir.txt\n\n# With authentication\ngobuster dir -u http://$IP \\\n  -w /usr/share/seclists/Discovery/Web-Content/common.txt \\\n  -c \"session=abc123\"\n`);copyBtnbtn_0cc0296ae81643aa9d1fa864bdd0e9cd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0cc0296ae81643aa9d1fa864bdd0e9cd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_34245ff830634e509183a00da84a69de=document.querySelector('button[name=btn_34245ff830634e509183a00da84a69de]');
+copyBtnbtn_34245ff830634e509183a00da84a69de.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`gobuster dir -u http://$IP \\\n  -w /usr/share/seclists/Discovery/Web-Content/common.txt \\\n  -x php,html,txt \\\n  -b 404,403 \\\n  -o gobuster_dir.txt\n\n# With authentication\ngobuster dir -u http://$IP \\\n  -w /usr/share/seclists/Discovery/Web-Content/common.txt \\\n  -c \"session=abc123\"\n`);copyBtnbtn_34245ff830634e509183a00da84a69de.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_34245ff830634e509183a00da84a69de.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1048,15 +1066,15 @@ let res = copyTextToClipboard(`gobuster dir -u http://$IP \\\n  -w /usr/share/se
 </div></div>
 </div>
 </div>
-<div id="outline-container-org532e9e2" class="outline-3">
-<h3 id="org532e9e2">DNS Subdomain Enumeration</h3>
-<div class="outline-text-3" id="text-org532e9e2">
+<div id="outline-container-org1e645ca" class="outline-3">
+<h3 id="org1e645ca">DNS Subdomain Enumeration</h3>
+<div class="outline-text-3" id="text-org1e645ca">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9d652d6dedf54b7497410091c67c22b4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c5b477a4932342feb2d8335bc3589b4d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9d652d6dedf54b7497410091c67c22b4=document.querySelector('button[name=btn_9d652d6dedf54b7497410091c67c22b4]');
-copyBtnbtn_9d652d6dedf54b7497410091c67c22b4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`gobuster dns -d target.com \\\n  -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \\\n  -o gobuster_dns.txt\n`);copyBtnbtn_9d652d6dedf54b7497410091c67c22b4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9d652d6dedf54b7497410091c67c22b4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c5b477a4932342feb2d8335bc3589b4d=document.querySelector('button[name=btn_c5b477a4932342feb2d8335bc3589b4d]');
+copyBtnbtn_c5b477a4932342feb2d8335bc3589b4d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`gobuster dns -d target.com \\\n  -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \\\n  -o gobuster_dns.txt\n`);copyBtnbtn_c5b477a4932342feb2d8335bc3589b4d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c5b477a4932342feb2d8335bc3589b4d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1067,15 +1085,15 @@ let res = copyTextToClipboard(`gobuster dns -d target.com \\\n  -w /usr/share/se
 </div></div>
 </div>
 </div>
-<div id="outline-container-org9a885a3" class="outline-3">
-<h3 id="org9a885a3">Virtual Host Enumeration</h3>
-<div class="outline-text-3" id="text-org9a885a3">
+<div id="outline-container-org9398eca" class="outline-3">
+<h3 id="org9398eca">Virtual Host Enumeration</h3>
+<div class="outline-text-3" id="text-org9398eca">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6524711741a04d6cbec7cd7e862e0121>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8b745c621d624fb8ae6859a832f52f34>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6524711741a04d6cbec7cd7e862e0121=document.querySelector('button[name=btn_6524711741a04d6cbec7cd7e862e0121]');
-copyBtnbtn_6524711741a04d6cbec7cd7e862e0121.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`gobuster vhost -u http://$IP \\\n  -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \\\n  --append-domain \\\n  -o gobuster_vhost.txt\n`);copyBtnbtn_6524711741a04d6cbec7cd7e862e0121.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6524711741a04d6cbec7cd7e862e0121.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8b745c621d624fb8ae6859a832f52f34=document.querySelector('button[name=btn_8b745c621d624fb8ae6859a832f52f34]');
+copyBtnbtn_8b745c621d624fb8ae6859a832f52f34.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`gobuster vhost -u http://$IP \\\n  -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \\\n  --append-domain \\\n  -o gobuster_vhost.txt\n`);copyBtnbtn_8b745c621d624fb8ae6859a832f52f34.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8b745c621d624fb8ae6859a832f52f34.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1088,9 +1106,9 @@ let res = copyTextToClipboard(`gobuster vhost -u http://$IP \\\n  -w /usr/share/
 </div>
 </div>
 </div>
-<div id="outline-container-orga629a9d" class="outline-2">
-<h2 id="orga629a9d">Tips</h2>
-<div class="outline-text-2" id="text-orga629a9d">
+<div id="outline-container-orga5c7c6e" class="outline-2">
+<h2 id="orga5c7c6e">Tips</h2>
+<div class="outline-text-2" id="text-orga5c7c6e">
 <ul class="org-ul">
 <li>Gobuster does not recurse — run again manually on interesting
 directories discovered in the first pass</li>
@@ -1103,6 +1121,20 @@ explicitly expects it or for DNS/vhost mode</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1110,6 +1142,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

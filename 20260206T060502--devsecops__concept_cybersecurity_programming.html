@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DevSecOps</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,57 +886,200 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc263d34">DevSecOps</a></li>
-<li><a href="#org9c1df3d">Key Concepts</a></li>
-<li><a href="#org44fd892">Applications</a></li>
+<li><a href="#org3cd92ec">Key Concepts</a></li>
+<li><a href="#org53ac30f">Pipeline Integration — Where Each Check Fits</a>
+<ul>
+<li><a href="#org5b6f093">SAST vs DAST — The Core Distinction</a></li>
+</ul>
+</li>
+<li><a href="#org6512948">Applications</a></li>
+<li><a href="#org415de36">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc263d34" class="outline-2">
-<h2 id="orgc263d34">DevSecOps</h2>
-<div class="outline-text-2" id="text-orgc263d34">
 <p>
-DevSecOps is a software development approach that integrates security practices into the entire development lifecycle.
+DevSecOps is a software development approach that integrates
+security practices into the entire development lifecycle. It
+emphasizes collaboration between development, security, and
+operations teams to build and deploy secure applications
+efficiently. The goal is to embed security into the development
+process from the outset, rather than as an afterthought.
 </p>
 
 <p>
-It emphasizes collaboration between development, security, and operations teams to build and deploy secure applications efficiently.
+Related: <a href="20260314T005647--infrastructure-as-code__concept_programming.html">Infrastructure As Code</a>
+         <a href="20260206T060641--software-development-life-cycle__concept_programming.html">Software Development Life Cycle</a>
+         <a href="20260314T005609--application-security__concept_cybersecurity.html">Application Security</a>
+         <a href="20260624T191946--vulnerability-scanning-tools__concept_cybersecurity_technique.html">Vulnerability Scanning Tools</a>
+         [[Denote query for ‘20260709T193500’]]
 </p>
-
-<p>
-The goal is to embed security into the development process from the outset, rather than as an afterthought.
-</p>
-</div>
-</div>
-<div id="outline-container-org9c1df3d" class="outline-2">
-<h2 id="org9c1df3d">Key Concepts</h2>
-<div class="outline-text-2" id="text-org9c1df3d">
+<div id="outline-container-org3cd92ec" class="outline-2">
+<h2 id="org3cd92ec">Key Concepts</h2>
+<div class="outline-text-2" id="text-org3cd92ec">
 <ul class="org-ul">
-<li>Shift-Left Security: Incorporating security activities earlier in the development lifecycle.</li>
-<li>Automation: Automating security testing and checks throughout the pipeline.</li>
-<li>Collaboration: Fostering cooperation between development, security, and operations teams.</li>
-<li>Security as Code: Treating security configurations as code, enabling version control and automation.</li>
-<li>Continuous Security: Integrating security into continuous integration and continuous delivery (CI/CD) pipelines.</li>
-<li>Threat Modeling: Identifying potential security risks and vulnerabilities early in the development process.</li>
+<li><b>Shift-Left Security:</b> Incorporating security activities earlier
+in the development lifecycle — finding a vulnerability at commit
+time is far cheaper than finding it in production.</li>
+<li><b>Automation:</b> Automating security testing and checks throughout
+the pipeline, so security review isn't a manual gate that gets
+skipped under deadline pressure.</li>
+<li><b>Collaboration:</b> Fostering cooperation between development,
+security, and operations teams — security stops being "someone
+else's job" checked at the end.</li>
+<li><b>Security as Code:</b> Treating security configurations (firewall
+rules, IAM policies, scan thresholds) as version-controlled code
+rather than manual, undocumented settings.</li>
+<li><b>Continuous Security:</b> Integrating security into CI/CD pipelines
+so every build is checked, not just periodic audits.</li>
+<li><b>Threat Modeling:</b> Identifying potential security risks and
+vulnerabilities early in the development process, before code
+is written.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org44fd892" class="outline-2">
-<h2 id="org44fd892">Applications</h2>
-<div class="outline-text-2" id="text-org44fd892">
+<div id="outline-container-org53ac30f" class="outline-2">
+<h2 id="org53ac30f">Pipeline Integration — Where Each Check Fits</h2>
+<div class="outline-text-2" id="text-org53ac30f">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Stage</th>
+<th scope="col" class="org-left">Security Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Commit</td>
+<td class="org-left">Pre-commit hooks: secret scanning, linting</td>
+</tr>
+
+<tr>
+<td class="org-left">Build</td>
+<td class="org-left">SAST (Static Application Security Testing)</td>
+</tr>
+
+<tr>
+<td class="org-left">Dependency</td>
+<td class="org-left">SCA (Software Composition Analysis) — known-vulnerable libraries</td>
+</tr>
+
+<tr>
+<td class="org-left">Test</td>
+<td class="org-left">DAST (Dynamic Application Security Testing) against a running instance</td>
+</tr>
+
+<tr>
+<td class="org-left">Package</td>
+<td class="org-left">Container image scanning</td>
+</tr>
+
+<tr>
+<td class="org-left">Deploy</td>
+<td class="org-left">IaC scanning (Terraform/CloudFormation misconfigurations)</td>
+</tr>
+
+<tr>
+<td class="org-left">Runtime</td>
+<td class="org-left">Runtime protection, continuous monitoring</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outline-container-org5b6f093" class="outline-3">
+<h3 id="org5b6f093">SAST vs DAST — The Core Distinction</h3>
+<div class="outline-text-3" id="text-org5b6f093">
 <ul class="org-ul">
-<li>Secure Coding Practices: Enforcing coding standards and best practices to prevent vulnerabilities.</li>
-<li>Static and Dynamic Application Security Testing (SAST/DAST): Identifying security flaws in code and running applications.</li>
-<li><a href="Infrastructure As Code.html#infrastructure-as-code">Infrastructure As Code</a> (IaC) Security: Ensuring security configurations for infrastructure resources.</li>
-<li>Container Security: Securing container images and runtime environments.</li>
-<li>Secret Management: Protecting sensitive information through secure storage and access control.</li>
-<li>Compliance Management: Ensuring adherence to security regulations and standards.</li>
-<li>Incident Response Integration: Integrating security incident response into the development workflow.</li>
+<li><b>SAST</b> analyzes source code without running it — catches issues
+like hardcoded credentials or SQL string concatenation early, but
+can't find runtime-only issues (auth bypass logic that only
+manifests with real request flow) and tends toward false
+positives on defensive-but-flagged patterns.</li>
+<li><b>DAST</b> tests a running application from the outside, black-box —
+catches genuinely exploitable runtime issues (the same classes
+covered in your PT1 web app notes) but requires a working
+deployed instance and runs later in the pipeline, so feedback is
+slower.</li>
+</ul>
+
+<p>
+Mature pipelines run both — SAST for fast, early, code-level
+feedback; DAST for confirming actual runtime exploitability.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org6512948" class="outline-2">
+<h2 id="org6512948">Applications</h2>
+<div class="outline-text-2" id="text-org6512948">
+<ul class="org-ul">
+<li>Secure Coding Practices: Enforcing coding standards and best
+practices to prevent vulnerabilities</li>
+<li>SAST/DAST: Identifying security flaws in code and running
+applications (see distinction above)</li>
+<li><a href="20260314T005647--infrastructure-as-code__concept_programming.html">Infrastructure As Code</a> Security:
+Ensuring security configurations for infrastructure resources —
+a misconfigured Terraform module is functionally the same problem
+as [[Denote query for ‘20260709T193500’]] found
+during a pentest, just caught earlier</li>
+<li>Container Security: Securing container images and runtime
+environments</li>
+<li>Secret Management: Protecting sensitive information through
+secure storage and access control — the pipeline-side answer to
+hardcoded credentials showing up in
+[[Denote query for ‘20260709T193500’]] findings</li>
+<li>Compliance Management: Ensuring adherence to security regulations
+and standards</li>
+<li>Incident Response Integration: Integrating security incident
+response into the development workflow</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org415de36" class="outline-2">
+<h2 id="org415de36">Tips</h2>
+<div class="outline-text-2" id="text-org415de36">
+<ul class="org-ul">
+<li>On the pentest side, a target with visible DevSecOps maturity
+(dependency scanning badges, security headers consistently
+applied across all endpoints, no obvious hardcoded secrets) tends
+to have fewer Security Misconfiguration and Outdated Software
+findings — recon signal worth noting, not just an internal
+engineering concept</li>
+<li>The reverse is a useful heuristic too: inconsistent security
+posture across different parts of an application (one endpoint
+well-secured, another clearly bolted on later) often indicates
+gaps in pipeline coverage rather than uniform effort — worth
+probing the less-polished-looking areas first</li>
+<li>"Shift-left" is about when a check runs, not how thorough it is —
+a fast, shallow SAST scan at commit time is still valuable even
+though it will miss things a full manual review would catch;
+don't treat pipeline automation as a replacement for periodic
+deeper review</li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -926,6 +1087,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

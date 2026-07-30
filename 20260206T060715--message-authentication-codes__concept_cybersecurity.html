@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Message Authentication Codes</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org97d04cf">How MACs Work</a></li>
-<li><a href="#org2c7e75d">Types of MACs</a></li>
-<li><a href="#orgc61c77e">Computing an HMAC</a></li>
-<li><a href="#orgeb157aa">Security Testing — Forging and Cracking MACs</a>
+<li><a href="#orga4ce91c">How MACs Work</a></li>
+<li><a href="#org9d63e2b">Types of MACs</a></li>
+<li><a href="#org2af3704">Computing an HMAC</a></li>
+<li><a href="#org9215bd9">Security Testing — Forging and Cracking MACs</a>
 <ul>
-<li><a href="#org5e732c0">Hardcoded or Weak Secret Keys</a></li>
-<li><a href="#orgdd9afda">Brute-Forcing an Unknown Secret</a></li>
-<li><a href="#org42db323">Length Extension Attacks</a></li>
+<li><a href="#org262f272">Hardcoded or Weak Secret Keys</a></li>
+<li><a href="#org3a9ae88">Brute-Forcing an Unknown Secret</a></li>
+<li><a href="#org580a864">Length Extension Attacks</a></li>
 </ul>
 </li>
-<li><a href="#orgc9a8c6a">Best Practices (Defensive)</a></li>
-<li><a href="#orgec3f9b5">Tips</a></li>
+<li><a href="#org4a9f4e6">Best Practices (Defensive)</a></li>
+<li><a href="#org98fd398">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -900,9 +918,9 @@ Related: <a href="20260206T060656--hashing__concept_cybersecurity_programming.ht
          <a href="20260314T005729--hashcat__cybersecurity_tool.html">Hashcat</a>
          <a href="pentest/20260705T183606--domino-ctf__ctf_web.html">Domino</a>
 </p>
-<div id="outline-container-org97d04cf" class="outline-2">
-<h2 id="org97d04cf">How MACs Work</h2>
-<div class="outline-text-2" id="text-org97d04cf">
+<div id="outline-container-orga4ce91c" class="outline-2">
+<h2 id="orga4ce91c">How MACs Work</h2>
+<div class="outline-text-2" id="text-orga4ce91c">
 <ul class="org-ul">
 <li>A secret key is shared between the sender and receiver</li>
 <li>The sender calculates a MAC value based on the message and the
@@ -922,9 +940,9 @@ messages.
 </p>
 </div>
 </div>
-<div id="outline-container-org2c7e75d" class="outline-2">
-<h2 id="org2c7e75d">Types of MACs</h2>
-<div class="outline-text-2" id="text-org2c7e75d">
+<div id="outline-container-org9d63e2b" class="outline-2">
+<h2 id="org9d63e2b">Types of MACs</h2>
+<div class="outline-text-2" id="text-org9d63e2b">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -970,15 +988,15 @@ frequent choice for signing session tokens/cookies directly.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc61c77e" class="outline-2">
-<h2 id="orgc61c77e">Computing an HMAC</h2>
-<div class="outline-text-2" id="text-orgc61c77e">
+<div id="outline-container-org2af3704" class="outline-2">
+<h2 id="org2af3704">Computing an HMAC</h2>
+<div class="outline-text-2" id="text-org2af3704">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1422e848169a45ea8d79a4a93786b9a2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_dfaf837791694aa9b53277961177d39f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1422e848169a45ea8d79a4a93786b9a2=document.querySelector('button[name=btn_1422e848169a45ea8d79a4a93786b9a2]');
-copyBtnbtn_1422e848169a45ea8d79a4a93786b9a2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# HMAC-SHA256 of a message with a known key, via openssl\necho -n \"user=admin&role=user\" | openssl dgst -sha256 -hmac \"supersecretkey\"\n`);copyBtnbtn_1422e848169a45ea8d79a4a93786b9a2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1422e848169a45ea8d79a4a93786b9a2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_dfaf837791694aa9b53277961177d39f=document.querySelector('button[name=btn_dfaf837791694aa9b53277961177d39f]');
+copyBtnbtn_dfaf837791694aa9b53277961177d39f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# HMAC-SHA256 of a message with a known key, via openssl\necho -n \"user=admin&role=user\" | openssl dgst -sha256 -hmac \"supersecretkey\"\n`);copyBtnbtn_dfaf837791694aa9b53277961177d39f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_dfaf837791694aa9b53277961177d39f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -988,11 +1006,11 @@ let res = copyTextToClipboard(`# HMAC-SHA256 of a message with a known key, via 
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_b30ae62172fc4f6f85c41c48924d1a5e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_f734ecceee4749af88d4214382afa650>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b30ae62172fc4f6f85c41c48924d1a5e=document.querySelector('button[name=btn_b30ae62172fc4f6f85c41c48924d1a5e]');
-copyBtnbtn_b30ae62172fc4f6f85c41c48924d1a5e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import hmac\nimport hashlib\n\nmessage = b\"user=admin&role=user\"\nkey = b\"supersecretkey\"\n\ntag = hmac.new(key, message, hashlib.sha256).hexdigest()\nprint(tag)\n`);copyBtnbtn_b30ae62172fc4f6f85c41c48924d1a5e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b30ae62172fc4f6f85c41c48924d1a5e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f734ecceee4749af88d4214382afa650=document.querySelector('button[name=btn_f734ecceee4749af88d4214382afa650]');
+copyBtnbtn_f734ecceee4749af88d4214382afa650.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import hmac\nimport hashlib\n\nmessage = b\"user=admin&role=user\"\nkey = b\"supersecretkey\"\n\ntag = hmac.new(key, message, hashlib.sha256).hexdigest()\nprint(tag)\n`);copyBtnbtn_f734ecceee4749af88d4214382afa650.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f734ecceee4749af88d4214382afa650.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1008,17 +1026,17 @@ let res = copyTextToClipboard(`import hmac\nimport hashlib\n\nmessage = b\"user=
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgeb157aa" class="outline-2">
-<h2 id="orgeb157aa">Security Testing — Forging and Cracking MACs</h2>
-<div class="outline-text-2" id="text-orgeb157aa">
+<div id="outline-container-org9215bd9" class="outline-2">
+<h2 id="org9215bd9">Security Testing — Forging and Cracking MACs</h2>
+<div class="outline-text-2" id="text-org9215bd9">
 <p>
 This is the practically relevant side for pentesting: a MAC is
 only as strong as its secret key and how it's used.
 </p>
 </div>
-<div id="outline-container-org5e732c0" class="outline-3">
-<h3 id="org5e732c0">Hardcoded or Weak Secret Keys</h3>
-<div class="outline-text-3" id="text-org5e732c0">
+<div id="outline-container-org262f272" class="outline-3">
+<h3 id="org262f272">Hardcoded or Weak Secret Keys</h3>
+<div class="outline-text-3" id="text-org262f272">
 <p>
 If an application signs cookies/tokens with a hardcoded or
 predictable HMAC secret (found in source code, a config file, or a
@@ -1029,11 +1047,11 @@ session cookies with valid signatures.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_f0329ae79b51437ba03f8b9da78d1e2a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_5ba3947f629543ba92938d312cef7db8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f0329ae79b51437ba03f8b9da78d1e2a=document.querySelector('button[name=btn_f0329ae79b51437ba03f8b9da78d1e2a]');
-copyBtnbtn_f0329ae79b51437ba03f8b9da78d1e2a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import hmac, hashlib\n\n# Once the key is known (leaked, hardcoded, or cracked):\nforged_message = b\"user=admin&role=admin\"\nkey = b\"leaked_secret_key\"\nforged_tag = hmac.new(key, forged_message, hashlib.sha256).hexdigest()\n\n# Send forged_message + forged_tag as the cookie/token — the server\n# will recompute the same tag and accept it as valid\n`);copyBtnbtn_f0329ae79b51437ba03f8b9da78d1e2a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f0329ae79b51437ba03f8b9da78d1e2a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5ba3947f629543ba92938d312cef7db8=document.querySelector('button[name=btn_5ba3947f629543ba92938d312cef7db8]');
+copyBtnbtn_5ba3947f629543ba92938d312cef7db8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import hmac, hashlib\n\n# Once the key is known (leaked, hardcoded, or cracked):\nforged_message = b\"user=admin&role=admin\"\nkey = b\"leaked_secret_key\"\nforged_tag = hmac.new(key, forged_message, hashlib.sha256).hexdigest()\n\n# Send forged_message + forged_tag as the cookie/token — the server\n# will recompute the same tag and accept it as valid\n`);copyBtnbtn_5ba3947f629543ba92938d312cef7db8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5ba3947f629543ba92938d312cef7db8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1050,9 +1068,9 @@ let res = copyTextToClipboard(`import hmac, hashlib\n\n# Once the key is known (
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgdd9afda" class="outline-3">
-<h3 id="orgdd9afda">Brute-Forcing an Unknown Secret</h3>
-<div class="outline-text-3" id="text-orgdd9afda">
+<div id="outline-container-org3a9ae88" class="outline-3">
+<h3 id="org3a9ae88">Brute-Forcing an Unknown Secret</h3>
+<div class="outline-text-3" id="text-org3a9ae88">
 <p>
 If the algorithm and message are known but the key isn't, and the
 key is weak enough (short, dictionary word, common pattern),
@@ -1061,11 +1079,11 @@ cracking:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1688da7ac59543a8b1606e5b3c99976d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0162e4ff6a4b426d8da0d355bf40dad5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1688da7ac59543a8b1606e5b3c99976d=document.querySelector('button[name=btn_1688da7ac59543a8b1606e5b3c99976d]');
-copyBtnbtn_1688da7ac59543a8b1606e5b3c99976d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Mode 16500 covers JWT (HS256) specifically\nhashcat -m 16500 -a 0 token.txt /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_1688da7ac59543a8b1606e5b3c99976d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1688da7ac59543a8b1606e5b3c99976d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0162e4ff6a4b426d8da0d355bf40dad5=document.querySelector('button[name=btn_0162e4ff6a4b426d8da0d355bf40dad5]');
+copyBtnbtn_0162e4ff6a4b426d8da0d355bf40dad5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Mode 16500 covers JWT (HS256) specifically\nhashcat -m 16500 -a 0 token.txt /usr/share/wordlists/rockyou.txt\n`);copyBtnbtn_0162e4ff6a4b426d8da0d355bf40dad5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0162e4ff6a4b426d8da0d355bf40dad5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1081,9 +1099,9 @@ version of this exact attack.
 </p>
 </div>
 </div>
-<div id="outline-container-org42db323" class="outline-3">
-<h3 id="org42db323">Length Extension Attacks</h3>
-<div class="outline-text-3" id="text-org42db323">
+<div id="outline-container-org580a864" class="outline-3">
+<h3 id="org580a864">Length Extension Attacks</h3>
+<div class="outline-text-3" id="text-org580a864">
 <p>
 Older or naively-constructed MAC schemes (particularly plain
 <code>hash(key || message)</code> rather than proper HMAC) can be vulnerable
@@ -1097,9 +1115,9 @@ one of the reasons HMAC is preferred over naive concatenation.
 </div>
 </div>
 </div>
-<div id="outline-container-orgc9a8c6a" class="outline-2">
-<h2 id="orgc9a8c6a">Best Practices (Defensive)</h2>
-<div class="outline-text-2" id="text-orgc9a8c6a">
+<div id="outline-container-org4a9f4e6" class="outline-2">
+<h2 id="org4a9f4e6">Best Practices (Defensive)</h2>
+<div class="outline-text-2" id="text-org4a9f4e6">
 <ul class="org-ul">
 <li>Use HMAC over naive <code>hash(key || message)</code> constructions —
 immune to length extension attacks</li>
@@ -1113,9 +1131,9 @@ secrecy</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgec3f9b5" class="outline-2">
-<h2 id="orgec3f9b5">Tips</h2>
-<div class="outline-text-2" id="text-orgec3f9b5">
+<div id="outline-container-org98fd398" class="outline-2">
+<h2 id="org98fd398">Tips</h2>
+<div class="outline-text-2" id="text-org98fd398">
 <ul class="org-ul">
 <li>On the exam, a hardcoded or leaked HMAC secret is a high-value
 finding — it typically enables full authentication bypass, not
@@ -1136,6 +1154,20 @@ anything) is a faster win than a strong one</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1143,6 +1175,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

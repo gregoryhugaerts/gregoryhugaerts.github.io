@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pattern Matching</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,30 +886,30 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org499b943">Pattern Matching</a>
+<li><a href="#org663d93f">Pattern Matching</a>
 <ul>
-<li><a href="#org4930ad8">The Match Operator vs. Assignment</a></li>
-<li><a href="#org0acd3cf">Core Use Cases &amp; Examples</a></li>
-<li><a href="#org7ba6747">Benefits of Pattern Matching</a></li>
+<li><a href="#org9dfa02f">The Match Operator vs. Assignment</a></li>
+<li><a href="#org3529d07">Core Use Cases &amp; Examples</a></li>
+<li><a href="#org491b499">Benefits of Pattern Matching</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org499b943" class="outline-2">
-<h2 id="org499b943">Pattern Matching</h2>
-<div class="outline-text-2" id="text-org499b943">
+<div id="outline-container-org663d93f" class="outline-2">
+<h2 id="org663d93f">Pattern Matching</h2>
+<div class="outline-text-2" id="text-org663d93f">
 <p>
-Pattern matching is a declarative mechanism in <a href="Programming.html#programming">Programming</a> for checking a value against a specific structure or "pattern". If the value conforms to the pattern, the match is successful, and the process can destructure the value, binding parts of it to variables.
+Pattern matching is a declarative mechanism in programming for checking a value against a specific structure or "pattern". If the value conforms to the pattern, the match is successful, and the process can destructure the value, binding parts of it to variables.
 </p>
 
 <p>
 It is a core feature in many Functional Programming languages and is increasingly being adopted by others due to its expressiveness and power.
 </p>
 </div>
-<div id="outline-container-org4930ad8" class="outline-3">
-<h3 id="org4930ad8">The Match Operator vs. Assignment</h3>
-<div class="outline-text-3" id="text-org4930ad8">
+<div id="outline-container-org9dfa02f" class="outline-3">
+<h3 id="org9dfa02f">The Match Operator vs. Assignment</h3>
+<div class="outline-text-3" id="text-org9dfa02f">
 <p>
 In many languages that feature pattern matching, like Elixir, the = symbol is a match operator, not an assignment operator.
 </p>
@@ -906,9 +924,9 @@ For example: <code>x = 1</code> will bind 1 to x. However, <code>1 = x</code> wi
 </p>
 </div>
 </div>
-<div id="outline-container-org0acd3cf" class="outline-3">
-<h3 id="org0acd3cf">Core Use Cases &amp; Examples</h3>
-<div class="outline-text-3" id="text-org0acd3cf">
+<div id="outline-container-org3529d07" class="outline-3">
+<h3 id="org3529d07">Core Use Cases &amp; Examples</h3>
+<div class="outline-text-3" id="text-org3529d07">
 <p>
 Pattern matching excels at making code more readable and concise compared to traditional conditional logic, such as nested if-else or switch statements.
 </p>
@@ -922,11 +940,11 @@ Tuples: Often used for function return values to indicate success or failure.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_6919940360a4497ab927c65ef49cbf3d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_bf439d6414604d18b4a543a262312caf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6919940360a4497ab927c65ef49cbf3d=document.querySelector('button[name=btn_6919940360a4497ab927c65ef49cbf3d]');
-copyBtnbtn_6919940360a4497ab927c65ef49cbf3d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Successful database call\n{:ok, user} = Db.get_user(123)\n# Now the 'user' variable is bound and can be used.\n\n# A failed call might return a different tuple\n{:error, :not_found} = Db.get_user(999)\n`);copyBtnbtn_6919940360a4497ab927c65ef49cbf3d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6919940360a4497ab927c65ef49cbf3d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bf439d6414604d18b4a543a262312caf=document.querySelector('button[name=btn_bf439d6414604d18b4a543a262312caf]');
+copyBtnbtn_bf439d6414604d18b4a543a262312caf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Successful database call\n{:ok, user} = Db.get_user(123)\n# Now the 'user' variable is bound and can be used.\n\n# A failed call might return a different tuple\n{:error, :not_found} = Db.get_user(999)\n`);copyBtnbtn_bf439d6414604d18b4a543a262312caf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bf439d6414604d18b4a543a262312caf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -944,11 +962,11 @@ Lists: Commonly used in recursive functions to process a list head and tail sepa
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_8b2e7eaf5a7b4ca6b6c5d8fd4f87231c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_643b5aa8427843f78845abcea5c83c4f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8b2e7eaf5a7b4ca6b6c5d8fd4f87231c=document.querySelector('button[name=btn_8b2e7eaf5a7b4ca6b6c5d8fd4f87231c]');
-copyBtnbtn_8b2e7eaf5a7b4ca6b6c5d8fd4f87231c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`def sum_list([]), do: 0\ndef sum_list([head | tail]), do: head + sum_list(tail)\n`);copyBtnbtn_8b2e7eaf5a7b4ca6b6c5d8fd4f87231c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8b2e7eaf5a7b4ca6b6c5d8fd4f87231c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_643b5aa8427843f78845abcea5c83c4f=document.querySelector('button[name=btn_643b5aa8427843f78845abcea5c83c4f]');
+copyBtnbtn_643b5aa8427843f78845abcea5c83c4f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`def sum_list([]), do: 0\ndef sum_list([head | tail]), do: head + sum_list(tail)\n`);copyBtnbtn_643b5aa8427843f78845abcea5c83c4f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_643b5aa8427843f78845abcea5c83c4f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -963,11 +981,11 @@ Function Clause Selection: It can be used in function heads to control program f
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_31909b5989da4bca84cb0b9098edf22f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_898d4de506714c87b6ca59f763f22165>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_31909b5989da4bca84cb0b9098edf22f=document.querySelector('button[name=btn_31909b5989da4bca84cb0b9098edf22f]');
-copyBtnbtn_31909b5989da4bca84cb0b9098edf22f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`def handle_request(\"GET\", path) do\n  # logic for GET requests\nend\n\ndef handle_request(\"POST\", path) do\n  # logic for POST requests\nend\n\ndef handle_request(_, _) do\n  # fallback for other methods\nend\n`);copyBtnbtn_31909b5989da4bca84cb0b9098edf22f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_31909b5989da4bca84cb0b9098edf22f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_898d4de506714c87b6ca59f763f22165=document.querySelector('button[name=btn_898d4de506714c87b6ca59f763f22165]');
+copyBtnbtn_898d4de506714c87b6ca59f763f22165.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`def handle_request(\"GET\", path) do\n  # logic for GET requests\nend\n\ndef handle_request(\"POST\", path) do\n  # logic for POST requests\nend\n\ndef handle_request(_, _) do\n  # fallback for other methods\nend\n`);copyBtnbtn_898d4de506714c87b6ca59f763f22165.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_898d4de506714c87b6ca59f763f22165.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -990,11 +1008,11 @@ The case Statement: Provides a way to match a value against several patterns unt
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_2880d62fb872482f9d356a14a1f0e549>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ELIXIR</span><button class='copyBtn' name=btn_a8e4a092462c434e849f90fd42383bc0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2880d62fb872482f9d356a14a1f0e549=document.querySelector('button[name=btn_2880d62fb872482f9d356a14a1f0e549]');
-copyBtnbtn_2880d62fb872482f9d356a14a1f0e549.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`case File.read(\"my_file.txt\") do\n  {:ok, content} ->\n    IO.puts(\"File content: #{content}\")\n  {:error, reason} ->\n    IO.puts(\"Error reading file: #{reason}\")\nend\n`);copyBtnbtn_2880d62fb872482f9d356a14a1f0e549.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2880d62fb872482f9d356a14a1f0e549.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a8e4a092462c434e849f90fd42383bc0=document.querySelector('button[name=btn_a8e4a092462c434e849f90fd42383bc0]');
+copyBtnbtn_a8e4a092462c434e849f90fd42383bc0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`case File.read(\"my_file.txt\") do\n  {:ok, content} ->\n    IO.puts(\"File content: #{content}\")\n  {:error, reason} ->\n    IO.puts(\"Error reading file: #{reason}\")\nend\n`);copyBtnbtn_a8e4a092462c434e849f90fd42383bc0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a8e4a092462c434e849f90fd42383bc0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1009,9 +1027,9 @@ end
 </ol>
 </div>
 </div>
-<div id="outline-container-org7ba6747" class="outline-3">
-<h3 id="org7ba6747">Benefits of Pattern Matching</h3>
-<div class="outline-text-3" id="text-org7ba6747">
+<div id="outline-container-org491b499" class="outline-3">
+<h3 id="org491b499">Benefits of Pattern Matching</h3>
+<div class="outline-text-3" id="text-org491b499">
 <ul class="org-ul">
 <li>Readability &amp; Conciseness: It clearly expresses the expected structure of data, reducing the need for verbose conditional checks.</li>
 <li>Immutability: It pairs naturally with immutable data structures. Since data isn't modified in place, you match on its current shape and create new data structures from the bound variables.</li>
@@ -1023,6 +1041,20 @@ end
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1030,6 +1062,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

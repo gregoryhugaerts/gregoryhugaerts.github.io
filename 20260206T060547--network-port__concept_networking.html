@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Network Port</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,16 +886,16 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge8ca986">Port Ranges</a></li>
-<li><a href="#org601436d">Common Ports Reference</a></li>
-<li><a href="#org6929843">Scanning Ports</a></li>
-<li><a href="#orgcfc07d8">Security Relevance</a>
+<li><a href="#orgc1c40cf">Port Ranges</a></li>
+<li><a href="#org7228108">Common Ports Reference</a></li>
+<li><a href="#org99fadb3">Scanning Ports</a></li>
+<li><a href="#orgdb048e1">Security Relevance</a>
 <ul>
-<li><a href="#org0d536f0">Exposed services are attack surface</a></li>
-<li><a href="#org95bad9d">Port selection in red team work</a></li>
+<li><a href="#org6055896">Exposed services are attack surface</a></li>
+<li><a href="#org9f30008">Port selection in red team work</a></li>
 </ul>
 </li>
-<li><a href="#org1c7e179">Tips</a></li>
+<li><a href="#org167c38f">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -895,9 +913,9 @@ Related: <a href="20260214T084008--ip-address__concept_networking.html">IP Addre
          <a href="20260326T200820--nmap__cybersecurity_tool.html">Nmap</a>
          <a href="20260314T005633--firewall__device_networking_tool.html">Firewall</a>
 </p>
-<div id="outline-container-orge8ca986" class="outline-2">
-<h2 id="orge8ca986">Port Ranges</h2>
-<div class="outline-text-2" id="text-orge8ca986">
+<div id="outline-container-orgc1c40cf" class="outline-2">
+<h2 id="orgc1c40cf">Port Ranges</h2>
+<div class="outline-text-2" id="text-orgc1c40cf">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -937,9 +955,9 @@ Related: <a href="20260214T084008--ip-address__concept_networking.html">IP Addre
 </table>
 </div>
 </div>
-<div id="outline-container-org601436d" class="outline-2">
-<h2 id="org601436d">Common Ports Reference</h2>
-<div class="outline-text-2" id="text-org601436d">
+<div id="outline-container-org7228108" class="outline-2">
+<h2 id="org7228108">Common Ports Reference</h2>
+<div class="outline-text-2" id="text-org7228108">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1147,15 +1165,15 @@ Related: <a href="20260214T084008--ip-address__concept_networking.html">IP Addre
 </table>
 </div>
 </div>
-<div id="outline-container-org6929843" class="outline-2">
-<h2 id="org6929843">Scanning Ports</h2>
-<div class="outline-text-2" id="text-org6929843">
+<div id="outline-container-org99fadb3" class="outline-2">
+<h2 id="org99fadb3">Scanning Ports</h2>
+<div class="outline-text-2" id="text-org99fadb3">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5ef63284ad3245b2aaede376960c0b7a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e66ed5c43fec43b78d2f8e1740c54b56>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5ef63284ad3245b2aaede376960c0b7a=document.querySelector('button[name=btn_5ef63284ad3245b2aaede376960c0b7a]');
-copyBtnbtn_5ef63284ad3245b2aaede376960c0b7a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Fast scan — top 1000 ports\nnmap -sV $IP\n\n# Full port scan\nnmap -sV -p- $IP\n\n# Specific ports\nnmap -p 22,80,443,3389 $IP\n\n# Check if a port is open without Nmap\nnc -zv $IP 22\ncurl -I http://$IP:8080\n`);copyBtnbtn_5ef63284ad3245b2aaede376960c0b7a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5ef63284ad3245b2aaede376960c0b7a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e66ed5c43fec43b78d2f8e1740c54b56=document.querySelector('button[name=btn_e66ed5c43fec43b78d2f8e1740c54b56]');
+copyBtnbtn_e66ed5c43fec43b78d2f8e1740c54b56.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Fast scan — top 1000 ports\nnmap -sV $IP\n\n# Full port scan\nnmap -sV -p- $IP\n\n# Specific ports\nnmap -p 22,80,443,3389 $IP\n\n# Check if a port is open without Nmap\nnc -zv $IP 22\ncurl -I http://$IP:8080\n`);copyBtnbtn_e66ed5c43fec43b78d2f8e1740c54b56.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e66ed5c43fec43b78d2f8e1740c54b56.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1175,24 +1193,24 @@ curl -I http://$<span style="color: var(--clr-variable); background-color: var(-
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgcfc07d8" class="outline-2">
-<h2 id="orgcfc07d8">Security Relevance</h2>
-<div class="outline-text-2" id="text-orgcfc07d8">
+<div id="outline-container-orgdb048e1" class="outline-2">
+<h2 id="orgdb048e1">Security Relevance</h2>
+<div class="outline-text-2" id="text-orgdb048e1">
 </div>
-<div id="outline-container-org0d536f0" class="outline-3">
-<h3 id="org0d536f0">Exposed services are attack surface</h3>
-<div class="outline-text-3" id="text-org0d536f0">
+<div id="outline-container-org6055896" class="outline-3">
+<h3 id="org6055896">Exposed services are attack surface</h3>
+<div class="outline-text-3" id="text-org6055896">
 <p>
 Every open port is a potential entry point. Exposed management
 services on public IPs are commonly exploited:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9e815340e06446f6b37a05bd1ac9409e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f2856bdb41494bc3b900fb0855eb09fe>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9e815340e06446f6b37a05bd1ac9409e=document.querySelector('button[name=btn_9e815340e06446f6b37a05bd1ac9409e]');
-copyBtnbtn_9e815340e06446f6b37a05bd1ac9409e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`High-risk exposed ports:\n22  (SSH)   — brute force, key theft\n23  (Telnet) — cleartext credentials\n3389 (RDP)  — brute force, BlueKeep and similar CVEs\n445 (SMB)   — EternalBlue, relay attacks\n1433/3306/5432 — databases with no VPN/firewall protection\n6379 (Redis) — often no auth, writable config for persistence\n`);copyBtnbtn_9e815340e06446f6b37a05bd1ac9409e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9e815340e06446f6b37a05bd1ac9409e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f2856bdb41494bc3b900fb0855eb09fe=document.querySelector('button[name=btn_f2856bdb41494bc3b900fb0855eb09fe]');
+copyBtnbtn_f2856bdb41494bc3b900fb0855eb09fe.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`High-risk exposed ports:\n22  (SSH)   — brute force, key theft\n23  (Telnet) — cleartext credentials\n3389 (RDP)  — brute force, BlueKeep and similar CVEs\n445 (SMB)   — EternalBlue, relay attacks\n1433/3306/5432 — databases with no VPN/firewall protection\n6379 (Redis) — often no auth, writable config for persistence\n`);copyBtnbtn_f2856bdb41494bc3b900fb0855eb09fe.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f2856bdb41494bc3b900fb0855eb09fe.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1207,15 +1225,15 @@ let res = copyTextToClipboard(`High-risk exposed ports:\n22  (SSH)   — brute f
 </div></div>
 </div>
 </div>
-<div id="outline-container-org95bad9d" class="outline-3">
-<h3 id="org95bad9d">Port selection in red team work</h3>
-<div class="outline-text-3" id="text-org95bad9d">
+<div id="outline-container-org9f30008" class="outline-3">
+<h3 id="org9f30008">Port selection in red team work</h3>
+<div class="outline-text-3" id="text-org9f30008">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9e07c850edb74697af10e1ebb7a68ab9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_994b79e8ee424e03b8433801ae0f019b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9e07c850edb74697af10e1ebb7a68ab9=document.querySelector('button[name=btn_9e07c850edb74697af10e1ebb7a68ab9]');
-copyBtnbtn_9e07c850edb74697af10e1ebb7a68ab9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Reverse shell port choices:\n— 443 (HTTPS) — almost always permitted outbound, less inspected\n— 80  (HTTP)  — permitted outbound, but more likely to be proxied\n— 53  (DNS)   — DNS tunnelling when HTTP is blocked\n— 8080, 8443  — common HTTP alternate, often permitted\n\nAvoid: 4444 (Metasploit default) — blocked/alerted on many networks\n`);copyBtnbtn_9e07c850edb74697af10e1ebb7a68ab9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9e07c850edb74697af10e1ebb7a68ab9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_994b79e8ee424e03b8433801ae0f019b=document.querySelector('button[name=btn_994b79e8ee424e03b8433801ae0f019b]');
+copyBtnbtn_994b79e8ee424e03b8433801ae0f019b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Reverse shell port choices:\n— 443 (HTTPS) — almost always permitted outbound, less inspected\n— 80  (HTTP)  — permitted outbound, but more likely to be proxied\n— 53  (DNS)   — DNS tunnelling when HTTP is blocked\n— 8080, 8443  — common HTTP alternate, often permitted\n\nAvoid: 4444 (Metasploit default) — blocked/alerted on many networks\n`);copyBtnbtn_994b79e8ee424e03b8433801ae0f019b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_994b79e8ee424e03b8433801ae0f019b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1231,9 +1249,9 @@ Avoid: 4444 (Metasploit default) &#8212; blocked/alerted on many networks
 </div>
 </div>
 </div>
-<div id="outline-container-org1c7e179" class="outline-2">
-<h2 id="org1c7e179">Tips</h2>
-<div class="outline-text-2" id="text-org1c7e179">
+<div id="outline-container-org167c38f" class="outline-2">
+<h2 id="org167c38f">Tips</h2>
+<div class="outline-text-2" id="text-org167c38f">
 <ul class="org-ul">
 <li>Memorise the common ports table — port numbers appear constantly
 in Nmap output, logs, and CTF challenges</li>
@@ -1249,6 +1267,20 @@ these explicitly on external assessments</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1256,6 +1288,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

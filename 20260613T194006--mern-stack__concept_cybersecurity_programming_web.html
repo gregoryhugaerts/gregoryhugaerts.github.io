@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mern Stack</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,21 +886,21 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org782a8a1">Components</a></li>
-<li><a href="#orgd471e91">Architecture</a></li>
-<li><a href="#org84ea106">Attack Surface</a>
+<li><a href="#org8fdb735">Components</a></li>
+<li><a href="#org8e60386">Architecture</a></li>
+<li><a href="#org4d293a3">Attack Surface</a>
 <ul>
-<li><a href="#org772f288">MongoDB — NoSQL Injection</a></li>
-<li><a href="#org6c5f2a2">Express.js — Middleware Misconfigurations</a></li>
-<li><a href="#org228c9db">Node.js — Prototype Pollution</a></li>
-<li><a href="#org4cd6fba">Node.js — Command Injection</a></li>
-<li><a href="#orgc5a2ae5">React — XSS</a></li>
-<li><a href="#orgab7d164">JWT Authentication</a></li>
-<li><a href="#org24f5eff">Dependency Vulnerabilities</a></li>
+<li><a href="#org88996b8">MongoDB — NoSQL Injection</a></li>
+<li><a href="#org90c2528">Express.js — Middleware Misconfigurations</a></li>
+<li><a href="#orgee83813">Node.js — Prototype Pollution</a></li>
+<li><a href="#org2a3a805">Node.js — Command Injection</a></li>
+<li><a href="#orgc1a4411">React — XSS</a></li>
+<li><a href="#org5438b12">JWT Authentication</a></li>
+<li><a href="#org18489a5">Dependency Vulnerabilities</a></li>
 </ul>
 </li>
-<li><a href="#org8dd93ba">Enumeration Tips</a></li>
-<li><a href="#org992d84e">Tips</a></li>
+<li><a href="#org014fcfa">Enumeration Tips</a></li>
+<li><a href="#orgf862ba6">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -898,9 +916,9 @@ Related: <a href="20260206T060739--web-security__concept_cybersecurity.html">Web
          <a href="20260611T065009--api-testing-methodology__cybersecurity_pentesting_technique.html">API Testing Methodology</a>
          <a href="20260611T065328--nosql-injection__cybersecurity_pentesting_technique.html">NoSQL Injection</a>
 </p>
-<div id="outline-container-org782a8a1" class="outline-2">
-<h2 id="org782a8a1">Components</h2>
-<div class="outline-text-2" id="text-org782a8a1">
+<div id="outline-container-org8fdb735" class="outline-2">
+<h2 id="org8fdb735">Components</h2>
+<div class="outline-text-2" id="text-org8fdb735">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -946,14 +964,14 @@ Related: <a href="20260206T060739--web-security__concept_cybersecurity.html">Web
 </table>
 </div>
 </div>
-<div id="outline-container-orgd471e91" class="outline-2">
-<h2 id="orgd471e91">Architecture</h2>
-<div class="outline-text-2" id="text-orgd471e91">
+<div id="outline-container-org8e60386" class="outline-2">
+<h2 id="org8e60386">Architecture</h2>
+<div class="outline-text-2" id="text-org8e60386">
 <p>
 A typical MERN application flows like this:
 </p>
 
-<pre class="example" id="org2b1cd99">
+<pre class="example" id="org2d94cd8">
 Browser (React) → Express.js API → Node.js → MongoDB
 </pre>
 
@@ -969,24 +987,24 @@ common as a replacement for Express routing.
 </p>
 </div>
 </div>
-<div id="outline-container-org84ea106" class="outline-2">
-<h2 id="org84ea106">Attack Surface</h2>
-<div class="outline-text-2" id="text-org84ea106">
+<div id="outline-container-org4d293a3" class="outline-2">
+<h2 id="org4d293a3">Attack Surface</h2>
+<div class="outline-text-2" id="text-org4d293a3">
 </div>
-<div id="outline-container-org772f288" class="outline-3">
-<h3 id="org772f288">MongoDB — NoSQL Injection</h3>
-<div class="outline-text-3" id="text-org772f288">
+<div id="outline-container-org88996b8" class="outline-3">
+<h3 id="org88996b8">MongoDB — NoSQL Injection</h3>
+<div class="outline-text-3" id="text-org88996b8">
 <p>
 MongoDB queries use JSON operators that can be injected if user
 input is passed directly into queries without sanitisation.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_64100fc357034e4a989d86df77009efe>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_694da29e22574d44bd46acb2d140b66c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_64100fc357034e4a989d86df77009efe=document.querySelector('button[name=btn_64100fc357034e4a989d86df77009efe]');
-copyBtnbtn_64100fc357034e4a989d86df77009efe.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Authentication bypass\ncurl -X POST http://$IP/api/login \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"username\":\"admin\",\"password\":{\"$ne\":\"\"}}'\n`);copyBtnbtn_64100fc357034e4a989d86df77009efe.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_64100fc357034e4a989d86df77009efe.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_694da29e22574d44bd46acb2d140b66c=document.querySelector('button[name=btn_694da29e22574d44bd46acb2d140b66c]');
+copyBtnbtn_694da29e22574d44bd46acb2d140b66c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Authentication bypass\ncurl -X POST http://$IP/api/login \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"username\":\"admin\",\"password\":{\"$ne\":\"\"}}'\n`);copyBtnbtn_694da29e22574d44bd46acb2d140b66c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_694da29e22574d44bd46acb2d140b66c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1002,9 +1020,9 @@ See <a href="20260611T065328--nosql-injection__cybersecurity_pentesting_techniqu
 </p>
 </div>
 </div>
-<div id="outline-container-org6c5f2a2" class="outline-3">
-<h3 id="org6c5f2a2">Express.js — Middleware Misconfigurations</h3>
-<div class="outline-text-3" id="text-org6c5f2a2">
+<div id="outline-container-org90c2528" class="outline-3">
+<h3 id="org90c2528">Express.js — Middleware Misconfigurations</h3>
+<div class="outline-text-3" id="text-org90c2528">
 <p>
 Express relies heavily on middleware for authentication, parsing,
 and routing. Common issues:
@@ -1023,9 +1041,9 @@ arbitrary origins are reflected</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org228c9db" class="outline-3">
-<h3 id="org228c9db">Node.js — Prototype Pollution</h3>
-<div class="outline-text-3" id="text-org228c9db">
+<div id="outline-container-orgee83813" class="outline-3">
+<h3 id="orgee83813">Node.js — Prototype Pollution</h3>
+<div class="outline-text-3" id="text-orgee83813">
 <p>
 JavaScript's prototype chain can be polluted by injecting
 properties into <code>Object.prototype</code>, potentially affecting
@@ -1033,11 +1051,11 @@ application logic.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_fa53535e49d5413ba76184446fc8db9e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0d6bdc323ba24106abdbf7c0e994b4dc>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fa53535e49d5413ba76184446fc8db9e=document.querySelector('button[name=btn_fa53535e49d5413ba76184446fc8db9e]');
-copyBtnbtn_fa53535e49d5413ba76184446fc8db9e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl -X POST http://$IP/api/data \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"__proto__\":{\"admin\":true}}'\n`);copyBtnbtn_fa53535e49d5413ba76184446fc8db9e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fa53535e49d5413ba76184446fc8db9e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0d6bdc323ba24106abdbf7c0e994b4dc=document.querySelector('button[name=btn_0d6bdc323ba24106abdbf7c0e994b4dc]');
+copyBtnbtn_0d6bdc323ba24106abdbf7c0e994b4dc.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl -X POST http://$IP/api/data \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"__proto__\":{\"admin\":true}}'\n`);copyBtnbtn_0d6bdc323ba24106abdbf7c0e994b4dc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0d6bdc323ba24106abdbf7c0e994b4dc.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1053,20 +1071,20 @@ behaviour, or in some cases lead to RCE via gadget chains.
 </p>
 </div>
 </div>
-<div id="outline-container-org4cd6fba" class="outline-3">
-<h3 id="org4cd6fba">Node.js — Command Injection</h3>
-<div class="outline-text-3" id="text-org4cd6fba">
+<div id="outline-container-org2a3a805" class="outline-3">
+<h3 id="org2a3a805">Node.js — Command Injection</h3>
+<div class="outline-text-3" id="text-org2a3a805">
 <p>
 If user input is passed to Node.js functions like <code>exec</code>,
 <code>execSync</code>, or <code>spawn</code>, command injection is possible.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_9340ed78581a44f58e1dc6e33f9cdec6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5f247023452246aebe6ff35cfd485733>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9340ed78581a44f58e1dc6e33f9cdec6=document.querySelector('button[name=btn_9340ed78581a44f58e1dc6e33f9cdec6]');
-copyBtnbtn_9340ed78581a44f58e1dc6e33f9cdec6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`curl -X POST http://$IP/api/convert \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"filename\":\"test.pdf; whoami\"}'\n`);copyBtnbtn_9340ed78581a44f58e1dc6e33f9cdec6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9340ed78581a44f58e1dc6e33f9cdec6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5f247023452246aebe6ff35cfd485733=document.querySelector('button[name=btn_5f247023452246aebe6ff35cfd485733]');
+copyBtnbtn_5f247023452246aebe6ff35cfd485733.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`curl -X POST http://$IP/api/convert \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"filename\":\"test.pdf; whoami\"}'\n`);copyBtnbtn_5f247023452246aebe6ff35cfd485733.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5f247023452246aebe6ff35cfd485733.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1082,15 +1100,15 @@ likely shells out to system tools.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc5a2ae5" class="outline-3">
-<h3 id="orgc5a2ae5">React — XSS</h3>
-<div class="outline-text-3" id="text-orgc5a2ae5">
+<div id="outline-container-orgc1a4411" class="outline-3">
+<h3 id="orgc1a4411">React — XSS</h3>
+<div class="outline-text-3" id="text-orgc1a4411">
 <p>
 React escapes output by default but <code>dangerouslySetInnerHTML</code> bypasses
 this entirely. Look for it in the source:
 </p>
 
-<pre class="example" id="orge6d885d">
+<pre class="example" id="org84e5ecf">
 dangerouslySetInnerHTML={{ __html: userInput }}
 </pre>
 
@@ -1104,9 +1122,9 @@ See <a href="20260207T065314--cross-site-scripting__cybersecurity_technique.html
 </p>
 </div>
 </div>
-<div id="outline-container-orgab7d164" class="outline-3">
-<h3 id="orgab7d164">JWT Authentication</h3>
-<div class="outline-text-3" id="text-orgab7d164">
+<div id="outline-container-org5438b12" class="outline-3">
+<h3 id="org5438b12">JWT Authentication</h3>
+<div class="outline-text-3" id="text-org5438b12">
 <p>
 MERN applications almost universally use JWT for authentication.
 Tokens are often stored in localStorage — accessible via XSS —
@@ -1127,20 +1145,20 @@ See <a href="20260611T065134--jwt-attacks__cybersecurity_pentesting_technique.ht
 </p>
 </div>
 </div>
-<div id="outline-container-org24f5eff" class="outline-3">
-<h3 id="org24f5eff">Dependency Vulnerabilities</h3>
-<div class="outline-text-3" id="text-org24f5eff">
+<div id="outline-container-org18489a5" class="outline-3">
+<h3 id="org18489a5">Dependency Vulnerabilities</h3>
+<div class="outline-text-3" id="text-org18489a5">
 <p>
 MERN applications pull in large numbers of npm packages. Check
 for known vulnerabilities in declared dependencies:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e71dab34437e45eea4d108a51eb068c7>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8a1c28250bbc43fabb88988b21e31502>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e71dab34437e45eea4d108a51eb068c7=document.querySelector('button[name=btn_e71dab34437e45eea4d108a51eb068c7]');
-copyBtnbtn_e71dab34437e45eea4d108a51eb068c7.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# If you have access to the source\nnpm audit\n\n# Check package.json for version hints\ncurl http://$IP/package.json\n`);copyBtnbtn_e71dab34437e45eea4d108a51eb068c7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e71dab34437e45eea4d108a51eb068c7.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8a1c28250bbc43fabb88988b21e31502=document.querySelector('button[name=btn_8a1c28250bbc43fabb88988b21e31502]');
+copyBtnbtn_8a1c28250bbc43fabb88988b21e31502.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# If you have access to the source\nnpm audit\n\n# Check package.json for version hints\ncurl http://$IP/package.json\n`);copyBtnbtn_8a1c28250bbc43fabb88988b21e31502.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8a1c28250bbc43fabb88988b21e31502.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1160,9 +1178,9 @@ databases.
 </div>
 </div>
 </div>
-<div id="outline-container-org8dd93ba" class="outline-2">
-<h2 id="org8dd93ba">Enumeration Tips</h2>
-<div class="outline-text-2" id="text-org8dd93ba">
+<div id="outline-container-org014fcfa" class="outline-2">
+<h2 id="org014fcfa">Enumeration Tips</h2>
+<div class="outline-text-2" id="text-org014fcfa">
 <ul class="org-ul">
 <li>Check for exposed <code>package.json</code> — reveals framework versions
 and dependencies</li>
@@ -1177,9 +1195,9 @@ deliberately by sending malformed input</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org992d84e" class="outline-2">
-<h2 id="org992d84e">Tips</h2>
-<div class="outline-text-2" id="text-org992d84e">
+<div id="outline-container-orgf862ba6" class="outline-2">
+<h2 id="orgf862ba6">Tips</h2>
+<div class="outline-text-2" id="text-orgf862ba6">
 <ul class="org-ul">
 <li>MERN APIs are almost always JSON — switch <code>Content-Type</code> to
 <code>application/json</code> if a request isn't working</li>
@@ -1194,6 +1212,20 @@ takeover — chain vulnerabilities where possible</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1201,6 +1233,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

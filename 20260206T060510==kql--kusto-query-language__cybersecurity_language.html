@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Kusto Query Language</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,24 +886,24 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org35c1c18">Core Operators</a></li>
-<li><a href="#org1983cca">Time Functions</a></li>
-<li><a href="#org68ef5a4">String Operators</a></li>
-<li><a href="#orgff51177">Let Statements</a></li>
-<li><a href="#org6a9d302">Security Examples</a>
+<li><a href="#orgbc0c253">Core Operators</a></li>
+<li><a href="#orgda09b11">Time Functions</a></li>
+<li><a href="#orgb5e7d70">String Operators</a></li>
+<li><a href="#org877f300">Let Statements</a></li>
+<li><a href="#org95bce0e">Security Examples</a>
 <ul>
-<li><a href="#org196749b">Failed logon enumeration</a></li>
-<li><a href="#org50f5ad9">Successful logon after repeated failures (brute force success)</a></li>
-<li><a href="#orga791e40">Privilege escalation — special privileges assigned</a></li>
-<li><a href="#org111d967">New local admin account created</a></li>
-<li><a href="#org39829e5">Scheduled task creation</a></li>
-<li><a href="#orgc34dddf">Outbound connections from unusual processes (requires Sysmon)</a></li>
-<li><a href="#orgb130d12">Lateral movement — network logons</a></li>
-<li><a href="#org863b979">Cross-table correlation — join security events with sign-in logs</a></li>
-<li><a href="#org8cdf200">Traffic spike detection (time chart)</a></li>
+<li><a href="#org8bd8c69">Failed logon enumeration</a></li>
+<li><a href="#org6fdd79c">Successful logon after repeated failures (brute force success)</a></li>
+<li><a href="#orgb676a22">Privilege escalation — special privileges assigned</a></li>
+<li><a href="#org861189a">New local admin account created</a></li>
+<li><a href="#org09404ac">Scheduled task creation</a></li>
+<li><a href="#org8d8adcc">Outbound connections from unusual processes (requires Sysmon)</a></li>
+<li><a href="#orge54dc17">Lateral movement — network logons</a></li>
+<li><a href="#org325a1ca">Cross-table correlation — join security events with sign-in logs</a></li>
+<li><a href="#org224271d">Traffic spike detection (time chart)</a></li>
 </ul>
 </li>
-<li><a href="#orgc7cfcf1">Tips</a></li>
+<li><a href="#org0d64ebf">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -901,9 +919,9 @@ the dataset before passing it to the next.
 Related: <a href="20260206T060716--microsoft-sentinel__cybersecurity_tool.html">Microsoft Sentinel</a>
          <a href="20260206T060740--windows-event-logs__concept_cybersecurity.html">Windows Event Logs</a>
 </p>
-<div id="outline-container-org35c1c18" class="outline-2">
-<h2 id="org35c1c18">Core Operators</h2>
-<div class="outline-text-2" id="text-org35c1c18">
+<div id="outline-container-orgbc0c253" class="outline-2">
+<h2 id="orgbc0c253">Core Operators</h2>
+<div class="outline-text-2" id="text-orgbc0c253">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1009,318 +1027,318 @@ Related: <a href="20260206T060716--microsoft-sentinel__cybersecurity_tool.html">
 </table>
 </div>
 </div>
-<div id="outline-container-org1983cca" class="outline-2">
-<h2 id="org1983cca">Time Functions</h2>
-<div class="outline-text-2" id="text-org1983cca">
+<div id="outline-container-orgda09b11" class="outline-2">
+<h2 id="orgda09b11">Time Functions</h2>
+<div class="outline-text-2" id="text-orgda09b11">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_d7da980899e546a79def2b913a6b8428>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_f30dd35435b84e29be83218d77d7d174>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d7da980899e546a79def2b913a6b8428=document.querySelector('button[name=btn_d7da980899e546a79def2b913a6b8428]');
-copyBtnbtn_d7da980899e546a79def2b913a6b8428.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Relative time\n| where TimeGenerated > ago(1h)\n| where TimeGenerated > ago(24h)\n| where TimeGenerated between (ago(7d) .. now())\n\n// Bin into intervals (for time charts)\n| summarize count() by bin(TimeGenerated, 1h)\n| summarize count() by bin(TimeGenerated, 15m)\n`);copyBtnbtn_d7da980899e546a79def2b913a6b8428.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d7da980899e546a79def2b913a6b8428.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f30dd35435b84e29be83218d77d7d174=document.querySelector('button[name=btn_f30dd35435b84e29be83218d77d7d174]');
+copyBtnbtn_f30dd35435b84e29be83218d77d7d174.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Relative time\n| where TimeGenerated > ago(1h)\n| where TimeGenerated > ago(24h)\n| where TimeGenerated between (ago(7d) .. now())\n\n// Bin into intervals (for time charts)\n| summarize count() by bin(TimeGenerated, 1h)\n| summarize count() by bin(TimeGenerated, 15m)\n`);copyBtnbtn_f30dd35435b84e29be83218d77d7d174.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f30dd35435b84e29be83218d77d7d174.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-kql"><span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Relative time
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TimeGenerated <span style="color: #d0bc00;">&gt;</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ago(</span>1h)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TimeGenerated <span style="color: #d0bc00;">&gt;</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ago(</span>24h)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TimeGenerated <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">between</span> (<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ago(</span>7d) .. <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">now(</span>))
+<pre class="src src-kql">// Relative time
+| where TimeGenerated &gt; ago(1h)
+| where TimeGenerated &gt; ago(24h)
+| where TimeGenerated between (ago(7d) .. now())
 
-<span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Bin into intervals (for time charts)
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">summarize</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">count(</span>) <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">by</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">bin(</span>TimeGenerated, 1h)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">summarize</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">count(</span>) <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">by</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">bin(</span>TimeGenerated, 15m)
+// Bin into intervals (for time charts)
+| summarize count() by bin(TimeGenerated, 1h)
+| summarize count() by bin(TimeGenerated, 15m)
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org68ef5a4" class="outline-2">
-<h2 id="org68ef5a4">String Operators</h2>
-<div class="outline-text-2" id="text-org68ef5a4">
+<div id="outline-container-orgb5e7d70" class="outline-2">
+<h2 id="orgb5e7d70">String Operators</h2>
+<div class="outline-text-2" id="text-orgb5e7d70">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_a1ed3b331d9e448ebef96bf69426eb29>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_b3801b46bd784e328e64f46f7b4f4fce>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a1ed3b331d9e448ebef96bf69426eb29=document.querySelector('button[name=btn_a1ed3b331d9e448ebef96bf69426eb29]');
-copyBtnbtn_a1ed3b331d9e448ebef96bf69426eb29.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Case-insensitive contains (most common)\n| where AccountName contains \"admin\"\n\n// Case-sensitive\n| where AccountName contains_cs \"Admin\"\n\n// Starts with / ends with\n| where IpAddress startswith \"192.168\"\n\n// Regex\n| where AccountName matches regex @\"^svc_\"\n\n// In list\n| where EventID in (4624, 4625, 4648, 4672)\n\n// Not in list\n| where EventID !in (4624, 4634)\n\n// Has (token-based — faster than contains for words)\n| where Message has \"failed\"\n| where Message has_all (\"failed\", \"login\")\n| where Message has_any (\"admin\", \"administrator\")\n`);copyBtnbtn_a1ed3b331d9e448ebef96bf69426eb29.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a1ed3b331d9e448ebef96bf69426eb29.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b3801b46bd784e328e64f46f7b4f4fce=document.querySelector('button[name=btn_b3801b46bd784e328e64f46f7b4f4fce]');
+copyBtnbtn_b3801b46bd784e328e64f46f7b4f4fce.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Case-insensitive contains (most common)\n| where AccountName contains \"admin\"\n\n// Case-sensitive\n| where AccountName contains_cs \"Admin\"\n\n// Starts with / ends with\n| where IpAddress startswith \"192.168\"\n\n// Regex\n| where AccountName matches regex @\"^svc_\"\n\n// In list\n| where EventID in (4624, 4625, 4648, 4672)\n\n// Not in list\n| where EventID !in (4624, 4634)\n\n// Has (token-based — faster than contains for words)\n| where Message has \"failed\"\n| where Message has_all (\"failed\", \"login\")\n| where Message has_any (\"admin\", \"administrator\")\n`);copyBtnbtn_b3801b46bd784e328e64f46f7b4f4fce.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b3801b46bd784e328e64f46f7b4f4fce.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-kql"><span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Case-insensitive contains (most common)
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> AccountName <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">contains</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"admin"</span>
+<pre class="src src-kql">// Case-insensitive contains (most common)
+| where AccountName contains "admin"
 
-<span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Case-sensitive
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> AccountName contains_cs <span style="color: var(--clr-string); background-color: var(--bg-string);">"Admin"</span>
+// Case-sensitive
+| where AccountName contains_cs "Admin"
 
-<span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Starts with / ends with
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> IpAddress startswith <span style="color: var(--clr-string); background-color: var(--bg-string);">"192.168"</span>
+// Starts with / ends with
+| where IpAddress startswith "192.168"
 
-<span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Regex
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> AccountName <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">matches regex</span> @<span style="color: var(--clr-string); background-color: var(--bg-string);">"^svc_"</span>
+// Regex
+| where AccountName matches regex @"^svc_"
 
-<span style="color: var(--clr-comment); background-color: var(--bg-comment);">// In list
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> EventID <span style="color: #d0bc00;">in</span> (4624, 4625, 4648, 4672)
+// In list
+| where EventID in (4624, 4625, 4648, 4672)
 
-<span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Not in list
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> EventID <span style="color: #d0bc00;">!in</span> (4624, 4634)
+// Not in list
+| where EventID !in (4624, 4634)
 
-<span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Has (token-based &#8212; faster than contains for words)
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> Message <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">has</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"failed"</span>
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> Message has_all (<span style="color: var(--clr-string); background-color: var(--bg-string);">"failed"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"login"</span>)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> Message has_any (<span style="color: var(--clr-string); background-color: var(--bg-string);">"admin"</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">"administrator"</span>)
+// Has (token-based — faster than contains for words)
+| where Message has "failed"
+| where Message has_all ("failed", "login")
+| where Message has_any ("admin", "administrator")
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgff51177" class="outline-2">
-<h2 id="orgff51177">Let Statements</h2>
-<div class="outline-text-2" id="text-orgff51177">
+<div id="outline-container-org877f300" class="outline-2">
+<h2 id="org877f300">Let Statements</h2>
+<div class="outline-text-2" id="text-org877f300">
 <p>
 Define variables and sub-queries for reuse:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_c3fc584da6b44eeb8f13402ef1654170>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_eeb260e4d80a4ed68b3c0bbef9a09c45>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c3fc584da6b44eeb8f13402ef1654170=document.querySelector('button[name=btn_c3fc584da6b44eeb8f13402ef1654170]');
-copyBtnbtn_c3fc584da6b44eeb8f13402ef1654170.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// Variable\nlet threshold = 10;\nlet lookback = 24h;\nSecurityEvent\n| where TimeGenerated > ago(lookback)\n| where EventID == 4625\n| summarize FailedAttempts = count() by AccountName\n| where FailedAttempts > threshold\n\n// Reusable sub-query\nlet FailedLogins = SecurityEvent\n    | where EventID == 4625\n    | summarize FailedCount = count() by AccountName;\nFailedLogins\n| where FailedCount > 10\n| order by FailedCount desc\n`);copyBtnbtn_c3fc584da6b44eeb8f13402ef1654170.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c3fc584da6b44eeb8f13402ef1654170.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_eeb260e4d80a4ed68b3c0bbef9a09c45=document.querySelector('button[name=btn_eeb260e4d80a4ed68b3c0bbef9a09c45]');
+copyBtnbtn_eeb260e4d80a4ed68b3c0bbef9a09c45.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// Variable\nlet threshold = 10;\nlet lookback = 24h;\nSecurityEvent\n| where TimeGenerated > ago(lookback)\n| where EventID == 4625\n| summarize FailedAttempts = count() by AccountName\n| where FailedAttempts > threshold\n\n// Reusable sub-query\nlet FailedLogins = SecurityEvent\n    | where EventID == 4625\n    | summarize FailedCount = count() by AccountName;\nFailedLogins\n| where FailedCount > 10\n| order by FailedCount desc\n`);copyBtnbtn_eeb260e4d80a4ed68b3c0bbef9a09c45.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_eeb260e4d80a4ed68b3c0bbef9a09c45.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-kql"><span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Variable
-</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">threshold</span> = 10;
-<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">lookback</span> = 24h;
+<pre class="src src-kql">// Variable
+let threshold = 10;
+let lookback = 24h;
 SecurityEvent
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TimeGenerated <span style="color: #d0bc00;">&gt;</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ago(</span>lookback)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> EventID <span style="color: #d0bc00;">==</span> 4625
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">summarize</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">FailedAttempts</span> = <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">count(</span>) <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">by</span> AccountName
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> FailedAttempts <span style="color: #d0bc00;">&gt;</span> threshold
+| where TimeGenerated &gt; ago(lookback)
+| where EventID == 4625
+| summarize FailedAttempts = count() by AccountName
+| where FailedAttempts &gt; threshold
 
-<span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Reusable sub-query
-</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">FailedLogins</span> = SecurityEvent
-    | <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> EventID <span style="color: #d0bc00;">==</span> 4625
-    | <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">summarize</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">FailedCount</span> = <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">count(</span>) <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">by</span> AccountName;
+// Reusable sub-query
+let FailedLogins = SecurityEvent
+    | where EventID == 4625
+    | summarize FailedCount = count() by AccountName;
 FailedLogins
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> FailedCount <span style="color: #d0bc00;">&gt;</span> 10
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">order by</span> FailedCount <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">desc</span>
+| where FailedCount &gt; 10
+| order by FailedCount desc
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org6a9d302" class="outline-2">
-<h2 id="org6a9d302">Security Examples</h2>
-<div class="outline-text-2" id="text-org6a9d302">
+<div id="outline-container-org95bce0e" class="outline-2">
+<h2 id="org95bce0e">Security Examples</h2>
+<div class="outline-text-2" id="text-org95bce0e">
 </div>
-<div id="outline-container-org196749b" class="outline-3">
-<h3 id="org196749b">Failed logon enumeration</h3>
-<div class="outline-text-3" id="text-org196749b">
+<div id="outline-container-org8bd8c69" class="outline-3">
+<h3 id="org8bd8c69">Failed logon enumeration</h3>
+<div class="outline-text-3" id="text-org8bd8c69">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_d4dddc68580b4adebdc682d4bd022264>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_2b621107eab447da8629e95f85e8cd89>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d4dddc68580b4adebdc682d4bd022264=document.querySelector('button[name=btn_d4dddc68580b4adebdc682d4bd022264]');
-copyBtnbtn_d4dddc68580b4adebdc682d4bd022264.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 4625\n| summarize FailedAttempts = count() by AccountName, IpAddress\n| where FailedAttempts > 5\n| order by FailedAttempts desc\n`);copyBtnbtn_d4dddc68580b4adebdc682d4bd022264.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d4dddc68580b4adebdc682d4bd022264.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2b621107eab447da8629e95f85e8cd89=document.querySelector('button[name=btn_2b621107eab447da8629e95f85e8cd89]');
+copyBtnbtn_2b621107eab447da8629e95f85e8cd89.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 4625\n| summarize FailedAttempts = count() by AccountName, IpAddress\n| where FailedAttempts > 5\n| order by FailedAttempts desc\n`);copyBtnbtn_2b621107eab447da8629e95f85e8cd89.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2b621107eab447da8629e95f85e8cd89.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
 <pre class="src src-kql">SecurityEvent
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TimeGenerated <span style="color: #d0bc00;">&gt;</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ago(</span>1h)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> EventID <span style="color: #d0bc00;">==</span> 4625
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">summarize</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">FailedAttempts</span> = <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">count(</span>) <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">by</span> AccountName, IpAddress
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> FailedAttempts <span style="color: #d0bc00;">&gt;</span> 5
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">order by</span> FailedAttempts <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">desc</span>
+| where TimeGenerated &gt; ago(1h)
+| where EventID == 4625
+| summarize FailedAttempts = count() by AccountName, IpAddress
+| where FailedAttempts &gt; 5
+| order by FailedAttempts desc
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org50f5ad9" class="outline-3">
-<h3 id="org50f5ad9">Successful logon after repeated failures (brute force success)</h3>
-<div class="outline-text-3" id="text-org50f5ad9">
+<div id="outline-container-org6fdd79c" class="outline-3">
+<h3 id="org6fdd79c">Successful logon after repeated failures (brute force success)</h3>
+<div class="outline-text-3" id="text-org6fdd79c">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_ac8e5d31103f42179fcca753c73d2671>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_2d917665543a47f0b2a3a9e944f38d32>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ac8e5d31103f42179fcca753c73d2671=document.querySelector('button[name=btn_ac8e5d31103f42179fcca753c73d2671]');
-copyBtnbtn_ac8e5d31103f42179fcca753c73d2671.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let FailedAccounts =\n    SecurityEvent\n    | where TimeGenerated > ago(1h)\n    | where EventID == 4625\n    | summarize FailedAttempts = count() by AccountName\n    | where FailedAttempts > 10;\nSecurityEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 4624\n| join kind=inner FailedAccounts on AccountName\n| project TimeGenerated, AccountName, IpAddress, FailedAttempts\n`);copyBtnbtn_ac8e5d31103f42179fcca753c73d2671.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ac8e5d31103f42179fcca753c73d2671.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2d917665543a47f0b2a3a9e944f38d32=document.querySelector('button[name=btn_2d917665543a47f0b2a3a9e944f38d32]');
+copyBtnbtn_2d917665543a47f0b2a3a9e944f38d32.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let FailedAccounts =\n    SecurityEvent\n    | where TimeGenerated > ago(1h)\n    | where EventID == 4625\n    | summarize FailedAttempts = count() by AccountName\n    | where FailedAttempts > 10;\nSecurityEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 4624\n| join kind=inner FailedAccounts on AccountName\n| project TimeGenerated, AccountName, IpAddress, FailedAttempts\n`);copyBtnbtn_2d917665543a47f0b2a3a9e944f38d32.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2d917665543a47f0b2a3a9e944f38d32.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-kql"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">FailedAccounts</span> =
+<pre class="src src-kql">let FailedAccounts =
     SecurityEvent
-    | <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TimeGenerated <span style="color: #d0bc00;">&gt;</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ago(</span>1h)
-    | <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> EventID <span style="color: #d0bc00;">==</span> 4625
-    | <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">summarize</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">FailedAttempts</span> = <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">count(</span>) <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">by</span> AccountName
-    | <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> FailedAttempts <span style="color: #d0bc00;">&gt;</span> 10;
+    | where TimeGenerated &gt; ago(1h)
+    | where EventID == 4625
+    | summarize FailedAttempts = count() by AccountName
+    | where FailedAttempts &gt; 10;
 SecurityEvent
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TimeGenerated <span style="color: #d0bc00;">&gt;</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ago(</span>1h)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> EventID <span style="color: #d0bc00;">==</span> 4624
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">join</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">kind</span>=<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">inner</span> FailedAccounts on AccountName
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">project</span> TimeGenerated, AccountName, IpAddress, FailedAttempts
+| where TimeGenerated &gt; ago(1h)
+| where EventID == 4624
+| join kind=inner FailedAccounts on AccountName
+| project TimeGenerated, AccountName, IpAddress, FailedAttempts
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-orga791e40" class="outline-3">
-<h3 id="orga791e40">Privilege escalation — special privileges assigned</h3>
-<div class="outline-text-3" id="text-orga791e40">
+<div id="outline-container-orgb676a22" class="outline-3">
+<h3 id="orgb676a22">Privilege escalation — special privileges assigned</h3>
+<div class="outline-text-3" id="text-orgb676a22">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_d5192faf9f904accaa9effd06a09411b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_ca19a8d41ee84bbf914485e7913f786a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d5192faf9f904accaa9effd06a09411b=document.querySelector('button[name=btn_d5192faf9f904accaa9effd06a09411b]');
-copyBtnbtn_d5192faf9f904accaa9effd06a09411b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4672          // Special privileges assigned to logon\n| where AccountName !endswith \"$\" // Exclude machine accounts\n| project TimeGenerated, AccountName, PrivilegeList\n| order by TimeGenerated desc\n`);copyBtnbtn_d5192faf9f904accaa9effd06a09411b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d5192faf9f904accaa9effd06a09411b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ca19a8d41ee84bbf914485e7913f786a=document.querySelector('button[name=btn_ca19a8d41ee84bbf914485e7913f786a]');
+copyBtnbtn_ca19a8d41ee84bbf914485e7913f786a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4672          // Special privileges assigned to logon\n| where AccountName !endswith \"$\" // Exclude machine accounts\n| project TimeGenerated, AccountName, PrivilegeList\n| order by TimeGenerated desc\n`);copyBtnbtn_ca19a8d41ee84bbf914485e7913f786a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ca19a8d41ee84bbf914485e7913f786a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
 <pre class="src src-kql">SecurityEvent
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TimeGenerated <span style="color: #d0bc00;">&gt;</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ago(</span>24h)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> EventID <span style="color: #d0bc00;">==</span> 4672          <span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Special privileges assigned to logon
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> AccountName <span style="color: #d0bc00;">!</span>endswith <span style="color: var(--clr-string); background-color: var(--bg-string);">"$"</span> <span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Exclude machine accounts
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">project</span> TimeGenerated, AccountName, PrivilegeList
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">order by</span> TimeGenerated <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">desc</span>
+| where TimeGenerated &gt; ago(24h)
+| where EventID == 4672          // Special privileges assigned to logon
+| where AccountName !endswith "$" // Exclude machine accounts
+| project TimeGenerated, AccountName, PrivilegeList
+| order by TimeGenerated desc
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org111d967" class="outline-3">
-<h3 id="org111d967">New local admin account created</h3>
-<div class="outline-text-3" id="text-org111d967">
+<div id="outline-container-org861189a" class="outline-3">
+<h3 id="org861189a">New local admin account created</h3>
+<div class="outline-text-3" id="text-org861189a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_44499b88b8834021a4958381d26c875e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_8ef571ba5d334155b45bf8aefcd285ce>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_44499b88b8834021a4958381d26c875e=document.querySelector('button[name=btn_44499b88b8834021a4958381d26c875e]');
-copyBtnbtn_44499b88b8834021a4958381d26c875e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4732          // Member added to security-enabled local group\n| where TargetUserName == \"Administrators\"\n| project TimeGenerated, AccountName, MemberName\n`);copyBtnbtn_44499b88b8834021a4958381d26c875e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_44499b88b8834021a4958381d26c875e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8ef571ba5d334155b45bf8aefcd285ce=document.querySelector('button[name=btn_8ef571ba5d334155b45bf8aefcd285ce]');
+copyBtnbtn_8ef571ba5d334155b45bf8aefcd285ce.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4732          // Member added to security-enabled local group\n| where TargetUserName == \"Administrators\"\n| project TimeGenerated, AccountName, MemberName\n`);copyBtnbtn_8ef571ba5d334155b45bf8aefcd285ce.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8ef571ba5d334155b45bf8aefcd285ce.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
 <pre class="src src-kql">SecurityEvent
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TimeGenerated <span style="color: #d0bc00;">&gt;</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ago(</span>24h)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> EventID <span style="color: #d0bc00;">==</span> 4732          <span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Member added to security-enabled local group
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TargetUserName <span style="color: #d0bc00;">==</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Administrators"</span>
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">project</span> TimeGenerated, AccountName, MemberName
+| where TimeGenerated &gt; ago(24h)
+| where EventID == 4732          // Member added to security-enabled local group
+| where TargetUserName == "Administrators"
+| project TimeGenerated, AccountName, MemberName
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org39829e5" class="outline-3">
-<h3 id="org39829e5">Scheduled task creation</h3>
-<div class="outline-text-3" id="text-org39829e5">
+<div id="outline-container-org09404ac" class="outline-3">
+<h3 id="org09404ac">Scheduled task creation</h3>
+<div class="outline-text-3" id="text-org09404ac">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_2b0e6f09ac8a46959844f769c2882f30>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_b8e3efe121074c74995d4e1087898d03>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2b0e6f09ac8a46959844f769c2882f30=document.querySelector('button[name=btn_2b0e6f09ac8a46959844f769c2882f30]');
-copyBtnbtn_2b0e6f09ac8a46959844f769c2882f30.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4698          // Scheduled task created\n| project TimeGenerated, AccountName, TaskName, TaskContent\n`);copyBtnbtn_2b0e6f09ac8a46959844f769c2882f30.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2b0e6f09ac8a46959844f769c2882f30.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_b8e3efe121074c74995d4e1087898d03=document.querySelector('button[name=btn_b8e3efe121074c74995d4e1087898d03]');
+copyBtnbtn_b8e3efe121074c74995d4e1087898d03.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4698          // Scheduled task created\n| project TimeGenerated, AccountName, TaskName, TaskContent\n`);copyBtnbtn_b8e3efe121074c74995d4e1087898d03.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b8e3efe121074c74995d4e1087898d03.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
 <pre class="src src-kql">SecurityEvent
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TimeGenerated <span style="color: #d0bc00;">&gt;</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ago(</span>24h)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> EventID <span style="color: #d0bc00;">==</span> 4698          <span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Scheduled task created
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">project</span> TimeGenerated, AccountName, TaskName, TaskContent
+| where TimeGenerated &gt; ago(24h)
+| where EventID == 4698          // Scheduled task created
+| project TimeGenerated, AccountName, TaskName, TaskContent
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgc34dddf" class="outline-3">
-<h3 id="orgc34dddf">Outbound connections from unusual processes (requires Sysmon)</h3>
-<div class="outline-text-3" id="text-orgc34dddf">
+<div id="outline-container-org8d8adcc" class="outline-3">
+<h3 id="org8d8adcc">Outbound connections from unusual processes (requires Sysmon)</h3>
+<div class="outline-text-3" id="text-org8d8adcc">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_2aaca73a67e14878b9a63c85e76368e3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_49bd7a5250834f0c81413caaf698badf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2aaca73a67e14878b9a63c85e76368e3=document.querySelector('button[name=btn_2aaca73a67e14878b9a63c85e76368e3]');
-copyBtnbtn_2aaca73a67e14878b9a63c85e76368e3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SysmonEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 3             // Network connection\n| where InitiatingProcessName !in (\"chrome.exe\",\"msedge.exe\",\"svchost.exe\")\n| project TimeGenerated, InitiatingProcessName, DestinationIp, DestinationPort\n| order by TimeGenerated desc\n`);copyBtnbtn_2aaca73a67e14878b9a63c85e76368e3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2aaca73a67e14878b9a63c85e76368e3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_49bd7a5250834f0c81413caaf698badf=document.querySelector('button[name=btn_49bd7a5250834f0c81413caaf698badf]');
+copyBtnbtn_49bd7a5250834f0c81413caaf698badf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SysmonEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 3             // Network connection\n| where InitiatingProcessName !in (\"chrome.exe\",\"msedge.exe\",\"svchost.exe\")\n| project TimeGenerated, InitiatingProcessName, DestinationIp, DestinationPort\n| order by TimeGenerated desc\n`);copyBtnbtn_49bd7a5250834f0c81413caaf698badf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_49bd7a5250834f0c81413caaf698badf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
 <pre class="src src-kql">SysmonEvent
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TimeGenerated <span style="color: #d0bc00;">&gt;</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ago(</span>1h)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> EventID <span style="color: #d0bc00;">==</span> 3             <span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Network connection
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> InitiatingProcessName <span style="color: #d0bc00;">!in</span> (<span style="color: var(--clr-string); background-color: var(--bg-string);">"chrome.exe"</span>,<span style="color: var(--clr-string); background-color: var(--bg-string);">"msedge.exe"</span>,<span style="color: var(--clr-string); background-color: var(--bg-string);">"svchost.exe"</span>)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">project</span> TimeGenerated, InitiatingProcessName, DestinationIp, DestinationPort
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">order by</span> TimeGenerated <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">desc</span>
+| where TimeGenerated &gt; ago(1h)
+| where EventID == 3             // Network connection
+| where InitiatingProcessName !in ("chrome.exe","msedge.exe","svchost.exe")
+| project TimeGenerated, InitiatingProcessName, DestinationIp, DestinationPort
+| order by TimeGenerated desc
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb130d12" class="outline-3">
-<h3 id="orgb130d12">Lateral movement — network logons</h3>
-<div class="outline-text-3" id="text-orgb130d12">
+<div id="outline-container-orge54dc17" class="outline-3">
+<h3 id="orge54dc17">Lateral movement — network logons</h3>
+<div class="outline-text-3" id="text-orge54dc17">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_0a8fca2be71343d8a9cdd59ae80ac66a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_c91ef4f505264676aba59ebe1c559af1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0a8fca2be71343d8a9cdd59ae80ac66a=document.querySelector('button[name=btn_0a8fca2be71343d8a9cdd59ae80ac66a]');
-copyBtnbtn_0a8fca2be71343d8a9cdd59ae80ac66a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4624\n| where LogonType == 3           // Network logon\n| where AccountName !endswith \"$\"\n| summarize count() by AccountName, IpAddress, Computer\n| order by count_ desc\n`);copyBtnbtn_0a8fca2be71343d8a9cdd59ae80ac66a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0a8fca2be71343d8a9cdd59ae80ac66a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c91ef4f505264676aba59ebe1c559af1=document.querySelector('button[name=btn_c91ef4f505264676aba59ebe1c559af1]');
+copyBtnbtn_c91ef4f505264676aba59ebe1c559af1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(24h)\n| where EventID == 4624\n| where LogonType == 3           // Network logon\n| where AccountName !endswith \"$\"\n| summarize count() by AccountName, IpAddress, Computer\n| order by count_ desc\n`);copyBtnbtn_c91ef4f505264676aba59ebe1c559af1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c91ef4f505264676aba59ebe1c559af1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
 <pre class="src src-kql">SecurityEvent
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TimeGenerated <span style="color: #d0bc00;">&gt;</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ago(</span>24h)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> EventID <span style="color: #d0bc00;">==</span> 4624
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> LogonType <span style="color: #d0bc00;">==</span> 3           <span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Network logon
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> AccountName <span style="color: #d0bc00;">!</span>endswith <span style="color: var(--clr-string); background-color: var(--bg-string);">"$"</span>
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">summarize</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">count(</span>) <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">by</span> AccountName, IpAddress, Computer
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">order by</span> count_ <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">desc</span>
+| where TimeGenerated &gt; ago(24h)
+| where EventID == 4624
+| where LogonType == 3           // Network logon
+| where AccountName !endswith "$"
+| summarize count() by AccountName, IpAddress, Computer
+| order by count_ desc
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org863b979" class="outline-3">
-<h3 id="org863b979">Cross-table correlation — join security events with sign-in logs</h3>
-<div class="outline-text-3" id="text-org863b979">
+<div id="outline-container-org325a1ca" class="outline-3">
+<h3 id="org325a1ca">Cross-table correlation — join security events with sign-in logs</h3>
+<div class="outline-text-3" id="text-org325a1ca">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_a61384b714344b238b9dcbc493c23ba3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_cf674d9fc21a47b395ab56dd3bdc7fd6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a61384b714344b238b9dcbc493c23ba3=document.querySelector('button[name=btn_a61384b714344b238b9dcbc493c23ba3]');
-copyBtnbtn_a61384b714344b238b9dcbc493c23ba3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 4776          // Credential validation\n| project TimeGenerated, AccountName, IpAddress\n| join kind=inner (\n    SigninLogs\n    | where TimeGenerated > ago(1h)\n    | where ResultType == 50126  // Possible MFA bypass\n    | project SigninTime = TimeGenerated, UserPrincipalName\n) on $left.AccountName == $right.UserPrincipalName\n| extend TimeDiff = abs(TimeGenerated - SigninTime)\n| where TimeDiff < 1m\n`);copyBtnbtn_a61384b714344b238b9dcbc493c23ba3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a61384b714344b238b9dcbc493c23ba3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cf674d9fc21a47b395ab56dd3bdc7fd6=document.querySelector('button[name=btn_cf674d9fc21a47b395ab56dd3bdc7fd6]');
+copyBtnbtn_cf674d9fc21a47b395ab56dd3bdc7fd6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`SecurityEvent\n| where TimeGenerated > ago(1h)\n| where EventID == 4776          // Credential validation\n| project TimeGenerated, AccountName, IpAddress\n| join kind=inner (\n    SigninLogs\n    | where TimeGenerated > ago(1h)\n    | where ResultType == 50126  // Possible MFA bypass\n    | project SigninTime = TimeGenerated, UserPrincipalName\n) on $left.AccountName == $right.UserPrincipalName\n| extend TimeDiff = abs(TimeGenerated - SigninTime)\n| where TimeDiff < 1m\n`);copyBtnbtn_cf674d9fc21a47b395ab56dd3bdc7fd6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cf674d9fc21a47b395ab56dd3bdc7fd6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
 <pre class="src src-kql">SecurityEvent
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TimeGenerated <span style="color: #d0bc00;">&gt;</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ago(</span>1h)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> EventID <span style="color: #d0bc00;">==</span> 4776          <span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Credential validation
-</span>| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">project</span> TimeGenerated, AccountName, IpAddress
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">join</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">kind</span>=<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">inner</span> (
+| where TimeGenerated &gt; ago(1h)
+| where EventID == 4776          // Credential validation
+| project TimeGenerated, AccountName, IpAddress
+| join kind=inner (
     SigninLogs
-    | <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TimeGenerated <span style="color: #d0bc00;">&gt;</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">ago(</span>1h)
-    | <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> ResultType <span style="color: #d0bc00;">==</span> 50126  <span style="color: var(--clr-comment); background-color: var(--bg-comment);">// Possible MFA bypass
-</span>    | <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">project</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">SigninTime</span> = TimeGenerated, UserPrincipalName
-) on $left<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">.AccountName</span> <span style="color: #d0bc00;">==</span> $right<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">.UserPrincipalName</span>
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">extend</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">TimeDiff</span> = <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">abs(</span>TimeGenerated <span style="color: #d0bc00;">-</span> SigninTime)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> TimeDiff <span style="color: #d0bc00;">&lt;</span> 1m
+    | where TimeGenerated &gt; ago(1h)
+    | where ResultType == 50126  // Possible MFA bypass
+    | project SigninTime = TimeGenerated, UserPrincipalName
+) on $left.AccountName == $right.UserPrincipalName
+| extend TimeDiff = abs(TimeGenerated - SigninTime)
+| where TimeDiff &lt; 1m
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org8cdf200" class="outline-3">
-<h3 id="org8cdf200">Traffic spike detection (time chart)</h3>
-<div class="outline-text-3" id="text-org8cdf200">
+<div id="outline-container-org224271d" class="outline-3">
+<h3 id="org224271d">Traffic spike detection (time chart)</h3>
+<div class="outline-text-3" id="text-org224271d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_34b7a67e6ae74ad6a6e47605657aea3c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>KQL</span><button class='copyBtn' name=btn_a5dda69bbf304b1a8a4331a4569acab5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_34b7a67e6ae74ad6a6e47605657aea3c=document.querySelector('button[name=btn_34b7a67e6ae74ad6a6e47605657aea3c]');
-copyBtnbtn_34b7a67e6ae74ad6a6e47605657aea3c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`AzureDiagnostics\n| where ResourceProvider == \"MICROSOFT.NETWORK\"\n| where Category == \"AzureFirewallApplicationRule\"\n| summarize TotalRequests = count() by bin(TimeGenerated, 1h)\n| render timechart\n`);copyBtnbtn_34b7a67e6ae74ad6a6e47605657aea3c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_34b7a67e6ae74ad6a6e47605657aea3c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a5dda69bbf304b1a8a4331a4569acab5=document.querySelector('button[name=btn_a5dda69bbf304b1a8a4331a4569acab5]');
+copyBtnbtn_a5dda69bbf304b1a8a4331a4569acab5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`AzureDiagnostics\n| where ResourceProvider == \"MICROSOFT.NETWORK\"\n| where Category == \"AzureFirewallApplicationRule\"\n| summarize TotalRequests = count() by bin(TimeGenerated, 1h)\n| render timechart\n`);copyBtnbtn_a5dda69bbf304b1a8a4331a4569acab5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a5dda69bbf304b1a8a4331a4569acab5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
 <pre class="src src-kql">AzureDiagnostics
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> ResourceProvider <span style="color: #d0bc00;">==</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"MICROSOFT.NETWORK"</span>
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">where</span> Category <span style="color: #d0bc00;">==</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"AzureFirewallApplicationRule"</span>
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">summarize</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">TotalRequests</span> = <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">count(</span>) <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">by</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">bin(</span>TimeGenerated, 1h)
-| <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">render</span> timechart
+| where ResourceProvider == "MICROSOFT.NETWORK"
+| where Category == "AzureFirewallApplicationRule"
+| summarize TotalRequests = count() by bin(TimeGenerated, 1h)
+| render timechart
 </pre>
 </div></div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc7cfcf1" class="outline-2">
-<h2 id="orgc7cfcf1">Tips</h2>
-<div class="outline-text-2" id="text-orgc7cfcf1">
+<div id="outline-container-org0d64ebf" class="outline-2">
+<h2 id="org0d64ebf">Tips</h2>
+<div class="outline-text-2" id="text-org0d64ebf">
 <ul class="org-ul">
 <li><code>has</code> is faster than <code>contains</code> for searching word tokens in
 large tables — prefer it when searching for complete words</li>
@@ -1340,6 +1358,20 @@ portal — it has no effect in API or programmatic queries</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1347,6 +1379,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>KAPE</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,37 +886,37 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd5af698">KAPE</a>
+<li><a href="#orgaffd44f">KAPE</a>
 <ul>
-<li><a href="#org492e407">Core Functionality</a>
+<li><a href="#orgd14e1aa">Core Functionality</a>
 <ul>
-<li><a href="#org31b480d">. Collection (Targets)</a></li>
-<li><a href="#org6020953">2. Processing (Modules)</a></li>
+<li><a href="#orga08c2e6">. Collection (Targets)</a></li>
+<li><a href="#org10e2d07">2. Processing (Modules)</a></li>
 </ul>
 </li>
-<li><a href="#org1bff094">Key Features</a></li>
+<li><a href="#org9ecd073">Key Features</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd5af698" class="outline-2">
-<h2 id="orgd5af698">KAPE</h2>
-<div class="outline-text-2" id="text-orgd5af698">
+<div id="outline-container-orgaffd44f" class="outline-2">
+<h2 id="orgaffd44f">KAPE</h2>
+<div class="outline-text-2" id="text-orgaffd44f">
 <p>
 KAPE, which stands for <b>Kroll Artifact Parser and Extractor</b>, is a highly efficient digital forensics tool designed to automate the collection and processing of forensic artifacts from Windows systems. It is a critical tool in DFIR investigations, particularly for Windows forensics, as it allows investigators to quickly perform triage on a live system or a mounted disk image to gather evidence.
 </p>
 </div>
-<div id="outline-container-org492e407" class="outline-3">
-<h3 id="org492e407">Core Functionality</h3>
-<div class="outline-text-3" id="text-org492e407">
+<div id="outline-container-orgd14e1aa" class="outline-3">
+<h3 id="orgd14e1aa">Core Functionality</h3>
+<div class="outline-text-3" id="text-orgd14e1aa">
 <p>
 KAPE operates in a two-step process: collection and processing.
 </p>
 </div>
-<div id="outline-container-org31b480d" class="outline-4">
-<h4 id="org31b480d">. Collection (Targets)</h4>
-<div class="outline-text-4" id="text-org31b480d">
+<div id="outline-container-orga08c2e6" class="outline-4">
+<h4 id="orga08c2e6">. Collection (Targets)</h4>
+<div class="outline-text-4" id="text-orga08c2e6">
 <p>
 KAPE uses configuration files called <b>Targets</b> to specify which artifacts to collect. These Targets can define files, folders, and registry hives that are known to contain valuable forensic data. Examples of artifacts collected via Targets include:
 </p>
@@ -915,18 +933,18 @@ This approach allows an investigator to quickly gather a comprehensive set of ev
 </p>
 </div>
 </div>
-<div id="outline-container-org6020953" class="outline-4">
-<h4 id="org6020953">2. Processing (Modules)</h4>
-<div class="outline-text-4" id="text-org6020953">
+<div id="outline-container-org10e2d07" class="outline-4">
+<h4 id="org10e2d07">2. Processing (Modules)</h4>
+<div class="outline-text-4" id="text-org10e2d07">
 <p>
 After collection, KAPE uses <b>Modules</b> to run external programs to process the collected artifacts. Modules are also configurable and can be used to run a wide array of command-line tools, such as Eric Zimmerman's forensic tools, to parse the raw data into a human-readable format (e.g., CSV or TXT files). This automates the initial analysis phase, saving a significant amount of time.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org1bff094" class="outline-3">
-<h3 id="org1bff094">Key Features</h3>
-<div class="outline-text-3" id="text-org1bff094">
+<div id="outline-container-org9ecd073" class="outline-3">
+<h3 id="org9ecd073">Key Features</h3>
+<div class="outline-text-3" id="text-org9ecd073">
 <ul class="org-ul">
 <li><b>Speed:</b> KAPE is designed for rapid triage, significantly reducing the time needed to acquire critical evidence.</li>
 <li><b>Flexibility:</b> It can be run on a live system or against a mounted forensic image.</li>
@@ -938,6 +956,20 @@ After collection, KAPE uses <b>Modules</b> to run external programs to process t
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -945,6 +977,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

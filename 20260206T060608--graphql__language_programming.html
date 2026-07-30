@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GraphQL</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,26 +886,26 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org00a3a88">Core Concepts</a></li>
-<li><a href="#orge95703f">Basic Syntax</a>
+<li><a href="#org63088c0">Core Concepts</a></li>
+<li><a href="#org0dcaa76">Basic Syntax</a>
 <ul>
-<li><a href="#org913743a">Query</a></li>
-<li><a href="#orgc5ce4ed">Mutation</a></li>
-<li><a href="#org6a049c2">Fragments — reusable field sets</a></li>
+<li><a href="#org70b10a1">Query</a></li>
+<li><a href="#org8126f91">Mutation</a></li>
+<li><a href="#orgf7f219b">Fragments — reusable field sets</a></li>
 </ul>
 </li>
-<li><a href="#org127a9cc">HTTP Mechanics</a></li>
-<li><a href="#orgcc63836">Security Considerations</a>
+<li><a href="#orgf28d84b">HTTP Mechanics</a></li>
+<li><a href="#orgcdeaed1">Security Considerations</a>
 <ul>
-<li><a href="#org95a5be2">Introspection</a></li>
-<li><a href="#org3c50a29">BOLA / IDOR via GraphQL</a></li>
-<li><a href="#orgc55a562">Batching Attacks</a></li>
-<li><a href="#org8d92097">Field Suggestion / Clues</a></li>
-<li><a href="#orgfdb28f0">Nested Query Depth Attack (DoS)</a></li>
-<li><a href="#org06bd794">Injections via GraphQL Arguments</a></li>
+<li><a href="#org5a31fd6">Introspection</a></li>
+<li><a href="#org40174dc">BOLA / IDOR via GraphQL</a></li>
+<li><a href="#orgf63909e">Batching Attacks</a></li>
+<li><a href="#org284a451">Field Suggestion / Clues</a></li>
+<li><a href="#org34ef9d7">Nested Query Depth Attack (DoS)</a></li>
+<li><a href="#org28f235a">Injections via GraphQL Arguments</a></li>
 </ul>
 </li>
-<li><a href="#orgcb64ce8">Tips</a></li>
+<li><a href="#org8d7217d">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -905,9 +923,9 @@ Related: <a href="20260206T060634==rest--representational-state-transfer__concep
          <a href="20260621T180112==bola--broken-object-level-authorisation__cybersecurity_pentesting_technique.html">Broken Object Level Authorisation</a>
          <a href="20260408T063542--spa-penetration-testing__cybersecurity_moc.html">SPA Penetration Testing</a>
 </p>
-<div id="outline-container-org00a3a88" class="outline-2">
-<h2 id="org00a3a88">Core Concepts</h2>
-<div class="outline-text-2" id="text-org00a3a88">
+<div id="outline-container-org63088c0" class="outline-2">
+<h2 id="org63088c0">Core Concepts</h2>
+<div class="outline-text-2" id="text-org63088c0">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -956,19 +974,19 @@ Related: <a href="20260206T060634==rest--representational-state-transfer__concep
 </table>
 </div>
 </div>
-<div id="outline-container-orge95703f" class="outline-2">
-<h2 id="orge95703f">Basic Syntax</h2>
-<div class="outline-text-2" id="text-orge95703f">
+<div id="outline-container-org0dcaa76" class="outline-2">
+<h2 id="org0dcaa76">Basic Syntax</h2>
+<div class="outline-text-2" id="text-org0dcaa76">
 </div>
-<div id="outline-container-org913743a" class="outline-3">
-<h3 id="org913743a">Query</h3>
-<div class="outline-text-3" id="text-org913743a">
+<div id="outline-container-org70b10a1" class="outline-3">
+<h3 id="org70b10a1">Query</h3>
+<div class="outline-text-3" id="text-org70b10a1">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_91d5414b496247ff85b6ab10669fad17>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_25669ee003274c63bce1cc3b630865ed>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_91d5414b496247ff85b6ab10669fad17=document.querySelector('button[name=btn_91d5414b496247ff85b6ab10669fad17]');
-copyBtnbtn_91d5414b496247ff85b6ab10669fad17.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Basic query — fetch specific fields\nquery {\n  users {\n    id\n    name\n    email\n  }\n}\n\n# Query with arguments\nquery {\n  user(id: 5) {\n    name\n    email\n    role\n  }\n}\n\n# Named query with variables\nquery GetUser($userId: ID!) {\n  user(id: $userId) {\n    name\n    email\n  }\n}\n`);copyBtnbtn_91d5414b496247ff85b6ab10669fad17.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_91d5414b496247ff85b6ab10669fad17.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_25669ee003274c63bce1cc3b630865ed=document.querySelector('button[name=btn_25669ee003274c63bce1cc3b630865ed]');
+copyBtnbtn_25669ee003274c63bce1cc3b630865ed.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Basic query — fetch specific fields\nquery {\n  users {\n    id\n    name\n    email\n  }\n}\n\n# Query with arguments\nquery {\n  user(id: 5) {\n    name\n    email\n    role\n  }\n}\n\n# Named query with variables\nquery GetUser($userId: ID!) {\n  user(id: $userId) {\n    name\n    email\n  }\n}\n`);copyBtnbtn_25669ee003274c63bce1cc3b630865ed.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_25669ee003274c63bce1cc3b630865ed.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1004,11 +1022,11 @@ query GetUser($userId: ID!) {
 Variables passed separately as JSON:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JSON</span><button class='copyBtn' name=btn_f9e35ae0a2cb4382bf3232419feb6d64>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JSON</span><button class='copyBtn' name=btn_029622771b01435d89f34a0d26bb2821>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f9e35ae0a2cb4382bf3232419feb6d64=document.querySelector('button[name=btn_f9e35ae0a2cb4382bf3232419feb6d64]');
-copyBtnbtn_f9e35ae0a2cb4382bf3232419feb6d64.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`{ \"userId\": \"5\" }\n`);copyBtnbtn_f9e35ae0a2cb4382bf3232419feb6d64.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f9e35ae0a2cb4382bf3232419feb6d64.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_029622771b01435d89f34a0d26bb2821=document.querySelector('button[name=btn_029622771b01435d89f34a0d26bb2821]');
+copyBtnbtn_029622771b01435d89f34a0d26bb2821.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`{ \"userId\": \"5\" }\n`);copyBtnbtn_029622771b01435d89f34a0d26bb2821.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_029622771b01435d89f34a0d26bb2821.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1017,15 +1035,15 @@ let res = copyTextToClipboard(`{ \"userId\": \"5\" }\n`);copyBtnbtn_f9e35ae0a2cb
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgc5ce4ed" class="outline-3">
-<h3 id="orgc5ce4ed">Mutation</h3>
-<div class="outline-text-3" id="text-orgc5ce4ed">
+<div id="outline-container-org8126f91" class="outline-3">
+<h3 id="org8126f91">Mutation</h3>
+<div class="outline-text-3" id="text-org8126f91">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_aed5d8c48d1b46c1a1cfeb259ae5392f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_68c450766d5c46579e8fb44dcda10ca6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_aed5d8c48d1b46c1a1cfeb259ae5392f=document.querySelector('button[name=btn_aed5d8c48d1b46c1a1cfeb259ae5392f]');
-copyBtnbtn_aed5d8c48d1b46c1a1cfeb259ae5392f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Create\nmutation {\n  createUser(input: { name: \"Alice\", email: \"alice@example.com\" }) {\n    id\n    name\n  }\n}\n\n# Update\nmutation {\n  updateUser(id: 5, input: { role: \"admin\" }) {\n    id\n    role\n  }\n}\n`);copyBtnbtn_aed5d8c48d1b46c1a1cfeb259ae5392f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aed5d8c48d1b46c1a1cfeb259ae5392f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_68c450766d5c46579e8fb44dcda10ca6=document.querySelector('button[name=btn_68c450766d5c46579e8fb44dcda10ca6]');
+copyBtnbtn_68c450766d5c46579e8fb44dcda10ca6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Create\nmutation {\n  createUser(input: { name: \"Alice\", email: \"alice@example.com\" }) {\n    id\n    name\n  }\n}\n\n# Update\nmutation {\n  updateUser(id: 5, input: { role: \"admin\" }) {\n    id\n    role\n  }\n}\n`);copyBtnbtn_68c450766d5c46579e8fb44dcda10ca6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_68c450766d5c46579e8fb44dcda10ca6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1048,15 +1066,15 @@ mutation {
 </div></div>
 </div>
 </div>
-<div id="outline-container-org6a049c2" class="outline-3">
-<h3 id="org6a049c2">Fragments — reusable field sets</h3>
-<div class="outline-text-3" id="text-org6a049c2">
+<div id="outline-container-orgf7f219b" class="outline-3">
+<h3 id="orgf7f219b">Fragments — reusable field sets</h3>
+<div class="outline-text-3" id="text-orgf7f219b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_c06bad8f6cbc47b093fc8446686a421d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_a2b71642447c4d258dc61e1cc1978b34>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c06bad8f6cbc47b093fc8446686a421d=document.querySelector('button[name=btn_c06bad8f6cbc47b093fc8446686a421d]');
-copyBtnbtn_c06bad8f6cbc47b093fc8446686a421d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`fragment UserFields on User {\n  id\n  name\n  email\n  role\n}\n\nquery {\n  users {\n    ...UserFields\n  }\n}\n`);copyBtnbtn_c06bad8f6cbc47b093fc8446686a421d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c06bad8f6cbc47b093fc8446686a421d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a2b71642447c4d258dc61e1cc1978b34=document.querySelector('button[name=btn_a2b71642447c4d258dc61e1cc1978b34]');
+copyBtnbtn_a2b71642447c4d258dc61e1cc1978b34.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`fragment UserFields on User {\n  id\n  name\n  email\n  role\n}\n\nquery {\n  users {\n    ...UserFields\n  }\n}\n`);copyBtnbtn_a2b71642447c4d258dc61e1cc1978b34.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a2b71642447c4d258dc61e1cc1978b34.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1077,19 +1095,19 @@ query {
 </div>
 </div>
 </div>
-<div id="outline-container-org127a9cc" class="outline-2">
-<h2 id="org127a9cc">HTTP Mechanics</h2>
-<div class="outline-text-2" id="text-org127a9cc">
+<div id="outline-container-orgf28d84b" class="outline-2">
+<h2 id="orgf28d84b">HTTP Mechanics</h2>
+<div class="outline-text-2" id="text-orgf28d84b">
 <p>
 GraphQL typically runs over POST to a single endpoint:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_aaea763154c6437da6aa8356d79e850b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6be5faf46b744205b439731d48f9286a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_aaea763154c6437da6aa8356d79e850b=document.querySelector('button[name=btn_aaea763154c6437da6aa8356d79e850b]');
-copyBtnbtn_aaea763154c6437da6aa8356d79e850b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Standard POST query\ncurl -X POST https://target.com/graphql \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -d '{\"query\": \"{ users { id name email } }\"}'\n\n# With variables\ncurl -X POST https://target.com/graphql \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"query\": \"query GetUser($id: ID!) { user(id: $id) { name email } }\",\n    \"variables\": {\"id\": \"5\"}\n  }'\n\n# Some APIs also accept GET\ncurl \"https://target.com/graphql?query={users{id,name,email}}\"\n`);copyBtnbtn_aaea763154c6437da6aa8356d79e850b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aaea763154c6437da6aa8356d79e850b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6be5faf46b744205b439731d48f9286a=document.querySelector('button[name=btn_6be5faf46b744205b439731d48f9286a]');
+copyBtnbtn_6be5faf46b744205b439731d48f9286a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Standard POST query\ncurl -X POST https://target.com/graphql \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -d '{\"query\": \"{ users { id name email } }\"}'\n\n# With variables\ncurl -X POST https://target.com/graphql \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"query\": \"query GetUser($id: ID!) { user(id: $id) { name email } }\",\n    \"variables\": {\"id\": \"5\"}\n  }'\n\n# Some APIs also accept GET\ncurl \"https://target.com/graphql?query={users{id,name,email}}\"\n`);copyBtnbtn_6be5faf46b744205b439731d48f9286a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6be5faf46b744205b439731d48f9286a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1118,13 +1136,13 @@ Common endpoint paths: <code>/graphql</code>, <code>/api/graphql</code>, <code>/
 </p>
 </div>
 </div>
-<div id="outline-container-orgcc63836" class="outline-2">
-<h2 id="orgcc63836">Security Considerations</h2>
-<div class="outline-text-2" id="text-orgcc63836">
+<div id="outline-container-orgcdeaed1" class="outline-2">
+<h2 id="orgcdeaed1">Security Considerations</h2>
+<div class="outline-text-2" id="text-orgcdeaed1">
 </div>
-<div id="outline-container-org95a5be2" class="outline-3">
-<h3 id="org95a5be2">Introspection</h3>
-<div class="outline-text-3" id="text-org95a5be2">
+<div id="outline-container-org5a31fd6" class="outline-3">
+<h3 id="org5a31fd6">Introspection</h3>
+<div class="outline-text-3" id="text-org5a31fd6">
 <p>
 Introspection allows clients to query the full schema — all
 types, fields, queries, and mutations. In production, this is
@@ -1133,11 +1151,11 @@ provides the complete attack surface map.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_a1529a766882434cb1810fc0b370e638>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_63b61a7cdb4343688a3655fb781815d6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a1529a766882434cb1810fc0b370e638=document.querySelector('button[name=btn_a1529a766882434cb1810fc0b370e638]');
-copyBtnbtn_a1529a766882434cb1810fc0b370e638.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Full introspection query — reveals entire schema\n{\n  __schema {\n    types {\n      name\n      fields {\n        name\n        type {\n          name\n          kind\n        }\n      }\n    }\n  }\n}\n\n# List all available queries and mutations\n{\n  __schema {\n    queryType { fields { name description } }\n    mutationType { fields { name description } }\n  }\n}\n`);copyBtnbtn_a1529a766882434cb1810fc0b370e638.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a1529a766882434cb1810fc0b370e638.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_63b61a7cdb4343688a3655fb781815d6=document.querySelector('button[name=btn_63b61a7cdb4343688a3655fb781815d6]');
+copyBtnbtn_63b61a7cdb4343688a3655fb781815d6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Full introspection query — reveals entire schema\n{\n  __schema {\n    types {\n      name\n      fields {\n        name\n        type {\n          name\n          kind\n        }\n      }\n    }\n  }\n}\n\n# List all available queries and mutations\n{\n  __schema {\n    queryType { fields { name description } }\n    mutationType { fields { name description } }\n  }\n}\n`);copyBtnbtn_63b61a7cdb4343688a3655fb781815d6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_63b61a7cdb4343688a3655fb781815d6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1168,11 +1186,11 @@ let res = copyTextToClipboard(`# Full introspection query — reveals entire sch
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_cf748a8436244d539c2cc09ef043a292>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_cecde3982cba4559abf2c4fe68310d48>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_cf748a8436244d539c2cc09ef043a292=document.querySelector('button[name=btn_cf748a8436244d539c2cc09ef043a292]');
-copyBtnbtn_cf748a8436244d539c2cc09ef043a292.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Via curl\ncurl -X POST https://target.com/graphql \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"query\": \"{ __schema { types { name } } }\"}'\n\n# InQL (Burp extension) automates introspection and generates\n# a browsable schema map\n`);copyBtnbtn_cf748a8436244d539c2cc09ef043a292.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cf748a8436244d539c2cc09ef043a292.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cecde3982cba4559abf2c4fe68310d48=document.querySelector('button[name=btn_cecde3982cba4559abf2c4fe68310d48]');
+copyBtnbtn_cecde3982cba4559abf2c4fe68310d48.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Via curl\ncurl -X POST https://target.com/graphql \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"query\": \"{ __schema { types { name } } }\"}'\n\n# InQL (Burp extension) automates introspection and generates\n# a browsable schema map\n`);copyBtnbtn_cecde3982cba4559abf2c4fe68310d48.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cecde3982cba4559abf2c4fe68310d48.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1187,20 +1205,20 @@ let res = copyTextToClipboard(`# Via curl\ncurl -X POST https://target.com/graph
 </div></div>
 </div>
 </div>
-<div id="outline-container-org3c50a29" class="outline-3">
-<h3 id="org3c50a29">BOLA / IDOR via GraphQL</h3>
-<div class="outline-text-3" id="text-org3c50a29">
+<div id="outline-container-org40174dc" class="outline-3">
+<h3 id="org40174dc">BOLA / IDOR via GraphQL</h3>
+<div class="outline-text-3" id="text-org40174dc">
 <p>
 Object-level authorisation is enforced at the resolver level —
 and is frequently missed. Test by substituting IDs:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_69002076151f44e4bbb3710983904455>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_40f291db2d9a4b7abf52973b93c4637c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_69002076151f44e4bbb3710983904455=document.querySelector('button[name=btn_69002076151f44e4bbb3710983904455]');
-copyBtnbtn_69002076151f44e4bbb3710983904455.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Request another user's data while authenticated as a different user\nquery {\n  user(id: 2) {\n    email\n    creditCards {\n      number\n    }\n  }\n}\n`);copyBtnbtn_69002076151f44e4bbb3710983904455.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_69002076151f44e4bbb3710983904455.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_40f291db2d9a4b7abf52973b93c4637c=document.querySelector('button[name=btn_40f291db2d9a4b7abf52973b93c4637c]');
+copyBtnbtn_40f291db2d9a4b7abf52973b93c4637c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Request another user's data while authenticated as a different user\nquery {\n  user(id: 2) {\n    email\n    creditCards {\n      number\n    }\n  }\n}\n`);copyBtnbtn_40f291db2d9a4b7abf52973b93c4637c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_40f291db2d9a4b7abf52973b93c4637c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1221,9 +1239,9 @@ See <a href="20260621T180112==bola--broken-object-level-authorisation__cybersecu
 </p>
 </div>
 </div>
-<div id="outline-container-orgc55a562" class="outline-3">
-<h3 id="orgc55a562">Batching Attacks</h3>
-<div class="outline-text-3" id="text-orgc55a562">
+<div id="outline-container-orgf63909e" class="outline-3">
+<h3 id="orgf63909e">Batching Attacks</h3>
+<div class="outline-text-3" id="text-orgf63909e">
 <p>
 GraphQL supports sending multiple operations in a single request.
 This can bypass per-request rate limiting on operations like
@@ -1231,11 +1249,11 @@ OTP validation or login:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>JSON</span><button class='copyBtn' name=btn_b8973ae94efa49e7912e3f6806ffa902>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>JSON</span><button class='copyBtn' name=btn_24931fcdea7e4b75bc0c437874aaf9f1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b8973ae94efa49e7912e3f6806ffa902=document.querySelector('button[name=btn_b8973ae94efa49e7912e3f6806ffa902]');
-copyBtnbtn_b8973ae94efa49e7912e3f6806ffa902.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`[\n  {\"query\": \"mutation { login(username: \\\"admin\\\", password: \\\"pass1\\\") { token } }\"},\n  {\"query\": \"mutation { login(username: \\\"admin\\\", password: \\\"pass2\\\") { token } }\"},\n  {\"query\": \"mutation { login(username: \\\"admin\\\", password: \\\"pass3\\\") { token } }\"}\n]\n`);copyBtnbtn_b8973ae94efa49e7912e3f6806ffa902.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b8973ae94efa49e7912e3f6806ffa902.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_24931fcdea7e4b75bc0c437874aaf9f1=document.querySelector('button[name=btn_24931fcdea7e4b75bc0c437874aaf9f1]');
+copyBtnbtn_24931fcdea7e4b75bc0c437874aaf9f1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`[\n  {\"query\": \"mutation { login(username: \\\"admin\\\", password: \\\"pass1\\\") { token } }\"},\n  {\"query\": \"mutation { login(username: \\\"admin\\\", password: \\\"pass2\\\") { token } }\"},\n  {\"query\": \"mutation { login(username: \\\"admin\\\", password: \\\"pass3\\\") { token } }\"}\n]\n`);copyBtnbtn_24931fcdea7e4b75bc0c437874aaf9f1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_24931fcdea7e4b75bc0c437874aaf9f1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1253,9 +1271,9 @@ a request, this bypasses it. Also useful for BOLA enumeration.
 </p>
 </div>
 </div>
-<div id="outline-container-org8d92097" class="outline-3">
-<h3 id="org8d92097">Field Suggestion / Clues</h3>
-<div class="outline-text-3" id="text-org8d92097">
+<div id="outline-container-org284a451" class="outline-3">
+<h3 id="org284a451">Field Suggestion / Clues</h3>
+<div class="outline-text-3" id="text-org284a451">
 <p>
 When introspection is disabled, GraphQL often returns field
 suggestions when a query contains a typo — leaking schema
@@ -1263,11 +1281,11 @@ information:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_02ba643436934c19b6707e752071f948>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_c2bf3885cfde472d89491add37887d8d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_02ba643436934c19b6707e752071f948=document.querySelector('button[name=btn_02ba643436934c19b6707e752071f948]');
-copyBtnbtn_02ba643436934c19b6707e752071f948.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Deliberately mistype a field name\nquery { usr { id } }\n# Response may include: \"Did you mean 'user'?\"\n\nquery { user { passward } }\n# Response may include: \"Did you mean 'password'?\"\n`);copyBtnbtn_02ba643436934c19b6707e752071f948.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_02ba643436934c19b6707e752071f948.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c2bf3885cfde472d89491add37887d8d=document.querySelector('button[name=btn_c2bf3885cfde472d89491add37887d8d]');
+copyBtnbtn_c2bf3885cfde472d89491add37887d8d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Deliberately mistype a field name\nquery { usr { id } }\n# Response may include: \"Did you mean 'user'?\"\n\nquery { user { passward } }\n# Response may include: \"Did you mean 'password'?\"\n`);copyBtnbtn_c2bf3885cfde472d89491add37887d8d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c2bf3885cfde472d89491add37887d8d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1281,20 +1299,20 @@ query { user { passward } }
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgfdb28f0" class="outline-3">
-<h3 id="orgfdb28f0">Nested Query Depth Attack (DoS)</h3>
-<div class="outline-text-3" id="text-orgfdb28f0">
+<div id="outline-container-org34ef9d7" class="outline-3">
+<h3 id="org34ef9d7">Nested Query Depth Attack (DoS)</h3>
+<div class="outline-text-3" id="text-org34ef9d7">
 <p>
 Without depth limiting, deeply nested queries can exhaust server
 resources:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_3f2885d5f61b45c7a79a6c42c485e4e2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_cdf8cdcb738a4ca3b0cea1dbf2e26f8e>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3f2885d5f61b45c7a79a6c42c485e4e2=document.querySelector('button[name=btn_3f2885d5f61b45c7a79a6c42c485e4e2]');
-copyBtnbtn_3f2885d5f61b45c7a79a6c42c485e4e2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`query {\n  user {\n    friends {\n      friends {\n        friends {\n          friends {\n            name\n          }\n        }\n      }\n    }\n  }\n}\n`);copyBtnbtn_3f2885d5f61b45c7a79a6c42c485e4e2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3f2885d5f61b45c7a79a6c42c485e4e2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cdf8cdcb738a4ca3b0cea1dbf2e26f8e=document.querySelector('button[name=btn_cdf8cdcb738a4ca3b0cea1dbf2e26f8e]');
+copyBtnbtn_cdf8cdcb738a4ca3b0cea1dbf2e26f8e.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`query {\n  user {\n    friends {\n      friends {\n        friends {\n          friends {\n            name\n          }\n        }\n      }\n    }\n  }\n}\n`);copyBtnbtn_cdf8cdcb738a4ca3b0cea1dbf2e26f8e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cdf8cdcb738a4ca3b0cea1dbf2e26f8e.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1320,20 +1338,20 @@ finding if there is no depth limit enforced.
 </p>
 </div>
 </div>
-<div id="outline-container-org06bd794" class="outline-3">
-<h3 id="org06bd794">Injections via GraphQL Arguments</h3>
-<div class="outline-text-3" id="text-org06bd794">
+<div id="outline-container-org28f235a" class="outline-3">
+<h3 id="org28f235a">Injections via GraphQL Arguments</h3>
+<div class="outline-text-3" id="text-org28f235a">
 <p>
 GraphQL arguments are passed to resolvers which may construct
 SQL or other queries unsafely:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_0f7e9d05b5d74387a5b63b643d057e0f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>GRAPHQL</span><button class='copyBtn' name=btn_55e3c60667e3431fb80ae45f15633757>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0f7e9d05b5d74387a5b63b643d057e0f=document.querySelector('button[name=btn_0f7e9d05b5d74387a5b63b643d057e0f]');
-copyBtnbtn_0f7e9d05b5d74387a5b63b643d057e0f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# SQL injection via argument\nquery {\n  user(id: \"1 OR 1=1\") {\n    name\n  }\n}\n\n# NoSQL injection\nquery {\n  users(filter: \"{\\\"$where\\\": \\\"this.role == 'admin'\\\"}\") {\n    name\n    email\n  }\n}\n`);copyBtnbtn_0f7e9d05b5d74387a5b63b643d057e0f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0f7e9d05b5d74387a5b63b643d057e0f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_55e3c60667e3431fb80ae45f15633757=document.querySelector('button[name=btn_55e3c60667e3431fb80ae45f15633757]');
+copyBtnbtn_55e3c60667e3431fb80ae45f15633757.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# SQL injection via argument\nquery {\n  user(id: \"1 OR 1=1\") {\n    name\n  }\n}\n\n# NoSQL injection\nquery {\n  users(filter: \"{\\\"$where\\\": \\\"this.role == 'admin'\\\"}\") {\n    name\n    email\n  }\n}\n`);copyBtnbtn_55e3c60667e3431fb80ae45f15633757.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_55e3c60667e3431fb80ae45f15633757.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1356,9 +1374,9 @@ query {
 </div>
 </div>
 </div>
-<div id="outline-container-orgcb64ce8" class="outline-2">
-<h2 id="orgcb64ce8">Tips</h2>
-<div class="outline-text-2" id="text-orgcb64ce8">
+<div id="outline-container-org8d7217d" class="outline-2">
+<h2 id="org8d7217d">Tips</h2>
+<div class="outline-text-2" id="text-org8d7217d">
 <ul class="org-ul">
 <li>Always run introspection first — it maps the entire attack
 surface in one request</li>
@@ -1377,6 +1395,20 @@ is disabled</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1384,6 +1416,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

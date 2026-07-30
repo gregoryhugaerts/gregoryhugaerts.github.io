@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SPA Penetration Testing</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,14 +886,14 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga3a02e3">1. Why SPAs Require a Different Approach</a></li>
-<li><a href="#org4a377e4">2. SPA-Specific Recon Notes</a></li>
-<li><a href="#orgcf81c2d">3. Authentication and Authorisation</a></li>
-<li><a href="#org2b1bf56">4. Injection</a></li>
-<li><a href="#org416c3ca">5. XSS in SPAs</a></li>
-<li><a href="#org3cab9a0">6. GraphQL (gap)</a></li>
-<li><a href="#org1f9bb3b">7. Exam-Day Methodology Checklist</a></li>
-<li><a href="#org82df098">8. Reporting</a></li>
+<li><a href="#org40351db">1. Why SPAs Require a Different Approach</a></li>
+<li><a href="#org89c0ac3">2. SPA-Specific Recon Notes</a></li>
+<li><a href="#org74c9b02">3. Authentication and Authorisation</a></li>
+<li><a href="#org7cefac9">4. Injection</a></li>
+<li><a href="#orga6e89af">5. XSS in SPAs</a></li>
+<li><a href="#orgb319f4d">6. GraphQL (gap)</a></li>
+<li><a href="#org8f7f42f">7. Exam-Day Methodology Checklist</a></li>
+<li><a href="#orgda5cbd2">8. Reporting</a></li>
 </ul>
 </div>
 </div>
@@ -906,9 +924,9 @@ follow the links for methodology and payloads. This note holds only
 what is specific to the SPA/API context, plus the consolidated
 exam-day checklist.
 </p>
-<div id="outline-container-orga3a02e3" class="outline-2">
-<h2 id="orga3a02e3">1. Why SPAs Require a Different Approach</h2>
-<div class="outline-text-2" id="text-orga3a02e3">
+<div id="outline-container-org40351db" class="outline-2">
+<h2 id="org40351db">1. Why SPAs Require a Different Approach</h2>
+<div class="outline-text-2" id="text-org40351db">
 <p>
 Traditional web app testing assumes server-rendered HTML, cookie
 sessions, and navigable page URLs. SPAs break all three: auth moves
@@ -976,9 +994,9 @@ framework fingerprinting).
 </p>
 </div>
 </div>
-<div id="outline-container-org4a377e4" class="outline-2">
-<h2 id="org4a377e4">2. SPA-Specific Recon Notes</h2>
-<div class="outline-text-2" id="text-org4a377e4">
+<div id="outline-container-org89c0ac3" class="outline-2">
+<h2 id="org89c0ac3">2. SPA-Specific Recon Notes</h2>
+<div class="outline-text-2" id="text-org89c0ac3">
 <p>
 Two checks that don't fit cleanly into the general recon methodology:
 </p>
@@ -993,9 +1011,9 @@ not a dead end.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcf81c2d" class="outline-2">
-<h2 id="orgcf81c2d">3. Authentication and Authorisation</h2>
-<div class="outline-text-2" id="text-orgcf81c2d">
+<div id="outline-container-org74c9b02" class="outline-2">
+<h2 id="org74c9b02">3. Authentication and Authorisation</h2>
+<div class="outline-text-2" id="text-org74c9b02">
 <p>
 Full JWT/OAuth/session methodology lives in the linked notes. The
 one SPA-specific point worth remembering: locate the token first
@@ -1021,9 +1039,9 @@ you hit a vertical-escalation finding that doesn't fit BOLA cleanly.
 </p>
 </div>
 </div>
-<div id="outline-container-org2b1bf56" class="outline-2">
-<h2 id="org2b1bf56">4. Injection</h2>
-<div class="outline-text-2" id="text-org2b1bf56">
+<div id="outline-container-org7cefac9" class="outline-2">
+<h2 id="org7cefac9">4. Injection</h2>
+<div class="outline-text-2" id="text-org7cefac9">
 <p>
 SQL and NoSQL injection methodology is fully covered in their own
 notes. The only SPA-specific reframing: the injection point is a
@@ -1033,9 +1051,9 @@ parameter name.
 </p>
 </div>
 </div>
-<div id="outline-container-org416c3ca" class="outline-2">
-<h2 id="org416c3ca">5. XSS in SPAs</h2>
-<div class="outline-text-2" id="text-org416c3ca">
+<div id="outline-container-orga6e89af" class="outline-2">
+<h2 id="orga6e89af">5. XSS in SPAs</h2>
+<div class="outline-text-2" id="text-orga6e89af">
 <p>
 Framework output encoding (React, Vue, Angular) kills most
 reflected/stored XSS via templates, so on an SPA target focus
@@ -1054,11 +1072,11 @@ trigger is a later GET that renders it back</li>
 Grep the bundle for sink patterns before manual testing:
 </p>
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>BASH</span><button class='copyBtn' name=btn_9cbb1b32ccf44390a9bf1e791b655576>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>BASH</span><button class='copyBtn' name=btn_ec669eb99fe545099b5731ed4598f344>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9cbb1b32ccf44390a9bf1e791b655576=document.querySelector('button[name=btn_9cbb1b32ccf44390a9bf1e791b655576]');
-copyBtnbtn_9cbb1b32ccf44390a9bf1e791b655576.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`grep -E \"innerHTML|dangerouslySetInnerHTML|document\\.write|eval\\(\" bundle.js\n`);copyBtnbtn_9cbb1b32ccf44390a9bf1e791b655576.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9cbb1b32ccf44390a9bf1e791b655576.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ec669eb99fe545099b5731ed4598f344=document.querySelector('button[name=btn_ec669eb99fe545099b5731ed4598f344]');
+copyBtnbtn_ec669eb99fe545099b5731ed4598f344.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`grep -E \"innerHTML|dangerouslySetInnerHTML|document\\.write|eval\\(\" bundle.js\n`);copyBtnbtn_ec669eb99fe545099b5731ed4598f344.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ec669eb99fe545099b5731ed4598f344.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1072,9 +1090,9 @@ General XSS methodology and payload catalogue:
 </p>
 </div>
 </div>
-<div id="outline-container-org3cab9a0" class="outline-2">
-<h2 id="org3cab9a0">6. GraphQL (gap)</h2>
-<div class="outline-text-2" id="text-org3cab9a0">
+<div id="outline-container-orgb319f4d" class="outline-2">
+<h2 id="orgb319f4d">6. GraphQL (gap)</h2>
+<div class="outline-text-2" id="text-orgb319f4d">
 <p>
 No dedicated GraphQL testing note exists yet. Minimum checks until
 one is written: test introspection (<code>POST /graphql</code> with
@@ -1084,9 +1102,9 @@ bypass.
 </p>
 </div>
 </div>
-<div id="outline-container-org1f9bb3b" class="outline-2">
-<h2 id="org1f9bb3b">7. Exam-Day Methodology Checklist</h2>
-<div class="outline-text-2" id="text-org1f9bb3b">
+<div id="outline-container-org8f7f42f" class="outline-2">
+<h2 id="org8f7f42f">7. Exam-Day Methodology Checklist</h2>
+<div class="outline-text-2" id="text-org8f7f42f">
 <p>
 <b>Reconnaissance</b>
 </p>
@@ -1131,9 +1149,9 @@ bypass.
 </ul>
 </div>
 </div>
-<div id="outline-container-org82df098" class="outline-2">
-<h2 id="org82df098">8. Reporting</h2>
-<div class="outline-text-2" id="text-org82df098">
+<div id="outline-container-orgda5cbd2" class="outline-2">
+<h2 id="orgda5cbd2">8. Reporting</h2>
+<div class="outline-text-2" id="text-orgda5cbd2">
 <p>
 Use exact classification wording and severity guidance from
 <a href="20260614T002010--pt1-vulnerability-classification-cheat-sheet__comparison_cybersecurity_pentesting_reference.html">PT1 Vulnerability Classification Cheat Sheet</a>
@@ -1146,6 +1164,20 @@ PT1 rubric rewards technical specificity over category naming alone.
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1153,6 +1185,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Core Windows Processes</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,23 +886,23 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga821e09">Process Reference</a>
+<li><a href="#org6c6e033">Process Reference</a>
 <ul>
-<li><a href="#orgd8b4743">System Idle Process</a></li>
-<li><a href="#orgefc56aa">System (PID 4)</a></li>
-<li><a href="#org6c80969">smss.exe — Session Manager Subsystem</a></li>
-<li><a href="#orga0b638d">csrss.exe — Client/Server Runtime Subsystem</a></li>
-<li><a href="#orge6cfa38">wininit.exe — Windows Initialisation</a></li>
-<li><a href="#org379562f">services.exe — Service Control Manager</a></li>
-<li><a href="#orgc1e26dd">lsass.exe — Local Security Authority Subsystem</a></li>
-<li><a href="#org1c895a4">winlogon.exe — Windows Logon Application</a></li>
-<li><a href="#org560296a">svchost.exe — Service Host</a></li>
-<li><a href="#org4f01487">explorer.exe — Windows Explorer</a></li>
+<li><a href="#orgbe14827">System Idle Process</a></li>
+<li><a href="#org0326c31">System (PID 4)</a></li>
+<li><a href="#org0c54c0d">smss.exe — Session Manager Subsystem</a></li>
+<li><a href="#org6de1ea7">csrss.exe — Client/Server Runtime Subsystem</a></li>
+<li><a href="#orgb7c2a8b">wininit.exe — Windows Initialisation</a></li>
+<li><a href="#org90f63d6">services.exe — Service Control Manager</a></li>
+<li><a href="#org7e412f7">lsass.exe — Local Security Authority Subsystem</a></li>
+<li><a href="#org9ff05bb">winlogon.exe — Windows Logon Application</a></li>
+<li><a href="#orga680b3a">svchost.exe — Service Host</a></li>
+<li><a href="#orge6930e3">explorer.exe — Windows Explorer</a></li>
 </ul>
 </li>
-<li><a href="#org35a5a27">Key Detection Signals</a></li>
-<li><a href="#orgc7611d4">Investigation Commands</a></li>
-<li><a href="#org92b39b7">Tips</a></li>
+<li><a href="#org702d552">Key Detection Signals</a></li>
+<li><a href="#org1958715">Investigation Commands</a></li>
+<li><a href="#org91117be">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -903,22 +921,22 @@ Related: <a href="20260616T220417--windows-client-dfir__concept_cybersecurity.ht
          <a href="20260213T111009--sysinternals-suite__cybersecurity_tool.html">Sysinternals Suite</a>
          <a href="20260314T005752--suricata__cybersecurity_tool.html">Sysmon</a>
 </p>
-<div id="outline-container-orga821e09" class="outline-2">
-<h2 id="orga821e09">Process Reference</h2>
-<div class="outline-text-2" id="text-orga821e09">
+<div id="outline-container-org6c6e033" class="outline-2">
+<h2 id="org6c6e033">Process Reference</h2>
+<div class="outline-text-2" id="text-org6c6e033">
 </div>
-<div id="outline-container-orgd8b4743" class="outline-3">
-<h3 id="orgd8b4743">System Idle Process</h3>
-<div class="outline-text-3" id="text-orgd8b4743">
+<div id="outline-container-orgbe14827" class="outline-3">
+<h3 id="orgbe14827">System Idle Process</h3>
+<div class="outline-text-3" id="text-orgbe14827">
 <p>
 Not a real process — accounts for idle CPU time. High percentage
 means CPU is available. Not a malware target directly.
 </p>
 </div>
 </div>
-<div id="outline-container-orgefc56aa" class="outline-3">
-<h3 id="orgefc56aa">System (PID 4)</h3>
-<div class="outline-text-3" id="text-orgefc56aa">
+<div id="outline-container-org0326c31" class="outline-3">
+<h3 id="org0326c31">System (PID 4)</h3>
+<div class="outline-text-3" id="text-org0326c31">
 <p>
 Kernel-mode process managing drivers, memory, and hardware.
 Low CPU normally; spikes on hardware activity.
@@ -961,9 +979,9 @@ Rootkits and kernel-level compromise are the primary concern.
 </p>
 </div>
 </div>
-<div id="outline-container-org6c80969" class="outline-3">
-<h3 id="org6c80969">smss.exe — Session Manager Subsystem</h3>
-<div class="outline-text-3" id="text-org6c80969">
+<div id="outline-container-org0c54c0d" class="outline-3">
+<h3 id="org0c54c0d">smss.exe — Session Manager Subsystem</h3>
+<div class="outline-text-3" id="text-org0c54c0d">
 <p>
 First user-mode process. Starts <code>csrss.exe</code> and <code>winlogon.exe</code>,
 sets environment variables, creates sessions.
@@ -1007,9 +1025,9 @@ sets environment variables, creates sessions.
 </table>
 </div>
 </div>
-<div id="outline-container-orga0b638d" class="outline-3">
-<h3 id="orga0b638d">csrss.exe — Client/Server Runtime Subsystem</h3>
-<div class="outline-text-3" id="text-orga0b638d">
+<div id="outline-container-org6de1ea7" class="outline-3">
+<h3 id="org6de1ea7">csrss.exe — Client/Server Runtime Subsystem</h3>
+<div class="outline-text-3" id="text-org6de1ea7">
 <p>
 Manages GUI rendering and console windows. One instance per
 session.
@@ -1057,9 +1075,9 @@ Common code injection target.
 </p>
 </div>
 </div>
-<div id="outline-container-orge6cfa38" class="outline-3">
-<h3 id="orge6cfa38">wininit.exe — Windows Initialisation</h3>
-<div class="outline-text-3" id="text-orge6cfa38">
+<div id="outline-container-orgb7c2a8b" class="outline-3">
+<h3 id="orgb7c2a8b">wininit.exe — Windows Initialisation</h3>
+<div class="outline-text-3" id="text-orgb7c2a8b">
 <p>
 Starts <code>services.exe</code>, <code>lsass.exe</code>, and <code>lsm.exe</code> for Session 0.
 One instance only.
@@ -1098,9 +1116,9 @@ One instance only.
 </table>
 </div>
 </div>
-<div id="outline-container-org379562f" class="outline-3">
-<h3 id="org379562f">services.exe — Service Control Manager</h3>
-<div class="outline-text-3" id="text-org379562f">
+<div id="outline-container-org90f63d6" class="outline-3">
+<h3 id="org90f63d6">services.exe — Service Control Manager</h3>
+<div class="outline-text-3" id="text-org90f63d6">
 <p>
 Manages all Windows services. Parent of most legitimate
 service processes.
@@ -1144,9 +1162,9 @@ or masquerades as a service.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc1e26dd" class="outline-3">
-<h3 id="orgc1e26dd">lsass.exe — Local Security Authority Subsystem</h3>
-<div class="outline-text-3" id="text-orgc1e26dd">
+<div id="outline-container-org7e412f7" class="outline-3">
+<h3 id="org7e412f7">lsass.exe — Local Security Authority Subsystem</h3>
+<div class="outline-text-3" id="text-org7e412f7">
 <p>
 Handles authentication, stores password hashes in memory,
 generates access tokens. Primary credential dumping target.
@@ -1206,9 +1224,9 @@ critical alert — Sysmon Event ID 10 captures this.
 </p>
 </div>
 </div>
-<div id="outline-container-org1c895a4" class="outline-3">
-<h3 id="org1c895a4">winlogon.exe — Windows Logon Application</h3>
-<div class="outline-text-3" id="text-org1c895a4">
+<div id="outline-container-org9ff05bb" class="outline-3">
+<h3 id="org9ff05bb">winlogon.exe — Windows Logon Application</h3>
+<div class="outline-text-3" id="text-org9ff05bb">
 <p>
 Handles interactive user sessions, loads user profiles,
 manages Ctrl+Alt+Del. One instance per interactive session.
@@ -1252,9 +1270,9 @@ manages Ctrl+Alt+Del. One instance per interactive session.
 </table>
 </div>
 </div>
-<div id="outline-container-org560296a" class="outline-3">
-<h3 id="org560296a">svchost.exe — Service Host</h3>
-<div class="outline-text-3" id="text-org560296a">
+<div id="outline-container-orga680b3a" class="outline-3">
+<h3 id="orga680b3a">svchost.exe — Service Host</h3>
+<div class="outline-text-3" id="text-orga680b3a">
 <p>
 Generic host for services running as DLLs. Many instances
 are normal — each groups related services.
@@ -1303,29 +1321,29 @@ Most common masquerade target — malware names itself
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_42ace5224aa94e82b37525f098059624>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_a927165a19054bb4aad293b9231c8e34>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_42ace5224aa94e82b37525f098059624=document.querySelector('button[name=btn_42ace5224aa94e82b37525f098059624]');
-copyBtnbtn_42ace5224aa94e82b37525f098059624.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Inspect services hosted by each svchost instance\nGet-WmiObject Win32_Service | Where-Object {$_.ProcessId -eq <PID>}\n\n# Or with tasklist\ntasklist /svc | findstr svchost\n\n# Check path — all legitimate instances run from System32\nGet-Process svchost | Select-Object Id, Path\n`);copyBtnbtn_42ace5224aa94e82b37525f098059624.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_42ace5224aa94e82b37525f098059624.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a927165a19054bb4aad293b9231c8e34=document.querySelector('button[name=btn_a927165a19054bb4aad293b9231c8e34]');
+copyBtnbtn_a927165a19054bb4aad293b9231c8e34.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Inspect services hosted by each svchost instance\nGet-WmiObject Win32_Service | Where-Object {$_.ProcessId -eq <PID>}\n\n# Or with tasklist\ntasklist /svc | findstr svchost\n\n# Check path — all legitimate instances run from System32\nGet-Process svchost | Select-Object Id, Path\n`);copyBtnbtn_a927165a19054bb4aad293b9231c8e34.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a927165a19054bb4aad293b9231c8e34.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Inspect services hosted by each svchost instance
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-WmiObject</span> Win32_Service | <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Where-Object</span> {<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">$_</span>.ProcessId <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">-eq</span> &lt;PID&gt;}
+<pre class="src src-powershell"># Inspect services hosted by each svchost instance
+Get-WmiObject Win32_Service | Where-Object {$_.ProcessId -eq &lt;PID&gt;}
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Or with tasklist
-</span>tasklist /svc | findstr svchost
+# Or with tasklist
+tasklist /svc | findstr svchost
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Check path &#8212; all legitimate instances run from System32
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-Process</span> svchost | <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Select-Object</span> Id, Path
+# Check path — all legitimate instances run from System32
+Get-Process svchost | Select-Object Id, Path
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4f01487" class="outline-3">
-<h3 id="org4f01487">explorer.exe — Windows Explorer</h3>
-<div class="outline-text-3" id="text-org4f01487">
+<div id="outline-container-orge6930e3" class="outline-3">
+<h3 id="orge6930e3">explorer.exe — Windows Explorer</h3>
+<div class="outline-text-3" id="text-orge6930e3">
 <p>
 User shell — desktop, taskbar, file manager. One instance per
 interactive user.
@@ -1375,15 +1393,15 @@ user-level privileges.
 </div>
 </div>
 </div>
-<div id="outline-container-org35a5a27" class="outline-2">
-<h2 id="org35a5a27">Key Detection Signals</h2>
-<div class="outline-text-2" id="text-org35a5a27">
+<div id="outline-container-org702d552" class="outline-2">
+<h2 id="org702d552">Key Detection Signals</h2>
+<div class="outline-text-2" id="text-org702d552">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_4fda86e6974747febd7b0b97aa6923c3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_6b15b962082c41168d0c1e57e12d6a7d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4fda86e6974747febd7b0b97aa6923c3=document.querySelector('button[name=btn_4fda86e6974747febd7b0b97aa6923c3]');
-copyBtnbtn_4fda86e6974747febd7b0b97aa6923c3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Wrong path       — any core process running outside System32\nWrong parent     — check against the table above\nMultiple instances where only one is expected\nNetwork connections from processes that shouldn't make them\n  (lsass.exe, smss.exe, wininit.exe)\nUnexpected child processes\nRunning under a user account instead of SYSTEM/LOCAL SERVICE\n`);copyBtnbtn_4fda86e6974747febd7b0b97aa6923c3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4fda86e6974747febd7b0b97aa6923c3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6b15b962082c41168d0c1e57e12d6a7d=document.querySelector('button[name=btn_6b15b962082c41168d0c1e57e12d6a7d]');
+copyBtnbtn_6b15b962082c41168d0c1e57e12d6a7d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Wrong path       — any core process running outside System32\nWrong parent     — check against the table above\nMultiple instances where only one is expected\nNetwork connections from processes that shouldn't make them\n  (lsass.exe, smss.exe, wininit.exe)\nUnexpected child processes\nRunning under a user account instead of SYSTEM/LOCAL SERVICE\n`);copyBtnbtn_6b15b962082c41168d0c1e57e12d6a7d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6b15b962082c41168d0c1e57e12d6a7d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1398,39 +1416,39 @@ Running under a user account instead of SYSTEM/LOCAL SERVICE
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgc7611d4" class="outline-2">
-<h2 id="orgc7611d4">Investigation Commands</h2>
-<div class="outline-text-2" id="text-orgc7611d4">
+<div id="outline-container-org1958715" class="outline-2">
+<h2 id="org1958715">Investigation Commands</h2>
+<div class="outline-text-2" id="text-org1958715">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_b6d2bc189fa24c268cba8e982e432b41>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_8ce04df5300c4891b5a59d9cda48e43a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b6d2bc189fa24c268cba8e982e432b41=document.querySelector('button[name=btn_b6d2bc189fa24c268cba8e982e432b41]');
-copyBtnbtn_b6d2bc189fa24c268cba8e982e432b41.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List all processes with parent IDs\nGet-WmiObject Win32_Process | Select-Object Name, ProcessId, ParentProcessId, ExecutablePath\n\n# Find processes not in System32\nGet-WmiObject Win32_Process |\n  Where-Object {$_.ExecutablePath -and $_.ExecutablePath -notlike \"*System32*\"} |\n  Select-Object Name, ProcessId, ExecutablePath\n\n# Check svchost instances and their services\ntasklist /svc | findstr svchost\n\n# Network connections with owning process\nGet-NetTCPConnection | Where-Object {$_.State -eq \"Established\"} |\n  Select-Object LocalPort, RemoteAddress, RemotePort, OwningProcess\n`);copyBtnbtn_b6d2bc189fa24c268cba8e982e432b41.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b6d2bc189fa24c268cba8e982e432b41.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8ce04df5300c4891b5a59d9cda48e43a=document.querySelector('button[name=btn_8ce04df5300c4891b5a59d9cda48e43a]');
+copyBtnbtn_8ce04df5300c4891b5a59d9cda48e43a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List all processes with parent IDs\nGet-WmiObject Win32_Process | Select-Object Name, ProcessId, ParentProcessId, ExecutablePath\n\n# Find processes not in System32\nGet-WmiObject Win32_Process |\n  Where-Object {$_.ExecutablePath -and $_.ExecutablePath -notlike \"*System32*\"} |\n  Select-Object Name, ProcessId, ExecutablePath\n\n# Check svchost instances and their services\ntasklist /svc | findstr svchost\n\n# Network connections with owning process\nGet-NetTCPConnection | Where-Object {$_.State -eq \"Established\"} |\n  Select-Object LocalPort, RemoteAddress, RemotePort, OwningProcess\n`);copyBtnbtn_8ce04df5300c4891b5a59d9cda48e43a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8ce04df5300c4891b5a59d9cda48e43a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">List all processes with parent IDs
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-WmiObject</span> Win32_Process | <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Select-Object</span> Name, ProcessId, ParentProcessId, ExecutablePath
+<pre class="src src-powershell"># List all processes with parent IDs
+Get-WmiObject Win32_Process | Select-Object Name, ProcessId, ParentProcessId, ExecutablePath
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Find processes not in System32
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-WmiObject</span> Win32_Process |
-  <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Where-Object</span> {<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">$_</span>.ExecutablePath <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">-and</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">$_</span>.ExecutablePath <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">-notlike</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"*System32*"</span>} |
-  <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Select-Object</span> Name, ProcessId, ExecutablePath
+# Find processes not in System32
+Get-WmiObject Win32_Process |
+  Where-Object {$_.ExecutablePath -and $_.ExecutablePath -notlike "*System32*"} |
+  Select-Object Name, ProcessId, ExecutablePath
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Check svchost instances and their services
-</span>tasklist /svc | findstr svchost
+# Check svchost instances and their services
+tasklist /svc | findstr svchost
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Network connections with owning process
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Get-NetTCPConnection</span> | <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Where-Object</span> {<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">$_</span>.State <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">-eq</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Established"</span>} |
-  <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Select-Object</span> LocalPort, RemoteAddress, RemotePort, OwningProcess
+# Network connections with owning process
+Get-NetTCPConnection | Where-Object {$_.State -eq "Established"} |
+  Select-Object LocalPort, RemoteAddress, RemotePort, OwningProcess
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-org92b39b7" class="outline-2">
-<h2 id="org92b39b7">Tips</h2>
-<div class="outline-text-2" id="text-org92b39b7">
+<div id="outline-container-org91117be" class="outline-2">
+<h2 id="org91117be">Tips</h2>
+<div class="outline-text-2" id="text-org91117be">
 <ul class="org-ul">
 <li>Sysinternals Process Explorer is the fastest tool for
 checking parent-child relationships and DLLs loaded into
@@ -1448,6 +1466,20 @@ indicator — it should never spawn children under normal conditions</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1455,6 +1487,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

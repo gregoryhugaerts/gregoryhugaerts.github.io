@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Enumeration</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc2e395c">Enumeration</a>
+<li><a href="#org1b940a6">Enumeration</a>
 <ul>
-<li><a href="#org5c54a3c">Description</a>
+<li><a href="#org7bf1e4d">Description</a>
 <ul>
-<li><a href="#orge1884bc">Purpose and Goal</a></li>
-<li><a href="#org8ab065e">Key Characteristics</a></li>
+<li><a href="#org39b8804">Purpose and Goal</a></li>
+<li><a href="#org85bd9ce">Key Characteristics</a></li>
 </ul>
 </li>
-<li><a href="#org4794160">Examples</a>
+<li><a href="#org7008260">Examples</a>
 <ul>
-<li><a href="#org649e0ce">. External Enumeration (Targeting the Network Perimeter)</a></li>
-<li><a href="#org2eb18dd">2. Internal Enumeration (After Initial Access)</a></li>
+<li><a href="#orgb9eeee0">. External Enumeration (Targeting the Network Perimeter)</a></li>
+<li><a href="#org19e288e">2. Internal Enumeration (After Initial Access)</a></li>
 </ul>
 </li>
 </ul>
@@ -887,20 +905,20 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc2e395c" class="outline-2">
-<h2 id="orgc2e395c">Enumeration</h2>
-<div class="outline-text-2" id="text-orgc2e395c">
+<div id="outline-container-org1b940a6" class="outline-2">
+<h2 id="org1b940a6">Enumeration</h2>
+<div class="outline-text-2" id="text-org1b940a6">
 </div>
-<div id="outline-container-org5c54a3c" class="outline-3">
-<h3 id="org5c54a3c">Description</h3>
-<div class="outline-text-3" id="text-org5c54a3c">
+<div id="outline-container-org7bf1e4d" class="outline-3">
+<h3 id="org7bf1e4d">Description</h3>
+<div class="outline-text-3" id="text-org7bf1e4d">
 <p>
 Enumeration is a critical, methodical step in the <b>pre-exploitation</b> phase of a penetration test or cyberattack, immediately following <b>reconnaissance</b>. While reconnaissance focuses on passive information gathering (e.g., searching public sources), enumeration is <b>active</b>, involving direct, non-intrusive queries to the target system.
 </p>
 </div>
-<div id="outline-container-orge1884bc" class="outline-4">
-<h4 id="orge1884bc">Purpose and Goal</h4>
-<div class="outline-text-4" id="text-orge1884bc">
+<div id="outline-container-org39b8804" class="outline-4">
+<h4 id="org39b8804">Purpose and Goal</h4>
+<div class="outline-text-4" id="text-org39b8804">
 <p>
 The primary goal of enumeration is to build a detailed and accurate map of the target's internal landscape by interacting directly with the running services. The gathered data provides the foundation for launching an informed exploitation attack.
 </p>
@@ -918,29 +936,29 @@ Information typically sought during enumeration includes:
 </ul>
 </div>
 </div>
-<div id="outline-container-org8ab065e" class="outline-4">
-<h4 id="org8ab065e">Key Characteristics</h4>
-<div class="outline-text-4" id="text-org8ab065e">
+<div id="outline-container-org85bd9ce" class="outline-4">
+<h4 id="org85bd9ce">Key Characteristics</h4>
+<div class="outline-text-4" id="text-org85bd9ce">
 <ul class="org-ul">
 <li><b>Active Interaction:</b> Enumeration techniques involve sending packets and requests to the target, meaning they can potentially be <b>detected</b> by intrusion detection systems (IDS) or logging mechanisms.</li>
 <li><b>Protocol Abuse:</b> Attackers often abuse standard, legitimate protocols (like DNS, LDAP, SMB, and SNMP) designed for network management to extract data that the service provides by default.</li>
-<li><b>Escalation:</b> After initial exploitation, a second phase of <b>internal enumeration</b> is performed on the compromised host to plan <a href="Lateral movement.html#lateral-movement">Lateral Movement</a> and <a href="Privilege Escalation.html#privilege-escalation">Privilege Escalation</a>.</li>
+<li><b>Escalation:</b> After initial exploitation, a second phase of <b>internal enumeration</b> is performed on the compromised host to plan <a href="20260314T005713--lateral-movement__concept_cybersecurity.html">Lateral movement</a> and <a href="20260314T005742--privilege-escalation__concept_cybersecurity.html">Privilege Escalation</a>.</li>
 </ul>
 
 <hr />
 </div>
 </div>
 </div>
-<div id="outline-container-org4794160" class="outline-3">
-<h3 id="org4794160">Examples</h3>
-<div class="outline-text-3" id="text-org4794160">
+<div id="outline-container-org7008260" class="outline-3">
+<h3 id="org7008260">Examples</h3>
+<div class="outline-text-3" id="text-org7008260">
 <p>
 Enumeration utilizes common network tools and built-in operating system utilities.
 </p>
 </div>
-<div id="outline-container-org649e0ce" class="outline-4">
-<h4 id="org649e0ce">. External Enumeration (Targeting the Network Perimeter)</h4>
-<div class="outline-text-4" id="text-org649e0ce">
+<div id="outline-container-orgb9eeee0" class="outline-4">
+<h4 id="orgb9eeee0">. External Enumeration (Targeting the Network Perimeter)</h4>
+<div class="outline-text-4" id="text-orgb9eeee0">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -986,9 +1004,9 @@ Enumeration utilizes common network tools and built-in operating system utilitie
 </table>
 </div>
 </div>
-<div id="outline-container-org2eb18dd" class="outline-4">
-<h4 id="org2eb18dd">2. Internal Enumeration (After Initial Access)</h4>
-<div class="outline-text-4" id="text-org2eb18dd">
+<div id="outline-container-org19e288e" class="outline-4">
+<h4 id="org19e288e">2. Internal Enumeration (After Initial Access)</h4>
+<div class="outline-text-4" id="text-org19e288e">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1038,6 +1056,20 @@ Enumeration utilizes common network tools and built-in operating system utilitie
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1045,6 +1077,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cloud Computing</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,27 +886,27 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8383e49">Service Models</a></li>
-<li><a href="#orga7623e2">Deployment Models</a></li>
-<li><a href="#orgcf6ee3b">Major Providers</a></li>
-<li><a href="#orgbecf5e5">Core Cloud Concepts</a>
+<li><a href="#org987b16c">Service Models</a></li>
+<li><a href="#orgcf97ac7">Deployment Models</a></li>
+<li><a href="#org9a9430d">Major Providers</a></li>
+<li><a href="#org7c19bc8">Core Cloud Concepts</a>
 <ul>
-<li><a href="#org7d1e51c">Shared Responsibility Model</a></li>
-<li><a href="#org1320e54">Regions and Availability Zones</a></li>
-<li><a href="#org0d4d87d">IAM — Identity and Access Management</a></li>
-<li><a href="#org18abede">Compute</a></li>
-<li><a href="#orgaa86eb8">Storage</a></li>
-<li><a href="#orgced3759">Networking</a></li>
+<li><a href="#org6f290e1">Shared Responsibility Model</a></li>
+<li><a href="#orgb94b7aa">Regions and Availability Zones</a></li>
+<li><a href="#org432c504">IAM — Identity and Access Management</a></li>
+<li><a href="#org5a18f62">Compute</a></li>
+<li><a href="#orgb4f8af2">Storage</a></li>
+<li><a href="#org5c48087">Networking</a></li>
 </ul>
 </li>
-<li><a href="#org5a53ef9">Security Relevance</a>
+<li><a href="#org6a0e611">Security Relevance</a>
 <ul>
-<li><a href="#org63fbd65">Common Cloud Misconfigurations</a></li>
-<li><a href="#orgb3d6c69">SSRF to Cloud Metadata</a></li>
-<li><a href="#org984ad6b">S3 Bucket Enumeration</a></li>
+<li><a href="#org162b837">Common Cloud Misconfigurations</a></li>
+<li><a href="#orgee0e9b2">SSRF to Cloud Metadata</a></li>
+<li><a href="#org306727a">S3 Bucket Enumeration</a></li>
 </ul>
 </li>
-<li><a href="#org201b9b1">Tips</a></li>
+<li><a href="#org4355c53">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -905,9 +923,9 @@ Related: <a href="20260314T003459==aws=ccp--aws-certified-cloud-practitioner__ar
          <a href="20260314T005647--infrastructure-as-code__concept_programming.html">Infrastructure as Code</a>
          <a href="20260314T005700--terraform__programming_tool.html">Terraform</a>
 </p>
-<div id="outline-container-org8383e49" class="outline-2">
-<h2 id="org8383e49">Service Models</h2>
-<div class="outline-text-2" id="text-org8383e49">
+<div id="outline-container-org987b16c" class="outline-2">
+<h2 id="org987b16c">Service Models</h2>
+<div class="outline-text-2" id="text-org987b16c">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -965,9 +983,9 @@ the less attack surface they directly control.
 </p>
 </div>
 </div>
-<div id="outline-container-orga7623e2" class="outline-2">
-<h2 id="orga7623e2">Deployment Models</h2>
-<div class="outline-text-2" id="text-orga7623e2">
+<div id="outline-container-orgcf97ac7" class="outline-2">
+<h2 id="orgcf97ac7">Deployment Models</h2>
+<div class="outline-text-2" id="text-orgcf97ac7">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1013,9 +1031,9 @@ the less attack surface they directly control.
 </table>
 </div>
 </div>
-<div id="outline-container-orgcf6ee3b" class="outline-2">
-<h2 id="orgcf6ee3b">Major Providers</h2>
-<div class="outline-text-2" id="text-orgcf6ee3b">
+<div id="outline-container-org9a9430d" class="outline-2">
+<h2 id="org9a9430d">Major Providers</h2>
+<div class="outline-text-2" id="text-org9a9430d">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1055,23 +1073,23 @@ the less attack surface they directly control.
 </table>
 </div>
 </div>
-<div id="outline-container-orgbecf5e5" class="outline-2">
-<h2 id="orgbecf5e5">Core Cloud Concepts</h2>
-<div class="outline-text-2" id="text-orgbecf5e5">
+<div id="outline-container-org7c19bc8" class="outline-2">
+<h2 id="org7c19bc8">Core Cloud Concepts</h2>
+<div class="outline-text-2" id="text-org7c19bc8">
 </div>
-<div id="outline-container-org7d1e51c" class="outline-3">
-<h3 id="org7d1e51c">Shared Responsibility Model</h3>
-<div class="outline-text-3" id="text-org7d1e51c">
+<div id="outline-container-org6f290e1" class="outline-3">
+<h3 id="org6f290e1">Shared Responsibility Model</h3>
+<div class="outline-text-3" id="text-org6f290e1">
 <p>
 Security responsibilities split between cloud provider and customer:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_94ebc684fb4b4f9b9d68156c368f2cee>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_bd2dfc31909342879cea9fa43be3c290>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_94ebc684fb4b4f9b9d68156c368f2cee=document.querySelector('button[name=btn_94ebc684fb4b4f9b9d68156c368f2cee]');
-copyBtnbtn_94ebc684fb4b4f9b9d68156c368f2cee.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Provider responsible for:\n— Physical security of data centres\n— Hypervisor and host OS security\n— Network infrastructure\n— Service availability\n\nCustomer responsible for:\n— Data classification and protection\n— Identity and access management (IAM)\n— OS and application patching (IaaS)\n— Network configuration (security groups, firewalls)\n— Encryption at rest and in transit\n`);copyBtnbtn_94ebc684fb4b4f9b9d68156c368f2cee.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_94ebc684fb4b4f9b9d68156c368f2cee.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bd2dfc31909342879cea9fa43be3c290=document.querySelector('button[name=btn_bd2dfc31909342879cea9fa43be3c290]');
+copyBtnbtn_bd2dfc31909342879cea9fa43be3c290.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Provider responsible for:\n— Physical security of data centres\n— Hypervisor and host OS security\n— Network infrastructure\n— Service availability\n\nCustomer responsible for:\n— Data classification and protection\n— Identity and access management (IAM)\n— OS and application patching (IaaS)\n— Network configuration (security groups, firewalls)\n— Encryption at rest and in transit\n`);copyBtnbtn_bd2dfc31909342879cea9fa43be3c290.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bd2dfc31909342879cea9fa43be3c290.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1097,9 +1115,9 @@ more than they actually do.
 </p>
 </div>
 </div>
-<div id="outline-container-org1320e54" class="outline-3">
-<h3 id="org1320e54">Regions and Availability Zones</h3>
-<div class="outline-text-3" id="text-org1320e54">
+<div id="outline-container-orgb94b7aa" class="outline-3">
+<h3 id="orgb94b7aa">Regions and Availability Zones</h3>
+<div class="outline-text-3" id="text-orgb94b7aa">
 <ul class="org-ul">
 <li><b>Region</b> — a geographic area containing multiple data centres</li>
 <li><b>Availability Zone (AZ)</b> — one or more physically separate
@@ -1115,20 +1133,20 @@ benefits.
 </p>
 </div>
 </div>
-<div id="outline-container-org0d4d87d" class="outline-3">
-<h3 id="org0d4d87d">IAM — Identity and Access Management</h3>
-<div class="outline-text-3" id="text-org0d4d87d">
+<div id="outline-container-org432c504" class="outline-3">
+<h3 id="org432c504">IAM — Identity and Access Management</h3>
+<div class="outline-text-3" id="text-org432c504">
 <p>
 Controls who can do what to which resources. The most common
 source of cloud security incidents.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_1e6db67ead104c25aa328843bf998252>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f5d285f278a348888f16df523f43af47>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1e6db67ead104c25aa328843bf998252=document.querySelector('button[name=btn_1e6db67ead104c25aa328843bf998252]');
-copyBtnbtn_1e6db67ead104c25aa328843bf998252.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Core concepts (AWS terminology, broadly applicable):\n— User: individual identity with credentials\n— Role: assumed identity with temporary credentials (no password)\n— Policy: JSON document defining allowed/denied actions\n— Principle of least privilege: grant only what is needed\n`);copyBtnbtn_1e6db67ead104c25aa328843bf998252.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1e6db67ead104c25aa328843bf998252.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f5d285f278a348888f16df523f43af47=document.querySelector('button[name=btn_f5d285f278a348888f16df523f43af47]');
+copyBtnbtn_f5d285f278a348888f16df523f43af47.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Core concepts (AWS terminology, broadly applicable):\n— User: individual identity with credentials\n— Role: assumed identity with temporary credentials (no password)\n— Policy: JSON document defining allowed/denied actions\n— Principle of least privilege: grant only what is needed\n`);copyBtnbtn_f5d285f278a348888f16df523f43af47.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f5d285f278a348888f16df523f43af47.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1141,9 +1159,9 @@ let res = copyTextToClipboard(`Core concepts (AWS terminology, broadly applicabl
 </div></div>
 </div>
 </div>
-<div id="outline-container-org18abede" class="outline-3">
-<h3 id="org18abede">Compute</h3>
-<div class="outline-text-3" id="text-org18abede">
+<div id="outline-container-org5a18f62" class="outline-3">
+<h3 id="org5a18f62">Compute</h3>
+<div class="outline-text-3" id="text-org5a18f62">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1182,9 +1200,9 @@ let res = copyTextToClipboard(`Core concepts (AWS terminology, broadly applicabl
 </table>
 </div>
 </div>
-<div id="outline-container-orgaa86eb8" class="outline-3">
-<h3 id="orgaa86eb8">Storage</h3>
-<div class="outline-text-3" id="text-orgaa86eb8">
+<div id="outline-container-orgb4f8af2" class="outline-3">
+<h3 id="orgb4f8af2">Storage</h3>
+<div class="outline-text-3" id="text-orgb4f8af2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1237,15 +1255,15 @@ let res = copyTextToClipboard(`Core concepts (AWS terminology, broadly applicabl
 </table>
 </div>
 </div>
-<div id="outline-container-orgced3759" class="outline-3">
-<h3 id="orgced3759">Networking</h3>
-<div class="outline-text-3" id="text-orgced3759">
+<div id="outline-container-org5c48087" class="outline-3">
+<h3 id="org5c48087">Networking</h3>
+<div class="outline-text-3" id="text-org5c48087">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c397f8a49ec5490e8281722f9039fd8c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d7112ae6be534becad557d9b08919cad>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c397f8a49ec5490e8281722f9039fd8c=document.querySelector('button[name=btn_c397f8a49ec5490e8281722f9039fd8c]');
-copyBtnbtn_c397f8a49ec5490e8281722f9039fd8c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`VPC / VNet — isolated virtual network for your resources\nSubnet — segment of a VPC with its own routing\nSecurity Group — stateful firewall applied per-resource\nNACL — stateless firewall applied per-subnet\nInternet Gateway — allows public internet access from a VPC\nNAT Gateway — allows outbound internet from private subnets\nLoad Balancer — distributes traffic across multiple instances\nVPN / Direct Connect — connects on-premises to cloud\n`);copyBtnbtn_c397f8a49ec5490e8281722f9039fd8c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c397f8a49ec5490e8281722f9039fd8c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d7112ae6be534becad557d9b08919cad=document.querySelector('button[name=btn_d7112ae6be534becad557d9b08919cad]');
+copyBtnbtn_d7112ae6be534becad557d9b08919cad.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`VPC / VNet — isolated virtual network for your resources\nSubnet — segment of a VPC with its own routing\nSecurity Group — stateful firewall applied per-resource\nNACL — stateless firewall applied per-subnet\nInternet Gateway — allows public internet access from a VPC\nNAT Gateway — allows outbound internet from private subnets\nLoad Balancer — distributes traffic across multiple instances\nVPN / Direct Connect — connects on-premises to cloud\n`);copyBtnbtn_d7112ae6be534becad557d9b08919cad.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d7112ae6be534becad557d9b08919cad.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1262,19 +1280,19 @@ VPN / Direct Connect &#8212; connects on-premises to cloud
 </div>
 </div>
 </div>
-<div id="outline-container-org5a53ef9" class="outline-2">
-<h2 id="org5a53ef9">Security Relevance</h2>
-<div class="outline-text-2" id="text-org5a53ef9">
+<div id="outline-container-org6a0e611" class="outline-2">
+<h2 id="org6a0e611">Security Relevance</h2>
+<div class="outline-text-2" id="text-org6a0e611">
 </div>
-<div id="outline-container-org63fbd65" class="outline-3">
-<h3 id="org63fbd65">Common Cloud Misconfigurations</h3>
-<div class="outline-text-3" id="text-org63fbd65">
+<div id="outline-container-org162b837" class="outline-3">
+<h3 id="org162b837">Common Cloud Misconfigurations</h3>
+<div class="outline-text-3" id="text-org162b837">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_caffb802ae384597bb3ad272717750e3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9e28b43813eb42928bee90fb952f4932>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_caffb802ae384597bb3ad272717750e3=document.querySelector('button[name=btn_caffb802ae384597bb3ad272717750e3]');
-copyBtnbtn_caffb802ae384597bb3ad272717750e3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`S3 buckets publicly readable — data exposure\nOverly permissive IAM policies — privilege escalation\nInstance metadata endpoint accessible from web app — SSRF → credential theft\nDefault security groups allowing all inbound traffic\nSecrets in environment variables — visible in console and logs\nUnencrypted storage volumes\nPublicly exposed databases (no VPC, public IP)\n`);copyBtnbtn_caffb802ae384597bb3ad272717750e3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_caffb802ae384597bb3ad272717750e3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9e28b43813eb42928bee90fb952f4932=document.querySelector('button[name=btn_9e28b43813eb42928bee90fb952f4932]');
+copyBtnbtn_9e28b43813eb42928bee90fb952f4932.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`S3 buckets publicly readable — data exposure\nOverly permissive IAM policies — privilege escalation\nInstance metadata endpoint accessible from web app — SSRF → credential theft\nDefault security groups allowing all inbound traffic\nSecrets in environment variables — visible in console and logs\nUnencrypted storage volumes\nPublicly exposed databases (no VPC, public IP)\n`);copyBtnbtn_9e28b43813eb42928bee90fb952f4932.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9e28b43813eb42928bee90fb952f4932.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1289,20 +1307,20 @@ Publicly exposed databases (no VPC, public IP)
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb3d6c69" class="outline-3">
-<h3 id="orgb3d6c69">SSRF to Cloud Metadata</h3>
-<div class="outline-text-3" id="text-orgb3d6c69">
+<div id="outline-container-orgee0e9b2" class="outline-3">
+<h3 id="orgee0e9b2">SSRF to Cloud Metadata</h3>
+<div class="outline-text-3" id="text-orgee0e9b2">
 <p>
 From a web application with SSRF, the instance metadata service
 is a critical target — it exposes IAM credentials:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8225182f4fed4151af68c074a484b567>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1018998c2fbd4dbda593539651f3f8d8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8225182f4fed4151af68c074a484b567=document.querySelector('button[name=btn_8225182f4fed4151af68c074a484b567]');
-copyBtnbtn_8225182f4fed4151af68c074a484b567.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# AWS IMDSv1 — no token required (legacy, being phased out)\ncurl http://169.254.169.254/latest/meta-data/\ncurl http://169.254.169.254/latest/meta-data/iam/security-credentials/\ncurl http://169.254.169.254/latest/meta-data/iam/security-credentials/<role-name>\n\n# Returns: AccessKeyId, SecretAccessKey, Token (temporary)\n# These can be used with AWS CLI from the attacker's machine\n\n# Azure\ncurl -H \"Metadata: true\" \"http://169.254.169.254/metadata/instance?api-version=2021-02-01\"\n\n# GCP\ncurl -H \"Metadata-Flavor: Google\" \\\n  \"http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token\"\n`);copyBtnbtn_8225182f4fed4151af68c074a484b567.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8225182f4fed4151af68c074a484b567.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1018998c2fbd4dbda593539651f3f8d8=document.querySelector('button[name=btn_1018998c2fbd4dbda593539651f3f8d8]');
+copyBtnbtn_1018998c2fbd4dbda593539651f3f8d8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# AWS IMDSv1 — no token required (legacy, being phased out)\ncurl http://169.254.169.254/latest/meta-data/\ncurl http://169.254.169.254/latest/meta-data/iam/security-credentials/\ncurl http://169.254.169.254/latest/meta-data/iam/security-credentials/<role-name>\n\n# Returns: AccessKeyId, SecretAccessKey, Token (temporary)\n# These can be used with AWS CLI from the attacker's machine\n\n# Azure\ncurl -H \"Metadata: true\" \"http://169.254.169.254/metadata/instance?api-version=2021-02-01\"\n\n# GCP\ncurl -H \"Metadata-Flavor: Google\" \\\n  \"http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token\"\n`);copyBtnbtn_1018998c2fbd4dbda593539651f3f8d8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1018998c2fbd4dbda593539651f3f8d8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1328,15 +1346,15 @@ See <a href="20260207T065427==ssrf--server-side-request-forgery__cybersecurity_t
 </p>
 </div>
 </div>
-<div id="outline-container-org984ad6b" class="outline-3">
-<h3 id="org984ad6b">S3 Bucket Enumeration</h3>
-<div class="outline-text-3" id="text-org984ad6b">
+<div id="outline-container-org306727a" class="outline-3">
+<h3 id="org306727a">S3 Bucket Enumeration</h3>
+<div class="outline-text-3" id="text-org306727a">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0f398f9162654d79b81a5248f1fde0d8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_5bece4ee7a1c4e2db1e31e720b99727b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0f398f9162654d79b81a5248f1fde0d8=document.querySelector('button[name=btn_0f398f9162654d79b81a5248f1fde0d8]');
-copyBtnbtn_0f398f9162654d79b81a5248f1fde0d8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Check if a bucket exists and is public\ncurl -I https://bucket-name.s3.amazonaws.com\ncurl -I https://s3.amazonaws.com/bucket-name\n\n# List bucket contents (if public or with credentials)\naws s3 ls s3://bucket-name --no-sign-request   # unauthenticated\naws s3 ls s3://bucket-name                     # authenticated\n\n# Common naming patterns to try\ncompany-name-backup\ncompany-name-dev\ncompany-name-staging\ncompany-name-assets\n`);copyBtnbtn_0f398f9162654d79b81a5248f1fde0d8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0f398f9162654d79b81a5248f1fde0d8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5bece4ee7a1c4e2db1e31e720b99727b=document.querySelector('button[name=btn_5bece4ee7a1c4e2db1e31e720b99727b]');
+copyBtnbtn_5bece4ee7a1c4e2db1e31e720b99727b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Check if a bucket exists and is public\ncurl -I https://bucket-name.s3.amazonaws.com\ncurl -I https://s3.amazonaws.com/bucket-name\n\n# List bucket contents (if public or with credentials)\naws s3 ls s3://bucket-name --no-sign-request   # unauthenticated\naws s3 ls s3://bucket-name                     # authenticated\n\n# Common naming patterns to try\ncompany-name-backup\ncompany-name-dev\ncompany-name-staging\ncompany-name-assets\n`);copyBtnbtn_5bece4ee7a1c4e2db1e31e720b99727b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5bece4ee7a1c4e2db1e31e720b99727b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1358,9 +1376,9 @@ company-name-assets
 </div>
 </div>
 </div>
-<div id="outline-container-org201b9b1" class="outline-2">
-<h2 id="org201b9b1">Tips</h2>
-<div class="outline-text-2" id="text-org201b9b1">
+<div id="outline-container-org4355c53" class="outline-2">
+<h2 id="org4355c53">Tips</h2>
+<div class="outline-text-2" id="text-org4355c53">
 <ul class="org-ul">
 <li>The shared responsibility model boundary is a frequent exam
 and real-world confusion point — in IaaS the customer owns
@@ -1378,6 +1396,20 @@ credential theft attack — check whether instances enforce it</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1385,6 +1417,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Testing</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org419f3df">Test Levels</a></li>
-<li><a href="#orgc704a22">pytest — Core Usage</a>
+<li><a href="#orgd31f380">Test Levels</a></li>
+<li><a href="#org6d58ac7">pytest — Core Usage</a>
 <ul>
-<li><a href="#org1441220">Fixtures — Shared Setup</a></li>
-<li><a href="#orgeff5a47">Parametrize — Run One Test Against Many Inputs</a></li>
-<li><a href="#orgc209e4a">Mocking — Isolating Units from Dependencies</a></li>
-<li><a href="#org3248716">Testing Exceptions</a></li>
+<li><a href="#org05fb462">Fixtures — Shared Setup</a></li>
+<li><a href="#orga40a91f">Parametrize — Run One Test Against Many Inputs</a></li>
+<li><a href="#org0d186f5">Mocking — Isolating Units from Dependencies</a></li>
+<li><a href="#org6204b56">Testing Exceptions</a></li>
 </ul>
 </li>
-<li><a href="#org9905433">Test-Driven Development (TDD)</a></li>
-<li><a href="#org9023dff">Coverage</a></li>
-<li><a href="#orgdbc2b87">Test Doubles — Terminology</a></li>
-<li><a href="#orgb34e71d">Tips</a></li>
+<li><a href="#org6913814">Test-Driven Development (TDD)</a></li>
+<li><a href="#orga8dea8a">Coverage</a></li>
+<li><a href="#org15f7a9a">Test Doubles — Terminology</a></li>
+<li><a href="#org70273ad">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -897,9 +915,9 @@ Related: <a href="20260206T060641--software-development-life-cycle__concept_prog
          <a href="20260206T060638--side-effects__concept_programming.html">Side Effects</a>
          <a href="20260210T195845--python__language_programming.html">Python</a>
 </p>
-<div id="outline-container-org419f3df" class="outline-2">
-<h2 id="org419f3df">Test Levels</h2>
-<div class="outline-text-2" id="text-org419f3df">
+<div id="outline-container-orgd31f380" class="outline-2">
+<h2 id="orgd31f380">Test Levels</h2>
+<div class="outline-text-2" id="text-orgd31f380">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -952,9 +970,9 @@ cost more to write and run, so use them more sparingly.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc704a22" class="outline-2">
-<h2 id="orgc704a22">pytest — Core Usage</h2>
-<div class="outline-text-2" id="text-orgc704a22">
+<div id="outline-container-org6d58ac7" class="outline-2">
+<h2 id="org6d58ac7">pytest — Core Usage</h2>
+<div class="outline-text-2" id="text-org6d58ac7">
 <p>
 pytest is the standard Python testing framework — less boilerplate
 than the built-in <code>unittest</code> module, plain <code>assert</code> statements
@@ -962,11 +980,11 @@ instead of special assertion methods.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_4108ec0636ef4908bae4ef13cf77bbb0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_39a6d024c29c426ca39b0069040f4448>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4108ec0636ef4908bae4ef13cf77bbb0=document.querySelector('button[name=btn_4108ec0636ef4908bae4ef13cf77bbb0]');
-copyBtnbtn_4108ec0636ef4908bae4ef13cf77bbb0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# test_calculator.py — pytest auto-discovers files/functions\n# matching test_*.py / *_test.py and def test_*()\n\ndef add(a, b):\n    return a + b\n\ndef test_add_positive():\n    assert add(2, 3) == 5\n\ndef test_add_negative():\n    assert add(-1, -1) == -2\n`);copyBtnbtn_4108ec0636ef4908bae4ef13cf77bbb0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4108ec0636ef4908bae4ef13cf77bbb0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_39a6d024c29c426ca39b0069040f4448=document.querySelector('button[name=btn_39a6d024c29c426ca39b0069040f4448]');
+copyBtnbtn_39a6d024c29c426ca39b0069040f4448.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# test_calculator.py — pytest auto-discovers files/functions\n# matching test_*.py / *_test.py and def test_*()\n\ndef add(a, b):\n    return a + b\n\ndef test_add_positive():\n    assert add(2, 3) == 5\n\ndef test_add_negative():\n    assert add(-1, -1) == -2\n`);copyBtnbtn_39a6d024c29c426ca39b0069040f4448.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_39a6d024c29c426ca39b0069040f4448.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -985,11 +1003,11 @@ let res = copyTextToClipboard(`# test_calculator.py — pytest auto-discovers fi
 </div></div>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6573d176ea384ab6b5b7265f6a238802>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_352f0a694afb47c38769cced3cabaca8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6573d176ea384ab6b5b7265f6a238802=document.querySelector('button[name=btn_6573d176ea384ab6b5b7265f6a238802]');
-copyBtnbtn_6573d176ea384ab6b5b7265f6a238802.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`pytest                    # run all tests in the current directory\npytest test_calculator.py # run a specific file\npytest -k \"positive\"      # run tests matching a name pattern\npytest -v                 # verbose — show each test name and result\npytest -x                 # stop at first failure\npytest --lf               # rerun only tests that failed last time\n`);copyBtnbtn_6573d176ea384ab6b5b7265f6a238802.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6573d176ea384ab6b5b7265f6a238802.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_352f0a694afb47c38769cced3cabaca8=document.querySelector('button[name=btn_352f0a694afb47c38769cced3cabaca8]');
+copyBtnbtn_352f0a694afb47c38769cced3cabaca8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`pytest                    # run all tests in the current directory\npytest test_calculator.py # run a specific file\npytest -k \"positive\"      # run tests matching a name pattern\npytest -v                 # verbose — show each test name and result\npytest -x                 # stop at first failure\npytest --lf               # rerun only tests that failed last time\n`);copyBtnbtn_352f0a694afb47c38769cced3cabaca8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_352f0a694afb47c38769cced3cabaca8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1002,20 +1020,20 @@ let res = copyTextToClipboard(`pytest                    # run all tests in the 
 </pre>
 </div></div>
 </div>
-<div id="outline-container-org1441220" class="outline-3">
-<h3 id="org1441220">Fixtures — Shared Setup</h3>
-<div class="outline-text-3" id="text-org1441220">
+<div id="outline-container-org05fb462" class="outline-3">
+<h3 id="org05fb462">Fixtures — Shared Setup</h3>
+<div class="outline-text-3" id="text-org05fb462">
 <p>
 Fixtures provide reusable setup/teardown, injected into test
 functions as arguments.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_07616be2400f4599b9d7c1444de69f47>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_11060699f5ed4ac98e62443f21c3fdd1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_07616be2400f4599b9d7c1444de69f47=document.querySelector('button[name=btn_07616be2400f4599b9d7c1444de69f47]');
-copyBtnbtn_07616be2400f4599b9d7c1444de69f47.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import pytest\n\n@pytest.fixture\ndef sample_data():\n    return {\"id\": 1, \"name\": \"test\"}\n\ndef test_uses_fixture(sample_data):\n    assert sample_data[\"name\"] == \"test\"\n\n# Fixture with teardown (code after yield runs after the test)\n@pytest.fixture\ndef db_connection():\n    conn = create_connection()\n    yield conn\n    conn.close()\n`);copyBtnbtn_07616be2400f4599b9d7c1444de69f47.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_07616be2400f4599b9d7c1444de69f47.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_11060699f5ed4ac98e62443f21c3fdd1=document.querySelector('button[name=btn_11060699f5ed4ac98e62443f21c3fdd1]');
+copyBtnbtn_11060699f5ed4ac98e62443f21c3fdd1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import pytest\n\n@pytest.fixture\ndef sample_data():\n    return {\"id\": 1, \"name\": \"test\"}\n\ndef test_uses_fixture(sample_data):\n    assert sample_data[\"name\"] == \"test\"\n\n# Fixture with teardown (code after yield runs after the test)\n@pytest.fixture\ndef db_connection():\n    conn = create_connection()\n    yield conn\n    conn.close()\n`);copyBtnbtn_11060699f5ed4ac98e62443f21c3fdd1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_11060699f5ed4ac98e62443f21c3fdd1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1038,15 +1056,15 @@ let res = copyTextToClipboard(`import pytest\n\n@pytest.fixture\ndef sample_data
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgeff5a47" class="outline-3">
-<h3 id="orgeff5a47">Parametrize — Run One Test Against Many Inputs</h3>
-<div class="outline-text-3" id="text-orgeff5a47">
+<div id="outline-container-orga40a91f" class="outline-3">
+<h3 id="orga40a91f">Parametrize — Run One Test Against Many Inputs</h3>
+<div class="outline-text-3" id="text-orga40a91f">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_1d76f42d42cb40d68a9761593e1907e4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_e680619052024b8bb1d5530227b63052>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_1d76f42d42cb40d68a9761593e1907e4=document.querySelector('button[name=btn_1d76f42d42cb40d68a9761593e1907e4]');
-copyBtnbtn_1d76f42d42cb40d68a9761593e1907e4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import pytest\n\n@pytest.mark.parametrize(\"a,b,expected\", [\n    (2, 3, 5),\n    (-1, 1, 0),\n    (0, 0, 0),\n])\ndef test_add(a, b, expected):\n    assert add(a, b) == expected\n`);copyBtnbtn_1d76f42d42cb40d68a9761593e1907e4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1d76f42d42cb40d68a9761593e1907e4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_e680619052024b8bb1d5530227b63052=document.querySelector('button[name=btn_e680619052024b8bb1d5530227b63052]');
+copyBtnbtn_e680619052024b8bb1d5530227b63052.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import pytest\n\n@pytest.mark.parametrize(\"a,b,expected\", [\n    (2, 3, 5),\n    (-1, 1, 0),\n    (0, 0, 0),\n])\ndef test_add(a, b, expected):\n    assert add(a, b) == expected\n`);copyBtnbtn_e680619052024b8bb1d5530227b63052.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e680619052024b8bb1d5530227b63052.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1063,9 +1081,9 @@ let res = copyTextToClipboard(`import pytest\n\n@pytest.mark.parametrize(\"a,b,e
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgc209e4a" class="outline-3">
-<h3 id="orgc209e4a">Mocking — Isolating Units from Dependencies</h3>
-<div class="outline-text-3" id="text-orgc209e4a">
+<div id="outline-container-org0d186f5" class="outline-3">
+<h3 id="org0d186f5">Mocking — Isolating Units from Dependencies</h3>
+<div class="outline-text-3" id="text-org0d186f5">
 <p>
 Replace a real dependency (API call, DB, filesystem) with a
 controlled stand-in so the unit test doesn't depend on external
@@ -1073,11 +1091,11 @@ state.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_48ce1f596e5743e1ba8abe310cc4ee42>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_9b3976ca0a9b49d59d6c4b4e7b899421>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_48ce1f596e5743e1ba8abe310cc4ee42=document.querySelector('button[name=btn_48ce1f596e5743e1ba8abe310cc4ee42]');
-copyBtnbtn_48ce1f596e5743e1ba8abe310cc4ee42.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`from unittest.mock import Mock, patch\n\ndef test_with_mock():\n    mock_api = Mock()\n    mock_api.get_user.return_value = {\"id\": 1, \"name\": \"test\"}\n    result = mock_api.get_user()\n    assert result[\"name\"] == \"test\"\n\n# Patch a function at the point it's imported, not where it's defined\n@patch(\"mymodule.requests.get\")\ndef test_api_call(mock_get):\n    mock_get.return_value.status_code = 200\n    mock_get.return_value.json.return_value = {\"status\": \"ok\"}\n    # code under test calls requests.get() here — receives the mock instead\n`);copyBtnbtn_48ce1f596e5743e1ba8abe310cc4ee42.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_48ce1f596e5743e1ba8abe310cc4ee42.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9b3976ca0a9b49d59d6c4b4e7b899421=document.querySelector('button[name=btn_9b3976ca0a9b49d59d6c4b4e7b899421]');
+copyBtnbtn_9b3976ca0a9b49d59d6c4b4e7b899421.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`from unittest.mock import Mock, patch\n\ndef test_with_mock():\n    mock_api = Mock()\n    mock_api.get_user.return_value = {\"id\": 1, \"name\": \"test\"}\n    result = mock_api.get_user()\n    assert result[\"name\"] == \"test\"\n\n# Patch a function at the point it's imported, not where it's defined\n@patch(\"mymodule.requests.get\")\ndef test_api_call(mock_get):\n    mock_get.return_value.status_code = 200\n    mock_get.return_value.json.return_value = {\"status\": \"ok\"}\n    # code under test calls requests.get() here — receives the mock instead\n`);copyBtnbtn_9b3976ca0a9b49d59d6c4b4e7b899421.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9b3976ca0a9b49d59d6c4b4e7b899421.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1099,15 +1117,15 @@ let res = copyTextToClipboard(`from unittest.mock import Mock, patch\n\ndef test
 </div></div>
 </div>
 </div>
-<div id="outline-container-org3248716" class="outline-3">
-<h3 id="org3248716">Testing Exceptions</h3>
-<div class="outline-text-3" id="text-org3248716">
+<div id="outline-container-org6204b56" class="outline-3">
+<h3 id="org6204b56">Testing Exceptions</h3>
+<div class="outline-text-3" id="text-org6204b56">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_4e1e8513091a487391fbe709694ceaac>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_64e6eaa21af4404c83538fd7f1fdf8fc>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4e1e8513091a487391fbe709694ceaac=document.querySelector('button[name=btn_4e1e8513091a487391fbe709694ceaac]');
-copyBtnbtn_4e1e8513091a487391fbe709694ceaac.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import pytest\n\ndef divide(a, b):\n    if b == 0:\n        raise ValueError(\"Cannot divide by zero\")\n    return a / b\n\ndef test_divide_by_zero_raises():\n    with pytest.raises(ValueError, match=\"Cannot divide by zero\"):\n        divide(10, 0)\n`);copyBtnbtn_4e1e8513091a487391fbe709694ceaac.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4e1e8513091a487391fbe709694ceaac.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_64e6eaa21af4404c83538fd7f1fdf8fc=document.querySelector('button[name=btn_64e6eaa21af4404c83538fd7f1fdf8fc]');
+copyBtnbtn_64e6eaa21af4404c83538fd7f1fdf8fc.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import pytest\n\ndef divide(a, b):\n    if b == 0:\n        raise ValueError(\"Cannot divide by zero\")\n    return a / b\n\ndef test_divide_by_zero_raises():\n    with pytest.raises(ValueError, match=\"Cannot divide by zero\"):\n        divide(10, 0)\n`);copyBtnbtn_64e6eaa21af4404c83538fd7f1fdf8fc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_64e6eaa21af4404c83538fd7f1fdf8fc.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1126,9 +1144,9 @@ let res = copyTextToClipboard(`import pytest\n\ndef divide(a, b):\n    if b == 0
 </div>
 </div>
 </div>
-<div id="outline-container-org9905433" class="outline-2">
-<h2 id="org9905433">Test-Driven Development (TDD)</h2>
-<div class="outline-text-2" id="text-org9905433">
+<div id="outline-container-org6913814" class="outline-2">
+<h2 id="org6913814">Test-Driven Development (TDD)</h2>
+<div class="outline-text-2" id="text-org6913814">
 <p>
 Write the test before the implementation. The cycle:
 </p>
@@ -1148,20 +1166,20 @@ than as a separate task done (or skipped) afterward.
 </p>
 </div>
 </div>
-<div id="outline-container-org9023dff" class="outline-2">
-<h2 id="org9023dff">Coverage</h2>
-<div class="outline-text-2" id="text-org9023dff">
+<div id="outline-container-orga8dea8a" class="outline-2">
+<h2 id="orga8dea8a">Coverage</h2>
+<div class="outline-text-2" id="text-orga8dea8a">
 <p>
 Coverage measures what percentage of your code executes during the
 test suite — not whether the code is correct, only whether it ran.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_6eb00594a74b43fe8a2f241db3532e2c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_3bfb37ff9d9c433fa07f48062452446c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6eb00594a74b43fe8a2f241db3532e2c=document.querySelector('button[name=btn_6eb00594a74b43fe8a2f241db3532e2c]');
-copyBtnbtn_6eb00594a74b43fe8a2f241db3532e2c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`pip install pytest-cov --break-system-packages\npytest --cov=mymodule --cov-report=term-missing\n`);copyBtnbtn_6eb00594a74b43fe8a2f241db3532e2c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6eb00594a74b43fe8a2f241db3532e2c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3bfb37ff9d9c433fa07f48062452446c=document.querySelector('button[name=btn_3bfb37ff9d9c433fa07f48062452446c]');
+copyBtnbtn_3bfb37ff9d9c433fa07f48062452446c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`pip install pytest-cov --break-system-packages\npytest --cov=mymodule --cov-report=term-missing\n`);copyBtnbtn_3bfb37ff9d9c433fa07f48062452446c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3bfb37ff9d9c433fa07f48062452446c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1178,9 +1196,9 @@ quality target in itself.
 </p>
 </div>
 </div>
-<div id="outline-container-orgdbc2b87" class="outline-2">
-<h2 id="orgdbc2b87">Test Doubles — Terminology</h2>
-<div class="outline-text-2" id="text-orgdbc2b87">
+<div id="outline-container-org15f7a9a" class="outline-2">
+<h2 id="org15f7a9a">Test Doubles — Terminology</h2>
+<div class="outline-text-2" id="text-org15f7a9a">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1229,9 +1247,9 @@ terminology matters more in discussion than in day-to-day code.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb34e71d" class="outline-2">
-<h2 id="orgb34e71d">Tips</h2>
-<div class="outline-text-2" id="text-orgb34e71d">
+<div id="outline-container-org70273ad" class="outline-2">
+<h2 id="org70273ad">Tips</h2>
+<div class="outline-text-2" id="text-org70273ad">
 <ul class="org-ul">
 <li>Name tests for the behaviour they verify, not the implementation
 detail — <code>test_add_returns_sum_of_two_positive_numbers</code> ages
@@ -1255,6 +1273,20 @@ delete it without checking which one is actually correct</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1262,6 +1294,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

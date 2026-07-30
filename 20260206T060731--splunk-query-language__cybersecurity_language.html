@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Splunk Query Language</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,15 +886,15 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8d9a4c5">Splunk Query Language</a>
+<li><a href="#org072fb3c">Splunk Query Language</a>
 <ul>
-<li><a href="#org706ef4a">Core Structure</a></li>
-<li><a href="#orgfc74fa4">Common Commands and Usage</a></li>
-<li><a href="#org194ee9a">Examples</a>
+<li><a href="#org9476737">Core Structure</a></li>
+<li><a href="#org9d96ec1">Common Commands and Usage</a></li>
+<li><a href="#orgdcd2bb0">Examples</a>
 <ul>
-<li><a href="#orgaf720d8">Example : Basic Search for Errors</a></li>
-<li><a href="#orgcbe93ab">Example 2: Counting Errors by Server</a></li>
-<li><a href="#orgfdd234e">Example 3: Creating a Report of Top Talkers</a></li>
+<li><a href="#orgc151cf3">Example : Basic Search for Errors</a></li>
+<li><a href="#orgc437b0b">Example 2: Counting Errors by Server</a></li>
+<li><a href="#orgac7f0d4">Example 3: Creating a Report of Top Talkers</a></li>
 </ul>
 </li>
 </ul>
@@ -884,26 +902,26 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-org8d9a4c5" class="outline-2">
-<h2 id="org8d9a4c5">Splunk Query Language</h2>
-<div class="outline-text-2" id="text-org8d9a4c5">
+<div id="outline-container-org072fb3c" class="outline-2">
+<h2 id="org072fb3c">Splunk Query Language</h2>
+<div class="outline-text-2" id="text-org072fb3c">
 <p>
-Splunk Query Language, also known as SPL, is the language used to interact with the <a href="Splunk.html#splunk">Splunk</a> data platform.
+Splunk Query Language, also known as SPL, is the language used to interact with the <a href="20260213T111158--splunk__cybersecurity_tool.html">Splunk</a> data platform.
 </p>
 </div>
-<div id="outline-container-org706ef4a" class="outline-3">
-<h3 id="org706ef4a">Core Structure</h3>
-<div class="outline-text-3" id="text-org706ef4a">
+<div id="outline-container-org9476737" class="outline-3">
+<h3 id="org9476737">Core Structure</h3>
+<div class="outline-text-3" id="text-org9476737">
 <p>
 The fundamental structure of an SPL query is a series of commands chained together using the pipe <code>|</code> character. The query flows from left to right, where the output of one command becomes the input for the next.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SPL</span><button class='copyBtn' name=btn_b1e94117458c46d398d0a284059dfb64>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SPL</span><button class='copyBtn' name=btn_5eead199cc4c463aba90b1414cfb2248>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b1e94117458c46d398d0a284059dfb64=document.querySelector('button[name=btn_b1e94117458c46d398d0a284059dfb64]');
-copyBtnbtn_b1e94117458c46d398d0a284059dfb64.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`search_criteria | transforming_command1 | transforming_command2 ...\n`);copyBtnbtn_b1e94117458c46d398d0a284059dfb64.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b1e94117458c46d398d0a284059dfb64.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5eead199cc4c463aba90b1414cfb2248=document.querySelector('button[name=btn_5eead199cc4c463aba90b1414cfb2248]');
+copyBtnbtn_5eead199cc4c463aba90b1414cfb2248.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`search_criteria | transforming_command1 | transforming_command2 ...\n`);copyBtnbtn_5eead199cc4c463aba90b1414cfb2248.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5eead199cc4c463aba90b1414cfb2248.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -917,9 +935,9 @@ let res = copyTextToClipboard(`search_criteria | transforming_command1 | transfo
 </ol>
 </div>
 </div>
-<div id="outline-container-orgfc74fa4" class="outline-3">
-<h3 id="orgfc74fa4">Common Commands and Usage</h3>
-<div class="outline-text-3" id="text-orgfc74fa4">
+<div id="outline-container-org9d96ec1" class="outline-3">
+<h3 id="org9d96ec1">Common Commands and Usage</h3>
+<div class="outline-text-3" id="text-org9d96ec1">
 <p>
 Here are some of the most fundamental commands you will use in SPL:
 </p>
@@ -953,23 +971,23 @@ Here are some of the most fundamental commands you will use in SPL:
 </ul>
 </div>
 </div>
-<div id="outline-container-org194ee9a" class="outline-3">
-<h3 id="org194ee9a">Examples</h3>
-<div class="outline-text-3" id="text-org194ee9a">
+<div id="outline-container-orgdcd2bb0" class="outline-3">
+<h3 id="orgdcd2bb0">Examples</h3>
+<div class="outline-text-3" id="text-orgdcd2bb0">
 </div>
-<div id="outline-container-orgaf720d8" class="outline-4">
-<h4 id="orgaf720d8">Example : Basic Search for Errors</h4>
-<div class="outline-text-4" id="text-orgaf720d8">
+<div id="outline-container-orgc151cf3" class="outline-4">
+<h4 id="orgc151cf3">Example : Basic Search for Errors</h4>
+<div class="outline-text-4" id="text-orgc151cf3">
 <p>
 Find all events from web servers that resulted in an error (HTTP status codes 400-599).
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SPL</span><button class='copyBtn' name=btn_05a940b23ea145ff9a8442f28f97a1fd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SPL</span><button class='copyBtn' name=btn_656d8755c6614361bd9d07a77eec8f21>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_05a940b23ea145ff9a8442f28f97a1fd=document.querySelector('button[name=btn_05a940b23ea145ff9a8442f28f97a1fd]');
-copyBtnbtn_05a940b23ea145ff9a8442f28f97a1fd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`index=web sourcetype=access_log status>=400\n`);copyBtnbtn_05a940b23ea145ff9a8442f28f97a1fd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_05a940b23ea145ff9a8442f28f97a1fd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_656d8755c6614361bd9d07a77eec8f21=document.querySelector('button[name=btn_656d8755c6614361bd9d07a77eec8f21]');
+copyBtnbtn_656d8755c6614361bd9d07a77eec8f21.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`index=web sourcetype=access_log status>=400\n`);copyBtnbtn_656d8755c6614361bd9d07a77eec8f21.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_656d8755c6614361bd9d07a77eec8f21.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -983,19 +1001,19 @@ let res = copyTextToClipboard(`index=web sourcetype=access_log status>=400\n`);c
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcbe93ab" class="outline-4">
-<h4 id="orgcbe93ab">Example 2: Counting Errors by Server</h4>
-<div class="outline-text-4" id="text-orgcbe93ab">
+<div id="outline-container-orgc437b0b" class="outline-4">
+<h4 id="orgc437b0b">Example 2: Counting Errors by Server</h4>
+<div class="outline-text-4" id="text-orgc437b0b">
 <p>
 Count the number of errors and group them by the web server (host).
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SPL</span><button class='copyBtn' name=btn_19e980696d6b43bd8fd279bf7e47fc0e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SPL</span><button class='copyBtn' name=btn_a7e5b58c2b8a4446998aa777467771a8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_19e980696d6b43bd8fd279bf7e47fc0e=document.querySelector('button[name=btn_19e980696d6b43bd8fd279bf7e47fc0e]');
-copyBtnbtn_19e980696d6b43bd8fd279bf7e47fc0e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`index=web sourcetype=access_log status>=400 | stats count by host\n`);copyBtnbtn_19e980696d6b43bd8fd279bf7e47fc0e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_19e980696d6b43bd8fd279bf7e47fc0e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a7e5b58c2b8a4446998aa777467771a8=document.querySelector('button[name=btn_a7e5b58c2b8a4446998aa777467771a8]');
+copyBtnbtn_a7e5b58c2b8a4446998aa777467771a8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`index=web sourcetype=access_log status>=400 | stats count by host\n`);copyBtnbtn_a7e5b58c2b8a4446998aa777467771a8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a7e5b58c2b8a4446998aa777467771a8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1008,19 +1026,19 @@ let res = copyTextToClipboard(`index=web sourcetype=access_log status>=400 | sta
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfdd234e" class="outline-4">
-<h4 id="orgfdd234e">Example 3: Creating a Report of Top Talkers</h4>
-<div class="outline-text-4" id="text-orgfdd234e">
+<div id="outline-container-orgac7f0d4" class="outline-4">
+<h4 id="orgac7f0d4">Example 3: Creating a Report of Top Talkers</h4>
+<div class="outline-text-4" id="text-orgac7f0d4">
 <p>
 Find the top 10 client IPs generating traffic, sort them, and present the results in a clean table.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SPL</span><button class='copyBtn' name=btn_3cf40dac18784102839c8cbdcbbea5e5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SPL</span><button class='copyBtn' name=btn_1e030c55cdc14b9987dbbd7105b1113a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3cf40dac18784102839c8cbdcbbea5e5=document.querySelector('button[name=btn_3cf40dac18784102839c8cbdcbbea5e5]');
-copyBtnbtn_3cf40dac18784102839c8cbdcbbea5e5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`index=network sourcetype=firewall \n| top limit=10 src_ip \n| rename src_ip as \"Client IP\", count as \"Connections\"\n| table \"Client IP\", Connections\n`);copyBtnbtn_3cf40dac18784102839c8cbdcbbea5e5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3cf40dac18784102839c8cbdcbbea5e5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1e030c55cdc14b9987dbbd7105b1113a=document.querySelector('button[name=btn_1e030c55cdc14b9987dbbd7105b1113a]');
+copyBtnbtn_1e030c55cdc14b9987dbbd7105b1113a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`index=network sourcetype=firewall \n| top limit=10 src_ip \n| rename src_ip as \"Client IP\", count as \"Connections\"\n| table \"Client IP\", Connections\n`);copyBtnbtn_1e030c55cdc14b9987dbbd7105b1113a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1e030c55cdc14b9987dbbd7105b1113a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1042,6 +1060,20 @@ let res = copyTextToClipboard(`index=network sourcetype=firewall \n| top limit=1
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1049,6 +1081,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

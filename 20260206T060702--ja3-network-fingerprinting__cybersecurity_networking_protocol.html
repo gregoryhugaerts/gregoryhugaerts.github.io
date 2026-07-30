@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JA3 Network Fingerprinting</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org28caf31">How the Hash is Built</a></li>
-<li><a href="#org2bcfb15">Blue Team Use Cases</a>
+<li><a href="#orgbb16255">How the Hash is Built</a></li>
+<li><a href="#org76e65c5">Blue Team Use Cases</a>
 <ul>
-<li><a href="#org9c17a67">Malware Detection</a></li>
-<li><a href="#orge146086">Threat Hunting in Wireshark</a></li>
-<li><a href="#org4c74dda">Zeek Detection</a></li>
-<li><a href="#orge9c63df">Detection Rule Integration</a></li>
+<li><a href="#orgc604c5a">Malware Detection</a></li>
+<li><a href="#org7338ed6">Threat Hunting in Wireshark</a></li>
+<li><a href="#orgb89c010">Zeek Detection</a></li>
+<li><a href="#orgae583d2">Detection Rule Integration</a></li>
 </ul>
 </li>
-<li><a href="#orgdfb0de7">Red Team Considerations</a></li>
-<li><a href="#org77ed03e">JA3S — Server Fingerprinting</a></li>
-<li><a href="#org73e03b1">Limitations</a></li>
-<li><a href="#org79f33b7">Tips</a></li>
+<li><a href="#org5816715">Red Team Considerations</a></li>
+<li><a href="#org5ad0f09">JA3S — Server Fingerprinting</a></li>
+<li><a href="#org52f34cf">Limitations</a></li>
+<li><a href="#org3d46f31">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -905,20 +923,20 @@ Related: <a href="20260206T060703--ja4-network-fingerprinting__cybersecurity_net
          <a href="20260213T104035--network-traffic-analysis__concept_cybersecurity.html">Network Traffic Analysis</a>
          <a href="20260213T105110--zeek__cybersecurity_networking_tool.html">Zeek</a>
 </p>
-<div id="outline-container-org28caf31" class="outline-2">
-<h2 id="org28caf31">How the Hash is Built</h2>
-<div class="outline-text-2" id="text-org28caf31">
+<div id="outline-container-orgbb16255" class="outline-2">
+<h2 id="orgbb16255">How the Hash is Built</h2>
+<div class="outline-text-2" id="text-orgbb16255">
 <p>
 JA3 extracts five fields from the TLS ClientHello and concatenates
 them before hashing:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_72cd5a8e181045bfb8cafb69306074da>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ed4d418dccd44b31a43db562ce090924>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_72cd5a8e181045bfb8cafb69306074da=document.querySelector('button[name=btn_72cd5a8e181045bfb8cafb69306074da]');
-copyBtnbtn_72cd5a8e181045bfb8cafb69306074da.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Fields extracted:\n1. TLS Version\n2. Cipher Suites (list of all offered, excluding GREASE values)\n3. Extensions (list of extension types)\n4. Elliptic Curves (supported groups)\n5. Elliptic Curve Point Formats\n\nFormat: TLSVersion,CipherSuites,Extensions,EllipticCurves,EllipticCurvePointFormats\nExample: 771,4866-4867-4865-255,0-11-10-35-22-23-13-43-45-51-21,29-23-24-25-256-257,0\n\nFinal step: MD5 hash of the concatenated string\nResult: 772a34cbf875ef9d1b4a8cfd86e5b1be\n`);copyBtnbtn_72cd5a8e181045bfb8cafb69306074da.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_72cd5a8e181045bfb8cafb69306074da.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ed4d418dccd44b31a43db562ce090924=document.querySelector('button[name=btn_ed4d418dccd44b31a43db562ce090924]');
+copyBtnbtn_ed4d418dccd44b31a43db562ce090924.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Fields extracted:\n1. TLS Version\n2. Cipher Suites (list of all offered, excluding GREASE values)\n3. Extensions (list of extension types)\n4. Elliptic Curves (supported groups)\n5. Elliptic Curve Point Formats\n\nFormat: TLSVersion,CipherSuites,Extensions,EllipticCurves,EllipticCurvePointFormats\nExample: 771,4866-4867-4865-255,0-11-10-35-22-23-13-43-45-51-21,29-23-24-25-256-257,0\n\nFinal step: MD5 hash of the concatenated string\nResult: 772a34cbf875ef9d1b4a8cfd86e5b1be\n`);copyBtnbtn_ed4d418dccd44b31a43db562ce090924.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ed4d418dccd44b31a43db562ce090924.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -944,13 +962,13 @@ that is fingerprinted.
 </p>
 </div>
 </div>
-<div id="outline-container-org2bcfb15" class="outline-2">
-<h2 id="org2bcfb15">Blue Team Use Cases</h2>
-<div class="outline-text-2" id="text-org2bcfb15">
+<div id="outline-container-org76e65c5" class="outline-2">
+<h2 id="org76e65c5">Blue Team Use Cases</h2>
+<div class="outline-text-2" id="text-org76e65c5">
 </div>
-<div id="outline-container-org9c17a67" class="outline-3">
-<h3 id="org9c17a67">Malware Detection</h3>
-<div class="outline-text-3" id="text-org9c17a67">
+<div id="outline-container-orgc604c5a" class="outline-3">
+<h3 id="orgc604c5a">Malware Detection</h3>
+<div class="outline-text-3" id="text-orgc604c5a">
 <p>
 Known malware families have consistent JA3 hashes because their
 TLS implementation does not change between infections. A JA3
@@ -958,11 +976,11 @@ blocklist flags known-bad clients before any payload is inspected.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_03a178774a7b4bfcb8e1b64166d85ccc>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_051e2af552a748ad81c781ab3cf52f5a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_03a178774a7b4bfcb8e1b64166d85ccc=document.querySelector('button[name=btn_03a178774a7b4bfcb8e1b64166d85ccc]');
-copyBtnbtn_03a178774a7b4bfcb8e1b64166d85ccc.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Published JA3 databases and threat intel feeds:\n# — https://sslbl.abuse.ch/ja3-fingerprints/  (abuse.ch blocklist)\n# — Recorded Future, Mandiant, and other threat intel vendors\n#   publish JA3 hashes for known malware families\n`);copyBtnbtn_03a178774a7b4bfcb8e1b64166d85ccc.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_03a178774a7b4bfcb8e1b64166d85ccc.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_051e2af552a748ad81c781ab3cf52f5a=document.querySelector('button[name=btn_051e2af552a748ad81c781ab3cf52f5a]');
+copyBtnbtn_051e2af552a748ad81c781ab3cf52f5a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Published JA3 databases and threat intel feeds:\n# — https://sslbl.abuse.ch/ja3-fingerprints/  (abuse.ch blocklist)\n# — Recorded Future, Mandiant, and other threat intel vendors\n#   publish JA3 hashes for known malware families\n`);copyBtnbtn_051e2af552a748ad81c781ab3cf52f5a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_051e2af552a748ad81c781ab3cf52f5a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -974,15 +992,15 @@ let res = copyTextToClipboard(`# Published JA3 databases and threat intel feeds:
 </div></div>
 </div>
 </div>
-<div id="outline-container-orge146086" class="outline-3">
-<h3 id="orge146086">Threat Hunting in Wireshark</h3>
-<div class="outline-text-3" id="text-orge146086">
+<div id="outline-container-org7338ed6" class="outline-3">
+<h3 id="org7338ed6">Threat Hunting in Wireshark</h3>
+<div class="outline-text-3" id="text-org7338ed6">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_a527d9d493cc443ab6f5860ab5e72e1d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_401b18dc87ba43dfa2c82d51e4fc06dd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a527d9d493cc443ab6f5860ab5e72e1d=document.querySelector('button[name=btn_a527d9d493cc443ab6f5860ab5e72e1d]');
-copyBtnbtn_a527d9d493cc443ab6f5860ab5e72e1d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Wireshark JA3 display (requires ja3 plugin or recent version)\n# Filter for a specific hash\ntls.handshake.ja3 == \"772a34cbf875ef9d1b4a8cfd86e5b1be\"\n\n# View JA3 column: right-click column header → Column Preferences\n# → Add → Field: tls.handshake.ja3\n`);copyBtnbtn_a527d9d493cc443ab6f5860ab5e72e1d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a527d9d493cc443ab6f5860ab5e72e1d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_401b18dc87ba43dfa2c82d51e4fc06dd=document.querySelector('button[name=btn_401b18dc87ba43dfa2c82d51e4fc06dd]');
+copyBtnbtn_401b18dc87ba43dfa2c82d51e4fc06dd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Wireshark JA3 display (requires ja3 plugin or recent version)\n# Filter for a specific hash\ntls.handshake.ja3 == \"772a34cbf875ef9d1b4a8cfd86e5b1be\"\n\n# View JA3 column: right-click column header → Column Preferences\n# → Add → Field: tls.handshake.ja3\n`);copyBtnbtn_401b18dc87ba43dfa2c82d51e4fc06dd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_401b18dc87ba43dfa2c82d51e4fc06dd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -996,19 +1014,19 @@ tls.handshake.ja3 == "772a34cbf875ef9d1b4a8cfd86e5b1be"
 </div></div>
 </div>
 </div>
-<div id="outline-container-org4c74dda" class="outline-3">
-<h3 id="org4c74dda">Zeek Detection</h3>
-<div class="outline-text-3" id="text-org4c74dda">
+<div id="outline-container-orgb89c010" class="outline-3">
+<h3 id="orgb89c010">Zeek Detection</h3>
+<div class="outline-text-3" id="text-orgb89c010">
 <p>
 Zeek extracts JA3 hashes automatically into SSL logs:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>ZEEK</span><button class='copyBtn' name=btn_9418431f745245fc8c2191bf29325d4f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>ZEEK</span><button class='copyBtn' name=btn_6ab8d6765db54855b07eecb286b670dd>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9418431f745245fc8c2191bf29325d4f=document.querySelector('button[name=btn_9418431f745245fc8c2191bf29325d4f]');
-copyBtnbtn_9418431f745245fc8c2191bf29325d4f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# ssl.log contains ja3 and ja3s fields\n# Zeek Intel framework — block known-bad hashes\ncat /opt/zeek/share/zeek/intel/ja3_blocklist.dat\n\n# Query ssl.log for a specific hash\ncat ssl.log | zeek-cut id.orig_h id.resp_h ja3 ja3s \\\n  | grep \"772a34cbf875ef9d1b4a8cfd86e5b1be\"\n`);copyBtnbtn_9418431f745245fc8c2191bf29325d4f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9418431f745245fc8c2191bf29325d4f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6ab8d6765db54855b07eecb286b670dd=document.querySelector('button[name=btn_6ab8d6765db54855b07eecb286b670dd]');
+copyBtnbtn_6ab8d6765db54855b07eecb286b670dd.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# ssl.log contains ja3 and ja3s fields\n# Zeek Intel framework — block known-bad hashes\ncat /opt/zeek/share/zeek/intel/ja3_blocklist.dat\n\n# Query ssl.log for a specific hash\ncat ssl.log | zeek-cut id.orig_h id.resp_h ja3 ja3s \\\n  | grep \"772a34cbf875ef9d1b4a8cfd86e5b1be\"\n`);copyBtnbtn_6ab8d6765db54855b07eecb286b670dd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6ab8d6765db54855b07eecb286b670dd.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1023,19 +1041,19 @@ cat ssl.log | zeek-cut id.orig_h id.resp_h ja3 ja3s \
 </div></div>
 </div>
 </div>
-<div id="outline-container-orge9c63df" class="outline-3">
-<h3 id="orge9c63df">Detection Rule Integration</h3>
-<div class="outline-text-3" id="text-orge9c63df">
+<div id="outline-container-orgae583d2" class="outline-3">
+<h3 id="orgae583d2">Detection Rule Integration</h3>
+<div class="outline-text-3" id="text-orgae583d2">
 <p>
 JA3 hashes appear in Suricata and Snort rules:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_a510d4c0667649bda3a759e03d2831f6>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9018284f3477467ea3e3e160f308e051>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a510d4c0667649bda3a759e03d2831f6=document.querySelector('button[name=btn_a510d4c0667649bda3a759e03d2831f6]');
-copyBtnbtn_a510d4c0667649bda3a759e03d2831f6.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Suricata rule matching on JA3 hash\nalert tls any any -> any any (\n  msg:\"Known malware JA3 hash\";\n  ja3.hash; content:\"772a34cbf875ef9d1b4a8cfd86e5b1be\";\n  sid:1000001;\n)\n`);copyBtnbtn_a510d4c0667649bda3a759e03d2831f6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a510d4c0667649bda3a759e03d2831f6.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_9018284f3477467ea3e3e160f308e051=document.querySelector('button[name=btn_9018284f3477467ea3e3e160f308e051]');
+copyBtnbtn_9018284f3477467ea3e3e160f308e051.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Suricata rule matching on JA3 hash\nalert tls any any -> any any (\n  msg:\"Known malware JA3 hash\";\n  ja3.hash; content:\"772a34cbf875ef9d1b4a8cfd86e5b1be\";\n  sid:1000001;\n)\n`);copyBtnbtn_9018284f3477467ea3e3e160f308e051.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9018284f3477467ea3e3e160f308e051.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1050,20 +1068,20 @@ alert tls any any -&gt; any any (
 </div>
 </div>
 </div>
-<div id="outline-container-orgdfb0de7" class="outline-2">
-<h2 id="orgdfb0de7">Red Team Considerations</h2>
-<div class="outline-text-2" id="text-orgdfb0de7">
+<div id="outline-container-org5816715" class="outline-2">
+<h2 id="org5816715">Red Team Considerations</h2>
+<div class="outline-text-2" id="text-org5816715">
 <p>
 Because JA3 is derived from TLS negotiation parameters,
 defenders may flag specific tool hashes:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_a2de98809b2345f3bac1a1c63e42db5b>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_c2dbf9e4f6964b9fb16e2e31f272d0be>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a2de98809b2345f3bac1a1c63e42db5b=document.querySelector('button[name=btn_a2de98809b2345f3bac1a1c63e42db5b]');
-copyBtnbtn_a2de98809b2345f3bac1a1c63e42db5b.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Common tool JA3 hashes that may be blocked or logged:\n# Metasploit, Cobalt Strike, curl, Python requests all have\n# characteristic JA3 hashes that appear in threat intel feeds\n\n# Evasion approaches:\n# — Modify TLS cipher suite order in the tool (if configurable)\n# — Route through a legitimate proxy (browser TLS = browser JA3)\n# — Use a framework that randomises TLS negotiation\n`);copyBtnbtn_a2de98809b2345f3bac1a1c63e42db5b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a2de98809b2345f3bac1a1c63e42db5b.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c2dbf9e4f6964b9fb16e2e31f272d0be=document.querySelector('button[name=btn_c2dbf9e4f6964b9fb16e2e31f272d0be]');
+copyBtnbtn_c2dbf9e4f6964b9fb16e2e31f272d0be.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Common tool JA3 hashes that may be blocked or logged:\n# Metasploit, Cobalt Strike, curl, Python requests all have\n# characteristic JA3 hashes that appear in threat intel feeds\n\n# Evasion approaches:\n# — Modify TLS cipher suite order in the tool (if configurable)\n# — Route through a legitimate proxy (browser TLS = browser JA3)\n# — Use a framework that randomises TLS negotiation\n`);copyBtnbtn_c2dbf9e4f6964b9fb16e2e31f272d0be.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c2dbf9e4f6964b9fb16e2e31f272d0be.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1086,9 +1104,9 @@ known offensive tool JA3 hashes.
 </p>
 </div>
 </div>
-<div id="outline-container-org77ed03e" class="outline-2">
-<h2 id="org77ed03e">JA3S — Server Fingerprinting</h2>
-<div class="outline-text-2" id="text-org77ed03e">
+<div id="outline-container-org5ad0f09" class="outline-2">
+<h2 id="org5ad0f09">JA3S — Server Fingerprinting</h2>
+<div class="outline-text-2" id="text-org5ad0f09">
 <p>
 The server-side counterpart — hashes fields from the TLS
 ServerHello. Useful for fingerprinting C2 infrastructure from the
@@ -1096,11 +1114,11 @@ server side:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_7d6b44e96b974f48bad318f3d05480ec>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_21b03d2fa19640b49e9a349c50699916>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7d6b44e96b974f48bad318f3d05480ec=document.querySelector('button[name=btn_7d6b44e96b974f48bad318f3d05480ec]');
-copyBtnbtn_7d6b44e96b974f48bad318f3d05480ec.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`JA3S fields:\n1. TLS Version\n2. Cipher Suite (single value, the chosen suite)\n3. Extensions\n\nSame MD5 process as JA3. Combining JA3 + JA3S fingerprints both\nends of a TLS connection — useful for detecting C2 channels where\nboth the implant and the server have consistent TLS behaviour.\n`);copyBtnbtn_7d6b44e96b974f48bad318f3d05480ec.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7d6b44e96b974f48bad318f3d05480ec.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_21b03d2fa19640b49e9a349c50699916=document.querySelector('button[name=btn_21b03d2fa19640b49e9a349c50699916]');
+copyBtnbtn_21b03d2fa19640b49e9a349c50699916.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`JA3S fields:\n1. TLS Version\n2. Cipher Suite (single value, the chosen suite)\n3. Extensions\n\nSame MD5 process as JA3. Combining JA3 + JA3S fingerprints both\nends of a TLS connection — useful for detecting C2 channels where\nboth the implant and the server have consistent TLS behaviour.\n`);copyBtnbtn_21b03d2fa19640b49e9a349c50699916.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_21b03d2fa19640b49e9a349c50699916.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1116,9 +1134,9 @@ both the implant and the server have consistent TLS behaviour.
 </div></div>
 </div>
 </div>
-<div id="outline-container-org73e03b1" class="outline-2">
-<h2 id="org73e03b1">Limitations</h2>
-<div class="outline-text-2" id="text-org73e03b1">
+<div id="outline-container-org52f34cf" class="outline-2">
+<h2 id="org52f34cf">Limitations</h2>
+<div class="outline-text-2" id="text-org52f34cf">
 <ul class="org-ul">
 <li>Easy to evade — changing cipher order produces a different hash</li>
 <li>Requires TLS traffic — no visibility into encrypted-but-not-TLS
@@ -1133,9 +1151,9 @@ preferred for new detection rules</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org79f33b7" class="outline-2">
-<h2 id="org79f33b7">Tips</h2>
-<div class="outline-text-2" id="text-org79f33b7">
+<div id="outline-container-org3d46f31" class="outline-2">
+<h2 id="org3d46f31">Tips</h2>
+<div class="outline-text-2" id="text-org3d46f31">
 <ul class="org-ul">
 <li>JA3 is most valuable as part of a detection stack alongside
 other signals — a matching JA3 hash alone is weak evidence
@@ -1152,6 +1170,20 @@ warrants investigation regardless of blocklist status</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1159,6 +1191,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

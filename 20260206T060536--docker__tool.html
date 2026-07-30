@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Docker</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,23 +886,23 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org27d0de5">Core Concepts</a></li>
-<li><a href="#orgb7dd929">Common Commands</a>
+<li><a href="#orga85fe53">Core Concepts</a></li>
+<li><a href="#org627e42f">Common Commands</a>
 <ul>
-<li><a href="#org7a46444">Images</a></li>
-<li><a href="#org279751e">Containers</a></li>
-<li><a href="#orgffd2985">Interacting with Running Containers</a></li>
-<li><a href="#orgc538f7a">Volumes</a></li>
-<li><a href="#org29d2afe">Cleanup</a></li>
+<li><a href="#orgd630c34">Images</a></li>
+<li><a href="#org09e69d7">Containers</a></li>
+<li><a href="#orgf3398ef">Interacting with Running Containers</a></li>
+<li><a href="#orgc4131f3">Volumes</a></li>
+<li><a href="#org01aa035">Cleanup</a></li>
 </ul>
 </li>
-<li><a href="#orgdd94d11">Dockerfile Reference</a>
+<li><a href="#org1791150">Dockerfile Reference</a>
 <ul>
-<li><a href="#orgc0b8a28">Layer caching</a></li>
+<li><a href="#org48861f5">Layer caching</a></li>
 </ul>
 </li>
-<li><a href="#orgc6f8f87">Security Context</a></li>
-<li><a href="#orgcc78d49">Tips</a></li>
+<li><a href="#org83069bb">Security Context</a></li>
+<li><a href="#org9bb0696">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -905,9 +923,9 @@ Related: <a href="20260206T060535--docker-compose__tool.html">Docker Compose</a>
          <a href="20260314T005651--podman__tool.html">Podman</a>
          <a href="20260314T005620--container-escape__concept_cybersecurity_technique.html">Container Escape</a>
 </p>
-<div id="outline-container-org27d0de5" class="outline-2">
-<h2 id="org27d0de5">Core Concepts</h2>
-<div class="outline-text-2" id="text-org27d0de5">
+<div id="outline-container-orga85fe53" class="outline-2">
+<h2 id="orga85fe53">Core Concepts</h2>
+<div class="outline-text-2" id="text-orga85fe53">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -956,19 +974,19 @@ Related: <a href="20260206T060535--docker-compose__tool.html">Docker Compose</a>
 </table>
 </div>
 </div>
-<div id="outline-container-orgb7dd929" class="outline-2">
-<h2 id="orgb7dd929">Common Commands</h2>
-<div class="outline-text-2" id="text-orgb7dd929">
+<div id="outline-container-org627e42f" class="outline-2">
+<h2 id="org627e42f">Common Commands</h2>
+<div class="outline-text-2" id="text-org627e42f">
 </div>
-<div id="outline-container-org7a46444" class="outline-3">
-<h3 id="org7a46444">Images</h3>
-<div class="outline-text-3" id="text-org7a46444">
+<div id="outline-container-orgd630c34" class="outline-3">
+<h3 id="orgd630c34">Images</h3>
+<div class="outline-text-3" id="text-orgd630c34">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_aac54ceb89e545d6808593283ac9f76d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_76ee3f47490f45b9b7b798eabb496cf5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_aac54ceb89e545d6808593283ac9f76d=document.querySelector('button[name=btn_aac54ceb89e545d6808593283ac9f76d]');
-copyBtnbtn_aac54ceb89e545d6808593283ac9f76d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`docker pull ubuntu:22.04          # pull image from registry\ndocker images                     # list local images\ndocker build -t myapp:1.0 .       # build image from Dockerfile in current dir\ndocker rmi myapp:1.0              # remove image\ndocker tag myapp:1.0 repo/myapp:1.0  # tag for pushing\ndocker push repo/myapp:1.0        # push to registry\n`);copyBtnbtn_aac54ceb89e545d6808593283ac9f76d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aac54ceb89e545d6808593283ac9f76d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_76ee3f47490f45b9b7b798eabb496cf5=document.querySelector('button[name=btn_76ee3f47490f45b9b7b798eabb496cf5]');
+copyBtnbtn_76ee3f47490f45b9b7b798eabb496cf5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`docker pull ubuntu:22.04          # pull image from registry\ndocker images                     # list local images\ndocker build -t myapp:1.0 .       # build image from Dockerfile in current dir\ndocker rmi myapp:1.0              # remove image\ndocker tag myapp:1.0 repo/myapp:1.0  # tag for pushing\ndocker push repo/myapp:1.0        # push to registry\n`);copyBtnbtn_76ee3f47490f45b9b7b798eabb496cf5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_76ee3f47490f45b9b7b798eabb496cf5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -982,15 +1000,15 @@ let res = copyTextToClipboard(`docker pull ubuntu:22.04          # pull image fr
 </div></div>
 </div>
 </div>
-<div id="outline-container-org279751e" class="outline-3">
-<h3 id="org279751e">Containers</h3>
-<div class="outline-text-3" id="text-org279751e">
+<div id="outline-container-org09e69d7" class="outline-3">
+<h3 id="org09e69d7">Containers</h3>
+<div class="outline-text-3" id="text-org09e69d7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_79518d339df7486397d8294c6cd72979>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_8cecc756ca89492facd6539c2414b697>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_79518d339df7486397d8294c6cd72979=document.querySelector('button[name=btn_79518d339df7486397d8294c6cd72979]');
-copyBtnbtn_79518d339df7486397d8294c6cd72979.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`docker run ubuntu:22.04           # create and start container\ndocker run -it ubuntu:22.04 bash  # interactive shell\ndocker run -d nginx               # run detached (background)\ndocker run -d -p 8080:80 nginx    # map host port 8080 to container port 80\ndocker run -v /host/path:/container/path nginx  # mount volume\ndocker run --name mycontainer nginx  # named container\n\ndocker ps                         # list running containers\ndocker ps -a                      # all containers including stopped\ndocker stop mycontainer           # graceful stop\ndocker kill mycontainer           # immediate stop\ndocker rm mycontainer             # remove stopped container\ndocker rm -f mycontainer          # force remove running container\n`);copyBtnbtn_79518d339df7486397d8294c6cd72979.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_79518d339df7486397d8294c6cd72979.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8cecc756ca89492facd6539c2414b697=document.querySelector('button[name=btn_8cecc756ca89492facd6539c2414b697]');
+copyBtnbtn_8cecc756ca89492facd6539c2414b697.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`docker run ubuntu:22.04           # create and start container\ndocker run -it ubuntu:22.04 bash  # interactive shell\ndocker run -d nginx               # run detached (background)\ndocker run -d -p 8080:80 nginx    # map host port 8080 to container port 80\ndocker run -v /host/path:/container/path nginx  # mount volume\ndocker run --name mycontainer nginx  # named container\n\ndocker ps                         # list running containers\ndocker ps -a                      # all containers including stopped\ndocker stop mycontainer           # graceful stop\ndocker kill mycontainer           # immediate stop\ndocker rm mycontainer             # remove stopped container\ndocker rm -f mycontainer          # force remove running container\n`);copyBtnbtn_8cecc756ca89492facd6539c2414b697.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8cecc756ca89492facd6539c2414b697.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1011,15 +1029,15 @@ docker ps                         <span style="color: var(--clr-comment-delimite
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgffd2985" class="outline-3">
-<h3 id="orgffd2985">Interacting with Running Containers</h3>
-<div class="outline-text-3" id="text-orgffd2985">
+<div id="outline-container-orgf3398ef" class="outline-3">
+<h3 id="orgf3398ef">Interacting with Running Containers</h3>
+<div class="outline-text-3" id="text-orgf3398ef">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2088aabd57e44f4a8f27e497bc93480f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4a2b729d6efe44949c8cd884474b5388>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2088aabd57e44f4a8f27e497bc93480f=document.querySelector('button[name=btn_2088aabd57e44f4a8f27e497bc93480f]');
-copyBtnbtn_2088aabd57e44f4a8f27e497bc93480f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`docker exec -it mycontainer bash  # shell into running container\ndocker logs mycontainer           # view stdout/stderr\ndocker logs -f mycontainer        # follow logs\ndocker cp file.txt mycontainer:/tmp/  # copy file into container\ndocker inspect mycontainer        # full JSON config and state\n`);copyBtnbtn_2088aabd57e44f4a8f27e497bc93480f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2088aabd57e44f4a8f27e497bc93480f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4a2b729d6efe44949c8cd884474b5388=document.querySelector('button[name=btn_4a2b729d6efe44949c8cd884474b5388]');
+copyBtnbtn_4a2b729d6efe44949c8cd884474b5388.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`docker exec -it mycontainer bash  # shell into running container\ndocker logs mycontainer           # view stdout/stderr\ndocker logs -f mycontainer        # follow logs\ndocker cp file.txt mycontainer:/tmp/  # copy file into container\ndocker inspect mycontainer        # full JSON config and state\n`);copyBtnbtn_4a2b729d6efe44949c8cd884474b5388.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4a2b729d6efe44949c8cd884474b5388.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1032,15 +1050,15 @@ let res = copyTextToClipboard(`docker exec -it mycontainer bash  # shell into ru
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgc538f7a" class="outline-3">
-<h3 id="orgc538f7a">Volumes</h3>
-<div class="outline-text-3" id="text-orgc538f7a">
+<div id="outline-container-orgc4131f3" class="outline-3">
+<h3 id="orgc4131f3">Volumes</h3>
+<div class="outline-text-3" id="text-orgc4131f3">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_0c2ad051240548b4878bd31fb654d817>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_22f6668a3533426db543228c9e456ad0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0c2ad051240548b4878bd31fb654d817=document.querySelector('button[name=btn_0c2ad051240548b4878bd31fb654d817]');
-copyBtnbtn_0c2ad051240548b4878bd31fb654d817.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`docker volume create mydata\ndocker volume ls\ndocker volume rm mydata\ndocker run -v mydata:/app/data myapp  # mount named volume\n`);copyBtnbtn_0c2ad051240548b4878bd31fb654d817.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0c2ad051240548b4878bd31fb654d817.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_22f6668a3533426db543228c9e456ad0=document.querySelector('button[name=btn_22f6668a3533426db543228c9e456ad0]');
+copyBtnbtn_22f6668a3533426db543228c9e456ad0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`docker volume create mydata\ndocker volume ls\ndocker volume rm mydata\ndocker run -v mydata:/app/data myapp  # mount named volume\n`);copyBtnbtn_22f6668a3533426db543228c9e456ad0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_22f6668a3533426db543228c9e456ad0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1052,15 +1070,15 @@ docker run -v mydata:/app/data myapp  <span style="color: var(--clr-comment-deli
 </div></div>
 </div>
 </div>
-<div id="outline-container-org29d2afe" class="outline-3">
-<h3 id="org29d2afe">Cleanup</h3>
-<div class="outline-text-3" id="text-org29d2afe">
+<div id="outline-container-org01aa035" class="outline-3">
+<h3 id="org01aa035">Cleanup</h3>
+<div class="outline-text-3" id="text-org01aa035">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e88fb9a8c2b34aa5b5f545d079ef86f3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_1e551bd7d24944ec889910f34cb70332>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e88fb9a8c2b34aa5b5f545d079ef86f3=document.querySelector('button[name=btn_e88fb9a8c2b34aa5b5f545d079ef86f3]');
-copyBtnbtn_e88fb9a8c2b34aa5b5f545d079ef86f3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`docker system prune               # remove stopped containers, unused images, networks\ndocker system prune -a            # also remove unused images with no containers\ndocker volume prune               # remove unused volumes\n`);copyBtnbtn_e88fb9a8c2b34aa5b5f545d079ef86f3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e88fb9a8c2b34aa5b5f545d079ef86f3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1e551bd7d24944ec889910f34cb70332=document.querySelector('button[name=btn_1e551bd7d24944ec889910f34cb70332]');
+copyBtnbtn_1e551bd7d24944ec889910f34cb70332.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`docker system prune               # remove stopped containers, unused images, networks\ndocker system prune -a            # also remove unused images with no containers\ndocker volume prune               # remove unused volumes\n`);copyBtnbtn_1e551bd7d24944ec889910f34cb70332.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1e551bd7d24944ec889910f34cb70332.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1072,15 +1090,15 @@ let res = copyTextToClipboard(`docker system prune               # remove stoppe
 </div>
 </div>
 </div>
-<div id="outline-container-orgdd94d11" class="outline-2">
-<h2 id="orgdd94d11">Dockerfile Reference</h2>
-<div class="outline-text-2" id="text-orgdd94d11">
+<div id="outline-container-org1791150" class="outline-2">
+<h2 id="org1791150">Dockerfile Reference</h2>
+<div class="outline-text-2" id="text-org1791150">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>DOCKERFILE</span><button class='copyBtn' name=btn_30cd9acf6bd44f19b6fb60d6d95fd843>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>DOCKERFILE</span><button class='copyBtn' name=btn_5d88fbf1567a42169cd2a7adab7a8b31>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_30cd9acf6bd44f19b6fb60d6d95fd843=document.querySelector('button[name=btn_30cd9acf6bd44f19b6fb60d6d95fd843]');
-copyBtnbtn_30cd9acf6bd44f19b6fb60d6d95fd843.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`FROM ubuntu:22.04                 # base image\n\nWORKDIR /app                      # set working directory\n\nCOPY requirements.txt .           # copy files from host\nRUN pip install -r requirements.txt  # run during build\n\nCOPY . .                          # copy application code\n\nENV PORT=8080                     # set environment variable\n\nEXPOSE 8080                       # document the port (does not publish)\n\nCMD [\"python3\", \"app.py\"]         # default command when container starts\n`);copyBtnbtn_30cd9acf6bd44f19b6fb60d6d95fd843.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_30cd9acf6bd44f19b6fb60d6d95fd843.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_5d88fbf1567a42169cd2a7adab7a8b31=document.querySelector('button[name=btn_5d88fbf1567a42169cd2a7adab7a8b31]');
+copyBtnbtn_5d88fbf1567a42169cd2a7adab7a8b31.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`FROM ubuntu:22.04                 # base image\n\nWORKDIR /app                      # set working directory\n\nCOPY requirements.txt .           # copy files from host\nRUN pip install -r requirements.txt  # run during build\n\nCOPY . .                          # copy application code\n\nENV PORT=8080                     # set environment variable\n\nEXPOSE 8080                       # document the port (does not publish)\n\nCMD [\"python3\", \"app.py\"]         # default command when container starts\n`);copyBtnbtn_5d88fbf1567a42169cd2a7adab7a8b31.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5d88fbf1567a42169cd2a7adab7a8b31.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1101,9 +1119,9 @@ CMD ["python3", "app.py"]         # default command when container starts
 </pre>
 </div></div>
 </div>
-<div id="outline-container-orgc0b8a28" class="outline-3">
-<h3 id="orgc0b8a28">Layer caching</h3>
-<div class="outline-text-3" id="text-orgc0b8a28">
+<div id="outline-container-org48861f5" class="outline-3">
+<h3 id="org48861f5">Layer caching</h3>
+<div class="outline-text-3" id="text-org48861f5">
 <p>
 Each RUN/COPY/ADD instruction creates a layer. Docker caches layers
 and only rebuilds from the first changed instruction. Put
@@ -1113,20 +1131,20 @@ reuse.
 </div>
 </div>
 </div>
-<div id="outline-container-orgc6f8f87" class="outline-2">
-<h2 id="orgc6f8f87">Security Context</h2>
-<div class="outline-text-2" id="text-orgc6f8f87">
+<div id="outline-container-org83069bb" class="outline-2">
+<h2 id="org83069bb">Security Context</h2>
+<div class="outline-text-2" id="text-org83069bb">
 <p>
 See <a href="20260314T005620--container-escape__concept_cybersecurity_technique.html">Container Escape</a> for breakout techniques. Key security
 considerations:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c4e76359eac541f28b3cb686bdee45c9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_d75d24d3b3304cd5910806402a578034>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c4e76359eac541f28b3cb686bdee45c9=document.querySelector('button[name=btn_c4e76359eac541f28b3cb686bdee45c9]');
-copyBtnbtn_c4e76359eac541f28b3cb686bdee45c9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Never run containers as root if avoidable\ndocker run --user 1000:1000 myapp\n\n# Read-only filesystem — prevents writes outside volumes\ndocker run --read-only myapp\n\n# Drop capabilities\ndocker run --cap-drop ALL --cap-add NET_BIND_SERVICE myapp\n\n# Check what user a running container is using\ndocker exec mycontainer whoami\ndocker inspect mycontainer | grep -i user\n`);copyBtnbtn_c4e76359eac541f28b3cb686bdee45c9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c4e76359eac541f28b3cb686bdee45c9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d75d24d3b3304cd5910806402a578034=document.querySelector('button[name=btn_d75d24d3b3304cd5910806402a578034]');
+copyBtnbtn_d75d24d3b3304cd5910806402a578034.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Never run containers as root if avoidable\ndocker run --user 1000:1000 myapp\n\n# Read-only filesystem — prevents writes outside volumes\ndocker run --read-only myapp\n\n# Drop capabilities\ndocker run --cap-drop ALL --cap-add NET_BIND_SERVICE myapp\n\n# Check what user a running container is using\ndocker exec mycontainer whoami\ndocker inspect mycontainer | grep -i user\n`);copyBtnbtn_d75d24d3b3304cd5910806402a578034.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d75d24d3b3304cd5910806402a578034.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1146,9 +1164,9 @@ docker inspect mycontainer | grep -i user
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgcc78d49" class="outline-2">
-<h2 id="orgcc78d49">Tips</h2>
-<div class="outline-text-2" id="text-orgcc78d49">
+<div id="outline-container-org9bb0696" class="outline-2">
+<h2 id="org9bb0696">Tips</h2>
+<div class="outline-text-2" id="text-org9bb0696">
 <ul class="org-ul">
 <li>Use specific image tags rather than <code>:latest</code> — <code>:latest</code> can
 change unexpectedly and break builds</li>
@@ -1166,6 +1184,20 @@ layer history even if overwritten in a later layer</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1173,6 +1205,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bash File Manipulation Commands</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,30 +886,30 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgec8969c">Bash File Manipulation Commands</a>
+<li><a href="#orge46bb7d">Bash File Manipulation Commands</a>
 <ul>
-<li><a href="#orga728a10"><code>touch</code>: Create a File or Update a Timestamp</a></li>
-<li><a href="#org904d8a6"><code>mkdir</code>: Create a Directory</a></li>
-<li><a href="#org6b8166f"><code>rm</code>: Remove Files or irectories</a></li>
-<li><a href="#org9354bed"><code>cp</code>: Copy Files or irectories</a></li>
-<li><a href="#org903bd58"><code>mv</code>: Move or Rename Files or irectories</a></li>
+<li><a href="#orgcaca6d3"><code>touch</code>: Create a File or Update a Timestamp</a></li>
+<li><a href="#org661ee53"><code>mkdir</code>: Create a Directory</a></li>
+<li><a href="#org3a7559a"><code>rm</code>: Remove Files or irectories</a></li>
+<li><a href="#orgaeefcce"><code>cp</code>: Copy Files or irectories</a></li>
+<li><a href="#org2cafe7c"><code>mv</code>: Move or Rename Files or irectories</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgec8969c" class="outline-2">
-<h2 id="orgec8969c">Bash File Manipulation Commands</h2>
-<div class="outline-text-2" id="text-orgec8969c">
+<div id="outline-container-orge46bb7d" class="outline-2">
+<h2 id="orge46bb7d">Bash File Manipulation Commands</h2>
+<div class="outline-text-2" id="text-orge46bb7d">
 <p>
 These are common <a href="Bash.html#bash">Bash</a> commands used to create, remove, copy, move, and rename files and directories in the command-line interface.
 </p>
 
 <hr />
 </div>
-<div id="outline-container-orga728a10" class="outline-3">
-<h3 id="orga728a10"><code>touch</code>: Create a File or Update a Timestamp</h3>
-<div class="outline-text-3" id="text-orga728a10">
+<div id="outline-container-orgcaca6d3" class="outline-3">
+<h3 id="orgcaca6d3"><code>touch</code>: Create a File or Update a Timestamp</h3>
+<div class="outline-text-3" id="text-orgcaca6d3">
 <p>
 The <code>touch</code> command is primarily used to create a new, empty file. If the file already exists, <code>touch</code> will update its access and modification timestamps to the current time without changing its contents.
 </p>
@@ -908,7 +926,7 @@ The <code>touch</code> command is primarily used to create a new, empty file. If
 <b>Examples:</b> * Create a single empty file:
 </p>
 
-<pre class="example" id="org2182115">
+<pre class="example" id="org6ad7409">
 ```bash
 touch report.txt
 ```
@@ -920,11 +938,11 @@ Create multiple empty files at once:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_f7ce89a561a44a3ab86a83ccaf510b84>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_7078aaef6abd4013a2ff7be1a3ef8d6f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f7ce89a561a44a3ab86a83ccaf510b84=document.querySelector('button[name=btn_f7ce89a561a44a3ab86a83ccaf510b84]');
-copyBtnbtn_f7ce89a561a44a3ab86a83ccaf510b84.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`touch chapter1.md chapter2.md chapter3.md\n`);copyBtnbtn_f7ce89a561a44a3ab86a83ccaf510b84.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f7ce89a561a44a3ab86a83ccaf510b84.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_7078aaef6abd4013a2ff7be1a3ef8d6f=document.querySelector('button[name=btn_7078aaef6abd4013a2ff7be1a3ef8d6f]');
+copyBtnbtn_7078aaef6abd4013a2ff7be1a3ef8d6f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`touch chapter1.md chapter2.md chapter3.md\n`);copyBtnbtn_7078aaef6abd4013a2ff7be1a3ef8d6f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7078aaef6abd4013a2ff7be1a3ef8d6f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -937,11 +955,11 @@ Update the timestamp of an existing file:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_a11e41aad956409ea62fdd47e523773e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_286a56d1d3bf40aeb8cbadd159ec70e7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a11e41aad956409ea62fdd47e523773e=document.querySelector('button[name=btn_a11e41aad956409ea62fdd47e523773e]');
-copyBtnbtn_a11e41aad956409ea62fdd47e523773e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`touch existing_file.log\n`);copyBtnbtn_a11e41aad956409ea62fdd47e523773e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a11e41aad956409ea62fdd47e523773e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_286a56d1d3bf40aeb8cbadd159ec70e7=document.querySelector('button[name=btn_286a56d1d3bf40aeb8cbadd159ec70e7]');
+copyBtnbtn_286a56d1d3bf40aeb8cbadd159ec70e7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`touch existing_file.log\n`);copyBtnbtn_286a56d1d3bf40aeb8cbadd159ec70e7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_286a56d1d3bf40aeb8cbadd159ec70e7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -953,9 +971,9 @@ let res = copyTextToClipboard(`touch existing_file.log\n`);copyBtnbtn_a11e41aad9
 <hr />
 </div>
 </div>
-<div id="outline-container-org904d8a6" class="outline-3">
-<h3 id="org904d8a6"><code>mkdir</code>: Create a Directory</h3>
-<div class="outline-text-3" id="text-org904d8a6">
+<div id="outline-container-org661ee53" class="outline-3">
+<h3 id="org661ee53"><code>mkdir</code>: Create a Directory</h3>
+<div class="outline-text-3" id="text-org661ee53">
 <p>
 The <code>mkdir</code> command is used to create one or more new directories.
 </p>
@@ -972,7 +990,7 @@ The <code>mkdir</code> command is used to create one or more new directories.
 <b>Examples:</b> * Create a single directory in the current location:
 </p>
 
-<pre class="example" id="org0c97798">
+<pre class="example" id="org37bb41e">
 ```bash
 mkdir project_files
 ```
@@ -984,11 +1002,11 @@ Create a nested directory structure:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_6e6e7c02d5374b14814f8b13f64a5e58>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_124522eea877499fb833d65f5ee6252f>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_6e6e7c02d5374b14814f8b13f64a5e58=document.querySelector('button[name=btn_6e6e7c02d5374b14814f8b13f64a5e58]');
-copyBtnbtn_6e6e7c02d5374b14814f8b13f64a5e58.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`mkdir -p project/assets/images\n`);copyBtnbtn_6e6e7c02d5374b14814f8b13f64a5e58.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6e6e7c02d5374b14814f8b13f64a5e58.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_124522eea877499fb833d65f5ee6252f=document.querySelector('button[name=btn_124522eea877499fb833d65f5ee6252f]');
+copyBtnbtn_124522eea877499fb833d65f5ee6252f.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`mkdir -p project/assets/images\n`);copyBtnbtn_124522eea877499fb833d65f5ee6252f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_124522eea877499fb833d65f5ee6252f.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1000,9 +1018,9 @@ let res = copyTextToClipboard(`mkdir -p project/assets/images\n`);copyBtnbtn_6e6
 <hr />
 </div>
 </div>
-<div id="outline-container-org6b8166f" class="outline-3">
-<h3 id="org6b8166f"><code>rm</code>: Remove Files or irectories</h3>
-<div class="outline-text-3" id="text-org6b8166f">
+<div id="outline-container-org3a7559a" class="outline-3">
+<h3 id="org3a7559a"><code>rm</code>: Remove Files or irectories</h3>
+<div class="outline-text-3" id="text-org3a7559a">
 <p>
 The <code>rm</code> command is used to delete files and directories. <b>Use this command with caution, as deletions are permanent and cannot be easily undone.</b>
 </p>
@@ -1019,7 +1037,7 @@ The <code>rm</code> command is used to delete files and directories. <b>Use this
 <b>Examples:</b> * Delete a single file:
 </p>
 
-<pre class="example" id="org6ecf6f4">
+<pre class="example" id="org268a3e1">
 ```bash
 rm temp_file.tmp
 ```
@@ -1031,11 +1049,11 @@ Delete a directory and all of its contents (use with extreme caution):
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_b6569b3f86134d3184d4f82ff83959a4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_01aa02fa51ba4b7683c85dbbbf463371>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b6569b3f86134d3184d4f82ff83959a4=document.querySelector('button[name=btn_b6569b3f86134d3184d4f82ff83959a4]');
-copyBtnbtn_b6569b3f86134d3184d4f82ff83959a4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`rm -r old_project/\n`);copyBtnbtn_b6569b3f86134d3184d4f82ff83959a4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b6569b3f86134d3184d4f82ff83959a4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_01aa02fa51ba4b7683c85dbbbf463371=document.querySelector('button[name=btn_01aa02fa51ba4b7683c85dbbbf463371]');
+copyBtnbtn_01aa02fa51ba4b7683c85dbbbf463371.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`rm -r old_project/\n`);copyBtnbtn_01aa02fa51ba4b7683c85dbbbf463371.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_01aa02fa51ba4b7683c85dbbbf463371.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1048,11 +1066,11 @@ Forcefully delete a directory and its contents without prompting:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_d5d7d2adf5844baeb0f89c6c1146be8d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_27ce93ec0dea4af4a0536eca93f842f5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_d5d7d2adf5844baeb0f89c6c1146be8d=document.querySelector('button[name=btn_d5d7d2adf5844baeb0f89c6c1146be8d]');
-copyBtnbtn_d5d7d2adf5844baeb0f89c6c1146be8d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`rm -rf obsolete_data/\n`);copyBtnbtn_d5d7d2adf5844baeb0f89c6c1146be8d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d5d7d2adf5844baeb0f89c6c1146be8d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_27ce93ec0dea4af4a0536eca93f842f5=document.querySelector('button[name=btn_27ce93ec0dea4af4a0536eca93f842f5]');
+copyBtnbtn_27ce93ec0dea4af4a0536eca93f842f5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`rm -rf obsolete_data/\n`);copyBtnbtn_27ce93ec0dea4af4a0536eca93f842f5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_27ce93ec0dea4af4a0536eca93f842f5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1064,9 +1082,9 @@ let res = copyTextToClipboard(`rm -rf obsolete_data/\n`);copyBtnbtn_d5d7d2adf584
 <hr />
 </div>
 </div>
-<div id="outline-container-org9354bed" class="outline-3">
-<h3 id="org9354bed"><code>cp</code>: Copy Files or irectories</h3>
-<div class="outline-text-3" id="text-org9354bed">
+<div id="outline-container-orgaeefcce" class="outline-3">
+<h3 id="orgaeefcce"><code>cp</code>: Copy Files or irectories</h3>
+<div class="outline-text-3" id="text-orgaeefcce">
 <p>
 The <code>cp</code> command is used to copy files or directories from a source to a destination.
 </p>
@@ -1083,7 +1101,7 @@ The <code>cp</code> command is used to copy files or directories from a source t
 <b>Examples:</b> * Copy a file to the same directory with a new name:
 </p>
 
-<pre class="example" id="org158c37e">
+<pre class="example" id="org2449ecc">
 ```bash
 cp config.yml config.backup.yml
 ```
@@ -1095,11 +1113,11 @@ Copy a file to another directory:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_ef6a506943224cce964d872f525402f5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_c7008e2ffae94248af2e90cd1645a409>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ef6a506943224cce964d872f525402f5=document.querySelector('button[name=btn_ef6a506943224cce964d872f525402f5]');
-copyBtnbtn_ef6a506943224cce964d872f525402f5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`cp image.jpg ./backups/\n`);copyBtnbtn_ef6a506943224cce964d872f525402f5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ef6a506943224cce964d872f525402f5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c7008e2ffae94248af2e90cd1645a409=document.querySelector('button[name=btn_c7008e2ffae94248af2e90cd1645a409]');
+copyBtnbtn_c7008e2ffae94248af2e90cd1645a409.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`cp image.jpg ./backups/\n`);copyBtnbtn_c7008e2ffae94248af2e90cd1645a409.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c7008e2ffae94248af2e90cd1645a409.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1112,11 +1130,11 @@ Copy an entire directory to a new location:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_10fccda52c3940f995c1c30d97b439b0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_a7aa63ee198f459c8c703a867e9e8341>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_10fccda52c3940f995c1c30d97b439b0=document.querySelector('button[name=btn_10fccda52c3940f995c1c30d97b439b0]');
-copyBtnbtn_10fccda52c3940f995c1c30d97b439b0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`cp -r /var/www/website ./website_backup\n`);copyBtnbtn_10fccda52c3940f995c1c30d97b439b0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_10fccda52c3940f995c1c30d97b439b0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a7aa63ee198f459c8c703a867e9e8341=document.querySelector('button[name=btn_a7aa63ee198f459c8c703a867e9e8341]');
+copyBtnbtn_a7aa63ee198f459c8c703a867e9e8341.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`cp -r /var/www/website ./website_backup\n`);copyBtnbtn_a7aa63ee198f459c8c703a867e9e8341.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a7aa63ee198f459c8c703a867e9e8341.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1128,9 +1146,9 @@ let res = copyTextToClipboard(`cp -r /var/www/website ./website_backup\n`);copyB
 <hr />
 </div>
 </div>
-<div id="outline-container-org903bd58" class="outline-3">
-<h3 id="org903bd58"><code>mv</code>: Move or Rename Files or irectories</h3>
-<div class="outline-text-3" id="text-org903bd58">
+<div id="outline-container-org2cafe7c" class="outline-3">
+<h3 id="org2cafe7c"><code>mv</code>: Move or Rename Files or irectories</h3>
+<div class="outline-text-3" id="text-org2cafe7c">
 <p>
 The <code>mv</code> command is used to either move files/directories to a new location or to rename them. The command's behavior depends on the last argument. If the destination is an existing directory, it moves the source file/directory into it. If the destination is a new name, it renames the source.
 </p>
@@ -1147,7 +1165,7 @@ The <code>mv</code> command is used to either move files/directories to a new lo
 <b>Examples:</b> * Rename a file:
 </p>
 
-<pre class="example" id="org047f1d7">
+<pre class="example" id="orgdd46994">
 ```bash
 mv old_filename.txt new_filename.txt
 ```
@@ -1159,11 +1177,11 @@ Move a file into a different directory:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_fbf3f9cf3d1749b9a064332bbbe7f350>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_48f9ddcd286444c99118c76244ecc6d6>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_fbf3f9cf3d1749b9a064332bbbe7f350=document.querySelector('button[name=btn_fbf3f9cf3d1749b9a064332bbbe7f350]');
-copyBtnbtn_fbf3f9cf3d1749b9a064332bbbe7f350.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`mv document.pdf ./archives/\n`);copyBtnbtn_fbf3f9cf3d1749b9a064332bbbe7f350.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fbf3f9cf3d1749b9a064332bbbe7f350.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_48f9ddcd286444c99118c76244ecc6d6=document.querySelector('button[name=btn_48f9ddcd286444c99118c76244ecc6d6]');
+copyBtnbtn_48f9ddcd286444c99118c76244ecc6d6.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`mv document.pdf ./archives/\n`);copyBtnbtn_48f9ddcd286444c99118c76244ecc6d6.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_48f9ddcd286444c99118c76244ecc6d6.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1176,11 +1194,11 @@ Move a directory:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_946ff99d42194dc09420caa412fa8294>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SH</span><button class='copyBtn' name=btn_da2a9474c69b4d6f988a17a5ba777572>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_946ff99d42194dc09420caa412fa8294=document.querySelector('button[name=btn_946ff99d42194dc09420caa412fa8294]');
-copyBtnbtn_946ff99d42194dc09420caa412fa8294.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`mv ./temp_files /var/tmp/\n`);copyBtnbtn_946ff99d42194dc09420caa412fa8294.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_946ff99d42194dc09420caa412fa8294.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_da2a9474c69b4d6f988a17a5ba777572=document.querySelector('button[name=btn_da2a9474c69b4d6f988a17a5ba777572]');
+copyBtnbtn_da2a9474c69b4d6f988a17a5ba777572.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`mv ./temp_files /var/tmp/\n`);copyBtnbtn_da2a9474c69b4d6f988a17a5ba777572.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_da2a9474c69b4d6f988a17a5ba777572.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1193,6 +1211,20 @@ let res = copyTextToClipboard(`mv ./temp_files /var/tmp/\n`);copyBtnbtn_946ff99d
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1200,6 +1232,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

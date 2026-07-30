@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Reverse Engineering</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga4a4f46">Static vs Dynamic Analysis</a></li>
-<li><a href="#org39160d6">Key Techniques</a>
+<li><a href="#orgb46464b">Static vs Dynamic Analysis</a></li>
+<li><a href="#org9143ebd">Key Techniques</a>
 <ul>
-<li><a href="#orga9bfe4b">Disassembly</a></li>
-<li><a href="#org5be54ee">Decompilation</a></li>
-<li><a href="#org02630c4">Debugging</a></li>
-<li><a href="#orga8be4fb">Strings Extraction</a></li>
+<li><a href="#org97f622b">Disassembly</a></li>
+<li><a href="#org1a44bc8">Decompilation</a></li>
+<li><a href="#orgc9b20a9">Debugging</a></li>
+<li><a href="#org46321cc">Strings Extraction</a></li>
 </ul>
 </li>
-<li><a href="#org2393123">Tools</a></li>
-<li><a href="#org018afe2">Obfuscation and Evasion</a></li>
-<li><a href="#org77b93e0">Tips</a></li>
+<li><a href="#org7fbe186">Tools</a></li>
+<li><a href="#org6b3099d">Obfuscation and Evasion</a></li>
+<li><a href="#org170603a">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -897,9 +915,9 @@ Related: <a href="20260314T005732--malware-analysis__concept_cybersecurity.html"
          <a href="20260213T111606--ghidra__cybersecurity_tool.html">Ghidra</a>
          <a href="20260314T005619--command-and-control-detection__concept_cybersecurity.html">Command and Control Detection</a>
 </p>
-<div id="outline-container-orga4a4f46" class="outline-2">
-<h2 id="orga4a4f46">Static vs Dynamic Analysis</h2>
-<div class="outline-text-2" id="text-orga4a4f46">
+<div id="outline-container-orgb46464b" class="outline-2">
+<h2 id="orgb46464b">Static vs Dynamic Analysis</h2>
+<div class="outline-text-2" id="text-orgb46464b">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -948,24 +966,24 @@ See <a href="20260314T005732--malware-analysis__concept_cybersecurity.html">Malw
 </p>
 </div>
 </div>
-<div id="outline-container-org39160d6" class="outline-2">
-<h2 id="org39160d6">Key Techniques</h2>
-<div class="outline-text-2" id="text-org39160d6">
+<div id="outline-container-org9143ebd" class="outline-2">
+<h2 id="org9143ebd">Key Techniques</h2>
+<div class="outline-text-2" id="text-org9143ebd">
 </div>
-<div id="outline-container-orga9bfe4b" class="outline-3">
-<h3 id="orga9bfe4b">Disassembly</h3>
-<div class="outline-text-3" id="text-orga9bfe4b">
+<div id="outline-container-org97f622b" class="outline-3">
+<h3 id="org97f622b">Disassembly</h3>
+<div class="outline-text-3" id="text-org97f622b">
 <p>
 Convert machine code to assembly language. Reveals the exact
 instructions the CPU executes.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ac80884b002f42bb9927c55f2d9079cd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_82d4d5f11c2a4f1b8e961e16465c969b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ac80884b002f42bb9927c55f2d9079cd=document.querySelector('button[name=btn_ac80884b002f42bb9927c55f2d9079cd]');
-copyBtnbtn_ac80884b002f42bb9927c55f2d9079cd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`objdump -d binary           # Linux\n# Output: raw assembly instructions\n# 0x401000: push rbp\n# 0x401001: mov rbp, rsp\n`);copyBtnbtn_ac80884b002f42bb9927c55f2d9079cd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ac80884b002f42bb9927c55f2d9079cd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_82d4d5f11c2a4f1b8e961e16465c969b=document.querySelector('button[name=btn_82d4d5f11c2a4f1b8e961e16465c969b]');
+copyBtnbtn_82d4d5f11c2a4f1b8e961e16465c969b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`objdump -d binary           # Linux\n# Output: raw assembly instructions\n# 0x401000: push rbp\n# 0x401001: mov rbp, rsp\n`);copyBtnbtn_82d4d5f11c2a4f1b8e961e16465c969b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_82d4d5f11c2a4f1b8e961e16465c969b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -977,9 +995,9 @@ let res = copyTextToClipboard(`objdump -d binary           # Linux\n# Output: ra
 </div></div>
 </div>
 </div>
-<div id="outline-container-org5be54ee" class="outline-3">
-<h3 id="org5be54ee">Decompilation</h3>
-<div class="outline-text-3" id="text-org5be54ee">
+<div id="outline-container-org1a44bc8" class="outline-3">
+<h3 id="org1a44bc8">Decompilation</h3>
+<div class="outline-text-3" id="text-org1a44bc8">
 <p>
 Convert assembly to higher-level pseudocode (C-like). Easier
 to read than raw assembly but less accurate than the original.
@@ -987,20 +1005,20 @@ Ghidra's decompiler is the standard free tool.
 </p>
 </div>
 </div>
-<div id="outline-container-org02630c4" class="outline-3">
-<h3 id="org02630c4">Debugging</h3>
-<div class="outline-text-3" id="text-org02630c4">
+<div id="outline-container-orgc9b20a9" class="outline-3">
+<h3 id="orgc9b20a9">Debugging</h3>
+<div class="outline-text-3" id="text-orgc9b20a9">
 <p>
 Step through execution to observe register values, memory
 contents, and control flow at each instruction.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_a255ad3a13a34407a9146e130ec42ed8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_776c5f1e51344b15992f54ce1090007b>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a255ad3a13a34407a9146e130ec42ed8=document.querySelector('button[name=btn_a255ad3a13a34407a9146e130ec42ed8]');
-copyBtnbtn_a255ad3a13a34407a9146e130ec42ed8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`x64dbg (Windows) — GUI debugger, good for malware\ngdb (Linux)      — standard debugger\nWinDbg           — kernel-level debugging\n`);copyBtnbtn_a255ad3a13a34407a9146e130ec42ed8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a255ad3a13a34407a9146e130ec42ed8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_776c5f1e51344b15992f54ce1090007b=document.querySelector('button[name=btn_776c5f1e51344b15992f54ce1090007b]');
+copyBtnbtn_776c5f1e51344b15992f54ce1090007b.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`x64dbg (Windows) — GUI debugger, good for malware\ngdb (Linux)      — standard debugger\nWinDbg           — kernel-level debugging\n`);copyBtnbtn_776c5f1e51344b15992f54ce1090007b.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_776c5f1e51344b15992f54ce1090007b.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1011,20 +1029,20 @@ WinDbg           &#8212; kernel-level debugging
 </div></div>
 </div>
 </div>
-<div id="outline-container-orga8be4fb" class="outline-3">
-<h3 id="orga8be4fb">Strings Extraction</h3>
-<div class="outline-text-3" id="text-orga8be4fb">
+<div id="outline-container-org46321cc" class="outline-3">
+<h3 id="org46321cc">Strings Extraction</h3>
+<div class="outline-text-3" id="text-org46321cc">
 <p>
 Fast initial triage — reveals readable strings without
 executing the binary:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c9fb402fc0d54eafa3d1a6861f51c3e1>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_4e99e706162f4013a7330742a24b9a55>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_c9fb402fc0d54eafa3d1a6861f51c3e1=document.querySelector('button[name=btn_c9fb402fc0d54eafa3d1a6861f51c3e1]');
-copyBtnbtn_c9fb402fc0d54eafa3d1a6861f51c3e1.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`strings binary.exe | grep -Ei \"http|\\.exe|cmd|powershell|registry\"\nfloss binary.exe          # handles obfuscated/stack strings\n`);copyBtnbtn_c9fb402fc0d54eafa3d1a6861f51c3e1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c9fb402fc0d54eafa3d1a6861f51c3e1.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4e99e706162f4013a7330742a24b9a55=document.querySelector('button[name=btn_4e99e706162f4013a7330742a24b9a55]');
+copyBtnbtn_4e99e706162f4013a7330742a24b9a55.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`strings binary.exe | grep -Ei \"http|\\.exe|cmd|powershell|registry\"\nfloss binary.exe          # handles obfuscated/stack strings\n`);copyBtnbtn_4e99e706162f4013a7330742a24b9a55.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4e99e706162f4013a7330742a24b9a55.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1035,9 +1053,9 @@ floss binary.exe          <span style="color: var(--clr-comment-delimiter); back
 </div>
 </div>
 </div>
-<div id="outline-container-org2393123" class="outline-2">
-<h2 id="org2393123">Tools</h2>
-<div class="outline-text-2" id="text-org2393123">
+<div id="outline-container-org7fbe186" class="outline-2">
+<h2 id="org7fbe186">Tools</h2>
+<div class="outline-text-2" id="text-org7fbe186">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1107,19 +1125,19 @@ floss binary.exe          <span style="color: var(--clr-comment-delimiter); back
 </table>
 </div>
 </div>
-<div id="outline-container-org018afe2" class="outline-2">
-<h2 id="org018afe2">Obfuscation and Evasion</h2>
-<div class="outline-text-2" id="text-org018afe2">
+<div id="outline-container-org6b3099d" class="outline-2">
+<h2 id="org6b3099d">Obfuscation and Evasion</h2>
+<div class="outline-text-2" id="text-org6b3099d">
 <p>
 Malware authors deliberately hinder reverse engineering:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e5fa8017a1f149ab9953cca0c51b3aa0>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ec7729c465464fe985d4a8a2ed4aa350>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e5fa8017a1f149ab9953cca0c51b3aa0=document.querySelector('button[name=btn_e5fa8017a1f149ab9953cca0c51b3aa0]');
-copyBtnbtn_e5fa8017a1f149ab9953cca0c51b3aa0.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Packers — compress and encrypt payload; unpacks at runtime\nString encryption — XOR or AES-encrypt all readable strings\nAnti-debugging — detect debugger presence and alter behaviour\nCode virtualisation — replace native code with custom VM bytecode\nControl flow obfuscation — add junk jumps and dead code\n`);copyBtnbtn_e5fa8017a1f149ab9953cca0c51b3aa0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e5fa8017a1f149ab9953cca0c51b3aa0.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ec7729c465464fe985d4a8a2ed4aa350=document.querySelector('button[name=btn_ec7729c465464fe985d4a8a2ed4aa350]');
+copyBtnbtn_ec7729c465464fe985d4a8a2ed4aa350.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Packers — compress and encrypt payload; unpacks at runtime\nString encryption — XOR or AES-encrypt all readable strings\nAnti-debugging — detect debugger presence and alter behaviour\nCode virtualisation — replace native code with custom VM bytecode\nControl flow obfuscation — add junk jumps and dead code\n`);copyBtnbtn_ec7729c465464fe985d4a8a2ed4aa350.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ec7729c465464fe985d4a8a2ed4aa350.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1142,9 +1160,9 @@ Counter-techniques:
 </ul>
 </div>
 </div>
-<div id="outline-container-org77b93e0" class="outline-2">
-<h2 id="org77b93e0">Tips</h2>
-<div class="outline-text-2" id="text-org77b93e0">
+<div id="outline-container-org170603a" class="outline-2">
+<h2 id="org170603a">Tips</h2>
+<div class="outline-text-2" id="text-org170603a">
 <ul class="org-ul">
 <li>Start with strings and PE headers (PeStudio) — often enough
 to identify the malware family without deeper analysis</li>
@@ -1161,6 +1179,20 @@ as the analysis environment to keep the host clean</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1168,6 +1200,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

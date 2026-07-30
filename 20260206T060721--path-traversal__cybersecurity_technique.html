@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Path Traversal</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6851883">Path Traversal</a>
+<li><a href="#orga7cfffa">Path Traversal</a>
 <ul>
-<li><a href="#orgafa6da9">Common Exploitation Patterns and Examples</a></li>
-<li><a href="#orgf5a2147">Real-world Examples of Directory Traversal Exploits</a></li>
+<li><a href="#orgd3054b0">Common Exploitation Patterns and Examples</a></li>
+<li><a href="#org182a5d9">Real-world Examples of Directory Traversal Exploits</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org6851883" class="outline-2">
-<h2 id="org6851883">Path Traversal</h2>
-<div class="outline-text-2" id="text-org6851883">
+<div id="outline-container-orga7cfffa" class="outline-2">
+<h2 id="orga7cfffa">Path Traversal</h2>
+<div class="outline-text-2" id="text-orga7cfffa">
 <p>
 Path Traversal, also known as Directory Traversal, is a web application vulnerability that allows an attacker to access files and directories stored outside the intended scope of an application. This is achieved by manipulating file path parameters in user input, allowing the attacker to navigate through the server's directory structure and retrieve sensitive files such as configuration data, passwords, or source code.
 </p>
@@ -888,9 +906,9 @@ Path Traversal, also known as Directory Traversal, is a web application vulnerab
 These vulnerabilities often arise when applications dynamically generate file paths based on user input without proper validation or sanitization.
 </p>
 </div>
-<div id="outline-container-orgafa6da9" class="outline-3">
-<h3 id="orgafa6da9">Common Exploitation Patterns and Examples</h3>
-<div class="outline-text-3" id="text-orgafa6da9">
+<div id="outline-container-orgd3054b0" class="outline-3">
+<h3 id="orgd3054b0">Common Exploitation Patterns and Examples</h3>
+<div class="outline-text-3" id="text-orgd3054b0">
 <ul class="org-ul">
 <li><b>Relative Path Manipulation:</b> This is the most common technique, where attackers inject "dot-dot-slash" sequences (<code>../</code> for Linux/UNIX or <code>..\</code> for Windows) to move up the directory tree and access restricted files.
 <ul class="org-ul">
@@ -901,21 +919,21 @@ These vulnerabilities often arise when applications dynamically generate file pa
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PHP</span><button class='copyBtn' name=btn_15f1e591f1ef4bb2803dd1e4f0243ad3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PHP</span><button class='copyBtn' name=btn_c04a708929724b0a99abed651d2d0e64>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_15f1e591f1ef4bb2803dd1e4f0243ad3=document.querySelector('button[name=btn_15f1e591f1ef4bb2803dd1e4f0243ad3]');
-copyBtnbtn_15f1e591f1ef4bb2803dd1e4f0243ad3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`<?php\n$template = 'blue.php';\nif (isset($_COOKIE['TEMPLATE'])) {\n    $template = $_COOKIE['TEMPLATE'];\n}\ninclude (\"/home/users/phpguru/templates/\" . $template);\n?>\n`);copyBtnbtn_15f1e591f1ef4bb2803dd1e4f0243ad3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_15f1e591f1ef4bb2803dd1e4f0243ad3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c04a708929724b0a99abed651d2d0e64=document.querySelector('button[name=btn_c04a708929724b0a99abed651d2d0e64]');
+copyBtnbtn_c04a708929724b0a99abed651d2d0e64.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`<?php\n$template = 'blue.php';\nif (isset($_COOKIE['TEMPLATE'])) {\n    $template = $_COOKIE['TEMPLATE'];\n}\ninclude (\"/home/users/phpguru/templates/\" . $template);\n?>\n`);copyBtnbtn_c04a708929724b0a99abed651d2d0e64.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c04a708929724b0a99abed651d2d0e64.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
-<pre class="src src-php">&lt;?php
-$template = 'blue.php';
-if (isset($_COOKIE['TEMPLATE'])) {
-    $template = $_COOKIE['TEMPLATE'];
+<pre class="src src-php"><span style="color: #ff7f86;">&lt;?php</span>
+$<span style="color: #4ae2f0;">template</span> = <span style="color: #2fafff;">'blue.php'</span>;
+<span style="color: #79a8ff;">if</span> (<span style="color: #79a8ff;">isset</span>($<span style="color: #4ae2f0;">_COOKIE</span>[<span style="color: #2fafff;">'TEMPLATE'</span>])) {
+    $<span style="color: #4ae2f0;">template</span> = $<span style="color: #4ae2f0;">_COOKIE</span>[<span style="color: #2fafff;">'TEMPLATE'</span>];
 }
-include ("/home/users/phpguru/templates/" . $template);
-?&gt;
+<span style="color: #79a8ff;">include</span> (<span style="color: #2fafff;">"/home/users/phpguru/templates/"</span> . $<span style="color: #4ae2f0;">template</span>);
+<span style="color: #ff7f86;">?&gt;</span>
 </pre>
 </div></div>
 
@@ -939,9 +957,9 @@ An attacker could set the <code>TEMPLATE</code> cookie to <code>../../../../etc/
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf5a2147" class="outline-3">
-<h3 id="orgf5a2147">Real-world Examples of Directory Traversal Exploits</h3>
-<div class="outline-text-3" id="text-orgf5a2147">
+<div id="outline-container-org182a5d9" class="outline-3">
+<h3 id="org182a5d9">Real-world Examples of Directory Traversal Exploits</h3>
+<div class="outline-text-3" id="text-org182a5d9">
 <ul class="org-ul">
 <li><b>CVE-2021-41773 in Apache HTTP Server 2.4.49:</b> This vulnerability allowed attackers to escalate to remote code execution.</li>
 <li><b>CVE-2018-13379 in Fortinet FortiOS:</b> A directory traversal vulnerability discovered in the operating system of FortiGate firewalls.</li>
@@ -957,6 +975,20 @@ Path traversal attacks can occur in both web server software and application cod
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -964,6 +996,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

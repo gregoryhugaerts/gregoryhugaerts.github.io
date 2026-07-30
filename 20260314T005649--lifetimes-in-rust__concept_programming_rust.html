@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:57 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lifetimes in Rust</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,15 +886,15 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org79bc5fe">Lifetimes in Rust</a>
+<li><a href="#org0a15dad">Lifetimes in Rust</a>
 <ul>
-<li><a href="#orgc22d1ba">What Are Lifetimes?</a></li>
-<li><a href="#org8ba15f4">How Lifetimes Work (The Borrow Checker)</a></li>
-<li><a href="#orgdc2cf9f">Common Scenarios Requiring Explicit Lifetimes</a>
+<li><a href="#orga2e39cc">What Are Lifetimes?</a></li>
+<li><a href="#orgd023e97">How Lifetimes Work (The Borrow Checker)</a></li>
+<li><a href="#orge7e4131">Common Scenarios Requiring Explicit Lifetimes</a>
 <ul>
-<li><a href="#orgf299bb6">Functions that Take References and return a Reference</a></li>
-<li><a href="#org02293aa">Structs that Hold References</a></li>
-<li><a href="#org7f5c86f">The 'static Lifetime</a></li>
+<li><a href="#org57922dd">Functions that Take References and return a Reference</a></li>
+<li><a href="#orgc5333cd">Structs that Hold References</a></li>
+<li><a href="#orgb1e81ea">The 'static Lifetime</a></li>
 </ul>
 </li>
 </ul>
@@ -884,13 +902,13 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-org79bc5fe" class="outline-2">
-<h2 id="org79bc5fe">Lifetimes in Rust</h2>
-<div class="outline-text-2" id="text-org79bc5fe">
+<div id="outline-container-org0a15dad" class="outline-2">
+<h2 id="org0a15dad">Lifetimes in Rust</h2>
+<div class="outline-text-2" id="text-org0a15dad">
 </div>
-<div id="outline-container-orgc22d1ba" class="outline-3">
-<h3 id="orgc22d1ba">What Are Lifetimes?</h3>
-<div class="outline-text-3" id="text-orgc22d1ba">
+<div id="outline-container-orga2e39cc" class="outline-3">
+<h3 id="orga2e39cc">What Are Lifetimes?</h3>
+<div class="outline-text-3" id="text-orga2e39cc">
 <ul class="org-ul">
 <li><b>Period of Validity:</b> A lifetime represents the scope or duration for which a reference is valid. It's the region of code where the value a reference points to is guaranteed to exist in memory.</li>
 <li><b>Compile-Time Concept:</b> Lifetimes are not a runtime feature. They are a static analysis tool used by Rust's <b>borrow checker</b> during compilation to enforce memory safety rules. If the borrow checker determines that a reference <i>could</i> outlive the data it points to, it will issue a compile-time error.</li>
@@ -898,9 +916,9 @@ pre {
 </ul>
 </div>
 </div>
-<div id="outline-container-org8ba15f4" class="outline-3">
-<h3 id="org8ba15f4">How Lifetimes Work (The Borrow Checker)</h3>
-<div class="outline-text-3" id="text-org8ba15f4">
+<div id="outline-container-orgd023e97" class="outline-3">
+<h3 id="orgd023e97">How Lifetimes Work (The Borrow Checker)</h3>
+<div class="outline-text-3" id="text-orgd023e97">
 <p>
 Rust's Ownership and borrowing rules work hand-in-hand with lifetimes:
 </p>
@@ -920,26 +938,26 @@ Rust's Ownership and borrowing rules work hand-in-hand with lifetimes:
 </ol>
 </div>
 </div>
-<div id="outline-container-orgdc2cf9f" class="outline-3">
-<h3 id="orgdc2cf9f">Common Scenarios Requiring Explicit Lifetimes</h3>
-<div class="outline-text-3" id="text-orgdc2cf9f">
+<div id="outline-container-orge7e4131" class="outline-3">
+<h3 id="orge7e4131">Common Scenarios Requiring Explicit Lifetimes</h3>
+<div class="outline-text-3" id="text-orge7e4131">
 </div>
-<div id="outline-container-orgf299bb6" class="outline-4">
-<h4 id="orgf299bb6">Functions that Take References and return a Reference</h4>
-<div class="outline-text-4" id="text-orgf299bb6">
+<div id="outline-container-org57922dd" class="outline-4">
+<h4 id="org57922dd">Functions that Take References and return a Reference</h4>
+<div class="outline-text-4" id="text-org57922dd">
 <p>
 When a function takes multiple references as input and returns one of them, or a reference derived from them, the compiler needs to know which input lifetime the output reference is dependent on.
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="orgf326c42"></a><b>Example:</b><br />
-<div class="outline-text-5" id="text-orgf326c42">
+<li><a id="org00f2db0"></a><b>Example:</b><br />
+<div class="outline-text-5" id="text-org00f2db0">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_2d5b9b9a89864e23840741a2fabbcc49>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_6ab74c5382c94f389b1000fde8373460>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2d5b9b9a89864e23840741a2fabbcc49=document.querySelector('button[name=btn_2d5b9b9a89864e23840741a2fabbcc49]');
-copyBtnbtn_2d5b9b9a89864e23840741a2fabbcc49.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// This function takes two string slices and returns the longest one.\n// The returned slice's data must be valid for at least as long\n// as the shortest of the two input slices.\nfn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() > y.len() {\n        x\n    } else {\n        y\n    }\n}\n`);copyBtnbtn_2d5b9b9a89864e23840741a2fabbcc49.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2d5b9b9a89864e23840741a2fabbcc49.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_6ab74c5382c94f389b1000fde8373460=document.querySelector('button[name=btn_6ab74c5382c94f389b1000fde8373460]');
+copyBtnbtn_6ab74c5382c94f389b1000fde8373460.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// This function takes two string slices and returns the longest one.\n// The returned slice's data must be valid for at least as long\n// as the shortest of the two input slices.\nfn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() > y.len() {\n        x\n    } else {\n        y\n    }\n}\n`);copyBtnbtn_6ab74c5382c94f389b1000fde8373460.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_6ab74c5382c94f389b1000fde8373460.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -963,22 +981,22 @@ Here, <code>'a</code> is a lifetime parameter that tells the compiler: "The refe
 </li>
 </ul>
 </div>
-<div id="outline-container-org02293aa" class="outline-4">
-<h4 id="org02293aa">Structs that Hold References</h4>
-<div class="outline-text-4" id="text-org02293aa">
+<div id="outline-container-orgc5333cd" class="outline-4">
+<h4 id="orgc5333cd">Structs that Hold References</h4>
+<div class="outline-text-4" id="text-orgc5333cd">
 <p>
 If a struct contains a reference, it means the struct does not own the data it points to. Therefore, the struct must ensure that the data it refers to remains valid for as long as the struct itself exists.
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="orga96c332"></a>Example<br />
-<div class="outline-text-5" id="text-orga96c332">
+<li><a id="org34d5bde"></a>Example<br />
+<div class="outline-text-5" id="text-org34d5bde">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_745d94a954294155bdd95fcbacd787f3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_3e46938abad2448b88c7cd4c07be5ac7>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_745d94a954294155bdd95fcbacd787f3=document.querySelector('button[name=btn_745d94a954294155bdd95fcbacd787f3]');
-copyBtnbtn_745d94a954294155bdd95fcbacd787f3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`struct ImportantExcerpt<'a> {\n    part: &'a str,\n}\n\nfn main() {\n    let novel = String::from(\"Call me Ishmael. Some years ago...\");\n    let first_sentence = novel.split('.').next().expect(\"Could not find a '.'\");\n    let i = ImportantExcerpt {\n        part: first_sentence,\n    };\n    // The 'a lifetime here ensures that 'novel' lives at least as long as 'i'.\n    // If 'novel' went out of scope before 'i', it would be a compile-time error.\n}\n`);copyBtnbtn_745d94a954294155bdd95fcbacd787f3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_745d94a954294155bdd95fcbacd787f3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3e46938abad2448b88c7cd4c07be5ac7=document.querySelector('button[name=btn_3e46938abad2448b88c7cd4c07be5ac7]');
+copyBtnbtn_3e46938abad2448b88c7cd4c07be5ac7.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`struct ImportantExcerpt<'a> {\n    part: &'a str,\n}\n\nfn main() {\n    let novel = String::from(\"Call me Ishmael. Some years ago...\");\n    let first_sentence = novel.split('.').next().expect(\"Could not find a '.'\");\n    let i = ImportantExcerpt {\n        part: first_sentence,\n    };\n    // The 'a lifetime here ensures that 'novel' lives at least as long as 'i'.\n    // If 'novel' went out of scope before 'i', it would be a compile-time error.\n}\n`);copyBtnbtn_3e46938abad2448b88c7cd4c07be5ac7.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3e46938abad2448b88c7cd4c07be5ac7.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1005,23 +1023,23 @@ The lifetime annotation 'a on <code>ImportantExcerpt</code> means that any insta
 </li>
 </ul>
 </div>
-<div id="outline-container-org7f5c86f" class="outline-4">
-<h4 id="org7f5c86f">The 'static Lifetime</h4>
-<div class="outline-text-4" id="text-org7f5c86f">
+<div id="outline-container-orgb1e81ea" class="outline-4">
+<h4 id="orgb1e81ea">The 'static Lifetime</h4>
+<div class="outline-text-4" id="text-orgb1e81ea">
 <ul class="org-ul">
 <li>The 'static lifetime is a special lifetime that indicates a reference is valid for the entire duration of the program.</li>
 <li>This applies to string literals (&amp;'static str), global constants, and data that is intentionally "leaked" to exist indefinitely.</li>
 </ul>
 </div>
 <ul class="org-ul">
-<li><a id="org1f6dca7"></a>Example<br />
-<div class="outline-text-5" id="text-org1f6dca7">
+<li><a id="org115248b"></a>Example<br />
+<div class="outline-text-5" id="text-org115248b">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_35f434336e22459dab3d6a9934e74673>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_efc93be2212a4907b7ec07a5971e7e42>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_35f434336e22459dab3d6a9934e74673=document.querySelector('button[name=btn_35f434336e22459dab3d6a9934e74673]');
-copyBtnbtn_35f434336e22459dab3d6a9934e74673.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`let s: &'static str = \"I am a string literal with a static lifetime.\";\n`);copyBtnbtn_35f434336e22459dab3d6a9934e74673.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_35f434336e22459dab3d6a9934e74673.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_efc93be2212a4907b7ec07a5971e7e42=document.querySelector('button[name=btn_efc93be2212a4907b7ec07a5971e7e42]');
+copyBtnbtn_efc93be2212a4907b7ec07a5971e7e42.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`let s: &'static str = \"I am a string literal with a static lifetime.\";\n`);copyBtnbtn_efc93be2212a4907b7ec07a5971e7e42.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_efc93be2212a4907b7ec07a5971e7e42.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1036,6 +1054,20 @@ let res = copyTextToClipboard(`let s: &'static str = \"I am a string literal wit
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1043,6 +1075,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

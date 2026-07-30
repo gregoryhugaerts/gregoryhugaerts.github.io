@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Switch</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,22 +886,22 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org22d0d6b">Switch Types</a></li>
-<li><a href="#org86396d1">How It Works</a>
+<li><a href="#orged4b277">Switch Types</a></li>
+<li><a href="#orgc3a9e0b">How It Works</a>
 <ul>
-<li><a href="#org140ef15">MAC Address Table (CAM Table)</a></li>
-<li><a href="#orgbfbc298">Broadcast Domain</a></li>
+<li><a href="#orgd6d2c03">MAC Address Table (CAM Table)</a></li>
+<li><a href="#org641be66">Broadcast Domain</a></li>
 </ul>
 </li>
-<li><a href="#org3161249">Common Cisco CLI Commands</a></li>
-<li><a href="#org0c44160">Security Relevance</a>
+<li><a href="#org2a367d3">Common Cisco CLI Commands</a></li>
+<li><a href="#org3df13f6">Security Relevance</a>
 <ul>
-<li><a href="#org5796457">MAC Flooding</a></li>
-<li><a href="#org8f21ad1">VLAN Hopping</a></li>
-<li><a href="#org27d877a">DHCP Starvation / Spoofing</a></li>
+<li><a href="#org017c4ff">MAC Flooding</a></li>
+<li><a href="#orgf4e9dd6">VLAN Hopping</a></li>
+<li><a href="#orgadc1750">DHCP Starvation / Spoofing</a></li>
 </ul>
 </li>
-<li><a href="#org899a4bc">Tips</a></li>
+<li><a href="#org442b3f9">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -904,9 +922,9 @@ Related: <a href="20260210T195305--media-access-control-address__concept_network
          <a href="20260206T060542--hub__device_networking.html">Hub</a>
          <a href="20260206T060541--ethernet__concept_networking.html">Ethernet</a>
 </p>
-<div id="outline-container-org22d0d6b" class="outline-2">
-<h2 id="org22d0d6b">Switch Types</h2>
-<div class="outline-text-2" id="text-org22d0d6b">
+<div id="outline-container-orged4b277" class="outline-2">
+<h2 id="orged4b277">Switch Types</h2>
+<div class="outline-text-2" id="text-orged4b277">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -952,24 +970,24 @@ Related: <a href="20260210T195305--media-access-control-address__concept_network
 </table>
 </div>
 </div>
-<div id="outline-container-org86396d1" class="outline-2">
-<h2 id="org86396d1">How It Works</h2>
-<div class="outline-text-2" id="text-org86396d1">
+<div id="outline-container-orgc3a9e0b" class="outline-2">
+<h2 id="orgc3a9e0b">How It Works</h2>
+<div class="outline-text-2" id="text-orgc3a9e0b">
 </div>
-<div id="outline-container-org140ef15" class="outline-3">
-<h3 id="org140ef15">MAC Address Table (CAM Table)</h3>
-<div class="outline-text-3" id="text-org140ef15">
+<div id="outline-container-orgd6d2c03" class="outline-3">
+<h3 id="orgd6d2c03">MAC Address Table (CAM Table)</h3>
+<div class="outline-text-3" id="text-orgd6d2c03">
 <p>
 The switch builds a table mapping MAC addresses to ports by
 inspecting the source MAC of incoming frames:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_e345cc3806134895bde70a6641bd64ca>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d9cb646b04514b9b86794046a46cec8a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e345cc3806134895bde70a6641bd64ca=document.querySelector('button[name=btn_e345cc3806134895bde70a6641bd64ca]');
-copyBtnbtn_e345cc3806134895bde70a6641bd64ca.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Port 1 → AA:BB:CC:DD:EE:01  (learned from device on port 1)\nPort 2 → AA:BB:CC:DD:EE:02\nPort 3 → AA:BB:CC:DD:EE:03\n`);copyBtnbtn_e345cc3806134895bde70a6641bd64ca.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e345cc3806134895bde70a6641bd64ca.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d9cb646b04514b9b86794046a46cec8a=document.querySelector('button[name=btn_d9cb646b04514b9b86794046a46cec8a]');
+copyBtnbtn_d9cb646b04514b9b86794046a46cec8a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Port 1 → AA:BB:CC:DD:EE:01  (learned from device on port 1)\nPort 2 → AA:BB:CC:DD:EE:02\nPort 3 → AA:BB:CC:DD:EE:03\n`);copyBtnbtn_d9cb646b04514b9b86794046a46cec8a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d9cb646b04514b9b86794046a46cec8a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -987,9 +1005,9 @@ table is updated.
 </p>
 </div>
 </div>
-<div id="outline-container-orgbfbc298" class="outline-3">
-<h3 id="orgbfbc298">Broadcast Domain</h3>
-<div class="outline-text-3" id="text-orgbfbc298">
+<div id="outline-container-org641be66" class="outline-3">
+<h3 id="org641be66">Broadcast Domain</h3>
+<div class="outline-text-3" id="text-org641be66">
 <p>
 By default all ports on a switch share one broadcast domain —
 a broadcast frame is forwarded to all ports. VLANs segment the
@@ -998,15 +1016,15 @@ switch into multiple broadcast domains.
 </div>
 </div>
 </div>
-<div id="outline-container-org3161249" class="outline-2">
-<h2 id="org3161249">Common Cisco CLI Commands</h2>
-<div class="outline-text-2" id="text-org3161249">
+<div id="outline-container-org2a367d3" class="outline-2">
+<h2 id="org2a367d3">Common Cisco CLI Commands</h2>
+<div class="outline-text-2" id="text-org2a367d3">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_968d2c580a7c4788bfcd7ca3d851b6b9>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_21b57686d2624a8993d97e24c0b80cd3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_968d2c580a7c4788bfcd7ca3d851b6b9=document.querySelector('button[name=btn_968d2c580a7c4788bfcd7ca3d851b6b9]');
-copyBtnbtn_968d2c580a7c4788bfcd7ca3d851b6b9.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Show MAC address table\nshow mac address-table\n\n# Show all interfaces and their status\nshow interfaces status\n\n# Show VLAN assignments\nshow vlan brief\n\n# Show spanning tree state\nshow spanning-tree\n\n# Assign port to VLAN (access port — single VLAN, for end devices)\ninterface FastEthernet 0/1\n  switchport mode access\n  switchport access vlan 10\n\n# Configure trunk port (carries multiple VLANs — for uplinks)\ninterface GigabitEthernet 0/1\n  switchport mode trunk\n  switchport trunk allowed vlan 10,20,30\n\n# Port security — limit MAC addresses per port\ninterface FastEthernet 0/1\n  switchport port-security maximum 2\n  switchport port-security violation restrict\n  switchport port-security mac-address sticky\n\n# Enable portfast (skip STP listening/learning on access ports)\ninterface FastEthernet 0/1\n  spanning-tree portfast\n`);copyBtnbtn_968d2c580a7c4788bfcd7ca3d851b6b9.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_968d2c580a7c4788bfcd7ca3d851b6b9.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_21b57686d2624a8993d97e24c0b80cd3=document.querySelector('button[name=btn_21b57686d2624a8993d97e24c0b80cd3]');
+copyBtnbtn_21b57686d2624a8993d97e24c0b80cd3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Show MAC address table\nshow mac address-table\n\n# Show all interfaces and their status\nshow interfaces status\n\n# Show VLAN assignments\nshow vlan brief\n\n# Show spanning tree state\nshow spanning-tree\n\n# Assign port to VLAN (access port — single VLAN, for end devices)\ninterface FastEthernet 0/1\n  switchport mode access\n  switchport access vlan 10\n\n# Configure trunk port (carries multiple VLANs — for uplinks)\ninterface GigabitEthernet 0/1\n  switchport mode trunk\n  switchport trunk allowed vlan 10,20,30\n\n# Port security — limit MAC addresses per port\ninterface FastEthernet 0/1\n  switchport port-security maximum 2\n  switchport port-security violation restrict\n  switchport port-security mac-address sticky\n\n# Enable portfast (skip STP listening/learning on access ports)\ninterface FastEthernet 0/1\n  spanning-tree portfast\n`);copyBtnbtn_21b57686d2624a8993d97e24c0b80cd3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_21b57686d2624a8993d97e24c0b80cd3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1045,13 +1063,13 @@ interface FastEthernet 0/1
 </div></div>
 </div>
 </div>
-<div id="outline-container-org0c44160" class="outline-2">
-<h2 id="org0c44160">Security Relevance</h2>
-<div class="outline-text-2" id="text-org0c44160">
+<div id="outline-container-org3df13f6" class="outline-2">
+<h2 id="org3df13f6">Security Relevance</h2>
+<div class="outline-text-2" id="text-org3df13f6">
 </div>
-<div id="outline-container-org5796457" class="outline-3">
-<h3 id="org5796457">MAC Flooding</h3>
-<div class="outline-text-3" id="text-org5796457">
+<div id="outline-container-org017c4ff" class="outline-3">
+<h3 id="org017c4ff">MAC Flooding</h3>
+<div class="outline-text-3" id="text-org017c4ff">
 <p>
 An attacker floods the switch with frames containing random
 source MAC addresses, filling the CAM table. When full, the
@@ -1060,11 +1078,11 @@ ports, enabling sniffing.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_afdff525fd804a82b86b9294392db124>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_16d8ba085a7d43b19167e7829667c092>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_afdff525fd804a82b86b9294392db124=document.querySelector('button[name=btn_afdff525fd804a82b86b9294392db124]');
-copyBtnbtn_afdff525fd804a82b86b9294392db124.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# macof (dsniff package) — MAC flood attack\nmacof -i eth0\n`);copyBtnbtn_afdff525fd804a82b86b9294392db124.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_afdff525fd804a82b86b9294392db124.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_16d8ba085a7d43b19167e7829667c092=document.querySelector('button[name=btn_16d8ba085a7d43b19167e7829667c092]');
+copyBtnbtn_16d8ba085a7d43b19167e7829667c092.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# macof (dsniff package) — MAC flood attack\nmacof -i eth0\n`);copyBtnbtn_16d8ba085a7d43b19167e7829667c092.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_16d8ba085a7d43b19167e7829667c092.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1078,9 +1096,9 @@ Mitigation: port security limiting MACs per port.
 </p>
 </div>
 </div>
-<div id="outline-container-org8f21ad1" class="outline-3">
-<h3 id="org8f21ad1">VLAN Hopping</h3>
-<div class="outline-text-3" id="text-org8f21ad1">
+<div id="outline-container-orgf4e9dd6" class="outline-3">
+<h3 id="orgf4e9dd6">VLAN Hopping</h3>
+<div class="outline-text-3" id="text-orgf4e9dd6">
 <p>
 Without proper trunk configuration an attacker on an access port
 may be able to send frames tagged with a different VLAN ID,
@@ -1093,9 +1111,9 @@ gaining access to traffic on that VLAN. Mitigated by:
 </ul>
 </div>
 </div>
-<div id="outline-container-org27d877a" class="outline-3">
-<h3 id="org27d877a">DHCP Starvation / Spoofing</h3>
-<div class="outline-text-3" id="text-org27d877a">
+<div id="outline-container-orgadc1750" class="outline-3">
+<h3 id="orgadc1750">DHCP Starvation / Spoofing</h3>
+<div class="outline-text-3" id="text-orgadc1750">
 <p>
 An attacker exhausts the DHCP pool with requests then serves
 a rogue DHCP server. Mitigated by DHCP snooping — a managed
@@ -1104,9 +1122,9 @@ switch feature that only allows DHCP responses from trusted ports.
 </div>
 </div>
 </div>
-<div id="outline-container-org899a4bc" class="outline-2">
-<h2 id="org899a4bc">Tips</h2>
-<div class="outline-text-2" id="text-org899a4bc">
+<div id="outline-container-org442b3f9" class="outline-2">
+<h2 id="org442b3f9">Tips</h2>
+<div class="outline-text-2" id="text-org442b3f9">
 <ul class="org-ul">
 <li>If you get a cheap managed switch from work, VLAN configuration
 is the most immediately useful feature — isolate lab traffic
@@ -1125,6 +1143,20 @@ read access to switch configuration</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1132,6 +1164,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Binary</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,29 +886,29 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org420c4a8">Place Values</a></li>
-<li><a href="#org559f816">Conversion</a>
+<li><a href="#org1082b16">Place Values</a></li>
+<li><a href="#org190b1b3">Conversion</a>
 <ul>
-<li><a href="#org7a701d7">Binary → Decimal</a></li>
-<li><a href="#org2f308d6">Decimal → Binary</a></li>
-<li><a href="#orgbfbffa7">Binary ↔ Hexadecimal</a></li>
-<li><a href="#orgc8b3ebb">Common shell conversions</a></li>
+<li><a href="#org0b7d71c">Binary → Decimal</a></li>
+<li><a href="#org218538a">Decimal → Binary</a></li>
+<li><a href="#orga92231f">Binary ↔ Hexadecimal</a></li>
+<li><a href="#org70b8c49">Common shell conversions</a></li>
 </ul>
 </li>
-<li><a href="#orga7db77e">Bits, Bytes, and Common Sizes</a></li>
-<li><a href="#org7bc82fd">Bitwise Operations</a>
+<li><a href="#org12b8f91">Bits, Bytes, and Common Sizes</a></li>
+<li><a href="#orga56f22b">Bitwise Operations</a>
 <ul>
-<li><a href="#org3af58f2">Subnet masking (AND)</a></li>
+<li><a href="#orgab3f813">Subnet masking (AND)</a></li>
 </ul>
 </li>
-<li><a href="#org72bbf74">Security Relevance</a>
+<li><a href="#orge3e7c76">Security Relevance</a>
 <ul>
-<li><a href="#org63edea6">File magic bytes (hex/binary signatures)</a></li>
-<li><a href="#org693ee55">XOR encoding</a></li>
-<li><a href="#org6485f6f">Checking bits and flags</a></li>
+<li><a href="#org7cfa0f2">File magic bytes (hex/binary signatures)</a></li>
+<li><a href="#org1e49547">XOR encoding</a></li>
+<li><a href="#org7b38d2f">Checking bits and flags</a></li>
 </ul>
 </li>
-<li><a href="#org2e51a9d">Tips</a></li>
+<li><a href="#org5c66cc3">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -907,19 +925,19 @@ Related: <a href="20260314T005646--hexadecimal__concept_programming.html">Hexade
          <a href="20260314T005702--base64__concept_programming.html">Base64</a>
          <a href="20260314T005759--cyberchef__cybersecurity_tool.html">CyberChef</a>
 </p>
-<div id="outline-container-org420c4a8" class="outline-2">
-<h2 id="org420c4a8">Place Values</h2>
-<div class="outline-text-2" id="text-org420c4a8">
+<div id="outline-container-org1082b16" class="outline-2">
+<h2 id="org1082b16">Place Values</h2>
+<div class="outline-text-2" id="text-org1082b16">
 <p>
 Each bit position represents a power of 2, right to left:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ed749a80ef0843218920babe74b4b59c>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_165ca762b6134adb86e51ce7c4744658>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ed749a80ef0843218920babe74b4b59c=document.querySelector('button[name=btn_ed749a80ef0843218920babe74b4b59c]');
-copyBtnbtn_ed749a80ef0843218920babe74b4b59c.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Bit position:  7    6    5    4    3    2    1    0\nPower of 2:   128   64   32   16    8    4    2    1\nBinary:         1    0    1    0    1    1    0    1\nDecimal:      128 +  0 + 32 +  0 +  8 +  4 +  0 +  1 = 173\n`);copyBtnbtn_ed749a80ef0843218920babe74b4b59c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ed749a80ef0843218920babe74b4b59c.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_165ca762b6134adb86e51ce7c4744658=document.querySelector('button[name=btn_165ca762b6134adb86e51ce7c4744658]');
+copyBtnbtn_165ca762b6134adb86e51ce7c4744658.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Bit position:  7    6    5    4    3    2    1    0\nPower of 2:   128   64   32   16    8    4    2    1\nBinary:         1    0    1    0    1    1    0    1\nDecimal:      128 +  0 + 32 +  0 +  8 +  4 +  0 +  1 = 173\n`);copyBtnbtn_165ca762b6134adb86e51ce7c4744658.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_165ca762b6134adb86e51ce7c4744658.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -931,23 +949,23 @@ Decimal:      128 +  0 + 32 +  0 +  8 +  4 +  0 +  1 = 173
 </div></div>
 </div>
 </div>
-<div id="outline-container-org559f816" class="outline-2">
-<h2 id="org559f816">Conversion</h2>
-<div class="outline-text-2" id="text-org559f816">
+<div id="outline-container-org190b1b3" class="outline-2">
+<h2 id="org190b1b3">Conversion</h2>
+<div class="outline-text-2" id="text-org190b1b3">
 </div>
-<div id="outline-container-org7a701d7" class="outline-3">
-<h3 id="org7a701d7">Binary → Decimal</h3>
-<div class="outline-text-3" id="text-org7a701d7">
+<div id="outline-container-org0b7d71c" class="outline-3">
+<h3 id="org0b7d71c">Binary → Decimal</h3>
+<div class="outline-text-3" id="text-org0b7d71c">
 <p>
 Sum the place values for every bit that is 1:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_af3f064eecba4731b35c342a9b1d4656>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_38d1d015673548f995cd9109721148a3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_af3f064eecba4731b35c342a9b1d4656=document.querySelector('button[name=btn_af3f064eecba4731b35c342a9b1d4656]');
-copyBtnbtn_af3f064eecba4731b35c342a9b1d4656.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1010 1101\n= 128 + 0 + 32 + 0 + 8 + 4 + 0 + 1\n= 173\n`);copyBtnbtn_af3f064eecba4731b35c342a9b1d4656.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_af3f064eecba4731b35c342a9b1d4656.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_38d1d015673548f995cd9109721148a3=document.querySelector('button[name=btn_38d1d015673548f995cd9109721148a3]');
+copyBtnbtn_38d1d015673548f995cd9109721148a3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1010 1101\n= 128 + 0 + 32 + 0 + 8 + 4 + 0 + 1\n= 173\n`);copyBtnbtn_38d1d015673548f995cd9109721148a3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_38d1d015673548f995cd9109721148a3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -958,19 +976,19 @@ let res = copyTextToClipboard(`1010 1101\n= 128 + 0 + 32 + 0 + 8 + 4 + 0 + 1\n= 
 </div></div>
 </div>
 </div>
-<div id="outline-container-org2f308d6" class="outline-3">
-<h3 id="org2f308d6">Decimal → Binary</h3>
-<div class="outline-text-3" id="text-org2f308d6">
+<div id="outline-container-org218538a" class="outline-3">
+<h3 id="org218538a">Decimal → Binary</h3>
+<div class="outline-text-3" id="text-org218538a">
 <p>
 Repeatedly divide by 2, read remainders bottom to top:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_4bde304aeb9c4ed0ad38f0d9d95e06e3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_29990a84fc5e4707b66cdd6dc12f0203>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4bde304aeb9c4ed0ad38f0d9d95e06e3=document.querySelector('button[name=btn_4bde304aeb9c4ed0ad38f0d9d95e06e3]');
-copyBtnbtn_4bde304aeb9c4ed0ad38f0d9d95e06e3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`173 ÷ 2 = 86 r 1   ↑ (LSB)\n 86 ÷ 2 = 43 r 0   |\n 43 ÷ 2 = 21 r 1   |\n 21 ÷ 2 = 10 r 1   |\n 10 ÷ 2 =  5 r 0   |\n  5 ÷ 2 =  2 r 1   |\n  2 ÷ 2 =  1 r 0   |\n  1 ÷ 2 =  0 r 1   ↓ (MSB)\nResult: 1010 1101\n`);copyBtnbtn_4bde304aeb9c4ed0ad38f0d9d95e06e3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4bde304aeb9c4ed0ad38f0d9d95e06e3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_29990a84fc5e4707b66cdd6dc12f0203=document.querySelector('button[name=btn_29990a84fc5e4707b66cdd6dc12f0203]');
+copyBtnbtn_29990a84fc5e4707b66cdd6dc12f0203.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`173 ÷ 2 = 86 r 1   ↑ (LSB)\n 86 ÷ 2 = 43 r 0   |\n 43 ÷ 2 = 21 r 1   |\n 21 ÷ 2 = 10 r 1   |\n 10 ÷ 2 =  5 r 0   |\n  5 ÷ 2 =  2 r 1   |\n  2 ÷ 2 =  1 r 0   |\n  1 ÷ 2 =  0 r 1   ↓ (MSB)\nResult: 1010 1101\n`);copyBtnbtn_29990a84fc5e4707b66cdd6dc12f0203.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_29990a84fc5e4707b66cdd6dc12f0203.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -987,19 +1005,19 @@ Result: 1010 1101
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgbfbffa7" class="outline-3">
-<h3 id="orgbfbffa7">Binary ↔ Hexadecimal</h3>
-<div class="outline-text-3" id="text-orgbfbffa7">
+<div id="outline-container-orga92231f" class="outline-3">
+<h3 id="orga92231f">Binary ↔ Hexadecimal</h3>
+<div class="outline-text-3" id="text-orga92231f">
 <p>
 Group bits into nibbles (4 bits) and convert each:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_b9dbbeae57434fae8aa1ca653833ee74>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_f16e595e70804b039244c6035919a7bb>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b9dbbeae57434fae8aa1ca653833ee74=document.querySelector('button[name=btn_b9dbbeae57434fae8aa1ca653833ee74]');
-copyBtnbtn_b9dbbeae57434fae8aa1ca653833ee74.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Binary:  1010  1101\nHex:       A     D\nResult: 0xAD\n\nHex to binary — reverse: each hex digit → 4 bits\n0xAD → 1010 1101\n`);copyBtnbtn_b9dbbeae57434fae8aa1ca653833ee74.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b9dbbeae57434fae8aa1ca653833ee74.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_f16e595e70804b039244c6035919a7bb=document.querySelector('button[name=btn_f16e595e70804b039244c6035919a7bb]');
+copyBtnbtn_f16e595e70804b039244c6035919a7bb.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Binary:  1010  1101\nHex:       A     D\nResult: 0xAD\n\nHex to binary — reverse: each hex digit → 4 bits\n0xAD → 1010 1101\n`);copyBtnbtn_f16e595e70804b039244c6035919a7bb.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f16e595e70804b039244c6035919a7bb.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1013,15 +1031,15 @@ Hex to binary &#8212; reverse: each hex digit &#8594; 4 bits
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgc8b3ebb" class="outline-3">
-<h3 id="orgc8b3ebb">Common shell conversions</h3>
-<div class="outline-text-3" id="text-orgc8b3ebb">
+<div id="outline-container-org70b8c49" class="outline-3">
+<h3 id="org70b8c49">Common shell conversions</h3>
+<div class="outline-text-3" id="text-org70b8c49">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_cf890abda55943538780c6b97cb031df>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_2a6f57026e8444f1b9b1299b8d928a72>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_cf890abda55943538780c6b97cb031df=document.querySelector('button[name=btn_cf890abda55943538780c6b97cb031df]');
-copyBtnbtn_cf890abda55943538780c6b97cb031df.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Decimal to binary\npython3 -c \"print(bin(173))\"          # 0b10101101\nprintf \"%08b\\n\" 173                    # 10101101\n\n# Binary to decimal\npython3 -c \"print(int('10101101', 2))\" # 173\n\n# Decimal to hex\npython3 -c \"print(hex(173))\"          # 0xad\nprintf \"%x\\n\" 173                     # ad\n\n# Hex to decimal\npython3 -c \"print(int('ad', 16))\"     # 173\nprintf \"%d\\n\" 0xad                    # 173\n`);copyBtnbtn_cf890abda55943538780c6b97cb031df.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cf890abda55943538780c6b97cb031df.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2a6f57026e8444f1b9b1299b8d928a72=document.querySelector('button[name=btn_2a6f57026e8444f1b9b1299b8d928a72]');
+copyBtnbtn_2a6f57026e8444f1b9b1299b8d928a72.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Decimal to binary\npython3 -c \"print(bin(173))\"          # 0b10101101\nprintf \"%08b\\n\" 173                    # 10101101\n\n# Binary to decimal\npython3 -c \"print(int('10101101', 2))\" # 173\n\n# Decimal to hex\npython3 -c \"print(hex(173))\"          # 0xad\nprintf \"%x\\n\" 173                     # ad\n\n# Hex to decimal\npython3 -c \"print(int('ad', 16))\"     # 173\nprintf \"%d\\n\" 0xad                    # 173\n`);copyBtnbtn_2a6f57026e8444f1b9b1299b8d928a72.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2a6f57026e8444f1b9b1299b8d928a72.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1044,9 +1062,9 @@ let res = copyTextToClipboard(`# Decimal to binary\npython3 -c \"print(bin(173))
 </div>
 </div>
 </div>
-<div id="outline-container-orga7db77e" class="outline-2">
-<h2 id="orga7db77e">Bits, Bytes, and Common Sizes</h2>
-<div class="outline-text-2" id="text-orga7db77e">
+<div id="outline-container-org12b8f91" class="outline-2">
+<h2 id="org12b8f91">Bits, Bytes, and Common Sizes</h2>
+<div class="outline-text-2" id="text-org12b8f91">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1127,9 +1145,9 @@ let res = copyTextToClipboard(`# Decimal to binary\npython3 -c \"print(bin(173))
 </table>
 </div>
 </div>
-<div id="outline-container-org7bc82fd" class="outline-2">
-<h2 id="org7bc82fd">Bitwise Operations</h2>
-<div class="outline-text-2" id="text-org7bc82fd">
+<div id="outline-container-orga56f22b" class="outline-2">
+<h2 id="orga56f22b">Bitwise Operations</h2>
+<div class="outline-text-2" id="text-orga56f22b">
 <p>
 Used in networking (subnet masks), file permissions, flags,
 and low-level security work.
@@ -1193,11 +1211,11 @@ and low-level security work.
 </table>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_a1542fb36cc34a0fb5971421d658f4bd>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_027112512dbc4948b7988d81682fd3a5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a1542fb36cc34a0fb5971421d658f4bd=document.querySelector('button[name=btn_a1542fb36cc34a0fb5971421d658f4bd]');
-copyBtnbtn_a1542fb36cc34a0fb5971421d658f4bd.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`a = 0b1010   # 10\nb = 0b1100   # 12\n\nprint(bin(a & b))   # 0b1000  (AND  → 8)\nprint(bin(a | b))   # 0b1110  (OR   → 14)\nprint(bin(a ^ b))   # 0b0110  (XOR  → 6)\nprint(bin(~a))      # -0b1011 (NOT  → -11 in two's complement)\nprint(bin(a << 1))  # 0b10100 (×2   → 20)\nprint(bin(a >> 1))  # 0b0101  (÷2   → 5)\n`);copyBtnbtn_a1542fb36cc34a0fb5971421d658f4bd.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a1542fb36cc34a0fb5971421d658f4bd.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_027112512dbc4948b7988d81682fd3a5=document.querySelector('button[name=btn_027112512dbc4948b7988d81682fd3a5]');
+copyBtnbtn_027112512dbc4948b7988d81682fd3a5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`a = 0b1010   # 10\nb = 0b1100   # 12\n\nprint(bin(a & b))   # 0b1000  (AND  → 8)\nprint(bin(a | b))   # 0b1110  (OR   → 14)\nprint(bin(a ^ b))   # 0b0110  (XOR  → 6)\nprint(bin(~a))      # -0b1011 (NOT  → -11 in two's complement)\nprint(bin(a << 1))  # 0b10100 (×2   → 20)\nprint(bin(a >> 1))  # 0b0101  (÷2   → 5)\n`);copyBtnbtn_027112512dbc4948b7988d81682fd3a5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_027112512dbc4948b7988d81682fd3a5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1213,15 +1231,15 @@ let res = copyTextToClipboard(`a = 0b1010   # 10\nb = 0b1100   # 12\n\nprint(bin
 </pre>
 </div></div>
 </div>
-<div id="outline-container-org3af58f2" class="outline-3">
-<h3 id="org3af58f2">Subnet masking (AND)</h3>
-<div class="outline-text-3" id="text-org3af58f2">
+<div id="outline-container-orgab3f813" class="outline-3">
+<h3 id="orgab3f813">Subnet masking (AND)</h3>
+<div class="outline-text-3" id="text-orgab3f813">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_4f51ed2512714a18bafd750b828e8eec>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2529c5017ed54e3abff2dd4551d57de2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_4f51ed2512714a18bafd750b828e8eec=document.querySelector('button[name=btn_4f51ed2512714a18bafd750b828e8eec]');
-copyBtnbtn_4f51ed2512714a18bafd750b828e8eec.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`IP:   192.168.  1. 10  →  11000000.10101000.00000001.00001010\nMask: 255.255.255.  0  →  11111111.11111111.11111111.00000000\nAND:  192.168.  1.  0  →  11000000.10101000.00000001.00000000\n                           ↑ network address\n`);copyBtnbtn_4f51ed2512714a18bafd750b828e8eec.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4f51ed2512714a18bafd750b828e8eec.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2529c5017ed54e3abff2dd4551d57de2=document.querySelector('button[name=btn_2529c5017ed54e3abff2dd4551d57de2]');
+copyBtnbtn_2529c5017ed54e3abff2dd4551d57de2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`IP:   192.168.  1. 10  →  11000000.10101000.00000001.00001010\nMask: 255.255.255.  0  →  11111111.11111111.11111111.00000000\nAND:  192.168.  1.  0  →  11000000.10101000.00000001.00000000\n                           ↑ network address\n`);copyBtnbtn_2529c5017ed54e3abff2dd4551d57de2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2529c5017ed54e3abff2dd4551d57de2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1234,24 +1252,24 @@ AND:  192.168.  1.  0  &#8594;  11000000.10101000.00000001.00000000
 </div>
 </div>
 </div>
-<div id="outline-container-org72bbf74" class="outline-2">
-<h2 id="org72bbf74">Security Relevance</h2>
-<div class="outline-text-2" id="text-org72bbf74">
+<div id="outline-container-orge3e7c76" class="outline-2">
+<h2 id="orge3e7c76">Security Relevance</h2>
+<div class="outline-text-2" id="text-orge3e7c76">
 </div>
-<div id="outline-container-org63edea6" class="outline-3">
-<h3 id="org63edea6">File magic bytes (hex/binary signatures)</h3>
-<div class="outline-text-3" id="text-org63edea6">
+<div id="outline-container-org7cfa0f2" class="outline-3">
+<h3 id="org7cfa0f2">File magic bytes (hex/binary signatures)</h3>
+<div class="outline-text-3" id="text-org7cfa0f2">
 <p>
 File types are identified by their first bytes, not their
 extension — relevant in file upload bypass and forensics:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_693a8612cdc044baac6118805f160569>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_918c0ab3fb6d42c59c12fe6afb80e0f1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_693a8612cdc044baac6118805f160569=document.querySelector('button[name=btn_693a8612cdc044baac6118805f160569]');
-copyBtnbtn_693a8612cdc044baac6118805f160569.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`FF D8 FF        → JPEG\n89 50 4E 47     → PNG  (‰PNG)\n47 49 46 38     → GIF  (GIF8)\n4D 5A           → PE/EXE  (MZ)\n25 50 44 46     → PDF  (%PDF)\n50 4B 03 04     → ZIP / docx / jar\n7F 45 4C 46     → ELF (Linux executable)\n`);copyBtnbtn_693a8612cdc044baac6118805f160569.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_693a8612cdc044baac6118805f160569.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_918c0ab3fb6d42c59c12fe6afb80e0f1=document.querySelector('button[name=btn_918c0ab3fb6d42c59c12fe6afb80e0f1]');
+copyBtnbtn_918c0ab3fb6d42c59c12fe6afb80e0f1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`FF D8 FF        → JPEG\n89 50 4E 47     → PNG  (‰PNG)\n47 49 46 38     → GIF  (GIF8)\n4D 5A           → PE/EXE  (MZ)\n25 50 44 46     → PDF  (%PDF)\n50 4B 03 04     → ZIP / docx / jar\n7F 45 4C 46     → ELF (Linux executable)\n`);copyBtnbtn_918c0ab3fb6d42c59c12fe6afb80e0f1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_918c0ab3fb6d42c59c12fe6afb80e0f1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1266,20 +1284,20 @@ let res = copyTextToClipboard(`FF D8 FF        → JPEG\n89 50 4E 47     → PNG
 </div></div>
 </div>
 </div>
-<div id="outline-container-org693ee55" class="outline-3">
-<h3 id="org693ee55">XOR encoding</h3>
-<div class="outline-text-3" id="text-org693ee55">
+<div id="outline-container-org1e49547" class="outline-3">
+<h3 id="org1e49547">XOR encoding</h3>
+<div class="outline-text-3" id="text-org1e49547">
 <p>
 XOR is the simplest obfuscation — XOR with a key, XOR again
 with the same key to recover the original:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_9f3340547e764c54a265227cd8736d34>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_0e8f128f533b4809a3cc490a010795df>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9f3340547e764c54a265227cd8736d34=document.querySelector('button[name=btn_9f3340547e764c54a265227cd8736d34]');
-copyBtnbtn_9f3340547e764c54a265227cd8736d34.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`data = b\"hello\"\nkey  = 0x42\n\nencrypted = bytes([b ^ key for b in data])\ndecrypted = bytes([b ^ key for b in encrypted])\n# decrypted == data\n`);copyBtnbtn_9f3340547e764c54a265227cd8736d34.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9f3340547e764c54a265227cd8736d34.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0e8f128f533b4809a3cc490a010795df=document.querySelector('button[name=btn_0e8f128f533b4809a3cc490a010795df]');
+copyBtnbtn_0e8f128f533b4809a3cc490a010795df.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`data = b\"hello\"\nkey  = 0x42\n\nencrypted = bytes([b ^ key for b in data])\ndecrypted = bytes([b ^ key for b in encrypted])\n# decrypted == data\n`);copyBtnbtn_0e8f128f533b4809a3cc490a010795df.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0e8f128f533b4809a3cc490a010795df.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1298,20 +1316,20 @@ encoding challenges.
 </p>
 </div>
 </div>
-<div id="outline-container-org6485f6f" class="outline-3">
-<h3 id="org6485f6f">Checking bits and flags</h3>
-<div class="outline-text-3" id="text-org6485f6f">
+<div id="outline-container-org7b38d2f" class="outline-3">
+<h3 id="org7b38d2f">Checking bits and flags</h3>
+<div class="outline-text-3" id="text-org7b38d2f">
 <p>
 Many security-relevant values are bitfields — each bit
 represents an independent flag:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_0872923020df4eb89f2703f6fa7e85e8>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_ed80a21d94f84629b77a37dc9d606e12>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0872923020df4eb89f2703f6fa7e85e8=document.querySelector('button[name=btn_0872923020df4eb89f2703f6fa7e85e8]');
-copyBtnbtn_0872923020df4eb89f2703f6fa7e85e8.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Unix file permissions: 755 = 0b111 101 101\nperms = 0o755\nowner_exec = bool(perms & 0o100)   # True\nworld_write = bool(perms & 0o002)  # False\n\n# TCP flags\nSYN = 0x02\nACK = 0x10\nflags = 0x12   # SYN-ACK\nis_syn = bool(flags & SYN)   # True\nis_ack = bool(flags & ACK)   # True\n`);copyBtnbtn_0872923020df4eb89f2703f6fa7e85e8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0872923020df4eb89f2703f6fa7e85e8.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ed80a21d94f84629b77a37dc9d606e12=document.querySelector('button[name=btn_ed80a21d94f84629b77a37dc9d606e12]');
+copyBtnbtn_ed80a21d94f84629b77a37dc9d606e12.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Unix file permissions: 755 = 0b111 101 101\nperms = 0o755\nowner_exec = bool(perms & 0o100)   # True\nworld_write = bool(perms & 0o002)  # False\n\n# TCP flags\nSYN = 0x02\nACK = 0x10\nflags = 0x12   # SYN-ACK\nis_syn = bool(flags & SYN)   # True\nis_ack = bool(flags & ACK)   # True\n`);copyBtnbtn_ed80a21d94f84629b77a37dc9d606e12.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ed80a21d94f84629b77a37dc9d606e12.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1331,9 +1349,9 @@ let res = copyTextToClipboard(`# Unix file permissions: 755 = 0b111 101 101\nper
 </div>
 </div>
 </div>
-<div id="outline-container-org2e51a9d" class="outline-2">
-<h2 id="org2e51a9d">Tips</h2>
-<div class="outline-text-2" id="text-org2e51a9d">
+<div id="outline-container-org5c66cc3" class="outline-2">
+<h2 id="org5c66cc3">Tips</h2>
+<div class="outline-text-2" id="text-org5c66cc3">
 <ul class="org-ul">
 <li>Hex is binary in shorthand — every two hex digits is one byte;
 shift between them mentally rather than converting to decimal</li>
@@ -1348,6 +1366,20 @@ during CTF work</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1355,6 +1387,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Traits in Rust</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,28 +886,28 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc796c8a">Traits in Rust</a>
+<li><a href="#org2d3a7b2">Traits in Rust</a>
 <ul>
-<li><a href="#org52a1c3e">Core Concepts</a></li>
-<li><a href="#orgd5a70f6">Defining a Trait</a></li>
-<li><a href="#org39aaed5">Implementing a Trait</a></li>
-<li><a href="#org5c9dcaf">Using Traits</a></li>
-<li><a href="#orgb7278c5">Key Advantages of Traits</a></li>
+<li><a href="#org77fec87">Core Concepts</a></li>
+<li><a href="#org735a2a3">Defining a Trait</a></li>
+<li><a href="#orga7e23f5">Implementing a Trait</a></li>
+<li><a href="#orgaa31ef3">Using Traits</a></li>
+<li><a href="#orgeda603a">Key Advantages of Traits</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc796c8a" class="outline-2">
-<h2 id="orgc796c8a">Traits in Rust</h2>
-<div class="outline-text-2" id="text-orgc796c8a">
+<div id="outline-container-org2d3a7b2" class="outline-2">
+<h2 id="org2d3a7b2">Traits in Rust</h2>
+<div class="outline-text-2" id="text-org2d3a7b2">
 <p>
 In Rust, <b>traits</b> are a fundamental concept that define shared behavior. They are similar to interfaces in Java or TypeScript, or pure virtual abstract classes in C++. Traits allow you to define a set of methods that a type must implement, enabling <b>polymorphism</b> and <b>generic programming</b> in a safe and expressive way.
 </p>
 </div>
-<div id="outline-container-org52a1c3e" class="outline-3">
-<h3 id="org52a1c3e">Core Concepts</h3>
-<div class="outline-text-3" id="text-org52a1c3e">
+<div id="outline-container-org77fec87" class="outline-3">
+<h3 id="org77fec87">Core Concepts</h3>
+<div class="outline-text-3" id="text-org77fec87">
 <ul class="org-ul">
 <li><b>Defining Shared Behavior:</b> A trait declares a set of methods that implementors must provide. These methods can be either:
 <ul class="org-ul">
@@ -902,15 +920,15 @@ In Rust, <b>traits</b> are a fundamental concept that define shared behavior. Th
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd5a70f6" class="outline-3">
-<h3 id="orgd5a70f6">Defining a Trait</h3>
-<div class="outline-text-3" id="text-orgd5a70f6">
+<div id="outline-container-org735a2a3" class="outline-3">
+<h3 id="org735a2a3">Defining a Trait</h3>
+<div class="outline-text-3" id="text-org735a2a3">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_af02ce89429f40858ee6897fdf6c5d2e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_083b15782856455286ab2e2f03e66bac>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_af02ce89429f40858ee6897fdf6c5d2e=document.querySelector('button[name=btn_af02ce89429f40858ee6897fdf6c5d2e]');
-copyBtnbtn_af02ce89429f40858ee6897fdf6c5d2e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`pub trait Summary {\n    // Required method: Every type implementing Summary must provide a summarize method\n    fn summarize(&self) -> String;\n\n    // Default method: Types implementing Summary get this for free, but can override\n    fn summarize_default(&self) -> String {\n        String::from(\"(Read more...)\")\n    }\n}\n`);copyBtnbtn_af02ce89429f40858ee6897fdf6c5d2e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_af02ce89429f40858ee6897fdf6c5d2e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_083b15782856455286ab2e2f03e66bac=document.querySelector('button[name=btn_083b15782856455286ab2e2f03e66bac]');
+copyBtnbtn_083b15782856455286ab2e2f03e66bac.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`pub trait Summary {\n    // Required method: Every type implementing Summary must provide a summarize method\n    fn summarize(&self) -> String;\n\n    // Default method: Types implementing Summary get this for free, but can override\n    fn summarize_default(&self) -> String {\n        String::from(\"(Read more...)\")\n    }\n}\n`);copyBtnbtn_083b15782856455286ab2e2f03e66bac.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_083b15782856455286ab2e2f03e66bac.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -927,19 +945,19 @@ let res = copyTextToClipboard(`pub trait Summary {\n    // Required method: Ever
 </div></div>
 </div>
 </div>
-<div id="outline-container-org39aaed5" class="outline-3">
-<h3 id="org39aaed5">Implementing a Trait</h3>
-<div class="outline-text-3" id="text-org39aaed5">
+<div id="outline-container-orga7e23f5" class="outline-3">
+<h3 id="orga7e23f5">Implementing a Trait</h3>
+<div class="outline-text-3" id="text-orga7e23f5">
 <p>
 Here, we implement the Summary trait for NewsArticle and Tweet <a href="Structs in Rust.html#structs-in-rust">Structs in Rust</a>.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_b4d1b5723fdc41f59d692b7321d63579>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_2ac4ea1d6b724195b9dbe48bcb15ed26>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_b4d1b5723fdc41f59d692b7321d63579=document.querySelector('button[name=btn_b4d1b5723fdc41f59d692b7321d63579]');
-copyBtnbtn_b4d1b5723fdc41f59d692b7321d63579.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`pub struct NewsArticle {\n    pub headline: String,\n    pub location: String,\n    pub author: String,\n    pub content: String,\n}\n\n// Implement Summary for NewsArticle\nimpl Summary for NewsArticle {\n    fn summarize(&self) -> String {\n        format!(\"{}, by {} ({})\", self.headline, self.author, self.location)\n    }\n\n    // We can also override the default method\n    fn summarize_default(&self) -> String {\n        format!(\"ARTICLE: {}\", self.summarize())\n    }\n}\n\npub struct Tweet {\n    pub username: String,\n    pub content: String,\n    pub reply: bool,\n    pub retweet: bool,\n}\n\n// Implement Summary for Tweet\nimpl Summary for Tweet {\n    fn summarize(&self) -> String {\n        format!(\"{}: {}\", self.username, self.content)\n    }\n}\n`);copyBtnbtn_b4d1b5723fdc41f59d692b7321d63579.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_b4d1b5723fdc41f59d692b7321d63579.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_2ac4ea1d6b724195b9dbe48bcb15ed26=document.querySelector('button[name=btn_2ac4ea1d6b724195b9dbe48bcb15ed26]');
+copyBtnbtn_2ac4ea1d6b724195b9dbe48bcb15ed26.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`pub struct NewsArticle {\n    pub headline: String,\n    pub location: String,\n    pub author: String,\n    pub content: String,\n}\n\n// Implement Summary for NewsArticle\nimpl Summary for NewsArticle {\n    fn summarize(&self) -> String {\n        format!(\"{}, by {} ({})\", self.headline, self.author, self.location)\n    }\n\n    // We can also override the default method\n    fn summarize_default(&self) -> String {\n        format!(\"ARTICLE: {}\", self.summarize())\n    }\n}\n\npub struct Tweet {\n    pub username: String,\n    pub content: String,\n    pub reply: bool,\n    pub retweet: bool,\n}\n\n// Implement Summary for Tweet\nimpl Summary for Tweet {\n    fn summarize(&self) -> String {\n        format!(\"{}: {}\", self.username, self.content)\n    }\n}\n`);copyBtnbtn_2ac4ea1d6b724195b9dbe48bcb15ed26.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2ac4ea1d6b724195b9dbe48bcb15ed26.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -979,19 +997,19 @@ impl Summary for Tweet {
 </div></div>
 </div>
 </div>
-<div id="outline-container-org5c9dcaf" class="outline-3">
-<h3 id="org5c9dcaf">Using Traits</h3>
-<div class="outline-text-3" id="text-org5c9dcaf">
+<div id="outline-container-orgaa31ef3" class="outline-3">
+<h3 id="orgaa31ef3">Using Traits</h3>
+<div class="outline-text-3" id="text-orgaa31ef3">
 <ol class="org-ol">
 <li>Trait Bounds in Generic Functions (Static Dispatch) This is the most common way to use traits, enabling compile-time polymorphism. The compiler knows exactly which summarize method to call at compile time.</li>
 </ol>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_7d88a9ffd7ea4d85bd0dc027ebb40e28>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_0f55ee69640e4c5598898a54c8b63889>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_7d88a9ffd7ea4d85bd0dc027ebb40e28=document.querySelector('button[name=btn_7d88a9ffd7ea4d85bd0dc027ebb40e28]');
-copyBtnbtn_7d88a9ffd7ea4d85bd0dc027ebb40e28.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`// This function can accept any type that implements the Summary trait.\n// The 'impl Summary' syntax is syntactic sugar for a trait bound.\npub fn notify(item: &impl Summary) { // or pub fn notify<T: Summary>(item: &T)\n    println!(\"Breaking news! {}\", item.summarize());\n}\n\n// Example usage:\nlet tweet = Tweet {\n    username: String::from(\"horse_ebooks\"),\n    content: String::from(\"of course, as you probably already know, people\"),\n    reply: false,\n    retweet: false,\n};\nnotify(&tweet); // Works because Tweet implements Summary\n\nlet article = NewsArticle {\n    headline: String::from(\"Penguins win Stanley Cup!\"),\n    location: String::from(\"Pittsburgh\"),\n    author: String::from(\"Iceburgh\"),\n    content: String::from(\"The Pittsburgh Penguins once again won the Stanley Cup.\"),\n};\nnotify(&article); // Works because NewsArticle implements Summary\n`);copyBtnbtn_7d88a9ffd7ea4d85bd0dc027ebb40e28.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_7d88a9ffd7ea4d85bd0dc027ebb40e28.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0f55ee69640e4c5598898a54c8b63889=document.querySelector('button[name=btn_0f55ee69640e4c5598898a54c8b63889]');
+copyBtnbtn_0f55ee69640e4c5598898a54c8b63889.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`// This function can accept any type that implements the Summary trait.\n// The 'impl Summary' syntax is syntactic sugar for a trait bound.\npub fn notify(item: &impl Summary) { // or pub fn notify<T: Summary>(item: &T)\n    println!(\"Breaking news! {}\", item.summarize());\n}\n\n// Example usage:\nlet tweet = Tweet {\n    username: String::from(\"horse_ebooks\"),\n    content: String::from(\"of course, as you probably already know, people\"),\n    reply: false,\n    retweet: false,\n};\nnotify(&tweet); // Works because Tweet implements Summary\n\nlet article = NewsArticle {\n    headline: String::from(\"Penguins win Stanley Cup!\"),\n    location: String::from(\"Pittsburgh\"),\n    author: String::from(\"Iceburgh\"),\n    content: String::from(\"The Pittsburgh Penguins once again won the Stanley Cup.\"),\n};\nnotify(&article); // Works because NewsArticle implements Summary\n`);copyBtnbtn_0f55ee69640e4c5598898a54c8b63889.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0f55ee69640e4c5598898a54c8b63889.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1025,11 +1043,11 @@ notify(&amp;article); // Works because NewsArticle implements Summary
 </ol>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_a1e7bb0235114151b20a05fda92dfccf>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_4e8ff58c627343b695bb85d325a3d59c>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_a1e7bb0235114151b20a05fda92dfccf=document.querySelector('button[name=btn_a1e7bb0235114151b20a05fda92dfccf]');
-copyBtnbtn_a1e7bb0235114151b20a05fda92dfccf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use std::fmt::Debug; // Example: using another trait\n\n// This function can accept any type that implements BOTH Summary AND Debug\n// You can stack trait bounds using '+'\npub fn notify_complex(item: &(impl Summary + Debug)) {\n    println!(\"Complex notification for {:?}: {}\", item, item.summarize());\n}\n\n// A vector holding different types that implement Summary\npub fn returns_summarizable() -> Box<dyn Summary> {\n    // You must box the trait object because its size isn't known at compile time\n    Box::new(Tweet {\n        username: String::from(\"bird_person\"),\n        content: String::from(\"My life is a lie.\"),\n        reply: false,\n        retweet: false,\n    })\n}\n`);copyBtnbtn_a1e7bb0235114151b20a05fda92dfccf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a1e7bb0235114151b20a05fda92dfccf.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_4e8ff58c627343b695bb85d325a3d59c=document.querySelector('button[name=btn_4e8ff58c627343b695bb85d325a3d59c]');
+copyBtnbtn_4e8ff58c627343b695bb85d325a3d59c.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use std::fmt::Debug; // Example: using another trait\n\n// This function can accept any type that implements BOTH Summary AND Debug\n// You can stack trait bounds using '+'\npub fn notify_complex(item: &(impl Summary + Debug)) {\n    println!(\"Complex notification for {:?}: {}\", item, item.summarize());\n}\n\n// A vector holding different types that implement Summary\npub fn returns_summarizable() -> Box<dyn Summary> {\n    // You must box the trait object because its size isn't known at compile time\n    Box::new(Tweet {\n        username: String::from(\"bird_person\"),\n        content: String::from(\"My life is a lie.\"),\n        reply: false,\n        retweet: false,\n    })\n}\n`);copyBtnbtn_4e8ff58c627343b695bb85d325a3d59c.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_4e8ff58c627343b695bb85d325a3d59c.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1055,9 +1073,9 @@ pub fn returns_summarizable() -&gt; Box&lt;dyn Summary&gt; {
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgb7278c5" class="outline-3">
-<h3 id="orgb7278c5">Key Advantages of Traits</h3>
-<div class="outline-text-3" id="text-orgb7278c5">
+<div id="outline-container-orgeda603a" class="outline-3">
+<h3 id="orgeda603a">Key Advantages of Traits</h3>
+<div class="outline-text-3" id="text-orgeda603a">
 <ul class="org-ul">
 <li>Enabling Polymorphism: Allows writing code that works with multiple types, as long as they implement the required behavior.</li>
 <li>Code Reusability: Promotes DRY (Don't Repeat Yourself) principle by defining common interfaces.</li>
@@ -1071,6 +1089,20 @@ pub fn returns_summarizable() -&gt; Box&lt;dyn Summary&gt; {
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1078,6 +1110,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

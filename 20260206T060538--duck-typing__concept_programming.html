@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Duck Typing</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,16 +886,16 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdd0278b">Python Examples</a>
+<li><a href="#org9c323f7">Python Examples</a>
 <ul>
-<li><a href="#org4ee6bac">File-like objects</a></li>
-<li><a href="#orgeef7371">Iteration protocol</a></li>
+<li><a href="#org9ea06b1">File-like objects</a></li>
+<li><a href="#org79ea2bf">Iteration protocol</a></li>
 </ul>
 </li>
-<li><a href="#org7cfd791">EAFP vs LBYL</a></li>
-<li><a href="#orgd68d1a1">Structural Typing with Protocol (Python 3.8+)</a></li>
-<li><a href="#org73e4491">Trade-offs</a></li>
-<li><a href="#orgdc6bc5c">Tips</a></li>
+<li><a href="#org918c669">EAFP vs LBYL</a></li>
+<li><a href="#org438d55a">Structural Typing with Protocol (Python 3.8+)</a></li>
+<li><a href="#org75c5e8d">Trade-offs</a></li>
+<li><a href="#org88426d1">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -894,15 +912,15 @@ Related: <a href="20260206T060557--dynamic-typing__concept_programming.html">Dyn
          <a href="20260206T060645--type-system__concept_programming.html">Type System</a>
          <a href="20260206T060631--python-type-system__concept_programming_python.html">Python Type System</a>
 </p>
-<div id="outline-container-orgdd0278b" class="outline-2">
-<h2 id="orgdd0278b">Python Examples</h2>
-<div class="outline-text-2" id="text-orgdd0278b">
+<div id="outline-container-org9c323f7" class="outline-2">
+<h2 id="org9c323f7">Python Examples</h2>
+<div class="outline-text-2" id="text-org9c323f7">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_2ecb679754764f809411ac500aaa0836>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_ca5495dd6df04a23935041a61fa4d5d8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2ecb679754764f809411ac500aaa0836=document.querySelector('button[name=btn_2ecb679754764f809411ac500aaa0836]');
-copyBtnbtn_2ecb679754764f809411ac500aaa0836.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# Any object with a .quack() method works here —\n# no shared base class or interface required\nclass Duck:\n    def quack(self):\n        return \"Quack!\"\n\nclass Person:\n    def quack(self):\n        return \"I'm quacking like a duck!\"\n\nclass RubberDuck:\n    def quack(self):\n        return \"Squeak!\"\n\ndef make_it_quack(thing):\n    print(thing.quack())   # works for any object with .quack()\n\nmake_it_quack(Duck())        # Quack!\nmake_it_quack(Person())      # I'm quacking like a duck!\nmake_it_quack(RubberDuck())  # Squeak!\n`);copyBtnbtn_2ecb679754764f809411ac500aaa0836.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2ecb679754764f809411ac500aaa0836.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_ca5495dd6df04a23935041a61fa4d5d8=document.querySelector('button[name=btn_ca5495dd6df04a23935041a61fa4d5d8]');
+copyBtnbtn_ca5495dd6df04a23935041a61fa4d5d8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Any object with a .quack() method works here —\n# no shared base class or interface required\nclass Duck:\n    def quack(self):\n        return \"Quack!\"\n\nclass Person:\n    def quack(self):\n        return \"I'm quacking like a duck!\"\n\nclass RubberDuck:\n    def quack(self):\n        return \"Squeak!\"\n\ndef make_it_quack(thing):\n    print(thing.quack())   # works for any object with .quack()\n\nmake_it_quack(Duck())        # Quack!\nmake_it_quack(Person())      # I'm quacking like a duck!\nmake_it_quack(RubberDuck())  # Squeak!\n`);copyBtnbtn_ca5495dd6df04a23935041a61fa4d5d8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ca5495dd6df04a23935041a61fa4d5d8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -929,20 +947,20 @@ make_it_quack(Duck())        <span style="color: var(--clr-comment-delimiter); b
 </pre>
 </div></div>
 </div>
-<div id="outline-container-org4ee6bac" class="outline-3">
-<h3 id="org4ee6bac">File-like objects</h3>
-<div class="outline-text-3" id="text-org4ee6bac">
+<div id="outline-container-org9ea06b1" class="outline-3">
+<h3 id="org9ea06b1">File-like objects</h3>
+<div class="outline-text-3" id="text-org9ea06b1">
 <p>
 The standard library accepts any object that has <code>.read()</code> and
 <code>.write()</code> methods — not just actual <code>File</code> objects:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_858cb1fca8264c3dbd3984ea846a3c5d>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_bd23947350b1410abef0ce30fdac1cbf>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_858cb1fca8264c3dbd3984ea846a3c5d=document.querySelector('button[name=btn_858cb1fca8264c3dbd3984ea846a3c5d]');
-copyBtnbtn_858cb1fca8264c3dbd3984ea846a3c5d.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`import io\nimport json\n\n# json.dump() accepts any file-like object\nbuffer = io.StringIO()           # in-memory string buffer, not a file\njson.dump({\"key\": \"value\"}, buffer)\ncontent = buffer.getvalue()\n\n# Same function works with a real file, a StringIO, a network socket,\n# a gzip file — any object that has .write()\n`);copyBtnbtn_858cb1fca8264c3dbd3984ea846a3c5d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_858cb1fca8264c3dbd3984ea846a3c5d.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bd23947350b1410abef0ce30fdac1cbf=document.querySelector('button[name=btn_bd23947350b1410abef0ce30fdac1cbf]');
+copyBtnbtn_bd23947350b1410abef0ce30fdac1cbf.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`import io\nimport json\n\n# json.dump() accepts any file-like object\nbuffer = io.StringIO()           # in-memory string buffer, not a file\njson.dump({\"key\": \"value\"}, buffer)\ncontent = buffer.getvalue()\n\n# Same function works with a real file, a StringIO, a network socket,\n# a gzip file — any object that has .write()\n`);copyBtnbtn_bd23947350b1410abef0ce30fdac1cbf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bd23947350b1410abef0ce30fdac1cbf.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -960,20 +978,20 @@ let res = copyTextToClipboard(`import io\nimport json\n\n# json.dump() accepts a
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgeef7371" class="outline-3">
-<h3 id="orgeef7371">Iteration protocol</h3>
-<div class="outline-text-3" id="text-orgeef7371">
+<div id="outline-container-org79ea2bf" class="outline-3">
+<h3 id="org79ea2bf">Iteration protocol</h3>
+<div class="outline-text-3" id="text-org79ea2bf">
 <p>
 <code>for x in thing</code> works on any object implementing <code>__iter__</code>
 and <code>__next__</code> — not just lists or tuples:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_bdce7341f5674b9fa39fd42b2d1d90b4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_28405d6e33434419b532ab47503fa320>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_bdce7341f5674b9fa39fd42b2d1d90b4=document.querySelector('button[name=btn_bdce7341f5674b9fa39fd42b2d1d90b4]');
-copyBtnbtn_bdce7341f5674b9fa39fd42b2d1d90b4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`class Countdown:\n    def __init__(self, n):\n        self.n = n\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.n <= 0:\n            raise StopIteration\n        self.n -= 1\n        return self.n + 1\n\nfor n in Countdown(3):\n    print(n)   # 3, 2, 1\n`);copyBtnbtn_bdce7341f5674b9fa39fd42b2d1d90b4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bdce7341f5674b9fa39fd42b2d1d90b4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_28405d6e33434419b532ab47503fa320=document.querySelector('button[name=btn_28405d6e33434419b532ab47503fa320]');
+copyBtnbtn_28405d6e33434419b532ab47503fa320.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`class Countdown:\n    def __init__(self, n):\n        self.n = n\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.n <= 0:\n            raise StopIteration\n        self.n -= 1\n        return self.n + 1\n\nfor n in Countdown(3):\n    print(n)   # 3, 2, 1\n`);copyBtnbtn_28405d6e33434419b532ab47503fa320.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_28405d6e33434419b532ab47503fa320.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -997,9 +1015,9 @@ let res = copyTextToClipboard(`class Countdown:\n    def __init__(self, n):\n   
 </div>
 </div>
 </div>
-<div id="outline-container-org7cfd791" class="outline-2">
-<h2 id="org7cfd791">EAFP vs LBYL</h2>
-<div class="outline-text-2" id="text-org7cfd791">
+<div id="outline-container-org918c669" class="outline-2">
+<h2 id="org918c669">EAFP vs LBYL</h2>
+<div class="outline-text-2" id="text-org918c669">
 <p>
 Duck typing pairs naturally with <b>EAFP</b> (Easier to Ask Forgiveness
 than Permission) — try the operation and handle the failure —
@@ -1007,11 +1025,11 @@ rather than <b>LBYL</b> (Look Before You Leap) — check before acting:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_8dcb006002b048bc94cc9876e408af7f>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_8ab93ee6f17d4c6a8a27f05da95757f1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_8dcb006002b048bc94cc9876e408af7f=document.querySelector('button[name=btn_8dcb006002b048bc94cc9876e408af7f]');
-copyBtnbtn_8dcb006002b048bc94cc9876e408af7f.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# LBYL — check type before using (un-Pythonic)\ndef process(obj):\n    if hasattr(obj, 'read'):\n        data = obj.read()\n\n# EAFP — just try it (Pythonic duck typing)\ndef process(obj):\n    try:\n        data = obj.read()\n    except AttributeError:\n        raise TypeError(f\"Expected file-like object, got {type(obj)}\")\n`);copyBtnbtn_8dcb006002b048bc94cc9876e408af7f.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8dcb006002b048bc94cc9876e408af7f.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_8ab93ee6f17d4c6a8a27f05da95757f1=document.querySelector('button[name=btn_8ab93ee6f17d4c6a8a27f05da95757f1]');
+copyBtnbtn_8ab93ee6f17d4c6a8a27f05da95757f1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# LBYL — check type before using (un-Pythonic)\ndef process(obj):\n    if hasattr(obj, 'read'):\n        data = obj.read()\n\n# EAFP — just try it (Pythonic duck typing)\ndef process(obj):\n    try:\n        data = obj.read()\n    except AttributeError:\n        raise TypeError(f\"Expected file-like object, got {type(obj)}\")\n`);copyBtnbtn_8ab93ee6f17d4c6a8a27f05da95757f1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_8ab93ee6f17d4c6a8a27f05da95757f1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1030,9 +1048,9 @@ let res = copyTextToClipboard(`# LBYL — check type before using (un-Pythonic)\
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgd68d1a1" class="outline-2">
-<h2 id="orgd68d1a1">Structural Typing with Protocol (Python 3.8+)</h2>
-<div class="outline-text-2" id="text-orgd68d1a1">
+<div id="outline-container-org438d55a" class="outline-2">
+<h2 id="org438d55a">Structural Typing with Protocol (Python 3.8+)</h2>
+<div class="outline-text-2" id="text-org438d55a">
 <p>
 When type hints are needed but inheritance is not, <code>Protocol</code>
 formalises duck typing statically — the type checker verifies
@@ -1040,11 +1058,11 @@ structural compatibility without requiring explicit inheritance:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_755eeae34dc34053aaa4ba4ef06bfacf>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PYTHON</span><button class='copyBtn' name=btn_578d1091f5d641f8a65026afe324ae97>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_755eeae34dc34053aaa4ba4ef06bfacf=document.querySelector('button[name=btn_755eeae34dc34053aaa4ba4ef06bfacf]');
-copyBtnbtn_755eeae34dc34053aaa4ba4ef06bfacf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`from typing import Protocol\n\nclass Quackable(Protocol):\n    def quack(self) -> str: ...\n\nclass Duck:\n    def quack(self) -> str:\n        return \"Quack!\"\n\nclass Person:\n    def quack(self) -> str:\n        return \"I'm quacking!\"\n\ndef make_quack(thing: Quackable) -> None:\n    print(thing.quack())\n\n# Both work — neither inherits from Quackable\nmake_quack(Duck())\nmake_quack(Person())\n`);copyBtnbtn_755eeae34dc34053aaa4ba4ef06bfacf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_755eeae34dc34053aaa4ba4ef06bfacf.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_578d1091f5d641f8a65026afe324ae97=document.querySelector('button[name=btn_578d1091f5d641f8a65026afe324ae97]');
+copyBtnbtn_578d1091f5d641f8a65026afe324ae97.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`from typing import Protocol\n\nclass Quackable(Protocol):\n    def quack(self) -> str: ...\n\nclass Duck:\n    def quack(self) -> str:\n        return \"Quack!\"\n\nclass Person:\n    def quack(self) -> str:\n        return \"I'm quacking!\"\n\ndef make_quack(thing: Quackable) -> None:\n    print(thing.quack())\n\n# Both work — neither inherits from Quackable\nmake_quack(Duck())\nmake_quack(Person())\n`);copyBtnbtn_578d1091f5d641f8a65026afe324ae97.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_578d1091f5d641f8a65026afe324ae97.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1076,9 +1094,9 @@ of both worlds when working in a typed codebase.
 </p>
 </div>
 </div>
-<div id="outline-container-org73e4491" class="outline-2">
-<h2 id="org73e4491">Trade-offs</h2>
-<div class="outline-text-2" id="text-org73e4491">
+<div id="outline-container-org75c5e8d" class="outline-2">
+<h2 id="org75c5e8d">Trade-offs</h2>
+<div class="outline-text-2" id="text-org75c5e8d">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1117,9 +1135,9 @@ of both worlds when working in a typed codebase.
 </table>
 </div>
 </div>
-<div id="outline-container-orgdc6bc5c" class="outline-2">
-<h2 id="orgdc6bc5c">Tips</h2>
-<div class="outline-text-2" id="text-orgdc6bc5c">
+<div id="outline-container-org88426d1" class="outline-2">
+<h2 id="org88426d1">Tips</h2>
+<div class="outline-text-2" id="text-org88426d1">
 <ul class="org-ul">
 <li><code>Protocol</code> is the modern solution to the "what does this
 function actually need?" problem — document implicit duck
@@ -1135,6 +1153,20 @@ seamlessly</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1142,6 +1174,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

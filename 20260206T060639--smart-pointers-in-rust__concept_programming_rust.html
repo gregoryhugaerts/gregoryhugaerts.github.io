@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:54 -->
+<!-- 2026-07-30 Thu 22:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Smart Pointers in Rust</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,44 +886,44 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4ff055a">Smart Pointers in Rust</a>
+<li><a href="#orgc7f25f8">Smart Pointers in Rust</a>
 <ul>
-<li><a href="#org62b641e">What Are Pointers?</a></li>
-<li><a href="#org0a6be05">Why Use Smart Pointers?</a></li>
-<li><a href="#orgce4f511">Key Smart Pointers in the Standard Library</a>
+<li><a href="#orgb84fce6">What Are Pointers?</a></li>
+<li><a href="#orgc1f9b30">Why Use Smart Pointers?</a></li>
+<li><a href="#org893766c">Key Smart Pointers in the Standard Library</a>
 <ul>
-<li><a href="#orgfaf42bd"><code>Box&lt;T&gt;</code>: For Heap Allocation</a></li>
-<li><a href="#org51a7640">Rc: Reference Counting</a></li>
-<li><a href="#orgd8b5284">Arc: Atomic Reference Counting</a></li>
-<li><a href="#orgf7fd9d7">RefCell: Interior Mutability</a></li>
+<li><a href="#org995479f"><code>Box&lt;T&gt;</code>: For Heap Allocation</a></li>
+<li><a href="#org1f29cf4">Rc: Reference Counting</a></li>
+<li><a href="#org97010d2">Arc: Atomic Reference Counting</a></li>
+<li><a href="#org24b4077">RefCell: Interior Mutability</a></li>
 </ul>
 </li>
-<li><a href="#org73540f2">Deref Trait</a></li>
-<li><a href="#orgfad9924">Drop Trait</a></li>
-<li><a href="#org02e2572">Common Pitfalls and Considerations</a></li>
+<li><a href="#orgbfdfe06">Deref Trait</a></li>
+<li><a href="#orga15d858">Drop Trait</a></li>
+<li><a href="#org240b65f">Common Pitfalls and Considerations</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4ff055a" class="outline-2">
-<h2 id="org4ff055a">Smart Pointers in Rust</h2>
-<div class="outline-text-2" id="text-org4ff055a">
+<div id="outline-container-orgc7f25f8" class="outline-2">
+<h2 id="orgc7f25f8">Smart Pointers in Rust</h2>
+<div class="outline-text-2" id="text-orgc7f25f8">
 <p>
 <b>Smart pointers</b> in Rust are data structures that act like pointers but also have additional metadata and capabilities. They're typically implemented using structs and often implement the <code>Deref</code> and <code>Drop</code> traits. They provide features like reference counting, automatic memory management, and custom destructors.
 </p>
 </div>
-<div id="outline-container-org62b641e" class="outline-3">
-<h3 id="org62b641e">What Are Pointers?</h3>
-<div class="outline-text-3" id="text-org62b641e">
+<div id="outline-container-orgb84fce6" class="outline-3">
+<h3 id="orgb84fce6">What Are Pointers?</h3>
+<div class="outline-text-3" id="text-orgb84fce6">
 <p>
 At their core, pointers are variables that store memory addresses. In Rust, <b>references (<code>&amp;T</code>)</b> are a form of pointer that borrow ownership of data. Smart pointers, however, <i>own</i> the data they point to and often provide more functionality than simple references.
 </p>
 </div>
 </div>
-<div id="outline-container-org0a6be05" class="outline-3">
-<h3 id="org0a6be05">Why Use Smart Pointers?</h3>
-<div class="outline-text-3" id="text-org0a6be05">
+<div id="outline-container-orgc1f9b30" class="outline-3">
+<h3 id="orgc1f9b30">Why Use Smart Pointers?</h3>
+<div class="outline-text-3" id="text-orgc1f9b30">
 <ul class="org-ul">
 <li><b>Memory Management:</b> Automate memory deallocation when data is no longer in use, preventing memory leaks.</li>
 <li><b>Ownership Models:</b> Enable shared ownership or single ownership with specific rules.</li>
@@ -914,16 +932,16 @@ At their core, pointers are variables that store memory addresses. In Rust, <b>r
 </ul>
 </div>
 </div>
-<div id="outline-container-orgce4f511" class="outline-3">
-<h3 id="orgce4f511">Key Smart Pointers in the Standard Library</h3>
-<div class="outline-text-3" id="text-orgce4f511">
+<div id="outline-container-org893766c" class="outline-3">
+<h3 id="org893766c">Key Smart Pointers in the Standard Library</h3>
+<div class="outline-text-3" id="text-org893766c">
 <p>
 Here are some of the most common smart pointers found in Rust's standard library:
 </p>
 </div>
-<div id="outline-container-orgfaf42bd" class="outline-4">
-<h4 id="orgfaf42bd"><code>Box&lt;T&gt;</code>: For Heap Allocation</h4>
-<div class="outline-text-4" id="text-orgfaf42bd">
+<div id="outline-container-org995479f" class="outline-4">
+<h4 id="org995479f"><code>Box&lt;T&gt;</code>: For Heap Allocation</h4>
+<div class="outline-text-4" id="text-org995479f">
 <ul class="org-ul">
 <li><b>Purpose:</b> The simplest smart pointer, <code>Box&lt;T&gt;</code> allocates data on the <b>heap</b> rather than on the stack.</li>
 <li><b>Use Cases:</b>
@@ -945,11 +963,11 @@ Here are some of the most common smart pointers found in Rust's standard library
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_47104d4edefc4993baf1885e8ed9f4e2>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_808401be9dc54c58befae4e9def4d64a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_47104d4edefc4993baf1885e8ed9f4e2=document.querySelector('button[name=btn_47104d4edefc4993baf1885e8ed9f4e2]');
-copyBtnbtn_47104d4edefc4993baf1885e8ed9f4e2.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`fn main() {\n    let b = Box::new(5); // \`5\` is allocated on the heap\n    println!(\"b = {}\", b); // \`b\` acts like an integer\n}\n`);copyBtnbtn_47104d4edefc4993baf1885e8ed9f4e2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_47104d4edefc4993baf1885e8ed9f4e2.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_808401be9dc54c58befae4e9def4d64a=document.querySelector('button[name=btn_808401be9dc54c58befae4e9def4d64a]');
+copyBtnbtn_808401be9dc54c58befae4e9def4d64a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`fn main() {\n    let b = Box::new(5); // \`5\` is allocated on the heap\n    println!(\"b = {}\", b); // \`b\` acts like an integer\n}\n`);copyBtnbtn_808401be9dc54c58befae4e9def4d64a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_808401be9dc54c58befae4e9def4d64a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -961,9 +979,9 @@ let res = copyTextToClipboard(`fn main() {\n    let b = Box::new(5); // \`5\` is
 </div></div>
 </div>
 </div>
-<div id="outline-container-org51a7640" class="outline-4">
-<h4 id="org51a7640">Rc: Reference Counting</h4>
-<div class="outline-text-4" id="text-org51a7640">
+<div id="outline-container-org1f29cf4" class="outline-4">
+<h4 id="org1f29cf4">Rc: Reference Counting</h4>
+<div class="outline-text-4" id="text-org1f29cf4">
 <ul class="org-ul">
 <li>Purpose: Enables multiple owners of a single piece of data. Rc stands for "Reference Counted."</li>
 <li>Use Cases: When you need to share data among multiple parts of your program, and you don't know at compile time which part will be the last one to use the data.</li>
@@ -976,11 +994,11 @@ let res = copyTextToClipboard(`fn main() {\n    let b = Box::new(5); // \`5\` is
 </ul>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_2f714425fbd84148ace72d020cd5de23>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_72b6d3cd917640398df18f7dfd1ee6f1>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2f714425fbd84148ace72d020cd5de23=document.querySelector('button[name=btn_2f714425fbd84148ace72d020cd5de23]');
-copyBtnbtn_2f714425fbd84148ace72d020cd5de23.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use std::rc::Rc;\n\nenum List {\n    Cons(i32, Rc<List>),\n    Nil,\n}\n\nuse List::{Cons, Nil};\n\nfn main() {\n    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));\n    println!(\"count after creating a = {}\", Rc::strong_count(&a));\n    let b = Cons(3, Rc::clone(&a)); // \`Rc::clone\` increments the reference count\n    println!(\"count after creating b = {}\", Rc::strong_count(&a));\n    {\n        let c = Cons(4, Rc::clone(&a));\n        println!(\"count after creating c = {}\", Rc::strong_count(&a));\n    } // \`c\` goes out of scope, decrementing the count\n    println!(\"count after c goes out of scope = {}\", Rc::strong_count(&a));\n}\n`);copyBtnbtn_2f714425fbd84148ace72d020cd5de23.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2f714425fbd84148ace72d020cd5de23.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_72b6d3cd917640398df18f7dfd1ee6f1=document.querySelector('button[name=btn_72b6d3cd917640398df18f7dfd1ee6f1]');
+copyBtnbtn_72b6d3cd917640398df18f7dfd1ee6f1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use std::rc::Rc;\n\nenum List {\n    Cons(i32, Rc<List>),\n    Nil,\n}\n\nuse List::{Cons, Nil};\n\nfn main() {\n    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));\n    println!(\"count after creating a = {}\", Rc::strong_count(&a));\n    let b = Cons(3, Rc::clone(&a)); // \`Rc::clone\` increments the reference count\n    println!(\"count after creating b = {}\", Rc::strong_count(&a));\n    {\n        let c = Cons(4, Rc::clone(&a));\n        println!(\"count after creating c = {}\", Rc::strong_count(&a));\n    } // \`c\` goes out of scope, decrementing the count\n    println!(\"count after c goes out of scope = {}\", Rc::strong_count(&a));\n}\n`);copyBtnbtn_72b6d3cd917640398df18f7dfd1ee6f1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_72b6d3cd917640398df18f7dfd1ee6f1.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1008,9 +1026,9 @@ fn main() {
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgd8b5284" class="outline-4">
-<h4 id="orgd8b5284">Arc: Atomic Reference Counting</h4>
-<div class="outline-text-4" id="text-orgd8b5284">
+<div id="outline-container-org97010d2" class="outline-4">
+<h4 id="org97010d2">Arc: Atomic Reference Counting</h4>
+<div class="outline-text-4" id="text-org97010d2">
 <ul class="org-ul">
 <li>Purpose: Similar to Rc, but Arc is safe to use across multiple threads. Arc stands for "Atomic Reference Counted."</li>
 <li>Use Cases: When you need to share data among multiple threads and ensure safe access.</li>
@@ -1022,11 +1040,11 @@ fn main() {
 </ul>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_23476057c828469abdd6b3d6edf3255e>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_0f8d76da08e24cbfb1ba47fbf36de095>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_23476057c828469abdd6b3d6edf3255e=document.querySelector('button[name=btn_23476057c828469abdd6b3d6edf3255e]');
-copyBtnbtn_23476057c828469abdd6b3d6edf3255e.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use std::sync::Arc;\nuse std::thread;\n\nfn main() {\n    let numbers = Arc::new(vec![1, 2, 3]);\n    let mut handles = vec![];\n\n    for i in 0..3 {\n        let numbers_clone = Arc::clone(&numbers); // Clone the Arc for each thread\n        let handle = thread::spawn(move || {\n            println!(\"Thread {}: {:?}\", i, *numbers_clone);\n        });\n        handles.push(handle);\n    }\n\n    for handle in handles {\n        handle.join().unwrap();\n    }\n}\n`);copyBtnbtn_23476057c828469abdd6b3d6edf3255e.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_23476057c828469abdd6b3d6edf3255e.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_0f8d76da08e24cbfb1ba47fbf36de095=document.querySelector('button[name=btn_0f8d76da08e24cbfb1ba47fbf36de095]');
+copyBtnbtn_0f8d76da08e24cbfb1ba47fbf36de095.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use std::sync::Arc;\nuse std::thread;\n\nfn main() {\n    let numbers = Arc::new(vec![1, 2, 3]);\n    let mut handles = vec![];\n\n    for i in 0..3 {\n        let numbers_clone = Arc::clone(&numbers); // Clone the Arc for each thread\n        let handle = thread::spawn(move || {\n            println!(\"Thread {}: {:?}\", i, *numbers_clone);\n        });\n        handles.push(handle);\n    }\n\n    for handle in handles {\n        handle.join().unwrap();\n    }\n}\n`);copyBtnbtn_0f8d76da08e24cbfb1ba47fbf36de095.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0f8d76da08e24cbfb1ba47fbf36de095.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1053,9 +1071,9 @@ fn main() {
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgf7fd9d7" class="outline-4">
-<h4 id="orgf7fd9d7">RefCell: Interior Mutability</h4>
-<div class="outline-text-4" id="text-orgf7fd9d7">
+<div id="outline-container-org24b4077" class="outline-4">
+<h4 id="org24b4077">RefCell: Interior Mutability</h4>
+<div class="outline-text-4" id="text-org24b4077">
 <ul class="org-ul">
 <li>Purpose: Allows you to mutate data even when you have an immutable reference to it. This is known as "interior mutability."</li>
 <li>Use Cases: When you have Rc and need to mutate the shared data, or when you need to break Rust's borrowing rules in a controlled way (e.g., in mock objects or specific data structures).</li>
@@ -1068,11 +1086,11 @@ fn main() {
 </ul>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_0583df79dd3c4b70b12ac46183bd1e4a>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>RUST</span><button class='copyBtn' name=btn_c09977c1160745c6b7dfd23613135d23>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0583df79dd3c4b70b12ac46183bd1e4a=document.querySelector('button[name=btn_0583df79dd3c4b70b12ac46183bd1e4a]');
-copyBtnbtn_0583df79dd3c4b70b12ac46183bd1e4a.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`use std::cell::RefCell;\n\nfn main() {\n    let my_value = RefCell::new(5);\n\n    // Get an immutable borrow\n    let borrowed_value = my_value.borrow();\n    println!(\"Borrowed value: {}\", *borrowed_value);\n\n    // Get a mutable borrow and modify the value\n    let mut mutable_value = my_value.borrow_mut();\n    *mutable_value += 1;\n    println!(\"Modified value: {}\", *mutable_value);\n\n    // The original RefCell now holds the updated value\n    println!(\"My value after modification: {}\", *my_value.borrow());\n\n    // This would panic at runtime because we already have an immutable borrow\n    // let borrowed_value2 = my_value.borrow(); // Panics here if uncommented\n}\n`);copyBtnbtn_0583df79dd3c4b70b12ac46183bd1e4a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0583df79dd3c4b70b12ac46183bd1e4a.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c09977c1160745c6b7dfd23613135d23=document.querySelector('button[name=btn_c09977c1160745c6b7dfd23613135d23]');
+copyBtnbtn_c09977c1160745c6b7dfd23613135d23.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`use std::cell::RefCell;\n\nfn main() {\n    let my_value = RefCell::new(5);\n\n    // Get an immutable borrow\n    let borrowed_value = my_value.borrow();\n    println!(\"Borrowed value: {}\", *borrowed_value);\n\n    // Get a mutable borrow and modify the value\n    let mut mutable_value = my_value.borrow_mut();\n    *mutable_value += 1;\n    println!(\"Modified value: {}\", *mutable_value);\n\n    // The original RefCell now holds the updated value\n    println!(\"My value after modification: {}\", *my_value.borrow());\n\n    // This would panic at runtime because we already have an immutable borrow\n    // let borrowed_value2 = my_value.borrow(); // Panics here if uncommented\n}\n`);copyBtnbtn_c09977c1160745c6b7dfd23613135d23.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c09977c1160745c6b7dfd23613135d23.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1101,25 +1119,25 @@ fn main() {
 </div>
 </div>
 </div>
-<div id="outline-container-org73540f2" class="outline-3">
-<h3 id="org73540f2">Deref Trait</h3>
-<div class="outline-text-3" id="text-org73540f2">
+<div id="outline-container-orgbfdfe06" class="outline-3">
+<h3 id="orgbfdfe06">Deref Trait</h3>
+<div class="outline-text-3" id="text-orgbfdfe06">
 <p>
 The Deref trait allows a smart pointer to behave like a regular reference. When you dereference a smart pointer (using the * operator), Rust calls the deref method. This is why Box can be treated like T (e.g., *my<sub>box</sub> + 1).
 </p>
 </div>
 </div>
-<div id="outline-container-orgfad9924" class="outline-3">
-<h3 id="orgfad9924">Drop Trait</h3>
-<div class="outline-text-3" id="text-orgfad9924">
+<div id="outline-container-orga15d858" class="outline-3">
+<h3 id="orga15d858">Drop Trait</h3>
+<div class="outline-text-3" id="text-orga15d858">
 <p>
 The Drop trait allows you to customize what happens when a value goes out of scope. Smart pointers often implement Drop to deallocate memory, close files, or perform other cleanup tasks automatically.
 </p>
 </div>
 </div>
-<div id="outline-container-org02e2572" class="outline-3">
-<h3 id="org02e2572">Common Pitfalls and Considerations</h3>
-<div class="outline-text-3" id="text-org02e2572">
+<div id="outline-container-org240b65f" class="outline-3">
+<h3 id="org240b65f">Common Pitfalls and Considerations</h3>
+<div class="outline-text-3" id="text-org240b65f">
 <ul class="org-ul">
 <li>Performance: Smart pointers introduce some overhead compared to raw references due to their extra functionality and metadata. Choose the right smart pointer for your needs to balance functionality and performance.</li>
 <li>Cycles with Rc/Arc: If you create circular references with Rc or Arc, the reference count will never reach zero, leading to a memory leak. Use Weak to break cycles.</li>
@@ -1131,6 +1149,20 @@ The Drop trait allows you to customize what happens when a value goes out of sco
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1138,6 +1170,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

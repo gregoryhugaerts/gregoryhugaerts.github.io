@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:55 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Dynamic Host Configuration Protocol</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,62 +886,62 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd507129">Dynamic Host Configuration Protocol</a>
-<ul>
-<li><a href="#orge9c3205">Overview</a></li>
-<li><a href="#orgeb1a603">Key Functions</a></li>
-<li><a href="#org5747df2">HCP Process</a></li>
-<li><a href="#org41b8c8e">Protocols and Ports</a></li>
-</ul>
-</li>
+<li><a href="#org62474ab">Key Functions</a></li>
+<li><a href="#org3c54133">DHCP Process</a></li>
+<li><a href="#org1dd6199">Protocols and Ports</a></li>
+<li><a href="#org888ea87">Security Considerations (Pentest-Relevant)</a></li>
+<li><a href="#org04e2e31">Tips</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd507129" class="outline-2">
-<h2 id="orgd507129">Dynamic Host Configuration Protocol</h2>
-<div class="outline-text-2" id="text-orgd507129">
-</div>
-<div id="outline-container-orge9c3205" class="outline-3">
-<h3 id="orge9c3205">Overview</h3>
-<div class="outline-text-3" id="text-orge9c3205">
 <p>
-DHCP (Dynamic Host Configuration Protocol) is a network management protocol used to automatically assign IP addresses and other network configuration details to devices (clients) on a network.
+DHCP (Dynamic Host Configuration Protocol) is a network management
+protocol used to automatically assign IP addresses and other
+network configuration details to devices (clients) on a network. It
+allows devices to communicate over a network without requiring
+manual IP address configuration, operating on a client-server model
+where the server dynamically assigns addresses to devices when they
+connect.
 </p>
 
 <p>
-It allows devices to communicate with each other over a network without requiring manual IP address configuration.
+Related: <a href="20260214T084008--ip-address__concept_networking.html">IP Address</a>
+         <a href="20260214T084016--subnet-mask__concept_networking.html">Subnet Mask</a>
+         <a href="20260314T005632==dns--domain-name-system__networking_protocol.html">DNS</a>
+         <a href="20260314T005642==udp--user-datagram-protocol__networking_protocol.html">UDP</a>
+         <a href="20260314T005710==ics--industrial-control-systems__concept.html">Networking</a>
 </p>
-
-<p>
-DHCP operates on a client-server model, where the server dynamically assigns IP addresses to devices when they connect to the network.
-</p>
-</div>
-</div>
-<div id="outline-container-orgeb1a603" class="outline-3">
-<h3 id="orgeb1a603">Key Functions</h3>
-<div class="outline-text-3" id="text-orgeb1a603">
+<div id="outline-container-org62474ab" class="outline-2">
+<h2 id="org62474ab">Key Functions</h2>
+<div class="outline-text-2" id="text-org62474ab">
 <ul class="org-ul">
-<li><a href="IP Address.html#ip-address">IP Address</a> Assignment: DHCP automatically assigns a unique IP address to each device (client) when it joins the network, removing the need for manual IP configuration.</li>
-<li>Lease System: IP addresses are assigned temporarily, known as a lease, which expires after a specified time unless renewed by the client.</li>
-<li>Configuration Parameters: In addition to IP addresses, DHCP can ​provide details such as:
+<li><a href="20260214T084008--ip-address__concept_networking.html">IP Address</a> Assignment: DHCP
+automatically assigns a unique IP address to each device (client)
+when it joins the network, removing the need for manual IP
+configuration.</li>
+<li>Lease System: IP addresses are assigned temporarily, known as a
+lease, which expires after a specified time unless renewed by the
+client.</li>
+<li>Configuration Parameters: In addition to IP addresses, DHCP can
+provide details such as:
 <ul class="org-ul">
-<li><a href="Subnet Mask.html#subnet-mask">Subnet Mask</a></li>
+<li><a href="20260214T084016--subnet-mask__concept_networking.html">Subnet Mask</a></li>
 <li>Default Gateway</li>
-<li><a href="Domain Name System.html#domain-name-system">Domain Name System</a> Server</li>
+<li><a href="20260314T005632==dns--domain-name-system__networking_protocol.html">DNS</a> Server</li>
 <li>NTP Server</li>
 </ul></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5747df2" class="outline-3">
-<h3 id="org5747df2">HCP Process</h3>
-<div class="outline-text-3" id="text-org5747df2">
+<div id="outline-container-org3c54133" class="outline-2">
+<h2 id="org3c54133">DHCP Process</h2>
+<div class="outline-text-2" id="text-org3c54133">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>PLANTUML-SVG</span><button class='copyBtn' name=btn_f1beef7249ea4f39a39b8646b9158951>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>PLANTUML-SVG</span><button class='copyBtn' name=btn_d14bb1f5ca4e4ff1894d545bf3845c6d>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_f1beef7249ea4f39a39b8646b9158951=document.querySelector('button[name=btn_f1beef7249ea4f39a39b8646b9158951]');
-copyBtnbtn_f1beef7249ea4f39a39b8646b9158951.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`@startuml\nparticipant Client\nparticipant Server\nClient -> Server: DHCP Discover (Broadcast)\nServer -> Client: DHCP Offer (Proposed IP)\nClient -> Server: DHCP Request (Accept Offer)\nServer -> Client: DHCP Acknowledgment (ACK)\n@enduml\n`);copyBtnbtn_f1beef7249ea4f39a39b8646b9158951.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_f1beef7249ea4f39a39b8646b9158951.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d14bb1f5ca4e4ff1894d545bf3845c6d=document.querySelector('button[name=btn_d14bb1f5ca4e4ff1894d545bf3845c6d]');
+copyBtnbtn_d14bb1f5ca4e4ff1894d545bf3845c6d.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`@startuml\nparticipant Client\nparticipant Server\nClient -> Server: DHCP Discover (Broadcast)\nServer -> Client: DHCP Offer (Proposed IP)\nClient -> Server: DHCP Request (Accept Offer)\nServer -> Client: DHCP Acknowledgment (ACK)\n@enduml\n`);copyBtnbtn_d14bb1f5ca4e4ff1894d545bf3845c6d.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d14bb1f5ca4e4ff1894d545bf3845c6d.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -944,19 +962,101 @@ Server -&gt; Client: DHCP Acknowledgment (ACK)
 <li>DHCP Request: The client accepts the offer and requests the server to assign the IP.</li>
 <li>DHCP Acknowledge (ACK): The server confirms the IP assignment to the client.</li>
 </ul>
+
+<p>
+This exchange is commonly abbreviated <b>DORA</b> (Discover, Offer,
+Request, Acknowledge) — worth knowing the acronym, since it's the
+standard shorthand for referring to the handshake.
+</p>
 </div>
 </div>
-<div id="outline-container-org41b8c8e" class="outline-3">
-<h3 id="org41b8c8e">Protocols and Ports</h3>
-<div class="outline-text-3" id="text-org41b8c8e">
+<div id="outline-container-org1dd6199" class="outline-2">
+<h2 id="org1dd6199">Protocols and Ports</h2>
+<div class="outline-text-2" id="text-org1dd6199">
 <ul class="org-ul">
-<li><a href="User Datagram Protocol.html#user-datagram-protocol">User Datagram Protocol</a> for communication.</li>
+<li><a href="20260314T005642==udp--user-datagram-protocol__networking_protocol.html">UDP</a> for communication — server
+listens on port 67, client on port 68.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org888ea87" class="outline-2">
+<h2 id="org888ea87">Security Considerations (Pentest-Relevant)</h2>
+<div class="outline-text-2" id="text-org888ea87">
+<p>
+DHCP has no built-in authentication, which creates several
+practical attack angles worth knowing:
+</p>
+
+<ul class="org-ul">
+<li><b>DHCP Starvation:</b> Flooding a DHCP server with bogus DISCOVER
+requests using spoofed MAC addresses exhausts the available IP
+pool, denying service to legitimate clients — a network-layer DoS.</li>
+<li><b>Rogue DHCP Server:</b> Standing up an unauthorized DHCP server on
+the network to race the legitimate one — whichever OFFER a client
+accepts first wins, and a malicious server can hand out its own
+IP as the default gateway or DNS server, enabling man-in-the-middle
+positioning without needing ARP spoofing at all.</li>
+<li><b>DHCP Snooping (Defensive):</b> The countermeasure — switches track
+which ports are allowed to source DHCP server traffic and drop
+OFFER/ACK packets from untrusted ports, preventing rogue servers
+from responding.</li>
+</ul>
+
+<div class='org-src-wrapper'>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_a34854d8b4fd450e9c9a023c10b5a9c1>&#10697;</button>
+<script type='text/javascript'>
+var copyBtnbtn_a34854d8b4fd450e9c9a023c10b5a9c1=document.querySelector('button[name=btn_a34854d8b4fd450e9c9a023c10b5a9c1]');
+copyBtnbtn_a34854d8b4fd450e9c9a023c10b5a9c1.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# Yersinia — DHCP starvation attack (interactive or CLI mode)\nyersinia dhcp -attack 1\n\n# dhcpstarv — dedicated DHCP starvation tool\ndhcpstarv -i eth0\n`);copyBtnbtn_a34854d8b4fd450e9c9a023c10b5a9c1.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a34854d8b4fd450e9c9a023c10b5a9c1.innerHTML = '&#10697;'}, 3000);
+});
+</script>
+</div><div class="org-src-container">
+<pre class="src src-shell"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Yersinia &#8212; DHCP starvation attack (interactive or CLI mode)
+</span>yersinia dhcp -attack 1
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">dhcpstarv &#8212; dedicated DHCP starvation tool
+</span>dhcpstarv -i eth0
+</pre>
+</div></div>
+</div>
+</div>
+<div id="outline-container-org04e2e31" class="outline-2">
+<h2 id="org04e2e31">Tips</h2>
+<div class="outline-text-2" id="text-org04e2e31">
+<ul class="org-ul">
+<li>On an internal/AD-focused engagement, a rogue DHCP server is a
+legitimate escalation path worth considering if you have network
+access but no clear foothold yet — redirecting DNS via a
+malicious DHCP OFFER can enable credential capture through forced
+authentication to attacker-controlled services</li>
+<li>DHCP Discover broadcasts are visible to every device on the same
+broadcast domain — passively observing DHCP traffic during recon
+can reveal hostnames, MAC vendor prefixes (device fingerprinting),
+and sometimes DHCP option 12 (hostname) or option 81 (client FQDN)
+without sending a single packet yourself</li>
+<li>If DHCP snooping is in place (common on managed switches in a
+hardened environment), rogue DHCP attacks will simply fail
+silently; confirm it's not enabled before spending time on this
+angle</li>
 </ul>
 </div>
 </div>
 </div>
-</div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -964,6 +1064,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

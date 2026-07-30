@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:53 -->
+<!-- 2026-07-30 Thu 22:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Authentication</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,18 +886,18 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org20c986f">Authentication Factors</a></li>
-<li><a href="#orgeaa6194">Authentication Methods</a>
+<li><a href="#org63a48f6">Authentication Factors</a></li>
+<li><a href="#org811799a">Authentication Methods</a>
 <ul>
-<li><a href="#org70903cb">Password-based</a></li>
-<li><a href="#org6c0f562">Token-based</a></li>
-<li><a href="#org2927a4c">Certificate / PKI</a></li>
-<li><a href="#org7e29532">Biometric</a></li>
-<li><a href="#orgf9f1f9b">Federated / SSO</a></li>
+<li><a href="#orgb4463eb">Password-based</a></li>
+<li><a href="#org5d17c17">Token-based</a></li>
+<li><a href="#org54ea799">Certificate / PKI</a></li>
+<li><a href="#org55df596">Biometric</a></li>
+<li><a href="#org5c31a10">Federated / SSO</a></li>
 </ul>
 </li>
-<li><a href="#org5ad0af0">Common Weaknesses</a></li>
-<li><a href="#org1fb43fb">Tips</a></li>
+<li><a href="#orgf036701">Common Weaknesses</a></li>
+<li><a href="#org7896549">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -902,9 +920,9 @@ Related: <a href="20260314T005708==iaaa--identification-authentication-authoriza
          <a href="20260613T215303--insecure-authentication-mechanism__cybersecurity_pentesting_technique.html">Insecure Authentication Mechanism</a>
          <a href="20260613T215734--session-management-testing__cybersecurity_pentesting_technique.html">Session Management Testing</a>
 </p>
-<div id="outline-container-org20c986f" class="outline-2">
-<h2 id="org20c986f">Authentication Factors</h2>
-<div class="outline-text-2" id="text-org20c986f">
+<div id="outline-container-org63a48f6" class="outline-2">
+<h2 id="org63a48f6">Authentication Factors</h2>
+<div class="outline-text-2" id="text-org63a48f6">
 <p>
 Classified by what they require the user to present:
 </p>
@@ -960,24 +978,24 @@ interception — prefer TOTP or FIDO2 hardware keys.
 </p>
 </div>
 </div>
-<div id="outline-container-orgeaa6194" class="outline-2">
-<h2 id="orgeaa6194">Authentication Methods</h2>
-<div class="outline-text-2" id="text-orgeaa6194">
+<div id="outline-container-org811799a" class="outline-2">
+<h2 id="org811799a">Authentication Methods</h2>
+<div class="outline-text-2" id="text-org811799a">
 </div>
-<div id="outline-container-org70903cb" class="outline-3">
-<h3 id="org70903cb">Password-based</h3>
-<div class="outline-text-3" id="text-org70903cb">
+<div id="outline-container-orgb4463eb" class="outline-3">
+<h3 id="orgb4463eb">Password-based</h3>
+<div class="outline-text-3" id="text-orgb4463eb">
 <p>
 The most common. Weak alone — susceptible to brute force,
 credential stuffing, phishing, and database breaches.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_5e9422dea1a546aeb477aa84fc15dae5>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_a33edaf9972c4b049dfd2ed0a47d0a14>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_5e9422dea1a546aeb477aa84fc15dae5=document.querySelector('button[name=btn_5e9422dea1a546aeb477aa84fc15dae5]');
-copyBtnbtn_5e9422dea1a546aeb477aa84fc15dae5.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Mitigations:\n— Strong password policy (length over complexity)\n— Bcrypt/Argon2 hashing — never store plaintext or MD5\n— Account lockout or exponential backoff after failures\n— Breach database checking (HaveIBeenPwned API) on login\n`);copyBtnbtn_5e9422dea1a546aeb477aa84fc15dae5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_5e9422dea1a546aeb477aa84fc15dae5.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_a33edaf9972c4b049dfd2ed0a47d0a14=document.querySelector('button[name=btn_a33edaf9972c4b049dfd2ed0a47d0a14]');
+copyBtnbtn_a33edaf9972c4b049dfd2ed0a47d0a14.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Mitigations:\n— Strong password policy (length over complexity)\n— Bcrypt/Argon2 hashing — never store plaintext or MD5\n— Account lockout or exponential backoff after failures\n— Breach database checking (HaveIBeenPwned API) on login\n`);copyBtnbtn_a33edaf9972c4b049dfd2ed0a47d0a14.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_a33edaf9972c4b049dfd2ed0a47d0a14.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -994,20 +1012,20 @@ See <a href="20260206T060656--hashing__concept_cybersecurity_programming.html">H
 </p>
 </div>
 </div>
-<div id="outline-container-org6c0f562" class="outline-3">
-<h3 id="org6c0f562">Token-based</h3>
-<div class="outline-text-3" id="text-org6c0f562">
+<div id="outline-container-org5d17c17" class="outline-3">
+<h3 id="org5d17c17">Token-based</h3>
+<div class="outline-text-3" id="text-org5d17c17">
 <p>
 The server issues a signed token on successful login; the
 client presents it on subsequent requests.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_2761efaa848a40e38cabbebe148d2481>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_d23d226b78f2460db6c5e618903425c2>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_2761efaa848a40e38cabbebe148d2481=document.querySelector('button[name=btn_2761efaa848a40e38cabbebe148d2481]');
-copyBtnbtn_2761efaa848a40e38cabbebe148d2481.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Session cookie — server-side session lookup\nJWT            — self-contained, server-side validation only\nAPI key        — long-lived static credential for service auth\nTOTP code      — time-based one-time password (RFC 6238)\n`);copyBtnbtn_2761efaa848a40e38cabbebe148d2481.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_2761efaa848a40e38cabbebe148d2481.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_d23d226b78f2460db6c5e618903425c2=document.querySelector('button[name=btn_d23d226b78f2460db6c5e618903425c2]');
+copyBtnbtn_d23d226b78f2460db6c5e618903425c2.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Session cookie — server-side session lookup\nJWT            — self-contained, server-side validation only\nAPI key        — long-lived static credential for service auth\nTOTP code      — time-based one-time password (RFC 6238)\n`);copyBtnbtn_d23d226b78f2460db6c5e618903425c2.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_d23d226b78f2460db6c5e618903425c2.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1023,9 +1041,9 @@ See <a href="20260408T060128==jwt--json-web-tokens__concept_cybersecurity.html">
 </p>
 </div>
 </div>
-<div id="outline-container-org2927a4c" class="outline-3">
-<h3 id="org2927a4c">Certificate / PKI</h3>
-<div class="outline-text-3" id="text-org2927a4c">
+<div id="outline-container-org54ea799" class="outline-3">
+<h3 id="org54ea799">Certificate / PKI</h3>
+<div class="outline-text-3" id="text-org54ea799">
 <p>
 The client presents a digital certificate signed by a trusted
 CA. Used in mutual TLS (mTLS), SSH key authentication, and
@@ -1033,11 +1051,11 @@ smart card login.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_e4330307b8d64dc3a61569427ba7b648>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_c4554eb24b324cfead1aec8914c55cae>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_e4330307b8d64dc3a61569427ba7b648=document.querySelector('button[name=btn_e4330307b8d64dc3a61569427ba7b648]');
-copyBtnbtn_e4330307b8d64dc3a61569427ba7b648.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# SSH key authentication\nssh-keygen -t ed25519 -C \"user@host\"\nssh-copy-id user@server   # install public key on server\nssh user@server           # authenticate with private key\n`);copyBtnbtn_e4330307b8d64dc3a61569427ba7b648.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_e4330307b8d64dc3a61569427ba7b648.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_c4554eb24b324cfead1aec8914c55cae=document.querySelector('button[name=btn_c4554eb24b324cfead1aec8914c55cae]');
+copyBtnbtn_c4554eb24b324cfead1aec8914c55cae.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# SSH key authentication\nssh-keygen -t ed25519 -C \"user@host\"\nssh-copy-id user@server   # install public key on server\nssh user@server           # authenticate with private key\n`);copyBtnbtn_c4554eb24b324cfead1aec8914c55cae.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_c4554eb24b324cfead1aec8914c55cae.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1049,9 +1067,9 @@ ssh-copy-id user@server   <span style="color: var(--clr-comment-delimiter); back
 </div></div>
 </div>
 </div>
-<div id="outline-container-org7e29532" class="outline-3">
-<h3 id="org7e29532">Biometric</h3>
-<div class="outline-text-3" id="text-org7e29532">
+<div id="outline-container-org55df596" class="outline-3">
+<h3 id="org55df596">Biometric</h3>
+<div class="outline-text-3" id="text-org55df596">
 <p>
 Fingerprint, face, or iris used to unlock a local device or
 app. The biometric data never leaves the device — the device
@@ -1060,9 +1078,9 @@ the server.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf9f1f9b" class="outline-3">
-<h3 id="orgf9f1f9b">Federated / SSO</h3>
-<div class="outline-text-3" id="text-orgf9f1f9b">
+<div id="outline-container-org5c31a10" class="outline-3">
+<h3 id="org5c31a10">Federated / SSO</h3>
+<div class="outline-text-3" id="text-org5c31a10">
 <p>
 Authentication is delegated to an external Identity Provider.
 The service trusts the IdP's assertion rather than managing
@@ -1070,11 +1088,11 @@ credentials itself.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_03c8eda30e2a4e9e9098880d004010d3>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_aeca5cc43fc94b97a2c6e05c7c586cab>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_03c8eda30e2a4e9e9098880d004010d3=document.querySelector('button[name=btn_03c8eda30e2a4e9e9098880d004010d3]');
-copyBtnbtn_03c8eda30e2a4e9e9098880d004010d3.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Protocols: SAML 2.0, OpenID Connect, OAuth 2.0\nExamples:  \"Login with Google\", Azure AD/Entra ID SSO, Okta\n`);copyBtnbtn_03c8eda30e2a4e9e9098880d004010d3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_03c8eda30e2a4e9e9098880d004010d3.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_aeca5cc43fc94b97a2c6e05c7c586cab=document.querySelector('button[name=btn_aeca5cc43fc94b97a2c6e05c7c586cab]');
+copyBtnbtn_aeca5cc43fc94b97a2c6e05c7c586cab.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Protocols: SAML 2.0, OpenID Connect, OAuth 2.0\nExamples:  \"Login with Google\", Azure AD/Entra ID SSO, Okta\n`);copyBtnbtn_aeca5cc43fc94b97a2c6e05c7c586cab.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_aeca5cc43fc94b97a2c6e05c7c586cab.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1089,15 +1107,15 @@ See <a href="20260206T060653--federated-services__concept.html">Federated Servic
 </div>
 </div>
 </div>
-<div id="outline-container-org5ad0af0" class="outline-2">
-<h2 id="org5ad0af0">Common Weaknesses</h2>
-<div class="outline-text-2" id="text-org5ad0af0">
+<div id="outline-container-orgf036701" class="outline-2">
+<h2 id="orgf036701">Common Weaknesses</h2>
+<div class="outline-text-2" id="text-orgf036701">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_3c755ba3650548948ee2d3fab4761861>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_09a837fccf4641f98ad99fd43dccb405>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_3c755ba3650548948ee2d3fab4761861=document.querySelector('button[name=btn_3c755ba3650548948ee2d3fab4761861]');
-copyBtnbtn_3c755ba3650548948ee2d3fab4761861.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`— Weak or reused passwords\n— No MFA on privileged accounts\n— Password stored as MD5 or plaintext\n— No account lockout — brute force possible\n— Username enumeration via different error messages\n— Insecure password reset (predictable tokens, no expiry)\n— JWT algorithm confusion or weak secret\n— Session token not invalidated on logout\n`);copyBtnbtn_3c755ba3650548948ee2d3fab4761861.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3c755ba3650548948ee2d3fab4761861.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_09a837fccf4641f98ad99fd43dccb405=document.querySelector('button[name=btn_09a837fccf4641f98ad99fd43dccb405]');
+copyBtnbtn_09a837fccf4641f98ad99fd43dccb405.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`— Weak or reused passwords\n— No MFA on privileged accounts\n— Password stored as MD5 or plaintext\n— No account lockout — brute force possible\n— Username enumeration via different error messages\n— Insecure password reset (predictable tokens, no expiry)\n— JWT algorithm confusion or weak secret\n— Session token not invalidated on logout\n`);copyBtnbtn_09a837fccf4641f98ad99fd43dccb405.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_09a837fccf4641f98ad99fd43dccb405.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1118,9 +1136,9 @@ See <a href="20260314T005611--broken-authentication__cybersecurity_technique.htm
 </p>
 </div>
 </div>
-<div id="outline-container-org1fb43fb" class="outline-2">
-<h2 id="org1fb43fb">Tips</h2>
-<div class="outline-text-2" id="text-org1fb43fb">
+<div id="outline-container-org7896549" class="outline-2">
+<h2 id="org7896549">Tips</h2>
+<div class="outline-text-2" id="text-org7896549">
 <ul class="org-ul">
 <li>MFA is the single highest-impact control for account security
 — a stolen password alone is insufficient with MFA in place</li>
@@ -1137,6 +1155,20 @@ but leave the server-side session valid</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1144,6 +1176,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-20 Mon 15:56 -->
+<!-- 2026-07-30 Thu 22:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Autopsy</title>
-<meta name="author" content="termux" />
+<meta name="author" content="Gregory Hugaerts" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type='text/css'>
@@ -860,6 +860,24 @@ pre {
 </head>
 <body>
 <div id="preamble" class="status">
+<div id='generated-header' class='generated'><header>
+ <nav>
+<a class='nav-title'href='/index.html' >
+Gregory Hugaerts
+</a>
+<input id='nav-toggle-top' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-top'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+<li class='nav-item'>
+<a class='nav-link' href='/index.html'>
+Knowledge Base</a>
+</li>
+</ul>
+<div class='separator'></div>
+</nav>
+</header>
+</div>
 <div id='view-controls'><div id='toggle-mode' title='Mode'>&#9788;</div><div id='goto-top' title='Top'>&#8963;</div><div id='toggle-toc' title='Contents'>&#9776;</div></div>
 </div>
 <div id="content" class="content">
@@ -868,19 +886,19 @@ pre {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3dff8a1">Workflow</a></li>
-<li><a href="#org719269f">Key Analysis Areas</a>
+<li><a href="#org2ff46df">Workflow</a></li>
+<li><a href="#orgb626c54">Key Analysis Areas</a>
 <ul>
-<li><a href="#org097f323">Timeline Analysis</a></li>
-<li><a href="#org7d5c3ac">File System Analysis</a></li>
-<li><a href="#org5d6ac91">Key Artefact Views</a></li>
-<li><a href="#orge4cbe6a">Keyword Search</a></li>
-<li><a href="#orgce6856b">Hash Lookup</a></li>
+<li><a href="#orgb9305b6">Timeline Analysis</a></li>
+<li><a href="#org8b7e1a0">File System Analysis</a></li>
+<li><a href="#org1051257">Key Artefact Views</a></li>
+<li><a href="#org24555ec">Keyword Search</a></li>
+<li><a href="#orgfc291ed">Hash Lookup</a></li>
 </ul>
 </li>
-<li><a href="#org4197304">Carving Deleted Files</a></li>
-<li><a href="#orgbd795f1">Command Line Alternative</a></li>
-<li><a href="#orgea48896">Tips</a></li>
+<li><a href="#org9de500d">Carving Deleted Files</a></li>
+<li><a href="#org80d1cc4">Command Line Alternative</a></li>
+<li><a href="#org1169657">Tips</a></li>
 </ul>
 </div>
 </div>
@@ -898,15 +916,15 @@ Related: <a href="20260616T220417--windows-client-dfir__concept_cybersecurity.ht
          <a href="20260212T065120==dfir--digital-forensics-and-incidence-response__concept_cybersecurity.html">DFIR</a>
          <a href="20260213T104035--network-traffic-analysis__concept_cybersecurity.html">Network Traffic Analysis</a>
 </p>
-<div id="outline-container-org3dff8a1" class="outline-2">
-<h2 id="org3dff8a1">Workflow</h2>
-<div class="outline-text-2" id="text-org3dff8a1">
+<div id="outline-container-org2ff46df" class="outline-2">
+<h2 id="org2ff46df">Workflow</h2>
+<div class="outline-text-2" id="text-org2ff46df">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_cb7c59079d954be2bd24e719f7f69fcf>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_cd4a06cfec1a43faa860e5d4edf67cc3>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_cb7c59079d954be2bd24e719f7f69fcf=document.querySelector('button[name=btn_cb7c59079d954be2bd24e719f7f69fcf]');
-copyBtnbtn_cb7c59079d954be2bd24e719f7f69fcf.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`1. Create Case — defines case name, number, examiner\n2. Add Data Source:\n   — Disk image (.dd, .E01, .vmdk, .vhd)\n   — Local disk or partition\n   — Logical files folder\n3. Select Ingest Modules — choose what to auto-extract:\n   — Hash Lookup\n   — Keyword Search\n   — Recent Activity (browser history, registry)\n   — File Type Identification\n   — EXIF Parser\n   — Email Parser\n4. Wait for ingest to complete (can take minutes to hours)\n5. Review results in the tree and results panes\n6. Tag artefacts as evidence\n7. Generate Report (HTML, Excel, or PDF)\n`);copyBtnbtn_cb7c59079d954be2bd24e719f7f69fcf.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cb7c59079d954be2bd24e719f7f69fcf.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_cd4a06cfec1a43faa860e5d4edf67cc3=document.querySelector('button[name=btn_cd4a06cfec1a43faa860e5d4edf67cc3]');
+copyBtnbtn_cd4a06cfec1a43faa860e5d4edf67cc3.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`1. Create Case — defines case name, number, examiner\n2. Add Data Source:\n   — Disk image (.dd, .E01, .vmdk, .vhd)\n   — Local disk or partition\n   — Logical files folder\n3. Select Ingest Modules — choose what to auto-extract:\n   — Hash Lookup\n   — Keyword Search\n   — Recent Activity (browser history, registry)\n   — File Type Identification\n   — EXIF Parser\n   — Email Parser\n4. Wait for ingest to complete (can take minutes to hours)\n5. Review results in the tree and results panes\n6. Tag artefacts as evidence\n7. Generate Report (HTML, Excel, or PDF)\n`);copyBtnbtn_cd4a06cfec1a43faa860e5d4edf67cc3.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_cd4a06cfec1a43faa860e5d4edf67cc3.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -930,24 +948,24 @@ let res = copyTextToClipboard(`1. Create Case — defines case name, number, exa
 </div></div>
 </div>
 </div>
-<div id="outline-container-org719269f" class="outline-2">
-<h2 id="org719269f">Key Analysis Areas</h2>
-<div class="outline-text-2" id="text-org719269f">
+<div id="outline-container-orgb626c54" class="outline-2">
+<h2 id="orgb626c54">Key Analysis Areas</h2>
+<div class="outline-text-2" id="text-orgb626c54">
 </div>
-<div id="outline-container-org097f323" class="outline-3">
-<h3 id="org097f323">Timeline Analysis</h3>
-<div class="outline-text-3" id="text-org097f323">
+<div id="outline-container-orgb9305b6" class="outline-3">
+<h3 id="orgb9305b6">Timeline Analysis</h3>
+<div class="outline-text-3" id="text-orgb9305b6">
 <p>
 Correlates timestamps from file system (MAC times), registry,
 browser history, and log files into a single chronological view.
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_baf72cc4f13949cba8437b5bcc924e39>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_54f9d35df5c64459bd5704c9d16704e5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_baf72cc4f13949cba8437b5bcc924e39=document.querySelector('button[name=btn_baf72cc4f13949cba8437b5bcc924e39]');
-copyBtnbtn_baf72cc4f13949cba8437b5bcc924e39.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Tools → Make Timeline\n— Filter by date range to focus on incident window\n— Event types: file activity, web activity, registry, log entries\n— Export to CSV for external analysis\n`);copyBtnbtn_baf72cc4f13949cba8437b5bcc924e39.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_baf72cc4f13949cba8437b5bcc924e39.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_54f9d35df5c64459bd5704c9d16704e5=document.querySelector('button[name=btn_54f9d35df5c64459bd5704c9d16704e5]');
+copyBtnbtn_54f9d35df5c64459bd5704c9d16704e5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Tools → Make Timeline\n— Filter by date range to focus on incident window\n— Event types: file activity, web activity, registry, log entries\n— Export to CSV for external analysis\n`);copyBtnbtn_54f9d35df5c64459bd5704c9d16704e5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_54f9d35df5c64459bd5704c9d16704e5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -959,15 +977,15 @@ let res = copyTextToClipboard(`Tools → Make Timeline\n— Filter by date range
 </div></div>
 </div>
 </div>
-<div id="outline-container-org7d5c3ac" class="outline-3">
-<h3 id="org7d5c3ac">File System Analysis</h3>
-<div class="outline-text-3" id="text-org7d5c3ac">
+<div id="outline-container-org8b7e1a0" class="outline-3">
+<h3 id="org8b7e1a0">File System Analysis</h3>
+<div class="outline-text-3" id="text-org8b7e1a0">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_9919ad315e8149a9a973d6e8b9dddc50>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_84ea8a1bfdeb4f8f8eca06d6c16d4883>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_9919ad315e8149a9a973d6e8b9dddc50=document.querySelector('button[name=btn_9919ad315e8149a9a973d6e8b9dddc50]');
-copyBtnbtn_9919ad315e8149a9a973d6e8b9dddc50.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Data Sources tree → navigate directory structure\n— Deleted files shown with X icon — recoverable if not overwritten\n— Unallocated space — may contain carved file fragments\n— $MFT parsing — full NTFS metadata including timestamps\n`);copyBtnbtn_9919ad315e8149a9a973d6e8b9dddc50.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_9919ad315e8149a9a973d6e8b9dddc50.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_84ea8a1bfdeb4f8f8eca06d6c16d4883=document.querySelector('button[name=btn_84ea8a1bfdeb4f8f8eca06d6c16d4883]');
+copyBtnbtn_84ea8a1bfdeb4f8f8eca06d6c16d4883.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Data Sources tree → navigate directory structure\n— Deleted files shown with X icon — recoverable if not overwritten\n— Unallocated space — may contain carved file fragments\n— $MFT parsing — full NTFS metadata including timestamps\n`);copyBtnbtn_84ea8a1bfdeb4f8f8eca06d6c16d4883.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_84ea8a1bfdeb4f8f8eca06d6c16d4883.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -979,9 +997,9 @@ let res = copyTextToClipboard(`Data Sources tree → navigate directory structur
 </div></div>
 </div>
 </div>
-<div id="outline-container-org5d6ac91" class="outline-3">
-<h3 id="org5d6ac91">Key Artefact Views</h3>
-<div class="outline-text-3" id="text-org5d6ac91">
+<div id="outline-container-org1051257" class="outline-3">
+<h3 id="org1051257">Key Artefact Views</h3>
+<div class="outline-text-3" id="text-org1051257">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1051,15 +1069,15 @@ let res = copyTextToClipboard(`Data Sources tree → navigate directory structur
 </table>
 </div>
 </div>
-<div id="outline-container-orge4cbe6a" class="outline-3">
-<h3 id="orge4cbe6a">Keyword Search</h3>
-<div class="outline-text-3" id="text-orge4cbe6a">
+<div id="outline-container-org24555ec" class="outline-3">
+<h3 id="org24555ec">Keyword Search</h3>
+<div class="outline-text-3" id="text-org24555ec">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_0d214568132740e2b8363517f46891d4>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_3d80d64d9a7646669f6bb11cbc0cdea8>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_0d214568132740e2b8363517f46891d4=document.querySelector('button[name=btn_0d214568132740e2b8363517f46891d4]');
-copyBtnbtn_0d214568132740e2b8363517f46891d4.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Keyword Lists → add terms before ingest for indexed search\nOr: Keyword Search → enter term → search after ingest\n\nUseful terms to pre-index:\npassword, secret, api_key, token, cmd.exe, powershell,\nbase64, encoded, invoke-expression, bypass, wget, curl\n`);copyBtnbtn_0d214568132740e2b8363517f46891d4.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_0d214568132740e2b8363517f46891d4.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_3d80d64d9a7646669f6bb11cbc0cdea8=document.querySelector('button[name=btn_3d80d64d9a7646669f6bb11cbc0cdea8]');
+copyBtnbtn_3d80d64d9a7646669f6bb11cbc0cdea8.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Keyword Lists → add terms before ingest for indexed search\nOr: Keyword Search → enter term → search after ingest\n\nUseful terms to pre-index:\npassword, secret, api_key, token, cmd.exe, powershell,\nbase64, encoded, invoke-expression, bypass, wget, curl\n`);copyBtnbtn_3d80d64d9a7646669f6bb11cbc0cdea8.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_3d80d64d9a7646669f6bb11cbc0cdea8.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1073,15 +1091,15 @@ base64, encoded, invoke-expression, bypass, wget, curl
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgce6856b" class="outline-3">
-<h3 id="orgce6856b">Hash Lookup</h3>
-<div class="outline-text-3" id="text-orgce6856b">
+<div id="outline-container-orgfc291ed" class="outline-3">
+<h3 id="orgfc291ed">Hash Lookup</h3>
+<div class="outline-text-3" id="text-orgfc291ed">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_ab2922d7d30c46ecb2c1745ad208cc11>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_fb8388da453c460880c70152788056d0>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_ab2922d7d30c46ecb2c1745ad208cc11=document.querySelector('button[name=btn_ab2922d7d30c46ecb2c1745ad208cc11]');
-copyBtnbtn_ab2922d7d30c46ecb2c1745ad208cc11.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Configure in Tools → Options → Hash Database\n— NSRL (known good) — flag OS/application files as benign\n— Custom hash set — flag known-malicious hashes\n\nDuring ingest, HashLookup module marks files as:\nNotable (malicious hash match) or Known (NSRL match, ignore)\n`);copyBtnbtn_ab2922d7d30c46ecb2c1745ad208cc11.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_ab2922d7d30c46ecb2c1745ad208cc11.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_fb8388da453c460880c70152788056d0=document.querySelector('button[name=btn_fb8388da453c460880c70152788056d0]');
+copyBtnbtn_fb8388da453c460880c70152788056d0.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Configure in Tools → Options → Hash Database\n— NSRL (known good) — flag OS/application files as benign\n— Custom hash set — flag known-malicious hashes\n\nDuring ingest, HashLookup module marks files as:\nNotable (malicious hash match) or Known (NSRL match, ignore)\n`);copyBtnbtn_fb8388da453c460880c70152788056d0.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_fb8388da453c460880c70152788056d0.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1096,15 +1114,15 @@ Notable (malicious hash match) or Known (NSRL match, ignore)
 </div>
 </div>
 </div>
-<div id="outline-container-org4197304" class="outline-2">
-<h2 id="org4197304">Carving Deleted Files</h2>
-<div class="outline-text-2" id="text-org4197304">
+<div id="outline-container-org9de500d" class="outline-2">
+<h2 id="org9de500d">Carving Deleted Files</h2>
+<div class="outline-text-2" id="text-org9de500d">
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_172327414f83402597f5171c00255a70>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>TEXT</span><button class='copyBtn' name=btn_1c64d494379346b2aeae6e521298ffc5>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_172327414f83402597f5171c00255a70=document.querySelector('button[name=btn_172327414f83402597f5171c00255a70]');
-copyBtnbtn_172327414f83402597f5171c00255a70.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`Data Sources → [image] → $Unallocated Space\nRight-click → Extract Files (carves based on file signatures)\nOr use PhotoRec integration for broader carving\n`);copyBtnbtn_172327414f83402597f5171c00255a70.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_172327414f83402597f5171c00255a70.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_1c64d494379346b2aeae6e521298ffc5=document.querySelector('button[name=btn_1c64d494379346b2aeae6e521298ffc5]');
+copyBtnbtn_1c64d494379346b2aeae6e521298ffc5.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`Data Sources → [image] → $Unallocated Space\nRight-click → Extract Files (carves based on file signatures)\nOr use PhotoRec integration for broader carving\n`);copyBtnbtn_1c64d494379346b2aeae6e521298ffc5.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_1c64d494379346b2aeae6e521298ffc5.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1115,20 +1133,20 @@ Or use PhotoRec integration for broader carving
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgbd795f1" class="outline-2">
-<h2 id="orgbd795f1">Command Line Alternative</h2>
-<div class="outline-text-2" id="text-orgbd795f1">
+<div id="outline-container-org80d1cc4" class="outline-2">
+<h2 id="org80d1cc4">Command Line Alternative</h2>
+<div class="outline-text-2" id="text-org80d1cc4">
 <p>
 For scripted or headless analysis, The Sleuth Kit tools
 underlie Autopsy:
 </p>
 
 <div class='org-src-wrapper'>
-<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_de08d41b1d8b4822ae816f2ffea3c7db>&#10697;</button>
+<div class='org-src-bar'><span class='srcLangLabel'>SHELL</span><button class='copyBtn' name=btn_bb333ea28a7c49df957850df1ccfbd7a>&#10697;</button>
 <script type='text/javascript'>
-var copyBtnbtn_de08d41b1d8b4822ae816f2ffea3c7db=document.querySelector('button[name=btn_de08d41b1d8b4822ae816f2ffea3c7db]');
-copyBtnbtn_de08d41b1d8b4822ae816f2ffea3c7db.addEventListener('click', function(event) {
-let res = copyTextToClipboard(`# List file system info\nfsstat image.dd\n\n# List all files (including deleted)\nfls -r image.dd\n\n# Recover a specific file by inode\nicat image.dd 12345 > recovered_file\n\n# Create timeline from file system metadata\nfls -r -m \"/\" image.dd > bodyfile\nmactime -b bodyfile -d > timeline.csv\n`);copyBtnbtn_de08d41b1d8b4822ae816f2ffea3c7db.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_de08d41b1d8b4822ae816f2ffea3c7db.innerHTML = '&#10697;'}, 3000);
+var copyBtnbtn_bb333ea28a7c49df957850df1ccfbd7a=document.querySelector('button[name=btn_bb333ea28a7c49df957850df1ccfbd7a]');
+copyBtnbtn_bb333ea28a7c49df957850df1ccfbd7a.addEventListener('click', function(event) {
+let res = copyTextToClipboard(`# List file system info\nfsstat image.dd\n\n# List all files (including deleted)\nfls -r image.dd\n\n# Recover a specific file by inode\nicat image.dd 12345 > recovered_file\n\n# Create timeline from file system metadata\nfls -r -m \"/\" image.dd > bodyfile\nmactime -b bodyfile -d > timeline.csv\n`);copyBtnbtn_bb333ea28a7c49df957850df1ccfbd7a.innerHTML = res ? '&#10003;' : 'error';setTimeout(() => { copyBtnbtn_bb333ea28a7c49df957850df1ccfbd7a.innerHTML = '&#10697;'}, 3000);
 });
 </script>
 </div><div class="org-src-container">
@@ -1148,9 +1166,9 @@ mactime -b bodyfile -d &gt; timeline.csv
 </div></div>
 </div>
 </div>
-<div id="outline-container-orgea48896" class="outline-2">
-<h2 id="orgea48896">Tips</h2>
-<div class="outline-text-2" id="text-orgea48896">
+<div id="outline-container-org1169657" class="outline-2">
+<h2 id="org1169657">Tips</h2>
+<div class="outline-text-2" id="text-org1169657">
 <ul class="org-ul">
 <li>Run ingest modules selectively on first pass — all modules
 enabled on a large image can take hours; Recent Activity,
@@ -1170,6 +1188,20 @@ without re-running ingest</li>
 </div>
 </div>
 <div id="postamble" class="status">
+<div id='generated-footer' class='generated'><footer>
+ <nav>
+<div class='separator'></div>
+<a class='nav-author'href='https://gregoryhugaerts.github.io' >
+gregoryhugaerts.github.io
+</a>
+<input id='nav-toggle-bot' class='nav-toggle' type='checkbox'>
+<label class='nav-button' for='nav-toggle-bot'><span/></label>
+<div class='separator menu-sep'></div>
+<ul class='nav-list'>
+</ul>
+</nav>
+</footer>
+</div>
 <script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
 if (!document.cookie.split('; ').find(r => r.startsWith('mode'))) {
@@ -1177,6 +1209,7 @@ document.cookie = 'mode=dark'
 }
 document.cookie = 'light=modus-operandi-tinted'
 document.cookie = 'dark=modus-vivendi-tinted'
+document.cookie = 'options=collapsing:t__src-lang:t';
 /*
 ;; nice-org-html.js
 ;;==============================================================================
